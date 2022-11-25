@@ -25,7 +25,7 @@
         <div class="login-container">
             <form autocomplete="off" action="<?php echo URLROOT; ?>/users/login" method="POST">
                 <img class="avatar" src="<?php echo URLROOT; ?>/img/profile_pic.svg">
-                
+                <?php flash('register_success'); ?>
                 <h2>Welcome</h2>
                 <!-- <h2>Login</h2> -->
                 <p>Please fill out your credentials to login.</p><br>
