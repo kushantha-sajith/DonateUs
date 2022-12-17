@@ -7,7 +7,11 @@
     }
 
     // Regsiter user
-    public function register($data){
+      /**
+       * @param $data
+       * @return bool
+       */
+      public function register($data){
       $this->db->query('INSERT INTO admin (email, password, verification_status, otp_code) VALUES(:email, :password, :verification_status, :otp_code)');
       // Bind values
       $this->db->bind(':email', $data['email']);
@@ -24,7 +28,12 @@
     }
 
     // Login user
-    public function login($email, $password){
+      /**
+       * @param $email
+       * @param $password
+       * @return false|mixed
+       */
+      public function login($email, $password){
       $this->db->query('SELECT * FROM admin WHERE email = :email');
       $this->db->bind(':email', $email);
 
@@ -39,7 +48,11 @@
     }
 
     // Find user by email
-    public function findUserByEmail($email){
+      /**
+       * @param $email
+       * @return bool
+       */
+      public function findUserByEmail($email){
       $this->db->query('SELECT * FROM admin WHERE email = :email');
       // Bind value
       $this->db->bind(':email', $email);

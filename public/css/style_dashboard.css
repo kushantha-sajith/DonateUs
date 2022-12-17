@@ -9,8 +9,8 @@
 }
 
 .main-container{
-    padding-top: 100px; 
-    padding-left: 50px; 
+    padding-top: 100px;
+    padding-left: 50px;
     padding-right: 50px;
 }
 
@@ -316,6 +316,54 @@ nav .profile-details i {
     padding: 10px 10px;
 }
 
+.tabset > input[type="radio"] {
+    position: absolute;
+    left: -200vw;
+}
+
+.tabset .tab {
+    display: none;
+}
+
+.tabset > input:first-child:checked ~ .tabpanels > .tab:first-child,
+.tabset > input:nth-child(3):checked ~ .tabpanels > .tab:nth-child(2),
+.tabset > input:nth-child(5):checked ~ .tabpanels > .tab:nth-child(3),
+.tabset > input:nth-child(7):checked ~ .tabpanels > .tab:nth-child(4),
+.tabset > input:nth-child(9):checked ~ .tabpanels > .tab:nth-child(5),
+.tabset > input:nth-child(11):checked ~ .tabpanels > .tab:nth-child(6) {
+    display: block;
+}
+
+.tabset > label {
+    position: relative;
+    display: inline-block;
+    padding: 15px 15px 25px;
+    border: 1px solid transparent;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.tabset > label:hover,
+.tabset > input:focus + label {
+    color: #06c;
+}
+
+.tabset > input:checked + label {
+    border-color: #ccc;
+    border-bottom: 1px solid #fff;
+    margin-bottom: -1px;
+}
+
+.tab {
+    padding: 30px 0;
+    border-top: 1px solid #ccc;
+}
+
+.tabset {
+    max-width: 100em;
+}
+
 table, tr, td{
     border-collapse: collapse;
     padding: 10px;
@@ -363,33 +411,31 @@ a{
     overflow: auto;
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
-  }
-  
-  /* Modal Content */
-  .modal-content {
+}
+
+.modal-content {
     background-color: #fefefe;
     margin: 100px auto;
     padding: 20px;
     border: 1px solid #888;
     width: 20%;
-  }
-  
-  /* The Close Button */
-  .close {
+}
+
+.close {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
+}
+
+.close:hover,
+.close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
-  }  
+}
 
-  .input{
+.input{
     width:100%;
     height:100%;
     top:0;
@@ -400,12 +446,12 @@ a{
     padding:0.5rem 0.7rem;
     font-size: 1.2rem;
     font-family: 'Readex Pro', sans-serif;
-    color:#555;   
+    color:#555;
 }
 
 .btn{
     display:block;
-    width:100%; 
+    width:100%;
     height:50px;
     border-radius: 25px;
     margin:1rem 0;
@@ -419,8 +465,19 @@ a{
     background-size: 200%;
     transition:0.5s;
 }
+
 .btn:hover{
     background-position: right;
+}
+
+.t-table{
+    width: 100%;
+    margin: 0 auto;
+}
+
+.logo{
+    width: 175px;
+    margin: 0 auto;
 }
 
 /* Responsive Media Query */

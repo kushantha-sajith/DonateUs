@@ -4,10 +4,7 @@
     <meta charset="UTF-8" />
     <title>Dashboard</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
-    <link
-      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   
@@ -18,7 +15,7 @@
 <!--        <i class="bx bx-grid-alt"></i>-->
         <!-- <h1><?php echo $data['title']; ?></h1> -->
 <!--        <span class="logo_name">Dashboard</span>-->
-        <img src="<?php echo URLROOT; ?>/img/logo_.png" alt="logo" class="logo"/>
+          <img src="<?php echo URLROOT; ?>/img/logo_.png" alt="logo" class="logo"/>
       </div>
       <div class="welcome">
         <span>Welcome</span>
@@ -55,7 +52,7 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo URLROOT; ?>/admin/categories">
+          <a href="#">
             <i class="bx bx-list-ul"></i>
             <span class="links_name">Donation Categories</span>
           </a>
@@ -112,8 +109,21 @@
         </div>
       </nav>
       <div class="main-container">
-        <h1>Welcome Admin</h1>
-      </div>
+<!--        edit modal-->
+        <div id="modal1" class="modal" style="display: block">
+            <div class="modal-content">
+                <span class="close"><a href="<?php echo URLROOT; ?>/admin/categories">&times;</a></span>
+                <form action="<?php echo URLROOT; ?>/admin/editCategories/<?php echo $data['id']; ?>" method="POST">
+                    <div class="div form-group">
+                        <h2><label for="category_name">Category Name</label></h2>
+                        <input id="catName1" type="text" name="category_name" class="input" placeholder="Edit Category Name" value="<?php echo $data['category_name']; ?>">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Update" class="btn">
+                    </div>
+                </form>
+            </div>
+        </div>
     </section>
     <!--home section end-->
 

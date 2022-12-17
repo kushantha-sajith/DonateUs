@@ -8,6 +8,10 @@ class VerificationModel extends Database{
         $this->db = new Database;
     }
 
+    /**
+     * @param $otp
+     * @return false|mixed
+     */
     public function verifyOTP($otp){
         $this->db->query('SELECT * FROM `admin` WHERE `otp_code` = :otp');
 
@@ -22,6 +26,10 @@ class VerificationModel extends Database{
         }
     }
 
+    /**
+     * @param $id
+     * @return bool
+     */
     public function verify($id){
         $this->db->query('UPDATE `admin` SET `verification_status` = :status, `otp_code` = :otp WHERE `id` = :id');
         $this->db->bind(':id', $id);

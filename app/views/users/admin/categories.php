@@ -4,20 +4,19 @@
     <meta charset="UTF-8" />
     <title>Dashboard</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
-    <link
-      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   </head>
   
   <body>
     <!--navigation bar left-->
     <div class="sidebar">
       <div class="logo-details">
-        <i class="bx bx-grid-alt"></i>
+<!--        <i class="bx bx-grid-alt"></i>-->
         <!-- <h1><?php echo $data['title']; ?></h1> -->
-        <span class="logo_name">Dashboard</span>
+<!--        <span class="logo_name">Dashboard</span>-->
+          <img src="<?php echo URLROOT; ?>/img/logo_.png" alt="logo" class="logo"/>
       </div>
       <div class="welcome">
         <span>Welcome</span>
@@ -113,27 +112,29 @@
       <div class="main-container">
         <table class="main-table">
           <thead>
+          <tr>
             <th colspan="2" style="text-align:left;"><span>Category Name</span></th>
-            <th colspan="2" style="text-align:right;"><button id="add" class="add" type="button">Add 
-            <i class='bx bxs-plus-square'></i></button>
-            </th>
+            <th colspan="2" style="text-align:right;"><button id="add" class="add" type="button">Add
+            <i class='bx bxs-plus-square'></i></button></th>
+          </tr>
           </thead>
           <tbody>
             <?php foreach($data['categories'] as $categories) : ?>
             <tr class="t-row">
               <td style="width: 10px;"><!--<?php echo $categories->id; ?>--></td>
               <td><?php echo $categories->category_name	; ?></td>
-              <td></td>
-              <td></td>
+              <td class="icon edit" id="edit"><a href="<?php echo URLROOT; ?>/admin/editCategories/<?php echo $categories->id; ?>"><i class='bx bxs-edit'></i></a></td>
+                <td class="icon"><a href="<?php echo URLROOT; ?>/admin/deleteCategories/<?php echo $categories->id; ?>"><i class='bx bx-trash' ></i></a></td>
             </tr>
             <?php endforeach; ?>
           </tbody>
         </table>
       </div>
+<!--        add modal-->
       <div id="modal" class="modal">
         <div class="modal-content">
           <span class="close">&times;</span>
-          <form action="<?php echo URLROOT; ?>/admin/add" method="POST">
+          <form action="<?php echo URLROOT; ?>/admin/addCategories" method="POST">
             <div class="div form-group">
               <h2><label for="category_name">Category Name</label></h2>
               <input type="text" name="category_name" id="category_name" class="input" placeholder="Enter Category Name">
@@ -146,7 +147,7 @@
       </div>
     </section>
     <!--home section end-->
-    <!-- <script type="text/javascript" src="<?php echo URLROOT; ?>/js/main.js"></script> -->
+
     <script>
       let sidebar = document.querySelector(".sidebar");
       let sidebarBtn = document.querySelector(".sidebarBtn");

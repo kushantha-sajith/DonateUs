@@ -3,8 +3,11 @@
     public function __construct(){
      
     }
-    
-    public function index(){
+
+      /**
+       * @return void
+       */
+      public function index(){
       $data = [
         'title' => 'DonateUs'
       ];
@@ -12,7 +15,10 @@
       $this->view('pages/index', $data);
     }
 
-    public function about(){
+      /**
+       * @return void
+       */
+      public function about(){
       $data = [
         'title' => 'About Us'
       ];
@@ -20,7 +26,10 @@
       $this->view('pages/about', $data);
     }
 
-    public function admin(){
+      /**
+       * @return void
+       */
+      public function admin(){
       $data = [
         'title' => 'Admin'
       ];
