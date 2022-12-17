@@ -45,7 +45,7 @@
                     </div>
                     <div class="div">
                         <h5><label for="email">Email: <sup>*</sup></label></h5>
-                        <input class="input" type="email" name="email" value="<?php echo $data['email']; ?>">
+                        <input class="input" type="email" name="email" value="<?php echo $data['email']; ?>" required>
                     </div>
                 </div>
                 <div class="error">
@@ -75,7 +75,7 @@
                     </div>
                     <div class="div">
                         <h5><label for="password">Password: <sup>*</sup></label></h5>
-                        <input class="input" type="password" name="password" value="<?php echo $data['password']; ?>">
+                        <input class="input" type="password" name="password" value="<?php echo $data['password']; ?>" required>
                     </div>
                 </div>
                 <div class="error">
@@ -87,7 +87,7 @@
                     </div>
                     <div class="div">
                         <h5><label for="confirm_password">Confirm Password: <sup>*</sup></label></h5>
-                        <input class="input" type="password" name="confirm_password" value="<?php echo $data['confirm_password']; ?>">
+                        <input class="input" type="password" name="confirm_password" value="<?php echo $data['confirm_password']; ?>" required>
                     </div>
                 </div>
                 <div class="error">

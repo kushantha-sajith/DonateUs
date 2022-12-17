@@ -8,7 +8,11 @@ use helpers\Email;
         $this->verificationModel = $this->model('VerificationModel');
     }
 
-    public function register(){
+    //Register function
+      /**
+       * @return void
+       */
+      public function register(){
       // Check for POST
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
         // Process form
@@ -67,7 +71,6 @@ use helpers\Email;
           // Register User
           if($this->userModel->register($data)){
 //            flash('register_success', 'You are Registered and can log in');
-//            redirect('users/verify');
               $email = new Email($data['email']);
               $email->sendVerificationEmail($data['email'], $otp_code);
               redirect('users/verify');
@@ -96,7 +99,11 @@ use helpers\Email;
       }
     }
 
-    public function login(){
+    //login method for all users of the system
+      /**
+       * @return void
+       */
+      public function login(){
       // Check for POST
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
         // Process form
@@ -115,12 +122,10 @@ use helpers\Email;
         if(empty($data['email'])){
           $data['email_err'] = 'Please enter email';
         }
-
         // Validate Password
         if(empty($data['password'])){
           $data['password_err'] = 'Please enter password';
         }
-
         // Check for user/email
         if($this->userModel->findUserByEmail($data['email'])){
           // User found
@@ -128,11 +133,10 @@ use helpers\Email;
           // User not found
           $data['email_err'] = 'No user found';
         }
-
         // Make sure errors are empty
         if(empty($data['email_err']) && empty($data['password_err'])){
           // Validated
-          // Check and set logged in user
+          // Check and set logged-in user
           $loggedInUser = $this->userModel->login($data['email'], $data['password']);
 
           if($loggedInUser){
@@ -143,13 +147,10 @@ use helpers\Email;
 
             $this->view('users/login', $data);
           }
-
         } else {
           // Load view with errors
           $this->view('users/login', $data);
         }
-
-
       } else {
         // Init data
         $data =[    
@@ -164,7 +165,11 @@ use helpers\Email;
       }
     }
 
-    public function verify(){
+    //otp verification
+      /**
+       * @return void
+       */
+      public function verify(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $data = [
                 'otp'=>trim($_POST['otp']),
@@ -174,7 +179,7 @@ use helpers\Email;
 
             $verified = $this->verificationModel->verifyOTP($data['otp']);
 
-            if($verified){
+            if(is_numeric($data['otp']) && $verified){
                 if($this->verificationModel->verify($verified->id)){
                     // set verification successful flash message
 //                    setFlash("verify","Your account has been verified",Flash::FLASH_SUCCESS);
@@ -202,20 +207,33 @@ use helpers\Email;
         $this->view('users/signupVerification', $data);
     }
 
-    public function createUserSession($user){
+    //create sessions for all users
+      /**
+       * @param $user
+       * @return void
+       */
+      public function createUserSession($user){
       $_SESSION['user_id'] = $user->id;
       $_SESSION['user_email'] = $user->email;
       redirect('pages/admin');
     }
 
-    public function logout(){
+    //logout method
+      /**
+       * @return void
+       */
+      public function logout(){
       unset($_SESSION['user_id']);
       unset($_SESSION['user_email']);
       session_destroy();
       redirect('users/login');
     }
 
-    public function categories(){
+    //load categories page
+      /**
+       * @return void
+       */
+      public function categories(){
       redirect('pages/categories');
     }
   }

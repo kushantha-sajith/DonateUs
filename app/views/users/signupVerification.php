@@ -30,17 +30,19 @@
             <div class="text">
                 <h3>OTP code has been sent to the email you've provided. <br>To complete registration, please check the inbox or spam folder and enter the OTP code you received below.</h3>
                 <p class="err" id="otp-err"></p>
-                <form action="<?php echo URLROOT; ?>/users/verify" method="POST">
+                <form action="<?php echo URLROOT; ?>/users/verify" method="POST" id="otp-form">
                     <div class="div">
                         <h5><label for="otp">Enter OTP here</label></h5>
-                        <input type="text" name="otp" id="otp-input" class="otp">
+                        <input type="text" name="otp" id="otp-input" class="otp" required>
+                    </div>
+                    <div class="error">
+                        <span><?php echo $data['error']; ?></span>
                     </div>
                     <button class="btn" id="otp-btn">Verify</button>
                 </form>
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="<?php echo URLROOT; ?>/js/main.js"></script>
 </div>
 
 <!-- client side OTP validation -->
@@ -70,9 +72,16 @@
     }
 
     verifyBtn.addEventListener('click', function(){
-        if(isOTPFormValid()){
-            otpForm.submit();
+        if(isNaN(otpField.value)){
+            if(isOTPFormValid()){
+                otpForm.submit();
+            }else{
+                return false;
+            }
+        }else{
+            otpErr.innerHTML = "*OTP should be a number";
         }
+
     });
 </script>
 </body>

@@ -13,6 +13,9 @@ class Email{
     protected $mail;
     protected $template;
 
+    /**
+     * @param $email
+     */
     public function __construct($email)
     {
         $this->receiver = $email;
@@ -30,6 +33,12 @@ class Email{
     }
 
     // send OTP verification email
+
+    /**
+     * @param $receiverName
+     * @param $OTPCode
+     * @return void
+     */
     public function sendVerificationEmail($receiverName, $OTPCode){
         $this->template = URLROOT . "/templates/email.php";
 
@@ -58,4 +67,35 @@ class Email{
             echo "Message could not be sent. Mailer Error: {$this->mail->ErrorInfo}";
         }
     }
+
+    public function sendResetEmail($receiverName, $OTPCode){
+//        $this->template = URLROOT . "/templates/email.php";
+
+        try{
+            $this->mail->setFrom($this->sender, 'DonateUs');
+            $this->mail->addAddress($this->receiver);
+            $this->mail->addReplyTo($this->sender);
+
+            $this->mail->isHTML(true);
+            $this->mail->Subject = "DonateUs Account Verification";
+
+            if(file_exists($this->template)){
+                $this->mail->Body = "<h1 style='text-align: center; margin-top: 40px;'>Hello ". $receiverName . ",</h1>" .file_get_contents($this->template).
+                    "<br><h4 style='text-align: center;'>The verification code is : <b>" . $OTPCode ."<b></h4>";
+            }
+            else{
+                $this->mail->Body = "<h1 style='text-align: center; margin-top: 40px;'>Hello ". $receiverName . ",</h1>
+                    <h2 style='color: #0A2558;'>Welcome To DonateUs</h2>
+                    <h4>Before using our service there is one more little thing to do. Please use the below OTP to verify your account.</h4>
+                    <h3 style='color: #0A2558;'>Thank You!</h3>
+                    <h4 style='text-align: center;'>The verification code is : <b>" .$OTPCode. "<b></h4>";
+            }
+            $this->mail->send();
+        }
+        catch(Exception $e){
+            echo "Message could not be sent. Mailer Error: {$this->mail->ErrorInfo}";
+        }
+    }
 }
+
+//TODO : Reset Password
