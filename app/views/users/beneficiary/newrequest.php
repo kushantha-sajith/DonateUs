@@ -85,39 +85,44 @@
         </div>
       </nav>
       <div class="main-container">
-      <div>
+    
       <h2>Add a new Donation Request</h2>
-      </div>
-     <br><br>
+      
+     <br>
+     <div class="form">
+      <div class="container">
       <form method="post" action="<?php echo URLROOT; ?>/beneficiary/newrequest"> 
       Category
-      <input type="text" name="categories" value="<?php echo $data['categories']; ?>">
-      <span class="error">* <?php echo $data['categoryErr']; ?></span>
-      <br><br>
+      <input type="text" name="categories" value="<?php echo $data['categories']; ?>" class="form-style-input">
+      <span class="error"><?php echo $data['categoryErr']; ?></span>
+      
       Description
-      <textarea name="description" rows="5" cols="40"><?php echo $data['description']; ?></textarea>
-      <span class="error">* <?php echo $data['descriptionErr']; ?></span>
-      <br><br>
+      <textarea name="description" rows="4" cols="40" class="form-style-input"><?php echo $data['description']; ?></textarea>
+      <span class="error"> <?php echo $data['descriptionErr']; ?></span>
+      
       Amount/Quantity 
-      <input type="text" name="quantity" value="<?php echo $data['quantity']; ?>">
+      <input type="text" name="quantity" value="<?php echo $data['quantity']; ?>" class="form-style-input">
       <span class="error"><?php echo $data['quantityErr']; ?></span>
       Donation Type  
-      <input type="text" name="type" value="<?php echo $data['type']; ?>">
+      <input type="text" name="type" value="<?php echo $data['type']; ?>" class="form-style-input">
      <span class="error"><?php echo $data['typeErr']; ?></span>
-      <br><br>
+      
       Contact Number 
-      <input type="text" name="contact" value="<?php echo $data['contact']; ?>">
+      <input type="text" name="contact" value="<?php echo $data['contact']; ?>" class="form-style-input">
       <span class="error"><?php echo $data['contactErr']; ?></span>
       Location/City 
-      <input type="text" name="city" value="<?php echo $data['city']; ?>">
+      <input type="text" name="city" value="<?php echo $data['city']; ?>" class="form-style-input">
      <span class="error"><?php echo $data['cityErr']; ?></span>
-      <br><br>
+      
       Due Date
-      <input type="date" name="duedate" value="<?php echo $data['duedate']; ?>">
+      <input type="date" name="duedate" value="<?php echo $data['duedate']; ?>" class="form-style-input">
      <span class="error"><?php echo $data['duedateErr']; ?></span>
       <br><br>
-      <input type="submit" name="submit" value="Submit">  
+      <input type="submit" name="submit" value="Submit" class="btn1 add"> 
+      <br> 
     </form>
+    </div>
+    </div>
     
 </div>
     </section>

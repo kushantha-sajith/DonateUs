@@ -34,7 +34,7 @@
                 </div>
                 <div class="input-field">
                     <i class=" fas fa-lock "></i>
-                    <input type=" text " placeholder="Password " name="password" value="<?php echo $data['password']; ?>">
+                    <input type="password" placeholder="Password " name="password" value="<?php echo $data['password']; ?>">
                 </div>
                 <div class="error">
                     <span><?php echo $data['password_err']; ?></span>

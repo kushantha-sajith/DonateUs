@@ -96,7 +96,10 @@
             <th style="text-align:left;"><span>Type</span></th>
             <th style="text-align:left;"><span>Quantity</span></th>
             <th style="text-align:left;"><span>DueDate</span></th>
-            <th style="text-align:left;"><span>Category</span></th>
+            <th style="text-align:left;"><span>Categories</span></th>
+            <th style="text-align:left;"><span>City</span></th>
+            <th style="text-align:left;"><span>Contact</span></th>
+
             <th></th>
             <th></th>            
           </thead>
@@ -109,8 +112,11 @@
               <td style="text-align:left;"><?php echo $requests->quantity; ?></td>
               <td style="text-align:left;"><?php echo $requests->duedate; ?></td>
               <td style="text-align:left;"><?php echo $requests->categories; ?></td>
-              <td><a href="<?php echo URLROOT; ?>/beneficiary/edit/<?php echo $requests->id; ?>">Edit</a></td>
-              <td><a href="<?php echo URLROOT; ?>/beneficiary/delete/<?php echo $requests->id; ?>">Delete</a></td>
+              <td style="text-align:left;"><?php echo $requests->city; ?></td>
+              <td style="text-align:left;"><?php echo $requests->contact; ?></td>
+
+              <td><a href="<?php echo URLROOT; ?>/beneficiary/edit/<?php echo $requests->id; ?>" class="btn-edit">Edit</a></td>
+              <td><a href="<?php echo URLROOT; ?>/beneficiary/delete/<?php echo $requests->id; ?>" class="btn-delete">Delete</a></td>
             </tr>
             <?php endforeach; ?>
           </tbody>
