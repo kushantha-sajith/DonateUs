@@ -115,8 +115,8 @@
               <td style="text-align:left;"><?php echo $requests->city; ?></td>
               <td style="text-align:left;"><?php echo $requests->contact; ?></td>
 
-              <td><a href="<?php echo URLROOT; ?>/beneficiary/edit/<?php echo $requests->id; ?>" class="btn-edit">Edit</a></td>
-              <td><a href="<?php echo URLROOT; ?>/beneficiary/delete/<?php echo $requests->id; ?>" class="btn-delete">Delete</a></td>
+              <td><a href="<?php echo URLROOT; ?>/beneficiary/editRequest/<?php echo $requests->id; ?>" class="btn-edit">Edit</a></td>
+              <td><a href="<?php echo URLROOT; ?>/beneficiary/deleteRequest/<?php echo $requests->id; ?>" class="btn-delete">Delete</a></td>
             </tr>
             <?php endforeach; ?>
           </tbody>

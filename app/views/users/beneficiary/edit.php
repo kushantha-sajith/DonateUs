@@ -90,7 +90,7 @@
     <br>
     <div class="form">
     <div class="container">
-      <form method="POST" action="<?php echo URLROOT; ?>/beneficiary/edit/<?php echo $data['id']; ?>"> 
+      <form method="POST" action="<?php echo URLROOT; ?>/beneficiary/editRequest/<?php echo $data['id']; ?>"> 
       Category
       <input type="text" name="categories" value="<?php echo $data['categories']; ?>" class="form-style-input">
       <span class="error"> <?php echo $data['categoryErr']; ?></span>

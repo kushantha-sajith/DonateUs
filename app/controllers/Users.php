@@ -4,7 +4,7 @@
       $this->userModel = $this->model('User');
     }
 
-    public function register(){
+    public function register_beneficiary(){
       // Check for POST
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
         // Process form
@@ -59,15 +59,15 @@
           $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
           // Register User
-          if($this->userModel->register($data)){
-            redirect('users/login');
+          if($this->userModel->register_beneficiary($data)){
+            redirect('users/login_beneficiary');
           } else {
             die('Something went wrong');
           }
 
         } else {
           // Load view with errors
-          $this->view('users/register', $data);
+          $this->view('users/register_beneficiary', $data);
         }
 
       } else {
@@ -83,11 +83,11 @@
         ];
 
         // Load view
-        $this->view('users/register', $data);
+        $this->view('users/register_beneficiary', $data);
       }
     }
 
-    public function login(){
+    public function login_beneficiary(){
       // Check for POST
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
         // Process form
@@ -124,7 +124,7 @@
         if(empty($data['email_err']) && empty($data['password_err'])){
           // Validated
           // Check and set logged in user
-          $loggedInUser = $this->userModel->login($data['email'], $data['password']);
+          $loggedInUser = $this->userModel->login_beneficiary($data['email'], $data['password']);
 
           if($loggedInUser){
             // Create Session
@@ -132,12 +132,12 @@
           } else {
             $data['password_err'] = 'Password incorrect';
 
-            $this->view('users/login', $data);
+            $this->view('users/login_beneficiary', $data);
           }
 
         } else {
           // Load view with errors
-          $this->view('users/login', $data);
+          $this->view('users/login_beneficiary', $data);
         }
 
 
@@ -151,7 +151,7 @@
         ];
 
         // Load view
-        $this->view('users/login', $data);
+        $this->view('users/login_beneficiary', $data);
       }
     }
 
@@ -170,7 +170,7 @@
       unset($_SESSION['user_id']);
       unset($_SESSION['user_email']);
       session_destroy();
-      redirect('users/login');
+      redirect('users/login_beneficiary');
     }
 
    

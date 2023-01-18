@@ -119,7 +119,7 @@
 
           }
 
-          public function edit($id){
+          public function editRequest($id){
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 // Sanitize POST data
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -218,7 +218,7 @@
           }
 
 
-          public function delete($id){              
+          public function deleteRequest($id){              
                 $requests = $this->beneficiaryModel->getRequestById($id);                //check for owner
                 // if($requests->user_id != $_SESSION['user_id']){
                 //     redirect('requests');

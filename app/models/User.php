@@ -7,7 +7,7 @@
     }
 
     // Regsiter user
-    public function register($data){
+    public function register_beneficiary($data){
       $this->db->query('INSERT INTO beneficiary (email, password) VALUES( :email, :password)');
       // Bind values
       $this->db->bind(':email', $data['email']);
@@ -24,7 +24,7 @@
    
 
     // Login user
-    public function login($email, $password){
+    public function login_beneficiary($email, $password){
       $this->db->query('SELECT * FROM beneficiary WHERE email = :email');
       $this->db->bind(':email', $email);
 

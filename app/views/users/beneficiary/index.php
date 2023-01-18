@@ -24,7 +24,7 @@
       </div>
       <ul class="nav-links">
         <li>
-          <a href="#">
+          <a href="<?php echo URLROOT; ?>/beneficiary/dashboard">
             <i class="bx bx-grid-alt"></i>
             <span class="links_name">Dashboard</span>
           </a>
