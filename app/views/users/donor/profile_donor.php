@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>Dashboard</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/stylesdash.css" />
     <link
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
       rel="stylesheet"
@@ -16,7 +17,7 @@
     <div class="sidebar">
       <div class="logo-details">
         <i class="bx bx-grid-alt"></i>
-       
+        <!-- <h1><?php echo $data['title']; ?></h1> -->
         <span class="logo_name">Dashboard</span>
       </div>
       <div class="welcome">
@@ -36,7 +37,7 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo URLROOT; ?>/donor/donationHistory_donor">
+        <a href="<?php echo URLROOT; ?>/donor/donationHistory_donor">
             <i class="bx bx-history"></i>
             <span class="links_name">Donation History</span>
           </a>
@@ -105,22 +106,80 @@
         </div>
       </nav>
       <div class="main-container">
-        <h1>Welcome Donor</h1>
+      <div class="profile">
+                      <img class="img_profile" src="<?php echo URLROOT; ?>/img/img_profile.png" alt="img_profile" href="">
+                      <form action="<?php echo URLROOT; ?>/donor/updateProfile" method="POST">
+                      <table class="prof_data" >
+                        <?php foreach($data['userdata'] as $user) : ?>
+                        <tr id = "ind1"><td>
+                            <label>Full Name</label>
+                            <input type="text" id="fullname" name="fullname" value="<?php echo $user->f_name." ".$user->l_name; ?>"></td>
+                            <td><label>Email</label>
+                            <input type="text" id="email" name="email" placeholder="" value="<?php echo $user-> email; ?>"></td>
+                        </tr>
+
+                        <tr id = "corp1"><td>
+                            <label>Company Name</label>
+                            <input type="text" id="fullname" name="fullname" value="<?php echo $user-> c_name; ?>"></td>
+                            <td><label>Email</label>
+                            <input type="text" id="email" name="email" placeholder="" value="<?php echo $user-> email; ?>"></td>
+                        </tr>
+
+                        <tr><td>
+                            <label>Contact Number</label>
+                            <input type="text" id="contact" name="contact" value="<?php echo $user->contact; ?>"></td>
+                            <td id = "ind2">
+                            <label>City</label>
+                            <input type="text" id="city" name="city" value="<?php echo $user->city; ?>"></td>
+                        </tr>
+
+                        <tr id = "corp2"><td>
+                            <label>Employee Id</label>
+                            <input type="text" id="fullname" name="fullname" value="<?php echo $user-> eid; ?>"></td>
+                            <td><label>Designation</label>
+                            <input type="text" id="email" name="email" placeholder="" value="<?php echo $user-> designation; ?>"></td>
+                        </tr>
+
+                           <?php endforeach; ?>
+                        <tr>
+                            <td><input type="submit" value="Update Profile"></td>
+                            <td><input type="button" value="Update Password" onclick=""></td>
+                        </tr>
+                        
+                      </table>
+                      <input class="btndelete" type="button" value="Delete Account" onclick="">
+                      </form>
+                    </div>
+                    
+                </div>
       </div>
     </section>
     <!--home section end-->
 
     <script>
-      window.onload = function () {
+
+window.onload = function () {
         let type = "<?php echo $_SESSION['user_type']; ?>";
         let menuitem1 = document.getElementById("item1");
         let menuitem2 = document.getElementById("item2");
+        let profitem1 = document.getElementById("ind1");
+        let profitem2 = document.getElementById("corp1");
+        let profitem3 = document.getElementById("ind2");
+        let profitem4 = document.getElementById("corp2");
         if(type === "corporate" ){
           menuitem1.style.display = "block";
           menuitem2.style.display = "block";
+          profitem1.style.display = "none";
+          profitem3.style.display = "none";
+          profitem2.style.display = "absolute";
+          profitem4.style.display = "absolute";
         }else{
           menuitem1.style.display = "none";
           menuitem2.style.display = "none";
+          profitem1.style.display = "absolute";
+          profitem3.style.display = "absolute";
+          profitem2.style.display = "none";
+          profitem4.style.display = "none";
         }
         
       };
@@ -138,8 +197,6 @@
           welcome.style.display = "block";
         }
       };
-
-      
     </script>
   </body>
 </html>

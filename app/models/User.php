@@ -11,7 +11,7 @@
        * @param $data
        * @return bool
        */
-      public function register($data){
+      public function register_donor($data){
      
         
           $this->db->query('INSERT INTO donor (email, password, f_name, l_name, contact, city, c_name, eid, designation, type, verification_status, otp_code) VALUES(:email, :password, :fname, :lname, :contact, :city, :c_name, :eid, :designation, :type, :verification_status, :otp_code)');
@@ -43,7 +43,7 @@
        * @param $password
        * @return false|mixed
        */
-      public function login($email, $password){
+      public function login_donor($email, $password){
       $this->db->query('SELECT * FROM donor WHERE email = :email');
       $this->db->bind(':email', $email);
 

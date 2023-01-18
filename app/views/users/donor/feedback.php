@@ -37,7 +37,7 @@
           </a>
         </li>
         <li>
-        <a href="<?php echo URLROOT; ?>/donor/donationHistory">
+        <a href="<?php echo URLROOT; ?>/donor/donationHistory_donor">
             <i class="bx bx-history"></i>
             <span class="links_name">Donation History</span>
           </a>
@@ -88,7 +88,7 @@
           <div class="notification">
             <i class="bx bx-bell bx-tada notification"></i>
           </div>
-            <a href="<?php echo URLROOT; ?>/donor/profile"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
+            <a href="<?php echo URLROOT; ?>/donor/profile_donor"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
           <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
           <!-- <i class='bx bx-chevron-down'></i> -->
         </div>

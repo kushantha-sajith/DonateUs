@@ -18,12 +18,12 @@
       /**
        * @return void
        */
-      public function profile(){
+      public function profile_donor(){
       $data = [
         'title' => 'Profile'
       ];
 
-      $this->view('users/donor/profile', $data);
+      $this->view('users/donor/profile_donor', $data);
     }
 
       /**

@@ -13,8 +13,8 @@
             <div class="top">
                 <img class="logo" src="<?php echo URLROOT; ?>/img/logo.png" alt="logo" href="">
                 <ul class="menu">
-                  <li class="menu"><a href="<?php echo URLROOT; ?>/users/register/gen">Register</a></li>
-                  <li class="menu"><a href="<?php echo URLROOT; ?>/users/login">Login</a></li>
+                  <li class="menu"><a href="<?php echo URLROOT; ?>/users/register_donor/gen">Register</a></li>
+                  <li class="menu"><a href="<?php echo URLROOT; ?>/users/login_donor">Login</a></li>
                 </ul>
                 <h1>DonateUs</h1>
                 

@@ -25,7 +25,7 @@
         /**
          * @return void
          */
-        public function profile(){
+        public function profile_donor(){
 
             if(isset($_SESSION['user_id'])){
 
@@ -37,9 +37,9 @@
                 'userdata' => $userdata         
             ];
       
-            $this->view('users/donor/profile', $data);
+            $this->view('users/donor/profile_donor', $data);
             }else{
-                $this->view('users/login', $data);
+                $this->view('users/login_donor', $data);
             }
             
           }
@@ -51,12 +51,12 @@
         /**
          * @return void
          */
-        public function donationHistory(){
+        public function donationHistory_donor(){
             $data = [
               'title' => 'Donation History'
             ];
       
-            $this->view('users/donor/donation_history', $data);
+            $this->view('users/donor/donation_history_donor', $data);
           }
 
           //load feedback page

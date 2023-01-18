@@ -12,7 +12,7 @@ use helpers\Email;
       /**
        * @return void
        */
-      public function register($type){
+      public function register_donor($type){
 
       $type1 = "ind";
 
@@ -21,7 +21,7 @@ use helpers\Email;
         // Process form
   
         // Sanitize POST data
-        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING); 
 
         $verification_status = 0;
         $otp_code = rand(100000,999999);
@@ -97,7 +97,7 @@ use helpers\Email;
           $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
           // Register User
-          if($this->userModel->register($data)){
+          if($this->userModel->register_donor($data)){
               
               $email = new Email($data['email']);
               $email->sendVerificationEmail($data['email'], $otp_code);
@@ -108,7 +108,7 @@ use helpers\Email;
 
         } else {
           // Load view with errors
-          $this->view('users/register', $data);
+          $this->view('users/register_donor', $data);
         }
 
         }else{
@@ -181,7 +181,7 @@ use helpers\Email;
           $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
           // Register User
-          if($this->userModel->register($data)){
+          if($this->userModel->register_donor($data)){
               
               $email = new Email($data['email']);
               $email->sendVerificationEmail($data['email'], $otp_code);
@@ -192,7 +192,7 @@ use helpers\Email;
 
         } else {
           // Load view with errors
-          $this->view('users/register', $data);
+          $this->view('users/register_donor', $data);
         }
         }
         
@@ -218,7 +218,7 @@ use helpers\Email;
         ];
 
         // Load view
-        $this->view('users/register', $data);
+        $this->view('users/register_donor', $data);
       }
     
     }
@@ -227,7 +227,7 @@ use helpers\Email;
       /**
        * @return void
        */
-      public function login(){
+      public function login_donor(){
       // Check for POST
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
         // Process form
@@ -261,7 +261,7 @@ use helpers\Email;
         if(empty($data['email_err']) && empty($data['password_err'])){
           // Validated
           // Check and set logged-in user
-          $loggedInUser = $this->userModel->login($data['email'], $data['password']);
+          $loggedInUser = $this->userModel->login_donor($data['email'], $data['password']);
 
           if($loggedInUser){
             // Create Session
@@ -270,11 +270,11 @@ use helpers\Email;
           } else {
             $data['password_err'] = 'Password incorrect';
 
-            $this->view('users/login', $data);
+            $this->view('users/login_donor', $data);
           }
         } else {
           // Load view with errors
-          $this->view('users/login', $data);
+          $this->view('users/login_donor', $data);
         }
       } else {
         // Init data
@@ -286,7 +286,7 @@ use helpers\Email;
         ];
 
         // Load view
-        $this->view('users/login', $data);
+        $this->view('users/login_donor', $data);
       }
     }
 
@@ -308,14 +308,14 @@ use helpers\Email;
                 if($this->verificationModel->verify($verified->id)){
                     // set verification successful flash message
 //                    setFlash("verify","Your account has been verified",Flash::FLASH_SUCCESS);
-                    // redirect to the login of patient
-                    redirect('users/login');
+                    // redirect to the login of donor
+                    redirect('users/login_donor');
                 }
                 else{
                     // set verification failed flash message
 //                    Flash::setFlash("verify","Account verification failed!",Flash::FLASH_DANGER);
-                    // redirect to the signup of patient
-                    redirect('users/register');
+                    // redirect to the signup of donor
+                    redirect('users/register_donor');
                 }
             }
             else{
@@ -329,7 +329,7 @@ use helpers\Email;
                 'status'=>''
             ];
         }
-        $this->view('users/signupVerification', $data);
+        $this->view('users/signupVerification_donor', $data);
     }
 
     //create sessions for all users
@@ -353,7 +353,7 @@ use helpers\Email;
       unset($_SESSION['user_email']);
       unset($_SESSION['user_type']);
       session_destroy();
-      redirect('users/login');
+      redirect('users/login_donor');
     }
 
     

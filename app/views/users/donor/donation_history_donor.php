@@ -37,7 +37,7 @@
           </a>
         </li>
         <li>
-        <a href="<?php echo URLROOT; ?>/donor/donationHistory_donor">
+          <a href="<?php echo URLROOT; ?>/donor/donationHistory_donor">
             <i class="bx bx-history"></i>
             <span class="links_name">Donation History</span>
           </a>
@@ -95,10 +95,45 @@
       </nav>
       <div class="main-container">
       <div>
-        <h1>Success</h1>
+        <h1>History</h1>
       </div>
       <div>
-      
+      <div class="tab" >
+                        
+                        <button class="tablinks" onload="btnActivate()" onclick="openTab(event, 'Individual')">Pending</button>
+                        <button class="tablinks" onclick="openTab(event, 'Corporate')">Completed</button>
+                    </div>
+                    <div class="tabcontent">
+                    <table class="main-table">
+          <thead>
+            <th colspan="2" style="text-align:left;"><span>Id</span></th>
+            <th colspan="2" style="text-align:left;"><span>Request</span></th>
+            <th colspan="2" style="text-align:left;"><span>Request Id</span></th>
+            <th colspan="2" style="text-align:left;"><span>Type</span></th>
+            <th colspan="2" style="text-align:left;"><span>Amount<br>/Quantity</span></th>
+            <th colspan="2" style="text-align:left;"><span>Date</span></th>
+            <th colspan="2" style="text-align:left;"><span>Category</span></th>
+            <th colspan="2" style="text-align:left;"><span></span></th>
+            <th colspan="2" style="text-align:left;"><span>Status</span></th>
+          </thead>
+          <tbody>
+            
+            <tr class="t-row">
+              <td colspan="2" style="text-align:left;">1</td>
+              <td colspan="2" style="text-align:left;">aaaaaaaaaaaaaaaaaaaaaaa<br>aaaaaaaaaaaaaaaaaaaaaa</td>
+              <td colspan="2" style="text-align:left;">1</td>
+              <td colspan="2" style="text-align:left;">Non-Financial</td>
+              <td colspan="2" style="text-align:left;">45</td>
+              <td colspan="2" style="text-align:left;">14/12/2022</td>
+              <td colspan="2" style="text-align:left;">Medicine</td>
+              <td colspan="2" style="text-align:left;"><a href="<?php echo URLROOT; ?>/donor/feedback"><button class="btnfeedback">Feedback</button></a></td>
+              <td colspan="2" style="text-align:left;">Completed</td>
+            </tr>
+          
+          </tbody>
+        </table>
+
+      </div>
                     
                 </div>
       </div>
@@ -119,21 +154,6 @@
           welcome.style.display = "block";
         }
       };
-
-      var modal = document.getElementById("modal");
-      var btn = document.getElementById("add");
-      var span = document.getElementsByClassName("close")[0];
-      btn.onclick = function() {
-        modal.style.display = "block";
-      }
-      span.onclick = function() {
-        modal.style.display = "none";
-      }
-      window.onclick = function(event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      }
     </script>
   </body>
 </html>
