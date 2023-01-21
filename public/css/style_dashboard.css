@@ -480,6 +480,72 @@ a{
     margin: 0 auto;
 }
 
+.pr{
+    height: 40px;
+    width: 40px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+/*card list*/
+.cardBox {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px;
+}
+
+.cardBox .card {
+    position: relative;
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.3);
+}
+
+.cardBox .card .numbers {
+    position: relative;
+    font-weight: 500;
+    font-size: 2.5rem;
+}
+
+.cardBox .card .cardName {
+    font-size: 1.1rem;
+    margin-top: 5px;
+}
+
+.cardBox .card .iconBx {
+    font-size: 3.5rem;
+}
+
+.tbl-container{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding: 30px;
+}
+
+.lt{
+    width: 65%;
+    border-radius: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+}
+
+.rt{
+    width: 25%;
+    border-radius: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+}
+
+.tb{
+    padding: 10px;
+}
 /* Responsive Media Query */
 @media (max-width: 1240px) {
     .sidebar {
