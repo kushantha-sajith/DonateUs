@@ -53,6 +53,10 @@
                     $data['category_name_err'] = 'Please enter category name';
                 }
 
+                if ($this->adminModel->findCategoryByName($data['category_name'])) {
+                    $data['category_name_err'] = 'Category already exists';
+                }
+
                 // Make sure no errors
                 if(empty($data['category_name_err'])){
                     // Validated

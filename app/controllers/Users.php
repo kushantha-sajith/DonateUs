@@ -215,6 +215,23 @@ use helpers\Email;
       public function createUserSession($user){
       $_SESSION['user_id'] = $user->id;
       $_SESSION['user_email'] = $user->email;
+      $_SESSION['user_type'] = $user->user_type;
+
+//      switch ($user->user_type) {
+//        case 'admin':
+//          redirect('admins/index');
+//          break;
+//        case 'doctor':
+//          redirect('doctors/index');
+//          break;
+//        case 'patient':
+//          redirect('patients/index');
+//          break;
+//        default:
+//          redirect('users/login');
+//          break;
+//      }
+
       redirect('pages/admin');
     }
 
@@ -225,8 +242,9 @@ use helpers\Email;
       public function logout(){
       unset($_SESSION['user_id']);
       unset($_SESSION['user_email']);
+      unset($_SESSION['user_type']);
       session_destroy();
-      redirect('users/login');
+      redirect('pages/index');
     }
 
     //load categories page

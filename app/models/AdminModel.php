@@ -76,4 +76,24 @@
             $row = $this->db->single();
             return $row;
         }
+
+        // Find user by email
+        /**
+         * @param $email
+         * @return bool
+         */
+        public function findCategoryByName($category_name){
+            $this->db->query('SELECT * FROM categories WHERE category_name = :catgory_name');
+            // Bind value
+            $this->db->bind(':category_name', $category_name);
+
+            $row = $this->db->single();
+
+            // Check row
+            if($this->db->rowCount() > 0){
+                return true;
+            } else {
+                return false;
+            }
+        }
     }

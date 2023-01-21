@@ -12,7 +12,7 @@
        * @return bool
        */
       public function register($data){
-      $this->db->query('INSERT INTO admin (email, password, verification_status, otp_code) VALUES(:email, :password, :verification_status, :otp_code)');
+      $this->db->query('INSERT INTO reg_user (email, password, otp_verify, otp_code) VALUES(:email, :password, :verification_status, :otp_code)');
       // Bind values
       $this->db->bind(':email', $data['email']);
       $this->db->bind(':password', $data['password']);
@@ -34,7 +34,7 @@
        * @return false|mixed
        */
       public function login($email, $password){
-      $this->db->query('SELECT * FROM admin WHERE email = :email');
+      $this->db->query('SELECT * FROM reg_user WHERE email = :email');
       $this->db->bind(':email', $email);
 
       $row = $this->db->single();
@@ -53,7 +53,7 @@
        * @return bool
        */
       public function findUserByEmail($email){
-      $this->db->query('SELECT * FROM admin WHERE email = :email');
+      $this->db->query('SELECT * FROM reg_user WHERE email = :email');
       // Bind value
       $this->db->bind(':email', $email);
 
