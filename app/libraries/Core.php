@@ -45,7 +45,10 @@
       call_user_func_array([$this->currentController, $this->currentMethod], $this->params);
     }
 
-    public function getUrl(){
+      /**
+       * @return false|string[]|void
+       */
+      public function getUrl(){
       if(isset($_GET['url'])){
         $url = rtrim($_GET['url'], '/');
         $url = filter_var($url, FILTER_SANITIZE_URL);

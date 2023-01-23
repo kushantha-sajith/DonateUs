@@ -2,7 +2,7 @@
 
     session_start();
 
-    function flash($name = '', $message = '', $class = 'alert alert-success') {
+    function flash($name = '', $message = '', $class = 'alert') {
         if (!empty($name)) {
             if (!empty($message) && empty($_SESSION[$name])) {
                 if (!empty($_SESSION[$name])) {

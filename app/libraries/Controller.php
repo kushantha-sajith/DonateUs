@@ -5,17 +5,27 @@
    */
   class Controller {
     // Load model
-    public function model($model){
+      /**
+       * @param $model
+       * @return mixed
+       */
+      public function model($model){
       // Require model file
       require_once '../app/models/' . $model . '.php';
 
-      // Instatiate model
+      // Instantiate model
       return new $model();
     }
 
     // Load view
-    public function view($view, $data = []){
-       if(file_exists('../app/views/' . $view . '.php')){
+      /**
+       * @param $view
+       * @param $data
+       * @return void
+       */
+      public function view($view, $data = []){
+      // Check for view file
+      if(file_exists('../app/views/' . $view . '.php')){
         require_once '../app/views/' . $view . '.php';
       } else {
         // View does not exist
