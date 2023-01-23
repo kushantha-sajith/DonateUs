@@ -7,6 +7,20 @@
     }
 
     // Regsiter user
+    public function register_beneficiary($data){
+      $this->db->query('INSERT INTO beneficiary (email, password) VALUES( :email, :password)');
+      // Bind values
+      $this->db->bind(':email', $data['email']);
+      $this->db->bind(':password', $data['password']);
+      
+         // Execute
+          if($this->db->execute()){
+            return true;
+          } else {
+            return false;
+          }
+      }
+
       /**
        * @param $data
        * @return bool
