@@ -36,4 +36,15 @@
 
       $this->view('users/donor/index', $data);
     }
+
+      /**
+       * @return void
+       */
+      public function admin(){
+      $data = [
+        'title' => 'Admin'
+      ];
+
+      $this->view('users/admin/index', $data);
+    }
   }

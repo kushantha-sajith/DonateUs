@@ -9,8 +9,8 @@
 }
 
 .main-container{
-    padding-top: 100px; 
-    padding-left: 50px; 
+    padding-top: 100px;
+    padding-left: 50px;
     padding-right: 50px;
 }
 
@@ -24,7 +24,6 @@
 
 .sidebar.active {
     width: 60px;
-
 }
 
 .sidebar .logo-details {
@@ -164,7 +163,8 @@ nav .search-box .bx-search {
     position: absolute;
     height: 40px;
     width: 40px;
-    background: #0A2558;
+    //background: #0A2558;
+    background: #2697FF;
     right: 5px;
     top: 50%;
     transform: translateY(-50%);
@@ -317,6 +317,54 @@ nav .profile-details i {
     padding: 10px 10px;
 }
 
+.tabset > input[type="radio"] {
+    position: absolute;
+    left: -200vw;
+}
+
+.tabset .tab {
+    display: none;
+}
+
+.tabset > input:first-child:checked ~ .tabpanels > .tab:first-child,
+.tabset > input:nth-child(3):checked ~ .tabpanels > .tab:nth-child(2),
+.tabset > input:nth-child(5):checked ~ .tabpanels > .tab:nth-child(3),
+.tabset > input:nth-child(7):checked ~ .tabpanels > .tab:nth-child(4),
+.tabset > input:nth-child(9):checked ~ .tabpanels > .tab:nth-child(5),
+.tabset > input:nth-child(11):checked ~ .tabpanels > .tab:nth-child(6) {
+    display: block;
+}
+
+.tabset > label {
+    position: relative;
+    display: inline-block;
+    padding: 15px 15px 25px;
+    border: 1px solid transparent;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.tabset > label:hover,
+.tabset > input:focus + label {
+    color: #06c;
+}
+
+.tabset > input:checked + label {
+    border-color: #ccc;
+    border-bottom: 1px solid #fff;
+    margin-bottom: -1px;
+}
+
+.tab {
+    padding: 30px 0;
+    border-top: 1px solid #ccc;
+}
+
+.tabset {
+    max-width: 100em;
+}
+
 table, tr, td{
     border-collapse: collapse;
     padding: 10px;
@@ -364,33 +412,31 @@ a{
     overflow: auto;
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
-  }
-  
-  /* Modal Content */
-  .modal-content {
+}
+
+.modal-content {
     background-color: #fefefe;
     margin: 100px auto;
     padding: 20px;
     border: 1px solid #888;
     width: 20%;
-  }
-  
-  /* The Close Button */
-  .close {
+}
+
+.close {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
+}
+
+.close:hover,
+.close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
-  }  
+}
 
-  .input{
+.input{
     width:100%;
     height:100%;
     top:0;
@@ -401,31 +447,109 @@ a{
     padding:0.5rem 0.7rem;
     font-size: 1.2rem;
     font-family: 'Readex Pro', sans-serif;
-    color:#555;   
+    color:#555;
 }
 
 .btn{
     display:block;
-    width:100%; 
+    width:100%;
     height:50px;
     border-radius: 25px;
     margin:1rem 0;
     font-size:1.2rem;
     outline:none;
     border:none;
-    background-color: #0A2558;
+    background-image: linear-gradient(to right, #0A2558, #0e3276, #0A2558);
     cursor:pointer;
     color:#fff;
     text-transform: uppercase;
     background-size: 200%;
     transition:0.5s;
 }
+
 .btn:hover{
     background-position: right;
 }
 
 .icon{
     width: 65px;
+}
+
+.t-table{
+    width: 100%;
+    margin: 0 auto;
+}
+
+.logo{
+    width: 175px;
+    margin: 0 auto;
+}
+
+.pr{
+    height: 40px;
+    width: 40px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+/*card list*/
+.cardBox {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px;
+}
+
+.cardBox .card {
+    position: relative;
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.3);
+}
+
+.cardBox .card .numbers {
+    position: relative;
+    font-weight: 500;
+    font-size: 2.5rem;
+}
+
+.cardBox .card .cardName {
+    font-size: 1.1rem;
+    margin-top: 5px;
+}
+
+.cardBox .card .iconBx {
+    font-size: 3.5rem;
+}
+
+.tbl-container{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding: 30px;
+}
+
+.lt{
+    width: 65%;
+    border-radius: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+}
+
+.rt{
+    width: 25%;
+    border-radius: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+}
+
+.tb{
+    padding: 10px;
 }
 
 /* Responsive Media Query */

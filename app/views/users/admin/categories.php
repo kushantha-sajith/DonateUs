@@ -13,9 +13,10 @@
     <!--navigation bar left-->
     <div class="sidebar">
       <div class="logo-details">
-        <i class="bx bx-grid-alt"></i>
+<!--        <i class="bx bx-grid-alt"></i>-->
         <!-- <h1><?php echo $data['title']; ?></h1> -->
-        <span class="logo_name">Dashboard</span>
+<!--        <span class="logo_name">Dashboard</span>-->
+          <img src="<?php echo URLROOT; ?>/img/logo_.png" alt="logo" class="logo"/>
       </div>
       <div class="welcome">
         <span>Welcome</span>
@@ -123,7 +124,7 @@
               <td style="width: 10px;"><!--<?php echo $categories->id; ?>--></td>
               <td><?php echo $categories->category_name	; ?></td>
               <td class="icon edit" id="edit"><a href="<?php echo URLROOT; ?>/admin/editCategories/<?php echo $categories->id; ?>"><i class='bx bxs-edit'></i></a></td>
-                <td class="icon"><a href="<?php echo URLROOT; ?>/admin/deleteCategories/<?php echo $categories->id; ?>"><i class='bx bx-trash' ></i></a></td>
+              <td class="icon"><a href="<?php echo URLROOT; ?>/admin/deleteCategories/<?php echo $categories->id; ?>"><i class='bx bx-trash' ></i></a></td>
             </tr>
             <?php endforeach; ?>
           </tbody>

@@ -13,8 +13,7 @@ class VerificationModel extends Database{
      * @return false|mixed
      */
     public function verifyOTP($otp){
-        $this->db->query('SELECT * FROM `donor` WHERE `otp_code` = :otp');
-
+        $this->db->query('SELECT * FROM `reg_user` WHERE `otp_code` = :otp');
         $this->db->bind(':otp', $otp);
 
         $row = $this->db->single();
@@ -31,7 +30,7 @@ class VerificationModel extends Database{
      * @return bool
      */
     public function verify($id){
-        $this->db->query('UPDATE `donor` SET `verification_status` = :status, `otp_code` = :otp WHERE `id` = :id');
+        $this->db->query('UPDATE `reg_user` SET `otp_verify` = :status, `otp_code` = :otp WHERE `id` = :id');
         $this->db->bind(':id', $id);
         $this->db->bind(':status', 1);
         $this->db->bind(':otp', '');

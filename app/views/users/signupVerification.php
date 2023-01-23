@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css">
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@600&display=swap" rel="stylesheet">
@@ -14,41 +13,37 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <title>Verify Email</title>
 </head>
-    <body>
-        <section class="loginSec1">
-            <div class="top">
-                <img class="logo" src="<?php echo URLROOT; ?>/img/logo.png" alt="logo" href="">
-                
-                <h1>DonateUs</h1>
-                
+<body>
+<div class="email-container">
+    <div class="message-container">
+            <div class="logo">
+<!--                <img src="--><?php //echo URLROOT ?><!--/images/logo.png" alt="">-->
             </div>
-            <div class="left">
-                <img class="img_reg" src="<?php echo URLROOT; ?>/img/img_signupverification.png" alt="img_reg">
+            <div class="heading-text">
+                <h1>Welcome to DonateUs</h1>
+                <h2>Email Verification</h2>
             </div>
-            <div class="right">
-              <div class="centered">
-              <div class="text">
-                <h4>OTP code has been sent to the email you've provided. <br>To complete registration, please check the inbox or spam folder and enter the OTP code you received below.</h3>
-                <br>
-                <br>
+        <div class="message-body">
+            <div class="email-logo">
+                <img src="<?php echo URLROOT ?>/img/email.gif" alt="">
+            </div>
+            <div class="text">
+                <h3>OTP code has been sent to the email you've provided. <br>To complete registration, please check the inbox or spam folder and enter the OTP code you received below.</h3>
                 <p class="err" id="otp-err"></p>
-                <form action="<?php echo URLROOT; ?>/users/verify" method="POST">
-                <h1>Enter OTP here</h1>
-
-                        <label>OTP</label>
-                        <input type="text" name="otp" id="otp-input" class="otp">
-
-                        <input type="submit" value="Verify">
+                <form action="<?php echo URLROOT; ?>/users/verify" method="POST" id="otp-form">
+                    <div class="div">
+                        <h5><label for="otp">Enter OTP here</label></h5>
+                        <input type="text" name="otp" id="otp-input" class="otp" required>
+                    </div>
+                    <div class="error">
+                        <span><?php echo $data['error']; ?></span>
+                    </div>
+                    <button class="btn" id="otp-btn">Verify</button>
                 </form>
             </div>
-              <div>
-            </div>    
-            <script type="text/javascript" src="<?php echo URLROOT; ?>/js/main.js"></script>
-               
-            </div>
-        </section>
-    </body>
-</html>
+        </div>
+    </div>
+</div>
 
 <!-- client side OTP validation -->
 <script>
@@ -77,8 +72,14 @@
     }
 
     verifyBtn.addEventListener('click', function(){
-        if(isOTPFormValid()){
-            otpForm.submit();
+        if(isNaN(otpField.value)){
+            if(isOTPFormValid()){
+                otpForm.submit();
+            }else{
+                return false;
+            }
+        }else{
+            otpErr.innerHTML = "*OTP should be a number";
         }
     });
 </script>
