@@ -163,6 +163,7 @@ nav .search-box .bx-search {
     position: absolute;
     height: 40px;
     width: 40px;
+    //background: #0A2558;
     background: #2697FF;
     right: 5px;
     top: 50%;
@@ -470,6 +471,10 @@ a{
     background-position: right;
 }
 
+.icon{
+    width: 65px;
+}
+
 .t-table{
     width: 100%;
     margin: 0 auto;
@@ -546,6 +551,7 @@ a{
 .tb{
     padding: 10px;
 }
+
 /* Responsive Media Query */
 @media (max-width: 1240px) {
     .sidebar {

@@ -18,12 +18,23 @@
       /**
        * @return void
        */
-      public function about(){
+      public function profile_donor(){
       $data = [
-        'title' => 'About Us'
+        'title' => 'Profile'
       ];
 
-      $this->view('pages/about', $data);
+      $this->view('users/donor/profile_donor', $data);
+    }
+
+      /**
+       * @return void
+       */
+      public function donor(){
+      $data = [
+        'title' => 'Donor'
+      ];
+
+      $this->view('users/donor/index', $data);
     }
 
       /**
