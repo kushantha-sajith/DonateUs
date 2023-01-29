@@ -14,7 +14,6 @@ class VerificationModel extends Database{
      */
     public function verifyOTP($otp){
         $this->db->query('SELECT * FROM `reg_user` WHERE `otp_code` = :otp');
-
         $this->db->bind(':otp', $otp);
 
         $row = $this->db->single();

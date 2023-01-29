@@ -25,19 +25,13 @@
       </div>
       <ul class="nav-links">
         <li>
-          <a href="#">
+          <a href="<?php echo URLROOT; ?>/beneficiary/dashboard">
             <i class="bx bx-grid-alt"></i>
             <span class="links_name">Dashboard</span>
           </a>
         </li>
         <li>
-          <a href="#">
-            <i class="bx bx-user"></i>
-            <span class="links_name">Users</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
+        <a href="<?php echo URLROOT; ?>/beneficiary/requests">
             <i class="bx bx-list-check"></i>
             <span class="links_name">Donation Requests</span>
           </a>
@@ -50,26 +44,8 @@
         </li>
         <li>
           <a href="#">
-            <i class="bx bx-message-alt-detail"></i>
-            <span class="links_name">Feedbacks</span>
-          </a>
-        </li>
-        <li>
-          <a href="<?php echo URLROOT; ?>/admin/categories">
-            <i class="bx bx-list-ul"></i>
-            <span class="links_name">Donation Categories</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
             <i class="bx bx-conversation"></i>
             <span class="links_name">Forum</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-calendar-check"></i>
-            <span class="links_name">Events</span>
           </a>
         </li>
         <li>
@@ -78,11 +54,6 @@
             <span class="links_name">Stats</span>
           </a>
         </li>
-        <li>
-          <a href="#">
-            <i class="bx bxs-report"></i>
-            <span class="links_name">Reports</span>
-          </a>
         </li>
         <li class="log_out">
           <a href="<?php echo URLROOT; ?>/users/logout">
@@ -113,6 +84,7 @@
       </nav>
       <div class="main-container">
         <h1>Welcome Admin</h1>
+
           <div class="cardBox">
               <div class="card">
                   <div>
@@ -159,7 +131,7 @@
               </div>
           </div>
 
-          <div class="tbl-container">
+         <!-- <div class="tbl-container">
               <div class="lt">
                   <h2>Recent Donations</h2>
                   <table class="main-table t-table tb">
@@ -230,7 +202,7 @@
                       </tbody>
                   </table>
               </div>
-          </div>
+          </div>-->
       </div>
         </div>
       </div>
