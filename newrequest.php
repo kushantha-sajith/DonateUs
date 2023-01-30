@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <title>Dashboard</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/stylesdash.css" />
     <link
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
       rel="stylesheet"
@@ -30,6 +29,7 @@
             <span class="links_name">Dashboard</span>
           </a>
         </li>
+        
         <li>
           <a href="#">
             <i class="bx bx-list-check"></i>
@@ -37,35 +37,26 @@
           </a>
         </li>
         <li>
-        <a href="<?php echo URLROOT; ?>/donor/donationHistory_donor">
+          <a href="#">
             <i class="bx bx-history"></i>
             <span class="links_name">Donation History</span>
           </a>
         </li>
+        
         <li>
           <a href="#">
             <i class="bx bx-conversation"></i>
             <span class="links_name">Forum</span>
           </a>
         </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-calendar-check"></i>
-            <span class="links_name">Events</span>
-          </a>
-        </li>
+        
         <li>
           <a href="#">
             <i class="bx bx-pie-chart-alt"></i>
             <span class="links_name">Stats</span>
           </a>
         </li>
-        <li>
-          <a href="#">
-            <i class="bx bxs-report"></i>
-            <span class="links_name">Reservations</span>
-          </a>
-        </li>
+       
         <li class="log_out">
           <a href="<?php echo URLROOT; ?>/users/logout">
             <i class="bx bx-log-out"></i>
@@ -81,46 +72,61 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bx-menu sidebarBtn"></i>
-          <span class="dashboard">Feedback</span>
+          <span class="dashboard">Dashboard</span>
         </div>
         
         <div class="profile-details">
           <div class="notification">
             <i class="bx bx-bell bx-tada notification"></i>
           </div>
-            <a href="<?php echo URLROOT; ?>/donor/profile_donor"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
+            <img src="<?php echo URLROOT; ?>/img/profile_pic.svg" alt="" />
           <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
           <!-- <i class='bx bx-chevron-down'></i> -->
         </div>
       </nav>
       <div class="main-container">
-     
+    
+      <h2>Add a new Donation Request</h2>
       
-                        
-                        <div class="profile">
-                      <h1>Leave Feedback</h1>
-                      <form action="<?php echo URLROOT; ?>/donor/submit_feedback" method="POST">
-                      <table class="prof_data" >
-                        <tr><td><p class="error"></p></td></tr>
-                        <tr><td>
-                            
-                            <textarea class="feedback" id="desc" name="desc" placeholder="Type here..." rows="17" cols="100" > <?php echo $data['desc']; ?> </textarea></td>
-                        </tr>
-                        
-                      </table>
-                      <input class="btndelete" type="submit" value="Submit">
-                      </form>
-                    </div>
-                    
-                </div>
-
-                        
-                    
-                
-      </div>
+     <br>
+     <div class="form">
+      <div class="container">
+      <form method="post" action="<?php echo URLROOT; ?>/beneficiary/newrequest"> 
+      Category
+      <input type="text" name="categories" value="<?php echo $data['categories']; ?>" class="form-style-input">
+      <span class="error"><?php echo $data['categoryErr']; ?></span>
+      
+      Description
+      <textarea name="description" rows="4" cols="40" class="form-style-input"><?php echo $data['description']; ?></textarea>
+      <span class="error"> <?php echo $data['descriptionErr']; ?></span>
+      
+      Amount/Quantity 
+      <input type="text" name="quantity" value="<?php echo $data['quantity']; ?>" class="form-style-input">
+      <span class="error"><?php echo $data['quantityErr']; ?></span>
+      Donation Type  
+      <input type="text" name="type" value="<?php echo $data['type']; ?>" class="form-style-input">
+     <span class="error"><?php echo $data['typeErr']; ?></span>
+      
+      Contact Number 
+      <input type="text" name="contact" value="<?php echo $data['contact']; ?>" class="form-style-input">
+      <span class="error"><?php echo $data['contactErr']; ?></span>
+      Location/City 
+      <input type="text" name="city" value="<?php echo $data['city']; ?>" class="form-style-input">
+     <span class="error"><?php echo $data['cityErr']; ?></span>
+      
+      Due Date
+      <input type="date" name="duedate" value="<?php echo $data['duedate']; ?>" class="form-style-input">
+     <span class="error"><?php echo $data['duedateErr']; ?></span>
+      <br><br>
+      <input type="submit" name="submit" value="Submit" class="btn1 add"> 
+      <br> 
+    </form>
+    </div>
+    </div>
+    
+</div>
     </section>
-    <!--home section end-->
-
+  
     <script>
       let sidebar = document.querySelector(".sidebar");
       let sidebarBtn = document.querySelector(".sidebarBtn");
@@ -135,6 +141,23 @@
           welcome.style.display = "block";
         }
       };
+
+
+      var modal = document.getElementById("modal");
+      var btn = document.getElementById("add");
+      var span = document.getElementsByClassName("close")[0];
+      btn.onclick = function() {
+        modal.style.display = "block";
+      }
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+
     </script>
   </body>
 </html>

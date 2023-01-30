@@ -44,7 +44,17 @@
             
           }
 
-
+        //load edit_profile page
+        /**
+         * @return void
+         */
+        public function editProfile_donor(){
+          $data = [
+            'title' => 'Edit Profile'
+          ];
+    
+          $this->view('users/donor/edit_profile_donor', $data);
+        }
 
         
         //load donation_history page
@@ -247,7 +257,7 @@
                 }
         }
 //------------------------------------------------------------------------------------------edit this
-        public function updateProfile($type){
+        public function updateProfile(){
 
             $type1 = "ind";
       

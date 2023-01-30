@@ -1,12 +1,14 @@
 <?php
 
 use helpers\Email;
+use helpers\NIC_Validator;
 
   class Users extends Controller {
     public function __construct(){
       $this->userModel = $this->model('User');
         $this->verificationModel = $this->model('VerificationModel');
     }
+
 
     //Register function
       /**
@@ -23,84 +25,129 @@ use helpers\Email;
         // Sanitize POST data
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING); 
 
-        $verification_status = 0;
+        $otp_verify = 0;
         $otp_code = rand(100000,999999);
+        $verification_status = 1;
 
         // Init data
         if(strcmp($type,$type1) == 0 ){
           $data =[
-            'email' => trim($_POST['email']),
-            'password' => trim($_POST['password']),
-            'confirm_password' => trim($_POST['confirm_password']),
+            'email_ind' => trim($_POST['email_ind']),
+            'nic' => trim($_POST['nic']),
+            'password_ind' => trim($_POST['password_ind']),
+            'confirm_password_ind' => trim($_POST['confirm_password_ind']),
             'fname' => trim($_POST['fname']),
             'lname' => trim($_POST['lname']),
-            'contact' => trim($_POST['contact']),
-            'city' => trim($_POST['city']),
-            'compname' => 'null',
-            'desg' =>'null',
-            'empid' =>'null',
-            'verification_status' => $verification_status,
+            'contact_ind' => trim($_POST['contact_ind']),
+            'city_ind' => trim($_POST['city_ind']),
+            'otp_verify' => $otp_verify,
             'otp_code' => $otp_code,
-            'user_type' => 'individual',
+            'verification_status' => $verification_status,
+            'user_type' => 'individual_donor',
+            'email_err_ind' => '',
+            'nic_err' => '',
+            'password_err_ind' => '',
+            'confirm_password_err_ind' => '',
+            'fname_err_ind' => '',
+            'lname_err_ind' => '',
+            'contact_err_ind' => '',
+            'city_err_ind' => '',
+            'email' => trim($_POST['email']),
+            'compname' => trim($_POST['compname']),
+            'password' => trim($_POST['password']),
+            'confirm_password' => trim($_POST['confirm_password']),
+            'fullname' => trim($_POST['fullname']),
+            'empid' => trim($_POST['empid']),
+            'desg' => trim($_POST['desg']),
+            'contact' => trim($_POST['contact']),         
+            'user_type' => 'corporate_donor',
             'email_err' => '',
             'password_err' => '',
             'confirm_password_err' => '',
-            'other_err' => ''
+            'contact_err' => '',
+            'cname_err' => '',
+            'fullname_err' => '',
+            'desg_err' => '',
+            'empid_err' => '',
           ];
 
-          
+        $error = false;
         // Validate Email
-        if(empty($data['email'])){
-          $data['email_err'] = 'Please enter email';
+        if(empty($data['email_ind'])){
+          $data['email_err_ind'] = 'Please enter email';
+          $error = true;
         } else {
           // Check email
-          if($this->userModel->findUserByEmail($data['email'])){
-            $data['email_err'] = 'Email is already taken';
+          if($this->userModel->findUserByEmail($data['email_ind'])){
+            $data['email_err_ind'] = 'Email is already taken';
+            $error = true;
+          }
+        }
+
+        //Validate NIC
+        if(empty($data['nic'])){
+          $data['nic_err'] = 'Please enter NIC';
+          $error = true;
+        } else {
+          // Check NIC
+          $nic = new NIC_Validator($data['nic']);
+          $validity = $nic->checkNIC($data['nic']);
+          if(!$validity){
+            $data['nic_err'] = 'Enter a valid NIC';
+            $error = true;
           }
         }
 
         // Validate Password
-        if(empty($data['password'])){
-          $data['password_err'] = 'Please enter password';
-        } elseif(strlen($data['password']) < 6){
-          $data['password_err'] = 'Password must be at least 6 characters';
+        if(empty($data['password_ind'])){
+          $data['password_err_ind'] = 'Please enter password';
+          $error = true;
+        } elseif(strlen($data['password_ind']) < 6){
+          $data['password_err_ind'] = 'Password must be at least 6 characters';
+          $error = true;
         }
 
         // Validate Confirm Password
-        if(empty($data['confirm_password'])){
-          $data['confirm_password_err'] = 'Please confirm password';
+        if(empty($data['confirm_password_ind'])){
+          $data['confirm_password_err_ind'] = 'Please confirm password';
+          $error = true;
         } else {
-          if($data['password'] != $data['confirm_password']){
-            $data['confirm_password_err'] = 'Passwords do not match';
+          if($data['password_ind'] != $data['confirm_password_ind']){
+            $data['confirm_password_err_ind'] = 'Passwords do not match';
+            $error = true;
           }
         }
 
-        //validate other fieldds
+        //validate other fields
         if(empty($data['fname'])){
-          $data['other_err'] = 'Required';
+          $data['fname_err_ind'] = 'Required';
+          $error = true;
         }
         if(empty($data['lname'])){
-          $data['other_err'] = 'Required';
+          $data['lname_err_ind'] = 'Required';
+          $error = true;
         }
-        if(empty($data['contact'])){
-          $data['other_err'] = 'Required';
+        if(empty($data['contact_ind'])){
+          $data['contact_err_ind'] = 'Required';
+          $error = true;
         }
-        if(empty($data['city'])){
-          $data['other_err'] = 'Required';
+        if(empty($data['city_ind'])){
+          $data['city_err_ind'] = 'Required';
+          $error = true;
         }
 
         // Make sure errors are empty
-        if(empty($data['email_err']) && empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['other_err'])){
+        if($error == false){
           // Validated
           
           // Hash Password
-          $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+          $data['password_ind'] = password_hash($data['password_ind'], PASSWORD_DEFAULT);
 
           // Register User
-          if($this->userModel->register_donor($data)){
+          if($this->userModel->register_donor($data,$type)){
               
-              $email = new Email($data['email']);
-              $email->sendVerificationEmail($data['email'], $otp_code);
+              $email = new Email($data['email_ind']);
+              $email->sendVerificationEmail($data['email_ind'], $otp_code);
               redirect('users/verify');
           } else {
             die('Something went wrong');
@@ -112,76 +159,112 @@ use helpers\Email;
         }
 
         }else{
+          //corporate--------------------------------------------------------------------------------------
           $data =[
             'email' => trim($_POST['email']),
+            'compname' => trim($_POST['compname']),
             'password' => trim($_POST['password']),
             'confirm_password' => trim($_POST['confirm_password']),
-            'compname' => trim($_POST['compname']),
-            'contact' => trim($_POST['contact']),
+            'fullname' => trim($_POST['fullname']),
             'empid' => trim($_POST['empid']),
             'desg' => trim($_POST['desg']),
-            'fname' => 'null',
-            'lname' => 'null',
-            'city' => 'null',
-            'verification_status' => $verification_status,
-            'otp_code' => $otp_code,
-            'user_type' => 'corporate',
+            'contact' => trim($_POST['contact']),         
+            'user_type' => 'corporate_donor',
             'email_err' => '',
             'password_err' => '',
             'confirm_password_err' => '',
-            'other_err' => ''
+            'contact_err' => '',
+            'cname_err' => '',
+            'fullname_err' => '',
+            'desg_err' => '',
+            'empid_err' => '',
+            'email_ind' => trim($_POST['email_ind']),
+            'nic' => trim($_POST['nic']),
+            'password_ind' => '',
+            'confirm_password_ind' => '',
+            'fname' => '',
+            'lname' => '',
+            'contact_ind' => '',
+            'city_ind' => '',
+            'otp_verify' => $otp_verify,
+            'otp_code' => $otp_code,
+            'verification_status' => $verification_status,
+            'user_type' => 'individual_donor',
+            'email_err_ind' => '',
+            'nic_err' => '',
+            'password_err_ind' => '',
+            'confirm_password_err_ind' => '',
+            'fname_err_ind' => '',
+            'lname_err_ind' => '',
+            'contact_err_ind' => '',
+            'city_err_ind' => ''
           ];
 
-          
+          $error = false;
+
         // Validate Email
         if(empty($data['email'])){
           $data['email_err'] = 'Please enter email';
+          $error = true;
         } else {
           // Check email
           if($this->userModel->findUserByEmail($data['email'])){
             $data['email_err'] = 'Email is already taken';
+            $error = true;
           }
         }
 
         // Validate Password
         if(empty($data['password'])){
           $data['password_err'] = 'Please enter password';
+          $error = true;
         } elseif(strlen($data['password']) < 6){
           $data['password_err'] = 'Password must be at least 6 characters';
+          $error = true;
         }
 
         // Validate Confirm Password
         if(empty($data['confirm_password'])){
           $data['confirm_password_err'] = 'Please confirm password';
+          $error = true;
         } else {
           if($data['password'] != $data['confirm_password']){
             $data['confirm_password_err'] = 'Passwords do not match';
+            $error = true;
           }
         }
 
         //validate other fieldds
         if(empty($data['contact'])){
-          $data['other_err'] = 'Required';
+          $data['contact_err'] = 'Required';
+          $error = true;
         }
         if(empty($data['compname'])){
-          $data['other_err'] = 'Required';
+          $data['cname_err'] = 'Required';
+          $error = true;
+        }
+        if(empty($data['fullname'])){
+          $data['fullname_err'] = 'Required';
+          $error = true;
         }
         if(empty($data['desg'])){
-          $data['other_err'] = 'Required';
+          $data['desg_err'] = 'Required';
+          $error = true;
         }
         if(empty($data['empid'])){
-          $data['other_err'] = 'Required';
+          $data['empid_err'] = 'Required';
+          $error = true;
         }
 
         // Make sure errors are empty
-        if(empty($data['email_err']) && empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['other_err'])){
+        if($error = false){
           // Validated
           
           // Hash Password
           $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
           // Register User
-          if($this->userModel->register_donor($data)){
+          if($this->userModel->register_donor($data,$type)){
               
               $email = new Email($data['email']);
               $email->sendVerificationEmail($data['email'], $otp_code);
@@ -201,29 +284,53 @@ use helpers\Email;
       } else {
         // Init data
         $data =[
+          'email_ind' => '',
+          'nic' => '',
+          'password_ind' => '',
+          'confirm_password_ind' => '',
+          'fname' => '',
+          'lname' => '',
+          'contact_ind' => '',
+          'city_ind' => '',
+          'email_err_ind' => '',
+          'nic_err' => '',
+          'password_err_ind' => '',
+          'confirm_password_err_ind' => '',
+          'other_err_ind' => '',
           'email' => '',
           'password' => '',
           'confirm_password' => '',
-          'fname' => '',
-          'lname' => '',
           'compname' => '',
+          'fullname' => '',
           'empid' => '',
           'desg' => '',
           'contact' => '',
           'city' => '',
           'email_err' => '',
+          'nic_err' => '',
           'password_err' => '',
           'confirm_password_err' => '',
-          'other_err' => ''
+          'fname_err_ind' => '',
+          'lname_err_ind' => '',
+          'contact_err_ind' => '',
+          'city_err_ind' => '',
+          'contact_err' => '',
+          'cname_err' => '',
+          'fullname_err' => '',
+          'desg_err' => '',
+          'empid_err' => ''
         ];
 
         // Load view
         $this->view('users/register_donor', $data);
       }
+
+   
     
     }
 
-    //login method for all users of the system
+    
+   //login method for all users of the system
       /**
        * @return void
        */

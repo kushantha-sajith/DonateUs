@@ -22,7 +22,7 @@
                 <img class="img_reg" src="<?php echo URLROOT; ?>/img/img_reg.png" alt="img_reg">
             </div>
             <div class="right">
-                <div class="centered">
+                <div class="position1">
                 <h1>Registration</h1>
                     <div class="tab" >
                         
@@ -32,46 +32,55 @@
                     <div id="Individual" class="tabcontent">
                     <table>
                     <form action="<?php echo URLROOT; ?>/users/register_donor/ind" method="POST">
-                        <tr><td colspan="2">
-                            <label>User email*</label>
-                            <input type="text" id="email" name="email" placeholder="example@gmail.com" value="<?php echo $data['email']; ?>"></td>
-                        </tr>
-                        <tr><td colspan="2"><p class="error"><?php echo $data['email_err']; ?></p></td></tr>
                         <tr><td>
-                            <label>Password*</label>
-                            <input type="password" id="pword" name="password" placeholder="******"  value="<?php echo $data['password']; ?>"></td>
-                            <td><label>Confirm Password*</label>
-                            <input type="password" id="confirm_password" name="confirm_password" placeholder="******"  value="<?php echo $data['confirm_password']; ?>"></td>
+                            <label>User email</label>
+                            <input type="text" id="email_ind" name="email_ind" placeholder="ex: abc@gmail.com" value="<?php echo $data['email_ind']; ?>"></td>
+                            <td>
+                            <label>NIC</label>
+                            <input type="text" id="nic" name="nic" placeholder="ex: 19123567890" value="<?php echo $data['nic']; ?>"></td>
                         </tr>
-                        <tr><td><p class="error"><?php echo $data['password_err']; ?></p></td>
-                        <td><p class="error"><?php echo $data['confirm_password_err']; ?></p></td></tr>
+                        <tr><td><p class="error"><?php echo $data['email_err_ind']; ?></p></td>
+                        <td><p class="error"><?php echo $data['nic_err']; ?></p></td>
+                        </tr>
+                        <tr><td>
+                            <label>Password</label>
+                            <input type="password" id="pword_ind" name="password_ind" placeholder="******"  value="<?php echo $data['password_ind']; ?>"></td>
+                            <td><label>Confirm Password</label>
+                            <input type="password" id="confirm_password_ind" name="confirm_password_ind" placeholder="******"  value="<?php echo $data['confirm_password_ind']; ?>"></td>
+                        </tr>
+                        <tr><td><p class="error"><?php echo $data['password_err_ind']; ?></p></td>
+                        <td><p class="error"><?php echo $data['confirm_password_err_ind']; ?></p></td></tr>
                     
                         <tr id="name"><td>
-                            <label>First Name*</label>
-                            <input type="text" id="fname" name="fname" placeholder="First Name" value="<?php echo $data['fname']; ?>"></td>
+                            <label>First Name</label>
+                            <input type="text" id="fname" name="fname" placeholder="ex: John" value="<?php echo $data['fname']; ?>"></td>
                             <td>
-                            <label>Last Name*</label>
-                            <input type="text" id="lname" name="lname" placeholder="Last Name" value="<?php echo $data['lname']; ?>"></td>
+                            <label>Last Name</label>
+                            <input type="text" id="lname" name="lname" placeholder="ex: Doe" value="<?php echo $data['lname']; ?>"></td>
                         </tr>
                         </tr>
-                        <tr><td><p class="error"><?php echo $data['other_err']; ?></p></td>
-                        <td><p class="error"><?php echo $data['other_err']; ?></p></td></tr>
+                        <tr><td><p class="error"><?php echo $data['fname_err_ind']; ?></p></td>
+                        <td><p class="error"><?php echo $data['lname_err_ind']; ?></p></td></tr>
 
                         <tr><td>
-                            <label>Contact Number*</label>
-                            <input type="text" id="contact" name="contact" placeholder="+94712345678" value="<?php echo $data['contact']; ?>"></td>
+                            <label>Contact Number</label>
+                            <input type="text" id="contact_ind" name="contact_ind" placeholder="ex: +94712345678" value="<?php echo $data['contact_ind']; ?>"></td>
                             <td>
-                            <label>City*</label>
-                            <input type="text" id="city" name="city" placeholder="Colombo" value="<?php echo $data['city']; ?>"></td>
+                            <label>City</label>
+                            <input type="text" id="city_ind" name="city_ind" placeholder="ex: Colombo" value="<?php echo $data['city_ind']; ?>"></td>
                         </tr>
                         </tr>
-                        <tr><td><p class="error"><?php echo $data['other_err']; ?></p></td>
-                        <td><p class="error"><?php echo $data['other_err']; ?></p></td></tr>
+                        <tr><td><p class="error"><?php echo $data['contact_err_ind']; ?></p></td>
+                        <td><p class="error"><?php echo $data['city_err_ind']; ?></p></td></tr>
                         <tr>
                         </tr>
 
-                        <tr>
-                            <td colspan="2"><input type="submit" value="Register"></td>
+                        <tr >
+                            <td  colspan="2"><input class="btnsubmit" type="submit" value="Register"></td>
+                        </tr>
+                        <tr >
+                            <td class="btnsubmit" ><input type="submit" value="Register as a Beneficiary"></td>
+                            <td class="btnsubmit" ><input type="submit" value="Register as an Event Organizer"></td>
                         </tr>
                         </form>
                         
@@ -82,45 +91,89 @@
                     <div id="Corporate" class="tabcontent">
                     <table>
                     <form action="<?php echo URLROOT; ?>/users/register_donor/corp" method="POST">
-                        <tr><td colspan="2">
-                            <label>User email*</label>
-                            <input type="text" id="email" name="email" placeholder="example@gmail.com" value="<?php echo $data['email']; ?>"></td>
-                        </tr>
-                        <tr><td colspan="2"><p class="error"><?php echo $data['email_err']; ?></p></td></tr>
+                        <tr><td colspan="2"><label><b>- Company Details -</b></label></td></tr>
                         <tr><td>
-                            <label>Password*</label>
+                            <label>Email Address</label>
+                            <input type="text" id="email" name="email" placeholder="ex: abc@gmail.com" value="<?php echo $data['email']; ?>"></td>
+                            <td>
+                            <label>Company Name</label>
+                            <input type="text" id="compname" name="compname" placeholder="ex: ABC.co" value="<?php echo $data['compname']; ?>"></td>
+                        </tr>
+                        <tr><td ><p class="error"><?php echo $data['email_err']; ?></p></td>
+                        <td ><p class="error"><?php echo $data['cname_err']; ?></p></td></tr>
+                        <tr><td>
+                            <label>Password</label>
                             <input type="password" id="pword" name="password" placeholder="******" value="<?php echo $data['password']; ?>"></td>
-                            <td><label>Confirm Password*</label>
+                            <td><label>Confirm Password</label>
                             <input type="password" id="confirm_password" name="confirm_password" placeholder="******" value="<?php echo $data['confirm_password']; ?>"></td>
                         </tr>
                         <tr><td><p class="error"><?php echo $data['password_err']; ?></p></td>
                         <td><p class="error"><?php echo $data['confirm_password_err']; ?></p></td></tr>
-                        <tr>
                         <tr><td>
-                            <label>Company Name*</label>
-                            <input type="text" id="compname" name="compname" placeholder="Company Name"  value="<?php echo $data['compname']; ?>"></td>
+                            <label>City</label>
+                            <input type="text" id="city" name="city" placeholder="ex: Colombo"  value="<?php echo $data['city']; ?>"></td>
                             <td>
-                            <label>Contact Number*</label>
-                            <input type="text" id="contact" name="contact" placeholder="+94712345678"  value="<?php echo $data['contact']; ?>"></td>
-                        </tr>
-                        <tr><td><p class="error"><?php echo $data['other_err']; ?></p></td>
-                        <td><p class="error"><?php echo $data['other_err']; ?></p></td></tr>
-                        <tr>
-                        <tr><td>
-                            <label>Emloyee Id*</label>
-                            <input type="text" id="empid" name="empid" placeholder="EID123456"  value="<?php echo $data['empid']; ?>"></td>
-                            <td>
-                            <label>Designation*</label>
-                            <input type="text" id="desg" name="desg" placeholder="Manager"  value="<?php echo $data['desg']; ?>"></td>
-                        </tr>
-                        <tr><td><p class="error"><?php echo $data['other_err']; ?></p></td>
-                        <td><p class="error"><?php echo $data['other_err']; ?></p></td></tr>
-                        <tr>
-                        <tr>
-                        </tr>
+                            <label>District</label>
+                            <select name="district" id="district">
+                                <option value="0">- SELECT -</option>
+                                <option value="1">Ampara</option>
+                                <option value="2">Anuradhapura</option>
+                                <option value="3">Badulla</option>
+                                <option value="4">Batticaloa</option>
+                                <option value="5">Colombo</option>
+                                <option value="6">Galle</option>
+                                <option value="7">Gampaha</option>
+                                <option value="8">Hambantota</option>
+                                <option value="9">Jaffna</option>
+                                <option value="10">Kalutara</option>
+                                <option value="11">Kandy</option>
+                                <option value="12">Kegalle</option>
+                                <option value="13">Kilinochchi</option>
+                                <option value="14">Kurunegala</option>
+                                <option value="15">Mannar</option>
+                                <option value="16">Matale</option>
+                                <option value="17">Matara</option>
+                                <option value="18">Monaragala</option>
+                                <option value="19">Mulativu</option>
+                                <option value="20">Nuwara Eliya</option>
+                                <option value="21">Polonnaruwa</option>
+                                <option value="22">Puttalam</option>
+                                <option value="23">Ratnapura</option>
+                                <option value="24">Tricomalee</option>
+                                <option value="25">Vavuniya</option>
 
+                            </select>
+                        </tr>
+                        <tr><td><p class="error"><?php echo $data['desg_err']; ?></p></td>
+                        <td><p class="error"><?php echo $data['contact_err']; ?></p></td></tr>
+                        <tr>
+                        <tr><td colspan="2"><label><b>- Contact Person Details -</b></label></td></tr>
+                        <tr><td>
+                            <label>Full Name</label>
+                            <input type="text" id="fullname" name="fullname" placeholder="ex: John Doe"  value="<?php echo $data['fullname']; ?>"></td>
+                            <td>
+                            <label>Emloyee Id</label>
+                            <input type="text" id="empid" name="empid" placeholder="ex: EID123456"  value="<?php echo $data['empid']; ?>"></td>
+                        </tr>
+                        <tr><td><p class="error"><?php echo $data['fullname_err']; ?></p></td>
+                        <td><p class="error"><?php echo $data['empid_err']; ?></p></td></tr>
+                        <tr>
+                        <tr><td>
+                            <label>Designation</label>
+                            <input type="text" id="desg" name="desg" placeholder="ex: Manager"  value="<?php echo $data['desg']; ?>"></td>
+                            <td>
+                            <label>Contact Number</label>
+                            <input type="text" id="contact" name="contact" placeholder="ex: +94701234567"  value="<?php echo $data['contact']; ?>"></td>
+                        </tr>
+                        <tr><td><p class="error"><?php echo $data['desg_err']; ?></p></td>
+                        <td><p class="error"><?php echo $data['contact_err']; ?></p></td></tr>
+                        
                         <tr>
                             <td colspan="2"><input type="submit" value="Register"></td>
+                        </tr>
+                        <tr>
+                            <td ><input type="submit" value="Register as a Beneficiary"></td>
+                            <td ><input type="submit" value="Register as an Event Organizer"></td>
                         </tr>
                         </form>
                        
