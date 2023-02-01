@@ -114,8 +114,8 @@
           <thead>
           <tr>
             <th colspan="2" style="text-align:left;"><span>Category Name</span></th>
-            <th colspan="2" style="text-align:right;"><button id="add" class="add" type="button">Add
-            <i class='bx bxs-plus-square'></i></button></th>
+            <th colspan="2" style="text-align:right;"><button id="add" class="add" type="button"><a style="text-decoration: none" href="<?php echo URLROOT; ?>/admin/addCategories">Add
+                        <i class='bx bxs-plus-square'></i></a></button></th>
           </tr>
           </thead>
           <tbody>
@@ -129,21 +129,6 @@
             <?php endforeach; ?>
           </tbody>
         </table>
-      </div>
-<!--        add modal-->
-      <div id="modal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <form action="<?php echo URLROOT; ?>/admin/addCategories" method="POST">
-            <div class="div form-group">
-              <h2><label for="category_name">Category Name</label></h2>
-              <input type="text" name="category_name" id="category_name" class="input" placeholder="Enter Category Name">
-            </div>
-            <div class="form-group">
-              <input type="submit" value="Add" class="btn">
-            </div>
-          </form>
-        </div>
       </div>
     </section>
     <!--home section end-->
@@ -162,23 +147,6 @@
           welcome.style.display = "block";
         }
       };
-
-
-      var modal = document.getElementById("modal");
-      var btn = document.getElementById("add");
-      var span = document.getElementsByClassName("close")[0];
-      btn.onclick = function() {
-        modal.style.display = "block";
-      }
-      span.onclick = function() {
-        modal.style.display = "none";
-      }
-      window.onclick = function(event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      }
-
     </script>
   </body>
 </html>

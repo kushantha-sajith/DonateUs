@@ -68,16 +68,17 @@
                     }
                 } else {
                     // Load view with errors
-                    $this->view('users/admin/categories', $data);
+                    $this->view('users/admin/addCategories', $data);
                 }
             } else {
                 // Init data
                 $data = [
-                    'category_name' => ''
+                    'category_name' => '',
+                    'category_name_err' => ''
                 ];
 
                 // Load view
-                $this->view('users/admin/categories', $data);
+                $this->view('users/admin/addCategories', $data);
             }
         }
 
@@ -122,7 +123,8 @@
                 // Init data
                 $data = [
                     'id' => $id,
-                    'category_name' => $category->category_name
+                    'category_name' => $category->category_name,
+                    'category_name_err' => ''
                 ];
 
                 // Load view
@@ -141,6 +143,18 @@
                 } else {
                     die('Something went wrong');
                 }
+        }
+
+        public function users(){
+            $users = $this->adminModel->getUsers();
+            $categories = $this->adminModel->getCategories();
+            $data = [
+                'title' => 'Users',
+                'users' => $users,
+                'categories' => $categories
+            ];
+
+            $this->view('users/admin/users', $data);
         }
     }
 

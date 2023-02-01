@@ -324,7 +324,7 @@ use helpers\Email;
 
         // Validate Email
         if(empty($data['email'])){
-          $data['email_err'] = 'Pleae enter email';
+          $data['email_err'] = 'Please enter email';
         } else {
           // Check email
           if($this->userModel->findUserByEmail($data['email'])){
@@ -334,14 +334,14 @@ use helpers\Email;
 
         // Validate Password
         if(empty($data['password'])){
-          $data['password_err'] = 'Pleae enter password';
+          $data['password_err'] = 'Please enter password';
         } elseif(strlen($data['password']) < 6){
           $data['password_err'] = 'Password must be at least 6 characters';
         }
 
         // Validate Confirm Password
         if(empty($data['confirm_password'])){
-          $data['confirm_password_err'] = 'Pleae confirm password';
+          $data['confirm_password_err'] = 'Please confirm password';
         } else {
           if($data['password'] != $data['confirm_password']){
             $data['confirm_password_err'] = 'Passwords do not match';
@@ -514,7 +514,7 @@ use helpers\Email;
           redirect('pages/cor_donor');
           break;
         case 4:
-          redirect('pages/ind_beneficiary');
+          redirect('pages/beneficiary');
           break;
         case 5:
           redirect('pages/org_beneficiary');
@@ -539,13 +539,5 @@ use helpers\Email;
       session_destroy();
       
       redirect('pages/index');
-    }
-
-    //load categories page
-      /**
-       * @return void
-       */
-      public function categories(){
-      redirect('pages/categories');
     }
   }

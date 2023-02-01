@@ -31,7 +31,7 @@
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="<?php echo URLROOT; ?>/admin/users">
             <i class="bx bx-user"></i>
             <span class="links_name">Users</span>
           </a>
