@@ -83,7 +83,7 @@
          * @return bool
          */
         public function findCategoryByName($category_name){
-            $this->db->query('SELECT * FROM categories WHERE category_name = :catgory_name');
+            $this->db->query('SELECT * FROM categories WHERE category_name = :category_name');
             // Bind value
             $this->db->bind(':category_name', $category_name);
 
@@ -95,5 +95,11 @@
             } else {
                 return false;
             }
+        }
+
+        public function getUsers(){
+            $this->db->query('SELECT * FROM reg_user');
+            $results = $this->db->resultSet();
+            return $results;
         }
     }

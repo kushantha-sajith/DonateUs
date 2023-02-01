@@ -113,16 +113,16 @@
         <div id="modal1" class="modal" style="display: block">
             <div class="modal-content">
                 <span class="close"><a href="<?php echo URLROOT; ?>/admin/categories">&times;</a></span>
-                <form action="<?php echo URLROOT; ?>/admin/editCategories/<?php echo $data['id']; ?>" method="POST">
+                <form action="<?php echo URLROOT; ?>/admin/addCategories" method="POST">
                     <div class="div form-group">
                         <h2><label for="category_name">Category Name</label></h2>
-                        <input id="catName1" type="text" name="category_name" class="input" placeholder="Edit Category Name" value="<?php echo $data['category_name']; ?>">
+                        <input id="catName1" type="text" name="category_name" class="input" placeholder="Add Category Name">
                     </div>
                     <div class="error">
                         <span><?php echo $data['category_name_err']; ?></span>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Update" class="btn">
+                        <input type="submit" value="Add" class="btn">
                     </div>
                 </form>
             </div>

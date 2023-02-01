@@ -63,4 +63,8 @@
 
       $this->view('users/admin/index', $data);
     }
+
+    public function users(){
+          $this->view('users/admin/users');
+    }
   }

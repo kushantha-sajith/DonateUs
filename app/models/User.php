@@ -104,4 +104,20 @@
         return false;
       }
     }
+
+    public function getUserType($email){
+      $this->db->query('SELECT user_type FROM reg_user WHERE email = :email');
+      // Bind value
+      $this->db->bind(':email', $email);
+
+      $row = $this->db->single();
+
+      // Check row
+      if($this->db->rowCount() > 0){
+        $user_type = $row->user_type;
+        return $user_type;
+      } else {
+        return false;
+      }
+    }
   }

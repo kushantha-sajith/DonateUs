@@ -243,7 +243,7 @@ use helpers\Email;
           }
         }
 
-        //validate other fieldds
+        //validate other fields
         if(empty($data['contact'])){
           $data['other_err'] = 'Required';
         }
@@ -324,7 +324,7 @@ use helpers\Email;
 
         // Validate Email
         if(empty($data['email'])){
-          $data['email_err'] = 'Pleae enter email';
+          $data['email_err'] = 'Please enter email';
         } else {
           // Check email
           if($this->userModel->findUserByEmail($data['email'])){
@@ -334,14 +334,14 @@ use helpers\Email;
 
         // Validate Password
         if(empty($data['password'])){
-          $data['password_err'] = 'Pleae enter password';
+          $data['password_err'] = 'Please enter password';
         } elseif(strlen($data['password']) < 6){
           $data['password_err'] = 'Password must be at least 6 characters';
         }
 
         // Validate Confirm Password
         if(empty($data['confirm_password'])){
-          $data['confirm_password_err'] = 'Pleae confirm password';
+          $data['confirm_password_err'] = 'Please confirm password';
         } else {
           if($data['password'] != $data['confirm_password']){
             $data['confirm_password_err'] = 'Passwords do not match';
@@ -410,7 +410,7 @@ use helpers\Email;
         if(empty($data['password'])){
           $data['password_err'] = 'Please enter password';
         }
-        
+        $user_type = $this->userModel->getUserType($data['email']);
         // Check for user/email
         if($this->userModel->findUserByEmail($data['email'])){
           // User found
@@ -423,7 +423,7 @@ use helpers\Email;
         if(empty($data['email_err']) && empty($data['password_err'])){
           // Validated
           // Check and set logged-in user
-          $loggedInUser = $this->userModel->login($data['email'], $data['password']);
+          $loggedInUser = $this->userModel->login($data['email'], $data['password'], $user_type);
 
           if($loggedInUser){
             // Create Session
@@ -493,136 +493,6 @@ use helpers\Email;
         $this->view('users/signupVerification', $data);
     }
     
-    public function login_donor(){
-      // Check for POST
-      if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        // Process form
-        // Sanitize POST data
-        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-        
-        // Init data
-        $data =[
-          'email' => trim($_POST['email']),
-          'password' => trim($_POST['password']),
-          'email_err' => '',
-          'password_err' => '',      
-        ];
-
-        // Validate Email
-        if(empty($data['email'])){
-          $data['email_err'] = 'Please enter email';
-        }
-        // Validate Password
-        if(empty($data['password'])){
-          $data['password_err'] = 'Please enter password';
-        }
-        // Check for user/email
-        if($this->userModel->findUserByEmail($data['email'])){
-          // User found
-        } else {
-          // User not found
-          $data['email_err'] = 'No user found';
-        }
-        // Make sure errors are empty
-        if(empty($data['email_err']) && empty($data['password_err'])){
-          // Validated
-          // Check and set logged-in user
-          $loggedInUser = $this->userModel->login_donor($data['email'], $data['password']);
-
-          if($loggedInUser){
-            // Create Session
-            $this->createUserSession($loggedInUser);
-            
-          } else {
-            $data['password_err'] = 'Password incorrect';
-
-            $this->view('users/login_donor', $data);
-          }
-        } else {
-          // Load view with errors
-          $this->view('users/login_donor', $data);
-        }
-      } else {
-        // Init data
-        $data =[    
-          'email' => '',
-          'password' => '',
-          'email_err' => '',
-          'password_err' => '',        
-        ];
-
-        // Load view
-        $this->view('users/login_donor', $data);
-      }
-    }
-    
-    public function login_beneficiary(){
-      // Check for POST
-      if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        // Process form
-        // Sanitize POST data
-        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-        
-        // Init data
-        $data =[
-          'email' => trim($_POST['email']),
-          'password' => trim($_POST['password']),
-          'email_err' => '',
-          'password_err' => '',      
-        ];
-
-        // Validate Email
-        if(empty($data['email'])){
-          $data['email_err'] = 'Pleae enter email';
-        }
-
-        // Validate Password
-        if(empty($data['password'])){
-          $data['password_err'] = 'Please enter password';
-        }
-
-        // Check for user/email
-        if($this->userModel->findUserByEmail($data['email'])){
-          // User found
-        } else {
-          // User not found
-          $data['email_err'] = 'No user found';
-        }
-
-        // Make sure errors are empty
-        if(empty($data['email_err']) && empty($data['password_err'])){
-          // Validated
-          // Check and set logged in user
-          $loggedInUser = $this->userModel->login_beneficiary($data['email'], $data['password']);
-
-          if($loggedInUser){
-            // Create Session
-            $this->createUserSession($loggedInUser);
-          } else {
-            $data['password_err'] = 'Password incorrect';
-
-            $this->view('users/login_beneficiary', $data);
-          }
-
-        } else {
-          // Load view with errors
-          $this->view('users/login_beneficiary', $data);
-        }
-
-      } else {
-        // Init data
-        $data =[    
-          'email' => '',
-          'password' => '',
-          'email_err' => '',
-          'password_err' => '',        
-        ];
-
-        // Load view
-        $this->view('users/login_beneficiary', $data);
-      }
-    }
-
     //create sessions for all users
       /**
        * @param $user
@@ -637,22 +507,29 @@ use helpers\Email;
       */
       $_SESSION['user_type'] = $user->user_type;
 
-//      switch ($user->user_type) {
-//        case 'admin':
-//          redirect('admins/index');
-//          break;
-//        case 'doctor':
-//          redirect('doctors/index');
-//          break;
-//        case 'patient':
-//          redirect('patients/index');
-//          break;
-//        default:
-//          redirect('users/login');
-//          break;
-//      }
-
-      redirect('pages/admin');
+      switch ($user->user_type) {
+        case 1:
+          redirect('pages/admin');
+          break;
+        case 2:
+          redirect('pages/ind_donor');
+          break;
+        case 3:
+          redirect('pages/cor_donor');
+          break;
+        case 4:
+          redirect('pages/beneficiary');
+          break;
+        case 5:
+          redirect('pages/org_beneficiary');
+          break;
+        case 6:
+          redirect('pages/event_org');
+          break;
+        default:
+          redirect('users/login');
+          break;
+      }
     }
 
     //logout method
@@ -666,13 +543,5 @@ use helpers\Email;
       session_destroy();
       
       redirect('pages/index');
-    }
-
-    //load categories page
-      /**
-       * @return void
-       */
-      public function categories(){
-      redirect('pages/categories');
     }
   }
