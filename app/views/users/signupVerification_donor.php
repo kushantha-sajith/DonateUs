@@ -31,12 +31,13 @@
                 <h4>OTP code has been sent to the email you've provided. <br>To complete registration, please check the inbox or spam folder and enter the OTP code you received below.</h3>
                 <br>
                 <br>
-                <p class="err" id="otp-err"></p>
+                
                 <form action="<?php echo URLROOT; ?>/users/verify" method="POST">
                 <h1>Enter OTP here</h1>
 
                         <label>OTP</label>
-                        <input type="text" name="otp" id="otp-input" class="otp">
+                        <input type="text" name="otp" id="otp-input" class="otp" value="<?php echo $data['otp']; ?>">
+                        <p class="error" id="otp-err"><?php echo $data['error']; ?></p>
 
                         <input type="submit" value="Verify">
                 </form>

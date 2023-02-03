@@ -89,6 +89,12 @@
     /* left: 40%; */
     transform: translate(-7%, -60%); 
 }
+.position2{
+    position: absolute;
+    top: 50%;
+    /* left: 50%; */
+    transform: translate(40%, -50%); 
+}
 
 .btnsubmit{
     width: 50%;
@@ -96,7 +102,7 @@
 .centered{
     position: absolute;
     top: 50%;
-    left: 40%;
+    left: 50%;
     transform: translate(-50%, -50%); 
 }
 
@@ -157,7 +163,7 @@ input[type=text],input[type=password],select:focus{
     outline: none;
 }
 
-input[type=submit] {
+input[type=submit],input[type=button] {
     width: 100%;
     background-color: #163172;
     color: white;
@@ -170,6 +176,9 @@ input[type=submit] {
 }
   
 input[type=submit]:hover {
+    background-color: #0d1f4a;
+}
+input[type=button]:hover {
     background-color: #0d1f4a;
 }
 
@@ -228,6 +237,12 @@ table{
   .form{
     width: 100%;
   }
+  .content {
+    display: block;
+    width: 100%;
+    padding: 6px 0px;
+    border: none;
+  }
 
   .tooltip {
     position: relative;
@@ -257,9 +272,17 @@ table{
     visibility: visible;
   }
 
-  #Individual{
-    display: block;
-  }
+  .dropdown option{
+    background-color: #F6F6F6;
+    }
+  
+    .dropdown option:hover, .dropdown option:focus, .dropdown option:checked{
+    background-color: #0d1f4a;
+    cursor: pointer;
+    color: #ffff;
+  } 
+
+  
  
   .welcomebanner{
     color: #163172;

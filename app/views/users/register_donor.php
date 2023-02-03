@@ -58,6 +58,7 @@
                             <label>Last Name</label>
                             <input type="text" id="lname" name="lname" placeholder="ex: Doe" value="<?php echo $data['lname']; ?>"></td>
                         </tr>
+                        
                         </tr>
                         <tr><td><p class="error"><?php echo $data['fname_err_ind']; ?></p></td>
                         <td><p class="error"><?php echo $data['lname_err_ind']; ?></p></td></tr>
@@ -69,18 +70,31 @@
                             <label>City</label>
                             <input type="text" id="city_ind" name="city_ind" placeholder="ex: Colombo" value="<?php echo $data['city_ind']; ?>"></td>
                         </tr>
-                        </tr>
-                        <tr><td><p class="error"><?php echo $data['contact_err_ind']; ?></p></td>
-                        <td><p class="error"><?php echo $data['city_err_ind']; ?></p></td></tr>
                         <tr>
+                            <td><p class="error"><?php echo $data['contact_err_ind']; ?></p></td>
+                            <td><p class="error"><?php echo $data['city_err_ind']; ?></p></td>
                         </tr>
+                        <tr><td>
+                            <label>District</label>
+                            <select class="dropdown" name="district_ind" id="district_ind">
+                            <?php foreach($data['districts'] as $districts) : ?>
+                                <option <?php if($districts->id==$data['district_ind']) {echo "selected";} ?> value="<?php echo $districts->id; ?>"><?php echo $districts->dist_name; ?></option>
+                            <?php endforeach; ?>
 
+                            </select></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><p class="error"><?php echo $data['district_err_ind']; ?></p></td>
+                            <td></td>
+                        </tr>
+                       
                         <tr >
                             <td  colspan="2"><input class="btnsubmit" type="submit" value="Register"></td>
                         </tr>
-                        <tr >
-                            <td class="btnsubmit" ><input type="submit" value="Register as a Beneficiary"></td>
-                            <td class="btnsubmit" ><input type="submit" value="Register as an Event Organizer"></td>
+                        <tr>
+                            <td ><a href="<?php echo URLROOT; ?>/users/login_donor"><input type="button" value="Register as a Beneficiary" ></a></td>
+                            <td ><a href="<?php echo URLROOT; ?>/users/register_eorganizer"><input type="button" value="Register as an Event Organizer" ></a></td>
                         </tr>
                         </form>
                         
@@ -114,38 +128,16 @@
                             <input type="text" id="city" name="city" placeholder="ex: Colombo"  value="<?php echo $data['city']; ?>"></td>
                             <td>
                             <label>District</label>
-                            <select name="district" id="district">
-                                <option value="0">- SELECT -</option>
-                                <option value="1">Ampara</option>
-                                <option value="2">Anuradhapura</option>
-                                <option value="3">Badulla</option>
-                                <option value="4">Batticaloa</option>
-                                <option value="5">Colombo</option>
-                                <option value="6">Galle</option>
-                                <option value="7">Gampaha</option>
-                                <option value="8">Hambantota</option>
-                                <option value="9">Jaffna</option>
-                                <option value="10">Kalutara</option>
-                                <option value="11">Kandy</option>
-                                <option value="12">Kegalle</option>
-                                <option value="13">Kilinochchi</option>
-                                <option value="14">Kurunegala</option>
-                                <option value="15">Mannar</option>
-                                <option value="16">Matale</option>
-                                <option value="17">Matara</option>
-                                <option value="18">Monaragala</option>
-                                <option value="19">Mulativu</option>
-                                <option value="20">Nuwara Eliya</option>
-                                <option value="21">Polonnaruwa</option>
-                                <option value="22">Puttalam</option>
-                                <option value="23">Ratnapura</option>
-                                <option value="24">Tricomalee</option>
-                                <option value="25">Vavuniya</option>
+                            <select class="dropdown" name="district" id="district">
+                            <?php foreach($data['districts'] as $districts) : ?>
+                                <option <?php if($districts->id==$data['district']) {echo "selected";} ?> value="<?php echo $districts->id; ?>"><?php echo $districts->dist_name; ?></option>
+                            <?php endforeach; ?>
+                                
 
                             </select>
                         </tr>
-                        <tr><td><p class="error"><?php echo $data['desg_err']; ?></p></td>
-                        <td><p class="error"><?php echo $data['contact_err']; ?></p></td></tr>
+                        <tr><td><p class="error"><?php echo $data['city_err']; ?></p></td>
+                        <td><p class="error"><?php echo $data['district_err']; ?></p></td></tr>
                         <tr>
                         <tr><td colspan="2"><label><b>- Contact Person Details -</b></label></td></tr>
                         <tr><td>
@@ -172,8 +164,8 @@
                             <td colspan="2"><input type="submit" value="Register"></td>
                         </tr>
                         <tr>
-                            <td ><input type="submit" value="Register as a Beneficiary"></td>
-                            <td ><input type="submit" value="Register as an Event Organizer"></td>
+                            <td ><a href="<?php echo URLROOT; ?>/users/login_donor"><input type="button" value="Register as a Beneficiary" ></a></td>
+                            <td ><a href="<?php echo URLROOT; ?>/users/register_eorganizer"><input type="button" value="Register as an Event Organizer" ></a></td>
                         </tr>
                         </form>
                        
@@ -185,5 +177,40 @@
                
             </div>
         </section>
+       <script>
+        function btnActivate() {
+        const btns = document.getElementsByClassName("tablinks");
+        btns[0].className += " active";
+        }
+
+        window.onload = function () {
+            let tab = "<?php echo $data['tab']; ?>";
+            document.getElementById(tab).style.display = "block";
+        
+        
+        }
+
+        function openTab(evt, tabName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+    
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+  
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+  
+         }
+       </script>                         
     </body>
 </html>

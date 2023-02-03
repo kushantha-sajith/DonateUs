@@ -36,7 +36,7 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo URLROOT; ?>/donor/donationHistory_donor">
+          <a href="<?php echo URLROOT; ?>/pages/donationHistory_donor">
             <i class="bx bx-history"></i>
             <span class="links_name">Donation History</span>
           </a>
@@ -99,7 +99,7 @@
           <div class="notification">
             <i class="bx bx-bell bx-tada notification"></i>
           </div>
-            <a href="<?php echo URLROOT; ?>/donor/profile_donor"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
+            <a href="<?php echo URLROOT; ?>/pages/profile_donor"><img src="<?php echo URLROOT; ?>/img/<?php echo $data['prof_img'];  ?>" alt="" /></a>
           <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
           <!-- <i class='bx bx-chevron-down'></i> -->
         </div>
@@ -112,10 +112,11 @@
 
     <script>
       window.onload = function () {
+        
         let type = "<?php echo $_SESSION['user_type']; ?>";
         let menuitem1 = document.getElementById("item1");
         let menuitem2 = document.getElementById("item2");
-        if(type === "corporate" ){
+        if(type === "3" ){
           menuitem1.style.display = "block";
           menuitem2.style.display = "block";
         }else{

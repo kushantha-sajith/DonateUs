@@ -16,7 +16,7 @@
     <div class="sidebar">
       <div class="logo-details">
         <i class="bx bx-grid-alt"></i>
-        <!-- <h1><?php echo $data['title']; ?></h1> -->
+       
         <span class="logo_name">Dashboard</span>
       </div>
       <div class="welcome">
@@ -29,7 +29,6 @@
             <span class="links_name">Dashboard</span>
           </a>
         </li>
-        
         <li>
           <a href="#">
             <i class="bx bx-list-check"></i>
@@ -37,26 +36,47 @@
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="<?php echo URLROOT; ?>/pages/donationHistory_donor">
             <i class="bx bx-history"></i>
             <span class="links_name">Donation History</span>
           </a>
         </li>
-        
         <li>
           <a href="#">
             <i class="bx bx-conversation"></i>
             <span class="links_name">Forum</span>
           </a>
         </li>
-        
+        <li>
+          <a href="#">
+            <i class="bx bx-calendar-check"></i>
+            <span class="links_name">Events</span>
+          </a>
+        </li>
         <li>
           <a href="#">
             <i class="bx bx-pie-chart-alt"></i>
             <span class="links_name">Stats</span>
           </a>
         </li>
-       
+        <li>
+          <a href="#">
+            <i class="bx bxs-report"></i>
+            <span class="links_name">Reservations</span>
+          </a>
+        </li>
+        <li id="item1">
+          <a href="#">
+            <i class="bx bxs-report"></i>
+            <span class="links_name">Sponsor</span>
+          </a>
+        </li>
+        <li id="item2">
+          <a href="#">
+            <i class="bx bxs-report"></i>
+            <span class="links_name">Reports</span>
+          </a>
+        </li>
         <li class="log_out">
           <a href="<?php echo URLROOT; ?>/users/logout">
             <i class="bx bx-log-out"></i>
@@ -79,55 +99,33 @@
           <div class="notification">
             <i class="bx bx-bell bx-tada notification"></i>
           </div>
-            <img src="<?php echo URLROOT; ?>/img/profile_pic.svg" alt="" />
+            <a href="<?php echo URLROOT; ?>/pages/profile_donor"><img src="<?php echo URLROOT; ?>/img/<?php echo $data['prof_img'];  ?>" alt="" /></a>
           <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
           <!-- <i class='bx bx-chevron-down'></i> -->
         </div>
       </nav>
       <div class="main-container">
-    
-      <h2>Add a new Donation Request</h2>
-      
-     <br>
-     <div class="form">
-      <div class="container">
-      <form method="post" action="<?php echo URLROOT; ?>/beneficiary/newrequest"> 
-      Category
-      <input type="text" name="categories" value="<?php echo $data['categories']; ?>" class="form-style-input">
-      <span class="error"><?php echo $data['categoryErr']; ?></span>
-      
-      Description
-      <textarea name="description" rows="4" cols="40" class="form-style-input"><?php echo $data['description']; ?></textarea>
-      <span class="error"> <?php echo $data['descriptionErr']; ?></span>
-      
-      Amount/Quantity 
-      <input type="text" name="quantity" value="<?php echo $data['quantity']; ?>" class="form-style-input">
-      <span class="error"><?php echo $data['quantityErr']; ?></span>
-      Donation Type  
-      <input type="text" name="type" value="<?php echo $data['type']; ?>" class="form-style-input">
-     <span class="error"><?php echo $data['typeErr']; ?></span>
-      
-      Contact Number 
-      <input type="text" name="contact" value="<?php echo $data['contact']; ?>" class="form-style-input">
-      <span class="error"><?php echo $data['contactErr']; ?></span>
-      Location/City 
-      <input type="text" name="city" value="<?php echo $data['city']; ?>" class="form-style-input">
-     <span class="error"><?php echo $data['cityErr']; ?></span>
-      
-      Due Date
-      <input type="date" name="duedate" value="<?php echo $data['duedate']; ?>" class="form-style-input">
-     <span class="error"><?php echo $data['duedateErr']; ?></span>
-      <br><br>
-      <input type="submit" name="submit" value="Submit" class="btn1 add"> 
-      <br> 
-    </form>
-    </div>
-    </div>
-    
-</div>
+        <h1>Welcome Donor</h1>
+      </div>
     </section>
-  
+    <!--home section end-->
+
     <script>
+      window.onload = function () {
+        
+        let type = "<?php echo $_SESSION['user_type']; ?>";
+        let menuitem1 = document.getElementById("item1");
+        let menuitem2 = document.getElementById("item2");
+        if(type === "3" ){
+          menuitem1.style.display = "block";
+          menuitem2.style.display = "block";
+        }else{
+          menuitem1.style.display = "none";
+          menuitem2.style.display = "none";
+        }
+        
+      };
+
       let sidebar = document.querySelector(".sidebar");
       let sidebarBtn = document.querySelector(".sidebarBtn");
       let welcome = document.querySelector(".welcome");
@@ -142,22 +140,7 @@
         }
       };
 
-
-      var modal = document.getElementById("modal");
-      var btn = document.getElementById("add");
-      var span = document.getElementsByClassName("close")[0];
-      btn.onclick = function() {
-        modal.style.display = "block";
-      }
-      span.onclick = function() {
-        modal.style.display = "none";
-      }
-      window.onclick = function(event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      }
-
+      
     </script>
   </body>
 </html>

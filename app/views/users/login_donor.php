@@ -23,7 +23,7 @@
             <div class="log_right">
                 
                 <div class="form">
-                    <form class="centered" autocomplete="off" action="<?php echo URLROOT; ?>/users/login_donor" method="POST">
+                    <form class="position2" autocomplete="off" action="<?php echo URLROOT; ?>/users/login_donor" method="POST">
                         <h1>Login</h1>
                         
                         <label>User email</label>
@@ -37,7 +37,7 @@
 
                         <input type="submit" value="Login">
 
-                        <label> <a href="">New to DonatUs? Get Registered Now!</a></label>
+                        <label> <a href="<?php echo URLROOT; ?>/users/register_donor/gen">New to DonatUs? Get Registered Now!</a></label>
                         
                     </form>
                 </div>
