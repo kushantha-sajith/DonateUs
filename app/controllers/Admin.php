@@ -156,6 +156,20 @@
 
             $this->view('users/admin/users', $data);
         }
+
+        public function donationRequests(){
+            $data = [
+            ];
+
+            $this->view('users/admin/donation_request', $data);
+        }
+
+        public function events(){
+            $data = [
+            ];
+
+            $this->view('users/admin/events', $data);
+        }
     }
 
     
