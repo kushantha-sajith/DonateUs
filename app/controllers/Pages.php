@@ -1,7 +1,7 @@
 <?php
   class Pages extends Controller {
     public function __construct(){
-    //  $this->Beneficiary = $this->('BeneficiaryModel');
+     
     }
 
       /**
@@ -15,52 +15,25 @@
       $this->view('pages/index', $data);
     }
 
-    public function about(){
-      $data = [
-        'title' => 'About Us'
-      ];
-
-      $this->view('pages/about', $data);
-    }
-
-    public function beneficiary(){
-      $data = [
-        'title' => 'Beneficiary'
-      ];
-
-      $this->view('users/beneficiary/index', $data);
-    }
-    
       /**
        * @return void
        */
-      public function profile_donor(){
+      public function profile_beneficiary(){
       $data = [
         'title' => 'Profile'
       ];
 
-      $this->view('users/donor/profile_donor', $data);
+      $this->view('users/beneficiary/profile_beneficiary', $data);
     }
 
       /**
        * @return void
        */
-      public function donor(){
+      public function beneficiary(){
       $data = [
-        'title' => 'Donor'
+        'title' => 'beneficiary'
       ];
 
-      $this->view('users/donor/index', $data);
-    }
-
-      /**
-       * @return void
-       */
-      public function admin(){
-      $data = [
-        'title' => 'Admin'
-      ];
-
-      $this->view('users/admin/index', $data);
+      $this->view('users/beneficiary/index', $data);
     }
   }

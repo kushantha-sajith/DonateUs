@@ -3,7 +3,6 @@
     margin: 0;
     box-sizing: border-box; 
  }
- 
  body{
      font-family: 'Poppins', sans-serif;
      overflow: hidden;
@@ -49,7 +48,6 @@
      align-items: center;
      text-align: center;
  }
-
  form{
      width:360px;
      margin: 0 auto;
@@ -68,14 +66,12 @@
  .avatar{
      width:100px;
  }
-
  form h2{
      font-size: 2.9rem;
      text-transform: uppercase;
      margin: 15px 0;
      color: #333;
  }
-
  .input-div{
      position:relative;
      display: grid;
@@ -84,7 +80,6 @@
      padding: 5px 0;
      border-bottom: 2px solid #d9d9d9;
  }
-
  .input-div:after, .input-div:before{
      content: "";
      position: absolute;
@@ -94,36 +89,28 @@
      background-color: #0A2558;
      transition: .3s;
  }
-
  .input-div:after{
      right: 50%;
  }
-
  .input-div:before{
      left: 50%;
  }
-
  .input-div.focus .i i{
      color:#0A2558;
  }
-
  .input-div.focus div h5{
      top: -5px;
      font-size: 15px;
  }
-
  .input-div.focus:after, .input-div.focus:before{
      width: 50%;
  }
-
  .input-div.one{
      margin-top: 0;
  }
-
  .input-div.two{
      margin: bottom 4px;
  }
-
  .i{
      display:flex;
      justify-content: center;
@@ -137,7 +124,6 @@
      position: relative;
      height: 45px;
  }
-
  .input-div > div h5{
      position: absolute;
      left: 10px;
@@ -148,7 +134,6 @@
      
      transition: .3s;
  }
-
  .input{
      position:absolute;
      width:100%;
@@ -163,7 +148,6 @@
      font-family: 'Readex Pro', sans-serif;
      color:#555;
  }
-
  a{
      display:block;
      text-align: right;
@@ -172,11 +156,9 @@
      font-size: 0.9rem;
      transition:0.3s;
  }
-
  a:hover{
      color:#0A2558;
  }
-
  .btn{
      display:block;
      width:100%; 
@@ -193,44 +175,10 @@
      background-size: 200%;
      transition:0.5s;
  }
-
  .btn:hover{
      background-position: right;
  }
-
- .email-logo{
-     display: flex;
-     flex-direction: column;
-     align-content: center;
- }
-
- .email-container{
-     width: 100vw;
-     height: 100vh;
-     display: flex;
-     align-items: center;
-     justify-content: center;
- }
-
- .text{
-     text-align: center;
- }
-
- .heading-text{
-     text-align: center;
- }
-
- .otp{
-     height:100%;
-     margin-top: 10px;
-     border: #0e3276 1px solid;
-     border-radius: 5px;
-     padding: 0.5rem 0.7rem;
-     font-size: 1.2rem;
-     font-family: 'Readex Pro', sans-serif;
-     color:#555;
- }
-
+ 
  @media screen and (max-width:1050px){
      .container{
          grid-gap:5rem;
