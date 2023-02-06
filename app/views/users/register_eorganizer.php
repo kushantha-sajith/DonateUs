@@ -23,7 +23,7 @@
             </div>
             <div class="right">
                 <div class="position1">
-                <h1>Registration</h1>
+                <h1>Registration - Event Organizers</h1>
                     
                     <div class="content">
                     <table>
@@ -33,7 +33,7 @@
                             <input type="text" id="email" name="email" placeholder="ex: abc@gmail.com" value="<?php echo $data['email']; ?>"></td>
                             <td>
                             <label>NIC</label>
-                            <input type="text" id="nic" name="nic" placeholder="ex: 19123567890" value="<?php echo $data['nic']; ?>"></td>
+                            <input type="text" id="nic" name="nic" placeholder="ex: 19XXXXXXXXXX/ 9XXXXXXXXX" value="<?php echo $data['nic']; ?>"></td>
                         </tr>
                         <tr><td><p class="error"><?php echo $data['email_err']; ?></p></td>
                         <td><p class="error"><?php echo $data['nic_err']; ?></p></td>
@@ -52,7 +52,7 @@
                             <input type="text" id="fullname" name="fullname" placeholder="ex: Fernando A.B.C." value="<?php echo $data['fullname']; ?>"></td>
                             <td>
                             <label>Contact Number</label>
-                            <input type="text" id="contact" name="contact" placeholder="ex: +94712345678" value="<?php echo $data['contact']; ?>"></td>
+                            <input type="text" id="contact" name="contact" placeholder="ex: +94XXXXXXXXX" value="<?php echo $data['contact']; ?>"></td>
                             <td>
                         </tr>
                         

@@ -31,7 +31,7 @@
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="<?php echo URLROOT; ?>/pages/donation_requests_donor">
             <i class="bx bx-list-check"></i>
             <span class="links_name">Donation Requests</span>
           </a>
@@ -120,7 +120,7 @@
             
             <tr class="t-row">
               <td colspan="2" style="text-align:left;">1</td>
-              <td colspan="2" style="text-align:left;">aaaaaaaaaaaaaaaaaaaaaaa<br>aaaaaaaaaaaaaaaaaaaaaa</td>
+              <td colspan="2" style="text-align:left;">xxxxxxxxxxxxxxxxxxxxxxxx<br>xxxxxxxxxxxxxxxxxxxxxxx</td>
               <td colspan="2" style="text-align:left;">1</td>
               <td colspan="2" style="text-align:left;">Non-Financial</td>
               <td colspan="2" style="text-align:left;">45</td>

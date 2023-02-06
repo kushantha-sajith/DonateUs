@@ -59,19 +59,13 @@
             <span class="links_name">Stats</span>
           </a>
         </li>
-        <li>
-          <a href="#">
-            <i class="bx bxs-report"></i>
-            <span class="links_name">Reservations</span>
-          </a>
-        </li>
-        <li id="item1">
+        <li >
           <a href="#">
             <i class="bx bxs-report"></i>
             <span class="links_name">Sponsor</span>
           </a>
         </li>
-        <li id="item2">
+        <li >
           <a href="#">
             <i class="bx bxs-report"></i>
             <span class="links_name">Reports</span>
@@ -99,19 +93,19 @@
           <div class="notification">
             <i class="bx bx-bell bx-tada notification"></i>
           </div>
-            <a href="<?php echo URLROOT; ?>/pages/profile_donor"><img src="<?php echo URLROOT; ?>/img/<?php echo $data['prof_img'];  ?>" alt="" /></a>
+            <a href="<?php echo URLROOT; ?>/pages/profile_eorganizer"><img src="<?php echo URLROOT; ?>/img/<?php echo $data['prof_img'];  ?>" alt="" /></a>
           <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
           <!-- <i class='bx bx-chevron-down'></i> -->
         </div>
       </nav>
       <div class="main-container">
-        <h1>Welcome Donor</h1>
+        <h1>Welcome Event Organizer</h1>
       </div>
     </section>
     <!--home section end-->
 
     <script>
-      window.onload = function () {
+      /*window.onload = function () {
         
         let type = "<?php echo $_SESSION['user_type']; ?>";
         let menuitem1 = document.getElementById("item1");
@@ -124,7 +118,7 @@
           menuitem2.style.display = "none";
         }
         
-      };
+      };*/
 
       let sidebar = document.querySelector(".sidebar");
       let sidebarBtn = document.querySelector(".sidebarBtn");

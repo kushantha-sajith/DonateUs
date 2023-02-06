@@ -385,170 +385,7 @@ use helpers\NIC_Validator;
     
     }
 
-    
-   //login method for all users of the system
-      /**
-       * @return void
-       */
-      public function login_donor(){
-      // Check for POST
-      if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        // Process form
-        // Sanitize POST data
-        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-        
-        // Init data
-        $data =[
-          'email' => trim($_POST['email']),
-          'password' => trim($_POST['password']),
-          'email_err' => '',
-          'password_err' => '',      
-        ];
-
-        $error = false;
-
-        // Validate Email
-        if(empty($data['email'])){
-          $data['email_err'] = 'Please enter email';
-          $error = true;
-        }else{
-          // Check for user/email
-        if($this->userModel->findUserByEmail($data['email'])){
-          // User found
-        } else {
-          // User not found
-          $data['email_err'] = 'No user found';
-          $error = true;
-        }
-        }
-        // Validate Password
-        if(empty($data['password'])){
-          $data['password_err'] = 'Please enter password';
-          $error = true;
-        }
-        
-        // Make sure errors are empty
-        if($error == false){
-          // Validated
-          // Check and set logged-in user
-          $loggedInUser = $this->userModel->login_donor($data['email'], $data['password']);
-
-          if($loggedInUser){
-            // Create Session
-            $this->createUserSession($loggedInUser);
-            
-          } else {
-            $data['password_err'] = 'Password incorrect';
-
-            $this->view('users/login_donor', $data);
-          }
-        } else {
-          // Load view with errors
-          $this->view('users/login_donor', $data);
-        }
-      } else {
-        // Init data
-        $data =[    
-          'email' => '',
-          'password' => '',
-          'email_err' => '',
-          'password_err' => '',        
-        ];
-
-        // Load view
-        $this->view('users/login_donor', $data);
-      }
-    }
-
-    //otp verification
-      /**
-       * @return void
-       */
-      public function verify(){
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $data = [
-                'otp'=>trim($_POST['otp']),
-                'error'=>'',
-                'status'=> ''
-            ];
-
-            $error = false;
-
-        // Validate Email
-        if(empty($data['otp'])){
-          $data['error'] = 'Required';
-          $error = true;
-        }
-
-        if($error == false){
-
-          
-          $verified = $this->verificationModel->verifyOTP($data['otp']);
-
-          if($verified){
-              if($this->verificationModel->verify($verified->id)){
-                  // set verification successful flash message
-//                    setFlash("verify","Your account has been verified",Flash::FLASH_SUCCESS);
-                  // redirect to the login of donor
-                  redirect('users/login_donor');
-              }
-              else{
-                  // set verification failed flash message
-//                    Flash::setFlash("verify","Account verification failed!",Flash::FLASH_DANGER);
-                  // redirect to the signup of donor
-                  redirect('users/register_donor');
-              }
-          }
-          else{
-              $data['error'] = "Invalid OTP";
-               //load view with errors
-          $this->view('users/signupVerification_donor', $data);
-          }
-        }else{
-          //load view with errors
-          $this->view('users/signupVerification_donor', $data);
-        }
-        }
-        else{
-            $data = [
-                'otp'=>'',
-                'error'=>'',
-                'status'=>''
-            ];
-        }
-        $this->view('users/signupVerification_donor', $data);
-    }
-
-    //create sessions for all users
-      /**
-       * @param $user
-       * @return void
-       */
-      public function createUserSession($user){
-        if($user->otp_verify ==1){
-          $_SESSION['user_id'] = $user->id;
-          $_SESSION['user_email'] = $user->email;
-          $_SESSION['user_type'] = $user->user_type;
-          redirect('pages/donor');
-        }else{
-          redirect('users/verify');
-        }
-      
-    }
-
-    //logout method
-      /**
-       * @return void
-       */
-      public function logout(){
-      unset($_SESSION['user_id']);
-      unset($_SESSION['user_email']);
-      unset($_SESSION['user_type']);
-      session_destroy();
-      redirect('users/login_donor');
-    }
-
-     //Register function - Event Organizer
+    //Register function - Event Organizer
       /**
        * @return void
        */
@@ -583,7 +420,7 @@ use helpers\NIC_Validator;
               'otp_code' => $otp_code,
               'verification_status' => $verification_status,
               'districts' => $districts,
-              'prof_img' => 'img_profile.png',
+              'prof_img' => 'img_profile1.jpeg',
               'acc_status' => '1',
               'email_err' => '',
               'nic_err' => '',
@@ -739,4 +576,173 @@ use helpers\NIC_Validator;
       
       }
     
+    
+   //login method for all users of the system
+      /**
+       * @return void
+       */
+      public function login_donor(){
+      // Check for POST
+      if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        // Process form
+        // Sanitize POST data
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        
+        // Init data
+        $data =[
+          'email' => trim($_POST['email']),
+          'password' => trim($_POST['password']),
+          'email_err' => '',
+          'password_err' => '',      
+        ];
+
+        $error = false;
+
+        // Validate Email
+        if(empty($data['email'])){
+          $data['email_err'] = 'Please enter email';
+          $error = true;
+        }else{
+          // Check for user/email
+        if($this->userModel->findUserByEmail($data['email'])){
+          // User found
+        } else {
+          // User not found
+          $data['email_err'] = 'No user found';
+          $error = true;
+        }
+        }
+        // Validate Password
+        if(empty($data['password'])){
+          $data['password_err'] = 'Please enter password';
+          $error = true;
+        }
+        
+        // Make sure errors are empty
+        if($error == false){
+          // Validated
+          // Check and set logged-in user
+          $loggedInUser = $this->userModel->login_donor($data['email'], $data['password']);
+
+          if($loggedInUser){
+            // Create Session
+            $this->createUserSession($loggedInUser);
+            
+          } else {
+            $data['password_err'] = 'Password incorrect';
+
+            $this->view('users/login_donor', $data);
+          }
+        } else {
+          // Load view with errors
+          $this->view('users/login_donor', $data);
+        }
+      } else {
+        // Init data
+        $data =[    
+          'email' => '',
+          'password' => '',
+          'email_err' => '',
+          'password_err' => '',        
+        ];
+
+        // Load view
+        $this->view('users/login_donor', $data);
+      }
+    }
+
+    //otp verification
+      /**
+       * @return void
+       */
+      public function verify(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $data = [
+                'otp'=>trim($_POST['otp']),
+                'error'=>'',
+                'status'=> ''
+            ];
+
+            $error = false;
+
+        // Validate Email
+        if(empty($data['otp'])){
+          $data['error'] = 'Required';
+          $error = true;
+        }
+
+        if($error == false){
+
+          
+          $verified = $this->verificationModel->verifyOTP($data['otp']);
+
+          if($verified){
+              if($this->verificationModel->verify($verified->id)){
+                  // set verification successful flash message
+//                    setFlash("verify","Your account has been verified",Flash::FLASH_SUCCESS);
+                  // redirect to the login of donor
+                  redirect('users/login_donor');
+              }
+              else{
+                  // set verification failed flash message
+//                    Flash::setFlash("verify","Account verification failed!",Flash::FLASH_DANGER);
+                  // redirect to the signup of donor
+                  redirect('users/register_donor');
+              }
+          }
+          else{
+              $data['error'] = "Invalid OTP";
+               //load view with errors
+          $this->view('users/signupVerification_donor', $data);
+          }
+        }else{
+          //load view with errors
+          $this->view('users/signupVerification_donor', $data);
+        }
+        }
+        else{
+            $data = [
+                'otp'=>'',
+                'error'=>'',
+                'status'=>''
+            ];
+        }
+        $this->view('users/signupVerification_donor', $data);
+    }
+
+    //create sessions for all users
+      /**
+       * @param $user
+       * @return void
+       */
+      public function createUserSession($user){
+        if($user->otp_verify ==1){
+          $_SESSION['user_id'] = $user->id;
+          $_SESSION['user_email'] = $user->email;
+          $_SESSION['user_type'] = $user->user_type;
+          if($_SESSION['user_type']==6){
+            redirect('pages/eorganizer');
+          }else{
+            redirect('pages/donor');
+          }
+          
+        }else{
+          redirect('users/verify');
+        }
+      
+    }
+
+    //logout method
+      /**
+       * @return void
+       */
+      public function logout(){
+      unset($_SESSION['user_id']);
+      unset($_SESSION['user_email']);
+      unset($_SESSION['user_type']);
+      session_destroy();
+      redirect('users/login_donor');
+    }
+
+     
   }

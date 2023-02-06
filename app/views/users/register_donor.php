@@ -23,7 +23,7 @@
             </div>
             <div class="right">
                 <div class="position1">
-                <h1>Registration</h1>
+                <h1>Registration - Donor</h1>
                     <div class="tab" >
                         
                         <button class="tablinks" onload="btnActivate()" onclick="openTab(event, 'Individual')">Individual</button>
@@ -37,7 +37,7 @@
                             <input type="text" id="email_ind" name="email_ind" placeholder="ex: abc@gmail.com" value="<?php echo $data['email_ind']; ?>"></td>
                             <td>
                             <label>NIC</label>
-                            <input type="text" id="nic" name="nic" placeholder="ex: 19123567890" value="<?php echo $data['nic']; ?>"></td>
+                            <input type="text" id="nic" name="nic" placeholder="ex: 19XXXXXXXXXX/ 9XXXXXXXXX" value="<?php echo $data['nic']; ?>"></td>
                         </tr>
                         <tr><td><p class="error"><?php echo $data['email_err_ind']; ?></p></td>
                         <td><p class="error"><?php echo $data['nic_err']; ?></p></td>
@@ -65,7 +65,7 @@
 
                         <tr><td>
                             <label>Contact Number</label>
-                            <input type="text" id="contact_ind" name="contact_ind" placeholder="ex: +94712345678" value="<?php echo $data['contact_ind']; ?>"></td>
+                            <input type="text" id="contact_ind" name="contact_ind" placeholder="ex: +94XXXXXXXXX" value="<?php echo $data['contact_ind']; ?>"></td>
                             <td>
                             <label>City</label>
                             <input type="text" id="city_ind" name="city_ind" placeholder="ex: Colombo" value="<?php echo $data['city_ind']; ?>"></td>
@@ -155,7 +155,7 @@
                             <input type="text" id="desg" name="desg" placeholder="ex: Manager"  value="<?php echo $data['desg']; ?>"></td>
                             <td>
                             <label>Contact Number</label>
-                            <input type="text" id="contact" name="contact" placeholder="ex: +94701234567"  value="<?php echo $data['contact']; ?>"></td>
+                            <input type="text" id="contact" name="contact" placeholder="ex: +94XXXXXXXXX"  value="<?php echo $data['contact']; ?>"></td>
                         </tr>
                         <tr><td><p class="error"><?php echo $data['desg_err']; ?></p></td>
                         <td><p class="error"><?php echo $data['contact_err']; ?></p></td></tr>

@@ -120,59 +120,66 @@
                               <?php foreach($data['personaldata'] as $personaldata) : ?>
                                 <div class="input-field">
                                     <label>Full Name</label>
-                                    <input type="text" placeholder="<?php echo $personaldata->full_name ?>" disabled >
+                                    <input type="text" placeholder="ex: John Doe" value="<?php echo $personaldata->full_name ?>" >
                                 </div>
                                 <div class="input-field">
                                     <label>NIC</label>
-                                    <input type="text" placeholder="<?php echo $personaldata->NIC; ?>" disabled>
+                                    <input type="text" placeholder="ex: 19XXXXXXXXXX/ 9XXXXXXXXX" value="<?php echo $personaldata->NIC; ?>" disabled>
                                 </div>
                                 
                                 <div class="input-field">
                                     <label>User Email</label>
-                                    <input type="text" placeholder="<?php echo $user-> email; ?>" disabled>
+                                    <input type="text" placeholder="ex: abc@gmail.com" value="<?php echo $user-> email; ?>" disabled>
                                 </div>
 
                                 <div class="input-field">
                                     <label>Contact Number</label>
-                                    <input type="text" placeholder="<?php echo $user->tp_number; ?>" disabled>
+                                    <input type="text" placeholder="ex: +94XXXXXXXXX" value="<?php echo $user->tp_number; ?>" >
                                 </div>
                                 <div class="input-field">
                                     <label>Community Name</label>
-                                    <input type="text" placeholder="<?php echo $personaldata->community_name; ?>" disabled>
+                                    <input type="text" placeholder="ex: Rotract Club of UCSC" value="<?php echo $personaldata->community_name; ?>" >
                                 </div>
                                 <div class="input-field">
                                     <label>Designation</label>
-                                    <input type="text" placeholder="<?php echo $personaldata->designation; ?>" disabled>
+                                    <input type="text" placeholder="ex: Treasurer" value="<?php echo $personaldata->designation; ?>" >
                                 </div>
                                 <div class="input-field">
                                     <label>City</label>
-                                    <input type="text" placeholder="<?php echo $personaldata->city; ?>" disabled>
+                                    <input type="text" placeholder="ex: Colombo" value="<?php echo $personaldata->city; ?>" >
                                 </div>
                                 <div class="input-field">
                                     <label>District</label>
-                                    <input type="text" placeholder="<?php echo $data['dist']; ?>" disabled>
+                                    <select class="dropdown" name="district" id="district">
+                            <?php foreach($data['districts'] as $districts) : ?>
+                                <option <?php if($districts->id==$personaldata->district) {echo "selected";} ?> value="<?php echo $districts->id; ?>"><?php echo $districts->dist_name; ?></option>
+                            <?php endforeach; ?> </select>
                                 </div>
                                                               
                                 <?php endforeach; ?>
                                 <?php endforeach; ?>
                             </div>
+
+                            <span class="title"><u>Change Profile Picture</u></span>
+                            
+                        <div class="photo-container">
+                            <input type="file" id="file" accept="image/*" hidden>
+                            <div class="img-area" data-img="">
+                                <i class='bx bxs-cloud-upload icon'></i>
+                                <h3>Upload Image</h3>
+                            </div>
+                            <button class="select-image">Select Image</button>
+                        </div>
+                        <button class="sumbit">
+                            <span class="btnText">Submit</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
                         </div>
                         
                     </div>
                 </form>
                 <div class="updatebtn">
-                    <a href="<?php echo URLROOT; ?>/pages/edit_profile_eorganizer">
-                        <button class="edit" style="text-decoration: none;">Edit Profile Details
-                        </button>
-                    </a>
-
-                    <a href="<?php echo URLROOT; ?>/pages/change_password_eorganizer">
-                        <button class="changepassword" style="text-decoration: none;">Change Password</button>
-                    </a>
-
-                    <a href="#">
-                        <button class="delete" style="text-decoration: none;">Delete Profile Details</button>
-                    </a>
+                
                 </div>
                 
             </div>
