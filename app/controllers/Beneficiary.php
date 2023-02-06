@@ -147,7 +147,7 @@
             'requests' => $requests
           ];
     
-          $this -> view('users/beneficiary/requests', $data);
+          $this -> view('users/beneficiary/donation_req', $data);
         }
 
         //add a new request
@@ -210,7 +210,7 @@
                   // Validated
                   if($this->beneficiaryModel->addRequest($data)){
                       // flash('category_message', 'Category Added');
-                      redirect('beneficiary/requests');
+                      redirect('beneficiary/donation_req');
                   } else {
                       die('Something went wrong');
                   }
@@ -305,7 +305,7 @@
                   // Validated
                   if($this->beneficiaryModel->editRequest($data)){
                       // flash('category_message', 'Category Added');
-                      redirect('beneficiary/requests');
+                      redirect('beneficiary/donation_req');
                   } else {
                       die('Something went wrong');
                   }
@@ -685,6 +685,19 @@
             }
           
           }
+
+
+          //load beneficiary dashboard
+        /**
+         * @return void
+         */
+        public function index(){
+          $data = [
+            'title' => 'DonateUs'
+          ];
+         
+          $this->view('users/beneficiary/index', $data);
+        }
     }
 
     

@@ -30,7 +30,7 @@
           </a>
         </li>
         <li>
-        <a href="<?php echo URLROOT; ?>/beneficiary/requests">
+        <a href="<?php echo URLROOT; ?>/beneficiary/donation_req">
             <i class="bx bx-list-check"></i>
             <span class="links_name">Donation Requests</span>
           </a>
