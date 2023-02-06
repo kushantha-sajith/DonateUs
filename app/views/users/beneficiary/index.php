@@ -76,7 +76,7 @@
           <div class="notification">
             <i class="bx bx-bell bx-tada notification"></i>
           </div>
-            <img src="<?php echo URLROOT; ?>/img/profile_pic.svg" alt="" />
+            <img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" />
           <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
           <!-- <i class='bx bx-chevron-down'></i> -->
         </div>

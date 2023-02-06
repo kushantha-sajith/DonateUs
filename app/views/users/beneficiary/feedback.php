@@ -31,7 +31,7 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo URLROOT; ?>/pages/donation_requests_donor">
+          <a href="#">
             <i class="bx bx-list-check"></i>
             <span class="links_name">Donation Requests</span>
           </a>

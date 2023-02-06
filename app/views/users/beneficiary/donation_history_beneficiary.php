@@ -31,13 +31,13 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo URLROOT; ?>/pages/donation_requests_donor">
+          <a href="#">
             <i class="bx bx-list-check"></i>
             <span class="links_name">Donation Requests</span>
           </a>
         </li>
         <li>
-        <a href="<?php echo URLROOT; ?>/donor/donationHistory_donor">
+          <a href="<?php echo URLROOT; ?>/donor/donationHistory_donor">
             <i class="bx bx-history"></i>
             <span class="links_name">Donation History</span>
           </a>
@@ -81,7 +81,7 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bx-menu sidebarBtn"></i>
-          <span class="dashboard">Feedback</span>
+          <span class="dashboard">Dashboard</span>
         </div>
         
         <div class="profile-details">
@@ -94,29 +94,48 @@
         </div>
       </nav>
       <div class="main-container">
-     
-      
+      <div>
+        <h1>History</h1>
+      </div>
+      <div>
+      <div class="tab" >
                         
-                        <div class="profile">
-                      <h1>Leave Feedback</h1>
-                      <form action="<?php echo URLROOT; ?>/donor/submit_feedback" method="POST">
-                      <table class="prof_data" >
-                        <tr><td><p class="error"></p></td></tr>
-                        <tr><td>
-                            
-                            <textarea class="feedback" id="desc" name="desc" placeholder="Type here..." rows="17" cols="100" > <?php echo $data['desc']; ?> </textarea></td>
-                        </tr>
-                        
-                      </table>
-                      <input class="btndelete" type="submit" value="Submit">
-                      </form>
+                        <button class="tablinks" onload="btnActivate()" onclick="openTab(event, 'Individual')">Pending</button>
+                        <button class="tablinks" onclick="openTab(event, 'Corporate')">Completed</button>
                     </div>
+                    <div class="tabcontent">
+                    <table class="main-table">
+          <thead>
+            <th colspan="2" style="text-align:left;"><span>Id</span></th>
+            <th colspan="2" style="text-align:left;"><span>Request</span></th>
+            <th colspan="2" style="text-align:left;"><span>Request Id</span></th>
+            <th colspan="2" style="text-align:left;"><span>Type</span></th>
+            <th colspan="2" style="text-align:left;"><span>Amount<br>/Quantity</span></th>
+            <th colspan="2" style="text-align:left;"><span>Date</span></th>
+            <th colspan="2" style="text-align:left;"><span>Category</span></th>
+            <th colspan="2" style="text-align:left;"><span></span></th>
+            <th colspan="2" style="text-align:left;"><span>Status</span></th>
+          </thead>
+          <tbody>
+            
+            <tr class="t-row">
+              <td colspan="2" style="text-align:left;">1</td>
+              <td colspan="2" style="text-align:left;">aaaaaaaaaaaaaaaaaaaaaaa<br>aaaaaaaaaaaaaaaaaaaaaa</td>
+              <td colspan="2" style="text-align:left;">1</td>
+              <td colspan="2" style="text-align:left;">Non-Financial</td>
+              <td colspan="2" style="text-align:left;">45</td>
+              <td colspan="2" style="text-align:left;">14/12/2022</td>
+              <td colspan="2" style="text-align:left;">Medicine</td>
+              <td colspan="2" style="text-align:left;"><a href="<?php echo URLROOT; ?>/donor/feedback"><button class="btnfeedback">Feedback</button></a></td>
+              <td colspan="2" style="text-align:left;">Completed</td>
+            </tr>
+          
+          </tbody>
+        </table>
+
+      </div>
                     
                 </div>
-
-                        
-                    
-                
       </div>
     </section>
     <!--home section end-->

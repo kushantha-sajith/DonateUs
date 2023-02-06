@@ -31,7 +31,7 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo URLROOT; ?>/pages/donation_requests_donor">
+          <a href="#">
             <i class="bx bx-list-check"></i>
             <span class="links_name">Donation Requests</span>
           </a>
@@ -81,7 +81,7 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bx-menu sidebarBtn"></i>
-          <span class="dashboard">Feedback</span>
+          <span class="dashboard">Dashboard</span>
         </div>
         
         <div class="profile-details">
@@ -94,29 +94,13 @@
         </div>
       </nav>
       <div class="main-container">
-     
+      <div>
+        <h1>Success</h1>
+      </div>
+      <div>
       
-                        
-                        <div class="profile">
-                      <h1>Leave Feedback</h1>
-                      <form action="<?php echo URLROOT; ?>/donor/submit_feedback" method="POST">
-                      <table class="prof_data" >
-                        <tr><td><p class="error"></p></td></tr>
-                        <tr><td>
-                            
-                            <textarea class="feedback" id="desc" name="desc" placeholder="Type here..." rows="17" cols="100" > <?php echo $data['desc']; ?> </textarea></td>
-                        </tr>
-                        
-                      </table>
-                      <input class="btndelete" type="submit" value="Submit">
-                      </form>
-                    </div>
                     
                 </div>
-
-                        
-                    
-                
       </div>
     </section>
     <!--home section end-->
@@ -135,6 +119,21 @@
           welcome.style.display = "block";
         }
       };
+
+      var modal = document.getElementById("modal");
+      var btn = document.getElementById("add");
+      var span = document.getElementsByClassName("close")[0];
+      btn.onclick = function() {
+        modal.style.display = "block";
+      }
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
     </script>
   </body>
 </html>
