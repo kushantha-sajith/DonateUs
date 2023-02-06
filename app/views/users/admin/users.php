@@ -5,7 +5,11 @@
   <meta charset="UTF-8" />
   <title>Dashboard</title>
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
+  <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_user.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
   <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
@@ -32,173 +36,40 @@
       </div>
     </nav>
     <div class="main-container">
-      <div class="tabset">
-        <!-- Tab 1 -->
-        <input type="radio" name="tabset" id="tab1" aria-controls="donors" checked />
-        <label for="tab1">Donors</label>
-        <!-- Tab 2 -->
-        <input type="radio" name="tabset" id="tab2" aria-controls="beneficiaries" />
-        <label for="tab2">Beneficiaries</label>
-        <!-- Tab 3 -->
-        <input type="radio" name="tabset" id="tab3" aria-controls="eventOrg" />
-        <label for="tab3">Event Organizers</label>
 
-        <div class="tabpanels">
-          <section id="donors" class="tab">
-            <p>Filter by :</p>
-            <table class="main-table t-table">
-              <thead>
-                <th>Id</th>
-                <th>Full Name/Company Name</th>
-                <th>Contact No.</th>
-                <th>Email</th>
-                <th>Status</th>
-                <th>City</th>
-                <th>Donor Type</th>
-                <th></th>
-              </thead>
-              <tbody>
-                 <?php foreach($data['users'] as $users) : ?>
-                <tr class="t-row">
-                  <td style="width: 10px;"><?php echo $users->id; ?></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>
-                    <a href="#"><i class="bx bx-trash"></i></a>
-                  </td>
-                </tr>
-                 <?php endforeach; ?>
-              </tbody>
-            </table>
-          </section>
+        <div class="select-menu">
+            <div class="select-btn">
+                <span class="sBtn-text">Select User Type</span>
+                <i class="bx bx-chevron-down"></i>
+            </div>
 
-          <section id="beneficiaries" class="tab">
-            <h3>Verify Beneficiaries :</h3>
-            <a href="#" class="">View All</a>
-            <table class="main-table t-table">
-              <thead>
-                <th>Id</th>
-                <th>Full Name/Company Name</th>
-                <th>Contact No.</th>
-                <th>Email</th>
-                <th>Address</th>
-                <th>Beneficiary Type</th>
-                <th></th>
-              </thead>
-              <tbody>
-                <!-- <?php foreach($data['categories'] as $categories) : ?> -->
-                <tr class="t-row">
-                  <td style="width: 10px;"><!--<?php echo $categories->id; ?>--></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>
-                    <a href="#">View More</a>
-                  </td>
-                </tr>
-                <!-- <?php endforeach; ?> -->
-              </tbody>
-            </table>
-            <h3>Beneficiaries :</h3>
-            <a href="#" class="">View All</a>
-            <table class="main-table t-table">
-              <thead>
-                <th>Id</th>
-                <th>Full Name/Company Name</th>
-                <th>Contact No.</th>
-                <th>Email</th>
-                <th>Status</th>
-                <th>City</th>
-                <th>Beneficiary Type</th>
-                <th></th>
-              </thead>
-              <tbody>
-                <!-- <?php foreach($data['categories'] as $categories) : ?> -->
-                <tr class="t-row">
-                  <td style="width: 10px;"><!--<?php echo $categories->id; ?>--></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>
-                    <a href="#"><i class="bx bx-trash"></i></a>
-                  </td>
-                </tr>
-                <!-- <?php endforeach; ?> -->
-              </tbody>
-            </table>
-          </section>
-
-          <section id="eventOrg" class="tab">
-            <h3>Verify Event Organizers :</h3>
-            <a href="#" class="">View All</a>
-            <table class="main-table t-table">
-              <thead>
-                <th>Id</th>
-                <th>Full Name</th>
-                <th>Contact No.</th>
-                <th>Email</th>
-                <th>Address</th>
-                <th>Community Name</th>
-                <th></th>
-              </thead>
-              <tbody>
-                <!-- <?php foreach($data['categories'] as $categories) : ?> -->
-                <tr class="t-row">
-                  <td style="width: 10px;"><!--<?php echo $categories->id; ?>--></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>
-                    <a href="#">View More</a>
-                  </td>
-                </tr>
-                <!-- <?php endforeach; ?> -->
-              </tbody>
-            </table>
-            <h3>Event Organizers :</h3>
-            <a href="#" class="">View All</a>
-            <table class="main-table t-table">
-              <thead>
-                <th>Id</th>
-                <th>Full Name</th>
-                <th>Contact No.</th>
-                <th>Email</th>
-                <th>Status</th>
-                <th>Community Name</th>
-                <th>Designation</th>
-                <th></th>
-              </thead>
-              <tbody>
-                <!-- <?php foreach($data['categories'] as $categories) : ?> -->
-                <tr class="t-row">
-                  <td style="width: 10px;"><!--<?php echo $categories->id; ?>--></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>
-                    <a href="#"><i class="bx bx-trash"></i></a>
-                  </td>
-                </tr>
-                <!-- <?php endforeach; ?> -->
-              </tbody>
-            </table>
-          </section>
+            <ul class="options">
+                <a href="<?php echo URLROOT;?>/adminPages/donors" style="text-decoration:none">
+                    <li class="option">
+                            <span class="material-icons" style="color:#111e88; margin-right: 1rem;">
+                                volunteer_activism
+                            </span>
+                        <span class="option-text">Donors</span>
+                    </li>
+                </a>
+                <a href="<?php echo URLROOT;?>/adminPages/beneficiaries" style="text-decoration:none">
+                    <li class="option">
+                            <span class="material-icons" style="color:#111e88; margin-right: 1rem;">
+                                perm_identity
+                            </span>
+                        <span class="option-text">Beneficiaries</span>
+                    </li>
+                </a>
+                <a href="<?php echo URLROOT;?>/adminPages/organizers" style="text-decoration:none">
+                    <li class="option">
+                            <span class="material-icons" style="color: #111e88; margin-right: 1rem;">
+                                emoji_events
+                            </span>
+                        <span class="option-text">Event Organizers</span>
+                    </li>
+                </a>
+            </ul>
         </div>
-      </div>
     </div>
   </section>
   <!--home section end-->

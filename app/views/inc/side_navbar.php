@@ -5,9 +5,9 @@
         <!--        <span class="logo_name">Dashboard</span>-->
         <img src="<?php echo URLROOT; ?>/img/logo_.png" alt="logo" class="logo"/>
     </div>
-    <div class="welcome">
-        <span>Welcome</span>
-    </div>
+<!--    <div class="welcome">-->
+<!--        <span>Welcome</span>-->
+<!--    </div>-->
     <ul class="nav-links">
         <li>
             <a href="<?php echo URLROOT; ?>/pages/admin">
@@ -22,7 +22,13 @@
             </a>
         </li>
         <li>
-            <a href="<?php echo URLROOT; ?>/admin/donationRequests">
+            <a href="<?php echo URLROOT; ?>/admin/users">
+                <i class="bx bx-user"></i>
+                <span class="links_name">Verify New Users</span>
+            </a>
+        </li>
+        <li>
+            <a href="<?php echo URLROOT; ?>/adminPages/pendingRequests">
                 <i class="bx bx-list-check"></i>
                 <span class="links_name">Donation Requests</span>
             </a>
@@ -58,7 +64,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="<?php echo URLROOT; ?>/admin/stats">
                 <i class="bx bx-pie-chart-alt"></i>
                 <span class="links_name">Stats</span>
             </a>

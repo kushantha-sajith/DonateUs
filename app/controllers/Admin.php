@@ -14,9 +14,7 @@
          * @return void
          */
         public function index(){
-
             $data = [];
-
             $this->view('users/admin/index', $data);
         }
 
@@ -31,7 +29,7 @@
               'categories' => $categories
             ];
       
-            $this -> view('users/admin/categories', $data);
+            $this->view('users/admin/categories', $data);
           }
 
           //add method of categories
@@ -145,6 +143,9 @@
                 }
         }
 
+        /**
+         * @return void
+         */
         public function users(){
             $users = $this->adminModel->getUsers();
             $categories = $this->adminModel->getCategories();
@@ -157,18 +158,45 @@
             $this->view('users/admin/users', $data);
         }
 
+        /**
+         * @return void
+         */
         public function donationRequests(){
+            $donationRequests = $this->adminModel->getDonationRequests();
+            $categories = $this->adminModel->getCategories();
             $data = [
+                'title' => 'Donation Requests',
+                'donationRequests' => $donationRequests,
+                'categories' => $categories
             ];
 
-            $this->view('users/admin/donation_request', $data);
+            $this->view('users/admin/donationRequest', $data);
         }
 
+        /**
+         * @return void
+         */
         public function events(){
+            $events = $this->adminModel->getEvents();
+            $categories = $this->adminModel->getCategories();
             $data = [
+                'title' => 'Events',
+                'events' => $events,
+                'categories' => $categories
             ];
 
             $this->view('users/admin/events', $data);
+        }
+
+        /**
+         * @return void
+         */
+        public function stats(){
+            $data = [
+                'title' => 'Statistics'
+            ];
+
+            $this->view('users/admin/stats', $data);
         }
     }
 
