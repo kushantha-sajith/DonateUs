@@ -343,6 +343,7 @@ nav .profile-details i {
     border-bottom: 0;
     cursor: pointer;
     font-weight: 600;
+    display: inline-flex;
 }
 
 .tabset > label:hover,
@@ -651,6 +652,29 @@ a {
 }
 
 .tb{
+    padding: 10px;
+}
+
+.chart {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.chart1{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.chart2{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+canvas{
     padding: 10px;
 }
 

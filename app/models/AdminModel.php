@@ -78,8 +78,9 @@
         }
 
         // Find user by email
+
         /**
-         * @param $email
+         * @param $category_name
          * @return bool
          */
         public function findCategoryByName($category_name){
@@ -99,6 +100,18 @@
 
         public function getUsers(){
             $this->db->query('SELECT * FROM reg_user');
+            $results = $this->db->resultSet();
+            return $results;
+        }
+
+        public function getDonationRequests(){
+            $this->db->query('SELECT * FROM donation_req');
+            $results = $this->db->resultSet();
+            return $results;
+        }
+
+        public function getEvents(){
+            $this->db->query('SELECT * FROM events');
             $results = $this->db->resultSet();
             return $results;
         }
