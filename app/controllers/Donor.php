@@ -7,59 +7,81 @@
             }
 */
             $this->donorModel = $this->model('DonorModel');
-            
+            $this->userModel = $this->model('User');
         }
 
-        //load admin dashboard
+        //load donor dashboard
         /**
          * @return void
          */
         public function index(){
 
-            $data = [];
+            if(isset($_SESSION['user_id'])){
 
-            $this->view('users/admin/index', $data);
+              $id = $_SESSION['user_id'];
+
+              $userdata = $this->donorModel->getUserData($id);
+              foreach($userdata as $user) :
+                $image_name = $user-> prof_img;
+              endforeach;  
+              $data = [
+              'title' => 'Dashboard',
+              'prof_img' => $image_name        
+          ];
+    
+          $this->view('users/donor/index', $data);
+          }else{
+              $this->view('users/login_donor', $data);
+          }
         }
 
-        //load profile page
+          
+
         /**
          * @return void
          */
-        public function profile_donor(){
+        public function update_profile_donor(){
 
-            if(isset($_SESSION['user_id'])){
-
-                $id = $_SESSION['user_id'];
-
-                $userdata = $this->donorModel->getUserData($id);
-                $data = [
-                'title' => 'Profile',
-                'userdata' => $userdata         
+          $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING); 
+  
+          $otp_code = rand(100000,999999);
+          $verification_status = 1;
+          $type = $_SESSION['user_type'];
+          $id = $_SESSION['user_id'];
+          $districts = $this->userModel->getDistricts();
+  
+          // Init data
+          $data =[
+            'f_name' => trim($_POST['f_name']),
+            'l_name' => trim($_POST['l_name']),
+            'comp_name' => trim($_POST['comp_name']),
+            'contact_ind' => trim($_POST['contact_ind']),
+            'city' => trim($_POST['city']),
+            'district' => trim($_POST['district']),
+            'emp_name' => trim($_POST['emp_name']),
+            'emp_id' => trim($_POST['emp_id']),
+            'desg' => trim($_POST['desg']),
+            'contact_corp' => trim($_POST['contact_corp']),
+            'type' => $type,
+            'id' => $id
             ];
-      
-            $this->view('users/donor/profile_donor', $data);
+    
+          
+            if($this->donorModel->update_profile_donor($data)){
+              redirect('pages/profile_donor');
             }else{
-                $this->view('users/login_donor', $data);
+              redirect('pages/edit_profile_donor');
             }
             
-          }
-
+            
+  
+        }
 
 
         
-        //load donation_history page
-        /**
-         * @return void
-         */
-        public function donationHistory_donor(){
-            $data = [
-              'title' => 'Donation History'
-            ];
-      
-            $this->view('users/donor/donation_history_donor', $data);
-          }
+        
+        
 
-          //load feedback page
         /**
          * @return void
          */
@@ -73,8 +95,8 @@
             $this->view('users/donor/feedback', $data);
           }
 
-            //load all feedback page
-        /**
+           
+         /**
          * @return void
          */
         public function all_feedback(){
@@ -84,7 +106,7 @@
       
             $this->view('users/donor/all_feedback', $data);
           }
-            //add feedback page
+          
         /**
          * @return void
          */
@@ -128,7 +150,7 @@
         }
 
 
-        //load categories page
+        
         /**
          * @return void
          */
@@ -142,7 +164,7 @@
             $this -> view('users/admin/categories', $data);
           }
 
-          //add method of categories
+         
         /**
          * @return void
          */
@@ -185,7 +207,7 @@
             }
         }
 
-        //edit method of categories
+        
         /**
          * @param $id
          * @return void
@@ -234,7 +256,7 @@
             }
         }
 
-        //delete method of categories
+        
         /**
          * @param $id
          * @return void
@@ -246,210 +268,4 @@
                     die('Something went wrong');
                 }
         }
-//------------------------------------------------------------------------------------------edit this
-        public function updateProfile($type){
-
-            $type1 = "ind";
-      
-                 // Check for POST
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
-              // Process form
-        
-              // Sanitize POST data
-              $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-      
-              $verification_status = 0;
-              $otp_code = rand(100000,999999);
-      
-              // Init data
-              if(strcmp($type,$type1) == 0 ){
-                $data =[
-                  'email' => trim($_POST['email']),
-                  'password' => trim($_POST['password']),
-                  'confirm_password' => trim($_POST['confirm_password']),
-                  'fname' => trim($_POST['fname']),
-                  'lname' => trim($_POST['lname']),
-                  'contact' => trim($_POST['contact']),
-                  'city' => trim($_POST['city']),
-                  'compname' => 'null',
-                  'desg' =>'null',
-                  'empid' =>'null'
-                ];
-      
-                
-              // Validate Email
-              if(empty($data['email'])){
-                $data['email_err'] = 'Please enter email';
-              } else {
-                // Check email
-                if($this->userModel->findUserByEmail($data['email'])){
-                  $data['email_err'] = 'Email is already taken';
-                }
-              }
-      
-              // Validate Password
-              if(empty($data['password'])){
-                $data['password_err'] = 'Please enter password';
-              } elseif(strlen($data['password']) < 6){
-                $data['password_err'] = 'Password must be at least 6 characters';
-              }
-      
-              // Validate Confirm Password
-              if(empty($data['confirm_password'])){
-                $data['confirm_password_err'] = 'Please confirm password';
-              } else {
-                if($data['password'] != $data['confirm_password']){
-                  $data['confirm_password_err'] = 'Passwords do not match';
-                }
-              }
-      
-              //validate other fieldds
-              if(empty($data['fname'])){
-                $data['other_err'] = 'Required';
-              }
-              if(empty($data['lname'])){
-                $data['other_err'] = 'Required';
-              }
-              if(empty($data['contact'])){
-                $data['other_err'] = 'Required';
-              }
-              if(empty($data['city'])){
-                $data['other_err'] = 'Required';
-              }
-      
-              // Make sure errors are empty
-              if(empty($data['email_err']) && empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['other_err'])){
-                // Validated
-                
-                // Hash Password
-                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-      
-                // Register User
-                if($this->userModel->register($data)){
-                    
-                    $email = new Email($data['email']);
-                    $email->sendVerificationEmail($data['email'], $otp_code);
-                    redirect('users/verify');
-                } else {
-                  die('Something went wrong');
-                }
-      
-              } else {
-                // Load view with errors
-                $this->view('users/register', $data);
-              }
-      
-              }else{
-                $data =[
-                  'email' => trim($_POST['email']),
-                  'password' => trim($_POST['password']),
-                  'confirm_password' => trim($_POST['confirm_password']),
-                  'compname' => trim($_POST['compname']),
-                  'contact' => trim($_POST['contact']),
-                  'empid' => trim($_POST['empid']),
-                  'desg' => trim($_POST['desg']),
-                  'fname' => 'null',
-                  'lname' => 'null',
-                  'city' => 'null',
-                  'verification_status' => $verification_status,
-                  'otp_code' => $otp_code,
-                  'user_type' => 'corporate',
-                  'email_err' => '',
-                  'password_err' => '',
-                  'confirm_password_err' => '',
-                  'other_err' => ''
-                ];
-      
-                
-              // Validate Email
-              if(empty($data['email'])){
-                $data['email_err'] = 'Please enter email';
-              } else {
-                // Check email
-                if($this->userModel->findUserByEmail($data['email'])){
-                  $data['email_err'] = 'Email is already taken';
-                }
-              }
-      
-              // Validate Password
-              if(empty($data['password'])){
-                $data['password_err'] = 'Please enter password';
-              } elseif(strlen($data['password']) < 6){
-                $data['password_err'] = 'Password must be at least 6 characters';
-              }
-      
-              // Validate Confirm Password
-              if(empty($data['confirm_password'])){
-                $data['confirm_password_err'] = 'Please confirm password';
-              } else {
-                if($data['password'] != $data['confirm_password']){
-                  $data['confirm_password_err'] = 'Passwords do not match';
-                }
-              }
-      
-              //validate other fieldds
-              if(empty($data['contact'])){
-                $data['other_err'] = 'Required';
-              }
-              if(empty($data['compname'])){
-                $data['other_err'] = 'Required';
-              }
-              if(empty($data['desg'])){
-                $data['other_err'] = 'Required';
-              }
-              if(empty($data['empid'])){
-                $data['other_err'] = 'Required';
-              }
-      
-              // Make sure errors are empty
-              if(empty($data['email_err']) && empty($data['password_err']) && empty($data['confirm_password_err']) && empty($data['other_err'])){
-                // Validated
-                
-                // Hash Password
-                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-      
-                // Register User
-                if($this->userModel->register($data)){
-                    
-                    $email = new Email($data['email']);
-                    $email->sendVerificationEmail($data['email'], $otp_code);
-                    redirect('users/verify');
-                } else {
-                  die('Something went wrong');
-                }
-      
-              } else {
-                // Load view with errors
-                $this->view('users/register', $data);
-              }
-              }
-              
-      
-      
-            } else {
-              // Init data
-              $data =[
-                'email' => '',
-                'password' => '',
-                'confirm_password' => '',
-                'fname' => '',
-                'lname' => '',
-                'compname' => '',
-                'empid' => '',
-                'desg' => '',
-                'contact' => '',
-                'city' => '',
-                'email_err' => '',
-                'password_err' => '',
-                'confirm_password_err' => '',
-                'other_err' => ''
-              ];
-      
-              // Load view
-              $this->view('users/register', $data);
-            }
-          
-          }
-    }
-
-    
+      }

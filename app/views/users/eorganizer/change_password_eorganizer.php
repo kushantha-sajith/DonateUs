@@ -5,6 +5,8 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/stylesdash.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/profile.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/changepassword.css" />
     <link
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
       rel="stylesheet"
@@ -31,13 +33,13 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo URLROOT; ?>/pages/donation_requests_donor">
+          <a href="#">
             <i class="bx bx-list-check"></i>
             <span class="links_name">Donation Requests</span>
           </a>
         </li>
         <li>
-        <a href="<?php echo URLROOT; ?>/donor/donationHistory_donor">
+        <a href="<?php echo URLROOT; ?>/pages/donationHistory_donor">
             <i class="bx bx-history"></i>
             <span class="links_name">Donation History</span>
           </a>
@@ -66,6 +68,18 @@
             <span class="links_name">Reservations</span>
           </a>
         </li>
+        <li id="item1">
+          <a href="#">
+            <i class="bx bxs-report"></i>
+            <span class="links_name">Sponsor</span>
+          </a>
+        </li>
+        <li id="item2">
+          <a href="#">
+            <i class="bx bxs-report"></i>
+            <span class="links_name">Reports</span>
+          </a>
+        </li>
         <li class="log_out">
           <a href="<?php echo URLROOT; ?>/users/logout">
             <i class="bx bx-log-out"></i>
@@ -81,47 +95,65 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bx-menu sidebarBtn"></i>
-          <span class="dashboard">Feedback</span>
+          <span class="dashboard">Profile</span>
         </div>
         
         <div class="profile-details">
           <div class="notification">
             <i class="bx bx-bell bx-tada notification"></i>
           </div>
-            <a href="<?php echo URLROOT; ?>/donor/profile_donor"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
+          
+            <a href="<?php echo URLROOT; ?>/pages/profile_eorganizer"><img src="<?php echo URLROOT; ?>/img/<?php echo $data['prof_img'];  ?>" alt="" /></a>
           <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
           <!-- <i class='bx bx-chevron-down'></i> -->
         </div>
       </nav>
-      <div class="main-container">
-     
-      
-                        
-                        <div class="profile">
-                      <h1>Leave Feedback</h1>
-                      <form action="<?php echo URLROOT; ?>/donor/submit_feedback" method="POST">
-                      <table class="prof_data" >
-                        <tr><td><p class="error"></p></td></tr>
-                        <tr><td>
-                            
-                            <textarea class="feedback" id="desc" name="desc" placeholder="Type here..." rows="17" cols="100" > <?php echo $data['desc']; ?> </textarea></td>
-                        </tr>
-                        
-                      </table>
-                      <input class="btndelete" type="submit" value="Submit">
-                      </form>
-                    </div>
-                    
-                </div>
+      <main>
+            <div class="container">
+                <header>Change Password</header>
 
-                        
-                    
-                
-      </div>
+                <form action="#">
+                    <div class="formfirst">
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>Old Password</label>
+                                <input type="text" placeholder="Enter Your Previous Password">
+                            </div>
+                            <div class="input-field">
+                                <label>New Password</label>
+                                <input type="text" placeholder="Enter Your New Password">
+                            </div>
+                            <div class="input-field">
+                                <label>Conform New Password</label>
+                                <input type="text" placeholder="Conform Your New Password">
+                            </div>
+
+                        </div>
+
+
+                        <button class="sumbit">
+                            <span class="btnText">Submit</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+
+
+                    </div>
+
+
+                </form>
+            </div>
+
+
+
+        </main>
+
     </section>
     <!--home section end-->
 
     <script>
+
+
+
       let sidebar = document.querySelector(".sidebar");
       let sidebarBtn = document.querySelector(".sidebarBtn");
       let welcome = document.querySelector(".welcome");

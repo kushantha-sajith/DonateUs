@@ -1,59 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
-    <title>Login</title>
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style1.css">
-</head>
-
-<body>
-
-    <div>
-        <div class="backgroundimg">
-            <img src="<?php echo URLROOT; ?>/img/background.png" alt="background">
-        </div>
-        <div class="image">
-            <img src="<?php echo URLROOT; ?>/img/login.png".png alt="Login Image" height="500px" width="500px">
-        </div>
-    </div>
-
-
-    <div class="forms-log-container">
-        <div class="signin-signup">
-            <form autocomplete="off" action="<?php echo URLROOT; ?>/users/login_beneficiary" class="sign-in-form" method="POST">
-            
-                <h1 class="title">Login</h1>
-                <br>
-                <div class="input-field">
-                    <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Useremail" name="email" value="<?php echo $data['email']; ?>">
-                </div>
-                <div class="error">
-                    <span><?php echo $data['email_err']; ?></span>
-                </div>
-                <div class="input-field ">
-                    <i class="fas fa-user "></i>
-                    <input type="password" placeholder="Password " name="password" value="<?php echo $data['password']; ?>">
-                </div>
-                <div class="error">
-                    <span><?php echo $data['password_err']; ?></span>
-                </div>
-                <br>
-                <input type="submit" value="Login" class="btn solid" > 
-                <br>
-                <p class="social-text">Don't have an Account? <a href="<?php echo URLROOT; ?>/users/register_beneficiary">SignUp here</a></p>
-
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/styles.css">
+    </head>
+    <body>
+        <section class="loginSec1">
+            <div class="top">
+                <img class="logo" src="<?php echo URLROOT; ?>/img/logo.png" alt="logo" href="">
+                <ul class="menu">
+                  <li class="menu"><a href="<?php echo URLROOT; ?>/users/register_beneficiary/gen">Register</a></li>
+                </ul>
+                <h1>DonateUs</h1>
+            </div>
+            <div class="log_left">
+                <img class="img_login" src="<?php echo URLROOT; ?>/img/img_login.png" alt="img_login">
+            </div>
+            <div class="log_right">
                 
-            </form>
+                <div class="form">
+                    <form class="position2" autocomplete="off" action="<?php echo URLROOT; ?>/users/login_beneficiary" method="POST">
+                        <h1>Login</h1>
+                        
+                        <label>User email</label>
+                        <input type="text" id="email" name="email" placeholder="example@gmail.com" value="<?php echo $data['email']; ?>">
+                        <p class="error"><?php echo $data['email_err']; ?></p>
 
+                        <label>Password</label>
+                        <input type="password" id="pword" name="password" placeholder="******" value="<?php echo $data['password']; ?>">
+                        <p class="error"><?php echo $data['password_err']; ?></p>
+                        <p><a href="">Forgot Password?</a></p>
 
-        </div>
-    </div>
+                        <input type="submit" value="Login">
 
-</body>
-
+                        <label> <a href="">New to DonatUs? Get Registered Now!</a></label>
+                        
+                    </form>
+                </div>
+            </div>
+        </section>
+    </body>
 </html>

@@ -32,7 +32,7 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo URLROOT; ?>/pages/donation_requests_donor">
+          <a href="#">
             <i class="bx bx-list-check"></i>
             <span class="links_name">Donation Requests</span>
           </a>
@@ -102,49 +102,47 @@
             <i class="bx bx-bell bx-tada notification"></i>
           </div>
           
-            <a href="<?php echo URLROOT; ?>/pages/profile_donor"><img src="<?php echo URLROOT; ?>/img/<?php echo $data['prof_img'];  ?>" alt="" /></a>
+            <a href="<?php echo URLROOT; ?>/pages/profile_eorganizer"><img src="<?php echo URLROOT; ?>/img/<?php echo $data['prof_img'];  ?>" alt="" /></a>
           <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
           <!-- <i class='bx bx-chevron-down'></i> -->
         </div>
       </nav>
       <main>
-            <div class="container">
+      <div class="container">
                 <header>Profile Details</header>
 
                 <form action="#">
                     <div class="formfirst">
                         <div class="details personal">
-                            <span id ="ind1"class="title"><u>Personal Details</u></span>
-                            <span id ="corp1"class="title"><u>Company Details</u></span>
+                            <span class="title"><u>Personal Details</u></span>
                             <div class="fields">
                             <?php foreach($data['userdata'] as $user) : ?>
                               <?php foreach($data['personaldata'] as $personaldata) : ?>
-                                <div id="ind2" class="input-field">
+                                <div class="input-field">
                                     <label>Full Name</label>
-                                    <input type="text" placeholder="<?php echo $personaldata->f_name." ".$personaldata->l_name; ?>" value="<?php echo $personaldata->f_name." ".$personaldata->l_name; ?>" disabled>
+                                    <input type="text" placeholder="<?php echo $personaldata->full_name ?>" disabled >
                                 </div>
-                                <div id="ind3" class="input-field">
+                                <div class="input-field">
                                     <label>NIC</label>
                                     <input type="text" placeholder="<?php echo $personaldata->NIC; ?>" disabled>
                                 </div>
-                                <div id="corp2" class="input-field">
-                                    <label>Company Name</label>
-                                    <input type="text" placeholder="<?php echo $personaldata->comp_name; ?>" disabled>
-                                </div>
-
-                                <div id="corp3" class="input-field">
-                                    <label>Email Address</label>
-                                    <input type="text" placeholder="<?php echo $user-> email; ?>" disabled>
-                                </div>
-
-                                <div id="ind4" class="input-field">
+                                
+                                <div class="input-field">
                                     <label>User Email</label>
                                     <input type="text" placeholder="<?php echo $user-> email; ?>" disabled>
                                 </div>
 
-                                <div id="ind5" class="input-field">
+                                <div class="input-field">
                                     <label>Contact Number</label>
                                     <input type="text" placeholder="<?php echo $user->tp_number; ?>" disabled>
+                                </div>
+                                <div class="input-field">
+                                    <label>Community Name</label>
+                                    <input type="text" placeholder="<?php echo $personaldata->community_name; ?>" disabled>
+                                </div>
+                                <div class="input-field">
+                                    <label>Designation</label>
+                                    <input type="text" placeholder="<?php echo $personaldata->designation; ?>" disabled>
                                 </div>
                                 <div class="input-field">
                                     <label>City</label>
@@ -154,67 +152,21 @@
                                     <label>District</label>
                                     <input type="text" placeholder="<?php echo $data['dist']; ?>" disabled>
                                 </div>
-                              </div>
-                              <span id ="corp4" class="title"><u>Contact Person Details</u></span>
-                              <div id="corp9" class="fields">
-                                
-                                <div id ="corp5" class="input-field">
-                                    <label>Full Name</label>
-                                    <input type="text" placeholder="<?php echo $personaldata->emp_name; ?>" disabled>
-                                </div>
-                                <div id ="corp6" class="input-field">
-                                    <label>Employee ID</label>
-                                    <input type="text" placeholder="<?php echo $personaldata->emp_id; ?>" disabled>
-                                </div>
-                                <div id ="corp7" class="input-field">
-                                    <label>Designation</label>
-                                    <input type="text" placeholder="<?php echo $personaldata->designation; ?>" disabled>
-                                </div>
-                                <div id ="corp8" class="input-field">
-                                    <label>Contact Number</label>
-                                    <input type="text" placeholder="<?php echo $user->tp_number; ?>" disabled>
-                                </div>
+                                                              
                                 <?php endforeach; ?>
                                 <?php endforeach; ?>
                             </div>
                         </div>
-                        <!-- <span class="title"><u>Change Profile Picture</u></span>
-
-                        <div class="photo-container">
-                            <input type="file" id="file" accept="image/*" hidden>
-                            <div class="img-area" data-img="">
-                                <i class='bx bxs-cloud-upload icon'></i>
-                                <h3>Upload Image</h3>
-                            </div>
-                            <button class="select-image">Select Image</button>
-                        </div>
-
-                        <span class="title"><u> Change Password</u></span>
-                        <div class="fields">
-                            <div class="input-field">
-                                <label>Old Password</label>
-                                <input type="text" placeholder="Enter Your Previous Password">
-                            </div>
-                            <div class="input-field">
-                                <label>New Password</label>
-                                <input type="text" placeholder="Enter Your New Password">
-                            </div>
-                            <div class="input-field">
-                                <label>Conform New Password</label>
-                                <input type="text" placeholder="Conform Your New Password">
-                            </div> -->
-
-                        <!-- </div> -->
-                       
+                        
                     </div>
                 </form>
                 <div class="updatebtn">
-                    <a href="<?php echo URLROOT; ?>/pages/edit_profile_donor">
+                    <a href="<?php echo URLROOT; ?>/pages/edit_profile_eorganizer">
                         <button class="edit" style="text-decoration: none;">Edit Profile Details
                         </button>
                     </a>
 
-                    <a href="<?php echo URLROOT; ?>/pages/change_password_donor">
+                    <a href="<?php echo URLROOT; ?>/pages/change_password_eorganizer">
                         <button class="changepassword" style="text-decoration: none;">Change Password</button>
                     </a>
 
@@ -233,53 +185,7 @@
 
     <script>
 
-window.onload = function () {
-        let type = "<?php echo $_SESSION['user_type']; ?>";
-        // let individual ="ind", corporate ="corp";
 
-        // let ind = document.getElementsById(individual);
-        // let corp = document.getElementsById(corporate);
-
-        // let i,j; 
-        // if(type === "3" ){
-          
-        // for (i = 0; i < ind.length; i++) {
-        //     ind[i].style.display = "none";
-        // }
-        
-        // for (j = 0; j < corp.length; j++) {
-        //     corp[j].style.display = "block";
-        // }
-         
-        // }else{
-
-        //   for (i = 0; i < ind.length; i++) {
-        //     ind[i].style.display = "block";
-        // }
-        
-        // for (j = 0; j < corp.length; j++) {
-        //     corp[j].style.display = "none";
-        // }
-        // }
-        if(type === "3" ){
-          document.getElementById("ind1").style.display = "none";
-          document.getElementById("ind2").style.display = "none";
-          document.getElementById("ind3").style.display = "none";
-          document.getElementById("ind4").style.display = "none";
-          document.getElementById("ind5").style.display = "none";
-        }
-        else{
-          document.getElementById("corp1").style.display = "none";
-          document.getElementById("corp2").style.display = "none";
-          document.getElementById("corp3").style.display = "none";
-          document.getElementById("corp4").style.display = "none";
-          document.getElementById("corp5").style.display = "none";
-          document.getElementById("corp6").style.display = "none";
-          document.getElementById("corp7").style.display = "none";
-          document.getElementById("corp8").style.display = "none";
-          document.getElementById("corp9").style.display = "none";
-        }
-      };
 
       let sidebar = document.querySelector(".sidebar");
       let sidebarBtn = document.querySelector(".sidebarBtn");

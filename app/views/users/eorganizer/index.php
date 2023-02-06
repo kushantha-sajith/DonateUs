@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <title>Dashboard</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/stylesdash.css" />
     <link
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
       rel="stylesheet"
@@ -17,7 +16,7 @@
     <div class="sidebar">
       <div class="logo-details">
         <i class="bx bx-grid-alt"></i>
-        <!-- <h1><?php echo $data['title']; ?></h1> -->
+       
         <span class="logo_name">Dashboard</span>
       </div>
       <div class="welcome">
@@ -31,13 +30,13 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo URLROOT; ?>/pages/donation_requests_donor">
+          <a href="#">
             <i class="bx bx-list-check"></i>
             <span class="links_name">Donation Requests</span>
           </a>
         </li>
         <li>
-        <a href="<?php echo URLROOT; ?>/donor/donationHistory_donor">
+          <a href="<?php echo URLROOT; ?>/pages/donationHistory_donor">
             <i class="bx bx-history"></i>
             <span class="links_name">Donation History</span>
           </a>
@@ -60,10 +59,16 @@
             <span class="links_name">Stats</span>
           </a>
         </li>
-        <li>
+        <li >
           <a href="#">
             <i class="bx bxs-report"></i>
-            <span class="links_name">Reservations</span>
+            <span class="links_name">Sponsor</span>
+          </a>
+        </li>
+        <li >
+          <a href="#">
+            <i class="bx bxs-report"></i>
+            <span class="links_name">Reports</span>
           </a>
         </li>
         <li class="log_out">
@@ -81,47 +86,40 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bx-menu sidebarBtn"></i>
-          <span class="dashboard">Feedback</span>
+          <span class="dashboard">Dashboard</span>
         </div>
         
         <div class="profile-details">
           <div class="notification">
             <i class="bx bx-bell bx-tada notification"></i>
           </div>
-            <a href="<?php echo URLROOT; ?>/donor/profile_donor"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
+            <a href="<?php echo URLROOT; ?>/pages/profile_eorganizer"><img src="<?php echo URLROOT; ?>/img/<?php echo $data['prof_img'];  ?>" alt="" /></a>
           <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
           <!-- <i class='bx bx-chevron-down'></i> -->
         </div>
       </nav>
       <div class="main-container">
-     
-      
-                        
-                        <div class="profile">
-                      <h1>Leave Feedback</h1>
-                      <form action="<?php echo URLROOT; ?>/donor/submit_feedback" method="POST">
-                      <table class="prof_data" >
-                        <tr><td><p class="error"></p></td></tr>
-                        <tr><td>
-                            
-                            <textarea class="feedback" id="desc" name="desc" placeholder="Type here..." rows="17" cols="100" > <?php echo $data['desc']; ?> </textarea></td>
-                        </tr>
-                        
-                      </table>
-                      <input class="btndelete" type="submit" value="Submit">
-                      </form>
-                    </div>
-                    
-                </div>
-
-                        
-                    
-                
+        <h1>Welcome Event Organizer</h1>
       </div>
     </section>
     <!--home section end-->
 
     <script>
+      /*window.onload = function () {
+        
+        let type = "<?php echo $_SESSION['user_type']; ?>";
+        let menuitem1 = document.getElementById("item1");
+        let menuitem2 = document.getElementById("item2");
+        if(type === "3" ){
+          menuitem1.style.display = "block";
+          menuitem2.style.display = "block";
+        }else{
+          menuitem1.style.display = "none";
+          menuitem2.style.display = "none";
+        }
+        
+      };*/
+
       let sidebar = document.querySelector(".sidebar");
       let sidebarBtn = document.querySelector(".sidebarBtn");
       let welcome = document.querySelector(".welcome");
@@ -135,6 +133,8 @@
           welcome.style.display = "block";
         }
       };
+
+      
     </script>
   </body>
 </html>

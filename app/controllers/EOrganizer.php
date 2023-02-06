@@ -1,75 +1,55 @@
 <?php
 
-    class beneficiary extends Controller{
+    class Donor extends Controller{
         public function __construct(){
             /*if(!isLoggedIn()){
                 redirect('users/login');
             }
 */
-            $this->beneficiaryModel = $this->model('BeneficiaryModel');
+            $this->donorModel = $this->model('DonorModel');
             
         }
 
-        // //load admin dashboard
-        // /**
-        //  * @return void
-        //  */
-        // public function index(){
-
-        //     $data = [];
-
-        //     $this->view('users/admin/index', $data);
-        // }
-
-        //load profile page
+        //load donor dashboard
         /**
          * @return void
          */
-        public function profile_beneficiary(){
+        public function index(){
 
             if(isset($_SESSION['user_id'])){
 
-                $id = $_SESSION['user_id'];
+              $id = $_SESSION['user_id'];
 
-                $userdata = $this->beneficiaryModel->getUserData($id);
-                $data = [
-                'title' => 'Profile',
-                'userdata' => $userdata         
-            ];
-      
-            $this->view('users/beneficiary/profile_beneficiary', $data);
-            }else{
-                $this->view('users/login_beneficiary', $data);
-            }
-            
+              $userdata = $this->donorModel->getUserData($id);
+              foreach($userdata as $user) :
+                $image_name = $user-> prof_img;
+              endforeach;  
+              $data = [
+              'title' => 'Dashboard',
+              'prof_img' => $image_name        
+          ];
+    
+          $this->view('users/donor/index', $data);
+          }else{
+              $this->view('users/login_donor', $data);
           }
+        }
 
-        //load edit_profile page
         /**
          * @return void
          */
-        public function editProfile_beneficiary(){
+        public function editProfile_donor(){
           $data = [
             'title' => 'Edit Profile'
           ];
     
-          $this->view('users/beneficiary/edit_profile_beneficiary', $data);
+          $this->view('users/donor/edit_profile_donor', $data);
         }
 
         
-        //load donation_history page
-        /**
-         * @return void
-         */
-        public function donationHistory_beneficiary(){
-            $data = [
-              'title' => 'Donation History'
-            ];
-      
-            $this->view('users/beneficiary/donation_history_beneficiary', $data);
-          }
+        
+        
 
-          //load feedback page
         /**
          * @return void
          */
@@ -80,11 +60,11 @@
               'feedback_err' => ''
             ];
       
-            $this->view('users/beneficiary/feedback', $data);
+            $this->view('users/donor/feedback', $data);
           }
 
-            //load all feedback page
-        /**
+           
+         /**
          * @return void
          */
         public function all_feedback(){
@@ -92,9 +72,9 @@
               'title' => 'All Feedback'
             ];
       
-            $this->view('users/beneficiary/all_feedback', $data);
+            $this->view('users/donor/all_feedback', $data);
           }
-            //add feedback page
+          
         /**
          * @return void
          */
@@ -116,15 +96,15 @@
                 // Make sure no errors
                 if(empty($data['feedback_err'])){
                     // Validated
-                    if($this->beneficiaryModel->addFeedback($data)){
+                    if($this->donorModel->addFeedback($data)){
                         // flash('category_message', 'Category Added');
-                        redirect('beneficiary/all_feedback');
+                        redirect('donor/all_feedback');
                     } else {
                         die('Something went wrong');
                     }
                 } else {
                     // Load view with errors
-                    $this->view('users/beneficiary/feedback', $data);
+                    $this->view('users/donor/feedback', $data);
                 }
             } else {
                 // Init data
@@ -133,237 +113,12 @@
                 ];
 
                 // Load view
-                $this->view('users/beneficiary/feedback', $data);
+                $this->view('users/donor/feedback', $data);
             }
         }
 
 
-
-//load request page
-        public function requests(){
-          $requests = $this->beneficiaryModel->getRequests();
-          $data = [
-            'title' => 'Donation Requests',
-            'requests' => $requests
-          ];
-    
-          $this -> view('users/beneficiary/requests', $data);
-        }
-
-        //add a new request
-        public function newrequest(){
-          if($_SERVER['REQUEST_METHOD'] == 'POST'){
-              // Sanitize POST data
-              $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-              $data = [
-                 
-                  'description' => trim($_POST['description']),
-                  'type' => trim($_POST['type']),
-                  'quantity' => trim($_POST['quantity']),
-                  'duedate' => trim($_POST['duedate']),
-                  'categories' => trim($_POST['categories']),
-                  'city' => trim($_POST['city']),
-                  'contact' => trim($_POST['contact']),
-                  'categoryErr' => '',
-                  'descriptionErr' => '',
-                  'quantityErr' => '',
-                  'typeErr' => '',
-                  'contactErr' => '',
-                  'cityErr' => '',
-                  'duedateErr' => ''
-                  
-                ];
-
-                if(empty($data['description'])){
-                  $data['descriptionErr'] = 'Please enter description';
-              }
-
-              if(empty($data['type'])){
-                  $data['typeErr'] = 'Please enter type';
-              }
-
-              if(empty($data['quantity'])){
-                  $data['quantityErr'] = 'Please enter quantity';
-              }
-
-              if(empty($data['duedate'])){
-                  $data['duedateErr'] = 'Please enter duedate';
-              }
-
-              if(empty($data['categories'])){
-                  $data['categoryErr'] = 'Please enter categories';
-              }
-
-              if(empty($data['city'])){
-                  $data['cityErr'] = 'Please enter city';
-              }
-
-              if(empty($data['contact'])){
-                  $data['contactErr'] = 'Please enter contact';
-              }
-
-             
-
-              // Make sure no errors
-              if(empty($data['descriptionErr']) && empty($data['typeErr']) && empty($data['quantityErr']) && empty($data['duedateErr']) && empty($data['categoryErr']) && empty($data['cityErr']) && empty($data['contactErr'])){
-                  // Validated
-                  if($this->beneficiaryModel->addRequest($data)){
-                      // flash('category_message', 'Category Added');
-                      redirect('beneficiary/requests');
-                  } else {
-                      die('Something went wrong');
-                  }
-              } else {
-                  // Load view with errors
-                  $this->view('users/beneficiary/newrequest', $data);
-              }
-
-          }else{
-              $data = [
-                 /* 'id' => '',*/
-                  'description' => '',
-                  'type' => '',
-                  'quantity' => '',
-                  'duedate' => '',
-                  'categories' => '',
-                  'city' => '',
-                  'contact' => '',
-                  'categoryErr' => '',
-                  'descriptionErr' => '',
-                  'quantityErr' => '',
-                  'typeErr' => '',
-                  'contactErr' => '',
-                  'cityErr' => '',
-                  'duedateErr' => ''
-                ];
-          
-                $this -> view('users/beneficiary/newrequest', $data);
-          }
-         
-
-        }
-
-
-        //edit the request
-        public function editRequest($id){
-          if($_SERVER['REQUEST_METHOD'] == 'POST'){
-              // Sanitize POST data
-              $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-              $data = [
-                  'id' => $id,
-                  'description' => trim($_POST['description']),
-                  'type' => trim($_POST['type']),
-                  'quantity' => trim($_POST['quantity']),
-                  'duedate' => trim($_POST['duedate']),
-                  'categories' => trim($_POST['categories']),
-                  'city' => trim($_POST['city']),
-                  'contact' => trim($_POST['contact']),
-                  // 'user_id' => $_SESSION['user_id'],
-                  'categoryErr' => '',
-                  'descriptionErr' => '',
-                  'quantityErr' => '',
-                  'typeErr' => '',
-                  'contactErr' => '',
-                  'cityErr' => '',
-                  'duedateErr' => ''                    
-                ];
-
-                if(empty($data['description'])){
-                  $data['descriptionErr'] = 'Please enter description';
-              }
-
-              if(empty($data['type'])){
-                  $data['typeErr'] = 'Please enter type';
-              }
-
-              if(empty($data['quantity'])){
-                  $data['quantityErr'] = 'Please enter quantity';
-              }
-
-              if(empty($data['duedate'])){
-                  $data['duedateErr'] = 'Please enter duedate';
-              }
-
-              if(empty($data['categories'])){
-                  $data['categoryErr'] = 'Please enter categories';
-              }
-
-              if(empty($data['city'])){
-                  $data['cityErr'] = 'Please enter city';
-              }
-
-              if(empty($data['contact'])){
-                  $data['contactErr'] = 'Please enter contact';
-              }
-
-             
-
-              // Make sure no errors
-              if(empty($data['descriptionErr']) && empty($data['typeErr']) && empty($data['quantityErr']) && empty($data['duedateErr']) && empty($data['categoryErr']) && empty($data['cityErr']) && empty($data['contactErr'])){
-                  // Validated
-                  if($this->beneficiaryModel->editRequest($data)){
-                      // flash('category_message', 'Category Added');
-                      redirect('beneficiary/requests');
-                  } else {
-                      die('Something went wrong');
-                  }
-              } else {
-                  // Load view with errors
-                  $this->view('users/beneficiary/edit', $data);
-              }
-
-          }else{
-
-              $requests = $this->beneficiaryModel->getRequestById($id);                //check for owner
-              // if($requests->user_id != $_SESSION['user_id']){
-              //     redirect('requests');
-              // }
-              $data = [
-                  'id' => $id,
-                  'description' => $requests->description,
-                  'type' => $requests->type,
-                  'quantity' => $requests->quantity,
-                  'duedate' => $requests->duedate,
-                  'categories' => $requests->categories,
-                  'city' => $requests->city,
-                  'contact' => $requests->contact,
-                  'categoryErr' => '',
-                  'descriptionErr' => '',
-                  'quantityErr' => '',
-                  'typeErr' => '',
-                  'contactErr' => '',
-                  'cityErr' => '',
-                  'duedateErr' => ''
-                ];
-          
-                $this -> view('users/beneficiary/edit', $data);
-          }
-         
-
-        }
-
-//delete a request
-        public function deleteRequest($id){              
-              $requests = $this->beneficiaryModel->getRequestById($id);                //check for owner
-              // if($requests->user_id != $_SESSION['user_id']){
-              //     redirect('requests');
-              // }                
-              if($this->beneficiaryModel->deleteRequest($id)){
-                  // flash('request_message','Request Removed');
-                  redirect('beneficiary/requests');
-              }else{
-                  die('Something went wrong');
-              }
-        }
-
-
         
-  
-
-
-        //load categories page
         /**
          * @return void
          */
@@ -377,7 +132,7 @@
             $this -> view('users/admin/categories', $data);
           }
 
-          //add method of categories
+         
         /**
          * @return void
          */
@@ -420,7 +175,7 @@
             }
         }
 
-        //edit method of categories
+        
         /**
          * @param $id
          * @return void
@@ -469,7 +224,7 @@
             }
         }
 
-        //delete method of categories
+        
         /**
          * @param $id
          * @return void
@@ -685,19 +440,6 @@
             }
           
           }
-
-
-          //load beneficiary dashboard
-        /**
-         * @return void
-         */
-        public function index(){
-          $data = [
-            'title' => 'DonateUs'
-          ];
-         
-          $this->view('users/beneficiary/index', $data);
-        }
     }
 
     

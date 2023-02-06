@@ -109,9 +109,9 @@
       </nav>
       <main>
             <div class="container">
-                <header>Profile Details</header>
+                <header>Profile Update</header>
 
-                <form action="#">
+                <form action="<?php echo URLROOT; ?>/donor/update_profile_donor" method="POST">
                     <div class="formfirst">
                         <div class="details personal">
                             <span id ="ind1"class="title"><u>Personal Details</u></span>
@@ -119,40 +119,58 @@
                             <div class="fields">
                             <?php foreach($data['userdata'] as $user) : ?>
                               <?php foreach($data['personaldata'] as $personaldata) : ?>
-                                <div id="ind2" class="input-field">
-                                    <label>Full Name</label>
-                                    <input type="text" placeholder="<?php echo $personaldata->f_name." ".$personaldata->l_name; ?>" value="<?php echo $personaldata->f_name." ".$personaldata->l_name; ?>" disabled>
+                                
+                                <div id="ind4" class="input-field">
+                                    <label>User Email</label>
+                                    <input type="text" name="email_ind" placeholder="ex: abc@gmail.com" value="<?php echo $user-> email; ?>" disabled>
                                 </div>
                                 <div id="ind3" class="input-field">
                                     <label>NIC</label>
-                                    <input type="text" placeholder="<?php echo $personaldata->NIC; ?>" disabled>
+                                    <input type="text" name="nic_ind" placeholder="ex: 19XXXXXXXXXX/ 9XXXXXXXXX" value="<?php echo $personaldata->NIC; ?>" disabled>
+                                   
                                 </div>
+
+                                <div id="ind2" class="input-field">
+                                    <label>First Name</label>
+                                    <input type="text" name="f_name" placeholder="ex: John" value="<?php echo $personaldata->f_name; ?>" >
+                                    <p class="error"></p>
+                                </div>
+                                <div id="ind6" class="input-field">
+                                    <label>Last Name</label>
+                                    <input type="text" name="l_name" placeholder="ex:Doe" value="<?php echo $personaldata->l_name; ?>" >
+                                    <p class="error"></p>
+                                </div>
+                                
                                 <div id="corp2" class="input-field">
                                     <label>Company Name</label>
-                                    <input type="text" placeholder="<?php echo $personaldata->comp_name; ?>" disabled>
+                                    <input type="text" name="comp_name" placeholder="ex: ABC.co" value="<?php echo $personaldata->comp_name; ?>">
+                                    <p class="error"></p>
                                 </div>
 
                                 <div id="corp3" class="input-field">
                                     <label>Email Address</label>
-                                    <input type="text" placeholder="<?php echo $user-> email; ?>" disabled>
+                                    <input type="text" name="email_corp" placeholder="ex: abc@gmail.com" value="<?php echo $user-> email; ?>" disabled>
+                                    
                                 </div>
 
-                                <div id="ind4" class="input-field">
-                                    <label>User Email</label>
-                                    <input type="text" placeholder="<?php echo $user-> email; ?>" disabled>
-                                </div>
 
                                 <div id="ind5" class="input-field">
                                     <label>Contact Number</label>
-                                    <input type="text" placeholder="<?php echo $user->tp_number; ?>" disabled>
+                                    <input type="text" name="contact_ind" placeholder="ex: +94XXXXXXXXX" value="<?php echo $user->tp_number; ?>">
+                                    <p class="error"></p>
                                 </div>
                                 <div class="input-field">
                                     <label>City</label>
-                                    <input type="text" placeholder="<?php echo $personaldata->city; ?>" disabled>
+                                    <input type="text" name="city" placeholder="ex: Colombo" value="<?php echo $personaldata->city; ?>">
+                                    <p class="error"></p>
                                 </div>
                                 <div class="input-field">
                                     <label>District</label>
-                                    <input type="text" placeholder="<?php echo $data['dist']; ?>" disabled>
+                                    <select class="dropdown" name="district" id="district">
+                            <?php foreach($data['districts'] as $districts) : ?>
+                                <option <?php if($districts->id==$personaldata->district) {echo "selected";} ?> value="<?php echo $districts->id; ?>"><?php echo $districts->dist_name; ?></option>
+                            <?php endforeach; ?> </select>
+                            <p class="error"></p>
                                 </div>
                               </div>
                               <span id ="corp4" class="title"><u>Contact Person Details</u></span>
@@ -160,28 +178,32 @@
                                 
                                 <div id ="corp5" class="input-field">
                                     <label>Full Name</label>
-                                    <input type="text" placeholder="<?php echo $personaldata->emp_name; ?>" disabled>
+                                    <input type="text" name="emp_name" placeholder="ex: John Doe" value="<?php echo $personaldata->emp_name; ?>">
+                                    <p class="error"></p>
+                                    
                                 </div>
                                 <div id ="corp6" class="input-field">
                                     <label>Employee ID</label>
-                                    <input type="text" placeholder="<?php echo $personaldata->emp_id; ?>" disabled>
+                                    <input type="text" name="emp_id" placeholder="ex: EID123456" value="<?php echo $personaldata->emp_id; ?>">
+                                    <p class="error"></p>
                                 </div>
                                 <div id ="corp7" class="input-field">
                                     <label>Designation</label>
-                                    <input type="text" placeholder="<?php echo $personaldata->designation; ?>" disabled>
+                                    <input type="text" name="desg" placeholder="ex: Manager" value="<?php echo $personaldata->designation; ?>">
+                                    <p class="error"></p>
                                 </div>
                                 <div id ="corp8" class="input-field">
                                     <label>Contact Number</label>
-                                    <input type="text" placeholder="<?php echo $user->tp_number; ?>" disabled>
+                                    <input type="text" name="contact_corp" placeholder="ex: +94XXXXXXXXX" value="<?php echo $user->tp_number; ?>">
+                                    <p class="error"></p>
                                 </div>
                                 <?php endforeach; ?>
                                 <?php endforeach; ?>
                             </div>
-                        </div>
-                        <!-- <span class="title"><u>Change Profile Picture</u></span>
-
+                            <span class="title"><u>Change Profile Picture</u></span>
+                            
                         <div class="photo-container">
-                            <input type="file" id="file" accept="image/*" hidden>
+                            <input type="file" id="file" name="prof_img" accept="image/*" hidden>
                             <div class="img-area" data-img="">
                                 <i class='bx bxs-cloud-upload icon'></i>
                                 <h3>Upload Image</h3>
@@ -189,39 +211,16 @@
                             <button class="select-image">Select Image</button>
                         </div>
 
-                        <span class="title"><u> Change Password</u></span>
-                        <div class="fields">
-                            <div class="input-field">
-                                <label>Old Password</label>
-                                <input type="text" placeholder="Enter Your Previous Password">
-                            </div>
-                            <div class="input-field">
-                                <label>New Password</label>
-                                <input type="text" placeholder="Enter Your New Password">
-                            </div>
-                            <div class="input-field">
-                                <label>Conform New Password</label>
-                                <input type="text" placeholder="Conform Your New Password">
-                            </div> -->
-
-                        <!-- </div> -->
+                        <button class="sumbit">
+                            <span class="btnText">Submit</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+                            
+                        </div>
                        
                     </div>
                 </form>
-                <div class="updatebtn">
-                    <a href="<?php echo URLROOT; ?>/pages/edit_profile_donor">
-                        <button class="edit" style="text-decoration: none;">Edit Profile Details
-                        </button>
-                    </a>
-
-                    <a href="<?php echo URLROOT; ?>/pages/change_password_donor">
-                        <button class="changepassword" style="text-decoration: none;">Change Password</button>
-                    </a>
-
-                    <a href="#">
-                        <button class="delete" style="text-decoration: none;">Delete Profile Details</button>
-                    </a>
-                </div>
+                
                 
             </div>
 
@@ -267,6 +266,7 @@ window.onload = function () {
           document.getElementById("ind3").style.display = "none";
           document.getElementById("ind4").style.display = "none";
           document.getElementById("ind5").style.display = "none";
+          document.getElementById("ind6").style.display = "none";
         }
         else{
           document.getElementById("corp1").style.display = "none";
