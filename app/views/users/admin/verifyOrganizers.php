@@ -37,27 +37,16 @@
     </nav>
     <main>
         <div class="select-menu">
-          <div class="select-btn">
-            <span
-              class="material-icons"
-              style="color: #111e88; margin-right: 1rem"
-            >
-              perm_identity
-            </span>
-            <span class="option-text">Beneficiaries</span>
-            <i class="bx bx-chevron-down"></i>
-          </div>
+            <div class="select-btn">
+                <span class="material-icons" style="color: #111e88; margin-right: 1rem;">
+                                emoji_events
+                            </span>
+                <span class="option-text">Event Organizers</span>
+                <i class="bx bx-chevron-down"></i>
+            </div>
 
             <ul class="options">
-                <a href="<?php echo URLROOT;?>/adminPages/donors" style="text-decoration:none">
-                    <li class="option">
-                            <span class="material-icons" style="color:#111e88; margin-right: 1rem;">
-                                volunteer_activism
-                            </span>
-                        <span class="option-text">Donors</span>
-                    </li>
-                </a>
-                <a href="<?php echo URLROOT;?>/adminPages/beneficiaries" style="text-decoration:none">
+                <a href="<?php echo URLROOT;?>/adminPages/verifyBeneficiaries" style="text-decoration:none">
                     <li class="option">
                             <span class="material-icons" style="color:#111e88; margin-right: 1rem;">
                                 perm_identity
@@ -65,7 +54,7 @@
                         <span class="option-text">Beneficiaries</span>
                     </li>
                 </a>
-                <a href="<?php echo URLROOT;?>/adminPages/organizers" style="text-decoration:none">
+                <a href="<?php echo URLROOT;?>/adminPages/verifyOrganizers" style="text-decoration:none">
                     <li class="option">
                             <span class="material-icons" style="color: #111e88; margin-right: 1rem;">
                                 emoji_events
@@ -78,46 +67,28 @@
 
         <div class="cards_heading head">
             <div>ID</div>
-            <div>Full Name / Organization Name</div>
+            <div>Full Name</div>
             <div>Email Address</div>
             <div>Status</div>
-            <div>Beneficiary Type</div>
-            <div>City</div>
+            <div>Community Name</div>
+            <div>Designation</div>
             <div></div>
         </div>
-        <?php foreach($data['indBeneficiaries'] as $indBeneficiaries) : ?>
+        <?php foreach($data['organizers'] as $organizers) : ?>
             <div class="cards_heading cards_color">
-                <div><?php echo $indBeneficiaries->id; ?></div>
-                <div><?php echo $indBeneficiaries->f_name; ?></div>
-                <div><?php echo $indBeneficiaries->email; ?></div>
+                <div><?php echo $organizers->id; ?></div>
+                <div><?php echo $organizers->full_name; ?></div>
+                <div><?php echo $organizers->email; ?></div>
                 <div>
                     <select name="status" id="status">
                         <option value="Active">Active</option>
                         <option value="Deactive">Deactive</option>
                     </select>
                 </div>
-                <div>Individual</div>
-                <div><?php echo $indBeneficiaries->city; ?></div>
+                <div><?php echo $organizers->community_name; ?></div>
+                <div><?php echo $organizers->designation; ?></div>
                 <div>
-                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
-                </div>
-            </div>
-        <?php endforeach; ?>
-        <?php foreach($data['corpBeneficiaries'] as $corpBeneficiaries) : ?>
-            <div class="cards_heading cards_color">
-                <div><?php echo $corpBeneficiaries->id; ?></div>
-                <div><?php echo $corpBeneficiaries->f_name; ?></div>
-                <div><?php echo $corpBeneficiaries->email; ?></div>
-                <div>
-                    <select name="status" id="status">
-                        <option value="Active">Active</option>
-                        <option value="Deactive">Deactive</option>
-                    </select>
-                </div>
-                <div>Organizational</div>
-                <div><?php echo $corpBeneficiaries->city; ?></div>
-                <div>
-                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
+                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/approve"> <button class="btnview">View More</button> </a></div>
                 </div>
             </div>
         <?php endforeach; ?>

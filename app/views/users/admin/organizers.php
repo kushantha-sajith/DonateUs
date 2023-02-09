@@ -75,28 +75,28 @@
 
         <div class="cards_heading head">
             <div>ID</div>
-            <div>Full Name / Organization Name</div>
+            <div>Full Name</div>
             <div>Email Address</div>
             <div>Status</div>
-            <div>Beneficiary Type</div>
-            <div>City</div>
+            <div>Community Name</div>
+            <div>Designation</div>
             <div></div>
         </div>
-        <?php foreach($data['categories'] as $categories) : ?>
+        <?php foreach($data['organizers'] as $organizers) : ?>
             <div class="cards_heading cards_color">
-                <div><?php echo $categories->id; ?></div>
-                <div></div>
-                <div></div>
+                <div><?php echo $organizers->id; ?></div>
+                <div><?php echo $organizers->full_name; ?></div>
+                <div><?php echo $organizers->email; ?></div>
                 <div>
                     <select name="status" id="status">
                         <option value="Active">Active</option>
                         <option value="Deactive">Deactive</option>
                     </select>
                 </div>
-                <div></div>
-                <div></div>
+                <div><?php echo $organizers->community_name; ?></div>
+                <div><?php echo $organizers->designation; ?></div>
                 <div>
-                    <div style="text-align: center;"> <a href="#"> <button class="btnview">View More</button> </a></div>
+                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
                 </div>
             </div>
         <?php endforeach; ?>
