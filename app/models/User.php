@@ -138,13 +138,13 @@ class User{
         $row = $this->db->single();
         $user_id = $row->id;
 
-        $this->db->query('INSERT INTO ind_ben (f_name, l_name, NIC, address, identity, city, district, acc_status, user_id) VALUES(:f_name, :l_name, :NIC, :address, :identity, :city, :district, :acc_status, :user_id)');
+        $this->db->query('INSERT INTO ind_ben (f_name, l_name, NIC, address, city, district, acc_status, user_id) VALUES(:f_name, :l_name, :NIC, :address, :city, :district, :acc_status, :user_id)');
 
         $this->db->bind(':f_name', $data['fname']);
         $this->db->bind(':l_name', $data['lname']);
         $this->db->bind(':NIC', $data['nic']);
         $this->db->bind(':address', $data['address_ind']);
-        $this->db->bind(':identity', $data['identity_ind']);
+//        $this->db->bind(':identity', $data['identity_ind']);
         $this->db->bind(':city', $data['city_ind']);
         $this->db->bind(':district', $data['district_ind']);
         $this->db->bind(':acc_status', $data['acc_status']);
@@ -180,7 +180,7 @@ class User{
         $row = $this->db->single();
         $user_id = $row->id;
 
-        $this->db->query('INSERT INTO org_ben (org_name, org_type, emp_name, emp_id, designation, address, identity, city, district, acc_status, user_id) VALUES(:org_name, :org_type, :emp_name, :emp_id, :designation, :address, :identity, :city, :district, :acc_status, :user_id)');
+        $this->db->query('INSERT INTO org_ben (org_name, org_type, emp_name, emp_id, designation, address, city, district, acc_status, user_id) VALUES(:org_name, :org_type, :emp_name, :emp_id, :designation, :address, :city, :district, :acc_status, :user_id)');
 
         $this->db->bind(':org_name', $data['compname']);
         $this->db->bind(':org_type', $data['orgtype']);
@@ -190,7 +190,7 @@ class User{
         // $this->db->bind(':contact', $data['contact']);
         $this->db->bind(':district', $data['district']);
         $this->db->bind(':address', $data['address']);
-        $this->db->bind(':identity', $data['identity']);
+//        $this->db->bind(':identity', $data['identity']);
         $this->db->bind(':city', $data['city']);
         $this->db->bind(':district', $data['district']);
         $this->db->bind(':acc_status', $data['acc_status']);

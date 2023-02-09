@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <title>Dashboard</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donation_req.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donation_history.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
@@ -23,7 +23,7 @@
     <nav>
         <div class="sidebar-button">
             <i class="bx bx-menu sidebarBtn"></i>
-            <span class="dashboard">Donation Requests</span>
+            <span class="dashboard">Donation History</span>
         </div>
 
         <div class="profile-details">
@@ -37,80 +37,85 @@
     </nav>
 
     <main>
-            <div class="select-menu">
 
+            <div class="select-menu">
+            
                 <div class="select-btn">
-                    <span class="material-icons" style="color: black; margin-right: 1rem;">receipt_long</span>
-                    <span class="option-text">Ongoing Requests</span>
+                    <span class="material-icons" style="color: black;">
+                        fastfood
+                        </span>
+                    <span class="option-text">Non-Financial Donations</a></span>
                     <i class="bx bx-chevron-down"></i>
                 </div>
+
                 <ul class="options">
-                    <a href="<?php echo URLROOT; ?>/adminPages/pendingRequests" style="text-decoration:none">
+                    <a href="<?php echo URLROOT; ?>/admin/financialDonationHistory" style="text-decoration:none">
                         <li class="option">
-                            <span class="material-icons"
-                                  style="color: black; margin-right: 1rem;">pending_actions</span>
-                            <span class="option-text"> Pending Requests</span>
+                            <span class="material-icons" style="color: black; margin-right: 1rem;" >
+                                attach_money
+                                </span>
+                             
+                            <span class="option-text"> Financial Donations</span>
                         </li>
                     </a>
-                    <a href="<?php echo URLROOT; ?>/adminPages/rejectedRequests" style="text-decoration:none">
+                    <a href="<?php echo URLROOT; ?>/admin/nonFinancialDonationHistory" style="text-decoration:none">
                         <li class="option">
-                            <span class="material-icons" style="color: black; margin-right: 1rem;">error</span>
-                            <span class="option-text">Rejected Requests</span>
+                            <span class="material-icons" style="color: black; margin-right: 1rem;">
+                                fastfood
+                                </span>
+                            <span class="option-text">Non-Financial Donations</span>
                         </li>
                     </a>
-                    <a href="<?php echo URLROOT; ?>/adminPages/ongoingRequests" style="text-decoration:none">
-                        <li class="option">
-                            <span class="material-icons" style="color: black; margin-right: 1rem;">receipt_long</span>
-                            <span class="option-text">Ongoing Requests</span>
-                        </li>
-                    </a>
-                    <a href="<?php echo URLROOT; ?>/adminPages/completedRequests" style="text-decoration:none">
-                        <li class="option">
-                            <span class="material-icons"
-                                  style="color: black; margin-right: 1rem;">assignment_turned_in</span>
-                            <span class="option-text">Completed Requests</span>
-                        </li>
-                    </a>
+
                 </ul>
             </div>
 
 
-
-        <div class="cards_heading head">
-            <div>ID</div>
-            <div>Request Title</div>
-            <div>Received Amount / Quantity</div>
-            <div>Category</div>
-            <div>Donation Type</div>
-            <div>Amount / Quantity</div>
-            <div></div>
-        </div>
-        <?php foreach($data['ongoingRequests'] as $ongoingRequests) : ?>
+            <div class="cards_heading head">
+                <div>ID</div>
+                <div>Doner Name</div>
+                <div>Doner Type</div>
+                <div>Req ID</div>
+                <div>Donation Type</div>
+                <div>Amount</div>
+                <div>Status</div>
+                <div></div>
+            </div>
             <div class="cards_heading cards_color">
-                <div><?php echo $ongoingRequests->id; ?></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+                <div>001</div>
+                <div>Kushantha Lakshan</div>
+                <div>Individual</div>
+                <div>003</div>
+                <div>Food</div>
+                <div>Rice 100Kg</div>
                 <div>
-                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/requestDetails"> <button class="btnview" >View More</button> </a></div>
+                    <select name="status" id="status" style="margin-top: 0.5rem;">
+                        <option value="Ongoing">Ongoing</option>
+                        <option value="Compleated">Completed</option>
+                    </select>
                 </div>
-            </div>
-        <?php endforeach; ?>
-        <div class="cards_heading cards_color">
-            <div>10</div>
-            <div>Need Medicine</div>
-            <div>5 tablets</div>
-            <div>Medicine</div>
-            <div>Non-Financial</div>
-            <div>50 tablets</div>
-            <div>
-                <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/requestDetails"> <button class="btnview" >View More</button> </a></div>
-            </div>
-        </div>
+                <div>
+                    <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
+                 </div>
+             </div>
+             <div class="cards_heading cards_color">
+                <div>001</div>
+                <div>Kushantha Lakshan</div>
+                <div>Individual</div>
+                <div>003</div>
+                <div>Stationaries</div>
+                <div>500 Books</div>
+                <div>
+                    <select name="status" id="status" style="margin-top: 0.5rem;">
+                        <option value="Ongoing">Ongoing</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                </div>
+                <div>
+                    <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
+                 </div>
+             </div>
         </main>
-
     </section>
     <!--home section end-->
 

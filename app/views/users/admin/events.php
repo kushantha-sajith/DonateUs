@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <title>Events</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_user.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donation_req.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
@@ -35,248 +35,69 @@
         <!-- <i class='bx bx-chevron-down'></i> -->
       </div>
     </nav>
-    <div class="main-container">
-      <div class="tabset">
-          <!-- Tab 1 -->
-          <input type="radio" name="tabset" id="tab1" aria-controls="pending" checked />
-          <label for="tab1">
-              <span class="material-icons" style="color: black; margin-right: 1rem;" >pending_actions</span>
-              <span class="option-text">Pending</span>
-          </label>
-          <!-- Tab 2 -->
-          <input type="radio" name="tabset" id="tab2" aria-controls="ongoing" />
-          <label for="tab2">
-              <span class="material-icons" style="color: black; margin-right: 1rem;">receipt_long</span>
-              <span class="option-text">Ongoing</span>
-          </label>
-          <!-- Tab 3 -->
-          <input type="radio" name="tabset" id="tab3" aria-controls="rejected" />
-          <label for="tab3">
-              <span class="material-icons" style="color: black; margin-right: 1rem;">error</span>
-              <span class="option-text">Rejected</span>
-          </label>
-          <!-- Tab 4 -->
-          <input type="radio" name="tabset" id="tab4" aria-controls="completed" />
-          <label for="tab4">
-              <span class="material-icons" style="color: black; margin-right: 1rem;">assignment_turned_in</span>
-              <span class="option-text">Completed</span>
-          </label>
+      <main>
+          <div class="select-menu">
 
-        <div class="tabpanels">
-          <section id="pending" class="tab">
-<!--            <table class="main-table t-table">-->
-<!--              <thead>-->
-<!--                <th>Id</th>-->
-<!--                <th>Event Organizer Name</th>-->
-<!--                <th>Event Name</th>-->
-<!--                <th>Description</th>-->
-<!--                <th>Total Cost</th>-->
-<!--                <th>Due Date</th>-->
-<!--                <th></th>-->
-<!--              </thead>-->
-<!--              <tbody>-->
-<!--                <?php //foreach($data['categories'] as $categories) : ?>-->
-<!--                <tr class="t-row">-->
-<!--                  <td style="width: 10px;"><?php //echo $categories->id; ?></td>-->
-<!--                  <td></td>-->
-<!--                  <td></td>-->
-<!--                  <td></td>-->
-<!--                  <td></td>-->
-<!--                  <td></td>-->
-<!--                  <td>-->
-<!--                    <a href="#">View More</a>-->
-<!--                  </td>-->
-<!--                </tr>-->
-<!--                <?php //endforeach; ?>-->
-<!--              </tbody>-->
-<!--            </table>-->
-
-              <div class="cards_heading head">
-                  <div>ID</div>
-                  <div>Event Title</div>
-                  <div>Event Organizer Name</div>
-                  <div>Description</div>
-                  <div>Amount</div>
-                  <div>Due Date</div>
-                  <div></div>
+              <div class="select-btn">
+                    <span class="material-icons">
+                        pending_actions
+                    </span>
+                  <span class="option-text">Pending Events</a></span>
+                  <i class="bx bx-chevron-down"></i>
               </div>
-              <?php foreach($data['categories'] as $categories) : ?>
-                  <div class="cards_heading cards_color">
-                      <div><?php echo $categories->id; ?></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div>
-                          <div style="text-align: center;"> <a href="#"> <button class="btnview">View More</button> </a></div>
-                      </div>
-                  </div>
-              <?php endforeach; ?>
-          </section>
+              <ul class="options">
+                  <a href="<?php echo URLROOT; ?>/adminPages/pendingEvents" style="text-decoration:none">
+                      <li class="option">
+                            <span class="material-icons"
+                                  style="color: black; margin-right: 1rem;">pending_actions</span>
+                          <span class="option-text"> Pending Events</span>
+                      </li>
+                  </a>
+                  <a href="<?php echo URLROOT; ?>/adminPages/rejectedEvents" style="text-decoration:none">
+                      <li class="option">
+                          <span class="material-icons" style="color: black; margin-right: 1rem;">error</span>
+                          <span class="option-text">Rejected Events</span>
+                      </li>
+                  </a>
+                  <a href="<?php echo URLROOT; ?>/adminPages/ongoingEvents" style="text-decoration:none">
+                      <li class="option">
+                          <span class="material-icons" style="color: black; margin-right: 1rem;">receipt_long</span>
+                          <span class="option-text">Ongoing Events</span>
+                      </li>
+                  </a>
+                  <a href="<?php echo URLROOT; ?>/adminPages/completedEvents" style="text-decoration:none">
+                      <li class="option">
+                            <span class="material-icons"
+                                  style="color: black; margin-right: 1rem;">assignment_turned_in</span>
+                          <span class="option-text">Completed Events</span>
+                      </li>
+                  </a>
+              </ul>
+          </div>
 
-          <section id="ongoing" class="tab">
-<!--            <table class="main-table t-table">-->
-<!--              <thead>-->
-<!--                <th>Id</th>-->
-<!--                <th>Event Organizer Name</th>-->
-<!--                <th>Event Name</th>-->
-<!--                <th>Received Amount</th>-->
-<!--                <th>Sponsors</th>-->
-<!--                <th>Due Date</th>-->
-<!--                <th>Total Cost</th>-->
-<!--                <th></th>-->
-<!--              </thead>-->
-<!--              <tbody>-->
-<!--                <?php //foreach($data['categories'] as $categories) : ?>-->
-<!--                <tr class="t-row">-->
-<!--                  <td style="width: 10px;"><?php //echo $categories->id; ?></td>-->
-<!--                  <td></td>-->
-<!--                  <td></td>-->
-<!--                  <td></td>-->
-<!--                  <td></td>-->
-<!--                  <td></td>-->
-<!--                  <td></td>-->
-<!--                  <td>-->
-<!--                    <a href="#">View More</a>-->
-<!--                  </td>-->
-<!--                </tr>-->
-<!--                <?php //endforeach; ?>-->
-<!--              </tbody>-->
-<!--            </table>-->
-
-              <div class="cards_heading head">
-                  <div>ID</div>
-                  <div>Event Title</div>
-                  <div>Event Organizer Name</div>
-                  <div>Received Amount</div>
-                  <div>Due Date</div>
-                  <div>Amount</div>
+          <div class="cards_heading head">
+              <div>ID</div>
+              <div>Event Title</div>
+              <div>Event Organizer Name</div>
+              <div>Description</div>
+              <div>Amount</div>
+              <div>Due Date</div>
+              <div></div>
+          </div>
+          <?php foreach($data['pendingEvents'] as $pendingEvents) : ?>
+              <div class="cards_heading cards_color">
+                  <div><?php echo $pendingEvents->id; ?></div>
                   <div></div>
-              </div>
-              <?php foreach($data['categories'] as $categories) : ?>
-                  <div class="cards_heading cards_color">
-                      <div><?php echo $categories->id; ?></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div>
-                          <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
-                      </div>
-                  </div>
-              <?php endforeach; ?>
-          </section>
-          
-          <section id="rejected" class="tab">
-<!--            <table class="main-table t-table">-->
-<!--              <thead>-->
-<!--                <th>Id</th>-->
-<!--                <th>Event Organizer Name</th>-->
-<!--                <th>Event Name</th>-->
-<!--                <th>Description</th>-->
-<!--                <th>Total Cost</th>-->
-<!--                <th>Rejection Date</th>-->
-<!--                <th></th>-->
-<!--              </thead>-->
-<!--              <tbody>-->
-<!--                <?php //foreach($data['categories'] as $categories) : ?>-->
-<!--                <tr class="t-row">-->
-<!--                  <td style="width: 10px;"><?php //echo $categories->id; ?></td>-->
-<!--                  <td></td>-->
-<!--                  <td></td>-->
-<!--                  <td></td>-->
-<!--                  <td></td>-->
-<!--                  <td></td>-->
-<!--                  <td>-->
-<!--                    <a href="#">View More</a>-->
-<!--                  </td>-->
-<!--                </tr>-->
-<!--                <?php //endforeach; ?>-->
-<!--              </tbody>-->
-<!--            </table>-->
-
-              <div class="cards_heading head">
-                  <div>ID</div>
-                  <div>Event Title</div>
-                  <div>Event Organizer Name</div>
-                  <div>Rejection Note</div>
-                  <div>Rejection Date</div>
-                  <div>Amount</div>
                   <div></div>
-              </div>
-              <?php foreach($data['categories'] as $categories) : ?>
-                  <div class="cards_heading cards_color">
-                      <div><?php echo $categories->id; ?></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div>
-                          <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
-                      </div>
-                  </div>
-              <?php endforeach; ?>
-          </section>
-
-          <section id="completed" class="tab">
-<!--            <table class="main-table t-table">-->
-<!--              <thead>-->
-<!--                <th>Id</th>-->
-<!--                <th>Event Organizer Name</th>-->
-<!--                <th>Event Name</th>-->
-<!--                <th>Received Sponsors</th>-->
-<!--                <th>Receieved Amount</th>-->
-<!--                <th>Completeion Date</th>-->
-<!--                <th>Total Cost</th>-->
-<!--                <th></th>-->
-<!--              </thead>-->
-<!--              <tbody>-->
-<!--                <?php //foreach($data['categories'] as $categories) : ?>-->
-<!--                <tr class="t-row">-->
-<!--                  <td style="width: 10px;"><?php //echo $categories->id; ?></td>-->
-<!--                  <td></td>-->
-<!--                  <td></td>-->
-<!--                  <td></td>-->
-<!--                  <td></td>-->
-<!--                  <td></td>-->
-<!--                  <td></td>-->
-<!--                  <td>-->
-<!--                    <a href="#">View More</a>-->
-<!--                  </td>-->
-<!--                </tr>-->
-<!--                <?php //endforeach; ?>-->
-<!--              </tbody>-->
-<!--            </table>-->
-
-              <div class="cards_heading head">
-                  <div>ID</div>
-                  <div>Event Title</div>
-                  <div>Event Organizer Name</div>
-                  <div>Received Amount</div>
-                  <div>Completion Date</div>
-                  <div>Amount</div>
                   <div></div>
-              </div>
-              <?php foreach($data['categories'] as $categories) : ?>
-                  <div class="cards_heading cards_color">
-                      <div><?php echo $categories->id; ?></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div>
-                          <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
-                      </div>
+                  <div></div>
+                  <div></div>
+                  <div>
+                      <div style="text-align: center;"> <a href="#"> <button class="btnview">View More</button> </a></div>
                   </div>
-              <?php endforeach; ?>
-          </section>
-        </div>
-      </div>
-    </div>
+              </div>
+          <?php endforeach; ?>
+      </main>
   </section>
   <!--home section end-->
 

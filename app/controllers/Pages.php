@@ -1,6 +1,9 @@
 <?php
 class Pages extends Controller{
   public function __construct(){
+//      if(!isLoggedIn()){
+//          redirect('users/login');
+//      }
     //  $this->Beneficiary = $this->('BeneficiaryModel');
     $this->donorModel = $this->model('DonorModel');
     $this->userModel = $this->model('User');
@@ -29,6 +32,9 @@ class Pages extends Controller{
    * @return void
    */
   public function admin(){
+      if(!isLoggedIn()){
+          redirect('users/login');
+      }
     $data = [
       'title' => 'Admin'
     ];
@@ -40,6 +46,9 @@ class Pages extends Controller{
    * @return void
    */
   public function donor(){
+      if(!isLoggedIn()){
+          redirect('users/login');
+      }
     $image_name = $this->profileImage();
     // $row2 = mysqli_fetch_assoc($userdata);
     // $image_name = $row2['prof_img'];
@@ -52,6 +61,9 @@ class Pages extends Controller{
   }
 
   public function beneficiary(){
+      if(!isLoggedIn()){
+          redirect('users/login');
+      }
     $data = [
       'title' => 'Beneficiary'
     ];
@@ -60,6 +72,9 @@ class Pages extends Controller{
   }
 
   public function eorganizer(){
+      if(!isLoggedIn()){
+          redirect('users/login');
+      }
     $image_name = $this->profileImage();
     // $row2 = mysqli_fetch_assoc($userdata);
     // $image_name = $row2['prof_img'];
@@ -98,6 +113,10 @@ class Pages extends Controller{
   }
 
   public function profile_beneficiary(){
+      if(!isLoggedIn()){
+          redirect('users/login');
+      }
+
     $data = [
       'title' => 'Profile'
     ];
@@ -241,6 +260,9 @@ class Pages extends Controller{
    * @return void
    */
   public function donationHistory_donor(){
+      if(!isLoggedIn()){
+          redirect('users/login');
+      }
     $image_name = $this->profileImage();
     $data = [
       'title' => 'Donation History',
@@ -256,6 +278,9 @@ class Pages extends Controller{
    * @return void
    */
   public function donation_requests_donor(){
+      if(!isLoggedIn()){
+          redirect('users/login');
+      }
     $image_name = $this->profileImage();
     $data = [
       'title' => 'Donation Requests',
@@ -263,5 +288,33 @@ class Pages extends Controller{
     ];
 
     $this->view('users/donor/donation_requests_donor', $data);
+  }
+
+  public function pendingRequestDetails(){
+      if (!isLoggedIn()) {
+          redirect('users/login');
+      }
+      $this->view('users/admin/pendingDonationDetails');
+  }
+
+  public function requestDetails(){
+      if (!isLoggedIn()) {
+          redirect('users/login');
+      }
+      $this->view('users/admin/completedDonationDetails');
+  }
+
+  public function userDetails(){
+      if (!isLoggedIn()) {
+          redirect('users/login');
+      }
+      $this->view('users/admin/userDetails');
+  }
+
+  public function approve(){
+      if (!isLoggedIn()) {
+          redirect('users/login');
+      }
+      $this->view('users/admin/approve');
   }
 }

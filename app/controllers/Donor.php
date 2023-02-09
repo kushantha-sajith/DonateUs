@@ -2,10 +2,10 @@
 
     class Donor extends Controller{
         public function __construct(){
-            /*if(!isLoggedIn()){
+            if(!isLoggedIn()){
                 redirect('users/login');
             }
-*/
+
             $this->donorModel = $this->model('DonorModel');
             $this->userModel = $this->model('User');
         }

@@ -198,6 +198,26 @@
 
             $this->view('users/admin/stats', $data);
         }
+
+        public function financialDonationHistory(){
+            $financialDonationHistory = $this->adminModel->financialDonationHistory();
+            $data = [
+                'title' => 'Donation History',
+                'financialDonationHistory' => $financialDonationHistory
+            ];
+
+            $this->view('users/admin/donationHistory', $data);
+        }
+
+        public function nonFinancialDonationHistory(){
+            $nonFinancialDonationHistory = $this->adminModel->nonFinancialDonationHistory();
+            $data = [
+                'title' => 'Donation History',
+                'nonFinancialDonationHistory' => $nonFinancialDonationHistory
+            ];
+
+            $this->view('users/admin/nonFinancialDonations', $data);
+        }
     }
 
     

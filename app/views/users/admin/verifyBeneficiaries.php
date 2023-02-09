@@ -49,15 +49,7 @@
           </div>
 
             <ul class="options">
-                <a href="<?php echo URLROOT;?>/adminPages/donors" style="text-decoration:none">
-                    <li class="option">
-                            <span class="material-icons" style="color:#111e88; margin-right: 1rem;">
-                                volunteer_activism
-                            </span>
-                        <span class="option-text">Donors</span>
-                    </li>
-                </a>
-                <a href="<?php echo URLROOT;?>/adminPages/beneficiaries" style="text-decoration:none">
+                <a href="<?php echo URLROOT;?>/adminPages/verifyBeneficiaries" style="text-decoration:none">
                     <li class="option">
                             <span class="material-icons" style="color:#111e88; margin-right: 1rem;">
                                 perm_identity
@@ -65,7 +57,7 @@
                         <span class="option-text">Beneficiaries</span>
                     </li>
                 </a>
-                <a href="<?php echo URLROOT;?>/adminPages/organizers" style="text-decoration:none">
+                <a href="<?php echo URLROOT;?>/adminPages/verifyOrganizers" style="text-decoration:none">
                     <li class="option">
                             <span class="material-icons" style="color: #111e88; margin-right: 1rem;">
                                 emoji_events
@@ -99,7 +91,7 @@
                 <div>Individual</div>
                 <div><?php echo $indBeneficiaries->city; ?></div>
                 <div>
-                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
+                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/approve"> <button class="btnview">View More</button> </a></div>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -117,7 +109,7 @@
                 <div>Organizational</div>
                 <div><?php echo $corpBeneficiaries->city; ?></div>
                 <div>
-                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
+                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/approve"> <button class="btnview">View More</button> </a></div>
                 </div>
             </div>
         <?php endforeach; ?>

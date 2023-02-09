@@ -1,6 +1,7 @@
 <?php
 
 use helpers\Email;
+use helpers\NIC_Validator;
 
 class Users extends Controller{
   public function __construct(){

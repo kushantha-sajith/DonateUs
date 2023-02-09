@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Dashboard</title>
+    <title>Events</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donation_req.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
@@ -23,7 +23,7 @@
     <nav>
         <div class="sidebar-button">
             <i class="bx bx-menu sidebarBtn"></i>
-            <span class="dashboard">Donation Requests</span>
+            <span class="dashboard">Events</span>
         </div>
 
         <div class="profile-details">
@@ -41,74 +41,61 @@
 
                 <div class="select-btn">
                     <span class="material-icons" style="color: black; margin-right: 1rem;">receipt_long</span>
-                    <span class="option-text">Ongoing Requests</span>
+                    <span class="option-text">Ongoing Events</span>
                     <i class="bx bx-chevron-down"></i>
                 </div>
                 <ul class="options">
-                    <a href="<?php echo URLROOT; ?>/adminPages/pendingRequests" style="text-decoration:none">
+                    <a href="<?php echo URLROOT; ?>/adminPages/pendingEvents" style="text-decoration:none">
                         <li class="option">
                             <span class="material-icons"
                                   style="color: black; margin-right: 1rem;">pending_actions</span>
-                            <span class="option-text"> Pending Requests</span>
+                            <span class="option-text"> Pending Events</span>
                         </li>
                     </a>
-                    <a href="<?php echo URLROOT; ?>/adminPages/rejectedRequests" style="text-decoration:none">
+                    <a href="<?php echo URLROOT; ?>/adminPages/rejectedEvents" style="text-decoration:none">
                         <li class="option">
                             <span class="material-icons" style="color: black; margin-right: 1rem;">error</span>
-                            <span class="option-text">Rejected Requests</span>
+                            <span class="option-text">Rejected Events</span>
                         </li>
                     </a>
-                    <a href="<?php echo URLROOT; ?>/adminPages/ongoingRequests" style="text-decoration:none">
+                    <a href="<?php echo URLROOT; ?>/adminPages/ongoingEvents" style="text-decoration:none">
                         <li class="option">
                             <span class="material-icons" style="color: black; margin-right: 1rem;">receipt_long</span>
-                            <span class="option-text">Ongoing Requests</span>
+                            <span class="option-text">Ongoing Events</span>
                         </li>
                     </a>
-                    <a href="<?php echo URLROOT; ?>/adminPages/completedRequests" style="text-decoration:none">
+                    <a href="<?php echo URLROOT; ?>/adminPages/completedEvents" style="text-decoration:none">
                         <li class="option">
                             <span class="material-icons"
                                   style="color: black; margin-right: 1rem;">assignment_turned_in</span>
-                            <span class="option-text">Completed Requests</span>
+                            <span class="option-text">Completed Events</span>
                         </li>
                     </a>
                 </ul>
             </div>
 
-
-
         <div class="cards_heading head">
             <div>ID</div>
-            <div>Request Title</div>
-            <div>Received Amount / Quantity</div>
-            <div>Category</div>
-            <div>Donation Type</div>
-            <div>Amount / Quantity</div>
+            <div>Event Title</div>
+            <div>Event Organizer Name</div>
+            <div>Received Amount</div>
+            <div>Due Date</div>
+            <div>Amount</div>
             <div></div>
         </div>
-        <?php foreach($data['ongoingRequests'] as $ongoingRequests) : ?>
+        <?php foreach($data['ongoingEvents'] as $ongoingEvents) : ?>
             <div class="cards_heading cards_color">
-                <div><?php echo $ongoingRequests->id; ?></div>
+                <div><?php echo $ongoingEvents->id; ?></div>
                 <div></div>
                 <div></div>
                 <div></div>
                 <div></div>
                 <div></div>
                 <div>
-                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/requestDetails"> <button class="btnview" >View More</button> </a></div>
+                    <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
                 </div>
             </div>
         <?php endforeach; ?>
-        <div class="cards_heading cards_color">
-            <div>10</div>
-            <div>Need Medicine</div>
-            <div>5 tablets</div>
-            <div>Medicine</div>
-            <div>Non-Financial</div>
-            <div>50 tablets</div>
-            <div>
-                <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/requestDetails"> <button class="btnview" >View More</button> </a></div>
-            </div>
-        </div>
         </main>
 
     </section>
