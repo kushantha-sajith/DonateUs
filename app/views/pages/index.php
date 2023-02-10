@@ -21,6 +21,9 @@
                         <a href="#homeSection">Home</a>
                     </li>
                     <li>
+                        <a href="#aboutSection">About Us</a>
+                    </li>
+                    <li>
                         <a href="#donorsSection">Donors</a>
                     </li>
                     <li>
@@ -28,9 +31,6 @@
                     </li>
                     <li>
                         <a href="#eventHostersSection">Event Hosters</a>
-                    </li>
-                    <li>
-                        <a href="#aboutSection">About Us</a>
                     </li>
                     <li>
                         <a href="<?php echo URLROOT; ?>/users/register">Register</a>
@@ -73,7 +73,7 @@
                     Quisquam corrupti odit commodi dolor ipsam architecto vitae iusto
                     amet explicabo illo.
                 </p>
-                <button><a href="http://localhost/Donate_Us/users/register">Register Now</a></button>
+                <button><a href="http://localhost/DonateUs/users/register_donor/gen">Register Now</a></button>
             </div>
             <!--donation box ends here-->
 
@@ -85,7 +85,7 @@
                     Dolor commodi voluptates aliquid, earum minima accusantium eos
                     aspernatur ullam aperiam tempora.
                 </p>
-                <button><a href="http://localhost/Donate/users/register">Register Now</a></button>
+                <button><a href="http://localhost/DonateUs/users/register_beneficiary/gen">Register Now</a></button>
             </div>
             <!--donation box ends here-->
 
@@ -97,7 +97,7 @@
                     Expedita enim fuga deserunt molestiae, tenetur molestias eveniet
                     fugit non commodi pariatur!
                 </p>
-                <button><a href="http://localhost/Donate_/users/register">Register Now</a></button>
+                <button><a href="http://localhost/DonateUs/users/register_eorganizer">Register Now</a></button>
             </div>
             <!--donation box ends here-->
         </div>

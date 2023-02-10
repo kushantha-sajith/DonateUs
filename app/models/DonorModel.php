@@ -252,7 +252,7 @@
             
             $this->db->query('UPDATE corp_don SET comp_name = :comp_name, emp_name = :emp_name, emp_id = :emp_id, designation = :designation, city = :city, district = :district WHERE user_id = :id');
             $this->db->bind(':id', $data['id']);
-            $this->db->bind(':comp_name', $data['compname']);
+            $this->db->bind(':comp_name', $data['comp_name']);
             $this->db->bind(':emp_name', $data['emp_name']);
             $this->db->bind(':emp_id', $data['emp_id']);
             $this->db->bind(':designation', $data['desg']);

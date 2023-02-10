@@ -83,39 +83,21 @@
                 <div>City</div>
                 <div></div>
             </div>
-            <?php foreach($data['indDonors'] as $indDonors) : ?>
+            <?php foreach($data['donors'] as $donors) : ?>
                 <div class="cards_heading cards_color">
-                    <div><?php echo $indDonors->id; ?></div>
-                    <div><?php echo $indDonors->f_name; ?></div>
-                    <div><?php echo $indDonors->email; ?></div>
+                    <div><?php echo $donors->id; ?></div>
+                    <div></div>
+                    <div></div>
                     <div>
                         <select name="status" id="status">
                             <option value="Active">Active</option>
                             <option value="Deactive">Deactive</option>
                         </select>
                     </div>
-                    <div>Individual</div>
-                    <div><?php echo $indDonors->city; ?></div>
+                    <div></div>
+                    <div></div>
                     <div>
-                        <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-            <?php foreach($data['corpDonors'] as $corpDonors) : ?>
-                <div class="cards_heading cards_color">
-                    <div><?php echo $corpDonors->id; ?></div>
-                    <div><?php echo $corpDonors->comp_name; ?></div>
-                    <div><?php echo $corpDonors->email; ?></div>
-                    <div>
-                        <select name="status" id="status">
-                            <option value="Active">Active</option>
-                            <option value="Deactive">Deactive</option>
-                        </select>
-                    </div>
-                    <div>Corporate</div>
-                    <div><?php echo $corpDonors->city; ?></div>
-                    <div>
-                        <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
+                        <div style="text-align: center;"> <a href="#"> <button class="btnview">View More</button> </a></div>
                     </div>
                 </div>
             <?php endforeach; ?>

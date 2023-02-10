@@ -22,7 +22,7 @@
             </a>
         </li>
         <li>
-            <a href="<?php echo URLROOT;?>/adminPages/verifyBeneficiaries">
+            <a href="<?php echo URLROOT; ?>/admin/users">
                 <i class="bx bx-user"></i>
                 <span class="links_name">Verify New Users</span>
             </a>
@@ -34,17 +34,17 @@
             </a>
         </li>
         <li>
-            <a href="<?php echo URLROOT; ?>/admin/financialDonationHistory">
+            <a href="<?php echo URLROOT; ?>/admin/donationHistory">
                 <i class="bx bx-history"></i>
                 <span class="links_name">Donation History</span>
             </a>
         </li>
-<!--        <li>-->
-<!--            <a href="#">-->
-<!--                <i class="bx bx-message-alt-detail"></i>-->
-<!--                <span class="links_name">Feedbacks</span>-->
-<!--            </a>-->
-<!--        </li>-->
+        <li>
+            <a href="#">
+                <i class="bx bx-message-alt-detail"></i>
+                <span class="links_name">Feedbacks</span>
+            </a>
+        </li>
         <li>
             <a href="<?php echo URLROOT; ?>/admin/categories">
                 <i class="bx bx-list-ul"></i>
@@ -58,7 +58,7 @@
 <!--            </a>-->
 <!--        </li>-->
         <li>
-            <a href="<?php echo URLROOT; ?>/adminPages/pendingEvents">
+            <a href="<?php echo URLROOT; ?>/admin/events">
                 <i class="bx bx-calendar-check"></i>
                 <span class="links_name">Events</span>
             </a>

@@ -14,11 +14,9 @@ class AdminPages extends Controller {
      * @return void
      */
     public function donors(){
-        $indDonors = $this->adminPageModel->getIndDonors();
-        $corpDonors = $this->adminPageModel->getCorpDonors();
+        $donors = $this->adminPageModel->getDonors();
         $data = [
-            'indDonors' => $indDonors,
-            'corpDonors' => $corpDonors
+            'donors' => $donors
         ];
         $this->view('users/admin/donors', $data);
     }
@@ -27,23 +25,11 @@ class AdminPages extends Controller {
      * @return void
      */
     public function beneficiaries(){
-        $indBeneficiaries = $this->adminPageModel->getIndBeneficiaries();
-        $corpBeneficiaries = $this->adminPageModel->getOrgBeneficiaries();
+        $beneficiaries = $this->adminPageModel->getBeneficiaries();
         $data = [
-            'indBeneficiaries' => $indBeneficiaries,
-            'corpBeneficiaries' => $corpBeneficiaries
+            'beneficiaries' => $beneficiaries
         ];
         $this->view('users/admin/beneficiaries', $data);
-    }
-
-    public function verifyBeneficiaries(){
-        $indBeneficiaries = $this->adminPageModel->verifyIndBeneficiaries();
-        $corpBeneficiaries = $this->adminPageModel->verifyOrgBeneficiaries();
-        $data = [
-            'indBeneficiaries' => $indBeneficiaries,
-            'corpBeneficiaries' => $corpBeneficiaries
-        ];
-        $this->view('users/admin/verifyBeneficiaries', $data);
     }
 
     /**
@@ -55,14 +41,6 @@ class AdminPages extends Controller {
             'organizers' => $organizers
         ];
         $this->view('users/admin/organizers', $data);
-    }
-
-    public function verifyOrganizers(){
-        $organizers = $this->adminPageModel->verifyOrganizers();
-        $data = [
-            'organizers' => $organizers
-        ];
-        $this->view('users/admin/verifyOrganizers', $data);
     }
 
     /**

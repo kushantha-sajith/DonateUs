@@ -182,7 +182,7 @@ form.secActive .form.first{
     pointer-events: none;
     transform: translateX(-100%);
 }
-.container form .title{
+.container form .span_title{
     display: block;
     margin-bottom: 8px;
     font-size: 16px;
@@ -190,6 +190,7 @@ form.secActive .form.first{
     margin: 6px 0;
     color: #333;
 }
+
 .container form .fields{
     display: flex;
     align-items: center;
@@ -241,7 +242,7 @@ form .fields .input-field{
     color: #fff;
     border-radius: 5px;
     margin: 0 0;
-    background-color: #4070f4;
+    background-color: #0A2558;
     transition: all 0.3s linear;
     cursor: pointer;
 }
@@ -250,7 +251,7 @@ form .fields .input-field{
     font-weight: 400;
 }
 form button:hover{
-    background-color: #265df2;
+    background-color: #111e88;
 }
 form button i,
 form .backBtn i{
@@ -280,10 +281,20 @@ form .buttons button , .backBtn{
     color: #fff;
     border-radius: 5px;
     margin-right: 10px;
-    background-color: #4070f4;
+    background-color: #0A2558;
     transition: all 0.3s linear;
     cursor: pointer;
 }
+
+.dropdown option{
+    background-color: #F6F6F6;
+    }
+  
+    .dropdown option:hover, .dropdown option:focus, .dropdown option:checked{
+    background-color: #0d1f4a;
+    cursor: pointer;
+    color: #ffff;
+  } 
 
 @media (max-width: 750px) {
     .container form{

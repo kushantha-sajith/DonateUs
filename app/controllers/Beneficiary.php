@@ -2,13 +2,24 @@
 
     class beneficiary extends Controller{
         public function __construct(){
-            if(!isLoggedIn()){
+            /*if(!isLoggedIn()){
                 redirect('users/login');
             }
-
+*/
             $this->beneficiaryModel = $this->model('BeneficiaryModel');
             
         }
+
+        // //load admin dashboard
+        // /**
+        //  * @return void
+        //  */
+        // public function index(){
+
+        //     $data = [];
+
+        //     $this->view('users/admin/index', $data);
+        // }
 
         //load profile page
         /**
@@ -83,7 +94,6 @@
       
             $this->view('users/beneficiary/all_feedback', $data);
           }
-
             //add feedback page
         /**
          * @return void
@@ -127,11 +137,9 @@
             }
         }
 
-        //load request page
 
-        /**
-         * @return void
-         */
+
+//load request page
         public function requests(){
           $requests = $this->beneficiaryModel->getRequests();
           $data = [
@@ -143,16 +151,13 @@
         }
 
         //add a new request
-
-        /**
-         * @return void
-         */
         public function newrequest(){
           if($_SERVER['REQUEST_METHOD'] == 'POST'){
               // Sanitize POST data
               $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
               $data = [
+                 
                   'description' => trim($_POST['description']),
                   'type' => trim($_POST['type']),
                   'quantity' => trim($_POST['quantity']),
@@ -167,6 +172,7 @@
                   'contactErr' => '',
                   'cityErr' => '',
                   'duedateErr' => ''
+                  
                 ];
 
                 if(empty($data['description'])){
@@ -196,7 +202,9 @@
               if(empty($data['contact'])){
                   $data['contactErr'] = 'Please enter contact';
               }
-              
+
+             
+
               // Make sure no errors
               if(empty($data['descriptionErr']) && empty($data['typeErr']) && empty($data['quantityErr']) && empty($data['duedateErr']) && empty($data['categoryErr']) && empty($data['cityErr']) && empty($data['contactErr'])){
                   // Validated

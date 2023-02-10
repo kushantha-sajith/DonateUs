@@ -52,6 +52,7 @@ main{
 }
 .ggg{
     display: flex;
+    display: flex;
 	justify-content: center;
 }
 .select-image {
@@ -99,6 +100,7 @@ main{
 
 
 .img-area {
+    
 	position: relative;
 	width: 100%;
 	height: 240px;
@@ -293,6 +295,7 @@ form .fields .input-field{
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-right: px;
     height: 45px;
     max-width: 200px;
     width: 100%;
@@ -303,8 +306,11 @@ form .fields .input-field{
     background-color: #4070f4;
     transition: all 0.3s linear;
     cursor: pointer;
-     margin-right: 10px;
+    
 } 
+
+
+
 
 @media (max-width: 750px) {
     .container form{
