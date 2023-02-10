@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <title>Request</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
+<<<<<<< Updated upstream
+=======
+    
+>>>>>>> Stashed changes
     <link
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
       rel="stylesheet"
@@ -12,6 +16,7 @@
   </head>
   
   <body>
+<<<<<<< Updated upstream
     <!--navigation bar left-->
     <div class="sidebar">
       <div class="logo-details">
@@ -66,6 +71,9 @@
       </ul>
     </div>
     <!--navigation bar left end-->
+=======
+  <?php require APPROOT.'/views/inc/side_navbar_beneficiary.php';?>
+>>>>>>> Stashed changes
 
     <!--home section start-->
     <section class="home-section">
@@ -93,12 +101,21 @@
           <thead>
             <th style="text-align:left;"><span>Id</span></th>
             <th style="text-align:left;"><span>Description</span></th>
-            <th style="text-align:left;"><span>Type</span></th>
+            <th style="text-align:left;"><span>Name</span></th>
             <th style="text-align:left;"><span>Quantity</span></th>
             <th style="text-align:left;"><span>DueDate</span></th>
+<<<<<<< Updated upstream
             <th style="text-align:left;"><span>Categories</span></th>
             <th style="text-align:left;"><span>City</span></th>
             <th style="text-align:left;"><span>Contact</span></th>
+=======
+            <th style="text-align:left;"><span>Title</span></th>
+            <th style="text-align:left;"><span>City</span></th>
+            <th style="text-align:left;"><span>Contact</span></th>
+            <!-- <th style="text-align:left;"><span>user_id</span></th>
+            <th style="text-align:left;"><span>cat_id</span></th> -->
+
+>>>>>>> Stashed changes
 
             <th></th>
             <th></th>            
@@ -108,12 +125,21 @@
             <tr class="t-row">
               <td style="text-align:left;"><?php echo $requests->id; ?></td>
               <td style="text-align:left;"><?php echo $requests->description; ?></td>
-              <td style="text-align:left;"><?php echo $requests->type; ?></td>
+              <td style="text-align:left;"><?php echo $requests->name; ?></td>
               <td style="text-align:left;"><?php echo $requests->quantity; ?></td>
               <td style="text-align:left;"><?php echo $requests->duedate; ?></td>
+<<<<<<< Updated upstream
               <td style="text-align:left;"><?php echo $requests->categories; ?></td>
               <td style="text-align:left;"><?php echo $requests->city; ?></td>
               <td style="text-align:left;"><?php echo $requests->contact; ?></td>
+=======
+              <td style="text-align:left;"><?php echo $requests->title; ?></td>
+              <td style="text-align:left;"><?php echo $requests->city; ?></td>
+              <td style="text-align:left;"><?php echo $requests->contact; ?></td>
+              <!-- <td style="text-align:left;"><?php echo $requests->user_id; ?></td>
+              <td style="text-align:left;"><?php echo $requests->cat_id; ?></td> -->
+
+>>>>>>> Stashed changes
 
               <td><a href="<?php echo URLROOT; ?>/beneficiary/editRequest/<?php echo $requests->id; ?>" class="btn-edit">Edit</a></td>
               <td><a href="<?php echo URLROOT; ?>/beneficiary/deleteRequest/<?php echo $requests->id; ?>" class="btn-delete">Delete</a></td>
@@ -127,12 +153,20 @@
       <br>
       <br>
       <div>
+<<<<<<< Updated upstream
         <a href="<?php echo URLROOT; ?>/beneficiary/newrequest">
+=======
+        <a href="<?php echo URLROOT; ?>/beneficiary/reqForm">
+>>>>>>> Stashed changes
         <input type="submit" value="Add a new request" class="btn add">
         </a>
       </div>
       </div> 
       </section>
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 
     <script>
       let sidebar = document.querySelector(".sidebar");
@@ -166,5 +200,11 @@
       }
 
     </script>
+<<<<<<< Updated upstream
   </body>
 </html>
+=======
+</body>
+
+</html> -->
+>>>>>>> Stashed changes

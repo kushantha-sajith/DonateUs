@@ -14,7 +14,7 @@
             <div class="top">
                 <img class="logo" src="<?php echo URLROOT; ?>/img/logo.png" alt="logo" href="">
                 <ul class="menu">
-                  <li class="menu"><a href="<?php echo URLROOT; ?>/users/login_beneficiary">Login</a></li>
+                  <li class="menu"><a href="<?php echo URLROOT; ?>/users/login">Login</a></li>
                 </ul>
                 <h1>DonateUs</h1>
             </div>
@@ -82,6 +82,13 @@
                             </select></td>
                             <td></td>
                         </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                        
 
                         <tr><td>
                             <label>Proof of Identity</label>

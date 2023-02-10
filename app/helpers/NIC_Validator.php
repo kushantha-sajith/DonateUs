@@ -81,4 +81,3 @@ class NIC_Validator{
 
 
 }
-

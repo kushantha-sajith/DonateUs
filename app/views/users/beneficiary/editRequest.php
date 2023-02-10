@@ -33,7 +33,7 @@
       </nav>
       <div class="main-container">
     
-      <h2>Add a new Donation Request</h2>
+      <h2>Update Donation Request</h2>
       
      <br>
      <div class="form">
