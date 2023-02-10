@@ -1,5 +1,7 @@
 <?php
 
+use helpers\Email;
+
     class Donor extends Controller{
         public function __construct(){
             /*if(!isLoggedIn()){
@@ -78,7 +80,110 @@
         }
 
 
-        
+        public function change_password_donor(){
+
+          $id = $_SESSION['user_id'];
+          $user_type = $_SESSION['user_type'];
+          $user_email = $_SESSION['user_email'];
+          $image_name = $this->profileImage();
+
+          if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $otp_verify = 0;
+            $otp_code = rand(100000, 999999);
+
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+                'old_password' => trim($_POST['old_password']),
+                'new_password' => trim($_POST['new_password']),
+                'confirm_password' => trim($_POST['confirm_password']),
+                'old_password_error' => '',
+                'new_password_error' => '',
+                'confirm_password_error' => '',
+                'otp_code' => $otp_code,
+                'otp_verify' => $otp_verify,
+                'prof_img' => $image_name
+            ];
+
+            $error = false;
+            $is_quit = false;
+            $same = $this->donorModel->passwordChecker($data['new_password'], $id,$is_quit);
+            $correct = $this->donorModel->passwordChecker($data['old_password'], $id,$is_quit);
+
+              if (!$correct) {
+                $data['old_password_error'] = 'Incorrect password';
+                $data['new_password'] = '';
+                    $data['confirm_password'] = '';
+                $error = true;
+              } else{
+
+                if (empty($data['new_password'])) {
+                  $data['new_password_error'] = 'Please enter a new password';
+                  $error = true;
+                } else {
+                  if ($same) {
+                    $data['new_password_error'] = 'New password cannot be same as old password';
+                    $data['new_password'] = '';
+                    $data['confirm_password'] = '';
+                    $error = true;
+                  }else{
+                    if (strlen($data['new_password']) < 6) {
+                      $data['new_password_error'] = 'Password must be at least 6 characters';
+                      $error = true;
+                    }
+  
+                    if (empty($data['confirm_password'])) {
+                      $data['confirm_password_error'] = 'Please confirm password';
+                      $error = true;
+                    } else {
+                      if ($data['new_password'] != $data['confirm_password']) {
+                        $data['confirm_password_error'] = 'Passwords do not match';
+                        $error = true;
+                      }
+                    }
+                  }
+  
+                  
+                }
+              }
+              
+              if ($error == false) {
+                      
+                // Hash Password
+                $data['new_password'] = password_hash($data['new_password'], PASSWORD_DEFAULT);
+      
+                if ($this->donorModel->change_password($data, $id)) {
+      
+                  $email = new Email($user_email);
+                  $email->sendVerificationEmail($user_email, $otp_code);
+                  redirect('users/otp_verify');
+                } else {
+                  die('Something went wrong');
+                }
+              } else {
+                // Load view with errors
+                $this->view('users/donor/change_password_donor', $data);
+              }
+
+            }else{
+
+              $data = [
+                'old_password' => '',
+                'new_password' => '',
+                'confirm_password' => '',
+                'old_password_error' => '',
+                'new_password_error' => '',
+                'confirm_password_error' => '',
+                'prof_img' => $image_name
+              ];
+
+              $this->view('users/donor/change_password_donor', $data);
+             
+            }
+
+        }
         
         
 
@@ -150,21 +255,6 @@
         }
 
 
-        
-        /**
-         * @return void
-         */
-        public function categories(){
-            $categories = $this->adminModel->getCategories();
-            $data = [
-              'title' => 'Donation Categories',
-              'categories' => $categories
-            ];
-      
-            $this -> view('users/admin/categories', $data);
-          }
-
-         
         /**
          * @return void
          */
@@ -268,4 +358,33 @@
                     die('Something went wrong');
                 }
         }
+
+        public function profileImage(){
+          if (isset($_SESSION['user_id'])) {
+            $id = $_SESSION['user_id'];
+            $userdata = $this->donorModel->getUserData($id);
+            foreach ($userdata as $user) :
+              $image_name = $user->prof_img;
+            endforeach;
+            return $image_name;
+          } else {
+            $this->view('users/login', $data);
+          }
+        }
+
+        /**
+         * @return void
+         */
+        public function stats(){
+          $image_name = $this->profileImage();
+          $data = [
+              'title' => 'Statistics',
+              'prof_img' => $image_name
+          ];
+
+          $this->view('users/donor/stats', $data);
+      }
+ 
+        
+
       }

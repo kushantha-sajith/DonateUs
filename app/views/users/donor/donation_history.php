@@ -29,7 +29,7 @@
           <div class="notification">
             <i class="bx bx-bell bx-tada notification"></i>
           </div>
-            <a href="<?php echo URLROOT; ?>/donor/profile_donor"><img src="<?php echo URLROOT; ?>/img/<?php echo $data['prof_img'];  ?>" alt="" /></a>
+            <a href="<?php echo URLROOT; ?>/donor/profile"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
           <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
           <!-- <i class='bx bx-chevron-down'></i> -->
         </div>
@@ -61,7 +61,7 @@
             
             <tr class="t-row">
               <td colspan="2" style="text-align:left;">1</td>
-              <td colspan="2" style="text-align:left;">xxxxxxxxxxxxxxxxxxxxxxxx<br>xxxxxxxxxxxxxxxxxxxxxxx</td>
+              <td colspan="2" style="text-align:left;">aaaaaaaaaaaaaaaaaaaaaaa<br>aaaaaaaaaaaaaaaaaaaaaa</td>
               <td colspan="2" style="text-align:left;">1</td>
               <td colspan="2" style="text-align:left;">Non-Financial</td>
               <td colspan="2" style="text-align:left;">45</td>

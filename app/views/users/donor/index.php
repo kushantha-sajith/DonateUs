@@ -13,78 +13,7 @@
   
   <body>
     <!--navigation bar left-->
-    <div class="sidebar">
-      <div class="logo-details">
-        <i class="bx bx-grid-alt"></i>
-       
-        <span class="logo_name">Dashboard</span>
-      </div>
-      <div class="welcome">
-        <span>Welcome</span>
-      </div>
-      <ul class="nav-links">
-        <li>
-          <a href="#">
-            <i class="bx bx-grid-alt"></i>
-            <span class="links_name">Dashboard</span>
-          </a>
-        </li>
-        <li>
-          <a href="<?php echo URLROOT; ?>/pages/donation_requests_donor">
-            <i class="bx bx-list-check"></i>
-            <span class="links_name">Donation Requests</span>
-          </a>
-        </li>
-        <li>
-          <a href="<?php echo URLROOT; ?>/pages/donationHistory_donor">
-            <i class="bx bx-history"></i>
-            <span class="links_name">Donation History</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-conversation"></i>
-            <span class="links_name">Forum</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-calendar-check"></i>
-            <span class="links_name">Events</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-pie-chart-alt"></i>
-            <span class="links_name">Stats</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bxs-report"></i>
-            <span class="links_name">Reservations</span>
-          </a>
-        </li>
-        <li id="item1">
-          <a href="#">
-            <i class="bx bxs-report"></i>
-            <span class="links_name">Sponsor</span>
-          </a>
-        </li>
-        <li id="item2">
-          <a href="#">
-            <i class="bx bxs-report"></i>
-            <span class="links_name">Reports</span>
-          </a>
-        </li>
-        <li class="log_out">
-          <a href="<?php echo URLROOT; ?>/users/logout">
-            <i class="bx bx-log-out"></i>
-            <span class="links_name">Log out</span>
-          </a>
-        </li>
-      </ul>
-    </div>
+    <?php require APPROOT.'/views/inc/side_navbar_donor.php';?>
     <!--navigation bar left end-->
 
     <!--home section start-->
@@ -106,41 +35,72 @@
       </nav>
       <div class="main-container">
         <h1>Welcome Donor</h1>
+        <div class="cardBox">
+              <div class="card">
+                  <div>
+                      <div class="numbers">16</div>
+                      <div class="cardName">Total Donations</div>
+                  </div>
+
+                  <div class="iconBx">
+                      <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+              </div>
+
+              <div class="card">
+                  <div>
+                      <div class="numbers">Rs.20000</div>
+                      <div class="cardName">Total Sponsorships</div>
+                  </div>
+
+                  <div class="iconBx">
+                      <ion-icon name="cart-outline"></ion-icon>
+                  </div>
+              </div>
+
+              <div class="card">
+                  <div>
+                      <div class="numbers">Rs.5000/=</div>
+                      <div class="cardName">Financial Donations</div>
+                  </div>
+
+                  <div class="iconBx">
+                      <ion-icon name="chatbubbles-outline"></ion-icon>
+                  </div>
+              </div>
+
+              <div class="card">
+                  <div>
+                      <div class="numbers">23</div>
+                      <div class="cardName">Non Financial Donations</div>
+                  </div>
+
+                  <div class="iconBx">
+                      <ion-icon name="chatbubbles-outline"></ion-icon>
+                  </div>
+              </div>
+
+             
+          </div>
+         
+          <br><br>
+          <table class="table-img">
+            <tr>
+              <td class="table-data"><img src="<?php echo URLROOT; ?>/img/image4.png" alt="" width="450" height="350"></td>
+            
+              <td class="table-data"><img src="<?php echo URLROOT; ?>/img/image2.png" alt="" width="500" height="350"></td>
+          </tr>
+          </table>
+
+         
+              </div>
+          </div>
+      </div>
+        </div>
       </div>
     </section>
     <!--home section end-->
 
-    <script>
-      window.onload = function () {
-        
-        let type = "<?php echo $_SESSION['user_type']; ?>";
-        let menuitem1 = document.getElementById("item1");
-        let menuitem2 = document.getElementById("item2");
-        if(type === "3" ){
-          menuitem1.style.display = "block";
-          menuitem2.style.display = "block";
-        }else{
-          menuitem1.style.display = "none";
-          menuitem2.style.display = "none";
-        }
-        
-      };
-
-      let sidebar = document.querySelector(".sidebar");
-      let sidebarBtn = document.querySelector(".sidebarBtn");
-      let welcome = document.querySelector(".welcome");
-      sidebarBtn.onclick = function () {       
-        sidebar.classList.toggle("active");
-        if (sidebar.classList.contains("active")) {
-          sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
-          welcome.style.display = "none";
-        } else {
-          sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-          welcome.style.display = "block";
-        }
-      };
-
-      
-    </script>
+    
   </body>
 </html>

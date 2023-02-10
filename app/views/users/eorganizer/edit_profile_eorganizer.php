@@ -15,78 +15,7 @@
   
   <body>
     <!--navigation bar left-->
-    <div class="sidebar">
-      <div class="logo-details">
-        <i class="bx bx-grid-alt"></i>
-        <!-- <h1><?php echo $data['title']; ?></h1> -->
-        <span class="logo_name">Dashboard</span>
-      </div>
-      <div class="welcome">
-        <span>Welcome</span>
-      </div>
-      <ul class="nav-links">
-        <li>
-          <a href="#">
-            <i class="bx bx-grid-alt"></i>
-            <span class="links_name">Dashboard</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-list-check"></i>
-            <span class="links_name">Donation Requests</span>
-          </a>
-        </li>
-        <li>
-        <a href="<?php echo URLROOT; ?>/pages/donationHistory_donor">
-            <i class="bx bx-history"></i>
-            <span class="links_name">Donation History</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-conversation"></i>
-            <span class="links_name">Forum</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-calendar-check"></i>
-            <span class="links_name">Events</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-pie-chart-alt"></i>
-            <span class="links_name">Stats</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bxs-report"></i>
-            <span class="links_name">Reservations</span>
-          </a>
-        </li>
-        <li id="item1">
-          <a href="#">
-            <i class="bx bxs-report"></i>
-            <span class="links_name">Sponsor</span>
-          </a>
-        </li>
-        <li id="item2">
-          <a href="#">
-            <i class="bx bxs-report"></i>
-            <span class="links_name">Reports</span>
-          </a>
-        </li>
-        <li class="log_out">
-          <a href="<?php echo URLROOT; ?>/users/logout">
-            <i class="bx bx-log-out"></i>
-            <span class="links_name">Log out</span>
-          </a>
-        </li>
-      </ul>
-    </div>
+    <?php require APPROOT.'/views/inc/side_navbar_eorganizer.php';?>
     <!--navigation bar left end-->
 
     <!--home section start-->
@@ -111,7 +40,7 @@
       <div class="container">
                 <header>Profile Details</header>
 
-                <form action="#">
+                <form action="<?php echo URLROOT; ?>/eorganizer/update_profile_eorganizer" method="POST">
                     <div class="formfirst">
                         <div class="details personal">
                             <span class="title"><u>Personal Details</u></span>
@@ -119,34 +48,34 @@
                             <?php foreach($data['userdata'] as $user) : ?>
                               <?php foreach($data['personaldata'] as $personaldata) : ?>
                                 <div class="input-field">
-                                    <label>Full Name</label>
-                                    <input type="text" placeholder="ex: John Doe" value="<?php echo $personaldata->full_name ?>" >
+                                    <label>User Email</label>
+                                    <input type="text" name="email" placeholder="ex: abc@gmail.com" value="<?php echo $user-> email; ?>" disabled>
                                 </div>
                                 <div class="input-field">
                                     <label>NIC</label>
-                                    <input type="text" placeholder="ex: 19XXXXXXXXXX/ 9XXXXXXXXX" value="<?php echo $personaldata->NIC; ?>" disabled>
+                                    <input type="text" name="nic" placeholder="ex: 19XXXXXXXXXX/ 9XXXXXXXXX" value="<?php echo $personaldata->NIC; ?>" disabled>
                                 </div>
-                                
+                                                                
                                 <div class="input-field">
-                                    <label>User Email</label>
-                                    <input type="text" placeholder="ex: abc@gmail.com" value="<?php echo $user-> email; ?>" disabled>
+                                    <label>Full Name</label>
+                                    <input type="text" name="full_name" placeholder="ex: John Doe" value="<?php echo $personaldata->full_name ?>" >
                                 </div>
 
                                 <div class="input-field">
                                     <label>Contact Number</label>
-                                    <input type="text" placeholder="ex: +94XXXXXXXXX" value="<?php echo $user->tp_number; ?>" >
+                                    <input type="text" name="contact" placeholder="ex: +94XXXXXXXXX" value="<?php echo $user->tp_number; ?>" >
                                 </div>
                                 <div class="input-field">
                                     <label>Community Name</label>
-                                    <input type="text" placeholder="ex: Rotract Club of UCSC" value="<?php echo $personaldata->community_name; ?>" >
+                                    <input type="text" name="comm_name" placeholder="ex: Rotract Club of UCSC" value="<?php echo $personaldata->community_name; ?>" >
                                 </div>
                                 <div class="input-field">
                                     <label>Designation</label>
-                                    <input type="text" placeholder="ex: Treasurer" value="<?php echo $personaldata->designation; ?>" >
+                                    <input type="text"  name="desg" placeholder="ex: Treasurer" value="<?php echo $personaldata->designation; ?>" >
                                 </div>
                                 <div class="input-field">
                                     <label>City</label>
-                                    <input type="text" placeholder="ex: Colombo" value="<?php echo $personaldata->city; ?>" >
+                                    <input type="text" name="city" placeholder="ex: Colombo" value="<?php echo $personaldata->city; ?>" >
                                 </div>
                                 <div class="input-field">
                                     <label>District</label>

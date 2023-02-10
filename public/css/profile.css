@@ -182,7 +182,11 @@ form.secActive .form.first{
     pointer-events: none;
     transform: translateX(-100%);
 }
+<<<<<<< Updated upstream
 .container form .title{
+=======
+.container form .span_title{
+>>>>>>> Stashed changes
     display: block;
     margin-bottom: 8px;
     font-size: 16px;
@@ -190,6 +194,10 @@ form.secActive .form.first{
     margin: 6px 0;
     color: #333;
 }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 .container form .fields{
     display: flex;
     align-items: center;

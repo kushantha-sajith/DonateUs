@@ -3,10 +3,106 @@
 use helpers\Email;
 use helpers\NIC_Validator;
 
+<<<<<<< Updated upstream
   class Users extends Controller {
     public function __construct(){
       $this->userModel = $this->model('User');
         $this->verificationModel = $this->model('VerificationModel');
+=======
+class Users extends Controller{
+  public function __construct(){
+    $this->userModel = $this->model('User');
+    $this->verificationModel = $this->model('VerificationModel');
+    $this->donorModel = $this->model('DonorModel');
+  }
+
+  //Register function
+  /**
+   * @return void
+   */
+  public function register(){
+    // Check for POST
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      // Process form
+
+      // Sanitize POST data
+      $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+      $verification_status = 0;
+      $otp_code = rand(100000, 999999);
+
+      // Init data
+      $data = [
+        'email' => trim($_POST['email']),
+        'password' => trim($_POST['password']),
+        'confirm_password' => trim($_POST['confirm_password']),
+        'verification_status' => $verification_status,
+        'otp_code' => $otp_code,
+        'email_err' => '',
+        'password_err' => '',
+        'confirm_password_err' => ''
+      ];
+
+      // Validate Email
+      if (empty($data['email'])) {
+        $data['email_err'] = 'Please enter email';
+      } else {
+        // Check email
+        if ($this->userModel->findUserByEmail($data['email'])) {
+          $data['email_err'] = 'Email is already taken';
+        }
+      }
+
+      // Validate Password
+      if (empty($data['password'])) {
+        $data['password_err'] = 'Please enter password';
+      } elseif (strlen($data['password']) < 6) {
+        $data['password_err'] = 'Password must be at least 6 characters';
+      }
+
+      // Validate Confirm Password
+      if (empty($data['confirm_password'])) {
+        $data['confirm_password_err'] = 'Please confirm password';
+      } else {
+        if ($data['password'] != $data['confirm_password']) {
+          $data['confirm_password_err'] = 'Passwords do not match';
+        }
+      }
+
+      // Make sure errors are empty
+      if (empty($data['email_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])) {
+        // Validated
+
+        // Hash Password
+        $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+
+        // Register User
+        if ($this->userModel->register($data)) {
+          //flash('register_success', 'You are Registered and can log in');
+          $email = new Email($data['email']);
+          $email->sendVerificationEmail($data['email'], $otp_code);
+          redirect('users/verify');
+        } else {
+          die('Something went wrong');
+        }
+      } else {
+        // Load view with errors
+        $this->view('users/register', $data);
+      }
+    } else {
+      // Init data
+      $data = [
+        'email' => '',
+        'password' => '',
+        'confirm_password' => '',
+        'email_err' => '',
+        'password_err' => '',
+        'confirm_password_err' => ''
+      ];
+
+      // Load view
+      $this->view('users/register', $data);
+>>>>>>> Stashed changes
     }
 
     //Register function - Donor
@@ -637,6 +733,116 @@ use helpers\NIC_Validator;
           // Load view with errors
           $this->view('users/login_donor', $data);
         }
+<<<<<<< Updated upstream
+=======
+      }
+    } else {
+      // Init data
+      $data = [
+        'email_ind' => '',
+        'nic' => '',
+        'password_ind' => '',
+        'confirm_password_ind' => '',
+        'fname' => '',
+        'lname' => '',
+        'contact_ind' => '',
+        'city_ind' => '',
+        'district_ind' => '0',
+        'address_ind' => '',
+        'identity_ind' => '',
+        'email_err_ind' => '',
+        'nic_err' => '',
+        'password_err_ind' => '',
+        'confirm_password_err_ind' => '',
+        'other_err_ind' => '',
+        'email' => '',
+        'password' => '',
+        'confirm_password' => '',
+        'compname' => '',
+        'fullname' => '',
+        'empid' => '',
+        'desg' => '',
+        'contact' => '',
+        'city' => '',
+        'district' => '0',
+        'address' => '',
+        'identity' => '',
+        'orgtype' => '',
+        'email_err' => '',
+        'nic_err' => '',
+        'password_err' => '',
+        'confirm_password_err' => '',
+        'fname_err_ind' => '',
+        'lname_err_ind' => '',
+        'contact_err_ind' => '',
+        'city_err_ind' => '',
+        'district_err_ind' => '',
+        'city_err' => '',
+        'district_err' => '',
+        'contact_err' => '',
+        'cname_err' => '',
+        'fullname_err' => '',
+        'desg_err' => '',
+        'empid_err' => '',
+        'districts' => $districts,
+        'tab' => 'Individual'
+      ];
+
+      // Load view
+      $this->view('users/register_beneficiary', $data);
+    }
+  }
+
+  public function register_eorganizer(){
+    $districts = $this->userModel->getDistricts();
+
+    // Check for POST
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      // Process form
+
+      // Sanitize POST data
+      $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+      $otp_verify = 0;
+      $otp_code = rand(100000, 999999);
+      $verification_status = 0;
+
+      // Init data
+      $data = [
+        'email' => trim($_POST['email']),
+        'nic' => trim($_POST['nic']),
+        'password' => trim($_POST['password']),
+        'confirm_password' => trim($_POST['confirm_password']),
+        'fullname' => trim($_POST['fullname']),
+        'contact' => trim($_POST['contact']),
+        'comm_name' => trim($_POST['comm_name']),
+        'desg' => trim($_POST['desg']),
+        'city' => trim($_POST['city']),
+        'district' => trim($_POST['district']),
+        'otp_verify' => $otp_verify,
+        'otp_code' => $otp_code,
+        'verification_status' => $verification_status,
+        'districts' => $districts,
+        'prof_img' => 'img_profile1.jpeg',
+        'acc_status' => '1',
+        'email_err' => '',
+        'nic_err' => '',
+        'password_err' => '',
+        'confirm_password_err' => '',
+        'fullname_err' => '',
+        'contact_err' => '',
+        'comm_name_err' => '',
+        'desg_err' => '',
+        'district_err' => '',
+        'city_err' => '',
+      ];
+
+      $error = false;
+      // Validate Email
+      if (empty($data['email'])) {
+        $data['email_err'] = 'Please enter email';
+        $error = true;
+>>>>>>> Stashed changes
       } else {
         // Init data
         $data =[    
@@ -729,6 +935,7 @@ use helpers\NIC_Validator;
         }else{
           redirect('users/verify');
         }
+<<<<<<< Updated upstream
       
     }
 
@@ -743,6 +950,116 @@ use helpers\NIC_Validator;
       session_destroy();
       redirect('users/login_donor');
     }
+=======
+      } else {
+        $data['error'] = "Invalid OTP";
+      }
+    } else {
+      $data = [
+        'otp' => '',
+        'error' => '',
+        'status' => ''
+      ];
+
+      $this->view('users/signupVerification', $data);
+    }
+    
+  }
+
+  public function otp_verify(){
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $data = [
+        'otp' => trim($_POST['otp']),
+        'error' => '',
+        'status' => ''
+      ];
+
+      $verified = $this->verificationModel->verifyOTP($data['otp']);
+
+      if (is_numeric($data['otp']) && $verified) {
+        if ($this->verificationModel->verify($verified->id)) {
+          redirect('pages/profile_donor');
+        } else {
+          
+          redirect('donor/change_password_donor');
+        }
+      } else {
+        $data['error'] = "Invalid OTP";
+        $this->view('users/otp_verification', $data);
+      }
+    } else {
+      $data = [
+        'otp' => '',
+        'error' => '',
+        'status' => ''
+      ];
+
+      $this->view('users/otp_verification', $data);
+    }
+    
+  }
+
+  public function quit_verify(){
+    $id = $_SESSION['user_id'];
+    $password = '0';
+    $is_quit = true;
+    if($this->donorModel->passwordChecker($password, $id,$is_quit)){
+      redirect('donor/change_password_donor');
+    }
+    
+  }
+  
+
+  //create sessions for all users
+  /**
+   * @param $user
+   * @return void
+   */
+  public function createUserSession($user){
+    if($user->otp_verify ==1){
+    $_SESSION['user_id'] = $user->id;
+    $_SESSION['user_email'] = $user->email;
+    $_SESSION['user_type'] = $user->user_type;
+
+    switch ($user->user_type) {
+      case 1:
+        redirect('pages/admin');
+        break;
+      case 2:
+        redirect('pages/donor');
+        break;
+      case 3:
+        redirect('pages/donor');
+        break;
+      case 4:
+        redirect('pages/beneficiary');
+        break;
+      case 5:
+        redirect('pages/org_beneficiary');
+        break;
+      case 6:
+        redirect('pages/eorganizer');
+        break;
+      default:
+        redirect('users/login');
+        break;
+    }
+  }else{
+    redirect('users/verify');
+  }
+  }
+
+  //logout method
+  /**
+   * @return void
+   */
+  public function logout(){
+    unset($_SESSION['user_id']);
+    unset($_SESSION['user_email']);
+    unset($_SESSION['user_type']);
+    session_destroy();
+>>>>>>> Stashed changes
 
      
   }
