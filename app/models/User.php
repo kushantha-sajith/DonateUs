@@ -331,6 +331,12 @@
     $this->db->query('SELECT * FROM categories');
     $results = $this->db->resultSet();
     return $results;  
+<<<<<<< Updated upstream
+}
+
+}
+>>>>>>> Stashed changes
+=======
 }
 
 }

@@ -34,6 +34,9 @@
                     aspernatur ullam aperiam tempora.
                 </p>
                 <button><a href="http://localhost/DonateUs/users/register_beneficiary/gen">Register Now</a></button>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             </div>
             <div class="right">

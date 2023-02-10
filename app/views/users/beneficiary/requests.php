@@ -5,6 +5,10 @@
     <title>Request</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+    
+>>>>>>> Stashed changes
 =======
     
 >>>>>>> Stashed changes
@@ -16,6 +20,7 @@
   </head>
   
   <body>
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
     <!--navigation bar left-->
     <div class="sidebar">
@@ -74,6 +79,9 @@
 =======
   <?php require APPROOT.'/views/inc/side_navbar_beneficiary.php';?>
 >>>>>>> Stashed changes
+=======
+  <?php require APPROOT.'/views/inc/side_navbar_beneficiary.php';?>
+>>>>>>> Stashed changes
 
     <!--home section start-->
     <section class="home-section">
@@ -105,16 +113,22 @@
             <th style="text-align:left;"><span>Quantity</span></th>
             <th style="text-align:left;"><span>DueDate</span></th>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             <th style="text-align:left;"><span>Categories</span></th>
             <th style="text-align:left;"><span>City</span></th>
             <th style="text-align:left;"><span>Contact</span></th>
 =======
+=======
+>>>>>>> Stashed changes
             <th style="text-align:left;"><span>Title</span></th>
             <th style="text-align:left;"><span>City</span></th>
             <th style="text-align:left;"><span>Contact</span></th>
             <!-- <th style="text-align:left;"><span>user_id</span></th>
             <th style="text-align:left;"><span>cat_id</span></th> -->
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
             <th></th>
@@ -129,16 +143,22 @@
               <td style="text-align:left;"><?php echo $requests->quantity; ?></td>
               <td style="text-align:left;"><?php echo $requests->duedate; ?></td>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
               <td style="text-align:left;"><?php echo $requests->categories; ?></td>
               <td style="text-align:left;"><?php echo $requests->city; ?></td>
               <td style="text-align:left;"><?php echo $requests->contact; ?></td>
 =======
+=======
+>>>>>>> Stashed changes
               <td style="text-align:left;"><?php echo $requests->title; ?></td>
               <td style="text-align:left;"><?php echo $requests->city; ?></td>
               <td style="text-align:left;"><?php echo $requests->contact; ?></td>
               <!-- <td style="text-align:left;"><?php echo $requests->user_id; ?></td>
               <td style="text-align:left;"><?php echo $requests->cat_id; ?></td> -->
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
               <td><a href="<?php echo URLROOT; ?>/beneficiary/editRequest/<?php echo $requests->id; ?>" class="btn-edit">Edit</a></td>
@@ -154,7 +174,11 @@
       <br>
       <div>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         <a href="<?php echo URLROOT; ?>/beneficiary/newrequest">
+=======
+        <a href="<?php echo URLROOT; ?>/beneficiary/reqForm">
+>>>>>>> Stashed changes
 =======
         <a href="<?php echo URLROOT; ?>/beneficiary/reqForm">
 >>>>>>> Stashed changes
@@ -164,7 +188,10 @@
       </div> 
       </section>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 
 >>>>>>> Stashed changes
 
@@ -206,5 +233,9 @@
 =======
 </body>
 
+<<<<<<< Updated upstream
+</html> -->
+>>>>>>> Stashed changes
+=======
 </html> -->
 >>>>>>> Stashed changes

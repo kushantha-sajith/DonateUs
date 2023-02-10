@@ -35,15 +35,21 @@
         
         <li>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         <a href="<?php echo URLROOT; ?>/beneficiary/donation_req">
             <i class="bx bx-list-check"></i>
             <span class="links_name">Donation Requests</span>
           </a>
 =======
+=======
+>>>>>>> Stashed changes
             <a href="<?php echo URLROOT; ?>/beneficiary/requests">
                 <i class="bx bx-list-check"></i>
                 <span class="links_name">Donation Requests</span>
             </a>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         </li>
         <li>
@@ -67,6 +73,7 @@
         </li>
 
         <li id="item1">
+<<<<<<< Updated upstream
           <a href="#">
             <i class="bx bxs-calendar-check"></i>
             <span class="links_name">Calendar</span>
@@ -80,6 +87,21 @@
           </a>
         </li>
 
+=======
+          <a href="#">
+            <i class="bx bxs-calendar-check"></i>
+            <span class="links_name">Calendar</span>
+          </a>
+        </li>
+
+        <li id="item2">
+          <a href="#">
+            <i class="bx bxs-calendar-check"></i>
+            <span class="links_name">Reservations</span>
+          </a>
+        </li>
+
+>>>>>>> Stashed changes
         <li id="item3">
             <a href="#">
                 <i class="bx bxs-report"></i>

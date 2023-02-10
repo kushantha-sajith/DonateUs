@@ -84,6 +84,7 @@
 }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 .position1{
     position: absolute;
     top: 60%;
@@ -101,6 +102,9 @@
     width: 50%;
 }
 .centered{
+=======
+.centered {
+>>>>>>> Stashed changes
 =======
 .centered {
 >>>>>>> Stashed changes
@@ -158,7 +162,12 @@ p {
 }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 input[type=text],input[type=password], select{
+=======
+input[type=text],
+input[type=password] {
+>>>>>>> Stashed changes
 =======
 input[type=text],
 input[type=password] {
@@ -173,7 +182,12 @@ input[type=password] {
 }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 input[type=text],input[type=password],select:focus{
+=======
+input[type=text],
+input[type=password]:focus {
+>>>>>>> Stashed changes
 =======
 input[type=text],
 input[type=password]:focus {
@@ -232,18 +246,24 @@ table {
     padding: 14px 20px;
     margin-right: 5px;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     font-size: medium;
   }
   
   /* Change background color of buttons on hover */
   .tab button:hover {
 =======
+=======
+>>>>>>> Stashed changes
 }
 
 
 /* Change background color of buttons on hover */
 
 .tab button:hover {
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     background-color: #0d1f4a;
 }
@@ -268,6 +288,7 @@ table {
 .form {
     width: 100%;
 }
+<<<<<<< Updated upstream
 
 <<<<<<< Updated upstream
   .tooltip {
@@ -312,11 +333,17 @@ table {
  
   .welcomebanner{
 =======
+=======
+
+>>>>>>> Stashed changes
 #Individual {
     display: block;
 }
 
 .welcomebanner {
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     color: #163172;
     font-size: 100px;
