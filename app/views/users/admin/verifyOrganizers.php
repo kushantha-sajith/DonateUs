@@ -92,6 +92,38 @@
                 </div>
             </div>
         <?php endforeach; ?>
+        <div class="cards_heading cards_color">
+            <div>6</div>
+            <div>Kushantha</div>
+            <div>kushantha021@gmail.com</div>
+            <div>
+                <select name="status" id="status">
+                    <option value="Active">Active</option>
+                    <option value="Deactive">Deactive</option>
+                </select>
+            </div>
+            <div>Individual</div>
+            <div>Galle</div>
+            <div>
+                <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
+            </div>
+        </div>
+        <div class="cards_heading cards_color">
+            <div>6</div>
+            <div>Kushantha</div>
+            <div>kushantha021@gmail.com</div>
+            <div>
+                <select name="status" id="status">
+                    <option value="Active">Active</option>
+                    <option value="Deactive">Deactive</option>
+                </select>
+            </div>
+            <div>Individual</div>
+            <div>Galle</div>
+            <div>
+                <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
+            </div>
+        </div>
       </main>
     </section>
     <!--home section end-->

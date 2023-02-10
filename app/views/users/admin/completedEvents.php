@@ -79,8 +79,8 @@
             <div>ID</div>
             <div>Event Title</div>
             <div>Event Organizer Name</div>
-            <div>Rejection Note</div>
-            <div>Rejection Date</div>
+            <div>Received Amount</div>
+            <div>Completion Date</div>
             <div>Amount</div>
             <div></div>
         </div>
@@ -97,6 +97,39 @@
                 </div>
             </div>
         <?php endforeach; ?>
+        <div class="cards_heading cards_color">
+            <div>10</div>
+            <div>Hitha Mithuru</div>
+            <div>Kushantha</div>
+            <div>10,000</div>
+            <div>2023-02-10</div>
+            <div>50,000</div>
+            <div>
+                <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
+            </div>
+        </div>
+        <div class="cards_heading cards_color">
+            <div>10</div>
+            <div>Hitha Mithuru</div>
+            <div>Kushantha</div>
+            <div>10,000</div>
+            <div>2023-02-10</div>
+            <div>50,000</div>
+            <div>
+                <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
+            </div>
+        </div>
+        <div class="cards_heading cards_color">
+            <div>10</div>
+            <div>Hitha Mithuru</div>
+            <div>Kushantha</div>
+            <div>10,000</div>
+            <div>2023-02-10</div>
+            <div>50,000</div>
+            <div>
+                <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
+            </div>
+        </div>
         </main>
 
     </section>
