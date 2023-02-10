@@ -83,31 +83,7 @@
     background-color: #D6E4F0;
 }
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-.position1{
-    position: absolute;
-    top: 60%;
-    /* left: 40%; */
-    transform: translate(-7%, -60%); 
-}
-.position2{
-    position: absolute;
-    top: 50%;
-    /* left: 50%; */
-    transform: translate(40%, -50%); 
-}
-
-.btnsubmit{
-    width: 50%;
-}
-.centered{
-=======
 .centered {
->>>>>>> Stashed changes
-=======
-.centered {
->>>>>>> Stashed changes
     position: absolute;
     top: 50%;
     left: 50%;
@@ -161,17 +137,8 @@ p {
     text-align: right;
 }
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-input[type=text],input[type=password], select{
-=======
 input[type=text],
 input[type=password] {
->>>>>>> Stashed changes
-=======
-input[type=text],
-input[type=password] {
->>>>>>> Stashed changes
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -181,17 +148,8 @@ input[type=password] {
     box-sizing: border-box;
 }
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-input[type=text],input[type=password],select:focus{
-=======
 input[type=text],
 input[type=password]:focus {
->>>>>>> Stashed changes
-=======
-input[type=text],
-input[type=password]:focus {
->>>>>>> Stashed changes
     outline: none;
 }
 
@@ -204,7 +162,6 @@ input[type=submit] {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: medium;
 }
 
 input[type=submit]:hover {
@@ -245,26 +202,12 @@ table {
     cursor: pointer;
     padding: 14px 20px;
     margin-right: 5px;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    font-size: medium;
-  }
-  
-  /* Change background color of buttons on hover */
-  .tab button:hover {
-=======
-=======
->>>>>>> Stashed changes
 }
 
 
 /* Change background color of buttons on hover */
 
 .tab button:hover {
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     background-color: #0d1f4a;
 }
 
@@ -288,63 +231,12 @@ table {
 .form {
     width: 100%;
 }
-<<<<<<< Updated upstream
 
-<<<<<<< Updated upstream
-  .tooltip {
-    position: relative;
-    display: inline-block;
-  }
-
-    /* Tooltip text */
-  .tooltip .tooltiptext {
-    visibility: hidden;
-    width: 400px;
-    top: 100%;
-    left: 50%;
-    margin-left: -200px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-   
-    /* Position the tooltip text - see examples below! */
-    position: absolute;
-    z-index: 1;
-  }
-  
-  /* Show the tooltip text when you mouse over the tooltip container */
-  .tooltip:hover .tooltiptext {
-    visibility: visible;
-  }
-
-  .dropdown option{
-    background-color: #F6F6F6;
-    }
-  
-    .dropdown option:hover, .dropdown option:focus, .dropdown option:checked{
-    background-color: #0d1f4a;
-    cursor: pointer;
-    color: #ffff;
-  } 
-
-  
- 
-  .welcomebanner{
-=======
-=======
-
->>>>>>> Stashed changes
 #Individual {
     display: block;
 }
 
 .welcomebanner {
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     color: #163172;
     font-size: 100px;
     font-weight: bold;

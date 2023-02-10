@@ -149,7 +149,7 @@
         public function editRequest($data){
             $this->db->query('UPDATE donation_req SET title= :title, name= :name, description= :description, quantity= :quantity, cat_id= :cat_id, user_id= :user_id, contact= :contact, city= :city, duedate= :duedate WHERE id = :id'); 
             // Bind values
-            $this->db->bind(':id', $data['id']);
+           // $this->db->bind(':id', $data['id']);
             $this->db->bind(':title', $data['title']);
             $this->db->bind(':name', $data['name']);
             $this->db->bind(':description', $data['description']);

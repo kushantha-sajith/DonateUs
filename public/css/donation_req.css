@@ -15,12 +15,6 @@
     --border-radius-3: 1.2rem;
     --card-padding: 1.8rem;
     --padding-1: 1.2rem;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    --box-shadow: 0 2rem 3rem var(--color-light)
-=======
-=======
->>>>>>> Stashed changes
     --box-shadow: 0 2rem 3rem var(--color-light);
     --dark-blue: #111e88;
 }
@@ -29,10 +23,6 @@ main {
     padding-top: 120px;
     padding-left: 120px;
     padding-right: 50px;
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 }
 
 * {
@@ -42,332 +32,6 @@ main {
     font-family: 'Poppins', sans-serif;
 }
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-main {
-    padding-top: 120px;
-    padding-left: 50px;
-    padding-right: 50px;
-}
-
-
-/* .main-container{
-    background-color: white;
-    padding: 40px 40px;
-    border-radius: 20px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-} */
-
-.cards_heading {
-    grid-template-columns: 3% 15% 15% 15% 15% 15% 15%;
-    grid-column-gap: 1%;
-    color: var(--black);
-    max-width: 100%;
-    margin: auto;
-    padding: 1%;
-    font-size: 1rem;
-    border-radius: 15px;
-    font-weight: bold;
-    margin-right: 0px;
-    margin-left: 0px;
-    text-align: center;
-    display: grid;
-}
-
-.head {
-    font-size: 1rem;
-}
-
-.cards_color {
-    background: #ffffff;
-    font-weight: normal;
-    color: black;
-    margin-bottom: 10px;
-    margin-right: 0;
-    font-size: 1rem;
-}
-
-@media(max-width:768px) {
-    .cards_heading {
-        max-width: 90%;
-    }
-    .main_heading {
-        font-size: 28px;
-    }
-    .head {
-        font-size: 18px;
-    }
-    .blue_color_cards_data {
-        font-size: 18px;
-    }
-    .white_color_cards_data {
-        font-size: 18px;
-    }
-}
-
-@media(max-width:425px) {
-    .cards_heading {
-        max-width: 95%;
-    }
-    .main_heading {
-        font-size: 24px;
-    }
-    .head {
-        font-size: 16px;
-    }
-    .blue_color_cards_data {
-        font-size: 14px;
-    }
-    .white_color_cards_data {
-        font-size: 14px;
-    }
-}
-
-.select-menu {
-    width: 380px;
-    margin-top: 5px;
-    margin-bottom: 20px;
-}
-
-.btnview {
-=======
-.container {
-    position: relative;
-    max-width: 900px;
-    width: 100%;
-    border-radius: 6px;
-    padding: 30px;
-    margin: 0 15px;
-    background-color: #fff;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-}
-
-.container .form_first {
-    overflow: auto;
-}
-
-.ggg {
-    display: flex;
-    display: flex;
-    justify-content: center;
-}
-
-.select-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 5px 0;
-    border-radius: 15px;
-    background: var(--blue);
-    color: #fff;
-    font-weight: 500;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    transition: all .3s ease;
-}
-
-.photo-container {
-    max-width: 50%;
-    width: 100%;
-    background: #fff;
-    padding-left: 5px;
-    padding-top: 5px;
-    padding-bottom: 2PX;
-    padding-right: 5px;
-    border-radius: 30px;
-}
-
-#grame {
-    max-width: 500px;
-    width: 100%;
-    background: #fff;
-    padding-left: 5px;
-    padding-top: 5px;
-    padding-bottom: 2PX;
-    padding-right: 5px;
-    border-radius: 30px;
-}
-
-.flex {
-    display: flex;
-    flex-direction: row;
-}
-
-.img-area {
-    position: relative;
-    width: 100%;
-    height: 240px;
-    background: #f2f2f2;
-    margin-bottom: 30px;
-    border-radius: 15px;
-    overflow: hidden;
->>>>>>> Stashed changes
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    z-index: 1;
-}
-
-#area-three {
-    position: relative;
-    width: 100%;
-    height: 350px;
-    background: #f2f2f2;
-    margin-bottom: 30px;
-    border-radius: 15px;
-    overflow: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    z-index: 1;
-}
-
-.img-area .icon {
-    font-size: 100px;
-}
-
-.img-area h3 {
-    font-size: 20px;
-    font-weight: 500;
-    margin-bottom: 6px;
-}
-
-.img-area p {
-    color: #999;
-}
-
-.img-area p span {
-    font-weight: 600;
-}
-
-.img-area img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    z-index: 100;
-}
-
-<<<<<<< Updated upstream
-.select-menu .select-btn {
-=======
-.img-area::before {
-    content: attr(data-img);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, .5);
-    color: #fff;
-    font-weight: 500;
-    text-align: center;
->>>>>>> Stashed changes
-    display: flex;
-    justify-content: center;
-    align-items: center;
-<<<<<<< Updated upstream
-    cursor: pointer;
-    justify-content: space-between;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.select-btn i {
-    font-size: 25px;
-    transition: 0.3s;
-}
-
-.select-menu.active .select-btn i {
-    transform: rotate(-180deg);
-}
-
-.select-menu .options {
-    position: relative;
-    padding: 20px;
-    margin-top: 10px;
-    border-radius: 8px;
-    background: #fff;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-    display: none;
-}
-
-.select-menu.active .options {
-=======
-    pointer-events: none;
-    opacity: 0;
-    transition: all .3s ease;
-    z-index: 200;
-}
-
-.img-area.active:hover::before {
-    opacity: 1;
-}
-
-.select-image:hover {
-    background: var(--);
-}
-
-.container header {
-    position: relative;
-    font-size: 20px;
-    font-weight: 600;
-    color: #333;
-}
-
-.container header::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    height: 3px;
-    width: 27px;
-    border-radius: 8px;
-    background-color: #4070f4;
-}
-
-.container form {
-    position: relative;
-    margin-top: 16px;
-    min-height: 490px;
-    background-color: #fff;
-    overflow: hidden;
-}
-
-.container form .form {
-    position: absolute;
-    background-color: #fff;
-    transition: 0.3s ease;
-}
-
-.container form .form.second {
-    opacity: 0;
-    pointer-events: none;
-    transform: translateX(100%);
-}
-
-form.secActive .form.second {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateX(0);
-}
-
-form.secActive .form.first {
-    opacity: 0;
-    pointer-events: none;
-    transform: translateX(-100%);
-}
-
-.container form .title {
->>>>>>> Stashed changes
-=======
 .container {
     position: relative;
     max-width: 900px;
@@ -570,7 +234,6 @@ form.secActive .form.first {
 }
 
 .container form .title {
->>>>>>> Stashed changes
     display: block;
     margin-bottom: 8px;
     font-size: 16px;
@@ -579,38 +242,13 @@ form.secActive .form.first {
     color: #333;
 }
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-.options .option {
-=======
 .container form .fields {
->>>>>>> Stashed changes
-=======
-.container form .fields {
->>>>>>> Stashed changes
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
 }
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-.options .option:hover {
-    background: #F2F2F2;
-}
-
-.option i {
-    font-size: 25px;
-    margin-right: 12px;
-}
-
-.option .option-text {
-    font-size: 18px;
-    color: #333;
-}
-
-=======
 form .fields .input-field {
     display: flex;
     width: calc(100% / 2 - 15px);
@@ -671,68 +309,6 @@ select {
     color: #333;
 }
 
-=======
-form .fields .input-field {
-    display: flex;
-    width: calc(100% / 2 - 15px);
-    flex-direction: column;
-    margin: 4px 0;
-}
-
-#description {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    margin: 4px 0;
-}
-
-.input-field label {
-    font-size: 12px;
-    font-weight: 500;
-    color: #2e2e2e;
-}
-
-.input-field input,
-select {
-    outline: none;
-    font-size: 14px;
-    font-weight: 400;
-    color: #333;
-    border-radius: 5px;
-    border: 1px solid #aaa;
-    padding: 0 15px;
-    height: 42px;
-    margin: 8px 0;
-}
-
-.input-field textarea {
-    outline: none;
-    font-size: 14px;
-    font-weight: 400;
-    color: #333;
-    border-radius: 5px;
-    border: 1px solid #aaa;
-    padding: 0 15px;
-    height: 150px;
-    margin: 8px 0;
-}
-
-.input-field input :focus,
-.input-field select:focus .input-field textarea:focus {
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
-}
-
-.input-field select,
-.input-field input,
-.input-field textarea[type="date"] {
-    color: #707070;
-}
-
-.input-field input[type="date"]:valid {
-    color: #333;
-}
-
->>>>>>> Stashed changes
 .container form button {
     display: flex;
     align-items: center;
@@ -768,7 +344,6 @@ select {
     }
 }
 
->>>>>>> Stashed changes
 .sidebar {
     position: fixed;
     height: 100%;

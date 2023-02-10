@@ -147,24 +147,14 @@
             'requests' => $requests
           ];
     
-          $this -> view('users/beneficiary/donation_req', $data);
+          $this -> view('users/beneficiary/requests', $data);
         }
 
         //add a new request
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        public function newrequest(){
-=======
-=======
->>>>>>> Stashed changes
         public function reqForm(){
 
           $categories = $this->beneficiaryModel->getCategories();
 
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
           if($_SERVER['REQUEST_METHOD'] == 'POST'){
               // Sanitize POST data
               $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -172,12 +162,6 @@
               $id = $_SESSION['user_id'];
 
               $data = [
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                 
-=======
-=======
->>>>>>> Stashed changes
                   'title' => trim($_POST['title']),
                   'name' => trim($_POST['name']),
                  // 'user_id' => trim($_POST['user_id']),
@@ -185,10 +169,6 @@
                   'cat_id' => trim($_POST['cat_id']),
                   //'NIC' => trim($_POST['NIC']),
                  // 'quantity' => trim($_POST['quantity']),
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
                   'description' => trim($_POST['description']),
                  // 'type' => trim($_POST['type']),
                   'quantity' => trim($_POST['quantity']),
@@ -204,23 +184,12 @@
                   'quantityErr' => '',
                   'contactErr' => '',
                   'cityErr' => '',
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                  'duedateErr' => ''
-                  
-=======
-=======
->>>>>>> Stashed changes
                  // 'publisheddateErr' => '',
                   'duedateErr' => '',
                   'user_idErr' => '',
                   'cat_idErr' => '',
                   'categories' => $categories,
                   'user_id' => $id
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
                 ];
 
                 if(empty($data['description'])){
@@ -251,11 +220,6 @@
                   $data['contactErr'] = 'Please enter contact';
               }
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
             //   if(empty($data['user_id'])){
             //     $data['user_idErr'] = 'Please enter user_id';
             // }
@@ -264,10 +228,6 @@
               $data['cat_idErr'] = 'Please enter cat_id';
           }
 
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
              
 
               // Make sure no errors
@@ -275,7 +235,7 @@
                   // Validated
                   if($this->beneficiaryModel->addRequest($data)){
                       // flash('category_message', 'Category Added');
-                      redirect('beneficiary/donation_req');
+                      redirect('beneficiary/requests');
                   } else {
                       die('Something went wrong');
                   }
@@ -412,7 +372,7 @@
                   // Validated
                   if($this->beneficiaryModel->editRequest($data)){
                       // flash('category_message', 'Category Added');
-                      redirect('beneficiary/donation_req');
+                      redirect('beneficiary/requests');
                   } else {
                       die('Something went wrong');
                   }
@@ -440,11 +400,7 @@
                   //'categories' => $requests->categories,
                   'city' => $requests->city,
                   'contact' => $requests->contact,
-<<<<<<< Updated upstream
-                 // 'categories' => $categories,
-=======
                   'categories' => $categories,
->>>>>>> Stashed changes
                   'quantityErr' => '',
                   'descriptionErr' => '',
                   'quantityErr' => '',

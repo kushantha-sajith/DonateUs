@@ -4,14 +4,7 @@
     <meta charset="UTF-8" />
     <title>Request</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
     
->>>>>>> Stashed changes
-=======
-    
->>>>>>> Stashed changes
     <link
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
       rel="stylesheet"
@@ -20,68 +13,7 @@
   </head>
   
   <body>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    <!--navigation bar left-->
-    <div class="sidebar">
-      <div class="logo-details">
-        <i class="bx bx-grid-alt"></i>
-        <!-- <h1><?php echo $data['title']; ?></h1> -->
-        <span class="logo_name">Dashboard</span>
-      </div>
-      <div class="welcome">
-        <span>Welcome</span>
-      </div>
-      <ul class="nav-links">
-        <li>
-          <a href="#">
-            <i class="bx bx-grid-alt"></i>
-            <span class="links_name">Dashboard</span>
-          </a>
-        </li>
-        
-        <li>
-          <a href="#">
-            <i class="bx bx-list-check"></i>
-            <span class="links_name">Donation Requests</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-history"></i>
-            <span class="links_name">Donation History</span>
-          </a>
-        </li>
-        
-        <li>
-          <a href="#">
-            <i class="bx bx-conversation"></i>
-            <span class="links_name">Forum</span>
-          </a>
-        </li>
-       
-        <li>
-          <a href="#">
-            <i class="bx bx-pie-chart-alt"></i>
-            <span class="links_name">Stats</span>
-          </a>
-        </li>
-        
-        <li class="log_out">
-          <a href="<?php echo URLROOT; ?>/users/logout">
-            <i class="bx bx-log-out"></i>
-            <span class="links_name">Log out</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-    <!--navigation bar left end-->
-=======
   <?php require APPROOT.'/views/inc/side_navbar_beneficiary.php';?>
->>>>>>> Stashed changes
-=======
-  <?php require APPROOT.'/views/inc/side_navbar_beneficiary.php';?>
->>>>>>> Stashed changes
 
     <!--home section start-->
     <section class="home-section">
@@ -112,24 +44,12 @@
             <th style="text-align:left;"><span>Name</span></th>
             <th style="text-align:left;"><span>Quantity</span></th>
             <th style="text-align:left;"><span>DueDate</span></th>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            <th style="text-align:left;"><span>Categories</span></th>
-            <th style="text-align:left;"><span>City</span></th>
-            <th style="text-align:left;"><span>Contact</span></th>
-=======
-=======
->>>>>>> Stashed changes
             <th style="text-align:left;"><span>Title</span></th>
             <th style="text-align:left;"><span>City</span></th>
             <th style="text-align:left;"><span>Contact</span></th>
             <!-- <th style="text-align:left;"><span>user_id</span></th>
             <th style="text-align:left;"><span>cat_id</span></th> -->
 
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
             <th></th>
             <th></th>            
@@ -142,24 +62,12 @@
               <td style="text-align:left;"><?php echo $requests->name; ?></td>
               <td style="text-align:left;"><?php echo $requests->quantity; ?></td>
               <td style="text-align:left;"><?php echo $requests->duedate; ?></td>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-              <td style="text-align:left;"><?php echo $requests->categories; ?></td>
-              <td style="text-align:left;"><?php echo $requests->city; ?></td>
-              <td style="text-align:left;"><?php echo $requests->contact; ?></td>
-=======
-=======
->>>>>>> Stashed changes
               <td style="text-align:left;"><?php echo $requests->title; ?></td>
               <td style="text-align:left;"><?php echo $requests->city; ?></td>
               <td style="text-align:left;"><?php echo $requests->contact; ?></td>
               <!-- <td style="text-align:left;"><?php echo $requests->user_id; ?></td>
               <td style="text-align:left;"><?php echo $requests->cat_id; ?></td> -->
 
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
               <td><a href="<?php echo URLROOT; ?>/beneficiary/editRequest/<?php echo $requests->id; ?>" class="btn-edit">Edit</a></td>
               <td><a href="<?php echo URLROOT; ?>/beneficiary/deleteRequest/<?php echo $requests->id; ?>" class="btn-delete">Delete</a></td>
@@ -173,69 +81,46 @@
       <br>
       <br>
       <div>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        <a href="<?php echo URLROOT; ?>/beneficiary/newrequest">
-=======
         <a href="<?php echo URLROOT; ?>/beneficiary/reqForm">
->>>>>>> Stashed changes
-=======
-        <a href="<?php echo URLROOT; ?>/beneficiary/reqForm">
->>>>>>> Stashed changes
         <input type="submit" value="Add a new request" class="btn add">
         </a>
       </div>
       </div> 
       </section>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
 
->>>>>>> Stashed changes
 
     <script>
-      let sidebar = document.querySelector(".sidebar");
-      let sidebarBtn = document.querySelector(".sidebarBtn");
-      let welcome = document.querySelector(".welcome");
-      sidebarBtn.onclick = function () {       
-        sidebar.classList.toggle("active");
-        if (sidebar.classList.contains("active")) {
-          sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
-          welcome.style.display = "none";
-        } else {
-          sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-          welcome.style.display = "block";
-        }
-      };
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".sidebarBtn");
+        let welcome = document.querySelector(".welcome");
+        sidebarBtn.onclick = function () {
+            sidebar.classList.toggle("active");
+            if (sidebar.classList.contains("active")) {
+                sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+                welcome.style.display = "none";
+            } else {
+                sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+                welcome.style.display = "block";
+            }
+        };
+        // js for drop down list 
+        const optionMenu = document.querySelector(".select-menu"),
+            selectBtn = optionMenu.querySelector(".select-btn"),
+            options = optionMenu.querySelectorAll(".option"),
+            sBtn_text = optionMenu.querySelector(".sBtn-text");
 
+        selectBtn.addEventListener("click", () => optionMenu.classList.toggle("active"));
 
-      var modal = document.getElementById("modal");
-      var btn = document.getElementById("add");
-      var span = document.getElementsByClassName("close")[0];
-      btn.onclick = function() {
-        modal.style.display = "block";
-      }
-      span.onclick = function() {
-        modal.style.display = "none";
-      }
-      window.onclick = function(event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      }
+        options.forEach(option => {
+            option.addEventListener("click", () => {
+                let selectedOption = option.querySelector(".option-text").innerText;
+                sBtn_text.innerText = selectedOption;
+
+                optionMenu.classList.remove("active");
+            });
+        });
 
     </script>
-<<<<<<< Updated upstream
-  </body>
-</html>
-=======
 </body>
 
-<<<<<<< Updated upstream
 </html> -->
->>>>>>> Stashed changes
-=======
-</html> -->
->>>>>>> Stashed changes
