@@ -317,4 +317,32 @@ class Pages extends Controller{
       }
       $this->view('users/admin/approve');
   }
+
+  public function profile(){
+      if (!isLoggedIn()) {
+          redirect('users/login');
+      }
+      $this->view('users/admin/profile');
+  }
+
+  public function editProfile(){
+      if (!isLoggedIn()) {
+          redirect('users/login');
+      }
+      $this->view('users/admin/editProfile');
+  }
+
+  public function changePassword(){
+      if (!isLoggedIn()) {
+          redirect('users/login');
+      }
+      $this->view('users/admin/changePassword');
+  }
+
+  public function addNewRequest(){
+      if (!isLoggedIn()) {
+          redirect('users/login');
+      }
+      $this->view('users/admin/addNewRequest');
+  }
 }
