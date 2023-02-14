@@ -14,7 +14,7 @@
             <div class="top">
                 <img class="logo" src="<?php echo URLROOT; ?>/img/logo.png" alt="logo" href="">
                 <ul class="menu">
-                  <li class="menu"><a href="<?php echo URLROOT; ?>/users/login_beneficiary">Login</a></li>
+                  <li class="menu"><a href="<?php echo URLROOT; ?>/users/login">Login</a></li>
                 </ul>
                 <h1>DonateUs</h1>
             </div>
@@ -27,13 +27,13 @@
                     <div class="tab" >
                         
                         <button class="tablinks" onload="btnActivate()" onclick="openTab(event, 'Individual')">Individual</button>
-                        <button class="tablinks" onclick="openTab(event, 'Corporate')">Corporate</button>
+                        <button class="tablinks" onclick="openTab(event, 'Organization')">Organization</button>
                     </div>
 
                     <!-- Individual Details -------------------------------------------------------------------------------------------------------------------------->
                     <div id="Individual" class="tabcontent">
                     <table>
-                    <form action="<?php echo URLROOT; ?>/users/register_beneficiary/ind" method="POST">
+                    <form action="<?php echo URLROOT; ?>/users/registerBeneficiary/ind" method="POST" autocomplete="off">
                         <tr><td>
                             <label>User email</label>
                             <input type="text" id="email_ind" name="email_ind" placeholder="ex: abc@gmail.com" value="<?php echo $data['email_ind']; ?>"></td>
@@ -71,6 +71,10 @@
                             <label>City</label>
                             <input type="text" id="city_ind" name="city_ind" placeholder="ex: Colombo" value="<?php echo $data['city_ind']; ?>"></td>
                         </tr>
+                        <tr>
+                            <td><p class="error"><?php echo $data['contact_err_ind']; ?></p></td>
+                            <td><p class="error"><?php echo $data['city_err_ind']; ?></p></td>
+                        </tr>
                         
                         <tr><td>
                             <label>District</label>
@@ -81,11 +85,10 @@
 
                             </select></td>
                             <td></td>
-                        </tr>
+                            </tr>
 
                         <tr><td>
                             <label>Proof of Identity</label>
-                              
                            
                             <div class="tooltip">
                             <img src='https://s3.lightboxcdn.com/vendors/906a5d64-2cda-407f-a2d5-6cf94c06ddbe/uploads/274a7932-a0fd-4a89-9f58-a83cc44112ca/info.svg' width='15' height='15'>
@@ -102,6 +105,9 @@
                                 <td><input type="file" id="address_ind" name="address_ind" value="<?php echo $data['address_ind']; ?>"></td></td>
                                 <td> <input type="file" id="identity_ind" name="identity_ind" value="<?php echo $data['identity_ind']; ?>"></td></td>
                             </tr>
+
+                            <tr><td><p class="error"><?php echo $data['address_err_ind']; ?></p></td>
+                        <td><p class="error"><?php echo $data['identity_err_ind']; ?></p></td></tr>
                             
                         </tr>
                         <tr>
@@ -126,9 +132,9 @@
 
                     <!-- Organization Deatils ----------------------------------------------------------------------------------------------------------------->
 
-                    <div id="Corporate" class="tabcontent">
+                    <div id="Organization" class="tabcontent">
                     <table>
-                    <form action="<?php echo URLROOT; ?>/users/register_beneficiary/corp" method="POST">
+                    <form action="<?php echo URLROOT; ?>/users/registerBeneficiary/org" method="POST" autocomplete="off">
                         <tr><td colspan="2"><label><b>- Organization Details -</b></label></td></tr>
                         <tr><td>
                             <label>Email Address</label>
@@ -158,15 +164,19 @@
                             <?php endforeach; ?>
                             </select>
                         </tr>
-                        <tr><td>
-                            <label>Organization Type</label>
-                            <input type="text" id="orgtype" name="orgtype" placeholder="elders home" value="<?php echo $data['orgtype']; ?>"></td>
-                            <td>
-                            </td>
-                        </tr>
 
                         <tr><td><p class="error"><?php echo $data['city_err']; ?></p></td>
                         <td><p class="error"><?php echo $data['district_err']; ?></p></td></tr>
+
+                        <tr><td>
+                            <label>Organization Type</label>
+                            <input type="text" id="orgtype" name="orgtype" placeholder="elders home" value="<?php echo $data['orgtype']; ?>"></td>
+                            
+                        </tr>
+                        <tr><td><p class="error"><?php echo $data['orgtype_err']; ?></p></td>
+                        </tr>
+
+                       
                         <tr><td>
                             <label>Proof of Identity</label>
                               
@@ -186,6 +196,9 @@
                                 <td><input type="file" id="address" name="address" <?php echo $data['address']; ?>></td></td>
                                 <td><input type="file" id="identity" name="identity" <?php echo $data['identity']; ?>></td></td>
                             </tr>
+
+                            <tr><td><p class="error"><?php echo $data['address_err']; ?></p></td>
+                        <td><p class="error"><?php echo $data['identity_err']; ?></p></td></tr>
                             
                         </tr>
                         <tr><td colspan="2"><label><b>- Contact Person Details -</b></label></td></tr>
@@ -235,7 +248,6 @@
         window.onload = function () {
             let tab = "<?php echo $data['tab']; ?>";
             document.getElementById(tab).style.display = "block";
-        
         
         }
 

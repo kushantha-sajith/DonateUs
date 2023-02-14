@@ -14,66 +14,7 @@
   
   <body>
     <!--navigation bar left-->
-    <div class="sidebar">
-      <div class="logo-details">
-        <i class="bx bx-grid-alt"></i>
-        <!-- <h1><?php echo $data['title']; ?></h1> -->
-        <span class="logo_name">Dashboard</span>
-      </div>
-      <div class="welcome">
-        <span>Welcome</span>
-      </div>
-      <ul class="nav-links">
-        <li>
-          <a href="#">
-            <i class="bx bx-grid-alt"></i>
-            <span class="links_name">Dashboard</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-list-check"></i>
-            <span class="links_name">Donation Requests</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-history"></i>
-            <span class="links_name">Donation History</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-conversation"></i>
-            <span class="links_name">Forum</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-calendar-check"></i>
-            <span class="links_name">Events</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-pie-chart-alt"></i>
-            <span class="links_name">Stats</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bxs-report"></i>
-            <span class="links_name">Reservations</span>
-          </a>
-        </li>
-        <li class="log_out">
-          <a href="<?php echo URLROOT; ?>/users/logout">
-            <i class="bx bx-log-out"></i>
-            <span class="links_name">Log out</span>
-          </a>
-        </li>
-      </ul>
-    </div>
+    <?php require APPROOT.'/views/inc/side_navbar_donor.php';?>
     <!--navigation bar left end-->
 
     <!--home section start-->
@@ -100,8 +41,8 @@
       <div>
       <div class="tab" >
                         
-                        <button class="tablinks" onload="btnActivate()" onclick="openTab(event, 'Individual')">Pending</button>
-                        <button class="tablinks" onclick="openTab(event, 'Corporate')">Completed</button>
+                        <button class="tablinks" onload="btnActivate()" onclick="openTab(event, 'Individual')">Completed</button>
+                        <button class="tablinks" onclick="openTab(event, 'Corporate')">Pending</button>
                     </div>
                     <div class="tabcontent">
                     <table class="main-table">

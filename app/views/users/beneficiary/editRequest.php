@@ -33,12 +33,12 @@
       </nav>
       <div class="main-container">
     
-      <h2>Add a new Donation Request</h2>
+      <h2>Update Donation Request</h2>
       
      <br>
      <div class="form">
       <div class="container">
-      <form method="post" action="<?php echo URLROOT; ?>/beneficiary/reqForm"> 
+      <form method="post" action="<?php echo URLROOT; ?>/beneficiary/editRequest"> 
       Name
       <input type="text" name="name" value="<?php echo $data['name']; ?>" class="form-style-input">
       <span class="error"><?php echo $data['nameErr']; ?></span>

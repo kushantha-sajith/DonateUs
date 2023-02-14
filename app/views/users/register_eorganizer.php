@@ -12,22 +12,21 @@
     <body>
         <section class="loginSec1">
             <div class="top">
-                <img class="logo" src="<?php echo URLROOT; ?>/img/logo.png" alt="logo" href="">
+            <a href="<?php echo URLROOT; ?>/pages/index"><img class="logo" src="<?php echo URLROOT; ?>/img/logo_.png" alt="logo" href="<?php echo URLROOT; ?>/pages/index"></a>
                 <ul class="menu">
                   <li class="menu"><a href="<?php echo URLROOT; ?>/users/login_donor">Login</a></li>
                 </ul>
-                <h1>DonateUs</h1>
             </div>
             <div class="left">
                 <img class="img_reg" src="<?php echo URLROOT; ?>/img/img_reg_eo.png" alt="img_reg_eo">
             </div>
             <div class="right">
                 <div class="position1">
-                <h1>Registration - Event Organizers</h1>
+                <h1>Registration - Charity Event Organizers</h1>
                     
                     <div class="content">
                     <table>
-                    <form action="<?php echo URLROOT; ?>/users/register_eorganizer" method="POST">
+                    <form action="<?php echo URLROOT; ?>/users/registerOrganizer" method="POST">
                         <tr><td>
                             <label>User email</label>
                             <input type="text" id="email" name="email" placeholder="ex: abc@gmail.com" value="<?php echo $data['email']; ?>"></td>

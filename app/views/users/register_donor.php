@@ -12,11 +12,10 @@
     <body>
         <section class="loginSec1">
             <div class="top">
-                <img class="logo" src="<?php echo URLROOT; ?>/img/logo.png" alt="logo" href="">
+                <a href="<?php echo URLROOT; ?>/pages/index"><img class="logo" src="<?php echo URLROOT; ?>/img/logo_.png" alt="logo" > </a>
                 <ul class="menu">
                   <li class="menu"><a href="<?php echo URLROOT; ?>/users/login_donor">Login</a></li>
                 </ul>
-                <h1>DonateUs</h1>
             </div>
             <div class="left">
                 <img class="img_reg" src="<?php echo URLROOT; ?>/img/img_reg.png" alt="img_reg">
@@ -31,7 +30,7 @@
                     </div>
                     <div id="Individual" class="tabcontent">
                     <table>
-                    <form action="<?php echo URLROOT; ?>/users/register_donor/ind" method="POST">
+                    <form action="<?php echo URLROOT; ?>/users/registerDonor/ind" method="POST">
                         <tr><td>
                             <label>User email</label>
                             <input type="text" id="email_ind" name="email_ind" placeholder="ex: abc@gmail.com" value="<?php echo $data['email_ind']; ?>"></td>
@@ -93,8 +92,8 @@
                             <td  colspan="2"><input class="btnsubmit" type="submit" value="Register"></td>
                         </tr>
                         <tr>
-                            <td ><a href="<?php echo URLROOT; ?>/users/login_donor"><input type="button" value="Register as a Beneficiary" ></a></td>
-                            <td ><a href="<?php echo URLROOT; ?>/users/register_eorganizer"><input type="button" value="Register as an Event Organizer" ></a></td>
+                            <td ><a href="<?php echo URLROOT; ?>/users/registerBeneficiary"><input type="button" value="Register as a Beneficiary" ></a></td>
+                            <td ><a href="<?php echo URLROOT; ?>/users/registerOrganizer"><input type="button" value="Register as an Event Organizer" ></a></td>
                         </tr>
                         </form>
                         
@@ -104,7 +103,7 @@
 
                     <div id="Corporate" class="tabcontent">
                     <table>
-                    <form action="<?php echo URLROOT; ?>/users/register_donor/corp" method="POST">
+                    <form action="<?php echo URLROOT; ?>/users/registerDonor/corp" method="POST">
                         <tr><td colspan="2"><label><b>- Company Details -</b></label></td></tr>
                         <tr><td>
                             <label>Email Address</label>
@@ -164,8 +163,8 @@
                             <td colspan="2"><input type="submit" value="Register"></td>
                         </tr>
                         <tr>
-                            <td ><a href="<?php echo URLROOT; ?>/users/login_donor"><input type="button" value="Register as a Beneficiary" ></a></td>
-                            <td ><a href="<?php echo URLROOT; ?>/users/register_eorganizer"><input type="button" value="Register as an Event Organizer" ></a></td>
+                            <td ><a href="<?php echo URLROOT; ?>/users/registerBeneficiary"><input type="button" value="Register as a Beneficiary" ></a></td>
+                            <td ><a href="<?php echo URLROOT; ?>/users/registerOrganizer"><input type="button" value="Register as an Event Organizer" ></a></td>
                         </tr>
                         </form>
                        

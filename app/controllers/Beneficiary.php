@@ -5,7 +5,6 @@
             if(!isLoggedIn()){
                 redirect('users/login');
             }
-
             $this->beneficiaryModel = $this->model('BeneficiaryModel');
             
         }
@@ -83,7 +82,6 @@
       
             $this->view('users/beneficiary/all_feedback', $data);
           }
-
             //add feedback page
         /**
          * @return void
@@ -127,11 +125,9 @@
             }
         }
 
-        //load request page
 
-        /**
-         * @return void
-         */
+
+//load request page
         public function requests(){
           $requests = $this->beneficiaryModel->getRequests();
           $data = [
@@ -143,38 +139,53 @@
         }
 
         //add a new request
+        public function reqForm(){
 
-        /**
-         * @return void
-         */
-        public function newrequest(){
+          $categories = $this->beneficiaryModel->getCategories();
+
           if($_SERVER['REQUEST_METHOD'] == 'POST'){
               // Sanitize POST data
               $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
+              $id = $_SESSION['user_id'];
+
               $data = [
+                  'title' => trim($_POST['title']),
+                  'name' => trim($_POST['name']),
+                 // 'user_id' => trim($_POST['user_id']),
+                 'id' => $id,
+                  'cat_id' => trim($_POST['cat_id']),
+                  //'NIC' => trim($_POST['NIC']),
+                 // 'quantity' => trim($_POST['quantity']),
                   'description' => trim($_POST['description']),
-                  'type' => trim($_POST['type']),
+                 // 'type' => trim($_POST['type']),
                   'quantity' => trim($_POST['quantity']),
+                 // 'publisheddate' => trim($_POST['publisheddate']),
                   'duedate' => trim($_POST['duedate']),
-                  'categories' => trim($_POST['categories']),
+                 // 'categories' => trim($_POST['categories']),
                   'city' => trim($_POST['city']),
                   'contact' => trim($_POST['contact']),
-                  'categoryErr' => '',
+                  'titleErr' => '',
+                  'nameErr' => '',
+                  //'NICErr' => '',
                   'descriptionErr' => '',
                   'quantityErr' => '',
-                  'typeErr' => '',
                   'contactErr' => '',
                   'cityErr' => '',
-                  'duedateErr' => ''
+                 // 'publisheddateErr' => '',
+                  'duedateErr' => '',
+                  'user_idErr' => '',
+                  'cat_idErr' => '',
+                  'categories' => $categories,
+                  'user_id' => $id
                 ];
 
                 if(empty($data['description'])){
                   $data['descriptionErr'] = 'Please enter description';
               }
 
-              if(empty($data['type'])){
-                  $data['typeErr'] = 'Please enter type';
+              if(empty($data['title'])){
+                  $data['titleErr'] = 'Please enter title';
               }
 
               if(empty($data['quantity'])){
@@ -185,8 +196,8 @@
                   $data['duedateErr'] = 'Please enter duedate';
               }
 
-              if(empty($data['categories'])){
-                  $data['categoryErr'] = 'Please enter categories';
+              if(empty($data['name'])){
+                  $data['nameErr'] = 'Please enter name';
               }
 
               if(empty($data['city'])){
@@ -196,9 +207,19 @@
               if(empty($data['contact'])){
                   $data['contactErr'] = 'Please enter contact';
               }
-              
+
+            //   if(empty($data['user_id'])){
+            //     $data['user_idErr'] = 'Please enter user_id';
+            // }
+
+            if(empty($data['cat_id'])){
+              $data['cat_idErr'] = 'Please enter cat_id';
+          }
+
+             
+
               // Make sure no errors
-              if(empty($data['descriptionErr']) && empty($data['typeErr']) && empty($data['quantityErr']) && empty($data['duedateErr']) && empty($data['categoryErr']) && empty($data['cityErr']) && empty($data['contactErr'])){
+              if(empty($data['descriptionErr']) && empty($data['titleErr']) && empty($data['quantityErr']) && empty($data['duedateErr']) && empty($data['nameErr']) && empty($data['cityErr']) && empty($data['contactErr']) && empty($data['user_idErr']) && empty($data['cat_idErr'])){
                   // Validated
                   if($this->beneficiaryModel->addRequest($data)){
                       // flash('category_message', 'Category Added');
@@ -208,66 +229,102 @@
                   }
               } else {
                   // Load view with errors
-                  $this->view('users/beneficiary/newrequest', $data);
+                  $this->view('users/beneficiary/reqForm', $data);
               }
 
           }else{
               $data = [
                  /* 'id' => '',*/
+                  'title' => '',
+                  'name' => '',
+                  'user_id' => '',
+                  'cat_id' => '',
+                  //'NIC' => '',
                   'description' => '',
-                  'type' => '',
+                  //'type' => '',
                   'quantity' => '',
                   'duedate' => '',
-                  'categories' => '',
+                  //'categories' => '',
                   'city' => '',
                   'contact' => '',
-                  'categoryErr' => '',
+                  'titleErr' => '',
+                  'nameErr' => '',
+                 // 'NICErr' => '',
+                  //'categoryErr' => '',
                   'descriptionErr' => '',
                   'quantityErr' => '',
-                  'typeErr' => '',
+                 // 'typeErr' => '',
                   'contactErr' => '',
                   'cityErr' => '',
-                  'duedateErr' => ''
+                 // 'publisheddateErr' => '',
+                  'duedateErr' => '',
+                  'user_idErr' => '',
+                  'cat_idErr' => '',
+                  'categories' => $categories
                 ];
           
-                $this -> view('users/beneficiary/newrequest', $data);
+                $this -> view('users/beneficiary/reqForm', $data);
           }
          
 
         }
 
 
+
+
+
         //edit the request
-        public function editRequest($id){
+        public function editRequest($req_id){
+
+          $categories = $this->beneficiaryModel->getCategories();
+          $id = $_SESSION['user_id'];
+
           if($_SERVER['REQUEST_METHOD'] == 'POST'){
               // Sanitize POST data
               $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
+             
+
               $data = [
-                  'id' => $id,
+                  'title' => trim($_POST['title']),
+                  'name' => trim($_POST['name']),
+                 // 'user_id' => trim($_POST['user_id']),
+                 'id' => $id,
+                  'cat_id' => trim($_POST['cat_id']),
+                  //'NIC' => trim($_POST['NIC']),
+                 // 'quantity' => trim($_POST['quantity']),
                   'description' => trim($_POST['description']),
-                  'type' => trim($_POST['type']),
+                 // 'type' => trim($_POST['type']),
                   'quantity' => trim($_POST['quantity']),
+                 // 'publisheddate' => trim($_POST['publisheddate']),
                   'duedate' => trim($_POST['duedate']),
-                  'categories' => trim($_POST['categories']),
+                  // 'categories' => trim($_POST['categories']),
                   'city' => trim($_POST['city']),
                   'contact' => trim($_POST['contact']),
-                  // 'user_id' => $_SESSION['user_id'],
-                  'categoryErr' => '',
+                  'titleErr' => '',
+                  'nameErr' => '',
+                  //'NICErr' => '',
                   'descriptionErr' => '',
                   'quantityErr' => '',
-                  'typeErr' => '',
                   'contactErr' => '',
                   'cityErr' => '',
-                  'duedateErr' => ''                    
+                 // 'publisheddateErr' => '',
+                  'duedateErr' => '',
+                  'user_idErr' => '',
+                  'cat_idErr' => '',
+                  'categories' => $categories,
+                  'user_id' => $id,
+                  'req_id' => $req_id                   
                 ];
+
+
 
                 if(empty($data['description'])){
                   $data['descriptionErr'] = 'Please enter description';
               }
 
-              if(empty($data['type'])){
-                  $data['typeErr'] = 'Please enter type';
+              if(empty($data['title'])){
+                  $data['titleErr'] = 'Please enter title';
               }
 
               if(empty($data['quantity'])){
@@ -278,8 +335,8 @@
                   $data['duedateErr'] = 'Please enter duedate';
               }
 
-              if(empty($data['categories'])){
-                  $data['categoryErr'] = 'Please enter categories';
+              if(empty($data['name'])){
+                  $data['nameErr'] = 'Please enter name';
               }
 
               if(empty($data['city'])){
@@ -290,10 +347,18 @@
                   $data['contactErr'] = 'Please enter contact';
               }
 
+            //   if(empty($data['user_id'])){
+            //     $data['user_idErr'] = 'Please enter user_id';
+            // }
+
+            if(empty($data['cat_id'])){
+              $data['cat_idErr'] = 'Please enter cat_id';
+          }
+
              
 
               // Make sure no errors
-              if(empty($data['descriptionErr']) && empty($data['typeErr']) && empty($data['quantityErr']) && empty($data['duedateErr']) && empty($data['categoryErr']) && empty($data['cityErr']) && empty($data['contactErr'])){
+              if(empty($data['descriptionErr']) && empty($data['titleErr']) && empty($data['quantityErr']) && empty($data['duedateErr']) && empty($data['nameErr']) && empty($data['cityErr']) && empty($data['contactErr']) && empty($data['cat_idErr'])){
                   // Validated
                   if($this->beneficiaryModel->editRequest($data)){
                       // flash('category_message', 'Category Added');
@@ -303,38 +368,45 @@
                   }
               } else {
                   // Load view with errors
-                  $this->view('users/beneficiary/edit', $data);
+                  $this->view('users/beneficiary/editRequest', $data);
               }
 
           }else{
 
-              $requests = $this->beneficiaryModel->getRequestById($id);                //check for owner
+              $requests = $this->beneficiaryModel->getRequestById($req_id);               
               // if($requests->user_id != $_SESSION['user_id']){
               //     redirect('requests');
               // }
               $data = [
                   'id' => $id,
-                  'description' => $requests->description,
-                  'type' => $requests->type,
+                  'title' => $requests->title,
+                  'name' => $requests->name,
+                  'cat_id' => $requests->cat_id,
+                  //'NIC' => $requests->NIC,
+                 // 'type' => $requests->type,
                   'quantity' => $requests->quantity,
                   'duedate' => $requests->duedate,
-                  'categories' => $requests->categories,
+                  'description' => $requests->description,
+                  //'categories' => $requests->categories,
                   'city' => $requests->city,
                   'contact' => $requests->contact,
-                  'categoryErr' => '',
+                  'categories' => $categories,
+                  'quantityErr' => '',
                   'descriptionErr' => '',
                   'quantityErr' => '',
-                  'typeErr' => '',
+                  'nameErr' => '',
+                  'titleErr' => '',
                   'contactErr' => '',
                   'cityErr' => '',
-                  'duedateErr' => ''
+                  'duedateErr' => '',
+                  'req_id' => $req_id 
                 ];
           
-                $this -> view('users/beneficiary/edit', $data);
-          }
+                $this -> view('users/beneficiary/editRequest', $data);
          
 
         }
+      }
 
 //delete a request
         public function deleteRequest($id){              
@@ -352,8 +424,6 @@
 
 
         
-  
-
 
         //load categories page
         /**
@@ -690,6 +760,19 @@
          
           $this->view('users/beneficiary/index', $data);
         }
+
+
+        /**
+         * @return void
+         */
+        public function stats(){
+          $data = [
+              'title' => 'Statistics'
+          ];
+
+          $this->view('users/beneficiary/stats', $data);
+      }
+
     }
 
     
