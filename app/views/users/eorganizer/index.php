@@ -13,72 +13,7 @@
   
   <body>
     <!--navigation bar left-->
-    <div class="sidebar">
-      <div class="logo-details">
-        <i class="bx bx-grid-alt"></i>
-       
-        <span class="logo_name">Dashboard</span>
-      </div>
-      <div class="welcome">
-        <span>Welcome</span>
-      </div>
-      <ul class="nav-links">
-        <li>
-          <a href="#">
-            <i class="bx bx-grid-alt"></i>
-            <span class="links_name">Dashboard</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-list-check"></i>
-            <span class="links_name">Donation Requests</span>
-          </a>
-        </li>
-        <li>
-          <a href="<?php echo URLROOT; ?>/pages/donationHistory_donor">
-            <i class="bx bx-history"></i>
-            <span class="links_name">Donation History</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-conversation"></i>
-            <span class="links_name">Forum</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-calendar-check"></i>
-            <span class="links_name">Events</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-pie-chart-alt"></i>
-            <span class="links_name">Stats</span>
-          </a>
-        </li>
-        <li >
-          <a href="#">
-            <i class="bx bxs-report"></i>
-            <span class="links_name">Sponsor</span>
-          </a>
-        </li>
-        <li >
-          <a href="#">
-            <i class="bx bxs-report"></i>
-            <span class="links_name">Reports</span>
-          </a>
-        </li>
-        <li class="log_out">
-          <a href="<?php echo URLROOT; ?>/users/logout">
-            <i class="bx bx-log-out"></i>
-            <span class="links_name">Log out</span>
-          </a>
-        </li>
-      </ul>
-    </div>
+    <?php require APPROOT.'/views/inc/side_navbar_eorganizer.php';?>
     <!--navigation bar left end-->
 
     <!--home section start-->
@@ -98,8 +33,128 @@
           <!-- <i class='bx bx-chevron-down'></i> -->
         </div>
       </nav>
-      <div class="main-container">
-        <h1>Welcome Event Organizer</h1>
+         <div class="main-container">
+        <h1>Welcome Charity Event Organizer</h1>
+          <div class="cardBox">
+              <div class="card">
+                  <div>
+                      <div class="numbers">XXXX</div>
+                      <div class="cardName">XXXX XXXXX</div>
+                  </div>
+
+                  <div class="iconBx">
+                      <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+              </div>
+
+              <div class="card">
+                  <div>
+                      <div class="numbers">XX</div>
+                      <div class="cardName">XXXXX</div>
+                  </div>
+
+                  <div class="iconBx">
+                      <ion-icon name="cart-outline"></ion-icon>
+                  </div>
+              </div>
+
+              <div class="card">
+                  <div>
+                      <div class="numbers">XXX</div>
+                      <div class="cardName">XXXXXXX</div>
+                  </div>
+
+                  <div class="iconBx">
+                      <ion-icon name="chatbubbles-outline"></ion-icon>
+                  </div>
+              </div>
+
+              <div class="card">
+                  <div>
+                      <div class="numbers">XXXXXX</div>
+                      <div class="cardName">XXXXXX</div>
+                  </div>
+
+                  <div class="iconBx">
+                      <ion-icon name="cash-outline"></ion-icon>
+                  </div>
+              </div>
+          </div>
+
+          <div class="tbl-container">
+              <div class="lt">
+                  <h2>Recent Donations</h2>
+                  <table class="main-table t-table tb">
+                      <thead>
+                      <th>Id</th>
+                      <th>Donor Name</th>
+                      <th>Category</th>
+                      <th>Amount/Quantity</th>
+                      <th>Status</th>
+                      <th></th>
+                      </thead>
+                      <tbody>
+                      <tr class="t-row">
+                          <td>1</td>
+                          <td>A</td>
+                          <td>Food</td>
+                          <td>5</td>
+                          <td>Pending</td>
+                          <td>view More</td>
+                      </tr>
+                      <tr class="t-row">
+                          <td>1</td>
+                          <td>A</td>
+                          <td>Food</td>
+                          <td>5</td>
+                          <td>Pending</td>
+                          <td>view More</td>
+                      </tr>
+                      <tr class="t-row">
+                          <td>1</td>
+                          <td>A</td>
+                          <td>Food</td>
+                          <td>5</td>
+                          <td>Pending</td>
+                          <td>view More</td>
+                      </tr>
+                      <tr class="t-row">
+                          <td>1</td>
+                          <td>A</td>
+                          <td>Food</td>
+                          <td>5</td>
+                          <td>Pending</td>
+                          <td>view More</td>
+                      </tr>
+                      <tr class="t-row">
+                          <td>1</td>
+                          <td>A</td>
+                          <td>Food</td>
+                          <td>5</td>
+                          <td>Pending</td>
+                          <td>view More</td>
+                      </tr>
+                      </tbody>
+                  </table>
+              </div>
+              <div class="rt">
+                  <h2>Top Donors</h2>
+                  <table class="main-table t-table tb">
+                      <thead>
+                      <th>Profile</th>
+                      <th>Donor Name</th>
+                      </thead>
+                      <tbody>
+                      <tr class="t-row">
+                          <td><img class="pr" src="<?php echo URLROOT; ?>/img/profile_pic.svg" alt="" /></td>
+                          <td>Avishka</td>
+                      </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+        </div>
       </div>
     </section>
     <!--home section end-->

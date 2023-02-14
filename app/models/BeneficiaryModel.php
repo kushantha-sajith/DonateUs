@@ -17,15 +17,7 @@
             return $results;
         }
 
-        // /**
-        //  * @return mixed
-        //  */
-        // public function getUserData($id){
-        //     $this->db->query('SELECT * FROM beneficiary WHERE id = :id');
-        //     $this->db->bind(':id', $id);
-        //     $results = $this->db->resultSet();
-        //     return $results;
-        // }
+
 
         public function addFeedback($data){
             $this->db->query('INSERT INTO feedback (description) VALUES(:description)');
@@ -39,6 +31,8 @@
                 return false;
             }
         }
+
+
 
         /**
          * @param $data
@@ -57,6 +51,8 @@
             }
         }
 
+
+
         /**
          * @param $id
          * @return bool
@@ -73,17 +69,6 @@
             }
         }
 
-        // /**
-        //  * @param $id
-        //  * @return mixed
-        //  */
-        // public function getCategoryById($id){
-        //     $this->db->query('SELECT * FROM categories WHERE id = :id');
-        //     $this->db->bind(':id', $id);
-        //     $row = $this->db->single();
-        //     return $row;
-        // }
-
 
 
 
@@ -96,16 +81,19 @@
 
 
         public function addRequest($data){
-            $this->db->query('INSERT INTO donation_req(id,categories,description,quantity,type,contact,city,duedate) VALUES(:id, :categories, :description, :quantity, :type, :contact, :city, :duedate)');
+            $this->db->query('INSERT INTO donation_req (description, name, quantity, duedate, title, city, contact, cat_id, user_id) VALUES(:description,  :name, :quantity, :duedate, :title, :city, :contact, :cat_id, :user_id)');
             // Bind values
-            $this->db->bind(':id', $data['id']);
-            $this->db->bind(':categories', $data['categories']);
-            $this->db->bind(':description', $data['description']);
-            $this->db->bind(':quantity', $data['quantity']);
-            $this->db->bind(':type', $data['type']);
-            $this->db->bind(':contact', $data['contact']);
-            $this->db->bind(':city', $data['city']);
-            $this->db->bind(':duedate', $data['duedate']);
+           // $this->db->bind(':id', $data['id']);
+           $this->db->bind(':title', $data['title']);
+           $this->db->bind(':name', $data['name']);
+           $this->db->bind(':quantity', $data['quantity']);
+           $this->db->bind(':description', $data['description']);
+           $this->db->bind(':cat_id', $data['cat_id']);
+           $this->db->bind(':city', $data['city']); 
+           $this->db->bind(':contact', $data['contact']);
+           $this->db->bind(':duedate', $data['duedate']);
+           $this->db->bind(':user_id', $data['user_id']);
+            
             // Execute
             if($this->db->execute()){
                 return true;
@@ -117,13 +105,15 @@
 
 
         public function editRequest($data){
-            $this->db->query('UPDATE donation_req SET categories= :categories, description= :description, quantity= :quantity, type= :type, contact= :contact, city= :city, duedate= :duedate WHERE id = :id'); 
+            $this->db->query('UPDATE donation_req SET title= :title, name= :name, description= :description, quantity= :quantity, cat_id= :cat_id, user_id= :user_id, contact= :contact, city= :city, duedate= :duedate WHERE id = :id'); 
             // Bind values
             $this->db->bind(':id', $data['id']);
-            $this->db->bind(':categories', $data['categories']);
+            $this->db->bind(':title', $data['title']);
+            $this->db->bind(':name', $data['name']);
             $this->db->bind(':description', $data['description']);
             $this->db->bind(':quantity', $data['quantity']);
-            $this->db->bind(':type', $data['type']);
+            $this->db->bind(':cat_id', $data['cat_id']);
+            $this->db->bind(':user_id', $data['user_id']);
             $this->db->bind(':contact', $data['contact']);
             $this->db->bind(':city', $data['city']);
             $this->db->bind(':duedate', $data['duedate']);
@@ -134,6 +124,8 @@
                 return false;
             }
         }
+
+
 
         public function deleteRequest($id){
             $this->db->query('DELETE FROM donation_req WHERE id = :id');
@@ -150,6 +142,7 @@
         }
 
 
+
         public function getRequestById($id){
 
             $this->db->query('SELECT * FROM donation_req WHERE id = :id');
@@ -159,5 +152,13 @@
 
             return $row;
         }
+
+        
+
+        public function getCategories(){
+            $this->db->query('SELECT * FROM categories');
+            $results = $this->db->resultSet();
+            return $results;
+          }
 
     }

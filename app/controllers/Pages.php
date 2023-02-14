@@ -71,7 +71,7 @@ class Pages extends Controller{
     $this->view('users/beneficiary/index', $data);
   }
 
-  public function eorganizer(){
+  public function organizer(){
       if(!isLoggedIn()){
           redirect('users/login');
       }
@@ -89,7 +89,7 @@ class Pages extends Controller{
   /**
    * @return void
    */
-  public function profile_donor(){
+  public function profileDonor(){
     if (isset($_SESSION['user_id'])) {
       $id = $_SESSION['user_id'];
       $user_type = $_SESSION['user_type'];
@@ -112,7 +112,7 @@ class Pages extends Controller{
     }
   }
 
-  public function profile_beneficiary(){
+  public function profileBeneficiary(){
       if(!isLoggedIn()){
           redirect('users/login');
       }
@@ -124,7 +124,7 @@ class Pages extends Controller{
     $this->view('users/beneficiary/profile_beneficiary', $data);
   }
 
-  public function profile_eorganizer(){
+  public function profileOrganizer(){
     if (isset($_SESSION['user_id'])) {
       $id = $_SESSION['user_id'];
       $user_type = $_SESSION['user_type'];
@@ -160,7 +160,7 @@ class Pages extends Controller{
     }
   }
 
-  public function edit_profile_donor(){
+  public function editProfileDonor(){
     $districts = $this->userModel->getDistricts();
     if (isset($_SESSION['user_id'])) {
       $id = $_SESSION['user_id'];
@@ -185,7 +185,7 @@ class Pages extends Controller{
     }
   }
 
-  public function change_password_donor(){
+  public function changePasswordDonor(){
     if (isset($_SESSION['user_id'])) {
       $id = $_SESSION['user_id'];
       $user_type = $_SESSION['user_type'];
@@ -208,7 +208,7 @@ class Pages extends Controller{
     }
   }
 
-  public function edit_profile_eorganizer(){
+  public function editProfileOrganizer(){
     $districts = $this->userModel->getDistricts();
     if (isset($_SESSION['user_id'])) {
       $id = $_SESSION['user_id'];
@@ -232,7 +232,7 @@ class Pages extends Controller{
     }
   }
 
-  public function change_password_eorganizer(){
+  public function changePasswordOrganizer(){
     if (isset($_SESSION['user_id'])) {
       $id = $_SESSION['user_id'];
       $user_type = $_SESSION['user_type'];
@@ -259,7 +259,7 @@ class Pages extends Controller{
   /**
    * @return void
    */
-  public function donationHistory_donor(){
+  public function donationHistoryDonor(){
       if(!isLoggedIn()){
           redirect('users/login');
       }
@@ -277,7 +277,7 @@ class Pages extends Controller{
   /**
    * @return void
    */
-  public function donation_requests_donor(){
+  public function donationRequestsDonor(){
       if(!isLoggedIn()){
           redirect('users/login');
       }
