@@ -12,7 +12,7 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo URLROOT; ?>/pages/donation_requests_donor">
+          <a href="<?php echo URLROOT; ?>/pages/donationRequestsDonor">
             <i class="bx bx-list-check"></i>
             <span class="links_name">Donation Requests</span>
           </a>
@@ -24,7 +24,7 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo URLROOT; ?>/pages/donationHistory_donor">
+          <a href="<?php echo URLROOT; ?>/pages/donationHistoryDonor">
             <i class="bx bx-history"></i>
             <span class="links_name">Donation History</span>
           </a>
