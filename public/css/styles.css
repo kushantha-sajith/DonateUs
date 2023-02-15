@@ -217,9 +217,9 @@ table{
     width: 100%;
   }
 
-  #Individual{
-    display: block;
-  }
+  /*#Individual{*/
+  /*  display: block;*/
+  /*}*/
  
   .welcomebanner{
     color: #163172;

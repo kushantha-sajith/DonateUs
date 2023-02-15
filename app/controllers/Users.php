@@ -539,7 +539,7 @@ class Users extends Controller{
 
 
                 // Make sure errors are empty
-                if ($error == false) {
+                if (!$error) {
                     // Validated
 
                     // Hash Password
@@ -704,7 +704,7 @@ class Users extends Controller{
 
 
                 // Make sure errors are empty
-                if ($error == false) {
+                if (!$error) {
                     // Validated
 
                     // Hash Password

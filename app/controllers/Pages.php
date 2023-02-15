@@ -108,20 +108,37 @@ class Pages extends Controller{
 
       $this->view('users/donor/profile_donor', $data);
     } else {
-      $this->view('users/login_donor', $data);
+        $data = [
+            'email' => '',
+            'password' => '',
+            'email_err' => '',
+            'password_err' => ''
+        ];
+      $this->view('users/login', $data);
     }
   }
 
   public function profileBeneficiary(){
-      if(!isLoggedIn()){
-          redirect('users/login');
+      if (isset($_SESSION['user_id'])) {
+          $id = $_SESSION['user_id'];
+          $user_type = $_SESSION['user_type'];
+          $userdata = $this->donorModel->getUserData($id);
+          $personaldata = $this->donorModel->getPersonalData($id, $user_type);
+          $image_name = $this->profileImage();
+          $dist_name = $this->donorModel->getDistrictName($id, $user_type);
+
+          $data = [
+              'title' => 'Profile',
+              'userdata' => $userdata,
+              'personaldata' => $personaldata,
+              'prof_img' => $image_name,
+              'dist' => $dist_name
+          ];
+
+          $this->view('users/beneficiary/profile_beneficiary', $data);
+      } else {
+          $this->view('users/login');
       }
-
-    $data = [
-      'title' => 'Profile'
-    ];
-
-    $this->view('users/beneficiary/profile_beneficiary', $data);
   }
 
   public function profileOrganizer(){
@@ -143,7 +160,7 @@ class Pages extends Controller{
 
       $this->view('users/eorganizer/profile_eorganizer', $data);
     } else {
-      $this->view('users/login_donor', $data);
+      $this->view('users/login');
     }
   }
 
@@ -156,7 +173,7 @@ class Pages extends Controller{
       endforeach;
       return $image_name;
     } else {
-      $this->view('users/login_donor', $data);
+      $this->view('users/login', $data);
     }
   }
 
