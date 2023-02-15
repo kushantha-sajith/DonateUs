@@ -78,7 +78,6 @@
         }
 
         // Find user by email
-
         /**
          * @param $category_name
          * @return bool
@@ -98,30 +97,45 @@
             }
         }
 
+        /**
+         * @return mixed
+         */
         public function getUsers(){
             $this->db->query('SELECT * FROM reg_user');
             $results = $this->db->resultSet();
             return $results;
         }
 
+        /**
+         * @return mixed
+         */
         public function getDonationRequests(){
             $this->db->query('SELECT * FROM donation_req');
             $results = $this->db->resultSet();
             return $results;
         }
 
+        /**
+         * @return mixed
+         */
         public function getEvents(){
             $this->db->query('SELECT * FROM events');
             $results = $this->db->resultSet();
             return $results;
         }
 
+        /**
+         * @return mixed
+         */
         public function financialDonationHistory(){
             $this->db->query('SELECT * FROM donation_history');
             $results = $this->db->resultSet();
             return $results;
         }
 
+        /**
+         * @return mixed
+         */
         public function nonFinancialDonationHistory(){
             $this->db->query('SELECT * FROM donation_history');
             $results = $this->db->resultSet();

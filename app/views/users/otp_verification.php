@@ -27,7 +27,7 @@
             <div class="right">
               <div class="centered">
               <div class="text">
-                <h4>OTP code has been sent to the email you've provided. <br>To complete this action, please check the inbox or spam folder and enter the OTP code you received below.</h3>
+                <h3>OTP code has been sent to the email you've provided. <br>To complete this action, please check the inbox or spam folder and enter the OTP code you received below.</h3>
                 <br>
                 <br>
                 

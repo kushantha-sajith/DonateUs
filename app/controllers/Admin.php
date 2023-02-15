@@ -199,6 +199,9 @@
             $this->view('users/admin/stats', $data);
         }
 
+        /**
+         * @return void
+         */
         public function financialDonationHistory(){
             $financialDonationHistory = $this->adminModel->financialDonationHistory();
             $data = [
@@ -209,6 +212,9 @@
             $this->view('users/admin/donationHistory', $data);
         }
 
+        /**
+         * @return void
+         */
         public function nonFinancialDonationHistory(){
             $nonFinancialDonationHistory = $this->adminModel->nonFinancialDonationHistory();
             $data = [

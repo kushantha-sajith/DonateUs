@@ -17,8 +17,10 @@
             return $results;
         }
 
-
-
+        /**
+         * @param $data
+         * @return bool
+         */
         public function addFeedback($data){
             $this->db->query('INSERT INTO feedback (description) VALUES(:description)');
             // Bind values
@@ -31,8 +33,6 @@
                 return false;
             }
         }
-
-
 
         /**
          * @param $data
@@ -51,8 +51,6 @@
             }
         }
 
-
-
         /**
          * @param $id
          * @return bool
@@ -69,17 +67,19 @@
             }
         }
 
-
-
-
+        /**
+         * @return mixed
+         */
         public function getRequests(){
             $this->db->query('SELECT * FROM donation_req');
             $results = $this->db->resultSet();
             return $results;
         }
 
-
-
+        /**
+         * @param $data
+         * @return bool
+         */
         public function addRequest($data){
             $this->db->query('INSERT INTO donation_req (description, name, quantity, duedate, title, city, contact, cat_id, user_id) VALUES(:description,  :name, :quantity, :duedate, :title, :city, :contact, :cat_id, :user_id)');
             // Bind values
@@ -102,8 +102,10 @@
             }
         }
 
-
-
+        /**
+         * @param $data
+         * @return bool
+         */
         public function editRequest($data){
             $this->db->query('UPDATE donation_req SET title= :title, name= :name, description= :description, quantity= :quantity, cat_id= :cat_id, user_id= :user_id, contact= :contact, city= :city, duedate= :duedate WHERE id = :id'); 
             // Bind values
@@ -125,8 +127,10 @@
             }
         }
 
-
-
+        /**
+         * @param $id
+         * @return bool
+         */
         public function deleteRequest($id){
             $this->db->query('DELETE FROM donation_req WHERE id = :id');
             //bind values
@@ -138,11 +142,12 @@
             }else{
                 return false;
             }
-        
         }
 
-
-
+        /**
+         * @param $id
+         * @return mixed
+         */
         public function getRequestById($id){
 
             $this->db->query('SELECT * FROM donation_req WHERE id = :id');
@@ -153,8 +158,9 @@
             return $row;
         }
 
-        
-
+        /**
+         * @return mixed
+         */
         public function getCategories(){
             $this->db->query('SELECT * FROM categories');
             $results = $this->db->resultSet();

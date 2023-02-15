@@ -5,8 +5,8 @@
             if(!isLoggedIn()){
                 redirect('users/login');
             }
+
             $this->beneficiaryModel = $this->model('BeneficiaryModel');
-            
         }
 
         //load profile page
@@ -125,9 +125,11 @@
             }
         }
 
+        //load request page
 
-
-//load request page
+        /**
+         * @return void
+         */
         public function requests(){
           $requests = $this->beneficiaryModel->getRequests();
           $data = [
@@ -139,8 +141,11 @@
         }
 
         //add a new request
-        public function reqForm(){
 
+        /**
+         * @return void
+         */
+        public function reqForm(){
           $categories = $this->beneficiaryModel->getCategories();
 
           if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -153,7 +158,7 @@
                   'title' => trim($_POST['title']),
                   'name' => trim($_POST['name']),
                  // 'user_id' => trim($_POST['user_id']),
-                 'id' => $id,
+                  'id' => $id,
                   'cat_id' => trim($_POST['cat_id']),
                   //'NIC' => trim($_POST['NIC']),
                  // 'quantity' => trim($_POST['quantity']),
@@ -216,8 +221,6 @@
               $data['cat_idErr'] = 'Please enter cat_id';
           }
 
-             
-
               // Make sure no errors
               if(empty($data['descriptionErr']) && empty($data['titleErr']) && empty($data['quantityErr']) && empty($data['duedateErr']) && empty($data['nameErr']) && empty($data['cityErr']) && empty($data['contactErr']) && empty($data['user_idErr']) && empty($data['cat_idErr'])){
                   // Validated
@@ -265,25 +268,22 @@
           
                 $this -> view('users/beneficiary/reqForm', $data);
           }
-         
-
         }
 
-
-
-
-
         //edit the request
-        public function editRequest($req_id){
 
+        /**
+         * @param $req_id
+         * @return void
+         */
+        public function editRequest($req_id){
           $categories = $this->beneficiaryModel->getCategories();
+
           $id = $_SESSION['user_id'];
 
           if($_SERVER['REQUEST_METHOD'] == 'POST'){
               // Sanitize POST data
               $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-             
 
               $data = [
                   'title' => trim($_POST['title']),
@@ -316,8 +316,6 @@
                   'user_id' => $id,
                   'req_id' => $req_id                   
                 ];
-
-
 
                 if(empty($data['description'])){
                   $data['descriptionErr'] = 'Please enter description';
@@ -355,8 +353,6 @@
               $data['cat_idErr'] = 'Please enter cat_id';
           }
 
-             
-
               // Make sure no errors
               if(empty($data['descriptionErr']) && empty($data['titleErr']) && empty($data['quantityErr']) && empty($data['duedateErr']) && empty($data['nameErr']) && empty($data['cityErr']) && empty($data['contactErr']) && empty($data['cat_idErr'])){
                   // Validated
@@ -370,9 +366,7 @@
                   // Load view with errors
                   $this->view('users/beneficiary/editRequest', $data);
               }
-
           }else{
-
               $requests = $this->beneficiaryModel->getRequestById($req_id);               
               // if($requests->user_id != $_SESSION['user_id']){
               //     redirect('requests');
@@ -403,14 +397,18 @@
                 ];
           
                 $this -> view('users/beneficiary/editRequest', $data);
-         
-
-        }
+          }
       }
 
-//delete a request
-        public function deleteRequest($id){              
-              $requests = $this->beneficiaryModel->getRequestById($id);                //check for owner
+        //delete a request
+
+        /**
+         * @param $id
+         * @return void
+         */
+        public function deleteRequest($id){
+              $requests = $this->beneficiaryModel->getRequestById($id);
+              //check for owner
               // if($requests->user_id != $_SESSION['user_id']){
               //     redirect('requests');
               // }                
@@ -421,9 +419,6 @@
                   die('Something went wrong');
               }
         }
-
-
-        
 
         //load categories page
         /**
@@ -544,7 +539,11 @@
                 }
         }
 //------------------------------------------------------------------------------------------edit this
-        public function updateProfile(){
+
+    /**
+     * @return void
+     */
+    public function updateProfile(){
 
             $type1 = "ind";
       
@@ -623,19 +622,16 @@
       
                 // Register User
                 if($this->userModel->register($data)){
-                    
                     $email = new Email($data['email']);
                     $email->sendVerificationEmail($data['email'], $otp_code);
                     redirect('users/verify');
                 } else {
                   die('Something went wrong');
                 }
-      
               } else {
                 // Load view with errors
                 $this->view('users/register', $data);
               }
-      
               }else{
                 $data =[
                   'email' => trim($_POST['email']),
@@ -656,7 +652,6 @@
                   'confirm_password_err' => '',
                   'other_err' => ''
                 ];
-      
                 
               // Validate Email
               if(empty($data['email'])){
@@ -707,22 +702,17 @@
       
                 // Register User
                 if($this->userModel->register($data)){
-                    
                     $email = new Email($data['email']);
                     $email->sendVerificationEmail($data['email'], $otp_code);
                     redirect('users/verify');
                 } else {
                   die('Something went wrong');
                 }
-      
               } else {
                 // Load view with errors
                 $this->view('users/register', $data);
               }
               }
-              
-      
-      
             } else {
               // Init data
               $data =[
@@ -745,9 +735,7 @@
               // Load view
               $this->view('users/register', $data);
             }
-          
           }
-
 
           //load beneficiary dashboard
         /**
@@ -760,7 +748,6 @@
          
           $this->view('users/beneficiary/index', $data);
         }
-
 
         /**
          * @return void

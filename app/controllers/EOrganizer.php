@@ -7,7 +7,6 @@
             }
             $this->EOrganizerModel = $this->model('EOrganizerModel');
             $this->userModel = $this->model('User');
-            
         }
 
         //load donor dashboard
@@ -15,7 +14,6 @@
          * @return void
          */
         public function index(){
-
             if(isset($_SESSION['user_id'])){
 
               $id = $_SESSION['user_id'];
@@ -35,7 +33,6 @@
           }
         }
 
-        
         /**
          * @return void
          */
@@ -60,31 +57,25 @@
             'type' => $type,
             'id' => $id
             ];
-    
           
             if($this->EOrganizerModel->update_profile_eorganizer($data)){
               redirect('pages/profile_eorganizer');
             }else{
               redirect('pages/edit_profile_eorganizer');
             }
-            
-            
-  
         }
         
         /**
          * @return void
          */
         public function stats(){
-          $$image_name = $this->profileImage();
+          $image_name = $this->profileImage();
           $data = [
               'title' => 'Statistics',
               'prof_img' => $image_name
           ];
           $this->view('users/donor/stats', $data);
       }
- 
-        
     }
 
     

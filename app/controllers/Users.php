@@ -91,7 +91,6 @@ class Users extends Controller{
                         $error = true;
                     }
                 }
-
                 //Validate NIC
                 if (empty($data['nic'])) {
                     $data['nic_err'] = 'Please enter NIC';
@@ -157,7 +156,6 @@ class Users extends Controller{
                     $data['district_err_ind'] = 'Required';
                     $error = true;
                 }
-
                 // Make sure errors are empty
                 if (!$error) {
                     // Validated
@@ -535,9 +533,6 @@ class Users extends Controller{
                     $data['address_err_ind'] = 'Required';
                     $error = true;
                 }
-
-
-
                 // Make sure errors are empty
                 if (!$error) {
                     // Validated
@@ -558,8 +553,6 @@ class Users extends Controller{
                     $this->view('users/register_beneficiary', $data);
                 }
             } else {
-
-
                 //organization--------------------------------------------------------------------------------------
                 $data = [
                     'email' => trim($_POST['email']),
@@ -701,8 +694,6 @@ class Users extends Controller{
                     $data['orgtype_err'] = 'Required';
                     $error = true;
                 }
-
-
                 // Make sure errors are empty
                 if (!$error) {
                     // Validated
@@ -785,6 +776,9 @@ class Users extends Controller{
         }
     }
 
+    /**
+     * @return void
+     */
     public function registerOrganizer(){
         $districts = $this->userModel->getDistricts();
 
@@ -1071,6 +1065,9 @@ class Users extends Controller{
     $this->view('users/signupVerification', $data);
   }
 
+    /**
+     * @return void
+     */
     public function otp_verify(){
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -1105,6 +1102,9 @@ class Users extends Controller{
 
     }
 
+    /**
+     * @return void
+     */
     public function quit_verify(){
         $id = $_SESSION['user_id'];
         $password = '0';
@@ -1112,7 +1112,6 @@ class Users extends Controller{
         if($this->donorModel->passwordChecker($password, $id,$is_quit)){
             redirect('donor/change_password_donor');
         }
-
     }
 
   //create sessions for all users
@@ -1121,36 +1120,40 @@ class Users extends Controller{
    * @return void
    */
   public function createUserSession($user){
-      if ($user->otp_verify == 1) {
-          $_SESSION['user_id'] = $user->id;
-          $_SESSION['user_email'] = $user->email;
-          $_SESSION['user_type'] = $user->user_type;
+      if ($user->verification_status == 1) {
+          if ($user->otp_verify == 1) {
+              $_SESSION['user_id'] = $user->id;
+              $_SESSION['user_email'] = $user->email;
+              $_SESSION['user_type'] = $user->user_type;
 
-          switch ($user->user_type) {
-              case 1:
-                  redirect('pages/admin');
-                  break;
-              case 2:
-                  redirect('pages/donor');
-                  break;
-              case 3:
-                  redirect('pages/donor');
-                  break;
-              case 4:
-                  redirect('pages/beneficiary');
-                  break;
-              case 5:
-                  redirect('pages/beneficiary');
-                  break;
-              case 6:
-                  redirect('pages/organizer');
-                  break;
-              default:
-                  redirect('users/login');
-                  break;
+              switch ($user->user_type) {
+                  case 1:
+                      redirect('pages/admin');
+                      break;
+                  case 2:
+                      redirect('pages/donor');
+                      break;
+                  case 3:
+                      redirect('pages/donor');
+                      break;
+                  case 4:
+                      redirect('pages/beneficiary');
+                      break;
+                  case 5:
+                      redirect('pages/beneficiary');
+                      break;
+                  case 6:
+                      redirect('pages/organizer');
+                      break;
+                  default:
+                      redirect('users/login');
+                      break;
+              }
+          } else {
+              redirect('users/verify');
           }
       } else {
-          redirect('users/verify');
+          redirect('pages/processing');
       }
   }
 

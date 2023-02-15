@@ -17,18 +17,27 @@
             return $results;
         }
 
+        /**
+         * @return mixed
+         */
         public function getDonationRequests(){
             $this->db->query('SELECT * FROM donation_req');
             $results = $this->db->resultSet();
             return $results;
         }
 
+        /**
+         * @return mixed
+         */
         public function getFinancialRequests(){
             $this->db->query('SELECT * FROM financial_req');
             $results = $this->db->resultSet();
             return $results;
         }
 
+        /**
+         * @return mixed
+         */
         public function getNonFinancialRequests(){
             $this->db->query('SELECT * FROM nfinancial_req');
             $results = $this->db->resultSet();
@@ -45,7 +54,12 @@
             return $results;
         }
 
-        public function getPersonalData($id,$user_type){
+        /**
+         * @param $id
+         * @param $user_type
+         * @return mixed
+         */
+        public function getPersonalData($id, $user_type){
 
             if($user_type==2){
                 $this->db->query('SELECT * FROM ind_don WHERE user_id = :id');
@@ -66,9 +80,14 @@
             
         }
 
-        public function getDistrictName($id,$user_type){
+        /**
+         * @param $id
+         * @param $user_type
+         * @return mixed
+         */
+        public function getDistrictName($id, $user_type){
 
-            $dist_id;
+//            $dist_id;
 
             if($user_type==2){
                 $this->db->query('SELECT district FROM ind_don WHERE user_id = :id');
@@ -87,7 +106,6 @@
                 $this->db->bind(':id', $id);
                 $row = $this->db->single();
                 $dist_id = $row->district;
-                
             }
 
             $this->db->query('SELECT dist_name FROM district WHERE id = :dist_id');
@@ -97,7 +115,10 @@
             return $dist;
         }
 
-
+        /**
+         * @param $data
+         * @return bool
+         */
         public function addFeedback($data){
             $this->db->query('INSERT INTO feedback (description) VALUES(:description)');
             // Bind values
@@ -156,6 +177,10 @@
             return $row;
         }
 
+        /**
+         * @param $data
+         * @return bool
+         */
         public function update_profile_donor($data){
                     
             $zero ='1';
@@ -207,8 +232,7 @@
                     $tp_new_ind = $tp_existing; 
                 }else{
                     if(empty($data['contact_ind'])){
-                        $tp_new_ind = $tp_existing; 
-                        
+                        $tp_new_ind = $tp_existing;
                     }
                 }
 
@@ -269,8 +293,7 @@
                     $tp_new_corp = $tp_existing; 
                 }else{
                     if(empty($data['contact_ind'])){
-                        $tp_new_corp = $tp_existing; 
-                        
+                        $tp_new_corp = $tp_existing;
                     }
                 }
 
@@ -287,10 +310,15 @@
             return false;
         }
             }
-            
     }
 
-    public function passwordChecker($password, $id,$is_quit){
+        /**
+         * @param $password
+         * @param $id
+         * @param $is_quit
+         * @return bool|mixed
+         */
+        public function passwordChecker($password, $id, $is_quit){
 
         $this->db->query('SELECT * FROM reg_user WHERE id = :id');
         $this->db->bind(':id', $id);
@@ -324,7 +352,6 @@
             } else {
                 return false;
             }
-
         }else{
             if (password_verify($password, $hashed_password)) {
                 return $row;
@@ -336,7 +363,12 @@
        
     }
 
-   public function change_password($data, $id){
+        /**
+         * @param $data
+         * @param $id
+         * @return bool
+         */
+        public function change_password($data, $id){
 
     $this->db->query('UPDATE reg_user SET password = :password, otp_code = :otp_code, otp_verify = :otp_verify WHERE id = :id');
     $this->db->bind(':id', $id);
@@ -349,6 +381,5 @@
     } else {
         return false;
     }
-
     }
 }
