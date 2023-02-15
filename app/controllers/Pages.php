@@ -1,10 +1,7 @@
 <?php
 class Pages extends Controller{
   public function __construct(){
-//      if(!isLoggedIn()){
-//          redirect('users/login');
-//      }
-    //  $this->Beneficiary = $this->('BeneficiaryModel');
+    $this->beneficiaryModel = $this->model('BeneficiaryModel');
     $this->donorModel = $this->model('DonorModel');
     $this->userModel = $this->model('User');
   }
@@ -20,7 +17,10 @@ class Pages extends Controller{
     $this->view('pages/index', $data);
   }
 
-  public function about(){
+    /**
+     * @return void
+     */
+    public function about(){
     $data = [
       'title' => 'About Us'
     ];
@@ -60,7 +60,10 @@ class Pages extends Controller{
     $this->view('users/donor/index', $data);
   }
 
-  public function beneficiary(){
+    /**
+     * @return void
+     */
+    public function beneficiary(){
       if(!isLoggedIn()){
           redirect('users/login');
       }
@@ -71,7 +74,10 @@ class Pages extends Controller{
     $this->view('users/beneficiary/index', $data);
   }
 
-  public function organizer(){
+    /**
+     * @return void
+     */
+    public function organizer(){
       if(!isLoggedIn()){
           redirect('users/login');
       }
@@ -118,7 +124,10 @@ class Pages extends Controller{
     }
   }
 
-  public function profileBeneficiary(){
+    /**
+     * @return void
+     */
+    public function profileBeneficiary(){
       if (isset($_SESSION['user_id'])) {
           $id = $_SESSION['user_id'];
           $user_type = $_SESSION['user_type'];
@@ -141,7 +150,10 @@ class Pages extends Controller{
       }
   }
 
-  public function profileOrganizer(){
+    /**
+     * @return void
+     */
+    public function profileOrganizer(){
     if (isset($_SESSION['user_id'])) {
       $id = $_SESSION['user_id'];
       $user_type = $_SESSION['user_type'];
@@ -164,7 +176,10 @@ class Pages extends Controller{
     }
   }
 
-  public function profileImage(){
+    /**
+     * @return void
+     */
+    public function profileImage(){
     if (isset($_SESSION['user_id'])) {
       $id = $_SESSION['user_id'];
       $userdata = $this->donorModel->getUserData($id);
@@ -177,7 +192,10 @@ class Pages extends Controller{
     }
   }
 
-  public function editProfileDonor(){
+    /**
+     * @return void
+     */
+    public function editProfileDonor(){
     $districts = $this->userModel->getDistricts();
     if (isset($_SESSION['user_id'])) {
       $id = $_SESSION['user_id'];
@@ -202,7 +220,10 @@ class Pages extends Controller{
     }
   }
 
-  public function changePasswordDonor(){
+    /**
+     * @return void
+     */
+    public function changePasswordDonor(){
     if (isset($_SESSION['user_id'])) {
       $id = $_SESSION['user_id'];
       $user_type = $_SESSION['user_type'];
@@ -225,7 +246,10 @@ class Pages extends Controller{
     }
   }
 
-  public function editProfileOrganizer(){
+    /**
+     * @return void
+     */
+    public function editProfileOrganizer(){
     $districts = $this->userModel->getDistricts();
     if (isset($_SESSION['user_id'])) {
       $id = $_SESSION['user_id'];
@@ -249,7 +273,10 @@ class Pages extends Controller{
     }
   }
 
-  public function changePasswordOrganizer(){
+    /**
+     * @return void
+     */
+    public function changePasswordOrganizer(){
     if (isset($_SESSION['user_id'])) {
       $id = $_SESSION['user_id'];
       $user_type = $_SESSION['user_type'];
@@ -289,7 +316,6 @@ class Pages extends Controller{
     $this->view('users/donor/donation_history_donor', $data);
   }
 
-
   //load donation requests page
   /**
    * @return void
@@ -307,59 +333,90 @@ class Pages extends Controller{
     $this->view('users/donor/donation_requests_donor', $data);
   }
 
-  public function pendingRequestDetails(){
+    /**
+     * @return void
+     */
+    public function pendingRequestDetails(){
       if (!isLoggedIn()) {
           redirect('users/login');
       }
       $this->view('users/admin/pendingDonationDetails');
   }
 
-  public function requestDetails(){
+    /**
+     * @return void
+     */
+    public function requestDetails(){
       if (!isLoggedIn()) {
           redirect('users/login');
       }
       $this->view('users/admin/completedDonationDetails');
   }
 
-  public function userDetails(){
+    /**
+     * @return void
+     */
+    public function userDetails(){
       if (!isLoggedIn()) {
           redirect('users/login');
       }
       $this->view('users/admin/userDetails');
   }
 
-  public function approve(){
+    /**
+     * @return void
+     */
+    public function approve(){
       if (!isLoggedIn()) {
           redirect('users/login');
       }
       $this->view('users/admin/approve');
   }
 
-  public function profile(){
+    /**
+     * @return void
+     */
+    public function profile(){
       if (!isLoggedIn()) {
           redirect('users/login');
       }
       $this->view('users/admin/profile');
   }
 
-  public function editProfile(){
+    /**
+     * @return void
+     */
+    public function editProfile(){
       if (!isLoggedIn()) {
           redirect('users/login');
       }
       $this->view('users/admin/editProfile');
   }
 
-  public function changePassword(){
+    /**
+     * @return void
+     */
+    public function changePassword(){
       if (!isLoggedIn()) {
           redirect('users/login');
       }
       $this->view('users/admin/changePassword');
   }
 
-  public function addNewRequest(){
+    /**
+     * @return void
+     */
+    public function addNewRequest(){
       if (!isLoggedIn()) {
           redirect('users/login');
       }
       $this->view('users/admin/addNewRequest');
+  }
+
+    /**
+     * @return void
+     */
+    public function processing(){
+      $this->view('users/processing');
   }
 }

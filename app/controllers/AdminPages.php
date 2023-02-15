@@ -36,6 +36,9 @@ class AdminPages extends Controller {
         $this->view('users/admin/beneficiaries', $data);
     }
 
+    /**
+     * @return void
+     */
     public function verifyBeneficiaries(){
         $indBeneficiaries = $this->adminPageModel->verifyIndBeneficiaries();
         $corpBeneficiaries = $this->adminPageModel->verifyOrgBeneficiaries();
@@ -57,6 +60,9 @@ class AdminPages extends Controller {
         $this->view('users/admin/organizers', $data);
     }
 
+    /**
+     * @return void
+     */
     public function verifyOrganizers(){
         $organizers = $this->adminPageModel->verifyOrganizers();
         $data = [

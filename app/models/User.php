@@ -6,7 +6,10 @@ class User{
     $this->db = new Database;
   }
 
-  public function getDistricts(){
+    /**
+     * @return mixed
+     */
+    public function getDistricts(){
     $this->db->query('SELECT * FROM district');
     $results = $this->db->resultSet();
     return $results;
@@ -19,10 +22,11 @@ class User{
     // 5 - Organization Beneficiary
     // 6 - Event Organizer
 
-  /**
-   * @param $data
-   * @return bool
-   */
+    /**
+     * @param $data
+     * @param $type
+     * @return bool
+     */
     public function registerDonor($data, $type){
         $type1 = "ind";
 
@@ -110,10 +114,11 @@ class User{
     }
 
   // Regsiter user
-  /**
-   * @param $data
-   * @return bool
-   */
+    /**
+     * @param $data
+     * @param $type
+     * @return bool
+     */
     public function registerBeneficiary($data, $type){
         $type1 = "ind";
 
@@ -205,6 +210,10 @@ class User{
         }
     }
 
+    /**
+     * @param $data
+     * @return bool
+     */
     public function registerOrganizer($data){
 
         $this->db->query('INSERT INTO reg_user (email, password,  user_type, prof_img, tp_number, otp_code , otp_verify, verification_status) VALUES(:email, :password, :user_type, :prof_img, :tp_number, :otp_code, :otp_verify, :verification_status)');
@@ -268,7 +277,11 @@ class User{
     }
   }
 
-  public function findUserByContact($tp_number){
+    /**
+     * @param $tp_number
+     * @return bool
+     */
+    public function findUserByContact($tp_number){
     $this->db->query('SELECT * FROM reg_user WHERE tp_number = :tp_number');
     // Bind value
     $this->db->bind(':tp_number', $tp_number);
@@ -303,7 +316,11 @@ class User{
     }
   }
 
-  public function findUserByNIC($nic){
+    /**
+     * @param $nic
+     * @return bool
+     */
+    public function findUserByNIC($nic){
     $this->db->query('SELECT * FROM ind_don WHERE NIC = :nic');
     // Bind value
     $this->db->bind(':nic', $nic);
@@ -318,7 +335,11 @@ class User{
     }
   }
 
-  public function getUserType($email){
+    /**
+     * @param $email
+     * @return false
+     */
+    public function getUserType($email){
     $this->db->query('SELECT user_type FROM reg_user WHERE email = :email');
     // Bind value
     $this->db->bind(':email', $email);

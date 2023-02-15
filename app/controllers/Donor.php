@@ -36,13 +36,10 @@ use helpers\Email;
           }
         }
 
-          
-
         /**
          * @return void
          */
         public function update_profile_donor(){
-
           $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING); 
   
           $otp_code = rand(100000,999999);
@@ -66,19 +63,17 @@ use helpers\Email;
             'type' => $type,
             'id' => $id
             ];
-    
           
             if($this->donorModel->update_profile_donor($data)){
               redirect('pages/profile_donor');
             }else{
               redirect('pages/edit_profile_donor');
             }
-            
-            
-  
         }
 
-
+        /**
+         * @return void
+         */
         public function change_password_donor(){
 
           $id = $_SESSION['user_id'];
@@ -87,7 +82,6 @@ use helpers\Email;
           $image_name = $this->profileImage();
 
           if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
             $otp_verify = 0;
             $otp_code = rand(100000, 999999);
 
@@ -143,18 +137,14 @@ use helpers\Email;
                       }
                     }
                   }
-  
-                  
                 }
               }
               
-              if ($error == false) {
-                      
+              if (!$error) {
                 // Hash Password
                 $data['new_password'] = password_hash($data['new_password'], PASSWORD_DEFAULT);
       
                 if ($this->donorModel->change_password($data, $id)) {
-      
                   $email = new Email($user_email);
                   $email->sendVerificationEmail($user_email, $otp_code);
                   redirect('users/otp_verify');
@@ -165,7 +155,6 @@ use helpers\Email;
                 // Load view with errors
                 $this->view('users/donor/change_password_donor', $data);
               }
-
             }else{
 
               $data = [
@@ -179,12 +168,8 @@ use helpers\Email;
               ];
 
               $this->view('users/donor/change_password_donor', $data);
-             
             }
-
         }
-        
-        
 
         /**
          * @return void
@@ -198,7 +183,6 @@ use helpers\Email;
       
             $this->view('users/donor/feedback', $data);
           }
-
            
          /**
          * @return void
@@ -253,7 +237,6 @@ use helpers\Email;
             }
         }
 
-
         /**
          * @return void
          */
@@ -295,7 +278,6 @@ use helpers\Email;
                 $this->view('users/admin/categories', $data);
             }
         }
-
         
         /**
          * @param $id
@@ -344,7 +326,6 @@ use helpers\Email;
                 $this->view('users/admin/editCategories', $data);
             }
         }
-
         
         /**
          * @param $id
@@ -358,6 +339,9 @@ use helpers\Email;
                 }
         }
 
+        /**
+         * @return void
+         */
         public function profileImage(){
           if (isset($_SESSION['user_id'])) {
             $id = $_SESSION['user_id'];
@@ -382,8 +366,5 @@ use helpers\Email;
           ];
 
           $this->view('users/donor/stats', $data);
-      }
- 
-        
-
+        }
       }
