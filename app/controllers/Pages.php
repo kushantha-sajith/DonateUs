@@ -4,6 +4,7 @@ class Pages extends Controller{
     $this->beneficiaryModel = $this->model('BeneficiaryModel');
     $this->donorModel = $this->model('DonorModel');
     $this->userModel = $this->model('User');
+    $this->adminPageModel = $this->model('AdminPage');
   }
 
   /**
@@ -356,11 +357,39 @@ class Pages extends Controller{
     /**
      * @return void
      */
-    public function userDetails(){
+    public function userDetails($id){
       if (!isLoggedIn()) {
           redirect('users/login');
       }
-      $this->view('users/admin/userDetails');
+      $user_type = $this->adminPageModel->getUserType($id);
+      if ($user_type == 2){
+          $userData = $this->adminPageModel->getIndDonorDetails($id);
+          $data = [
+              'userData' => $userData
+          ];
+      }elseif ($user_type == 3){
+          $userData = $this->adminPageModel->getCorpDonorDetails($id);
+          $data = [
+              'userData' => $userData
+          ];
+      }elseif ($user_type == 4){
+          $userData = $this->adminPageModel->getIndBeneficiaryDetails($id);
+          $data = [
+              'userData' => $userData
+          ];
+      }elseif ($user_type == 5) {
+          $userData = $this->adminPageModel->getOrgBeneficiaryDetails($id);
+          $data = [
+              'userData' => $userData
+          ];
+      }elseif ($user_type == 6){
+          $userData = $this->adminPageModel->getOrganizerDetails($id);
+          $data = [
+              'userData' => $userData
+          ];
+      }
+
+      $this->view('users/admin/userDetails', $data);
   }
 
     /**

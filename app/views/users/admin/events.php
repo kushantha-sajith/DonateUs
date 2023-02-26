@@ -87,39 +87,17 @@
           <?php foreach($data['pendingEvents'] as $pendingEvents) : ?>
               <div class="cards_heading cards_color">
                   <div><?php echo $pendingEvents->id; ?></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
+                  <div><?php echo $pendingEvents->event_title; ?></div>
+                  <div><?php echo $pendingEvents->user_id; ?></div>
+                  <div><?php echo $pendingEvents->description; ?></div>
+                  <div><?php echo $pendingEvents->budget; ?></div>
+                  <div><?php echo $pendingEvents->due_date; ?></div>
                   <div>
                       <div style="text-align: center;"> <a href="#"> <button class="btnview">View More</button> </a></div>
                   </div>
               </div>
           <?php endforeach; ?>
-          <div class="cards_heading cards_color">
-              <div>10</div>
-              <div>Hitha Mithuru</div>
-              <div>Kushantha</div>
-              <div>#</div>
-              <div>50,000</div>
-              <div>2023-02-10</div>
-              <div>
-                  <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
-              </div>
-          </div>
-          <div class="cards_heading cards_color">
-              <div>10</div>
-              <div>Hitha Mithuru</div>
-              <div>Kushantha</div>
-              <div>#</div>
-              <div>50,000</div>
-              <div>2023-02-10</div>
-              <div>
-                  <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
-              </div>
-          </div>
-      </main>
+          </main>
   </section>
   <!--home section end-->
 

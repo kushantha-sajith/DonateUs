@@ -86,51 +86,17 @@
         <?php foreach($data['rejectedEvents'] as $rejectedEvents) : ?>
             <div class="cards_heading cards_color">
                 <div><?php echo $rejectedEvents->id; ?></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+                <div><?php echo $rejectedEvents->event_title; ?></div>
+                <div><?php echo $rejectedEvents->user_id; ?></div>
+                <div><?php echo $rejectedEvents->rejection_note; ?></div>
+                <div><?php echo $rejectedEvents->rejected_amount; ?></div>
+                <div><?php echo $rejectedEvents->budget; ?></div>
                 <div>
                     <div style="text-align: center;"> <a href="donation_req.html"> <button class="btnview" >View More</button> </a></div>
                 </div>
             </div>
         <?php endforeach; ?>
-        <div class="cards_heading cards_color">
-            <div>10</div>
-            <div>Hitha Mithuru</div>
-            <div>Kushantha</div>
-            <div>#</div>
-            <div>2023-02-10</div>
-            <div>50,000</div>
-            <div>
-                <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
-            </div>
-        </div>
-        <div class="cards_heading cards_color">
-            <div>10</div>
-            <div>Hitha Mithuru</div>
-            <div>Kushantha</div>
-            <div>#</div>
-            <div>2023-02-10</div>
-            <div>50,000</div>
-            <div>
-                <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
-            </div>
-        </div>
-        <div class="cards_heading cards_color">
-            <div>10</div>
-            <div>Hitha Mithuru</div>
-            <div>Kushantha</div>
-            <div>#</div>
-            <div>2023-02-10</div>
-            <div>50,000</div>
-            <div>
-                <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
-            </div>
-        </div>
         </main>
-
     </section>
     <!--home section end-->
 

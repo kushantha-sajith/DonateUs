@@ -158,4 +158,17 @@ class AdminPages extends Controller {
         ];
         $this->view('users/admin/completedEvents', $data);
     }
+
+    /**
+     * @return void
+     */
+    public function updateAccStatus($id) {
+        // retrieve the selected value from the POST parameters
+        $selected_option = $_POST['status'];
+
+        // call the model method to update the database
+        $this->adminPageModel->updateAccStatus($id, $selected_option);
+
+        // return a response if needed
+    }
 }
