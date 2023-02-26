@@ -69,15 +69,10 @@
                                     <label>District</label>
                                     <input type="number" placeholder="Enter mobile number">
                                 </div>
-
-
-
                             </div>
                         </div>
 
-
                         <span class="title"><u>Change Profile Picture</u></span>
-
                         <div class="photo-container">
                             <input type="file" id="file" accept="image/*" hidden>
                             <div class="img-area" data-img="">

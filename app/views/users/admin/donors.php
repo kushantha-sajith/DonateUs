@@ -89,15 +89,15 @@
                     <div><?php echo $indDonors->f_name; ?></div>
                     <div><?php echo $indDonors->email; ?></div>
                     <div>
-                        <select name="status" id="status">
-                            <option value="Active">Active</option>
-                            <option value="Deactive">Deactive</option>
+                        <select name="status" id="status" onchange="sendSelectedOption(this.value)">
+                            <option value=1 <?php if($indDonors->acc_status == 1) echo "selected"?>>Active</option>
+                            <option value=0 <?php if($indDonors->acc_status == 0) echo "selected"?>>Deactive</option>
                         </select>
                     </div>
                     <div>Individual</div>
                     <div><?php echo $indDonors->city; ?></div>
                     <div>
-                        <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
+                        <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails/<?php echo $indDonors->id; ?>"> <button class="btnview">View More</button> </a></div>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -108,19 +108,18 @@
                     <div><?php echo $corpDonors->email; ?></div>
                     <div>
                         <select name="status" id="status">
-                            <option value="Active">Active</option>
-                            <option value="Deactive">Deactive</option>
+                            <option value=1 <?php if($corpDonors->acc_status == 1) echo "selected"?>>Active</option>
+                            <option value=0 <?php if($corpDonors->acc_status == 0) echo "selected"?>>Deactive</option>
                         </select>
                     </div>
                     <div>Corporate</div>
                     <div><?php echo $corpDonors->city; ?></div>
                     <div>
-                        <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
+                        <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails/<?php echo $corpDonors->id; ?>"> <button class="btnview">View More</button> </a></div>
                     </div>
                 </div>
             <?php endforeach; ?>
         </main>
-
     </section>
     <!--home section end-->
 
@@ -151,11 +150,22 @@
             option.addEventListener("click", () => {
                 let selectedOption = option.querySelector(".option-text").innerText;
                 sBtn_text.innerText = selectedOption;
-
                 optionMenu.classList.remove("active");
             });
         });
 
+        function sendSelectedOption(value) {
+            // create an AJAX request
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    // do something with the response
+                }
+            };
+            xhr.open("POST", "#", true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.send("option=" + value);
+        }
     </script>
 </body>
 

@@ -16,7 +16,7 @@
             </a>
         </li>
         <li>
-            <a href="<?php echo URLROOT; ?>/admin/users">
+            <a href="<?php echo URLROOT; ?>/adminPages/donors">
                 <i class="bx bx-user"></i>
                 <span class="links_name">Users</span>
             </a>

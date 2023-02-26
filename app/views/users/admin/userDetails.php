@@ -37,56 +37,49 @@
     </nav>
     <main>
             <div class="container">
-                <header>Verify User (Beneficiary)</header>
-
+                <header>User Details</header>
+                <?php foreach ($data['userData'] as $userData): ?>
                 <form action="#">
                     <div class="formfirst">
                         <div class="details personal">
                             <div class="fields">
                                 <div class="input-field">
                                     <label>First Name </label>
-                                    <input type="text">
+                                    <input type="text" value="<?php echo $userData->f_name;?>" disabled>
                                 </div>
                                 <div class="input-field">
                                     <label>Last Name</label>
-                                    <input type="text" >
+                                    <input type="text" value="<?php echo $userData->l_name;?>" disabled>
                                 </div>
                                 <div class="input-field">
                                     <label>Email</label>
-                                    <input type="email" >
+                                    <input type="email" value="<?php echo $userData->email;?>" disabled>
                                 </div>
 
                                 <div class="input-field">
                                     <label>National ID Number</label>
-                                    <input type="text" placeholder="Beneficiary ID">
+                                    <input type="text" value="<?php echo $userData->NIC;?>" disabled>
                                 </div>
 
 
                                 <div class="input-field">
                                     <label>Contact Number</label>
-                                    <input type="number" >
+                                    <input type="number" value="<?php echo $userData->tp_number;?>" disabled>
                                 </div>
 
 
                                 <div class="input-field">
                                     <label>Location / City </label>
-                                    <input type="text">
+                                    <input type="text" value="<?php echo $userData->city;?>" disabled>
                                 </div>
 
                                 <div class="input-field" id="address">
                                     <label>Address </label>
-                                    <input type="text">
+                                    <input type="text" value="<?php echo $userData->f_name;?>" disabled>
                                 </div>
-
-                                
-
-
                             </div>
                         </div>
-
-
                         <span class="title"><u>Id Verification</u></span>
-
                         <div class="ggg">
                             <div class="photo-container">
                                 <input type="file" id="file" accept="image/*" hidden>
@@ -117,11 +110,9 @@
                             </div>
                             <!-- <button class="select-image" id="select_three">Select Image</button> -->
                         </div>
-
                     </div>
-
-
                 </form>
+                <?php endforeach;?>
             </div>
 
 

@@ -150,4 +150,66 @@ class AdminPage{
         $results = $this->db->resultSet();
         return $results;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getUserType($id){
+        $this->db->query('SELECT user_type FROM reg_user WHERE id = :id');
+        $this->db->bind(':id', $id);
+        $results = $this->db->single();
+        return $results->user_type;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIndDonorDetails($id){
+        $this->db->query('SELECT *, reg_user.id as id FROM reg_user INNER JOIN ind_don ON reg_user.id = ind_don.user_id WHERE reg_user.user_type = 2 AND reg_user.id = :id');
+        $this->db->bind(':id', $id);
+        $results = $this->db->resultSet();
+        return $results;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCorpDonorDetails($id){
+        $this->db->query('SELECT *, reg_user.id as id FROM reg_user INNER JOIN corp_don ON reg_user.id = corp_don.user_id WHERE reg_user.user_type = 3 AND reg_user.id = :id');
+        $this->db->bind(':id', $id);
+        $results = $this->db->resultSet();
+        return $results;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIndBeneficiaryDetails($id){
+        $this->db->query('SELECT *, reg_user.id as id FROM reg_user INNER JOIN ind_ben ON reg_user.id = ind_ben.user_id WHERE reg_user.user_type = 4 AND verification_status = 1 AND reg_user.id = :id');
+        $this->db->bind(':id', $id);
+        $results = $this->db->resultSet();
+        return $results;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrgBeneficiaryDetails($id){
+        $this->db->query('SELECT *, reg_user.id as id FROM reg_user INNER JOIN org_ben on reg_user.id = org_ben.user_id WHERE reg_user.user_type = 5 AND verification_status = 1 AND reg_user.id = :id');
+        $this->db->bind(':id', $id);
+        $results = $this->db->resultSet();
+        return $results;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrganizerDetails($id){
+        $this->db->query('SELECT *, reg_user.id as id FROM reg_user INNER JOIN event_org on reg_user.id = event_org.user_id WHERE reg_user.user_type = 6 AND verification_status = 1 AND reg_user.id = :id');
+        $this->db->bind(':id', $id);
+        $results = $this->db->resultSet();
+        return $results;
+    }
+
+//    public function updateAccStatus(){};
 }

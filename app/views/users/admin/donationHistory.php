@@ -80,13 +80,14 @@
                 <div>Status</div>
                 <div></div>
             </div>
+            <?php foreach($data['donations'] as $donation) : ?>
             <div class="cards_heading cards_color">
-                <div>001</div>
-                <div>Kushantha Lakshan</div>
-                <div>Individual</div>
-                <div>003</div>
-                <div>0767128051</div>
-                <div>100,000</div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
                 <div>
                     <select name="status" id="status" style="margin-top: 0.5rem;">
                         <option value="Active">Ongoing</option>
@@ -97,23 +98,7 @@
                     <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
                  </div>
              </div>
-             <div class="cards_heading cards_color">
-                <div>001</div>
-                <div>Kushantha Lakshan</div>
-                <div>Individual</div>
-                <div>003</div>
-                <div>0767128051</div>
-                <div>100,000</div>
-                <div>
-                    <select name="status" id="status" style="margin-top: 0.5rem;">
-                        <option value="Active">Ongoing</option>
-                        <option value="Deactive">Completed</option>
-                    </select>
-                </div>
-                <div>
-                    <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
-                 </div>
-             </div>
+            <?php endforeach; ?>
         </main>
 
     </section>

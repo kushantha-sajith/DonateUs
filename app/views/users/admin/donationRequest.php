@@ -89,49 +89,16 @@
           <?php foreach($data['pendingRequests'] as $pendingRequests) : ?>
               <div class="cards_heading cards_color">
                   <div><?php echo $pendingRequests->id; ?></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
+                  <div><?php echo $pendingRequests->request_title; ?></div>
+                  <div><?php echo $pendingRequests->user_id; ?></div>
+                  <div><?php echo $pendingRequests->cat_id; ?></div>
+                  <div><?php echo $pendingRequests->id; ?></div>
+                  <div><?php echo $pendingRequests->id; ?></div>
                   <div>
                       <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/pendingRequestDetails"> <button class="btnview">View More</button> </a></div>
                   </div>
               </div>
           <?php endforeach; ?>
-          <div class="cards_heading cards_color">
-              <div>10</div>
-              <div>Need Medicine</div>
-              <div>Kushantha</div>
-              <div>Medicine</div>
-              <div>Non-Financial</div>
-              <div>50 tablets</div>
-              <div>
-                  <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/pendingRequestDetails"> <button class="btnview" >View More</button> </a></div>
-              </div>
-          </div>
-          <div class="cards_heading cards_color">
-              <div>10</div>
-              <div>Need Medicine</div>
-              <div>Shamindi</div>
-              <div>Medicine</div>
-              <div>Non-Financial</div>
-              <div>50 tablets</div>
-              <div>
-                  <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/pendingRequestDetails"> <button class="btnview" >View More</button> </a></div>
-              </div>
-          </div>
-          <div class="cards_heading cards_color">
-              <div>10</div>
-              <div>Need Medicine</div>
-              <div>Pulara</div>
-              <div>Medicine</div>
-              <div>Non-Financial</div>
-              <div>50 tablets</div>
-              <div>
-                  <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/pendingRequestDetails"> <button class="btnview" >View More</button> </a></div>
-              </div>
-          </div>
       </main>
   </section>
   <!--home section end-->
