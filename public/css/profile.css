@@ -24,24 +24,23 @@
 
    
 main{
-    padding-top: 120px; 
-    padding-left: 120px; 
-    padding-right: 50px;
+    padding-top: 120px;
 }
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+
 .container{
-    
     position: relative;
     max-width: 900px;
-    width: 100%;
+    /*width: 100%;*/
     border-radius: 6px;
     padding: 30px;
-    margin: 0 15px;
+    margin: 0 auto;
     background-color: #fff;
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
@@ -57,7 +56,6 @@ main{
     padding-bottom: 2PX;
     padding-right: 5px;
 	border-radius: 30px;
-
 }
 
 .img-area {
@@ -158,7 +156,7 @@ main{
 .container form{
     position: relative;
     margin-top: 16px;
-    min-height: 400px;
+    /*min-height: 400px;*/
     background-color: #fff;
     overflow: hidden;
 }
@@ -184,7 +182,6 @@ form.secActive .form.first{
 }
 .container form .title{
     display: block;
-    margin-bottom: 8px;
     font-size: 16px;
     font-weight: 500;
     margin: 6px 0;

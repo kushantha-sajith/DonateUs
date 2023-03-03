@@ -82,16 +82,11 @@
                 <div><?php echo $indBeneficiaries->id; ?></div>
                 <div><?php echo $indBeneficiaries->f_name; ?></div>
                 <div><?php echo $indBeneficiaries->email; ?></div>
-                <div>
-                    <select name="status" id="status">
-                        <option value="Active">Active</option>
-                        <option value="Deactive">Deactive</option>
-                    </select>
-                </div>
+                <div></div>
                 <div>Individual</div>
                 <div><?php echo $indBeneficiaries->city; ?></div>
                 <div>
-                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/approve"> <button class="btnview">View More</button> </a></div>
+                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/approve/<?php echo $indBeneficiaries->id; ?>"> <button class="btnview">View More</button> </a></div>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -100,16 +95,11 @@
                 <div><?php echo $corpBeneficiaries->id; ?></div>
                 <div><?php echo $corpBeneficiaries->f_name; ?></div>
                 <div><?php echo $corpBeneficiaries->email; ?></div>
-                <div>
-                    <select name="status" id="status">
-                        <option value="Active">Active</option>
-                        <option value="Deactive">Deactive</option>
-                    </select>
-                </div>
+                <div></div>
                 <div>Organizational</div>
                 <div><?php echo $corpBeneficiaries->city; ?></div>
                 <div>
-                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/approve"> <button class="btnview">View More</button> </a></div>
+                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/approve/<?php echo $corpBeneficiaries->id; ?>"> <button class="btnview">View More</button> </a></div>
                 </div>
             </div>
         <?php endforeach; ?>

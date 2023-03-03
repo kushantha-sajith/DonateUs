@@ -11,6 +11,7 @@
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -91,15 +92,15 @@
                 <div><?php echo $indBeneficiaries->f_name; ?></div>
                 <div><?php echo $indBeneficiaries->email; ?></div>
                 <div>
-                    <select name="status" id="status">
-                        <option value="Active">Active</option>
-                        <option value="Deactive">Deactive</option>
+                    <select name="status" class="status" data-id="<?php echo $indBeneficiaries->id; ?>">
+                        <option value=1 <?php if($indBeneficiaries->acc_status == 1) echo "selected"?>>Active</option>
+                        <option value=0 <?php if($indBeneficiaries->acc_status == 0) echo "selected"?>>Deactive</option>
                     </select>
                 </div>
                 <div>Individual</div>
                 <div><?php echo $indBeneficiaries->city; ?></div>
                 <div>
-                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
+                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails/<?php echo $indBeneficiaries->id;?>"> <button class="btnview">View More</button> </a></div>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -109,15 +110,15 @@
                 <div><?php echo $corpBeneficiaries->org_name; ?></div>
                 <div><?php echo $corpBeneficiaries->email; ?></div>
                 <div>
-                    <select name="status" id="status">
-                        <option value="Active">Active</option>
-                        <option value="Deactive">Deactive</option>
+                    <select name="status" class="status" data-id="<?php echo $corpBeneficiaries->id; ?>">
+                        <option value=1 <?php if($corpBeneficiaries->acc_status == 1) echo "selected"?>>Active</option>
+                        <option value=0 <?php if($corpBeneficiaries->acc_status == 0) echo "selected"?>>Deactive</option>
                     </select>
                 </div>
                 <div>Organizational</div>
                 <div><?php echo $corpBeneficiaries->city; ?></div>
                 <div>
-                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
+                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails/<?php echo $corpBeneficiaries->id;?>"> <button class="btnview">View More</button> </a></div>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -157,6 +158,38 @@
           optionMenu.classList.remove("active");
         });
       });
+
+      const statuses = document.querySelectorAll('.status');
+
+      statuses.forEach(function (status) {
+          status.addEventListener('change', function() {
+              const userId = status.getAttribute("data-id");
+              sendSelectedOption(status.value, userId);
+          });
+      });
+
+      function sendSelectedOption(status, id) {
+          console.log(id);
+          console.log(status);
+          const url = `http://localhost/DonateUs/adminPages/updateAccStatus/${id}`;
+          const data = {
+              status: status
+          };
+
+          $.ajax({
+              type: "POST",
+              url: url,
+              data: data,
+              responseType: "JSON",
+              success: function (data){
+                  console.log(data);
+              },
+              error : function (err){
+                  console.log(err);
+              }
+          });
+
+      }
     </script>
   </body>
 </html>

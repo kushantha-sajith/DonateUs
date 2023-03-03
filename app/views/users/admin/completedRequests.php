@@ -91,10 +91,10 @@
             <div class="cards_heading cards_color">
                 <div><?php echo $completedRequests->id; ?></div>
                 <div><?php echo $completedRequests->request_title; ?></div>
-                <div><?php echo $completedRequests->user_id; ?></div>
-                <div><?php echo $completedRequests->cat_id; ?></div>
-                <div>#TODO</div>
-                <div>#TODO</div>
+                <div><?php echo $completedRequests->ben_id; ?></div>
+                <div><?php echo $completedRequests->category_name; ?></div>
+                <div><?php echo $completedRequests->req_type; ?></div>
+                <div><?php echo $completedRequests->rec_amount; ?></div>
                 <div>
                     <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
                 </div>

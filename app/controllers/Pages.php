@@ -367,39 +367,63 @@ class Pages extends Controller{
           $data = [
               'userData' => $userData
           ];
+          $this->view('users/admin/indDonDetails', $data);
       }elseif ($user_type == 3){
           $userData = $this->adminPageModel->getCorpDonorDetails($id);
           $data = [
               'userData' => $userData
           ];
+          $this->view('users/admin/corpDonDetails', $data);
       }elseif ($user_type == 4){
           $userData = $this->adminPageModel->getIndBeneficiaryDetails($id);
           $data = [
               'userData' => $userData
           ];
+          $this->view('users/admin/indBenDetails', $data);
       }elseif ($user_type == 5) {
           $userData = $this->adminPageModel->getOrgBeneficiaryDetails($id);
           $data = [
               'userData' => $userData
           ];
+          $this->view('users/admin/orgBenDetails', $data);
       }elseif ($user_type == 6){
           $userData = $this->adminPageModel->getOrganizerDetails($id);
           $data = [
               'userData' => $userData
           ];
+          $this->view('users/admin/organizerDetails', $data);
       }
-
-      $this->view('users/admin/userDetails', $data);
+//      $this->view('users/admin/userDetails', $data);
   }
 
     /**
      * @return void
      */
-    public function approve(){
+    public function approve($id){
       if (!isLoggedIn()) {
           redirect('users/login');
       }
-      $this->view('users/admin/approve');
+      $user_type = $this->adminPageModel->getUserType($id);
+      if ($user_type == 4){
+        $userData = $this->adminPageModel->getIndBeneficiaryDetails($id);
+        $data = [
+            'userData' => $userData
+        ];
+        $this->view('users/admin/verifyIndBen', $data);
+      }elseif ($user_type == 5) {
+        $userData = $this->adminPageModel->getOrgBeneficiaryDetails($id);
+        $data = [
+            'userData' => $userData
+        ];
+        $this->view('users/admin/verifyOrgBen', $data);
+      }elseif ($user_type == 6){
+        $userData = $this->adminPageModel->getOrganizerDetails($id);
+        $data = [
+            'userData' => $userData
+        ];
+        $this->view('users/admin/verifyOrganizer', $data);
+      }
+//      $this->view('users/admin/approve');
   }
 
     /**

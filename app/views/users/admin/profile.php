@@ -43,58 +43,53 @@
                 <form action="#">
                     <div class="formfirst">
                         <div class="details personal">
-                            <span class="title"><u>Personal Details</u></span>
+<!--                            <span class="title"><u>Personal Details</u></span>-->
                             <div class="fields">
-                                <div class="input-field">
-                                    <label>First Name</label>
-                                    <input type="text" placeholder="Enter your first name">
-                                </div>
-                                <div class="input-field">
-                                    <label>Last Name</label>
-                                    <input type="text" placeholder="Enter your first name">
-                                </div>
-
-                                <div class="input-field">
-                                    <label>Date of Birth</label>
-                                    <input type="date" placeholder="Enter birth date">
-                                </div>
+<!--                                <div class="input-field">-->
+<!--                                    <label>First Name</label>-->
+<!--                                    <input type="text" placeholder="Enter your first name">-->
+<!--                                </div>-->
+<!--                                <div class="input-field">-->
+<!--                                    <label>Last Name</label>-->
+<!--                                    <input type="text" placeholder="Enter your first name">-->
+<!--                                </div>-->
+<!---->
+<!--                                <div class="input-field">-->
+<!--                                    <label>Date of Birth</label>-->
+<!--                                    <input type="date" placeholder="Enter birth date">-->
+<!--                                </div>-->
 
                                 <div class="input-field">
                                     <label>Email</label>
-                                    <input type="text" placeholder="Enter your email">
+                                    <input type="text" value="<?php echo $_SESSION['user_email'];?>" disabled>
                                 </div>
-                                <div class="input-field">
-                                    <label>Mobile Number</label>
-                                    <input type="number" placeholder="Enter mobile number">
-                                </div>
-                                <div class="input-field">
-                                    <label>ID Number</label>
-                                    <input type="text" placeholder="Enter mobile number">
-                                </div>
-                                <div class="input-field">
-                                    <label>City</label>
-                                    <input type="text" placeholder="Enter mobile number">
-                                </div>
-                                <div class="input-field">
-                                    <label>District</label>
-                                    <input type="number" placeholder="Enter mobile number">
-                                </div>
+<!--                                <div class="input-field">-->
+<!--                                    <label>Mobile Number</label>-->
+<!--                                    <input type="number" placeholder="Enter mobile number">-->
+<!--                                </div>-->
+<!--                                <div class="input-field">-->
+<!--                                    <label>ID Number</label>-->
+<!--                                    <input type="text" placeholder="Enter mobile number">-->
+<!--                                </div>-->
+<!--                                <div class="input-field">-->
+<!--                                    <label>City</label>-->
+<!--                                    <input type="text" placeholder="Enter mobile number">-->
+<!--                                </div>-->
+<!--                                <div class="input-field">-->
+<!--                                    <label>District</label>-->
+<!--                                    <input type="number" placeholder="Enter mobile number">-->
+<!--                                </div>-->
                             </div>
                         </div>
                     </div>
                 </form>
                 <div class="updatebtn">
                     <a href="<?php echo URLROOT; ?>/pages/editProfile">
-                        <button class="edit" style="text-decoration: none;">Edit Profile Details
-                        </button>
+                        <button class="edit" style="text-decoration: none;">Edit Email</button>
                     </a>
 
                     <a href="<?php echo URLROOT; ?>/pages/changePassword">
                         <button class="changepassword" style="text-decoration: none;">Change Password</button>
-                    </a>
-
-                    <a href="#">
-                        <button class="delete" style="text-decoration: none;">Delete Profile Details</button>
                     </a>
                 </div>
             </div>

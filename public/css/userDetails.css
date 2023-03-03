@@ -22,36 +22,31 @@
 
 }
 
-
-   
 main{
-    padding-top: 120px; 
-    padding-left: 120px; 
-    padding-right: 50px;
-    
+    padding-top: 120px;
 }
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+
 .container{
-    
     position: relative;
     max-width: 900px;
     width: 100%;
     border-radius: 6px;
     padding: 30px;
-    margin: 0 15px;
     background-color: #fff;
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    margin: 0 auto;
 }
 .container .form_first{
     overflow:auto;
 }
 .ggg{
-    display: flex;
     display: flex;
 	justify-content: center;
 }
@@ -69,8 +64,6 @@ main{
 	border: none;
 	cursor: pointer;
 	transition: all .3s ease;
-    
-    
 }
 .photo-container{
     max-width: 50%;
@@ -81,8 +74,8 @@ main{
     padding-bottom: 2PX;
     padding-right: 5px;
 	border-radius: 30px;
-
 }
+
 #grame{
     max-width: 500px;
 	width: 100%;
@@ -100,7 +93,6 @@ main{
 
 
 .img-area {
-    
 	position: relative;
 	width: 100%;
 	height: 240px;
@@ -197,7 +189,7 @@ main{
 .container form{
     position: relative;
     margin-top: 16px;
-    min-height: 490px;
+    /*min-height: 490px;*/
     background-color: #fff;
     overflow: hidden;
 }

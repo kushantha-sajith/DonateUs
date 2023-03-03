@@ -164,11 +164,26 @@ class AdminPages extends Controller {
      */
     public function updateAccStatus($id) {
         // retrieve the selected value from the POST parameters
-        $selected_option = $_POST['status'];
+        if(isset($_POST['status'])){
+            $selected_option = $_POST['status'];
 
-        // call the model method to update the database
-        $this->adminPageModel->updateAccStatus($id, $selected_option);
-
-        // return a response if needed
+            // call the model method to update the database
+            if($this->adminPageModel->updateAccStatus($id, $selected_option)){
+                $res = [
+                    'statusCode' => 200,
+                    'message' => "success"
+                ];
+            }
+            else{
+                $res = [
+                    'statusCode' => 500,
+                    'message' => "error"
+                ];
+            }
+            echo json_encode($res);
+        }
+        else{
+            echo json_encode(['statusCode' => 500, 'message' => 'error']);
+        }
     }
 }
