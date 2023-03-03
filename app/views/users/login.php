@@ -15,7 +15,7 @@
 
 <body>
     <div class="logo">
-        <img src="<?php echo URLROOT; ?>/img/logo_black.png" alt="logo">
+        <img src="<?php echo URLROOT; ?>/img/logo_dark.png" alt="logo">
         </div>
        
     <div class="container">

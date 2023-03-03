@@ -80,7 +80,7 @@
                 <div>Status</div>
                 <div></div>
             </div>
-            <?php foreach($data['donations'] as $donation) : ?>
+            <?php foreach($data['financialDonationHistory'] as $donation) : ?>
             <div class="cards_heading cards_color">
                 <div></div>
                 <div></div>

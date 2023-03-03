@@ -90,9 +90,9 @@
             <div class="cards_heading cards_color">
                 <div><?php echo $rejectedRequests->id; ?></div>
                 <div><?php echo $rejectedRequests->request_title; ?></div>
-                <div><?php echo $rejectedRequests->user_id; ?></div>
-                <div><?php echo $rejectedRequests->cat_id; ?></div>
-                <div>#TODO</div>
+                <div><?php echo $rejectedRequests->ben_id; ?></div>
+                <div><?php echo $rejectedRequests->category_name; ?></div>
+                <div><?php echo $rejectedRequests->req_type; ?></div>
                 <div><?php echo $rejectedRequests->amount; ?></div>
                 <div>
                     <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>

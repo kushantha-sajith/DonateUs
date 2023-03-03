@@ -90,9 +90,9 @@
             <div class="cards_heading cards_color">
                 <div><?php echo $ongoingRequests->id; ?></div>
                 <div><?php echo $ongoingRequests->request_title; ?></div>
-                <div><?php echo $ongoingRequests->received; ?></div>
-                <div><?php echo $ongoingRequests->cat_id; ?></div>
-                <div>#TODO</div>
+                <div><?php echo $ongoingRequests->rec_amount; ?></div>
+                <div><?php echo $ongoingRequests->category_name; ?></div>
+                <div><?php echo $ongoingRequests->req_type; ?></div>
                 <div><?php echo $ongoingRequests->amount; ?></div>
                 <div>
                     <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/requestDetails"> <button class="btnview" >View More</button> </a></div>

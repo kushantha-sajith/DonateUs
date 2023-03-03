@@ -78,7 +78,7 @@
                 <div>Status</div>
                 <div></div>
             </div>
-        <?php foreach ($data['donations'] as $donation) : ?>
+        <?php foreach ($data['nonFinancialDonationHistory'] as $donation) : ?>
             <div class="cards_heading head">
                 <div><?php echo $donation->id; ?></div>
                 <div><?php echo $donation->user_id; ?></div>

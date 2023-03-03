@@ -90,10 +90,10 @@
               <div class="cards_heading cards_color">
                   <div><?php echo $pendingRequests->id; ?></div>
                   <div><?php echo $pendingRequests->request_title; ?></div>
-                  <div><?php echo $pendingRequests->user_id; ?></div>
-                  <div><?php echo $pendingRequests->cat_id; ?></div>
-                  <div><?php echo $pendingRequests->id; ?></div>
-                  <div><?php echo $pendingRequests->id; ?></div>
+                  <div><?php echo $pendingRequests->ben_id; ?></div>
+                  <div><?php echo $pendingRequests->category_name; ?></div>
+                  <div><?php echo $pendingRequests->req_type; ?></div>
+                  <div><?php echo $pendingRequests->amount; ?></div>
                   <div>
                       <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/pendingRequestDetails"> <button class="btnview">View More</button> </a></div>
                   </div>

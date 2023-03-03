@@ -11,6 +11,7 @@
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -89,7 +90,7 @@
                     <div><?php echo $indDonors->f_name; ?></div>
                     <div><?php echo $indDonors->email; ?></div>
                     <div>
-                        <select name="status" id="status" onchange="sendSelectedOption(this.value)">
+                        <select name="status" class="status" data-id="<?php echo $indDonors->id; ?>">
                             <option value=1 <?php if($indDonors->acc_status == 1) echo "selected"?>>Active</option>
                             <option value=0 <?php if($indDonors->acc_status == 0) echo "selected"?>>Deactive</option>
                         </select>
@@ -107,9 +108,9 @@
                     <div><?php echo $corpDonors->comp_name; ?></div>
                     <div><?php echo $corpDonors->email; ?></div>
                     <div>
-                        <select name="status" id="status">
-                            <option value=1 <?php if($corpDonors->acc_status == 1) echo "selected"?>>Active</option>
-                            <option value=0 <?php if($corpDonors->acc_status == 0) echo "selected"?>>Deactive</option>
+                        <select name="status" class="status" data-id="<?php echo $corpDonors->id; ?>">
+                            <option value="1" <?php if($corpDonors->acc_status == 1) echo "selected"?>>Active</option>
+                            <option value="0" <?php if($corpDonors->acc_status == 0) echo "selected"?>>Deactive</option>
                         </select>
                     </div>
                     <div>Corporate</div>
@@ -154,17 +155,36 @@
             });
         });
 
-        function sendSelectedOption(value) {
-            // create an AJAX request
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    // do something with the response
-                }
+        const statuses = document.querySelectorAll('.status');
+
+        statuses.forEach(function (status) {
+            status.addEventListener('change', function() {
+                const userId = status.getAttribute("data-id");
+                sendSelectedOption(status.value, userId);
+            });
+        });
+
+        function sendSelectedOption(status, id) {
+            console.log(id);
+            console.log(status);
+            const url = `http://localhost/DonateUs/adminPages/updateAccStatus/${id}`;
+            const data = {
+                status: status
             };
-            xhr.open("POST", "#", true);
-            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhr.send("option=" + value);
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: data,
+                responseType: "JSON",
+                success: function (data){
+                    console.log(data);
+                },
+                error : function (err){
+                    console.log(err);
+                }
+            });
+
         }
     </script>
 </body>
