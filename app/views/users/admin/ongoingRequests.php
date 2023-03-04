@@ -95,7 +95,7 @@
                 <div><?php echo $ongoingRequests->req_type; ?></div>
                 <div><?php echo $ongoingRequests->amount; ?></div>
                 <div>
-                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/requestDetails"> <button class="btnview" >View More</button> </a></div>
+                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/ongoingRequestDetails/<?php echo $ongoingRequests->id; ?>"> <button class="btnview" >View More</button> </a></div>
                 </div>
             </div>
         <?php endforeach; ?>

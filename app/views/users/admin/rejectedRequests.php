@@ -95,7 +95,7 @@
                 <div><?php echo $rejectedRequests->req_type; ?></div>
                 <div><?php echo $rejectedRequests->amount; ?></div>
                 <div>
-                    <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
+                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/rejectedRequestDetails/<?php echo $rejectedRequests->id; ?>"> <button class="btnview" >View More</button> </a></div>
                 </div>
             </div>
         <?php endforeach; ?>

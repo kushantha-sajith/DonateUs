@@ -72,25 +72,27 @@
             <div class="cards_heading head">
                 <div>ID</div>
                 <div>Donor Name</div>
-                <div>Req ID</div>
-                <div>Donation Type</div>
-                <div>Amount</div>
+                <div>Request Title</div>
+                <div>Category</div>
+                <div>Contact Number</div>
+                <div>Quantity</div>
                 <div>Status</div>
                 <div></div>
             </div>
-        <?php foreach ($data['nonFinancialDonationHistory'] as $donation) : ?>
-            <div class="cards_heading head">
+            <?php foreach($data['nonFinancialDonationHistory'] as $donation) : ?>
+            <div class="cards_heading cards_color">
                 <div><?php echo $donation->id; ?></div>
-                <div><?php echo $donation->user_id; ?></div>
-                <div><?php echo $donation->req_id; ?></div>
-                <div><?php echo $donation->cat_id; ?></div>
-                <div><?php echo $donation->amount; ?></div>
+                <div><?php echo $donation->donor_name; ?></div>
+                <div><?php echo $donation->request_title; ?></div>
+                <div><?php echo $donation->category; ?></div>
+                <div><?php echo $donation->tp_number; ?></div>
+                <div><?php echo $donation->quantity; ?></div>
                 <div><?php echo $donation->status; ?></div>
                 <div>
-                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
+                    <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
                 </div>
             </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
         </main>
     </section>
     <!--home section end-->

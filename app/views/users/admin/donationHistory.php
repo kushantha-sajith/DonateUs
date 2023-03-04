@@ -73,8 +73,8 @@
             <div class="cards_heading head">
                 <div>ID</div>
                 <div>Donor Name</div>
-                <div>Donor Type</div>
-                <div>Req ID</div>
+                <div>Request Title</div>
+                <div>Category</div>
                 <div>Contact Number</div>
                 <div>Amount</div>
                 <div>Status</div>
@@ -82,18 +82,13 @@
             </div>
             <?php foreach($data['financialDonationHistory'] as $donation) : ?>
             <div class="cards_heading cards_color">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div>
-                    <select name="status" id="status" style="margin-top: 0.5rem;">
-                        <option value="Active">Ongoing</option>
-                        <option value="Deactive">Completed</option>
-                    </select>
-                </div>
+                <div><?php echo $donation->id; ?></div>
+                <div><?php echo $donation->donor_name; ?></div>
+                <div><?php echo $donation->request_title; ?></div>
+                <div><?php echo $donation->category; ?></div>
+                <div><?php echo $donation->tp_number; ?></div>
+                <div><?php echo $donation->amount; ?></div>
+                <div><?php echo $donation->status; ?></div>
                 <div>
                     <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
                  </div>
