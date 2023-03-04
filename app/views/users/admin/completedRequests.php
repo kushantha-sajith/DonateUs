@@ -96,7 +96,7 @@
                 <div><?php echo $completedRequests->req_type; ?></div>
                 <div><?php echo $completedRequests->rec_amount; ?></div>
                 <div>
-                    <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
+                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/completedRequestDetails/<?php echo $completedRequests->id; ?>"> <button class="btnview" >View More</button> </a></div>
                 </div>
             </div>
         <?php endforeach; ?>

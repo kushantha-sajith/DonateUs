@@ -337,12 +337,217 @@ class Pages extends Controller{
     /**
      * @return void
      */
-    public function pendingRequestDetails(){
+    public function pendingRequestDetails($id){
       if (!isLoggedIn()) {
           redirect('users/login');
       }
-      $this->view('users/admin/pendingDonationDetails');
+      $requestData = $this->adminPageModel->getPendingRequestDetails($id);
+      $req_type = $this->adminPageModel->getReqType($id);
+      $user_type = $this->adminPageModel->getUserTypeFromReq($id);
+      if ($req_type == 0){
+          if ($user_type == 4){
+              $data = [
+                  'reqData' => $requestData,
+                  'user' => 'Beneficiary Name',
+                  'ID' => 'NIC',
+                  'amount' => 'Amount',
+              ];
+              $this->view('users/admin/pendingRequestDetails', $data);
+          }elseif ($user_type == 5){
+              $data = [
+                  'reqData' => $requestData,
+                  'user' => 'Organization Name',
+                  'ID' => 'Employee ID',
+                  'designation' => 'Designation',
+                  'amount' => 'Amount',
+              ];
+              $this->view('users/admin/pendingRequestDetails', $data);
+          }
+      }elseif ($req_type == 1){
+          if ($user_type == 4){
+              $data = [
+                  'reqData' => $requestData,
+                  'user' => 'Beneficiary Name',
+                  'ID' => 'NIC',
+                  'amount' => 'Quantity',
+              ];
+              $this->view('users/admin/pendingRequestDetails', $data);
+          }elseif ($user_type == 5){
+              $data = [
+                  'reqData' => $requestData,
+                  'user' => 'Organization Name',
+                  'ID' => 'Employee ID',
+                  'designation' => 'Designation',
+                  'amount' => 'Quantity',
+              ];
+              $this->view('users/admin/pendingRequestDetails', $data);
+          }
+      }
   }
+
+    /**
+     * @param $id
+     * @return void
+     */
+    public function ongoingRequestDetails($id){
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $requestData = $this->adminPageModel->getOngoingRequestDetails($id);
+        $req_type = $this->adminPageModel->getReqType($id);
+        $user_type = $this->adminPageModel->getUserTypeFromReq($id);
+        if ($req_type == 0){
+            if ($user_type == 4){
+                $data = [
+                    'reqData' => $requestData,
+                    'user' => 'Beneficiary Name',
+                    'ID' => 'NIC',
+                    'amount' => 'Amount',
+                    'recAmount' => 'Received Amount',
+                ];
+                $this->view('users/admin/ongoingRequestDetails', $data);
+            }elseif ($user_type == 5){
+                $data = [
+                    'reqData' => $requestData,
+                    'user' => 'Organization Name',
+                    'ID' => 'Employee ID',
+                    'designation' => 'Designation',
+                    'amount' => 'Amount',
+                    'recAmount' => 'Received Amount',
+                ];
+                $this->view('users/admin/ongoingRequestDetails', $data);
+            }
+        }elseif ($req_type == 1){
+            if ($user_type == 4){
+                $data = [
+                    'reqData' => $requestData,
+                    'user' => 'Beneficiary Name',
+                    'ID' => 'NIC',
+                    'amount' => 'Quantity',
+                    'recAmount' => 'Received Quantity',
+                ];
+                $this->view('users/admin/ongoingRequestDetails', $data);
+            }elseif ($user_type == 5){
+                $data = [
+                    'reqData' => $requestData,
+                    'user' => 'Organization Name',
+                    'ID' => 'Employee ID',
+                    'designation' => 'Designation',
+                    'amount' => 'Quantity',
+                    'recAmount' => 'Received Quantity',
+                ];
+                $this->view('users/admin/ongoingRequestDetails', $data);
+            }
+        }
+    }
+
+    /**
+     * @param $id
+     * @return void
+     */
+    public function rejectedRequestDetails($id){
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $requestData = $this->adminPageModel->getRejectedRequestDetails($id);
+        $req_type = $this->adminPageModel->getReqType($id);
+        $user_type = $this->adminPageModel->getUserTypeFromReq($id);
+        if ($req_type == 0){
+            if ($user_type == 4){
+                $data = [
+                    'reqData' => $requestData,
+                    'user' => 'Beneficiary Name',
+                    'ID' => 'NIC',
+                    'amount' => 'Amount',
+                ];
+                $this->view('users/admin/rejectedRequestDetails', $data);
+            }elseif ($user_type == 5){
+                $data = [
+                    'reqData' => $requestData,
+                    'user' => 'Organization Name',
+                    'ID' => 'Employee ID',
+                    'designation' => 'Designation',
+                    'amount' => 'Amount',
+                ];
+                $this->view('users/admin/rejectedRequestDetails', $data);
+            }
+        }elseif ($req_type == 1){
+            if ($user_type == 4){
+                $data = [
+                    'reqData' => $requestData,
+                    'user' => 'Beneficiary Name',
+                    'ID' => 'NIC',
+                    'amount' => 'Quantity',
+                ];
+                $this->view('users/admin/rejectedRequestDetails', $data);
+            }elseif ($user_type == 5){
+                $data = [
+                    'reqData' => $requestData,
+                    'user' => 'Organization Name',
+                    'ID' => 'Employee ID',
+                    'designation' => 'Designation',
+                    'amount' => 'Quantity',
+                ];
+                $this->view('users/admin/rejectedRequestDetails', $data);
+            }
+        }
+    }
+
+    /**
+     * @param $id
+     * @return void
+     */
+    public function completedRequestDetails($id){
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $requestData = $this->adminPageModel->getCompletedRequestDetails($id);
+        $req_type = $this->adminPageModel->getReqType($id);
+        $user_type = $this->adminPageModel->getUserTypeFromReq($id);
+        if ($req_type == 0){
+            if ($user_type == 4){
+                $data = [
+                    'reqData' => $requestData,
+                    'user' => 'Beneficiary Name',
+                    'ID' => 'NIC',
+                    'amount' => 'Amount',
+                    'recAmount' => 'Received Amount',
+                ];
+                $this->view('users/admin/completedRequestDetails', $data);
+            }elseif ($user_type == 5){
+                $data = [
+                    'reqData' => $requestData,
+                    'user' => 'Organization Name',
+                    'ID' => 'Employee ID',
+                    'designation' => 'Designation',
+                    'amount' => 'Amount',
+                    'recAmount' => 'Received Amount',
+                ];
+                $this->view('users/admin/completedRequestDetails', $data);
+            }
+        }elseif ($req_type == 1){
+            if ($user_type == 4){
+                $data = [
+                    'reqData' => $requestData,
+                    'user' => 'Beneficiary Name',
+                    'ID' => 'NIC',
+                    'amount' => 'Quantity',
+                    'recAmount' => 'Received Quantity',
+                ];
+                $this->view('users/admin/completedRequestDetails', $data);
+            }elseif ($user_type == 5){
+                $data = [
+                    'reqData' => $requestData,
+                    'user' => 'Organization Name',
+                    'ID' => 'Employee ID',
+                    'designation' => 'Designation',
+                    'amount' => 'Quantity',
+                    'recAmount' => 'Received Quantity',
+                ];
+                $this->view('users/admin/completedRequestDetails', $data);
+            }
+        }
+    }
 
     /**
      * @return void
@@ -393,7 +598,6 @@ class Pages extends Controller{
           ];
           $this->view('users/admin/organizerDetails', $data);
       }
-//      $this->view('users/admin/userDetails', $data);
   }
 
     /**
@@ -423,7 +627,6 @@ class Pages extends Controller{
         ];
         $this->view('users/admin/verifyOrganizer', $data);
       }
-//      $this->view('users/admin/approve');
   }
 
     /**
