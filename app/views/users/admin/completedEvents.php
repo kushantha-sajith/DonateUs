@@ -88,12 +88,12 @@
             <div class="cards_heading cards_color">
                 <div><?php echo $completedEvents->id; ?></div>
                 <div><?php echo $completedEvents->event_title; ?></div>
-                <div><?php echo $completedEvents->user_id; ?></div>
+                <div><?php echo $completedEvents->full_name; ?></div>
                 <div><?php echo $completedEvents->received; ?></div>
                 <div><?php echo $completedEvents->completed_date; ?></div>
                 <div><?php echo $completedEvents->budget; ?></div>
                 <div>
-                    <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
+                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/completedEventDetails/<?php echo $completedEvents->id; ?>"> <button class="btnview" >View More</button> </a></div>
                 </div>
             </div>
         <?php endforeach; ?>
