@@ -630,24 +630,64 @@ class Pages extends Controller{
   }
 
     /**
+     * @param $id
      * @return void
      */
-    public function profile(){
+    public function pendingEventDetails($id){
       if (!isLoggedIn()) {
           redirect('users/login');
       }
-      $this->view('users/admin/profile');
+      $eventData = $this->adminPageModel->getPendingEventDetails($id);
+      $data = [
+          'eventData' => $eventData
+      ];
+      $this->view('users/admin/pendingEventDetails', $data);
   }
 
     /**
+     * @param $id
      * @return void
      */
-    public function editProfile(){
-      if (!isLoggedIn()) {
-          redirect('users/login');
-      }
-      $this->view('users/admin/editProfile');
-  }
+    public function ongoingEventDetails($id){
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $eventData = $this->adminPageModel->getOngoingEventDetails($id);
+        $data = [
+            'eventData' => $eventData
+        ];
+        $this->view('users/admin/ongoingEventDetails', $data);
+    }
+
+    /**
+     * @param $id
+     * @return void
+     */
+    public function rejectedEventDetails($id){
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $eventData = $this->adminPageModel->getRejectedEventDetails($id);
+        $data = [
+            'eventData' => $eventData
+        ];
+        $this->view('users/admin/rejectedEventDetails', $data);
+    }
+
+    /**
+     * @param $id
+     * @return void
+     */
+    public function completedEventDetails($id){
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $eventData = $this->adminPageModel->getCompletedEventDetails($id);
+        $data = [
+            'eventData' => $eventData
+        ];
+        $this->view('users/admin/completedEventDetails', $data);
+    }
 
     /**
      * @return void

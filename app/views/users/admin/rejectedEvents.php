@@ -87,12 +87,12 @@
             <div class="cards_heading cards_color">
                 <div><?php echo $rejectedEvents->id; ?></div>
                 <div><?php echo $rejectedEvents->event_title; ?></div>
-                <div><?php echo $rejectedEvents->user_id; ?></div>
+                <div><?php echo $rejectedEvents->full_name; ?></div>
                 <div><?php echo $rejectedEvents->rejection_note; ?></div>
-                <div><?php echo $rejectedEvents->rejected_amount; ?></div>
+                <div><?php echo $rejectedEvents->rejected_date; ?></div>
                 <div><?php echo $rejectedEvents->budget; ?></div>
                 <div>
-                    <div style="text-align: center;"> <a href="donation_req.html"> <button class="btnview" >View More</button> </a></div>
+                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/rejectedEventDetails/<?php echo $rejectedEvents->id; ?>"> <button class="btnview" >View More</button> </a></div>
                 </div>
             </div>
         <?php endforeach; ?>

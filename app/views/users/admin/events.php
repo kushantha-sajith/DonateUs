@@ -88,12 +88,12 @@
               <div class="cards_heading cards_color">
                   <div><?php echo $pendingEvents->id; ?></div>
                   <div><?php echo $pendingEvents->event_title; ?></div>
-                  <div><?php echo $pendingEvents->user_id; ?></div>
+                  <div><?php echo $pendingEvents->full_name; ?></div>
                   <div><?php echo $pendingEvents->description; ?></div>
                   <div><?php echo $pendingEvents->budget; ?></div>
                   <div><?php echo $pendingEvents->due_date; ?></div>
                   <div>
-                      <div style="text-align: center;"> <a href="#"> <button class="btnview">View More</button> </a></div>
+                      <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/pendingEventDetails/<?php echo $pendingEvents->id; ?>"> <button class="btnview">View More</button> </a></div>
                   </div>
               </div>
           <?php endforeach; ?>

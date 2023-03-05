@@ -87,12 +87,12 @@
             <div class="cards_heading cards_color">
                 <div><?php echo $ongoingEvents->id; ?></div>
                 <div><?php echo $ongoingEvents->event_title; ?></div>
-                <div><?php echo $ongoingEvents->user_id; ?></div>
+                <div><?php echo $ongoingEvents->full_name; ?></div>
                 <div><?php echo $ongoingEvents->received; ?></div>
                 <div><?php echo $ongoingEvents->due_date; ?></div>
-                <div><?php echo $ongoingEvents->amount; ?></div>
+                <div><?php echo $ongoingEvents->budget; ?></div>
                 <div>
-                    <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
+                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/ongoingEventDetails/<?php echo $ongoingEvents->id; ?>"> <button class="btnview" >View More</button> </a></div>
                 </div>
             </div>
         <?php endforeach; ?>
