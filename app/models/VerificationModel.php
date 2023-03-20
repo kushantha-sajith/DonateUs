@@ -42,4 +42,19 @@ class VerificationModel extends Database{
             return false;
         }
     }
+
+    public function verifyUpdate($id){
+        $this->db->query('UPDATE `reg_user` SET `otp_verify` = :status, `otp_code` = :otp, `backup` = :backup WHERE `id` = :id');
+        $this->db->bind(':id', $id);
+        $this->db->bind(':backup', '');
+        $this->db->bind(':status', 1);
+        $this->db->bind(':otp', '');
+
+        if($this->db->execute()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }

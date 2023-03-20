@@ -100,6 +100,7 @@
                   <div>Due Date</div>
                   <div></div>
               </div>
+<<<<<<< Updated upstream
               <?php foreach($data['categories'] as $categories) : ?>
                   <div class="cards_heading cards_color">
                       <div><?php echo $categories->id; ?></div>
@@ -111,6 +112,57 @@
                       <div>
                           <div style="text-align: center;"> <a href="#"> <button class="btnview">View More</button> </a></div>
                       </div>
+=======
+              <ul class="options">
+                  <a href="<?php echo URLROOT; ?>/adminPages/pendingEvents" style="text-decoration:none">
+                      <li class="option">
+                            <span class="material-icons"
+                                  style="color: black; margin-right: 1rem;">pending_actions</span>
+                          <span class="option-text"> Pending Events</span>
+                      </li>
+                  </a>
+                  <a href="<?php echo URLROOT; ?>/adminPages/rejectedEvents" style="text-decoration:none">
+                      <li class="option">
+                          <span class="material-icons" style="color: black; margin-right: 1rem;">error</span>
+                          <span class="option-text">Rejected Events</span>
+                      </li>
+                  </a>
+                  <a href="<?php echo URLROOT; ?>/adminPages/ongoingEvents" style="text-decoration:none">
+                      <li class="option">
+                          <span class="material-icons" style="color: black; margin-right: 1rem;">receipt_long</span>
+                          <span class="option-text">Ongoing Events</span>
+                      </li>
+                  </a>
+                  <a href="<?php echo URLROOT; ?>/adminPages/completedEvents" style="text-decoration:none">
+                      <li class="option">
+                            <span class="material-icons"
+                                  style="color: black; margin-right: 1rem;">assignment_turned_in</span>
+                          <span class="option-text">Completed Events</span>
+                      </li>
+                  </a>
+              </ul>
+          </div>
+
+          <div class="cards_heading head">
+              <div>ID</div>
+              <div>Event Title</div>
+              <div>Event Organizer Name</div>
+              <div>Description</div>
+              <div>Amount</div>
+              <div>Due Date</div>
+              <div></div>
+          </div>
+          <?php foreach($data['pendingEvents'] as $pendingEvents) : ?>
+              <div class="cards_heading cards_color">
+                  <div><?php echo $pendingEvents->id; ?></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div>
+                      <div style="text-align: center;"> <a href="#"> <button class="btnview">View More</button> </a></div>
+>>>>>>> Stashed changes
                   </div>
               <?php endforeach; ?>
           </section>
@@ -154,6 +206,7 @@
                   <div>Amount</div>
                   <div></div>
               </div>
+<<<<<<< Updated upstream
               <?php foreach($data['categories'] as $categories) : ?>
                   <div class="cards_heading cards_color">
                       <div><?php echo $categories->id; ?></div>
@@ -277,6 +330,32 @@
         </div>
       </div>
     </div>
+=======
+          <?php endforeach; ?>
+          <div class="cards_heading cards_color">
+              <div>10</div>
+              <div>Hitha Mithuru</div>
+              <div>Kushantha</div>
+              <div>#</div>
+              <div>50,000</div>
+              <div>2023-02-10</div>
+              <div>
+                  <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
+              </div>
+          </div>
+          <div class="cards_heading cards_color">
+              <div>10</div>
+              <div>Hitha Mithuru</div>
+              <div>Kushantha</div>
+              <div>#</div>
+              <div>50,000</div>
+              <div>2023-02-10</div>
+              <div>
+                  <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
+              </div>
+          </div>
+      </main>
+>>>>>>> Stashed changes
   </section>
   <!--home section end-->
 

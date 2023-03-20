@@ -143,11 +143,11 @@
                         </button>
                     </a>
 
-                    <a href="<?php echo URLROOT; ?>/donor/change_password_donor">
+                    <a href="<?php echo URLROOT; ?>/donor/changePasswordDonor">
                         <button class="changepassword" style="text-decoration: none;">Change Password</button>
                     </a>
 
-                    <a href="#">
+                    <a href="<?php echo URLROOT; ?>/donor/deleteProfileDonor">
                         <button class="delete" style="text-decoration: none;">Delete Profile Details</button>
                     </a>
                 </div>

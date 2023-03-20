@@ -42,12 +42,17 @@ main{
     border-radius: 6px;
     padding: 30px;
     margin: 0 15px;
+<<<<<<< Updated upstream
     background-color: #fff;
+=======
+    background-color: #D6E4F0;
+>>>>>>> Stashed changes
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
 .container .form_first{
     overflow:auto;
 }
+<<<<<<< Updated upstream
 .photo-container{
     max-width: 400px;
 	width: 100%;
@@ -59,66 +64,9 @@ main{
 	border-radius: 30px;
 
 }
+=======
+>>>>>>> Stashed changes
 
-.img-area {
-	position: relative;
-	width: 100%;
-	height: 240px;
-	background: var(--grey);
-	margin-bottom: 30px;
-	border-radius: 15px;
-	overflow: hidden;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-}
-.img-area .icon {
-	font-size: 100px;
-}
-.img-area h3 {
-	font-size: 20px;
-	font-weight: 500;
-	margin-bottom: 6px;
-}
-.img-area p {
-	color: #999;
-}
-.img-area p span {
-	font-weight: 600;
-}
-.img-area img {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	object-position: center;
-	z-index: 100;
-}
-.img-area::before {
-	content: attr(data-img);
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, .5);
-	color: #fff;
-	font-weight: 500;
-	text-align: center;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	pointer-events: none;
-	opacity: 0;
-	transition: all .3s ease;
-	z-index: 200;
-}
-.img-area.active:hover::before {
-	opacity: 1;
-}
 .select-image {
 	display: flex;
     justify-content: center;
@@ -153,13 +101,19 @@ main{
     height: 3px;
     width: 27px;
     border-radius: 8px;
-    background-color: #4070f4;
+    background-color: #0A2558;
 }
 .container form{
     position: relative;
+<<<<<<< Updated upstream
     margin-top: 16px;
     min-height: 400px;
     background-color: #fff;
+=======
+    margin: 16px 0px;
+    min-height: 400px;
+    background-color: #D6E4F0;
+>>>>>>> Stashed changes
     overflow: hidden;
 }
 .container form .form{
@@ -184,10 +138,14 @@ form.secActive .form.first{
 }
 .container form .span_title{
     display: block;
+<<<<<<< Updated upstream
     margin-bottom: 8px;
     font-size: 16px;
+=======
+    font-size: 18px;
+>>>>>>> Stashed changes
     font-weight: 500;
-    margin: 6px 0;
+    margin: 6px 0px 8px 0px;
     color: #333;
 }
 
@@ -197,6 +155,7 @@ form.secActive .form.first{
     justify-content: space-between;
     flex-wrap: wrap;
 }
+
 form .fields .input-field{
     display: flex;
     width: calc(100% / 2 - 15px);
@@ -204,7 +163,7 @@ form .fields .input-field{
     margin: 4px 0;
 }
 .input-field label{
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 500;
     color: #2e2e2e;
 }
@@ -230,19 +189,23 @@ form .fields .input-field{
 .input-field input[type="date"]:valid{
     color: #333;
 }
-.container form button, .backBtn{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 45px;
-    max-width: 200px;
-    width: 100%;
+.image-upload-button, .image-clear-button, .backBtn{
+    text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    height: 45px;    
+    width: 45%;
     border: none;
     outline: none;
     color: #fff;
     border-radius: 5px;
     margin: 0 0;
+<<<<<<< Updated upstream
     background-color: #0A2558;
+=======
+    background-color: #163172;
+>>>>>>> Stashed changes
     transition: all 0.3s linear;
     cursor: pointer;
 }
@@ -250,24 +213,22 @@ form .fields .input-field{
     font-size: 14px;
     font-weight: 400;
 }
+<<<<<<< Updated upstream
 form button:hover{
     background-color: #111e88;
 }
 form button i,
 form .backBtn i{
     margin: 0 6px;
+=======
+.image-upload-button:hover, .image-clear-button:hover{
+    background-color: #0A2558;
+>>>>>>> Stashed changes
 }
+
 form .backBtn i{
     transform: rotate(180deg);
 }
-form .buttons{
-    display: flex;
-    align-items: center;
-}
-form .buttons button , .backBtn{
-    margin-right: 14px;
-}
-
 
 .edit, .changepassword, .delete{
     
@@ -281,11 +242,16 @@ form .buttons button , .backBtn{
     color: #fff;
     border-radius: 5px;
     margin-right: 10px;
+<<<<<<< Updated upstream
     background-color: #0A2558;
+=======
+    background-color: #163172;
+>>>>>>> Stashed changes
     transition: all 0.3s linear;
     cursor: pointer;
 }
 
+<<<<<<< Updated upstream
 .dropdown option{
     background-color: #F6F6F6;
     }
@@ -295,6 +261,99 @@ form .buttons button , .backBtn{
     cursor: pointer;
     color: #ffff;
   } 
+=======
+.edit:hover, .changepassword:hover, .delete:hover{
+    background-color: #0A2558;
+}
+.image-upload-container{
+    
+	width: 400px;
+    height: 340px;
+    display: block;
+	background: #fff;
+	padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 2PX;
+    padding-right: 5px;
+	border-radius: 30px;
+    margin: 20px 0px;
+}
+
+.selected-image-container {
+	position: relative;
+	width: 100%;
+	height: 240px;
+	margin-bottom: 20px;
+	border-radius: 15px;
+	overflow: hidden;
+	display: block;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+    border-radius: 30px;
+}
+
+.selected-image-container img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	z-index: 100;
+}
+
+.selected-image-container .icon{
+    font-size: 250px;
+    align-self: center;
+}
+
+.selected-image-container::before {
+	content: attr(data-img);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, .5);
+	color: #fff;
+	font-weight: 500;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	pointer-events: none;
+	opacity: 0;
+	transition: all .3s ease;
+	z-index: 200;
+}
+.selected-image-container.active:hover::before {
+	opacity: 1;
+}
+
+.buttons{
+    margin: 15px;
+    display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.btn-submit {
+    width: 25%;
+    background-color: #163172;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-submit:hover{
+    background-color: #0d1f4a;
+}
+>>>>>>> Stashed changes
 
 @media (max-width: 750px) {
     .container form{
@@ -521,9 +580,6 @@ nav .profile-details i {
     padding: 0 20px;
     margin-bottom: 26px;
 }
-
-
-
 
 
 

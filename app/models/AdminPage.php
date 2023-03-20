@@ -109,5 +109,8 @@ class AdminPage{
         $results = $this->db->resultSet();
         return $results;
     }
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 }

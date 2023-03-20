@@ -163,7 +163,11 @@ input[type=text],input[type=password],select:focus{
     outline: none;
 }
 
+<<<<<<< Updated upstream
 input[type=submit],input[type=button] {
+=======
+input[type=submit], input[type=button] {
+>>>>>>> Stashed changes
     width: 100%;
     background-color: #163172;
     color: white;
@@ -175,7 +179,7 @@ input[type=submit],input[type=button] {
     font-size: medium;
 }
   
-input[type=submit]:hover {
+input[type=submit]:hover, input[type=button]:hover {
     background-color: #0d1f4a;
 }
 input[type=button]:hover {
@@ -321,4 +325,10 @@ li a{
 }
 li a:hover{
 	background-color: #0d1f4a;;
+}
+
+.verification_buttons{
+    width: 290px;
+    height: 75px;
+    display: inline-block;
 }

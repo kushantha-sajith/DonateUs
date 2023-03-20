@@ -115,4 +115,19 @@
             $results = $this->db->resultSet();
             return $results;
         }
+<<<<<<< Updated upstream
+=======
+
+        public function financialDonationHistory(){
+            $this->db->query('SELECT * FROM donation_history');
+            $results = $this->db->resultSet();
+            return $results;
+        }
+
+        public function nonFinancialDonationHistory(){
+            $this->db->query('SELECT * FROM donation_history');
+            $results = $this->db->resultSet();
+            return $results;
+        }
+>>>>>>> Stashed changes
     }

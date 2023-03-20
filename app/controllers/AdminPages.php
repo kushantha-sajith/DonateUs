@@ -32,6 +32,19 @@ class AdminPages extends Controller {
         $this->view('users/admin/beneficiaries', $data);
     }
 
+<<<<<<< Updated upstream
+=======
+    public function verifyBeneficiaries(){
+        $indBeneficiaries = $this->adminPageModel->verifyIndBeneficiaries();
+        $corpBeneficiaries = $this->adminPageModel->verifyOrgBeneficiaries();
+        $data = [
+            'indBeneficiaries' => $indBeneficiaries,
+            'corpBeneficiaries' => $corpBeneficiaries
+        ];
+        $this->view('users/admin/verifyBeneficiaries', $data);
+    }
+
+>>>>>>> Stashed changes
     /**
      * @return void
      */
@@ -43,6 +56,17 @@ class AdminPages extends Controller {
         $this->view('users/admin/organizers', $data);
     }
 
+<<<<<<< Updated upstream
+=======
+    public function verifyOrganizers(){
+        $organizers = $this->adminPageModel->verifyOrganizers();
+        $data = [
+            'organizers' => $organizers
+        ];
+        $this->view('users/admin/verifyOrganizers', $data);
+    }
+
+>>>>>>> Stashed changes
     /**
      * @return void
      */

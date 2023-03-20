@@ -23,8 +23,13 @@ class User{
    * @param $data
    * @return bool
    */
+<<<<<<< Updated upstream
   public function register_donor($data, $type){
     $type1 = "ind";
+=======
+    public function registerDonor($data, $type){
+        $type1 = "ind";
+>>>>>>> Stashed changes
 
     if (strcmp($type, $type1) == 0) {
       $this->db->query('INSERT INTO reg_user (email, password,  user_type, prof_img, tp_number, otp_code , otp_verify, verification_status) VALUES(:email, :password, :user_type, :prof_img, :tp_number, :otp_code, :otp_verify, :verification_status)');
@@ -114,8 +119,13 @@ class User{
    * @param $data
    * @return bool
    */
+<<<<<<< Updated upstream
   public function register_beneficiary($data, $type){
     $type1 = "ind";
+=======
+    public function registerBeneficiary($data, $type){
+        $type1 = "ind";
+>>>>>>> Stashed changes
 
     if (strcmp($type, $type1) == 0) {
       $this->db->query('INSERT INTO reg_user (email, password, user_type, prof_img, tp_number, otp_code , otp_verify, verification_status) VALUES(:email, :password, :user_type, :prof_img, :tp_number, :otp_code, :otp_verify, :verification_status)');
@@ -150,6 +160,79 @@ class User{
         $this->db->bind(':acc_status', $data['acc_status']);
         $this->db->bind(':user_id', $user_id);
 
+<<<<<<< Updated upstream
+=======
+                if ($this->db->execute()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } else {
+            //Organization-------------------------------------------------------------------------------------------------
+            $this->db->query('INSERT INTO reg_user (email, password,  user_type, prof_img, tp_number, otp_code , otp_verify, verification_status) VALUES(:email, :password, :user_type, :prof_img, :tp_number, :otp_code, :otp_verify, :verification_status)');
+
+            // Bind values
+            $this->db->bind(':email', $data['email']);
+            $this->db->bind(':password', $data['password']);
+            $this->db->bind(':user_type', 5);
+            $this->db->bind(':prof_img', $data['prof_img']);
+            $this->db->bind(':tp_number', $data['contact']);
+            $this->db->bind(':otp_code', $data['otp_code']);
+            $this->db->bind(':otp_verify', $data['otp_verify']);
+            $this->db->bind(':verification_status', $data['verification_status']);
+
+            // Execute
+            if ($this->db->execute()) {
+
+                $this->db->query('SELECT id FROM reg_user WHERE email = :email');
+                $this->db->bind(':email', $data['email']);
+                $row = $this->db->single();
+                $user_id = $row->id;
+
+                $this->db->query('INSERT INTO org_ben (org_name, org_type, emp_name, emp_id, designation, address, id_img, city, district, acc_status, user_id) VALUES(:org_name, :org_type, :emp_name, :emp_id, :designation, :address, :identity, :city, :district, :acc_status, :user_id)');
+
+                $this->db->bind(':org_name', $data['compname']);
+                $this->db->bind(':org_type', $data['orgtype']);
+                $this->db->bind(':emp_name', $data['fullname']);
+                $this->db->bind(':emp_id', $data['empid']);
+                $this->db->bind(':designation', $data['desg']);
+                $this->db->bind(':district', $data['district']);
+                $this->db->bind(':address', $data['address']);
+                $this->db->bind(':identity', $data['identity']);
+                $this->db->bind(':city', $data['city']);
+                $this->db->bind(':acc_status', $data['acc_status']);
+                $this->db->bind(':user_id', $user_id);
+
+                if ($this->db->execute()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+    }
+
+    public function registerOrganizer($data){
+
+        $this->db->query('INSERT INTO reg_user (email, password,  user_type, prof_img, tp_number, otp_code , otp_verify, verification_status) VALUES(:email, :password, :user_type, :prof_img, :tp_number, :otp_code, :otp_verify, :verification_status)');
+
+        // Bind values
+        $this->db->bind(':email', $data['email']);
+        $this->db->bind(':password', $data['password']);
+        $this->db->bind(':user_type', 6);
+        $this->db->bind(':prof_img', $data['prof_img']);
+        $this->db->bind(':tp_number', $data['contact']);
+        $this->db->bind(':otp_code', $data['otp_code']);
+        $this->db->bind(':otp_verify', $data['otp_verify']);
+        $this->db->bind(':verification_status', $data['verification_status']);
+
+        // Execute
+>>>>>>> Stashed changes
         if ($this->db->execute()) {
           return true;
         } else {

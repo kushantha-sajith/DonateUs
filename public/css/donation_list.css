@@ -56,9 +56,8 @@ main{
 }
 .head{
     font-size: 1rem;
-    
-    
 }
+
 .cards_color{
    
     background: #ffffff;
@@ -140,6 +139,7 @@ h4{
     transition: all 0.3s linear;
     cursor: pointer;
 }
+
 .select-menu .select-btn{
     display: flex;
     
@@ -489,7 +489,6 @@ nav .profile-details i {
     position:relative;
     display: block;
     height: 100%;
-    width: 60%;
     border-radius: 6px;
     background: var(--color-primary-varient);
     animation: progress 0.4s ease-in-out forwards;
@@ -574,41 +573,53 @@ nav .profile-details i {
     color: #8e44ad;
     margin-bottom: 5px;
   }
-  .btns{
+  .btns a{
+    margin: 20px 0px 5px 5px;
+    display: inline-block;
+    width: 48%;
+  }
+  .btns2 a{
     margin-top: 20px;
     margin-bottom: 5px;
     display: flex;
-    justify-content: space-between;
-    width: 100%;
+    justify-content: right;
+    width: 980px;
   }
-  .btns button{
+  a button{
     background: #0A2558;
     width: 100%;
-    padding: 9px 0px;
+    padding: 9px;
     outline: none;
-    border: 2px solid #0A2558;
+    border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
-    color: #0A2558;
+    color: #fff;;
     transition: all 0.3s linear;
   }
-  .btns button:first-child{
-    background: none;
-    margin-right: 5px;
+  a .btn-back{
+    background: #0A2558;
+    width: 20%;
+    padding: 9px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;;
+    transition: all 0.3s linear;
   }
-  .btns button:last-child{
-    color: #fff;
-    margin-left: 5px;
-  }
-  .btns button:first-child:hover{
+  
+  /* .btns:first-child{
+   margin-right: 5px;
+  } */
+  .btns a button:hover{
     background: #0A2558;
     color: #fff;
   }
-  .btns button:hover{
-    color: #fff;
-  }
+  
   @media (max-width:1045px){
     .container .box{
       width: calc(50% - 10px);

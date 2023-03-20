@@ -1,6 +1,12 @@
 <?php
 class Pages extends Controller{
   public function __construct(){
+<<<<<<< Updated upstream
+=======
+//      if(!isLoggedIn()){
+//          redirect('users/login');
+//      }
+>>>>>>> Stashed changes
     //  $this->Beneficiary = $this->('BeneficiaryModel');
     $this->donorModel = $this->model('DonorModel');
     $this->userModel = $this->model('User');
@@ -41,6 +47,7 @@ class Pages extends Controller{
    * @return void
    */
   public function donor(){
+<<<<<<< Updated upstream
     $image_name = $this->profileImage();
     $data = [
       'title' => 'Dashboard',
@@ -51,6 +58,19 @@ class Pages extends Controller{
   }
 
   public function beneficiary(){
+=======
+      if(!isLoggedIn()){
+          redirect('users/login');
+      }else{
+        redirect('donor/index');
+      }
+  }
+
+  public function beneficiary(){
+      if(!isLoggedIn()){
+          redirect('users/login');
+      }
+>>>>>>> Stashed changes
     $data = [
       'title' => 'Beneficiary'
     ];
@@ -58,7 +78,14 @@ class Pages extends Controller{
     $this->view('users/beneficiary/index', $data);
   }
 
+<<<<<<< Updated upstream
   public function eorganizer(){
+=======
+  public function organizer(){
+      if(!isLoggedIn()){
+          redirect('users/login');
+      }
+>>>>>>> Stashed changes
     $image_name = $this->profileImage();
     $data = [
       'title' => 'Dashboard',
@@ -94,15 +121,30 @@ class Pages extends Controller{
     }
   }
 
+<<<<<<< Updated upstream
   public function profile_beneficiary(){
     $data = [
       'title' => 'Profile'
     ];
+=======
+  public function profileBeneficiary(){
+      if (isset($_SESSION['user_id'])) {
+          $id = $_SESSION['user_id'];
+          $user_type = $_SESSION['user_type'];
+          $userdata = $this->donorModel->getUserData($id);
+          $personaldata = $this->donorModel->getPersonalData($id, $user_type);
+          $image_name = $this->profileImage();
+          $dist_name = $this->donorModel->getDistrictName($id, $user_type);
+>>>>>>> Stashed changes
 
     $this->view('users/beneficiary/profile_beneficiary', $data);
   }
 
+<<<<<<< Updated upstream
   public function profile_eorganizer(){
+=======
+  public function profileOrganizer(){
+>>>>>>> Stashed changes
     if (isset($_SESSION['user_id'])) {
       $id = $_SESSION['user_id'];
       $user_type = $_SESSION['user_type'];
@@ -138,7 +180,11 @@ class Pages extends Controller{
     }
   }
 
+<<<<<<< Updated upstream
   public function edit_profile_donor(){
+=======
+  public function editProfileDonor(){
+>>>>>>> Stashed changes
     $districts = $this->userModel->getDistricts();
     if (isset($_SESSION['user_id'])) {
       $id = $_SESSION['user_id'];
@@ -159,11 +205,38 @@ class Pages extends Controller{
 
       $this->view('users/donor/edit_profile_donor', $data);
     } else {
-      $this->view('users/login_donor', $data);
+      $this->view('users/login', $data);
     }
   }
 
+<<<<<<< Updated upstream
    public function edit_profile_eorganizer(){
+=======
+  public function changePasswordDonor(){
+    if (isset($_SESSION['user_id'])) {
+      $id = $_SESSION['user_id'];
+      $user_type = $_SESSION['user_type'];
+      $userdata = $this->donorModel->getUserData($id);
+      $personaldata = $this->donorModel->getPersonalData($id, $user_type);
+      $image_name = $this->profileImage();
+      $dist_name = $this->donorModel->getDistrictName($id, $user_type);
+
+      $data = [
+        'title' => 'Profile',
+        'userdata' => $userdata,
+        'personaldata' => $personaldata,
+        'prof_img' => $image_name,
+        'dist' => $dist_name
+      ];
+
+      $this->view('users/donor/change_password_donor', $data);
+    } else {
+      $this->view('users/login', $data);
+    }
+  }
+
+  public function editProfileOrganizer(){
+>>>>>>> Stashed changes
     $districts = $this->userModel->getDistricts();
     if (isset($_SESSION['user_id'])) {
       $id = $_SESSION['user_id'];
@@ -184,11 +257,15 @@ class Pages extends Controller{
 
       $this->view('users/eorganizer/edit_profile_eorganizer', $data);
     } else {
-      $this->view('users/login_donor', $data);
+      $this->view('users/login', $data);
     }
   }
 
+<<<<<<< Updated upstream
   public function change_password_eorganizer(){
+=======
+  public function changePasswordOrganizer(){
+>>>>>>> Stashed changes
     if (isset($_SESSION['user_id'])) {
       $id = $_SESSION['user_id'];
       $user_type = $_SESSION['user_type'];
@@ -207,7 +284,7 @@ class Pages extends Controller{
 
       $this->view('users/eorganizer/change_password_eorganizer', $data);
     } else {
-      $this->view('users/login_donor', $data);
+      $this->view('users/login', $data);
     }
   }
 
@@ -215,11 +292,23 @@ class Pages extends Controller{
   /**
    * @return void
    */
+<<<<<<< Updated upstream
   public function donationHistory_donor(){
+=======
+  public function donationHistoryDonor(){
+
+    $id = $_SESSION['user_id'];
+    $records = $this->donorModel->getDonationHistory($id);
+
+      if(!isLoggedIn()){
+          redirect('users/login');
+      }
+>>>>>>> Stashed changes
     $image_name = $this->profileImage();
     $data = [
       'title' => 'Donation History',
-      'prof_img' => $image_name
+      'prof_img' => $image_name,
+      'records' => $records
     ];
 
     $this->view('users/donor/donation_history_donor', $data);
@@ -230,8 +319,20 @@ class Pages extends Controller{
   /**
    * @return void
    */
+<<<<<<< Updated upstream
   public function donation_requests_donor(){
     
+=======
+  public function donationRequestsDonor(){
+
+    $requests = $this->donorModel->getDonationRequests();
+    $financials = $this->donorModel->getFinancialRequests();
+    $non_financials = $this->donorModel->getNonFinancialRequests();
+
+      if(!isLoggedIn()){
+          redirect('users/login');
+      }
+>>>>>>> Stashed changes
     $image_name = $this->profileImage();
     $requests = $this->donorModel->getDonationRequests();
     $financials = $this->donorModel->getFinancialRequests();
@@ -243,9 +344,71 @@ class Pages extends Controller{
       'requests' => $requests,
       'financials' => $financials,
       'non_financials' => $non_financials
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     ];
 
     $this->view('users/donor/donation_requests_donor', $data);
   }
+<<<<<<< Updated upstream
+=======
+
+  public function pendingRequestDetails(){
+      if (!isLoggedIn()) {
+          redirect('users/login');
+      }
+      $this->view('users/admin/pendingDonationDetails');
+  }
+
+  public function requestDetails(){
+      if (!isLoggedIn()) {
+          redirect('users/login');
+      }
+      $this->view('users/admin/completedDonationDetails');
+  }
+
+  public function userDetails(){
+      if (!isLoggedIn()) {
+          redirect('users/login');
+      }
+      $this->view('users/admin/userDetails');
+  }
+
+  public function approve(){
+      if (!isLoggedIn()) {
+          redirect('users/login');
+      }
+      $this->view('users/admin/approve');
+  }
+
+  public function profile(){
+      if (!isLoggedIn()) {
+          redirect('users/login');
+      }
+      $this->view('users/admin/profile');
+  }
+
+  public function editProfile(){
+      if (!isLoggedIn()) {
+          redirect('users/login');
+      }
+      $this->view('users/admin/editProfile');
+  }
+
+  public function changePassword(){
+      if (!isLoggedIn()) {
+          redirect('users/login');
+      }
+      $this->view('users/admin/changePassword');
+  }
+
+  public function addNewRequest(){
+      if (!isLoggedIn()) {
+          redirect('users/login');
+      }
+      $this->view('users/admin/addNewRequest');
+  }
+>>>>>>> Stashed changes
 }
