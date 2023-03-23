@@ -41,8 +41,14 @@
             <div class="container">
                 <header>Profile Update</header>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
                 <form action="<?php echo URLROOT; ?>/donor/update_profile_donor" method="POST">
+=======
+                <?php foreach($data['userdata'] as $user) : ?>
+                <?php foreach($data['personaldata'] as $personaldata) : ?>
+                <form action="<?php echo URLROOT; ?>/donor/updateProfileDonor/<?php echo $user->tp_number; ?>" method="POST">
+>>>>>>> Stashed changes
 =======
                 <?php foreach($data['userdata'] as $user) : ?>
                 <?php foreach($data['personaldata'] as $personaldata) : ?>

@@ -2,6 +2,12 @@
 class Pages extends Controller{
   public function __construct(){
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+//      if(!isLoggedIn()){
+//          redirect('users/login');
+//      }
+>>>>>>> Stashed changes
 =======
 //      if(!isLoggedIn()){
 //          redirect('users/login');
@@ -48,6 +54,7 @@ class Pages extends Controller{
    */
   public function donor(){
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     $image_name = $this->profileImage();
     $data = [
       'title' => 'Dashboard',
@@ -67,6 +74,16 @@ class Pages extends Controller{
   }
 
   public function beneficiary(){
+=======
+      if(!isLoggedIn()){
+          redirect('users/login');
+      }else{
+        redirect('donor/index');
+      }
+  }
+
+  public function beneficiary(){
+>>>>>>> Stashed changes
       if(!isLoggedIn()){
           redirect('users/login');
       }
@@ -79,8 +96,11 @@ class Pages extends Controller{
   }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   public function eorganizer(){
 =======
+=======
+>>>>>>> Stashed changes
   public function organizer(){
       if(!isLoggedIn()){
           redirect('users/login');
@@ -122,11 +142,14 @@ class Pages extends Controller{
   }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   public function profile_beneficiary(){
     $data = [
       'title' => 'Profile'
     ];
 =======
+=======
+>>>>>>> Stashed changes
   public function profileBeneficiary(){
       if (isset($_SESSION['user_id'])) {
           $id = $_SESSION['user_id'];
@@ -141,7 +164,11 @@ class Pages extends Controller{
   }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   public function profile_eorganizer(){
+=======
+  public function profileOrganizer(){
+>>>>>>> Stashed changes
 =======
   public function profileOrganizer(){
 >>>>>>> Stashed changes
@@ -181,7 +208,11 @@ class Pages extends Controller{
   }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   public function edit_profile_donor(){
+=======
+  public function editProfileDonor(){
+>>>>>>> Stashed changes
 =======
   public function editProfileDonor(){
 >>>>>>> Stashed changes
@@ -210,8 +241,11 @@ class Pages extends Controller{
   }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
    public function edit_profile_eorganizer(){
 =======
+=======
+>>>>>>> Stashed changes
   public function changePasswordDonor(){
     if (isset($_SESSION['user_id'])) {
       $id = $_SESSION['user_id'];
@@ -236,6 +270,9 @@ class Pages extends Controller{
   }
 
   public function editProfileOrganizer(){
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     $districts = $this->userModel->getDistricts();
     if (isset($_SESSION['user_id'])) {
@@ -262,7 +299,11 @@ class Pages extends Controller{
   }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   public function change_password_eorganizer(){
+=======
+  public function changePasswordOrganizer(){
+>>>>>>> Stashed changes
 =======
   public function changePasswordOrganizer(){
 >>>>>>> Stashed changes
@@ -345,7 +386,10 @@ class Pages extends Controller{
       'financials' => $financials,
       'non_financials' => $non_financials
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     ];
@@ -410,5 +454,8 @@ class Pages extends Controller{
       }
       $this->view('users/admin/addNewRequest');
   }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }

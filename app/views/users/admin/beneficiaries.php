@@ -100,11 +100,14 @@
                 <div></div>
                 <div>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                     <div style="text-align: center;"> <a href="#"> <button class="btnview">View More</button> </a></div>
                 </div>
             </div>
         <?php endforeach; ?>
 =======
+=======
+>>>>>>> Stashed changes
                     <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
                 </div>
             </div>
@@ -191,6 +194,9 @@
                 <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
             </div>
         </div>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
       </main>
     </section>

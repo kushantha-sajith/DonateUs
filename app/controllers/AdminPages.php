@@ -33,7 +33,10 @@ class AdminPages extends Controller {
     }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
     public function verifyBeneficiaries(){
         $indBeneficiaries = $this->adminPageModel->verifyIndBeneficiaries();
         $corpBeneficiaries = $this->adminPageModel->verifyOrgBeneficiaries();
@@ -57,7 +60,10 @@ class AdminPages extends Controller {
     }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
     public function verifyOrganizers(){
         $organizers = $this->adminPageModel->verifyOrganizers();
         $data = [

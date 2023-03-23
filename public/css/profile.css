@@ -43,7 +43,11 @@ main{
     padding: 30px;
     margin: 0 15px;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     background-color: #fff;
+=======
+    background-color: #D6E4F0;
+>>>>>>> Stashed changes
 =======
     background-color: #D6E4F0;
 >>>>>>> Stashed changes
@@ -52,6 +56,7 @@ main{
 .container .form_first{
     overflow:auto;
 }
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 .photo-container{
     max-width: 400px;
@@ -67,6 +72,9 @@ main{
 =======
 >>>>>>> Stashed changes
 
+=======
+
+>>>>>>> Stashed changes
 .select-image {
 	display: flex;
     justify-content: center;
@@ -106,9 +114,15 @@ main{
 .container form{
     position: relative;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     margin-top: 16px;
     min-height: 400px;
     background-color: #fff;
+=======
+    margin: 16px 0px;
+    min-height: 400px;
+    background-color: #D6E4F0;
+>>>>>>> Stashed changes
 =======
     margin: 16px 0px;
     min-height: 400px;
@@ -139,8 +153,12 @@ form.secActive .form.first{
 .container form .span_title{
     display: block;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     margin-bottom: 8px;
     font-size: 16px;
+=======
+    font-size: 18px;
+>>>>>>> Stashed changes
 =======
     font-size: 18px;
 >>>>>>> Stashed changes
@@ -202,7 +220,11 @@ form .fields .input-field{
     border-radius: 5px;
     margin: 0 0;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     background-color: #0A2558;
+=======
+    background-color: #163172;
+>>>>>>> Stashed changes
 =======
     background-color: #163172;
 >>>>>>> Stashed changes
@@ -214,12 +236,17 @@ form .fields .input-field{
     font-weight: 400;
 }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 form button:hover{
     background-color: #111e88;
 }
 form button i,
 form .backBtn i{
     margin: 0 6px;
+=======
+.image-upload-button:hover, .image-clear-button:hover{
+    background-color: #0A2558;
+>>>>>>> Stashed changes
 =======
 .image-upload-button:hover, .image-clear-button:hover{
     background-color: #0A2558;
@@ -243,7 +270,11 @@ form .backBtn i{
     border-radius: 5px;
     margin-right: 10px;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     background-color: #0A2558;
+=======
+    background-color: #163172;
+>>>>>>> Stashed changes
 =======
     background-color: #163172;
 >>>>>>> Stashed changes
@@ -251,6 +282,7 @@ form .backBtn i{
     cursor: pointer;
 }
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 .dropdown option{
     background-color: #F6F6F6;
@@ -262,6 +294,8 @@ form .backBtn i{
     color: #ffff;
   } 
 =======
+=======
+>>>>>>> Stashed changes
 .edit:hover, .changepassword:hover, .delete:hover{
     background-color: #0A2558;
 }
@@ -353,6 +387,9 @@ form .backBtn i{
 .btn-submit:hover{
     background-color: #0d1f4a;
 }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 @media (max-width: 750px) {

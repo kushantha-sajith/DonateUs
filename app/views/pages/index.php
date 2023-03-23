@@ -74,7 +74,11 @@
                     amet explicabo illo.
                 </p>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 <button><a href="http://localhost/DonateUs/users/register_donor/gen">Register Now</a></button>
+=======
+                <button><a href="http://localhost/DonateUs/users/registerDonor/gen">Register Now</a></button>
+>>>>>>> Stashed changes
 =======
                 <button><a href="http://localhost/DonateUs/users/registerDonor/gen">Register Now</a></button>
 >>>>>>> Stashed changes
@@ -90,7 +94,11 @@
                     aspernatur ullam aperiam tempora.
                 </p>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 <button><a href="http://localhost/DonateUs/users/register_beneficiary/gen">Register Now</a></button>
+=======
+                <button><a href="http://localhost/DonateUs/users/registerBeneficiary/gen">Register Now</a></button>
+>>>>>>> Stashed changes
 =======
                 <button><a href="http://localhost/DonateUs/users/registerBeneficiary/gen">Register Now</a></button>
 >>>>>>> Stashed changes
@@ -106,7 +114,11 @@
                     fugit non commodi pariatur!
                 </p>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 <button><a href="http://localhost/DonateUs/users/register_eorganizer">Register Now</a></button>
+=======
+                <button><a href="http://localhost/DonateUS/users/registerEorganizer">Register Now</a></button>
+>>>>>>> Stashed changes
 =======
                 <button><a href="http://localhost/DonateUS/users/registerEorganizer">Register Now</a></button>
 >>>>>>> Stashed changes

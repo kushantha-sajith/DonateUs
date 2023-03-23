@@ -94,6 +94,11 @@
                 $dist_id = $row->district;
                 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+            }else{
+                $dist_id = $id;
+>>>>>>> Stashed changes
 =======
             }else{
                 $dist_id = $id;
@@ -167,7 +172,11 @@
         }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         public function update_profile_donor($data){
+=======
+        public function updateProfileDonor($data){
+>>>>>>> Stashed changes
 =======
         public function updateProfileDonor($data){
 >>>>>>> Stashed changes
@@ -313,7 +322,11 @@
     }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     public function passwordChecker($password, $id,$is_quit){
+=======
+    public function passwordChecker($password, $id){
+>>>>>>> Stashed changes
 =======
     public function passwordChecker($password, $id){
 >>>>>>> Stashed changes
@@ -451,8 +464,11 @@
     }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
    public function change_password($data, $id){
 =======
+=======
+>>>>>>> Stashed changes
     public function setToDefault($id,$field){
         $this->db->query('SELECT * FROM reg_user WHERE id = :id');
             $this->db->bind(':id', $id);
@@ -462,6 +478,9 @@
             //2 for (next critical field...)
             if($field == 0){
                 $old_password = $row->backup;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
             $this->db->query('UPDATE reg_user SET password = :password, otp_code = :otp_code, otp_verify = :otp_verify, backup = :backup WHERE id = :id');
@@ -489,7 +508,10 @@
     }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
     public function getFilteredRequests($category){
 
         if($category==0){
@@ -623,6 +645,9 @@
         $this->db->bind(':ben_id', $ben_id);
         $results = $this->db->resultSet();
         return $results;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     }
 }

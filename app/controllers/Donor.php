@@ -51,7 +51,11 @@ use helpers\Email;
          * @return void
          */
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         public function update_profile_donor(){
+=======
+        public function updateProfileDonor($contact){
+>>>>>>> Stashed changes
 =======
         public function updateProfileDonor($contact){
 >>>>>>> Stashed changes
@@ -94,6 +98,7 @@ use helpers\Email;
               $data['otp_verify'] = 0;
             }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             
             
   
@@ -101,6 +106,33 @@ use helpers\Email;
 
 
         public function change_password_donor(){
+=======
+          }else{
+            if($contact != $data['contact_corp']){
+              $tp_changed = true;
+              $data['otp_code'] = rand(100000, 999999);
+              $data['otp_verify'] = 0;
+            }
+          }
+
+          if($this->donorModel->updateProfileDonor($data)){
+            if($tp_changed){
+              $email = new Email($user_email);
+              $email->sendVerificationEmail($user_email, $otp_code);
+              redirect('users/otpVerify/1');
+            }else{
+              redirect('pages/profileDonor');
+            }
+            }else{
+              redirect('pages/editProfileDonor');
+            }
+          
+
+        }
+
+
+        public function changePasswordDonor(){
+>>>>>>> Stashed changes
 =======
           }else{
             if($contact != $data['contact_corp']){
@@ -202,8 +234,11 @@ use helpers\Email;
                 if ($this->donorModel->changePassword($data, $id)) {
       
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 if ($this->donorModel->change_password($data, $id)) {
       
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
                   $email = new Email($user_email);
@@ -436,10 +471,13 @@ use helpers\Email;
       }
  
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         
 
       }
 =======
+=======
+>>>>>>> Stashed changes
       public function filteredHistoryDonor($category){
 
         $id = $_SESSION['user_id'];
@@ -830,5 +868,9 @@ use helpers\Email;
     }
     
   }
+<<<<<<< Updated upstream
+  }
+>>>>>>> Stashed changes
+=======
   }
 >>>>>>> Stashed changes

@@ -24,9 +24,12 @@ class User{
    * @return bool
    */
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   public function register_donor($data, $type){
     $type1 = "ind";
 =======
+=======
+>>>>>>> Stashed changes
     public function registerDonor($data, $type){
         $type1 = "ind";
 >>>>>>> Stashed changes
@@ -120,9 +123,12 @@ class User{
    * @return bool
    */
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   public function register_beneficiary($data, $type){
     $type1 = "ind";
 =======
+=======
+>>>>>>> Stashed changes
     public function registerBeneficiary($data, $type){
         $type1 = "ind";
 >>>>>>> Stashed changes

@@ -41,7 +41,11 @@
             <i class="bx bx-bell bx-tada notification"></i>
           </div>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             <a href="<?php echo URLROOT; ?>/donor/profile_donor"><img src="<?php echo URLROOT; ?>/img/<?php echo $data['prof_img'];  ?>" alt="" /></a>
+=======
+            <a href="<?php echo URLROOT; ?>/pages/profileDonor"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
+>>>>>>> Stashed changes
 =======
             <a href="<?php echo URLROOT; ?>/pages/profileDonor"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
 >>>>>>> Stashed changes

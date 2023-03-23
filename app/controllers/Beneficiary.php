@@ -6,7 +6,10 @@
                 redirect('users/login');
             }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 */
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
             $this->beneficiaryModel = $this->model('BeneficiaryModel');
@@ -155,8 +158,11 @@
 
         //add a new request
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         public function newrequest(){
 =======
+=======
+>>>>>>> Stashed changes
         public function reqForm(){
 
           $categories = $this->beneficiaryModel->getCategories();
@@ -227,6 +233,8 @@
 
              
 
+             
+
               // Make sure no errors
               if(empty($data['descriptionErr']) && empty($data['typeErr']) && empty($data['quantityErr']) && empty($data['duedateErr']) && empty($data['categoryErr']) && empty($data['cityErr']) && empty($data['contactErr'])){
                   // Validated
@@ -268,6 +276,7 @@
 
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         //edit the request
         public function editRequest($id){
 =======
@@ -275,6 +284,12 @@
 
 
         //edit the request
+=======
+
+
+
+        //edit the request
+>>>>>>> Stashed changes
         public function editRequest($req_id){
 
           $categories = $this->beneficiaryModel->getCategories();
@@ -340,6 +355,8 @@
 
              
 
+             
+
               // Make sure no errors
               if(empty($data['descriptionErr']) && empty($data['typeErr']) && empty($data['quantityErr']) && empty($data['duedateErr']) && empty($data['categoryErr']) && empty($data['cityErr']) && empty($data['contactErr'])){
                   // Validated
@@ -357,8 +374,11 @@
           }else{
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
               $requests = $this->beneficiaryModel->getRequestById($id);                //check for owner
 =======
+=======
+>>>>>>> Stashed changes
               $requests = $this->beneficiaryModel->getRequestById($req_id);               
 >>>>>>> Stashed changes
               // if($requests->user_id != $_SESSION['user_id']){
@@ -383,6 +403,7 @@
                 ];
           
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 $this -> view('users/beneficiary/edit', $data);
           }
          
@@ -390,12 +411,17 @@
         }
 
 =======
+=======
+>>>>>>> Stashed changes
                 $this -> view('users/beneficiary/editRequest', $data);
          
 
         }
       }
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 //delete a request
         public function deleteRequest($id){              
@@ -414,8 +440,11 @@
 
         
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   
 
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -756,6 +785,7 @@
         }
 <<<<<<< Updated upstream
 =======
+
 
 
         /**

@@ -18,6 +18,7 @@
         }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         // /**
         //  * @return mixed
         //  */
@@ -27,6 +28,9 @@
         //     $results = $this->db->resultSet();
         //     return $results;
         // }
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes
@@ -82,6 +86,7 @@
         }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         // /**
         //  * @param $id
         //  * @return mixed
@@ -95,6 +100,8 @@
 
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 
 
 
@@ -105,11 +112,14 @@
         }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 
         public function addRequest($data){
             $this->db->query('INSERT INTO donation_req(id,categories,description,quantity,type,contact,city,duedate) VALUES(:id, :categories, :description, :quantity, :type, :contact, :city, :duedate)');
 =======
+=======
+>>>>>>> Stashed changes
 
 
         public function addRequest($data){
@@ -158,6 +168,7 @@
 
 
 
+<<<<<<< Updated upstream
         public function editRequest($data){
             $this->db->query('UPDATE donation_req SET categories= :categories, description= :description, quantity= :quantity, type= :type, contact= :contact, city= :city, duedate= :duedate WHERE id = :id'); 
             // Bind values
@@ -182,6 +193,8 @@
 
 
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
         public function deleteRequest($id){
             $this->db->query('DELETE FROM donation_req WHERE id = :id');
             //bind values
@@ -198,6 +211,10 @@
 
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes
@@ -212,7 +229,10 @@
         }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
         
 
         public function getCategories(){

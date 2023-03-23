@@ -1226,11 +1226,14 @@ class Users extends Controller{
         }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         //Validate NIC
         if (empty($data['nic'])) {
           $data['nic_err'] = 'Please enter NIC';
           $error = true;
 =======
+=======
+>>>>>>> Stashed changes
     public function registerOrganizer(){
         $districts = $this->userModel->getDistricts();
 
@@ -1950,6 +1953,7 @@ class Users extends Controller{
   }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   public function otp_verify(){
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -1959,6 +1963,8 @@ class Users extends Controller{
         'status' => ''
       ];
 =======
+=======
+>>>>>>> Stashed changes
     public function otpVerify($field){
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -2017,6 +2023,7 @@ class Users extends Controller{
   }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   public function quit_verify(){
     $id = $_SESSION['user_id'];
     $password = '0';
@@ -2024,6 +2031,8 @@ class Users extends Controller{
     if($this->donorModel->passwordChecker($password, $id,$is_quit)){
       redirect('donor/change_password_donor');
 =======
+=======
+>>>>>>> Stashed changes
     public function quitVerify($value){
         $id = $_SESSION['user_id'];
         
@@ -2032,6 +2041,9 @@ class Users extends Controller{
             redirect('pages/profileDonor');
         }
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     }
     
@@ -2044,6 +2056,7 @@ class Users extends Controller{
    * @return void
    */
   public function createUserSession($user){
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
     if($user->otp_verify ==1){
     $_SESSION['user_id'] = $user->id;
@@ -2082,6 +2095,13 @@ class Users extends Controller{
           $_SESSION['user_email'] = $user->email;
           $_SESSION['user_type'] = $user->user_type;
 
+=======
+      if ($user->otp_verify == 1) {
+          $_SESSION['user_id'] = $user->id;
+          $_SESSION['user_email'] = $user->email;
+          $_SESSION['user_type'] = $user->user_type;
+
+>>>>>>> Stashed changes
           switch ($user->user_type) {
               case 1:
                   redirect('pages/admin');

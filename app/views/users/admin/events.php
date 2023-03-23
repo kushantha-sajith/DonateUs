@@ -162,6 +162,9 @@
                   <div></div>
                   <div>
                       <div style="text-align: center;"> <a href="#"> <button class="btnview">View More</button> </a></div>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                   </div>
               <?php endforeach; ?>
@@ -355,6 +358,9 @@
               </div>
           </div>
       </main>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   </section>
   <!--home section end-->

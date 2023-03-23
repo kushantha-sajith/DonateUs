@@ -25,8 +25,11 @@
         </li>
         <li>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           <a href="<?php echo URLROOT; ?>/pages/donationHistory_donor">
 =======
+=======
+>>>>>>> Stashed changes
           <a href="<?php echo URLROOT; ?>/donor/reservationsDonor">
             <i class="bx bxs-calendar-check"></i>
             <span class="links_name">Reservations</span>

@@ -164,7 +164,11 @@ input[type=text],input[type=password],select:focus{
 }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 input[type=submit],input[type=button] {
+=======
+input[type=submit], input[type=button] {
+>>>>>>> Stashed changes
 =======
 input[type=submit], input[type=button] {
 >>>>>>> Stashed changes
@@ -180,9 +184,12 @@ input[type=submit], input[type=button] {
 }
   
 input[type=submit]:hover, input[type=button]:hover {
+<<<<<<< Updated upstream
     background-color: #0d1f4a;
 }
 input[type=button]:hover {
+=======
+>>>>>>> Stashed changes
     background-color: #0d1f4a;
 }
 

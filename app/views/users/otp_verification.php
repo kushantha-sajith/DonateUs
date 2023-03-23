@@ -28,7 +28,11 @@
               <div class="centered">
               <div class="text">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 <h4>OTP code has been sent to the email you've provided. <br>To complete this action, please check the inbox or spam folder and enter the OTP code you received below.</h3>
+=======
+                <h4>OTP code has been sent to the email you've provided. <br>To complete this action, please check your inbox or spam folder and enter the OTP code you received below.</h3>
+>>>>>>> Stashed changes
 =======
                 <h4>OTP code has been sent to the email you've provided. <br>To complete this action, please check your inbox or spam folder and enter the OTP code you received below.</h3>
 >>>>>>> Stashed changes

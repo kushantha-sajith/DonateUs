@@ -97,7 +97,11 @@
                 <div></div>
                 <div>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                     <div style="text-align: center;"> <a href="#"> <button class="btnview">View More</button> </a></div>
+=======
+                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
+>>>>>>> Stashed changes
 =======
                     <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
 >>>>>>> Stashed changes
