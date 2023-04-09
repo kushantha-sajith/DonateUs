@@ -1,14 +1,16 @@
 <?php
 
-class Stats extends Controller{
+class Stats extends Controller
+{
 
     /**
      * @var mixed
      */
     private $statModel;
 
-    public function __construct(){
-        if(!isLoggedIn()){
+    public function __construct()
+    {
+        if (!isLoggedIn()) {
             redirect('users/login');
         }
 

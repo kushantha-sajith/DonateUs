@@ -84,7 +84,7 @@
                     </div>
                 </form>
                 <div class="updatebtn">
-                    <a href="<?php echo URLROOT; ?>/pages/editProfile">
+                    <a href="<?php echo URLROOT; ?>/admin/editEmail">
                         <button class="edit" style="text-decoration: none;">Edit Email</button>
                     </a>
 
