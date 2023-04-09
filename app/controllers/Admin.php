@@ -224,6 +224,64 @@
 
             $this->view('users/admin/nonFinancialDonations', $data);
         }
+
+        /**
+         * @return void
+         */
+        public function profile(){
+            $data = [
+                'title' => 'Profile'
+            ];
+
+            $this->view('users/admin/profile', $data);
+        }
+
+        /**
+         * @return void
+         */
+        public function editEmail(){
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                // Sanitize POST data
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                $data = [
+                    'email' => trim($_POST['email']),
+                    'email_err' => ''
+                ];
+
+                // Validate data
+                if(empty($data['email'])){
+                    $data['email_err'] = 'Please enter email';
+                }
+
+                if ($this->adminModel->findUserByEmail($data['email'])) {
+                    $data['email_err'] = 'Email already exists';
+                }
+
+                // Make sure no errors
+                if(empty($data['email_err'])){
+                    // Validated
+                    if($this->adminModel->editEmail($data)){
+                        // flash('category_message', 'Category Added');
+                        redirect('admin/profile');
+                    } else {
+                        die('Something went wrong');
+                    }
+                } else {
+                    // Load view with errors
+                    $this->view('users/admin/profile', $data);
+                }
+            } else {
+                // Init data
+                $data = [
+                    'email' => '',
+                    'email_err' => ''
+                ];
+
+                // Load view
+                $this->view('users/admin/profile', $data);
+            }
+        }
     }
 
     
