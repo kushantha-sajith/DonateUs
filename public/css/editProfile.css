@@ -41,7 +41,7 @@ main{
     width: 100%;
     border-radius: 6px;
     padding: 30px;
-    margin: 0 auto;
+    margin: 0 15px;
     background-color: #fff;
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
@@ -182,10 +182,10 @@ form.secActive .form.first{
     pointer-events: none;
     transform: translateX(-100%);
 }
-.container form .title{
+.container form .span_title{
     display: block;
     margin-bottom: 8px;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 500;
     margin: 6px 0;
     color: #333;
@@ -285,8 +285,6 @@ form .buttons button , .backBtn{
     }
 }
  
-
-
 
 .sidebar {
     position: fixed;

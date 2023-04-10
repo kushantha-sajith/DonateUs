@@ -7,7 +7,7 @@
     --color-info-light:#dce1eb;
     --color-dark:#363949;
     --color-light:rgba(132, 139, 200, 0.18);
-    --color-primary-varient:#0A2558;
+    --color-primary-varient:#111e88;
     --color-background:#f6f6f9;
 
     --card-border-radius: 2rem;
@@ -40,7 +40,7 @@ main{
     margin-bottom: 10px;
 } */
 .cards_heading{
-    grid-template-columns: 4.5% 14% 14% 4.5% 14% 14% 14% 14%;
+    grid-template-columns: 8% 12.8% 12% 8% 10% 14% 29.2%;
     grid-column-gap: 1%;
     color: var(--black);
     max-width: 100%;
@@ -53,11 +53,30 @@ main{
     margin-left: 0px;
     text-align: center;
     display: grid;
+    align-items: center;
+}
+/* for donation history */
+.cards_heading2{
+    grid-template-columns: 8% 28% 12% 8% 10% 14% 14%;
+    grid-column-gap: 1%;
+    color: var(--black);
+    max-width: 100%;
+    margin: auto;
+    padding: 1%;
+    font-size: 1rem;
+    border-radius: 15px;
+    font-weight: bold;
+    margin-right: 0px;
+    margin-left: 0px;
+    text-align: center;
+    display: grid;
+    align-items: center;
 }
 .head{
     font-size: 1rem;
+    
+    
 }
-
 .cards_color{
    
     background: #ffffff;
@@ -69,9 +88,28 @@ main{
     
 }
 
+.btnview{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    margin-right: 0px;
+    max-width: 100px;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 5px;
+    background-color: #111e88;
+    transition: all 0.3s linear;
+    cursor: pointer;
+}
 
 @media(max-width:768px) {
     .cards_heading{
+        max-width: 90%;
+    }
+    .cards_heading2{
         max-width: 90%;
     }
     .main_heading{
@@ -92,6 +130,9 @@ main{
     .cards_heading{
         max-width: 95%;
     }
+    .cards_heading2{
+        max-width: 95%;
+    }
     .main_heading {
         font-size: 24px;
     }
@@ -107,46 +148,18 @@ main{
 }
 
 .select-menu{
-    
-    width: 800px;
-    margin-top: 5px; 
-    margin-bottom: 20px; 
-    align-items: center;
-}
-h4{
-    
-    padding-right: 1rem;
-    
+    width: 380px;
     margin-top: 5px;
+    margin: auto;
+    margin-bottom: 20px;
+    position: relative;
 }
-.abc{
-    display: flex;
-    
-}
-.btnview{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-    margin-right: 0px;
-    max-width: 100px;
-    width: 100%;
-    border: none;
-    outline: none;
-    color: #fff;
-    border-radius: 5px;
-    background-color: #0A2558;
-    transition: all 0.3s linear;
-    cursor: pointer;
-}
-
 .select-menu .select-btn{
     display: flex;
-    
-    height: 35px;
+    height: 55px;
     background: #fff;
-    padding: 10px;
-    font-size: 15px;
+    padding: 20px;
+    font-size: 18px;
     font-weight: 400;
     border-radius: 8px;
     align-items: center;
@@ -155,47 +168,51 @@ h4{
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
     
 }
+
 .select-btn i{
-    font-size: 15px;
+    font-size: 25px;
     transition: 0.3s;
-    
 }
+
 .select-menu.active .select-btn i{
     transform: rotate(-180deg);
 }
+
 .select-menu .options{
-    position: relative;
-    width: 300px;
-    padding: 10px;
+    position: absolute;
+    padding: 20px;
     margin-top: 10px;
     border-radius: 8px;
     background: #fff;
     box-shadow: 0 0 3px rgba(0,0,0,0.1);
     display: none;
+    z-index: 1;
+    overflow: auto;
 }
+
 .select-menu.active .options{
     display: block;
-    
 }
 .options .option{
     display: flex;
-    height: 35px;
+    height: 55px;
     cursor: pointer;
-    padding: 0 10px;
+    padding: 0 16px;
     border-radius: 8px;
     align-items: center;
     background: #fff;
 }
+
 .options .option:hover{
     background: #F2F2F2;
 
 }
 .option i{
-    font-size: 15px;
+    font-size: 25px;
     margin-right: 12px;
 }
 .option .option-text{
-    font-size: 15px;
+    font-size: 18px;
     color: #333;
 }
 
@@ -450,145 +467,65 @@ nav .profile-details i {
     margin: 0 auto;
 }
 
-/*progress bar*/
-/* ===== Google Font Import - Poppins ===== */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-
-.skill-box{
-    
-    position: relative;
-    max-width: 500px;
-    width: 100%;
-    background: #fff;
-    padding: 10px 0 0 0;
-    border-radius: 7px;
-    
-}
-.skill-box .title{
-    display: block;
-    font-size: 14px;
-    font-weight: 600;
-    color: #333;
-}
-.skill-box .skill-bar{
-    height: 8px;
-    width: 100%;
-    border-radius: 6px;
-    margin-top: 6px;
-    background: rgba(0,0,0,0.1);
-    
-}
-.skill-bar .skill-per{
-    position:relative;
-    display: block;
-    height: 100%;
-    border-radius: 6px;
-    background: var(--color-primary-varient);
-    animation: progress 0.4s ease-in-out forwards;
-    opacity: 0;
-}
-
-
-@keyframes progress {
-    0%{
-        width: 0;
-        opacity: 1;
-    }
-    100%{
-        opacity: 1;
-    }
-}
-
-
-
-
-/*gig card*/
-.gigcontainer{
-    max-width: 1000px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-  
-  }
-  .gigcontainer .box{
-    width: 100%;
-    background: #fff;
+.btn-mark-delivered{
     display: flex;
     align-items: center;
-    padding: 20px 30px;
-    border-radius: 5px;
-    margin-top: 2rem;
-    box-shadow: var(--box-shadow);
-  }
-  .easy{
-      display: flex;
-      flex-direction: column;
-      max-width: 500px;
-      margin-left: 2rem;
-  }
-  .box .quote i{
-  margin-top: 10px;
-  font-size: 45px;
-  color: #17c0eb
-  }
-  .gigcontainer .box .image{
-    margin: 10px 0;
-    height: 250px;
-    width: 350px;
-    background: #D6E4F0;
-    padding: 3px;
+    justify-content: center;
+    height: 40px;
+    margin-right: 0px;
+    max-width: 160px;
+    width: 100%;
     border: none;
-    border-radius: 4px;
-  
-    
-  }
-  .box .image img{
-    height: 100%;
+    outline: none;
+    color: #fff;
+    border-radius: 5px;
+    background-color: #0A2558;
+    transition: all 0.3s linear;
+    cursor: pointer;
+}
+.btn-mark-cancelled{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    margin-right: 0px;
+    max-width: 160px;
     width: 100%;
-    object-fit: cover;
-    
-  }
-  .box p{
-    text-align: justify;
-    margin-top: 8px;
-    font-size: 16px;
-    font-weight: 400;
-  }
-  .box .name_job{
-    margin: 10px 0 3px 0;
-    color: #0A2558;
-    font-size: 18px;
-    font-weight: 600;
-  }
-  .rating i{
-    font-size: 18px;
-    color: #8e44ad;
-    margin-bottom: 5px;
-  }
-  .btns a{
-    margin: 20px 0px 5px 5px;
-    display: inline-block;
-    width: 48%;
-  }
-  .btns2 a{
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 5px;
+    background-color: rgb(147, 11, 11);
+    transition: all 0.3s linear;
+    cursor: pointer;
+}
+.btn-contact-org{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    margin-right: 0px;
+    max-width: 160px;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 5px;
+    background-color: rgb(13, 83, 13);
+    transition: all 0.3s linear;
+    cursor: pointer;
+}
+
+.btns2 {
     margin-top: 20px;
     margin-bottom: 5px;
     display: flex;
     justify-content: right;
-    width: 980px;
-  }
-  a button{
+}
+.btn-back{
     background: #0A2558;
-    width: 100%;
-    padding: 9px;
+    width: fit-content;
+    padding: 9px 60px;
     outline: none;
     border: none;
     border-radius: 5px;
@@ -598,39 +535,16 @@ nav .profile-details i {
     color: #fff;;
     transition: all 0.3s linear;
   }
-  a .btn-back{
-    background: #0A2558;
-    width: 20%;
-    padding: 9px;
-    outline: none;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 400;
-    color: #fff;;
-    transition: all 0.3s linear;
-  }
-  
-  /* .btns:first-child{
-   margin-right: 5px;
-  } */
-  .btns a button:hover{
-    background: #0A2558;
-    color: #fff;
-  }
-  
-  @media (max-width:1045px){
-    .container .box{
-      width: calc(50% - 10px);
-      margin-bottom: 20px;
-    }
-  }
-  @media (max-width:710px){
-    .gigcontainer .box{
-      width: 100%;
-    }
-  }
+
+  .btns3{
+    display: grid;
+    grid-template-columns: 49% 50%;
+    grid-column-gap: 1%;
+    max-width: 100%;
+    text-align: center;
+    justify-content: left;
+    margin: 0;
+}
 
 /* Responsive Media Query */
 @media (max-width: 1240px) {

@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <title>Dashboard</title>
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/stylesdash.css" />
+    <!-- <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" /> -->
+    <!-- <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/stylesdash.css" /> -->
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/profile.css" />
+    <!-- <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/editProfile.css" /> -->
     <link
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
       rel="stylesheet"
@@ -39,16 +40,15 @@
       <main>
             <div class="container">
                 <header>Profile Update</header>
-
-                <form action="<?php echo URLROOT; ?>/donor/updateProfileDonor" method="POST">
+                <?php foreach($data['userdata'] as $user) : ?>
+                <?php foreach($data['personaldata'] as $personaldata) : ?>
+                <form action="<?php echo URLROOT; ?>/donor/updateProfileDonor/<?php echo $user->tp_number; ?>" method="POST">
                     <div class="formfirst">
                         <div class="details personal">
                             <span id ="ind1"class="span_title"><u>Personal Details</u></span>
                             <span id ="corp1"class="span_title"><u>Company Details</u></span>
                             <div class="fields">
-                            <?php foreach($data['userdata'] as $user) : ?>
-                              <?php foreach($data['personaldata'] as $personaldata) : ?>
-                                
+                                                            
                                 <div id="ind4" class="input-field">
                                     <label>User Email</label>
                                     <input type="text" name="email_ind" placeholder="ex: abc@gmail.com" value="<?php echo $user-> email; ?>" disabled>
@@ -130,22 +130,21 @@
                                 <?php endforeach; ?>
                             </div>
                             <span class="span_title"><u>Change Profile Picture</u></span>
-                            
-                        <div class="photo-container">
-                            <input type="file" id="file" name="prof_img" accept="image/*" hidden>
-                            <div class="img-area" data-img="">
-                                <i class='bx bxs-cloud-upload icon'></i>
-                                <h3>Upload Image</h3>
-                            </div>
-                            <button class="select-image">Select Image</button>
-                        </div>
 
-                        <button class="sumbit">
-                            <span class="btnText">Submit</span>
-                            <i class="uil uil-navigator"></i>
-                        </button>
-                            
-                       
+                            <div id="image-upload-container" class="image-upload-container">
+                              <div id="selected-image-container" class="selected-image-container"><i class='bx bxs-cloud-upload icon'></i></div>
+                              <div id="upload-buttons-container" class="upload-buttons-container">
+                              <input type="file" id="image-upload-input" class="image-upload-input" accept="image/*" hidden >
+
+                              <div class="buttons">
+                                <div id="image-upload-button" class="image-upload-button">Browse Image</div>
+                                <div id="image-clear-button" class="image-clear-button">Clear</div>
+                              </div>
+    
+                            </div>
+                      </div>
+
+           <input class="btn-submit" type="submit" value="Update"> 
                        
                     </div>
                 </form>
@@ -223,6 +222,33 @@ window.onload = function () {
           welcome.style.display = "block";
         }
       };
+
+      let selectedImageContainer = document.querySelector(".selected-image-container");
+      let uploadInput = document.querySelector(".image-upload-input");
+      let uploadButton = document.querySelector(".image-upload-button");   
+      let clearButton = document.querySelector(".image-clear-button");
+
+// When the upload input changes, update the selected image display
+uploadInput.addEventListener("change", (event) => {
+  const file = event.target.files[0];
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    selectedImageContainer.style.backgroundImage = `url(${e.target.result})`;
+  };
+  reader.readAsDataURL(file);
+});
+
+// When the upload button is clicked, trigger the upload input
+uploadButton.addEventListener("click", () => {
+  uploadInput.click();
+});
+
+// When the clear button is clicked, clear the selected image display
+clearButton.addEventListener("click", () => {
+  selectedImageContainer.style.backgroundImage = "none";
+  uploadInput.value = "";
+});
+
     </script>
   </body>
 </html>

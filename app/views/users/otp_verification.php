@@ -27,19 +27,21 @@
             <div class="right">
               <div class="centered">
               <div class="text">
-                <h3>OTP code has been sent to the email you've provided. <br>To complete this action, please check the inbox or spam folder and enter the OTP code you received below.</h3>
+                <h4>OTP code has been sent to the email you've provided. <br>To complete this action, please check your inbox or spam folder and enter the OTP code you received below.</h3>
                 <br>
                 <br>
                 
-                <form action="<?php echo URLROOT; ?>/users/otp_verify" method="POST">
+                <form action="<?php echo URLROOT; ?>/users/otpVerify/<?php echo $data['field']; ?>" method="POST">
                 <h1>Enter OTP here</h1>
 
                         <label>OTP</label>
                         <input type="text" name="otp" id="otp-input" class="otp" value="<?php echo $data['otp']; ?>">
                         <p class="error" id="otp-err"><?php echo $data['error']; ?></p>
-
+                        <div class="verification_buttons">
                         <input type="submit" value="Verify">
-                        <a href="<?php echo URLROOT; ?>/users/quit_verify"><input type="button" value="Quit"></a>
+                        <a href="<?php echo URLROOT; ?>/users/quitVerify/<?php echo $data['field']; ?>"><input type="button" value="Quit"></a>
+                        </div>    
+                        
                 </form>
             </div>
               <div>
