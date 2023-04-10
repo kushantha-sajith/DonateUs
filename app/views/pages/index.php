@@ -73,7 +73,7 @@
                     Quisquam corrupti odit commodi dolor ipsam architecto vitae iusto
                     amet explicabo illo.
                 </p>
-                <button><a href="http://localhost/Donate/users/register_donor/gen">Register Now</a></button>
+                <button><a href="http://localhost/DonateUs/users/registerDonor/gen">Register Now</a></button>
             </div>
             <!--donation box ends here-->
 
@@ -85,7 +85,7 @@
                     Dolor commodi voluptates aliquid, earum minima accusantium eos
                     aspernatur ullam aperiam tempora.
                 </p>
-                <button><a href="http://localhost/Donate_Us/users/register_beneficiary/gen">Register Now</a></button>
+                <button><a href="http://localhost/DonateUs/users/registerBeneficiary/gen">Register Now</a></button>
             </div>
             <!--donation box ends here-->
 
@@ -97,7 +97,7 @@
                     Expedita enim fuga deserunt molestiae, tenetur molestias eveniet
                     fugit non commodi pariatur!
                 </p>
-                <button><a href="http://localhost/Donate/users/register_eorganizer">Register Now</a></button>
+                <button><a href="http://localhost/DonateUS/users/registerEorganizer">Register Now</a></button>
             </div>
             <!--donation box ends here-->
         </div>

@@ -38,23 +38,12 @@
         <div class="cardBox">
               <div class="card">
                   <div>
-                      <div class="numbers">16</div>
+                      <div class="numbers"><?php echo $data['total']; ?></div>
                       <div class="cardName">Total Donations</div>
                   </div>
 
                   <div class="iconBx">
                       <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-              </div>
-
-              <div class="card">
-                  <div>
-                      <div class="numbers">Rs.20000</div>
-                      <div class="cardName">Total Sponsorships</div>
-                  </div>
-
-                  <div class="iconBx">
-                      <ion-icon name="cart-outline"></ion-icon>
                   </div>
               </div>
 
@@ -79,6 +68,17 @@
                       <ion-icon name="chatbubbles-outline"></ion-icon>
                   </div>
               </div>
+
+              <!-- <div class="card">
+                  <div>
+                      <div class="numbers">Rs.20000</div>
+                      <div class="cardName">Total Sponsorships</div>
+                  </div>
+
+                  <div class="iconBx">
+                      <ion-icon name="cart-outline"></ion-icon>
+                  </div>
+              </div> -->
 
              
           </div>

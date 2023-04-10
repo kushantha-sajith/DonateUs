@@ -56,8 +56,9 @@ main{
 }
 .head{
     font-size: 1rem;
+    
+    
 }
-
 .cards_color{
    
     background: #ffffff;
@@ -139,7 +140,6 @@ h4{
     transition: all 0.3s linear;
     cursor: pointer;
 }
-
 .select-menu .select-btn{
     display: flex;
     
@@ -468,6 +468,7 @@ nav .profile-details i {
     width: 100%;
     background: #fff;
     padding: 10px 0 0 0;
+    margin: 15px 0 0 0;
     border-radius: 7px;
     
 }
@@ -506,9 +507,6 @@ nav .profile-details i {
     }
 }
 
-
-
-
 /*gig card*/
 .gigcontainer{
     max-width: 1000px;
@@ -522,17 +520,32 @@ nav .profile-details i {
     width: 100%;
     background: #fff;
     display: flex;
+    flex-direction: column;
     align-items: center;
     padding: 20px 30px;
     border-radius: 5px;
     margin-top: 2rem;
     box-shadow: var(--box-shadow);
   }
+  .mid{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 55% 44%;
+    grid-column-gap: 1%;
+    /* center the items vertically within the column */
+    /* align-items: center;  */
+    /* center the items horizontally within the column */
+    justify-content: center;
+  }
   .easy{
       display: flex;
       flex-direction: column;
+      align-items: center;
       max-width: 500px;
       margin-left: 2rem;
+  }
+  .easy .due-date{
+    color: black;
   }
   .box .quote i{
   margin-top: 10px;
@@ -540,9 +553,9 @@ nav .profile-details i {
   color: #17c0eb
   }
   .gigcontainer .box .image{
-    margin: 10px 0;
-    height: 250px;
-    width: 350px;
+    margin: 25px 0;
+    height: 350px;
+    width: 500px;
     background: #D6E4F0;
     padding: 3px;
     border: none;
@@ -574,16 +587,18 @@ nav .profile-details i {
     margin-bottom: 5px;
   }
   .btns a{
-    margin: 20px 0px 5px 5px;
-    display: inline-block;
-    width: 48%;
-  }
-  .btns2 a{
     margin-top: 20px;
     margin-bottom: 5px;
     display: flex;
     justify-content: right;
-    width: 980px;
+    width: 100%;
+  }
+  .btns2{
+    margin-top: 20px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: right;
+    width: 100%;
   }
   a button{
     background: #0A2558;
@@ -600,8 +615,8 @@ nav .profile-details i {
   }
   a .btn-back{
     background: #0A2558;
-    width: 20%;
-    padding: 9px;
+    width: fit-content;
+    padding: 9px 60px;
     outline: none;
     border: none;
     border-radius: 5px;
@@ -612,9 +627,6 @@ nav .profile-details i {
     transition: all 0.3s linear;
   }
   
-  /* .btns:first-child{
-   margin-right: 5px;
-  } */
   .btns a button:hover{
     background: #0A2558;
     color: #fff;
