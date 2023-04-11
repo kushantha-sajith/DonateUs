@@ -998,7 +998,7 @@ class Users extends Controller{
       if (empty($data['email_err']) && empty($data['password_err'])) {
         // Validated
         // Check and set logged-in user
-        $loggedInUser = $this->userModel->login($data['email'], $data['password'], $user_type);
+        $loggedInUser = $this->userModel->login($data['email'], $data['password']);
 
         if ($loggedInUser) {
           // Create Session
@@ -1068,23 +1068,23 @@ class Users extends Controller{
     /**
      * @return void
      */
-    public function otp_verify(){
+    public function otpVerify($field){
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = [
                 'otp' => trim($_POST['otp']),
                 'error' => '',
-                'status' => ''
+                'field' => $field
             ];
 
             $verified = $this->verificationModel->verifyOTP($data['otp']);
 
             if (is_numeric($data['otp']) && $verified) {
-                if ($this->verificationModel->verify($verified->id)) {
-                    redirect('pages/profile_donor');
+                if ($this->verificationModel->verifyUpdate($verified->id)) {
+                    redirect('pages/profileDonor');
                 } else {
 
-                    redirect('donor/change_password_donor');
+                    redirect('donor/changePasswordDonor');
                 }
             } else {
                 $data['error'] = "Invalid OTP";
@@ -1094,7 +1094,7 @@ class Users extends Controller{
             $data = [
                 'otp' => '',
                 'error' => '',
-                'status' => ''
+                'field' => $field
             ];
 
             $this->view('users/otp_verification', $data);
@@ -1105,13 +1105,14 @@ class Users extends Controller{
     /**
      * @return void
      */
-    public function quit_verify(){
+    public function quitVerify($value){
         $id = $_SESSION['user_id'];
-        $password = '0';
-        $is_quit = true;
-        if($this->donorModel->passwordChecker($password, $id,$is_quit)){
-            redirect('donor/change_password_donor');
+        
+        $field = $value;
+        if($this->donorModel->setToDefault($id,$field)){
+            redirect('pages/profileDonor');
         }
+
     }
 
   //create sessions for all users
