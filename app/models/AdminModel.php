@@ -162,7 +162,7 @@ class AdminModel
     {
         $this->db->query('SELECT COUNT(*) AS total_users FROM reg_user');
         $row = $this->db->single();
-        return $row;
+        return $row->total_users;
     }
 
     /**
@@ -172,7 +172,7 @@ class AdminModel
     {
         $this->db->query('SELECT COUNT(*) AS total_donation_requests FROM donation_req WHERE status = 0');
         $row = $this->db->single();
-        return $row;
+        return $row->total_donation_requests;
     }
 
     /**
@@ -180,8 +180,8 @@ class AdminModel
      */
     public function getTotalFinDonations()
     {
-        $this->db->query('SELECT COUNT(*) AS total_fin_donations FROM donation_history WHERE type = 0');
+        $this->db->query('SELECT SUM(amount) AS total_fin_donations FROM donation_history WHERE type = 0');
         $row = $this->db->single();
-        return $row;
+        return $row->total_fin_donations;
     }
 }

@@ -28,8 +28,7 @@
             <div class="notification">
                 <i class="bx bx-bell bx-tada notification"></i>
             </div>
-            <a href="<?php echo URLROOT; ?>/admin/profile"><img src="<?php echo URLROOT; ?>/img/profile_pic.svg"
-                                                                alt=""/></a>
+            <a href="<?php echo URLROOT; ?>/admin/profile"><img src="<?php echo URLROOT; ?>/img/profile_pic.svg"/></a>
             <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
             <!-- <i class='bx bx-chevron-down'></i> -->
         </div>
@@ -40,21 +39,21 @@
                 <li>
                     <i class='bx bxs-calendar-check'></i>
                     <span class="text">
-              <h3>1020</h3>
+              <h3><?php echo $data['ongoingReqCount']; ?></h3>
               <p>Ongoing Requests </p>
             </span>
                 </li>
                 <li>
                     <i class='bx bxs-group'></i>
                     <span class="text">
-              <h3>2834</h3>
+              <h3><?php echo $data['totalUsers']; ?></h3>
               <p>Total Users</p>
             </span>
                 </li>
                 <li>
                     <i class='bx bxs-dollar-circle'></i>
                     <span class="text">
-              <h3>$2543</h3>
+              <h3>Rs.<?php echo $data['totalFinDonations']; ?></h3>
               <p>Total Financial
                 Donations</p>
             </span>

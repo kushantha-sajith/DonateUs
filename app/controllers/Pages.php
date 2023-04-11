@@ -335,10 +335,13 @@ class Pages extends Controller
         if (!isLoggedIn()) {
             redirect('users/login');
         }
+        $id = $_SESSION['user_id'];
+        $records = $this->donorModel->getDonationHistory($id);
         $image_name = $this->profileImage();
         $data = [
             'title' => 'Donation History',
-            'prof_img' => $image_name
+            'prof_img' => $image_name,
+            'records' => $records
         ];
 
         $this->view('users/donor/donation_history_donor', $data);
@@ -354,10 +357,16 @@ class Pages extends Controller
         if (!isLoggedIn()) {
             redirect('users/login');
         }
+        $requests = $this->donorModel->getDonationRequests();
+        $financials = $this->donorModel->getFinancialRequests();
+        $non_financials = $this->donorModel->getNonFinancialRequests();
         $image_name = $this->profileImage();
         $data = [
             'title' => 'Donation Requests',
-            'prof_img' => $image_name
+            'prof_img' => $image_name,
+            'requests' => $requests,
+            'financials' => $financials,
+            'non_financials' => $non_financials
         ];
 
         $this->view('users/donor/donation_requests_donor', $data);
