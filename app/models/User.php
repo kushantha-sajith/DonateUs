@@ -1,20 +1,24 @@
 <?php
-class User{
-  private $db;
 
-  public function __construct(){
-    $this->db = new Database;
-  }
+class User
+{
+    private $db;
+
+    public function __construct()
+    {
+        $this->db = new Database;
+    }
 
     /**
      * @return mixed
      */
-    public function getDistricts(){
-    $this->db->query('SELECT * FROM district');
-    $results = $this->db->resultSet();
-    return $results;
-  }
-  
+    public function getDistricts()
+    {
+        $this->db->query('SELECT * FROM district');
+        $results = $this->db->resultSet();
+        return $results;
+    }
+
     // 1 - Admin
     // 2 - Individual Donor
     // 3 - Corporate Donor
@@ -27,7 +31,8 @@ class User{
      * @param $type
      * @return bool
      */
-    public function registerDonor($data, $type){
+    public function registerDonor($data, $type)
+    {
         $type1 = "ind";
 
         if (strcmp($type, $type1) == 0) {
@@ -113,13 +118,15 @@ class User{
         }
     }
 
-  // Regsiter user
+    // Regsiter user
+
     /**
      * @param $data
      * @param $type
      * @return bool
      */
-    public function registerBeneficiary($data, $type){
+    public function registerBeneficiary($data, $type)
+    {
         $type1 = "ind";
 
         if (strcmp($type, $type1) == 0) {
@@ -214,7 +221,8 @@ class User{
      * @param $data
      * @return bool
      */
-    public function registerOrganizer($data){
+    public function registerOrganizer($data)
+    {
 
         $this->db->query('INSERT INTO reg_user (email, password,  user_type, prof_img, tp_number, otp_code , otp_verify, verification_status) VALUES(:email, :password, :user_type, :prof_img, :tp_number, :otp_code, :otp_verify, :verification_status)');
 
@@ -257,101 +265,182 @@ class User{
         }
     }
 
-  // Login user
-  /**
-   * @param $email
-   * @param $password
-   * @return false|mixed
-   */
-  public function login($email, $password){
-    $this->db->query('SELECT * FROM reg_user WHERE email = :email');
-    $this->db->bind(':email', $email);
+    // Login user
 
-    $row = $this->db->single();
+    /**
+     * @param $email
+     * @param $password
+     * @return false|mixed
+     */
+    public function login($email, $password)
+    {
+        $this->db->query('SELECT * FROM reg_user WHERE email = :email');
+        $this->db->bind(':email', $email);
 
-    $hashed_password = $row->password;
-    if (password_verify($password, $hashed_password)) {
-      return $row;
-    } else {
-      return false;
+        $row = $this->db->single();
+
+        $hashed_password = $row->password;
+        if (password_verify($password, $hashed_password)) {
+            return $row;
+        } else {
+            return false;
+        }
     }
-  }
 
     /**
      * @param $tp_number
      * @return bool
      */
-    public function findUserByContact($tp_number){
-    $this->db->query('SELECT * FROM reg_user WHERE tp_number = :tp_number');
-    // Bind value
-    $this->db->bind(':tp_number', $tp_number);
+    public function findUserByContact($tp_number)
+    {
+        $this->db->query('SELECT * FROM reg_user WHERE tp_number = :tp_number');
+        // Bind value
+        $this->db->bind(':tp_number', $tp_number);
 
-    $row = $this->db->single();
+        $row = $this->db->single();
 
-    // Check row
-    if ($this->db->rowCount() > 0) {
-      return true;
-    } else {
-      return false;
+        // Check row
+        if ($this->db->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
-  }
 
-  // Find user by email
-  /**
-   * @param $email
-   * @return bool
-   */
-  public function findUserByEmail($email){
-    $this->db->query('SELECT * FROM reg_user WHERE email = :email');
-    // Bind value
-    $this->db->bind(':email', $email);
+    // Find user by email
 
-    $row = $this->db->single();
+    /**
+     * @param $email
+     * @return bool
+     */
+    public function findUserByEmail($email)
+    {
+        $this->db->query('SELECT * FROM reg_user WHERE email = :email');
+        // Bind value
+        $this->db->bind(':email', $email);
 
-    // Check row
-    if ($this->db->rowCount() > 0) {
-      return true;
-    } else {
-      return false;
+        $row = $this->db->single();
+
+        // Check row
+        if ($this->db->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
-  }
 
     /**
      * @param $nic
      * @return bool
      */
-    public function findUserByNIC($nic){
-    $this->db->query('SELECT * FROM ind_don WHERE NIC = :nic');
-    // Bind value
-    $this->db->bind(':nic', $nic);
+    public function findUserByNIC($nic)
+    {
+        $this->db->query('SELECT * FROM ind_don WHERE NIC = :nic');
+        // Bind value
+        $this->db->bind(':nic', $nic);
 
-    $row = $this->db->single();
+        $row = $this->db->single();
 
-    // Check row
-    if ($this->db->rowCount() > 0) {
-      return true;
-    } else {
-      return false;
+        // Check row
+        if ($this->db->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
-  }
 
     /**
      * @param $email
      * @return false
      */
-    public function getUserType($email){
-    $this->db->query('SELECT user_type FROM reg_user WHERE email = :email');
-    // Bind value
-    $this->db->bind(':email', $email);
+    public function getUserType($email)
+    {
+        $this->db->query('SELECT user_type FROM reg_user WHERE email = :email');
+        // Bind value
+        $this->db->bind(':email', $email);
 
-    $row = $this->db->single();
+        $row = $this->db->single();
 
-    // Check row
-    if ($this->db->rowCount() > 0) {
-      $user_type = $row->user_type;
-      return $user_type;
-    } else {
-      return false;
+        // Check row
+        if ($this->db->rowCount() > 0) {
+            $user_type = $row->user_type;
+            return $user_type;
+        } else {
+            return false;
+        }
     }
-  }
+
+    public function insertPasswordResetToken($email, $token, $expiry)
+    {
+        $this->db->query('UPDATE reg_user SET password_reset_hash=:token, password_reset_expiry=:expiry WHERE email = :email');
+        // Bind values
+        $this->db->bind(':email', $email);
+        $this->db->bind(':token', $token);
+        $this->db->bind(':expiry', $expiry);
+
+        // Execute
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * @param $token
+     * @return false|mixed
+     */
+    public function getUserByToken($token)
+    {
+        $this->db->query('SELECT * FROM reg_user WHERE password_reset_hash = :token');
+        // Bind value
+        $this->db->bind(':token', $token);
+
+        $row = $this->db->single();
+
+        // Check row
+        if ($this->db->rowCount() > 0) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * @param $email
+     * @param $hashedPassword
+     * @return bool
+     */
+    public function updatePassword($email, $hashedPassword)
+    {
+        $this->db->query('UPDATE reg_user SET password = :password WHERE email = :email');
+        // Bind values
+        $this->db->bind(':email', $email);
+        $this->db->bind(':password', $hashedPassword);
+
+        // Execute
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * @param $email
+     * @return bool
+     */
+    public function deletePasswordResetToken($email)
+    {
+        $this->db->query('UPDATE reg_user SET password_reset_hash = NULL, password_reset_expiry = NULL WHERE email = :email');
+        // Bind values
+        $this->db->bind(':email', $email);
+
+        // Execute
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

@@ -47,11 +47,13 @@ class Pages extends Controller
         $totalUsers = $this->adminModel->getTotalUsers();
         $ongoingReqCount = $this->adminModel->getOngoingReqCount();
         $totalFinDonations = $this->adminModel->getTotalFinDonations();
+        $recentDonations = $this->adminModel->getRecentDonations();
         $data = [
             'title' => 'Admin',
             'totalUsers' => $totalUsers,
             'ongoingReqCount' => $ongoingReqCount,
-            'totalFinDonations' => $totalFinDonations
+            'totalFinDonations' => $totalFinDonations,
+            'recentDonations' => $recentDonations
         ];
 
         $this->view('users/admin/index', $data);

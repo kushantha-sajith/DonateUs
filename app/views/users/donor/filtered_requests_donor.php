@@ -48,11 +48,19 @@
          <div class="select-menu">
             <h4>Filter By : Donation Catagory</h4>
             <div class="select-btn">
-                <span class="sBtn-text">Select Donation Category</span>
+                <span class="sBtn-text"><?php echo $data['cat_title'];  ?></span>
                 <i class="bx bx-chevron-down"></i>
             </div>
 
             <ul class="options">
+              <a href="<?php echo URLROOT;?>/pages/donationRequestsDonor" style="text-decoration:none">
+                    <li class="option">
+                            <span class="material-icons" style="color:#111e88; margin-right: 1rem;">
+                            filter_alt_off
+                            </span>
+                        <span class="option-text">All</span>
+                    </li>
+                </a>
                 <a href="<?php echo URLROOT;?>/donor/filteredRequestDonor/1" style="text-decoration:none">
                     <li class="option">
                             <span class="material-icons" style="color:#111e88; margin-right: 1rem;">
@@ -97,7 +105,7 @@
         </div>
 
             <div class="gigcontainer">
-            <?php foreach($data['requests'] as $requests ): ?>
+            <?php foreach($data['records'] as $requests): ?>
             
                 <div class="box">
                     <div class="image">
@@ -117,48 +125,34 @@
                         </div>
                         <p><?php echo $requests->description;  ?>
                         </p>
-                        <?php if($requests->cat_id >1){ ?>
+                        <?php if($requests->cat_id > 1){ ?>
                        
-                            <?php foreach($data['non_financials'] as $nfinancials ): ?>
-                                <?php if($requests->id == $nfinancials->req_id){ ?>
                         <div class="skill-box">
                        
-                            <span class="title"> <?php echo $nfinancials->received_quantity ; ?> raised out of <?php  echo $nfinancials->quantity;  ?></span>
+                            <span class="title"> <?php echo $requests->received_quantity ; ?> raised out of <?php  echo $requests->quantity;  ?></span>
                             <div class="skill-bar">
-                            <?php $percentage = (($nfinancials->received_quantity * 100) / $nfinancials->quantity);  ?>
+                            <?php $percentage = (($requests->received_quantity * 100) / $requests->quantity);  ?>
                                 <span class="skill-per" style ="width:<?php echo $percentage ;  ?>%;"></span>
-                                
                             </div>
                         </div>
-                        <div class="btns">
-                            <a href="<?php echo URLROOT;?>/donor/viewmoreRequestDonor/<?php echo $requests->id;  ?>/<?php echo $requests->cat_id;  ?>" ><button>View More</button></a>
-                            
-                            <a href="<?php echo URLROOT;?>/donor/donate/0"><button>Donate</button></a>
-                        </div>
-                        <?php   } ?>
-                        <?php endforeach; ?>
+                        
                         <?php } else{ ?>
-                            <?php foreach($data['financials'] as $financials ): ?>
-                                <?php if($requests->id == $financials->req_id){ ?>
+                            
                         <div class="skill-box">
-                            <span class="title">Rs.<?php echo $financials->received_amount ;  ?> raised out of Rs.<?php echo $financials->total_amount;  ?></span>
+                            <span class="title">Rs.<?php echo $requests->received_amount ;  ?> raised out of Rs.<?php echo $requests->total_amount;  ?></span>
                             <div class="skill-bar">
-                            <?php $percentage = (($financials->received_amount * 100) / $financials->total_amount);  ?>
+                            <?php $percentage = (($requests->received_amount * 100) / $requests->total_amount);  ?>
                                 <span class="skill-per" style ="width:<?php echo $percentage ;  ?>%;"></span>
-                                
                             </div>
                         </div>
-                        <div class="btns">
-                            <a href="<?php echo URLROOT;?>/donor/viewmoreRequestDonor/<?php echo $requests->id;  ?>/<?php echo $requests->cat_id;  ?>" ><button>View More</button></a>
-                            
-                            <a href="<?php echo URLROOT;?>/donor/donate/1"><button>Donate</button></a>
-                        </div>
-                        <?php   } ?>
-                        <?php endforeach; ?>
+                        
                          <?php } ?>
                         
                            
-                        
+                        <div class="btns">
+                            <a href="<?php echo URLROOT;?>/donor/viewmoreRequestDonor/<?php echo $requests->id;  ?>/<?php echo $requests->cat_id;  ?>" ><button>View More</button></a>
+                            <a href="#"><button>Donate</button></a>
+                        </div>
                     </div>
                 </div>
                 <?php endforeach; ?>

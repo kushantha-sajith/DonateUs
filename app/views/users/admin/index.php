@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <title>Dashboard</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/admin_dashboard.css"/>
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css"/>
     <link
             href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
             rel="stylesheet"
@@ -76,85 +77,85 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>
-                                <img src="img/people.png">
-                                <p>John Doe</p>
-                            </td>
-                            <td>Food</td>
-                            <td>01-10-2021</td>
-                            <td><span class="status completed">Completed</span></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="img/people.png">
-                                <p>John Doe</p>
-                            </td>
-                            <td>Food</td>
-                            <td>01-10-2021</td>
-                            <td><span class="status pending">Pending</span></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="img/people.png">
-                                <p>John Doe</p>
-                            </td>
-                            <td>Food</td>
-                            <td>01-10-2021</td>
-                            <td><span class="status process">Delivered</span></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="img/people.png">
-                                <p>John Doe</p>
-                            </td>
-                            <td>Food</td>
-                            <td>01-10-2021</td>
-                            <td><span class="status pending">Pending</span></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="img/people.png">
-                                <p>John Doe</p>
-                            </td>
-                            <td>Food</td>
-                            <td>01-10-2021</td>
-                            <td><span class="status completed">Completed</span></td>
-                        </tr>
+                        <?php foreach ($data['recentDonations'] as $recentDonations) : ?>
+                            <tr>
+                                <td>
+                                    <!--                                <img src="img/people.png">-->
+                                    <p><?php echo $recentDonations->donor_name; ?></p>
+                                </td>
+                                <td><?php echo $recentDonations->category; ?></td>
+                                <td><?php echo $recentDonations->date_of_completion; ?></td>
+                                <td>
+                                    <?php if ($recentDonations->status == 0) {
+                                        echo "<span class='status pending'>Pending</span>";
+                                    } elseif ($recentDonations->status == 1) {
+                                        echo "<span class='status completed'>Completed</span>";
+                                    } else {
+                                        echo "<span class='status process'>Delivered</span>";
+                                    } ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
                 <div class="todo">
-                    <div class="head">
-                        <h3>Top Donors</h3>
+                    <!--<div class="head">-->
+                    <!--<h3>Top Donors</h3>-->
+                    <!--</div>-->
+                    <!--<ul class="todo-list">-->
+                    <!--<li class="not-completed">-->
+                    <!--<p>#</p>-->
+                    <!--<i class='bx bx-dots-vertical-rounded'></i>-->
+                    <!--</li>-->
+                    <!--</ul>-->
+                    <div class="chart1">
+                        <canvas id="myChart"></canvas>
                     </div>
-                    <ul class="todo-list">
-                        <li class="completed">
-                            <p>Kushantha</p>
-                            <i class='bx bx-dots-vertical-rounded'></i>
-                        </li>
-                        <li class="completed">
-                            <p>Avishka</p>
-                            <i class='bx bx-dots-vertical-rounded'></i>
-                        </li>
-                        <li class="not-completed">
-                            <p>pulara</p>
-                            <i class='bx bx-dots-vertical-rounded'></i>
-                        </li>
-                        <li class="completed">
-                            <p>Shamindi</p>
-                            <i class='bx bx-dots-vertical-rounded'></i>
-                        </li>
-                        <li class="not-completed">
-                            <p>pabodhi</p>
-                            <i class='bx bx-dots-vertical-rounded'></i>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </main>
     </section>
     <!--home section end-->
     <script src="<?php echo URLROOT; ?>/js/sidebar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        function pieChart() {
+            $.ajax({
+                url: "http://localhost/DonateUs/Stats/requestStatus",
+                method: 'GET',
+                dataType: 'JSON',
+                success: function (response1) {
+                    console.log(response1);
+                    //setup pie chart
+                    const data = {
+                        labels: [response1.pending, response1.ongoing, response1.completed, response1.rejected],
+                        datasets: [{
+                            label: 'No. of Donations',
+                            data: [response1.pendingCount.num_rows, response1.ongoingCount.num_rows, response1.completedCount.num_rows, response1.rejectedCount.num_rows],
+                            borderWidth: 1
+                        }]
+                    };
+                    //config pie chart
+                    const configPie = {
+                        type: 'pie',
+                        data: data,
+
+                        options: {
+                            scales: {}
+                        }
+                    };
+                    //render pie chart
+                    const myPie = new Chart(
+                        document.getElementById('myChart'),
+                        configPie
+                    );
+                }
+            })
+        }
+
+        pieChart();
+    </script>
 </body>
 </html>

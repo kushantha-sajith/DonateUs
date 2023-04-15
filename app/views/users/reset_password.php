@@ -20,15 +20,15 @@
 
 <div class="container">
     <div class="img">
-        <img src="<?php echo URLROOT; ?>/img/login.svg">
+        <!--        <img src="--><?php //echo URLROOT; ?><!--/img/login.svg">-->
     </div>
     <div class="login-container">
-        <form autocomplete="off" action="<?php echo URLROOT; ?>/users/login" method="POST">
-            <img class="avatar" src="<?php echo URLROOT; ?>/img/profile_pic.svg">
-            <?php flash('register_success'); ?>
+        <form autocomplete="off" action="<?php echo URLROOT; ?>/users/forgotPassword" method="POST">
+            <!--            <img class="avatar" src="--><?php //echo URLROOT; ?><!--/img/profile_pic.svg">-->
+            <!--            --><?php //flash('register_success'); ?>
             <h2>Welcome</h2>
             <!-- <h2>Login</h2> -->
-            <p>Please fill out your credentials to login.</p><br>
+            <p>Please insert your email.</p><br>
 
             <div class="input-div one ">
                 <div class="i">
@@ -42,25 +42,7 @@
             <div class="error">
                 <span><?php echo $data['email_err']; ?></span>
             </div>
-            <div class="input-div two">
-                <div class="i">
-                    <i class="fas fa-lock"></i>
-                </div>
-                <div class="div">
-                    <h5><label for="password">Password: <sup>*</sup></label></h5>
-                    <input class="input" type="password" name="password" value="<?php echo $data['password']; ?>"
-                           required>
-                </div>
-            </div>
-            <div class="error">
-                <span><?php echo $data['password_err']; ?></span>
-            </div>
-            <a href="<?php echo URLROOT; ?>/users/forgotPassword">Forgot Password?</a>
-
-            <input type="submit" class="btn" value="Login">
-            <div class="reminder">
-                <p>New to DonateUs? <a href="<?php echo URLROOT; ?>/users/register">Create an account</a>.</p>
-            </div>
+            <input type="submit" class="btn" value="Submit">
         </form>
 
     </div>

@@ -5,7 +5,7 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/stylesdash.css" />
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_lists.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_user.css" />
     <link
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
       rel="stylesheet"
@@ -46,15 +46,65 @@
         </div>
       </nav>
       <div class="main-container">
- 
+      
+      <!-- <div>
+      <div class="tab" >
+                        
+                        <button class="tablinks" onload="btnActivate()" onclick="openTab(event, 'Individual')">Completed</button>
+                        <button class="tablinks" onclick="openTab(event, 'Corporate')">Pending</button>
+                    </div>
+                    <div class="tabcontent">
+                    <table class="main-table">
+          <thead>
+            <th colspan="2" style="text-align:left;"><span>Id</span></th>
+            <th colspan="2" style="text-align:left;"><span>Request</span></th>
+            <th colspan="2" style="text-align:left;"><span>Request Id</span></th>
+            <th colspan="2" style="text-align:left;"><span>Type</span></th>
+            <th colspan="2" style="text-align:left;"><span>Amount<br>/Quantity</span></th>
+            <th colspan="2" style="text-align:left;"><span>Date</span></th>
+            <th colspan="2" style="text-align:left;"><span>Category</span></th>
+            <th colspan="2" style="text-align:left;"><span></span></th>
+            <th colspan="2" style="text-align:left;"><span>Status</span></th>
+          </thead>
+          <tbody>
+            
+            <tr class="t-row">
+              <td colspan="2" style="text-align:left;">1</td>
+              <td colspan="2" style="text-align:left;">aaaaaaaaaaaaaaaaaaaaaaa<br>aaaaaaaaaaaaaaaaaaaaaa</td>
+              <td colspan="2" style="text-align:left;">1</td>
+              <td colspan="2" style="text-align:left;">Non-Financial</td>
+              <td colspan="2" style="text-align:left;">45</td>
+              <td colspan="2" style="text-align:left;">14/12/2022</td>
+              <td colspan="2" style="text-align:left;">Medicine</td>
+              <td colspan="2" style="text-align:left;"><a href="<?php echo URLROOT; ?>/donor/feedback"><button class="btnfeedback">Feedback</button></a></td>
+              <td colspan="2" style="text-align:left;">Completed</td>
+            </tr>
+          
+          </tbody>
+        </table>
+
+      </div>
+                    
+                </div>
+      </div> -->
+
+   
       <div class="select-menu">
             <h4>Filter By : Donation Catagory</h4>
             <div class="select-btn">
-                <span class="sBtn-text">Select Donation Category</span>
+                <span class="sBtn-text"><?php echo $data['cat_title']; ?></span>
                 <i class="bx bx-chevron-down"></i>
             </div>
 
             <ul class="options">
+              <a href="<?php echo URLROOT;?>/pages/donationHistoryDonor" style="text-decoration:none">
+                    <li class="option">
+                            <span class="material-icons" style="color:#111e88; margin-right: 1rem;">
+                            filter_alt_off
+                            </span>
+                        <span class="option-text">All</span>
+                    </li>
+                </a>
                 <a href="<?php echo URLROOT;?>/donor/filteredHistoryDonor/1" style="text-decoration:none">
                     <li class="option">
                             <span class="material-icons" style="color:#111e88; margin-right: 1rem;">
@@ -99,7 +149,7 @@
         </div>
 
 
-            <div class="cards_heading2 head">
+            <div class="cards_heading head">
                 <div>Request ID</div>
                 <div>Request</div>
                 <div>Category</div>
@@ -109,7 +159,7 @@
                 <div><span></span></div>
             </div>
             <?php foreach($data['records'] as $record) : ?>
-                <div class="cards_heading2 cards_color">
+                <div class="cards_heading cards_color">
                     <div><?php echo $record->id; ?></div>
                     <div><?php echo $record->request_title; ?></div>
                     <div><?php echo $record->category_name; ?></div>
@@ -121,7 +171,24 @@
                     </div>
                 </div>
             <?php endforeach; ?>
-            
+            <!-- <?php foreach($data['corpDonors'] as $corpDonors) : ?>
+                <div class="cards_heading cards_color">
+                    <div><?php echo $corpDonors->id; ?></div>
+                    <div><?php echo $corpDonors->comp_name; ?></div>
+                    <div><?php echo $corpDonors->email; ?></div>
+                    <div>
+                        <select name="status" id="status">
+                            <option value="Active">Active</option>
+                            <option value="Deactive">Deactive</option>
+                        </select>
+                    </div>
+                    <div>Corporate</div>
+                    <div><?php echo $corpDonors->city; ?></div>
+                    <div>
+                        <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
+                    </div>
+                </div>
+            <?php endforeach; ?> -->
        
     </section>
     <!--home section end-->

@@ -6,7 +6,7 @@
       
       <ul class="nav-links">
         <li>
-          <a href="<?php echo URLROOT; ?>/pages/donor">
+          <a href="<?php echo URLROOT; ?>/donor/index">
             <i class="bx bx-grid-alt"></i>
             <span class="links_name">Dashboard</span>
           </a>
@@ -18,9 +18,21 @@
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="<?php echo URLROOT; ?>/donor/eventsDonor">
             <i class="bx bx-list-check"></i>
             <span class="links_name">Events</span>
+          </a>
+        </li>
+        <li>
+          <a href="<?php echo URLROOT; ?>/donor/reservationsDonor">
+            <i class="bx bxs-calendar-check"></i>
+            <span class="links_name">Reservations</span>
+          </a>
+        </li>
+        <li id="item1">
+          <a href="<?php echo URLROOT; ?>/donor/sponsorshipsDonor">
+            <i class="bx bxs-dollar-circle"></i>
+            <span class="links_name">Sponsor</span>
           </a>
         </li>
         <li>
@@ -41,18 +53,7 @@
             <span class="links_name">Stats</span>
           </a>
         </li>
-        <li>
-          <a href="#">
-            <i class="bx bxs-calendar-check"></i>
-            <span class="links_name">Reservations</span>
-          </a>
-        </li>
-        <li id="item1">
-          <a href="#">
-            <i class="bx bxs-dollar-circle"></i>
-            <span class="links_name">Sponsor</span>
-          </a>
-        </li>
+        
         <li id="item2">
           <a href="#">
             <i class="bx bxs-report"></i>

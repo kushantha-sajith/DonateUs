@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Dashboard</title>
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/stylesdash.css" />
+    
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/profile.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/changepassword.css" />
     <link
