@@ -184,4 +184,11 @@ class AdminModel
         $row = $this->db->single();
         return $row->total_fin_donations;
     }
+
+    public function getRecentDonations()
+    {
+        $this->db->query('SELECT dh.date_of_completion, c.category_name AS category, IF(r.user_type = 2, id.f_name, cd.comp_name) AS donor_name, dh.status FROM donation_history AS dh JOIN reg_user AS r ON dh.don_id = r.id JOIN categories AS c ON dh.category = c.id JOIN donation_req AS dr ON dh.req_id = dr.id LEFT JOIN ind_don AS id ON r.id = id.user_id AND r.user_type = 2 LEFT JOIN corp_don AS cd ON r.id = cd.user_id AND r.user_type = 3 ORDER BY dh.date_of_completion DESC LIMIT 5');
+        $row = $this->db->resultSet();
+        return $row;
+    }
 }

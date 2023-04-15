@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>DonateUs</title>
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_main.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_main.css"/>
 </head>
 
 <body>
@@ -12,7 +12,7 @@
     <header>
         <div class="container">
             <div class="logo">
-                <img src="<?php echo URLROOT; ?>/img/logo_.png" alt="logo" />
+                <img src="<?php echo URLROOT; ?>/img/logo_.png" alt="logo"/>
             </div>
             <!-- navbar starts here -->
             <nav>
@@ -32,9 +32,9 @@
                     <li>
                         <a href="#aboutSection">About Us</a>
                     </li>
-<!--                    <li>-->
-<!--                        <a href="--><?php //echo URLROOT; ?><!--/users/register">Register</a>-->
-<!--                    </li>-->
+                    <!--                    <li>-->
+                    <!--                        <a href="--><?php //echo URLROOT; ?><!--/users/register">Register</a>-->
+                    <!--                    </li>-->
                     <li>
                         <a href="<?php echo URLROOT; ?>/users/login">Login</a>
                     </li>
@@ -48,7 +48,8 @@
     <div class="container">
         <h1>Together We Can <span>Help Them</span></h1>
         <p>
-            When you donate to the "DonateUs", 100% of your donation goes towards funding projects that change people’s lives.
+            When you donate to the "DonateUs", 100% of your donation goes towards funding projects that change people’s
+            lives.
         </p>
         <button><a href="http://localhost/Donate_Us/users/register">Start with a little</a></button>
     </div>
@@ -97,7 +98,7 @@
                     Expedita enim fuga deserunt molestiae, tenetur molestias eveniet
                     fugit non commodi pariatur!
                 </p>
-                <button><a href="http://localhost/DonateUS/users/registerEorganizer">Register Now</a></button>
+                <button><a href="http://localhost/DonateUS/users/registerOrganizer">Register Now</a></button>
             </div>
             <!--donation box ends here-->
         </div>
