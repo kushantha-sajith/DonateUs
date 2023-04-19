@@ -42,7 +42,7 @@
             <div class="container">
                 <header>Donation Request</header>
 
-                <form method="post" action="<?php echo URLROOT; ?>/beneficiary/addRequest">
+                <form method="post" action="<?php echo URLROOT; ?>/beneficiary/addNonFinancialRequest">
                     <div class="formfirst">
                         <div class="details personal">
                             <div class="fields">
@@ -68,9 +68,9 @@
 
 
                                 <div class="input-field">
-                                    <label>Amount / Quantity </label>
+                                    <label>Quantity </label>
                                     
-                                    <input type="text" placeholder="Enter Amount/Quantity" name="quantity" value="<?php echo $data['quantity']; ?>">
+                                    <input type="text" placeholder="Enter Quantity" name="quantity" value="<?php echo $data['quantity']; ?>">
                                     <span class="error"><?php echo $data['quantityErr']; ?></span>
                                 </div>
 
@@ -89,14 +89,25 @@
                                     <span class="error"><?php echo $data['contactErr']; ?></span>
                                 </div>
 
-                                <div class="input-field">
+                                <!-- <div class="input-field">
                                     <label>Donation Type </label>
                                     <select>
                                         <option disabled selected>Select Donation Type</option>
-                                        <option>Financial</option>
+                                        <option>Medicine</option> 
                                         <option>Foods</option>
                                         <option>Stationaries</option>
                                     </select>
+                                </div> -->
+
+                                <div class="input-field">  
+                                   
+                                   <label>Donation Type</label>
+                                <select class="dropdown" name="cat_id" id="cat_id">
+                                     <?php foreach($data['cat_id'] as $cat_id) : ?>
+                                     <option <?php if($cat_id->id==$data['cat_id']) {echo "selected";} ?> value="<?php echo $cat_id->id; ?>"><?php echo $cat_id->category_name; ?></option>
+                                     <?php endforeach; ?>
+                                </select>
+                               
                                 </div>
 
                                 <div class="input-field">

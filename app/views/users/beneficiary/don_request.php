@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Completed Requests</title>
+    <title>Donation nfinancials</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/add_donation_req.css" /> 
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donation_req.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
@@ -54,7 +54,7 @@
                 </div>
 
                 <ul class="options">
-                    <a href="<?php echo URLROOT; ?>/beneficiary/donationRequest" style="text-decoration:none">
+                    <a href="<?php echo URLROOT; ?>beneficiary/donationRequest" style="text-decoration:none">
                         <li class="option">
                             <span class="material-icons" style="color: black; margin-right: 1rem;" >
                                 pending_actions
@@ -98,62 +98,64 @@
           <thead>
             <!-- <th style="text-align:left;"><span>Id</span></th> -->
             <th style="text-align:left;"><span>Request Title</span></th>
-            <!-- <th style="text-align:left;"><span>Description</span></th> -->
+            <th style="text-align:left;"><span>Description</span></th>
             <th style="text-align:left;"><span>Beneficiary Name</span></th>
             <th style="text-align:left;"><span>Due Date</span></th>
-            <!-- <th style="text-align:left;"><span>Contact</span></th> -->
-            <th style="text-align:left;"><span>Total Quantity/Amount</span></th>
-            <th style="text-align:left;"><span>Received Quantity/Amount</span></th>
+            <th style="text-align:left;"><span>Contact</span></th>
             <th style="text-align:left;"><span>Donation Type</span></th>
-            <th style="text-align:left;"></th>
-
             <!-- <th style="text-align:left;"><span>Amount/Quantity</span></th> -->
+            <th style="text-align:left;"></th>
             <!-- <th style="text-align:left;"><span>Contact</span></th> -->
             <!-- <th style="text-align:left;"><span>user_id</span></th>
             <th style="text-align:left;"><span>cat_id</span></th> -->                   
           </thead>
           <tbody>
-
-
-          <?php foreach($data['requests'] as $requests ): ?>
-          <?php if($requests->status==3){ ?>
-
+            <?php  foreach($data['non_financials'] as $nfinancials ):  ?>
                 <tr class="t-row">
-                    <td style="text-align:left;"><?php echo $requests->request_title; ?></td>
-                    <td style="text-align:left;"><?php echo $requests->name; ?></td>
-                    <td style="text-align:left;"><?php echo $requests->due_date; ?></td>
-
-                    <?php if($requests->cat_id >1){ ?>
-                   
-                        <?php foreach($data['nfinancials'] as $nfinancials ): ?>
-                            <?php if($requests->id == $nfinancials->req_id){ ?>
-                            <td style="text-align:left;"><?php  echo $nfinancials->quantity;  ?></td>
-                            <td style="text-align:left;"><?php echo $nfinancials->received_quantity ; ?></td>
-                            <td style="text-align:left;">Non-Financial</td>
-                            <td>  <a href="<?php echo URLROOT; ?>/beneficiary/viewNonFinancialRequest " class="btn-edit">View More</a></td> 
-                      
-                        <?php   } ?>
-                    <?php endforeach; ?>
-                    <?php } else{ ?>
-                        <?php foreach($data['financials'] as $financials ): ?>
-                            <?php if($requests->id == $financials->req_id){ ?>
-                            <td style="text-align:left;"><?php  echo $financials->total_amount;  ?></td>
-                            <td style="text-align:left;"><?php echo $financials->received_amount ; ?></td>
-                            <td style="text-align:left;">Financial</td>
-                            <td>  <a href="<?php echo URLROOT; ?>/beneficiary/viewFinancialRequest " class="btn-edit">View More</a></td> 
-                    
-                    <?php   } ?>
-                    <?php endforeach; ?>
-                     <?php } ?>
-                            </tr>  
-            <?php } ?>
-
+              <!-- <td style="text-align:left;"><?php echo $nfinancials->id; ?></td> -->
+              <td style="text-align:left;"><?php echo $nfinancials->request_title; ?></td>
+              <td style="text-align:left;"><?php echo $nfinancials->description; ?></td>
+              <td style="text-align:left;"><?php echo $nfinancials->name; ?></td>
+             <td style="text-align:left;"><?php echo $nfinancials->due_date; ?></td>
+              <td style="text-align:left;"><?php echo $nfinancials->contact; ?></td>
+              <td style="text-align:left;">Non-Financial</td>
+              <td>  <a href="<?php echo URLROOT; ?>/beneficiary/viewNonFinancialRequest " class="btn-edit">View More</a></td> 
             <?php endforeach; ?>
 
-            </tbody> 
+            <?php  foreach($data['financials'] as $financials ): ?>
+            <tr class="t-row">
+              <!-- <td style="text-align:left;"><?php echo $financials->id; ?></td> -->
+              <td style="text-align:left;"><?php echo $financials->request_title; ?></td>
+              <td style="text-align:left;"><?php echo $financials->description; ?></td>
+              <td style="text-align:left;"><?php echo $financials->name; ?></td>
+             <td style="text-align:left;"><?php echo $financials->due_date; ?></td>
+              <td style="text-align:left;"><?php echo $financials->contact; ?></td>
+              <td style="text-align:left;">Financial</td>
+              <td>  <a href="<?php echo URLROOT; ?>/beneficiary/viewFinancialRequest" class="btn-edit">View More</a></td> 
+            <?php endforeach; ?>
+  
+            </tr>
+        
+          </tbody>
         </table>
 
       </div>
+
+      <div class="tablecategory">
+      <div>
+        <a href="<?php echo URLROOT; ?>/beneficiary/addFinancialRequest">
+        <input type="submit" value="Financial Request" class="btn add">
+        </a>
+      </div>
+
+      <div>
+        <a href="<?php echo URLROOT; ?>/beneficiary/addNonFinancialRequest">
+        <input type="submit" value="Non Financial Request" class="btn add">
+        </a>
+      </div>
+      </div>
+
+
         
                 </div>
     </section>

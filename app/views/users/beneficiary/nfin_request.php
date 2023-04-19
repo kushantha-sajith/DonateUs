@@ -6,7 +6,7 @@
     <title>Donation Requests></title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donation_req.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/add_donation_req.css" />
-    <!-- <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" /> -->
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/styles.css" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet"
@@ -42,7 +42,7 @@
             <div class="container">
                 <header>Donation Request</header>
 
-                <form method="post" action="<?php echo URLROOT; ?>/beneficiary/addRequest">
+                <form method="post" action="<?php echo URLROOT; ?>/beneficiary/addNonFinancialRequest">
                     <div class="formfirst">
                         <div class="details personal">
                             <div class="fields">
@@ -68,9 +68,9 @@
 
 
                                 <div class="input-field">
-                                    <label>Amount / Quantity </label>
+                                    <label>Quantity </label>
                                     
-                                    <input type="text" placeholder="Enter Amount/Quantity" name="quantity" value="<?php echo $data['quantity']; ?>">
+                                    <input type="text" placeholder="Enter Quantity" name="quantity" value="<?php echo $data['quantity']; ?>">
                                     <span class="error"><?php echo $data['quantityErr']; ?></span>
                                 </div>
 
@@ -89,14 +89,19 @@
                                     <span class="error"><?php echo $data['contactErr']; ?></span>
                                 </div>
 
-                                <div class="input-field">
-                                    <label>Donation Type </label>
-                                    <select>
-                                        <option disabled selected>Select Donation Type</option>
-                                        <option>Financial</option>
-                                        <option>Foods</option>
-                                        <option>Stationaries</option>
-                                    </select>
+                                 <div>  
+                                    <table>
+                                <tr>
+                                    <td>
+                                   <label>Donation Type</label>
+                                <select class="dropdown" name="don_type" id="don_type">
+                                     <?php foreach($data['categories'] as $categories) : ?>
+                                     <option <?php if($categories->id==$data['categories']) {echo "selected";} ?> value="<?php echo $categories->id; ?>"><?php echo $categories->category_name; ?></option>
+                                     <?php endforeach; ?>
+                                </select></td>
+                                <td></td>
+                                </tr>
+                                </table>
                                 </div>
 
                                 <div class="input-field">

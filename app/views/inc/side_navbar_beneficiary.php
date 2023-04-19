@@ -17,13 +17,13 @@
         </li>
         
         <li>
-            <a href="<?php echo URLROOT; ?>/beneficiary/requests">
+            <a href="<?php echo URLROOT; ?>/beneficiary/donationRequest">
                 <i class="bx bx-list-check"></i>
                 <span class="links_name">Donation Requests</span>
             </a>
         </li>
         <li>
-            <a href="<?php echo URLROOT; ?>/beneficiary/donationHistory_beneficiary">
+            <a href="<?php echo URLROOT; ?>/beneficiary/donationHistoryBeneficiary">
                 <i class="bx bx-history"></i>
                 <span class="links_name">Donation History</span>
             </a>
@@ -44,14 +44,14 @@
         </li>
 
         <li id="item1">
-          <a href="#">
+          <a href="<?php echo URLROOT; ?>/beneficiary/viewAcceptedReservation">
             <i class="bx bxs-calendar-check"></i>
             <span class="links_name">Calendar</span>
           </a>
         </li>
 
         <li id="item2">
-          <a href="#">
+          <a href="<?php echo URLROOT; ?>/beneficiary/viewReservation">
             <i class="bx bxs-calendar-check"></i>
             <span class="links_name">Reservations</span>
           </a>
@@ -87,15 +87,15 @@
         menuitem1.style.display = "none";
           menuitem2.style.display = "none";
           menuitem3.style.display = "none";
-          document.getElementById("corp1").style.display = "none";
-          document.getElementById("corp2").style.display = "none";
-          document.getElementById("corp3").style.display = "none";
-          document.getElementById("corp4").style.display = "none";
-          document.getElementById("corp5").style.display = "none";
-          document.getElementById("corp6").style.display = "none";
-          document.getElementById("corp7").style.display = "none";
-          document.getElementById("corp8").style.display = "none";
-          document.getElementById("corp9").style.display = "none";
+          document.getElementById("org1").style.display = "none";
+          document.getElementById("org2").style.display = "none";
+          document.getElementById("org3").style.display = "none";
+          document.getElementById("org4").style.display = "none";
+          document.getElementById("org5").style.display = "none";
+          document.getElementById("org6").style.display = "none";
+          document.getElementById("org7").style.display = "none";
+          document.getElementById("org8").style.display = "none";
+          document.getElementById("org9").style.display = "none";
         break;
       case '5':
         menuitem1.style.display = "block";

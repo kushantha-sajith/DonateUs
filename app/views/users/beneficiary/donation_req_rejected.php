@@ -3,8 +3,15 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Donation Requests</title>
-    <link rel="stylesheet" href="donation_req.css" />
+    <title>Rejected Requests</title>
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/add_donation_req.css" /> 
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donation_req.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
+    <!-- <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donation_history.css" /> -->
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_user.css" />
+
+    <!-- <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donation_list.css" /> -->
+
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet"
@@ -15,118 +22,39 @@
 </head>
 
 <body>
-    <!--navigation bar left-->
-    <div class="sidebar">
-        <div class="logo-details">
-            <!-- <i class="bx bx-grid-alt"></i>
-      <span class="logo_name">Dashboard</span> -->
-            <img src="logo_.png" class="logo">
-        </div>
-        <div class="welcome">
-            <span>Welcome</span>
-        </div>
-        <ul class="nav-links">
-            <li>
-                <a href="1.html">
-                    <i class="bx bx-grid-alt"></i>
-                    <span class="links_name">Dashboard</span>
-                </a>
-            </li>
-            <li>
-                <a href="users.html">
-                    <i class="bx bx-user"></i>
-                    <span class="links_name">Users</span>
-                </a>
-            </li>
-            <li>
-                <a href="donation_req_ui.html">
-                    <i class="bx bx-list-check"></i>
-                    <span class="links_name">Donation Requests</span>
-                </a>
-            </li>
-            <li>
-                <a href="donation_history.html">
-                    <i class="bx bx-history"></i>
-                    <span class="links_name">Donation History</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="bx bx-message-alt-detail"></i>
-                    <span class="links_name">Feedbacks</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="bx bx-list-ul"></i>
-                    <span class="links_name">Donation Categories</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="bx bx-conversation"></i>
-                    <span class="links_name">Forum</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="bx bx-calendar-check"></i>
-                    <span class="links_name">Events</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="bx bx-pie-chart-alt"></i>
-                    <span class="links_name">Stats</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="bx bxs-report"></i>
-                    <span class="links_name">Reports</span>
-                </a>
-            </li>
-            <li class="log_out">
-                <a href="#">
-                    <i class="bx bx-log-out"></i>
-                    <span class="links_name">Log out</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <!--navigation bar left end-->
+<?php require APPROOT.'/views/inc/side_navbar_beneficiary.php';?>
 
     <!--home section start-->
     <section class="home-section">
         <nav>
             <div class="sidebar-button">
                 <i class="bx bx-menu sidebarBtn"></i>
-                <span class="dashboard">Donation Requests</span>
+                <span class="dashboard">Donation Request</span>
             </div>
 
             <div class="profile-details">
                 <div class="notification">
                     <i class="bx bx-bell bx-tada notification"></i>
                 </div>
-                <a href="profile_update.html"><img src="1.jpeg" alt="" /></a>
+                <a href="<?php echo URLROOT; ?>/pages/profileBeneficiary"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
                 <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
                 <!-- <i class='bx bx-chevron-down'></i> -->
             </div>
         </nav>
 
-        <main>
-            <div class="select-menu">
+        <div class="main-container">
+             <div class="select-menu">
             
                 <div class="select-btn">
                     <span class="material-icons">
-                        error
+                        pending_actions
                         </span>
-                    <span class="option-text">Rejected Requests</a></span>
+                    <span class="option-text">Pending Requests</a></span>
                     <i class="bx bx-chevron-down"></i>
                 </div>
 
                 <ul class="options">
-                    <a href="donation_req_Ui.html" style="text-decoration:none">
+                    <a href="<?php echo URLROOT; ?>/beneficiary/donationRequest" style="text-decoration:none">
                         <li class="option">
                             <span class="material-icons" style="color: black; margin-right: 1rem;" >
                                 pending_actions
@@ -135,7 +63,7 @@
                             <span class="option-text"> Pending Requests</span>
                         </li>
                     </a>
-                    <a href="donation_req_rejected.html" style="text-decoration:none">
+                    <a href="<?php echo URLROOT; ?>/beneficiary/donationReject" style="text-decoration:none">
                         <li class="option">
                             <span class="material-icons" style="color: black; margin-right: 1rem;">
                                 error
@@ -143,7 +71,7 @@
                             <span class="option-text">Rejected Requests</span>
                         </li>
                     </a>
-                    <a href="donation_req_ongoing.html" style="text-decoration:none">
+                    <a href="<?php echo URLROOT; ?>/beneficiary/donationOngoing" style="text-decoration:none">
                         <li class="option">
                             <span class="material-icons" style="color: black; margin-right: 1rem;">
                                 receipt_long
@@ -151,77 +79,92 @@
                             <span class="option-text">Ongoing Requests</span>
                         </li>
                     </a>
-                    <a href="donation_req_completed.html" style="text-decoration:none">
+                    <a href="<?php echo URLROOT; ?>/beneficiary/donationCompleted" style="text-decoration:none">
                         <li class="option">
                             <span class="material-icons" style="color: black; margin-right: 1rem;">
                                 assignment_turned_in
                                 </span>
                             <span class="option-text">Completed Requests</span>
                         </li>
-                    </a>
-
-                    
+                    </a>    
 
                 </ul>
-            </div>
-            
+            </div> 
+
+        </div> 
+
+             <div>
+      <table class="main-table">
+          <thead>
+            <!-- <th style="text-align:left;"><span>Id</span></th> -->
+            <th style="text-align:left;"><span>Request Title</span></th>
+            <!-- <th style="text-align:left;"><span>Description</span></th> -->
+            <th style="text-align:left;"><span>Beneficiary Name</span></th>
+            <th style="text-align:left;"><span>Due Date</span></th>
+            <!-- <th style="text-align:left;"><span>Contact</span></th> -->
+            <th style="text-align:left;"><span>Total Quantity/Amount</span></th>
+            <th style="text-align:left;"><span>Received Quantity/Amount</span></th>
+            <th style="text-align:left;"><span>Donation Type</span></th>
+            <th style="text-align:left;"></th>
+
+            <!-- <th style="text-align:left;"><span>Amount/Quantity</span></th> -->
+            <!-- <th style="text-align:left;"><span>Contact</span></th> -->
+            <!-- <th style="text-align:left;"><span>user_id</span></th>
+            <th style="text-align:left;"><span>cat_id</span></th> -->                   
+          </thead>
+          <tbody>
 
 
-            <div class="cards_heading head">
-                <div>ID</div>
-                <div>Beneficiary Name</div>
-                <div>Beneficiary Type</div>
-                <div>Contact Number</div>
-                <div>Donation Type</div>
-                <div>Amount / Quentity</div>
-                <div></div>
-            </div>
-            <div class="cards_heading cards_color">
-                <div>001</div>
-                <div>Kushantha Lakshan</div>
-                <div>Individual</div>
-                <div>0767128051</div>
-                <div>Money</div>
-                <div>100,000</div>
-                <div>
-                   <center> <a href="donation_req.html"> <button class="btnview" >View More</button> </a></center>
+          <?php foreach($data['requests'] as $requests ): ?>
+          <?php if($requests->status==2){ ?>
+
+                <tr class="t-row">
+                    <td style="text-align:left;"><?php echo $requests->request_title; ?></td>
+                    <td style="text-align:left;"><?php echo $requests->name; ?></td>
+                    <td style="text-align:left;"><?php echo $requests->due_date; ?></td>
+
+                    <?php if($requests->cat_id >1){ ?>
+                   
+                        <?php foreach($data['nfinancials'] as $nfinancials ): ?>
+                            <?php if($requests->id == $nfinancials->req_id){ ?>
+                            <td style="text-align:left;"><?php  echo $nfinancials->quantity;  ?></td>
+                            <td style="text-align:left;"><?php echo $nfinancials->received_quantity ; ?></td>
+                            <td style="text-align:left;">Non-Financial</td>
+                            <td>  <a href="<?php echo URLROOT; ?>/beneficiary/viewNonFinancialRequest " class="btn-edit">View More</a></td> 
+                      
+                        <?php   } ?>
+                    <?php endforeach; ?>
+                    <?php } else{ ?>
+                        <?php foreach($data['financials'] as $financials ): ?>
+                            <?php if($requests->id == $financials->req_id){ ?>
+                            <td style="text-align:left;"><?php  echo $financials->total_amount;  ?></td>
+                            <td style="text-align:left;"><?php echo $financials->received_amount ; ?></td>
+                            <td style="text-align:left;">Financial</td>
+                            <td>  <a href="<?php echo URLROOT; ?>/beneficiary/viewFinancialRequest " class="btn-edit">View More</a></td> 
+                    
+                    <?php   } ?>
+                    <?php endforeach; ?>
+                     <?php } ?>
+                            </tr>  
+            <?php } ?>
+
+            <?php endforeach; ?>
+
+            </tbody> 
+        </table>
+
+      </div>
+        
                 </div>
-             </div>
-             <div class="cards_heading cards_color">
-                <div>001</div>
-                <div>Kushantha Lakshan</div>
-                <div>Individual</div>
-                <div>0767128051</div>
-                <div>Money</div>
-                <div>100,000</div>
-                <div>
-                   <center> <a href="donation_req.html"> <button class="btnview" >View More</button> </a></center>
-                </div>
-             </div>
-
-
-        </main>
-
     </section>
     <!--home section end-->
 
 
     <script>
-        let sidebar = document.querySelector(".sidebar");
-        let sidebarBtn = document.querySelector(".sidebarBtn");
-        let welcome = document.querySelector(".welcome");
-        sidebarBtn.onclick = function () {
-            sidebar.classList.toggle("active");
-            if (sidebar.classList.contains("active")) {
-                sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
-                welcome.style.display = "none";
-            } else {
-                sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-                welcome.style.display = "block";
-            }
-        };
+       
+
         // js for drop down list 
-        const optionMenu = document.querySelector(".select-menu"),
+       const optionMenu = document.querySelector(".select-menu"),
             selectBtn = optionMenu.querySelector(".select-btn"),
             options = optionMenu.querySelectorAll(".option"),
             sBtn_text = optionMenu.querySelector(".sBtn-text");

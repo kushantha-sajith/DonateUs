@@ -2,9 +2,10 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <title>Dashboard</title>
+    <title>Profile</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/stylesdash.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/profile.css" />
     <link
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
       rel="stylesheet"
@@ -14,78 +15,7 @@
   
   <body>
     <!--navigation bar left-->
-    <div class="sidebar">
-      <div class="logo-details">
-        <i class="bx bx-grid-alt"></i>
-        <!-- <h1><?php echo $data['title']; ?></h1> -->
-        <span class="logo_name">Dashboard</span>
-      </div>
-      <div class="welcome">
-        <span>Welcome</span>
-      </div>
-      <ul class="nav-links">
-        <li>
-          <a href="#">
-            <i class="bx bx-grid-alt"></i>
-            <span class="links_name">Dashboard</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-list-check"></i>
-            <span class="links_name">Donation Requests</span>
-          </a>
-        </li>
-        <li>
-        <a href="<?php echo URLROOT; ?>/donor/donationHistory_donor">
-            <i class="bx bx-history"></i>
-            <span class="links_name">Donation History</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-conversation"></i>
-            <span class="links_name">Forum</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-calendar-check"></i>
-            <span class="links_name">Events</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bx-pie-chart-alt"></i>
-            <span class="links_name">Stats</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="bx bxs-report"></i>
-            <span class="links_name">Reservations</span>
-          </a>
-        </li>
-        <li id="item1">
-          <a href="#">
-            <i class="bx bxs-report"></i>
-            <span class="links_name">Sponsor</span>
-          </a>
-        </li>
-        <li id="item2">
-          <a href="#">
-            <i class="bx bxs-report"></i>
-            <span class="links_name">Reports</span>
-          </a>
-        </li>
-        <li class="log_out">
-          <a href="<?php echo URLROOT; ?>/users/logout">
-            <i class="bx bx-log-out"></i>
-            <span class="links_name">Log out</span>
-          </a>
-        </li>
-      </ul>
-    </div>
+    <?php require APPROOT.'/views/inc/side_navbar_beneficiary.php';?>
     <!--navigation bar left end-->
 
     <!--home section start-->
@@ -100,125 +30,112 @@
           <div class="notification">
             <i class="bx bx-bell bx-tada notification"></i>
           </div>
-            <a href="<?php echo URLROOT; ?>/beneficiary/profile_beneficiary"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
+          <a href="<?php echo URLROOT; ?>/pages/profileBeneficiary"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
+            <!-- <a href="<?php echo URLROOT; ?>/pages/profileBeneficiary"><img src="<?php echo URLROOT; ?>/img/<?php echo $data['prof_img'];  ?>" alt="" /></a> -->
           <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
           <!-- <i class='bx bx-chevron-down'></i> -->
         </div>
       </nav>
-      <div class="main-container">
-      <div class="profile">
-                      <img class="img_profile" src="<?php echo URLROOT; ?>/img/img_profile.png" alt="img_profile" href="">
-                      <form action="<?php echo URLROOT; ?>/beneficiary/edit_profile_beneficiary" method="POST">
-                      <table class="prof_data" >
-                        <?php foreach($data['userdata'] as $user) : ?>
-                        <tr id = "ind1"><td>
-                            <label>Full Name</label>
-                            <input type="text" id="fullname" name="fullname" value="<?php echo $user->f_name." ".$user->l_name; ?>"></td>
-                            <td><label>Email</label>
-                            <input type="text" id="email" name="email" placeholder="" value="<?php echo $user-> email; ?>"></td>
-                        </tr>
+      <main>
+            <div class="container">
+                <header>Profile Details</header>
 
-                        <tr id = "corp1"><td>
-                            <label>Company Name</label>
-                            <input type="text" id="fullname" name="fullname" value="<?php echo $user-> c_name; ?>"></td>
-                            <td><label>Email</label>
-                            <input type="text" id="email" name="email" placeholder="" value="<?php echo $user-> email; ?>"></td>
-                        </tr>
+                <form action="#">
+                    <div class="formfirst">
+                        <div class="details personal">
+                            <span id ="ind1"class="title"><u>Personal Details</u></span>
+                            <span id ="org1"class="title"><u>organization Details</u></span>
+                            <div class="fields">
+                            <?php foreach($data['userdata'] as $user) : ?>
+                              <?php foreach($data['personaldata'] as $personaldata) : ?>
+                                <div id="ind2" class="input-field">
+                                    <label>Full Name</label>
+                                    <input type="text" placeholder="" value="<?php echo $personaldata->f_name." ".$personaldata->l_name; ?>" disabled>
+                                </div>
+                                <div id="ind3" class="input-field">
+                                    <label>NIC</label>
+                                    <input type="text" placeholder="" value="<?php echo $personaldata->NIC; ?>" disabled>
+                                </div>
+                                <div id="org2" class="input-field">
+                                    <label>Company Name</label>
+                                    <input type="text" placeholder="" value="<?php echo $personaldata->comp_name; ?>" disabled>
+                                </div>
 
-                        <tr><td>
-                            <label>Contact Number</label>
-                            <input type="text" id="contact" name="contact" value="<?php echo $user->contact; ?>"></td>
-                            <td id = "ind2">
-                            <label>City</label>
-                            <input type="text" id="city" name="city" value="<?php echo $user->city; ?>"></td>
-                        </tr>
+                                <div id="org3" class="input-field">
+                                    <label>Email Address</label>
+                                    <input type="text" placeholder="" value="<?php echo $user-> email; ?>" disabled>
+                                </div>
 
-                        <tr id = "corp2"><td>
-                            <label>Employee Id</label>
-                            <input type="text" id="fullname" name="fullname" value="<?php echo $user-> eid; ?>"></td>
-                            <td><label>Designation</label>
-                            <input type="text" id="email" name="email" placeholder="" value="<?php echo $user-> designation; ?>"></td>
-                        </tr>
+                                <div id="ind4" class="input-field">
+                                    <label>User Email</label>
+                                    <input type="text" placeholder="" value="<?php echo $user-> email; ?>" disabled>
+                                </div>
 
-                           <?php endforeach; ?>
-                        <tr>
-                            <td><input type="submit" value="Update Profile"></td>
-                            <td><input type="button" value="Update Password" onclick=""></td>
-                        </tr>
-                        
-                      </table>
-                      <input class="btndelete" type="button" value="Delete Account" onclick="">
-                      </form>
+                                <div id="ind5" class="input-field">
+                                    <label>Contact Number</label>
+                                    <input type="text" placeholder="" value="<?php echo $user->tp_number; ?>" disabled>
+                                </div>
+                                <div class="input-field">
+                                    <label>City</label>
+                                    <input type="text" placeholder="" value="<?php echo $personaldata->city; ?>" disabled>
+                                </div>
+                                <div class="input-field">
+                                    <label>District</label>
+                                    <input type="text" placeholder="" value="<?php echo $data['dist']; ?>" disabled>
+                                </div>
+                              </div>
+                              <span id ="org4" class="title"><u>Contact Person Details</u></span>
+                              <div id="org9" class="fields">
+                                
+                                <div id ="org5" class="input-field">
+                                    <label>Full Name</label>
+                                    <input type="text" placeholder="" value="<?php echo $personaldata->emp_name; ?>" disabled>
+                                </div>
+                                <div id ="org6" class="input-field">
+                                    <label>Employee ID</label>
+                                    <input type="text" placeholder="" value="<?php echo $personaldata->emp_id; ?>" disabled>
+                                </div>
+                                <div id ="org7" class="input-field">
+                                    <label>Designation</label>
+                                    <input type="text" placeholder="" value="<?php echo $personaldata->designation; ?>" disabled>
+                                </div>
+                                <div id ="org8" class="input-field">
+                                    <label>Contact Number</label>
+                                    <input type="text" placeholder="" value="<?php echo $user->tp_number; ?>" disabled>
+                                </div>
+                                <?php endforeach; ?>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                       
+                       
                     </div>
-                    
+                </form>
+                <div class="updatebtn">
+                    <a href="<?php echo URLROOT; ?>/beneficiary/editProfileBeneficiary">
+                        <button class="edit" style="text-decoration: none;">Edit Profile Details
+                        </button>
+                    </a>
+
+                    <a href="<?php echo URLROOT; ?>/beneficiary/changePasswordBeneficiary">
+                        <button class="changepassword" style="text-decoration: none;">Change Password</button>
+                    </a>
+
+                    <a href="<?php echo URLROOT; ?>/beneficiary/deleteProfileBeneficiary">
+                        <button class="delete" style="text-decoration: none;">Delete Profile Details</button>
+                    </a>
                 </div>
-      </div>
+                
+            </div>
+
+
+
+        </main>
     </section>
     <!--home section end-->
 
-    <script>
 
-window.onload = function () {
-        let type = "<?php echo $_SESSION['user_type']; ?>";
-        // let individual ="ind", corporate ="corp";
+    
 
-        // let ind = document.getElementsById(individual);
-        // let corp = document.getElementsById(corporate);
-
-        // let i,j; 
-        // if(type === "3" ){
-          
-        // for (i = 0; i < ind.length; i++) {
-        //     ind[i].style.display = "none";
-        // }
-        
-        // for (j = 0; j < corp.length; j++) {
-        //     corp[j].style.display = "block";
-        // }
-         
-        // }else{
-
-        //   for (i = 0; i < ind.length; i++) {
-        //     ind[i].style.display = "block";
-        // }
-        
-        // for (j = 0; j < corp.length; j++) {
-        //     corp[j].style.display = "none";
-        // }
-        // }
-        if(type === "5" ){
-          document.getElementById("ind1").style.display = "none";
-          document.getElementById("ind2").style.display = "none";
-          document.getElementById("ind3").style.display = "none";
-          document.getElementById("ind4").style.display = "none";
-          document.getElementById("ind5").style.display = "none";
-        }
-        else{
-          document.getElementById("corp1").style.display = "none";
-          document.getElementById("corp2").style.display = "none";
-          document.getElementById("corp3").style.display = "none";
-          document.getElementById("corp4").style.display = "none";
-          document.getElementById("corp5").style.display = "none";
-          document.getElementById("corp6").style.display = "none";
-          document.getElementById("corp7").style.display = "none";
-          document.getElementById("corp8").style.display = "none";
-          document.getElementById("corp9").style.display = "none";
-        }
-      };
-
-      let sidebar = document.querySelector(".sidebar");
-      let sidebarBtn = document.querySelector(".sidebarBtn");
-      let welcome = document.querySelector(".welcome");
-      sidebarBtn.onclick = function () {       
-        sidebar.classList.toggle("active");
-        if (sidebar.classList.contains("active")) {
-          sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
-          welcome.style.display = "none";
-        } else {
-          sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-          welcome.style.display = "block";
-        }
-      };
-    </script>
   </body>
 </html>

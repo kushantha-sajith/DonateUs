@@ -86,8 +86,13 @@
                             </select></td>
                             <td></td>
                             </tr>
+                            <tr>
+                            <td><p class="error"><?php echo $data['district_err_ind']; ?></p></td>
+                            <td></td>
+                        </tr>
 
                         <tr><td>
+                            <!-- <form action="/beneficiary/upload" method="post" enctype="multipart/form-data"> -->
                             <label>Proof of Identity</label>
                            
                             <div class="tooltip">
@@ -108,12 +113,9 @@
 
                             <tr><td><p class="error"><?php echo $data['address_err_ind']; ?></p></td>
                         <td><p class="error"><?php echo $data['identity_err_ind']; ?></p></td></tr>
-                            
+                        <!-- </form>   -->
                         </tr>
-                        <tr>
-                            <td><p class="error"><?php echo $data['district_err_ind']; ?></p></td>
-                            <td></td>
-                        </tr>
+                       
                        
                         <tr >
                             <td  colspan="2"><input class="btnsubmit" type="submit" value="Register"></td>
@@ -193,8 +195,8 @@
                                 <span class="tooltiptext">Any accepptable document of pdf format. <br> ex: Utility bill, Posted Mail with name of applicant  </span>
                             </div>
                             <tr>
-                                <td><input type="file" id="address" name="address" <?php echo $data['address']; ?>></td></td>
-                                <td><input type="file" id="identity" name="identity" <?php echo $data['identity']; ?>></td></td>
+                                <td><input type="file" id="address" name="address"  accept=".pdf"<?php echo $data['address']; ?>></td></td>
+                                <td><input type="file" id="identity" name="identity"  accept=".pdf" <?php echo $data['identity']; ?>></td></td>
                             </tr>
 
                             <tr><td><p class="error"><?php echo $data['address_err']; ?></p></td>
