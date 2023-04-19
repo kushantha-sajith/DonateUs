@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Completed Requests</title>
+    <title>Donation Requests</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/add_donation_req.css" /> 
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donation_req.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
@@ -49,7 +49,7 @@
                     <span class="material-icons">
                         pending_actions
                         </span>
-                    <span class="option-text">Pending Requests</a></span>
+                    <span class="option-text">Select Requests</a></span>
                     <i class="bx bx-chevron-down"></i>
                 </div>
 
@@ -113,11 +113,7 @@
             <th style="text-align:left;"><span>cat_id</span></th> -->                   
           </thead>
           <tbody>
-
-
           <?php foreach($data['requests'] as $requests ): ?>
-          <?php if($requests->status==3){ ?>
-
                 <tr class="t-row">
                     <td style="text-align:left;"><?php echo $requests->request_title; ?></td>
                     <td style="text-align:left;"><?php echo $requests->name; ?></td>
@@ -145,15 +141,28 @@
                     <?php   } ?>
                     <?php endforeach; ?>
                      <?php } ?>
-                            </tr>  
-            <?php } ?>
-
+                            </tr>           
             <?php endforeach; ?>
-
             </tbody> 
         </table>
 
       </div>
+
+      <div class="tablecategory">
+      <div>
+        <a href="<?php echo URLROOT; ?>/beneficiary/addFinancialRequest">
+        <input type="submit" value="Financial Request" class="btn add">
+        </a>
+      </div>
+
+      <div>
+        <a href="<?php echo URLROOT; ?>/beneficiary/addNonFinancialRequest">
+        <input type="submit" value="Non Financial Request" class="btn add">
+        </a>
+      </div>
+      </div>
+
+
         
                 </div>
     </section>

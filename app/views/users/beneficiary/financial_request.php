@@ -42,7 +42,7 @@
             <div class="container">
                 <header>Donation Request</header>
 
-                <form method="post" action="<?php echo URLROOT; ?>/beneficiary/addRequest">
+                <form method="post" action="<?php echo URLROOT; ?>/beneficiary/addFinancialRequest">
                     <div class="formfirst">
                         <div class="details personal">
                             <div class="fields">
@@ -68,10 +68,10 @@
 
 
                                 <div class="input-field">
-                                    <label>Amount / Quantity </label>
+                                    <label>Amount </label>
                                     
-                                    <input type="text" placeholder="Enter Amount/Quantity" name="quantity" value="<?php echo $data['quantity']; ?>">
-                                    <span class="error"><?php echo $data['quantityErr']; ?></span>
+                                    <input type="text" placeholder="Enter Amount" name="amount" value="<?php echo $data['amount']; ?>">
+                                    <span class="error"><?php echo $data['amountErr']; ?></span>
                                 </div>
 
 
@@ -89,7 +89,7 @@
                                     <span class="error"><?php echo $data['contactErr']; ?></span>
                                 </div>
 
-                                <div class="input-field">
+                                <!-- <div class="input-field">
                                     <label>Donation Type </label>
                                     <select>
                                         <option disabled selected>Select Donation Type</option>
@@ -97,7 +97,7 @@
                                         <option>Foods</option>
                                         <option>Stationaries</option>
                                     </select>
-                                </div>
+                                </div> -->
 
                                 <div class="input-field">
                                     <label>Location / City </label>
@@ -110,7 +110,7 @@
                                     <label>Due Date</label>
                                     <!-- <input type="date" placeholder="Due Date"> -->
                                     <input type="date" placeholder="Enter Due Date" name="duedate" value="<?php echo $data['duedate']; ?>">
-                                    <span class="error"><?php echo $data['titleErr']; ?></span>
+                                    <span class="error"><?php echo $data['duedateErr']; ?></span>
                                 </div>
 
 
@@ -149,6 +149,31 @@
                                 <p>Image size must be less than <span>2MB</span></p>
                             </div>
                             <!-- <button class="select-image" id="select_three">Select Image</button> -->
+                        </div>
+
+                        <span class="title"><u>Bank Pass Book</u></span>
+                        <div class="photo-container" id="grame">
+                            <input type="file" id="file3" accept="image/*" hidden name="passbook" value="<?php echo $data['passbook']; ?>">
+                            <div class="img-area" id="area-three" data-img="">
+                                <i class='bx bxs-cloud-upload icon'></i>
+                                <h3>Upload Image</h3>
+                                <p>Image size must be less than <span>2MB</span></p>
+                            </div>
+                            <!-- <button class="select-image" id="select_three">Select Image</button> -->
+                        </div>
+
+                        <div class="input-field">
+                                <label>Bank Account Number </label>
+                                <!-- <input type="text" placeholder="Location"> -->
+                                <input type="text" placeholder="Enter bank account number" name="accnumber" value="<?php echo $data['accnumber']; ?>">
+                                <span class="error"><?php echo $data['accnumberErr']; ?></span>
+                        </div>
+
+                        <div class="input-field">
+                                <label>Bank Name </label>
+                                <!-- <input type="text" placeholder="Location"> -->
+                                <input type="text" placeholder="Enter Bank Name" name="bankname" value="<?php echo $data['bankname']; ?>">
+                                <span class="error"><?php echo $data['banknameErr']; ?></span>
                         </div>
 
                         <!-- <div class="flex">
