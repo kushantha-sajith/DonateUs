@@ -383,4 +383,100 @@ class AdminPage
         $results = $this->db->resultSet();
         return $results;
     }
+
+    /**
+     * @param $id
+     * @return bool
+     */
+    public function acceptRequest($id)
+    {
+        $this->db->query('UPDATE donation_req SET status = 1 WHERE id = :id');
+        $this->db->bind(':id', $id);
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * @param $id
+     * @return bool
+     */
+    public function acceptEvent($id)
+    {
+        $this->db->query('UPDATE events SET status = 1 WHERE id = :id');
+        $this->db->bind(':id', $id);
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * @param $id
+     * @return bool
+     */
+    public function acceptUser($id)
+    {
+        $this->db->query('UPDATE reg_user SET verification_status = 1 WHERE id = :id');
+        $this->db->bind(':id', $id);
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * @param $id
+     * @param $note
+     * @return bool
+     */
+    public function rejectRequest($id, $note)
+    {
+        $this->db->query('UPDATE donation_req SET status = 2, rejection_note = :note WHERE id = :id');
+        $this->db->bind(':id', $id);
+        $this->db->bind(':note', $note);
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * @param $id
+     * @param $note
+     * @return bool
+     */
+    public function rejectEvent($id, $note)
+    {
+        $this->db->query('UPDATE events SET status = 2, rejection_note = :note WHERE id = :id');
+        $this->db->bind(':id', $id);
+        $this->db->bind(':note', $note);
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * @param $id
+     * @param $note
+     * @return bool
+     */
+    public function rejectUser($data)
+    {
+        $this->db->query('UPDATE reg_user SET verification_status = 2, rejection_note = :note WHERE id = :id');
+        $this->db->bind(':id', $data['id']);
+        $this->db->bind(':note', $data['note']);
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

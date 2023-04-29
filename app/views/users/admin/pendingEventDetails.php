@@ -2,20 +2,22 @@
 <html lang="en" dir="ltr">
 
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>Dashboard</title>
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donation_details.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css"/>
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donation_details.css"/>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0"/>
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 
 <body>
 <!--navigation bar left-->
-<?php require APPROOT.'/views/inc/side_navbar.php';?>
+<?php require APPROOT . '/views/inc/side_navbar.php'; ?>
 <!--navigation bar left end-->
 
 <!--home section start-->
@@ -29,7 +31,7 @@
             <div class="notification">
                 <i class="bx bx-bell bx-tada notification"></i>
             </div>
-            <img src="<?php echo URLROOT; ?>/img/profile_pic.svg" alt="" />
+            <img src="<?php echo URLROOT; ?>/img/profile_pic.svg" alt=""/>
             <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
             <!-- <i class='bx bx-chevron-down'></i> -->
         </div>
@@ -96,8 +98,29 @@
                     </div>
                     <?php endforeach; ?>
                     <div class="flex">
-                        <button class="abc">Accept</button>
-                        <button class="abc">Reject</button>
+                        <button type="button" id="accept"
+                                onclick="document.getElementById('confirm-modal').style.display='block'"
+                                class="abc">Accept
+                        </button>
+                        <div id="confirm-modal" class="modal">
+                            <div class="modal-content">
+                                <h2>Are you sure?</h2>
+                                <div class="button-container">
+                                    <button id="confirm-yes" type="button"
+                                            onclick="location.href='<?php echo URLROOT; ?>/adminPages/acceptBeneficiary/<?php echo $userData->id; ?>'">
+                                        Yes
+                                    </button>
+                                    <button id="confirm-no" type="button"
+                                            onclick="document.getElementById('confirm-modal').style.display='none'">
+                                        No
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button"
+                                onclick="location.href='<?php echo URLROOT; ?>/adminPages/rejectEventNote/<?php echo $userData->id; ?>'"
+                                class="abc">Reject
+                        </button>
                     </div>
                 </div>
             </form>
