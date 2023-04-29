@@ -41,7 +41,7 @@
         <div class="container">
             <header>User Details</header>
             <?php foreach ($data['userData'] as $userData): ?>
-                <form action="#">
+                <form action="">
                     <div class="formfirst">
                         <div class="details personal">
                             <div class="fields">
@@ -99,8 +99,29 @@
                             </div>
                         </div>
                         <div class="flex">
-                            <button type="submit" class="abc">Accept</button>
-                            <button type="button" class="abc">Reject</button>
+                            <button type="button" id="accept"
+                                    onclick="document.getElementById('confirm-modal').style.display='block'"
+                                    class="abc">Accept
+                            </button>
+                            <div id="confirm-modal" class="modal">
+                                <div class="modal-content">
+                                    <h2>Are you sure?</h2>
+                                    <div class="button-container">
+                                        <button id="confirm-yes" type="button"
+                                                onclick="location.href='<?php echo URLROOT; ?>/adminPages/acceptBeneficiary/<?php echo $userData->id; ?>'">
+                                            Yes
+                                        </button>
+                                        <button id="confirm-no" type="button"
+                                                onclick="document.getElementById('confirm-modal').style.display='none'">
+                                            No
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button"
+                                    onclick="location.href='<?php echo URLROOT; ?>/adminPages/rejectUserNote/<?php echo $userData->id; ?>'"
+                                    class="abc">Reject
+                            </button>
                         </div>
                     </div>
                 </form>
@@ -206,7 +227,6 @@
             alert("Image size more than 2MB");
         }
     })
-
 </script>
 
 </body>

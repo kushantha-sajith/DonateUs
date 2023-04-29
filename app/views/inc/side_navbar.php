@@ -5,9 +5,9 @@
         <!--        <span class="logo_name">Dashboard</span>-->
         <img src="<?php echo URLROOT; ?>/img/logo_.png" alt="logo" class="logo"/>
     </div>
-<!--    <div class="welcome">-->
-<!--        <span>Welcome</span>-->
-<!--    </div>-->
+    <!--    <div class="welcome">-->
+    <!--        <span>Welcome</span>-->
+    <!--    </div>-->
     <ul class="nav-links">
         <li>
             <a href="<?php echo URLROOT; ?>/pages/admin">
@@ -22,7 +22,7 @@
             </a>
         </li>
         <li>
-            <a href="<?php echo URLROOT;?>/adminPages/verifyBeneficiaries">
+            <a href="<?php echo URLROOT; ?>/adminPages/verifyBeneficiaries">
                 <i class="bx bx-user"></i>
                 <span class="links_name">Verify New Users</span>
             </a>
@@ -39,24 +39,24 @@
                 <span class="links_name">Donation History</span>
             </a>
         </li>
-<!--        <li>-->
-<!--            <a href="#">-->
-<!--                <i class="bx bx-message-alt-detail"></i>-->
-<!--                <span class="links_name">Feedbacks</span>-->
-<!--            </a>-->
-<!--        </li>-->
+        <!--        <li>-->
+        <!--            <a href="#">-->
+        <!--                <i class="bx bx-message-alt-detail"></i>-->
+        <!--                <span class="links_name">Feedbacks</span>-->
+        <!--            </a>-->
+        <!--        </li>-->
         <li>
             <a href="<?php echo URLROOT; ?>/admin/categories">
                 <i class="bx bx-list-ul"></i>
                 <span class="links_name">Donation Categories</span>
             </a>
         </li>
-<!--        <li>-->
-<!--            <a href="#">-->
-<!--                <i class="bx bx-conversation"></i>-->
-<!--                <span class="links_name">Forum</span>-->
-<!--            </a>-->
-<!--        </li>-->
+        <!--        <li>-->
+        <!--            <a href="#">-->
+        <!--                <i class="bx bx-conversation"></i>-->
+        <!--                <span class="links_name">Forum</span>-->
+        <!--            </a>-->
+        <!--        </li>-->
         <li>
             <a href="<?php echo URLROOT; ?>/adminPages/pendingEvents">
                 <i class="bx bx-calendar-check"></i>

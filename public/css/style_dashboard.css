@@ -8,7 +8,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.main-container{
+.main-container {
     padding-top: 100px;
     padding-left: 50px;
     padding-right: 50px;
@@ -102,7 +102,7 @@
     transition: all 0.5s ease;
 }
 
-.sidebar.active~.home-section {
+.sidebar.active ~ .home-section {
     width: calc(100% - 60px);
     left: 60px;
 }
@@ -123,7 +123,7 @@
     transition: all 0.5s ease;
 }
 
-.sidebar.active~.home-section nav {
+.sidebar.active ~ .home-section nav {
     left: 60px;
     width: calc(100% - 60px);
 }
@@ -163,7 +163,7 @@ nav .search-box .bx-search {
     position: absolute;
     height: 40px;
     width: 40px;
-    //background: #0A2558;
+/ / background: #0A2558;
     background: #2697FF;
     right: 5px;
     top: 50%;
@@ -301,7 +301,7 @@ nav .profile-details i {
     font-weight: 500;
 }
 
-.welcome{
+.welcome {
     font-size: 20px;
     font-weight: 500;
     background: #fff;
@@ -313,7 +313,7 @@ nav .profile-details i {
     border-radius: 10px;
 }
 
-.bx-bell{
+.bx-bell {
     padding: 10px 10px;
 }
 
@@ -366,7 +366,7 @@ nav .profile-details i {
     max-width: 100em;
 }
 
-table, tr, td{
+table, tr, td {
     border-collapse: collapse;
     padding: 10px;
 }
@@ -412,16 +412,26 @@ a {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
 }
 
 .modal-content {
     background-color: #fefefe;
-    margin: 100px auto;
+    margin: 200px auto;
     padding: 20px;
     border: 1px solid #888;
     width: 20%;
+    text-align: center;
+}
+
+.modal-content h2 {
+    padding: 10px;
 }
 
 .close {
@@ -574,21 +584,21 @@ a {
     border-radius: 3px;
 }
 
-.icon{
+.icon {
     width: 65px;
 }
 
-.t-table{
+.t-table {
     width: 100%;
     margin: 0 auto;
 }
 
-.logo{
+.logo {
     width: 175px;
     margin: 0 auto;
 }
 
-.pr{
+.pr {
     height: 40px;
     width: 40px;
     border-radius: 6px;
@@ -630,28 +640,28 @@ a {
     font-size: 3.5rem;
 }
 
-.tbl-container{
+.tbl-container {
     display: flex;
     justify-content: space-between;
     position: relative;
     padding: 30px;
 }
 
-.lt{
+.lt {
     width: 65%;
     border-radius: 20px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.3);
     padding: 30px;
 }
 
-.rt{
+.rt {
     width: 25%;
     border-radius: 20px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.3);
     padding: 30px;
 }
 
-.tb{
+.tb {
     padding: 10px;
 }
 
@@ -661,18 +671,27 @@ a {
     flex-direction: column;
 }
 
-.chart1{
+.chart1 {
     width: 50%;
 }
 
-.chart2{
+.chart2 {
     width: 25%;
     display: flex;
     justify-content: center;
 }
 
-canvas{
+canvas {
     padding: 10px;
+}
+
+#confirm-yes, #confirm-no {
+    float: left;
+    width: 50%;
+}
+
+.button-container {
+    display: flex;
 }
 
 /* Responsive Media Query */
@@ -690,19 +709,19 @@ canvas{
         width: calc(100% - 60px);
         left: 60px;
     }
-    
-    .sidebar.active~.home-section {
+
+    .sidebar.active ~ .home-section {
         /* width: calc(100% - 220px); */
         overflow: hidden;
         left: 220px;
     }
-    
+
     .home-section nav {
         width: calc(100% - 60px);
         left: 60px;
     }
-    
-    .sidebar.active~.home-section nav {
+
+    .sidebar.active ~ .home-section nav {
         width: calc(100% - 220px);
         left: 220px;
     }
@@ -721,12 +740,12 @@ canvas{
     nav .profile-details i {
         display: none;
     }
-    
+
     .home-section nav .profile-details {
         height: 50px;
         min-width: 40px;
     }
-    
+
     .home-content .sales-boxes .sales-details {
         width: 560px;
     }
@@ -737,8 +756,8 @@ canvas{
         width: 100%;
         margin-bottom: 15px;
     }
-    
-    .sidebar.active~.home-section nav .profile-details {
+
+    .sidebar.active ~ .home-section nav .profile-details {
         display: none;
     }
 }
