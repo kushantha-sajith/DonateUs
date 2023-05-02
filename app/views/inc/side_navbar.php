@@ -64,13 +64,19 @@
             </a>
         </li>
         <li>
+            <a href="<?php echo URLROOT; ?>/admin/eventHistory">
+                <i class="bx bx-history"></i>
+                <span class="links_name">Event Donation History</span>
+            </a>
+        </li>
+        <li>
             <a href="<?php echo URLROOT; ?>/admin/stats">
                 <i class="bx bx-pie-chart-alt"></i>
                 <span class="links_name">Stats</span>
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="<?php echo URLROOT; ?>/admin/reports">
                 <i class="bx bxs-report"></i>
                 <span class="links_name">Reports</span>
             </a>

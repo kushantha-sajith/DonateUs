@@ -359,11 +359,45 @@ class AdminPages extends Controller
      */
     public function rejectRequest($id)
     {
-        if ($this->adminPageModel->rejectRequest($id)) {
-            //TODO : Send Email
-            redirect('adminPages/pendingRequests');
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+                'id' => $id,
+                'note' => trim($_POST['note']),
+                'note_err' => ''
+            ];
+
+            // Validate data
+            if (empty($data['note'])) {
+                $data['note_err'] = 'Please enter note';
+                redirect('adminPages/rejectReqNote/' . $id);
+            }
+
+            // Make sure no errors
+            if (empty($data['note_err'])) {
+                // Validated
+                if ($this->adminPageModel->rejectRequest($data)) {
+                    //TODO : Send Email
+                    redirect('adminPages/pendingRequests');
+                } else {
+                    die('Something went wrong');
+                }
+            } else {
+                // Load view with errors
+                $this->view('adminPages/rejectReqNote', $data);
+            }
         } else {
-            die('Something went wrong');
+            // Init data
+            $data = [
+                'id' => $id,
+                'note' => '',
+                'note_err' => ''
+            ];
+
+            // Load view
+            $this->view('adminPages/rejectReqNote', $data);
         }
     }
 
@@ -373,11 +407,45 @@ class AdminPages extends Controller
      */
     public function rejectEvent($id)
     {
-        if ($this->adminPageModel->rejectEvent($id)) {
-            //TODO : Send Email
-            redirect('adminPages/pendingEvents');
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+                'id' => $id,
+                'note' => trim($_POST['note']),
+                'note_err' => ''
+            ];
+
+            // Validate data
+            if (empty($data['note'])) {
+                $data['note_err'] = 'Please enter note';
+                redirect('adminPages/rejectEventNote/' . $id);
+            }
+
+            // Make sure no errors
+            if (empty($data['note_err'])) {
+                // Validated
+                if ($this->adminPageModel->rejectEvent($data)) {
+                    //TODO : Send Email
+                    redirect('adminPages/pendingEvents');
+                } else {
+                    die('Something went wrong');
+                }
+            } else {
+                // Load view with errors
+                $this->view('adminPages/rejectEventNote', $data);
+            }
         } else {
-            die('Something went wrong');
+            // Init data
+            $data = [
+                'id' => $id,
+                'note' => '',
+                'note_err' => ''
+            ];
+
+            // Load view
+            $this->view('adminPages/rejectEventNote', $data);
         }
     }
 
@@ -434,5 +502,36 @@ class AdminPages extends Controller
             'note_err' => ''
         ];
         $this->view('users/admin/rejectionEventNote', $data);
+    }
+
+    /**
+     * @param $id
+     * @return void
+     */
+    public function financialDonations($id)
+    {
+        $donationDetails = $this->adminPageModel->getFinancialDonationDetails($id);
+        $data = [
+            'donationDetails' => $donationDetails
+        ];
+        $this->view('users/admin/finDonDetails', $data);
+    }
+
+    public function nonFinancialDonations($id)
+    {
+        $donationDetails = $this->adminPageModel->getNonFinancialDonationDetails($id);
+        $data = [
+            'donationDetails' => $donationDetails
+        ];
+        $this->view('users/admin/nonFinDonDetails', $data);
+    }
+
+    public function eventDonations($id)
+    {
+        $donationDetails = $this->adminPageModel->getEventDonationDetails($id);
+        $data = [
+            'donationDetails' => $donationDetails
+        ];
+        $this->view('users/admin/eventDonDetails', $data);
     }
 }

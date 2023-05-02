@@ -430,15 +430,14 @@ class AdminPage
     }
 
     /**
-     * @param $id
-     * @param $note
+     * @param $data
      * @return bool
      */
-    public function rejectRequest($id, $note)
+    public function rejectRequest($data)
     {
-        $this->db->query('UPDATE donation_req SET status = 2, rejection_note = :note WHERE id = :id');
-        $this->db->bind(':id', $id);
-        $this->db->bind(':note', $note);
+        $this->db->query('UPDATE donation_req SET status = 2, rejection_note = :note, rejected_date = CURDATE() WHERE id = :id');
+        $this->db->bind(':id', $data['id']);
+        $this->db->bind(':note', $data['note']);
         if ($this->db->execute()) {
             return true;
         } else {
@@ -447,15 +446,14 @@ class AdminPage
     }
 
     /**
-     * @param $id
-     * @param $note
+     * @param $data
      * @return bool
      */
-    public function rejectEvent($id, $note)
+    public function rejectEvent($data)
     {
-        $this->db->query('UPDATE events SET status = 2, rejection_note = :note WHERE id = :id');
-        $this->db->bind(':id', $id);
-        $this->db->bind(':note', $note);
+        $this->db->query('UPDATE events SET status = 2, rejection_note = :note, rejected_date = CURDATE() WHERE id = :id');
+        $this->db->bind(':id', $data['id']);
+        $this->db->bind(':note', $data['note']);
         if ($this->db->execute()) {
             return true;
         } else {
@@ -464,8 +462,7 @@ class AdminPage
     }
 
     /**
-     * @param $id
-     * @param $note
+     * @param $data
      * @return bool
      */
     public function rejectUser($data)
@@ -478,5 +475,41 @@ class AdminPage
         } else {
             return false;
         }
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function getFinancialDonationDetails($id)
+    {
+        $this->db->query('SELECT IF(ru.user_type = 2, ind_don.f_name, corp_don.comp_name) AS donor_name, IF(rq.user_type = 4, ind_ben.f_name, org_ben.org_name) AS beneficiary_name, dr.request_title, dh.amount, ru.email AS donor_email, ru.tp_number AS donor_tp_number, rq.email AS beneficiary_email, rq.tp_number AS beneficiary_tp_number FROM donation_history dh INNER JOIN donation_req dr ON dh.req_id = dr.id INNER JOIN reg_user ru ON dh.don_id = ru.id INNER JOIN reg_user rq ON dr.user_id = rq.id LEFT JOIN ind_don ON ru.id = ind_don.user_id AND ru.user_type = 2 LEFT JOIN corp_don ON ru.id = corp_don.user_id AND ru.user_type = 3 LEFT JOIN ind_ben ON dr.user_id = ind_ben.user_id AND rq.user_type = 4 LEFT JOIN org_ben ON dr.user_id = org_ben.user_id AND rq.user_type = 5 WHERE dh.type = 0 AND dh.id = :id');
+        $this->db->bind(':id', $id);
+        $results = $this->db->resultSet();
+        return $results;
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function getNonFinancialDonationDetails($id)
+    {
+        $this->db->query('SELECT IF(ru.user_type = 2, ind_don.f_name, corp_don.comp_name) AS donor_name, IF(rq.user_type = 4, ind_ben.f_name, org_ben.org_name) AS beneficiary_name, dr.request_title, dh.quantity, ru.email AS donor_email, ru.tp_number AS donor_tp_number, rq.email AS beneficiary_email, rq.tp_number AS beneficiary_tp_number, CASE WHEN dh.status = 0 THEN "Pending" WHEN dh.status = 1 THEN "Completed" WHEN dh.status = 2 THEN "Delivered" END AS status FROM donation_history dh INNER JOIN donation_req dr ON dh.req_id = dr.id INNER JOIN reg_user ru ON dh.don_id = ru.id INNER JOIN reg_user rq ON dr.user_id = rq.id LEFT JOIN ind_don ON ru.id = ind_don.user_id AND ru.user_type = 2 LEFT JOIN corp_don ON ru.id = corp_don.user_id AND ru.user_type = 3 LEFT JOIN ind_ben ON dr.user_id = ind_ben.user_id AND rq.user_type = 4 LEFT JOIN org_ben ON dr.user_id = org_ben.user_id AND rq.user_type = 5 WHERE dh.type = 1 AND dh.id = :id');
+        $this->db->bind(':id', $id);
+        $results = $this->db->resultSet();
+        return $results;
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function getEventDonationDetails($id)
+    {
+        $this->db->query('SELECT edh.id AS id, IF(ru.user_type = 2, ind_don.f_name, corp_don.comp_name) AS donor_name, et.event_title, eo.community_name, rq.email AS cm_email, rq.tp_number AS cm_tp_number, edh.date_of_completion, edh.amount, ru.tp_number AS donor_contact_number, ru.email AS donor_email FROM event_donation_history AS edh INNER JOIN reg_user AS ru ON edh.don_id = ru.id LEFT JOIN ind_don ON edh.don_id = ind_don.user_id AND ru.user_type = 2 LEFT JOIN corp_don ON edh.don_id = corp_don.user_id AND ru.user_type = 3 INNER JOIN events AS et ON edh.event_id = et.id INNER JOIN event_org AS eo ON et.event_org_id = eo.user_id INNER JOIN reg_user AS rq ON rq.id = eo.user_id WHERE edh.id = :id ORDER BY id ');
+        $this->db->bind(':id', $id);
+        $results = $this->db->resultSet();
+        return $results;
     }
 }

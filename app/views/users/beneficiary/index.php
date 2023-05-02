@@ -34,13 +34,13 @@
         </li>
         
         <li>
-            <a href="<?php echo URLROOT; ?>/beneficiary/requests">
+            <a href="<?php echo URLROOT; ?>/beneficiary/donationRequest">
                 <i class="bx bx-list-check"></i>
                 <span class="links_name">Donation Requests</span>
             </a>
         </li>
         <li>
-            <a href="<?php echo URLROOT; ?>/beneficiary/donationHistory_beneficiary">
+            <a href="<?php echo URLROOT; ?>/beneficiary/donationHistoryBeneficiary">
                 <i class="bx bx-history"></i>
                 <span class="links_name">Donation History</span>
             </a>
@@ -60,14 +60,14 @@
         </li>
 
         <li id="item1">
-          <a href="#">
+          <a href="<?php echo URLROOT; ?>/beneficiary/viewAcceptedReservation">
             <i class="bx bxs-calendar-check"></i>
             <span class="links_name">Calendar</span>
           </a>
         </li>
 
         <li id="item2">
-          <a href="#">
+          <a href="<?php echo URLROOT; ?>/beneficiary/viewReservation">
             <i class="bx bxs-calendar-check"></i>
             <span class="links_name">Reservations</span>
           </a>
@@ -100,7 +100,7 @@
           <div class="notification">
             <i class="bx bx-bell bx-tada notification"></i>
           </div>
-          <a href="<?php echo URLROOT; ?>/beneficiary/profile"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
+          <a href="<?php echo URLROOT; ?>/pages/profileBeneficiary"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
           <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
           <!-- <i class='bx bx-chevron-down'></i> -->
         </div>
@@ -111,7 +111,7 @@
           <div class="cardBox">
               <div class="card">
                   <div>
-                      <div class="numbers">10</div>
+                      <div class="numbers"><?php echo $data['total']; ?></div>
                       <div class="cardName">Total Donation Requests</div>
                   </div>
 
@@ -122,8 +122,8 @@
 
               <div class="card">
                   <div>
-                      <div class="numbers">20</div>
-                      <div class="cardName">Rejected Requests</div>
+                      <div class="numbers"><?php echo $data['ongoing']; ?></div>
+                      <div class="cardName">Ongoing Requests</div>
                   </div>
 
                   <div class="iconBx">
@@ -133,8 +133,8 @@
 
               <div class="card">
                   <div>
-                      <div class="numbers">Rs.5000/=</div>
-                      <div class="cardName">Received Financial Donations</div>
+                      <div class="numbers"><?php echo $data['complete']; ?></div>
+                      <div class="cardName">Completed Requests</div>
                   </div>
 
                   <div class="iconBx">
@@ -144,8 +144,8 @@
 
               <div class="card">
                   <div>
-                      <div class="numbers">10</div>
-                      <div class="cardName">Received Non Financial Donations</div>
+                      <div class="numbers"><?php echo $data['reject']; ?></div>
+                      <div class="cardName">Rejected Requests</div>
                   </div>
 
                   <div class="iconBx">
