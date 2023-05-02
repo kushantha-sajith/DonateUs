@@ -37,9 +37,11 @@
             <tr>
                 <th colspan="2" style="text-align:left;"><span>Category Name</span></th>
                 <th colspan="2" style="text-align:right;">
-                    <button id="add" class="add" type="button"><a style="text-decoration: none"
-                                                                  href="<?php echo URLROOT; ?>/admin/addCategories">Add
-                            <i class='bx bxs-plus-square'></i></a></button>
+                    <button id="add" class="add" type="button">
+                        <a style="text-decoration: none" href="<?php echo URLROOT; ?>/admin/addCategories">
+                            Add<i class='bx bxs-plus-square'></i>
+                        </a>
+                    </button>
                 </th>
             </tr>
             </thead>
@@ -48,12 +50,16 @@
                 <tr class="t-row">
                     <td style="width: 10px;"><!--<?php echo $categories->id; ?>--></td>
                     <td><?php echo $categories->category_name; ?></td>
-                    <td class="icon edit" id="edit"><a
-                                href="<?php echo URLROOT; ?>/admin/editCategories/<?php echo $categories->id; ?>"><i
-                                    class='bx bxs-edit'></i></a></td>
-                    <!--              <td class="icon"><a href="-->
-                    <?php //echo URLROOT; ?><!--/admin/deleteCategories/-->
-                    <?php //echo $categories->id; ?><!--"><i class='bx bx-trash' ></i></a></td>-->
+                    <td class="icon edit" id="edit">
+                        <a href="<?php echo URLROOT; ?>/admin/editCategories/<?php echo $categories->id; ?>">
+                            <i class='bx bxs-edit'></i>
+                        </a>
+                    </td>
+                    <td class="icon">
+                        <a href="<?php echo URLROOT; ?>/admin/deleteCategories/<?php echo $categories->id; ?>">
+                            <!--                            <i class='bx bx-trash'></i>-->
+                        </a>
+                    </td>
                 </tr>
             <?php endforeach; ?>
             </tbody>

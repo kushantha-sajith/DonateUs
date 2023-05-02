@@ -2,20 +2,22 @@
 <html lang="en" dir="ltr">
 
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>Dashboard</title>
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donation_history.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css"/>
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donation_history.css"/>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0"/>
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 
 <body>
 <!--navigation bar left-->
-<?php require APPROOT.'/views/inc/side_navbar.php';?>
+<?php require APPROOT . '/views/inc/side_navbar.php'; ?>
 <!--navigation bar left end-->
 
 <!--home section start-->
@@ -30,7 +32,7 @@
             <div class="notification">
                 <i class="bx bx-bell bx-tada notification"></i>
             </div>
-            <img src="<?php echo URLROOT; ?>/img/profile_pic.svg" alt="" />
+            <img src="<?php echo URLROOT; ?>/img/profile_pic.svg" alt=""/>
             <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
             <!-- <i class='bx bx-chevron-down'></i> -->
         </div>
@@ -38,48 +40,48 @@
 
     <main>
 
-            <div class="select-menu">
-            
-                <div class="select-btn">
+        <div class="select-menu">
+
+            <div class="select-btn">
                     <span class="material-icons" style="color: black;">
                         fastfood
                         </span>
-                    <span class="option-text">Non-Financial Donations</a></span>
-                    <i class="bx bx-chevron-down"></i>
-                </div>
+                <span class="option-text">Non-Financial Donations</a></span>
+                <i class="bx bx-chevron-down"></i>
+            </div>
 
-                <ul class="options">
-                    <a href="<?php echo URLROOT; ?>/admin/financialDonationHistory" style="text-decoration:none">
-                        <li class="option">
-                            <span class="material-icons" style="color: black; margin-right: 1rem;" >
+            <ul class="options">
+                <a href="<?php echo URLROOT; ?>/admin/financialDonationHistory" style="text-decoration:none">
+                    <li class="option">
+                            <span class="material-icons" style="color: black; margin-right: 1rem;">
                                 attach_money
                                 </span>
-                             
-                            <span class="option-text"> Financial Donations</span>
-                        </li>
-                    </a>
-                    <a href="<?php echo URLROOT; ?>/admin/nonFinancialDonationHistory" style="text-decoration:none">
-                        <li class="option">
+
+                        <span class="option-text"> Financial Donations</span>
+                    </li>
+                </a>
+                <a href="<?php echo URLROOT; ?>/admin/nonFinancialDonationHistory" style="text-decoration:none">
+                    <li class="option">
                             <span class="material-icons" style="color: black; margin-right: 1rem;">
                                 fastfood
                                 </span>
-                            <span class="option-text">Non-Financial Donations</span>
-                        </li>
-                    </a>
+                        <span class="option-text">Non-Financial Donations</span>
+                    </li>
+                </a>
 
-                </ul>
-            </div>
-            <div class="cards_heading head">
-                <div>ID</div>
-                <div>Donor Name</div>
-                <div>Request Title</div>
-                <div>Category</div>
-                <div>Contact Number</div>
-                <div>Quantity</div>
-                <div>Status</div>
-                <div></div>
-            </div>
-            <?php foreach($data['nonFinancialDonationHistory'] as $donation) : ?>
+            </ul>
+        </div>
+        <div class="cards_heading head">
+            <div>ID</div>
+            <div>Donor Name</div>
+            <div>Request Title</div>
+            <div>Category</div>
+            <div>Donor Contact Number</div>
+            <div>Quantity</div>
+            <div>Status</div>
+            <div></div>
+        </div>
+        <?php foreach ($data['nonFinancialDonationHistory'] as $donation) : ?>
             <div class="cards_heading cards_color">
                 <div><?php echo $donation->id; ?></div>
                 <div><?php echo $donation->donor_name; ?></div>
@@ -89,47 +91,51 @@
                 <div><?php echo $donation->quantity; ?></div>
                 <div><?php echo $donation->status; ?></div>
                 <div>
-                    <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
+                    <div style="text-align: center;">
+                        <a href="<?php echo URLROOT; ?>/adminPages/nonFinancialDonations/<?php echo $donation->id; ?>">
+                            <button class="btnview">View More</button>
+                        </a>
+                    </div>
                 </div>
             </div>
-            <?php endforeach; ?>
-        </main>
-    </section>
-    <!--home section end-->
+        <?php endforeach; ?>
+    </main>
+</section>
+<!--home section end-->
 
 
-    <script>
-        let sidebar = document.querySelector(".sidebar");
-        let sidebarBtn = document.querySelector(".sidebarBtn");
-        let welcome = document.querySelector(".welcome");
-        sidebarBtn.onclick = function () {
-            sidebar.classList.toggle("active");
-            if (sidebar.classList.contains("active")) {
-                sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
-                welcome.style.display = "none";
-            } else {
-                sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-                welcome.style.display = "block";
-            }
-        };
-        // js for drop down list 
-        const optionMenu = document.querySelector(".select-menu"),
-            selectBtn = optionMenu.querySelector(".select-btn"),
-            options = optionMenu.querySelectorAll(".option"),
-            sBtn_text = optionMenu.querySelector(".sBtn-text");
+<script>
+    let sidebar = document.querySelector(".sidebar");
+    let sidebarBtn = document.querySelector(".sidebarBtn");
+    let welcome = document.querySelector(".welcome");
+    sidebarBtn.onclick = function () {
+        sidebar.classList.toggle("active");
+        if (sidebar.classList.contains("active")) {
+            sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+            welcome.style.display = "none";
+        } else {
+            sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+            welcome.style.display = "block";
+        }
+    };
+    // js for drop down list
+    const optionMenu = document.querySelector(".select-menu"),
+        selectBtn = optionMenu.querySelector(".select-btn"),
+        options = optionMenu.querySelectorAll(".option"),
+        sBtn_text = optionMenu.querySelector(".sBtn-text");
 
-        selectBtn.addEventListener("click", () => optionMenu.classList.toggle("active"));
+    selectBtn.addEventListener("click", () => optionMenu.classList.toggle("active"));
 
-        options.forEach(option => {
-            option.addEventListener("click", () => {
-                let selectedOption = option.querySelector(".option-text").innerText;
-                sBtn_text.innerText = selectedOption;
+    options.forEach(option => {
+        option.addEventListener("click", () => {
+            let selectedOption = option.querySelector(".option-text").innerText;
+            sBtn_text.innerText = selectedOption;
 
-                optionMenu.classList.remove("active");
-            });
+            optionMenu.classList.remove("active");
         });
+    });
 
-    </script>
+</script>
 </body>
 
 </html>

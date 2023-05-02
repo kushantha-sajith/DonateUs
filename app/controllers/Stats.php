@@ -24,10 +24,30 @@ class Stats extends Controller
         $completed = $this->statModel->completedRequests();
         $rejected = $this->statModel->rejectedRequests();
         $data = [
-            'pending' => 'pending Requests',
-            'ongoing' => 'ongoing Requests',
-            'completed' => 'completed Requests',
-            'rejected' => 'rejected Requests',
+            'pending' => 'Pending Requests',
+            'ongoing' => 'Ongoing Requests',
+            'completed' => 'Completed Requests',
+            'rejected' => 'Rejected Requests',
+            'pendingCount' => $pending,
+            'ongoingCount' => $ongoing,
+            'completedCount' => $completed,
+            'rejectedCount' => $rejected
+        ];
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
+
+    public function eventStatus()
+    {
+        $pending = $this->statModel->pendingEvents();
+        $ongoing = $this->statModel->ongoingEvents();
+        $completed = $this->statModel->completedEvents();
+        $rejected = $this->statModel->rejectedEvents();
+        $data = [
+            'pending' => 'Pending Events',
+            'ongoing' => 'Ongoing Events',
+            'completed' => 'Completed Events',
+            'rejected' => 'Rejected Events',
             'pendingCount' => $pending,
             'ongoingCount' => $ongoing,
             'completedCount' => $completed,
@@ -52,18 +72,18 @@ class Stats extends Controller
         $nov = $this->statModel->donationViaMonths(11);
         $dec = $this->statModel->donationViaMonths(12);
         $data = [
-            'jan' => 'jan',
-            'feb' => 'feb',
-            'mar' => 'mar',
-            'apr' => 'apr',
-            'may' => 'may',
-            'jun' => 'jun',
-            'jul' => 'jul',
-            'aug' => 'aug',
-            'sep' => 'sep',
-            'oct' => 'oct',
-            'nov' => 'nov',
-            'dec' => 'dec',
+            'jan' => 'Jan',
+            'feb' => 'Feb',
+            'mar' => 'Mar',
+            'apr' => 'Apr',
+            'may' => 'May',
+            'jun' => 'Jun',
+            'jul' => 'Jul',
+            'aug' => 'Aug',
+            'sep' => 'Sep',
+            'oct' => 'Oct',
+            'nov' => 'Nov',
+            'dec' => 'Dec',
             'janCount' => $jan,
             'febCount' => $feb,
             'marCount' => $mar,
@@ -87,11 +107,10 @@ class Stats extends Controller
         $nonFinancial = $this->statModel->nonFinancialCount();
 
         $data = [
-            'financial' => 'financial',
-            'nonFinancial' => 'nonFinancial',
+            'financial' => 'Financial Donations',
+            'nonFinancial' => 'Non Financial Donations',
             'financialCount' => $financial,
             'nonFinancialCount' => $nonFinancial,
-
         ];
         header('Content-Type: application/json');
         echo json_encode($data);

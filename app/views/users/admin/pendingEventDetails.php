@@ -107,7 +107,7 @@
                                 <h2>Are you sure?</h2>
                                 <div class="button-container">
                                     <button id="confirm-yes" type="button"
-                                            onclick="location.href='<?php echo URLROOT; ?>/adminPages/acceptBeneficiary/<?php echo $userData->id; ?>'">
+                                            onclick="location.href='<?php echo URLROOT; ?>/adminPages/acceptEvent/<?php echo $eventData->id; ?>'">
                                         Yes
                                     </button>
                                     <button id="confirm-no" type="button"
@@ -118,7 +118,7 @@
                             </div>
                         </div>
                         <button type="button"
-                                onclick="location.href='<?php echo URLROOT; ?>/adminPages/rejectEventNote/<?php echo $userData->id; ?>'"
+                                onclick="location.href='<?php echo URLROOT; ?>/adminPages/rejectEventNote/<?php echo $eventData->id; ?>'"
                                 class="abc">Reject
                         </button>
                     </div>

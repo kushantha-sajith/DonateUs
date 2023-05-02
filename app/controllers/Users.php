@@ -5,6 +5,13 @@ use helpers\NIC_Validator;
 
 class Users extends Controller
 {
+    /**
+     * @var mixed
+     */
+    private $userModel;
+    private $verificationModel;
+    private $donorModel;
+
     public function __construct()
     {
         $this->userModel = $this->model('User');
@@ -1029,7 +1036,6 @@ class Users extends Controller
                 'email_err' => '',
                 'password_err' => '',
             ];
-
             // Load view
             $this->view('users/login', $data);
         }
@@ -1124,7 +1130,6 @@ class Users extends Controller
      */
     public function otpVerify($field)
     {
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = [
                 'otp' => trim($_POST['otp']),
@@ -1151,13 +1156,9 @@ class Users extends Controller
                 'error' => '',
                 'field' => $field
             ];
-
             $this->view('users/otp_verification', $data);
         }
-
     }
-
-    //create sessions for all users
 
     /**
      * @return void
@@ -1170,7 +1171,6 @@ class Users extends Controller
         if ($this->donorModel->setToDefault($id, $field)) {
             redirect('pages/profileDonor');
         }
-
     }
 
     //logout method
@@ -1224,7 +1224,6 @@ class Users extends Controller
             $this->view('users/reset_password', $data);
         }
     }
-//TODO: reset password
 
     /**
      * @return void
@@ -1306,6 +1305,40 @@ class Users extends Controller
             ];
             // If the token is not valid, show an error message
             $this->view('users/forgot_password', $data);
+        }
+    }
+
+    /**
+     * @return void
+     */
+    public function otpVerifyAdmin($field)
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $data = [
+                'otp' => trim($_POST['otp']),
+                'error' => '',
+                'field' => $field
+            ];
+
+            $verified = $this->verificationModel->verifyOTP($data['otp']);
+
+            if (is_numeric($data['otp']) && $verified) {
+                if ($this->verificationModel->verifyUpdate($verified->id)) {
+                    redirect('admin/profile');
+                } else {
+                    redirect('pages/changePassword');
+                }
+            } else {
+                $data['error'] = "Invalid OTP";
+                $this->view('users/otp_verification', $data);
+            }
+        } else {
+            $data = [
+                'otp' => '',
+                'error' => '',
+                'field' => $field
+            ];
+            $this->view('users/otp_verification', $data);
         }
     }
 }
