@@ -38,7 +38,7 @@
           <div class="cardBox">
               <div class="card">
                   <div>
-                      <div class="numbers">XXXX</div>
+                      <div class="numbers">1000</div>
                       <div class="cardName">XXXX XXXXX</div>
                   </div>
 
