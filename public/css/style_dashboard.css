@@ -667,7 +667,8 @@ textarea {
 
 .chart {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
 }
 
 .chart1 {
@@ -677,7 +678,7 @@ textarea {
 .chart2 {
     width: 25%;
     display: flex;
-    justify-content: left;
+    justify-content: center;
 }
 
 .chart3 {
@@ -698,6 +699,19 @@ canvas {
 
 .button-container {
     display: flex;
+}
+
+.down_btn {
+    padding: 10px;
+    background-color: #0e3276;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#section h1 {
+    text-align: center;
+    padding: 10px;
 }
 
 /* Responsive Media Query */

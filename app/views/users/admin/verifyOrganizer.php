@@ -70,8 +70,8 @@
                                     <input type="number" value="<?php echo $userData->tp_number; ?>" disabled>
                                 </div>
                                 <div class="input-field">
-                                    <label>Location</label>
-                                    <input type="text" value="<?php echo $userData->city; ?>" disabled>
+                                    <label>Zip Code</label>
+                                    <input type="text" value="<?php echo $userData->zipcode; ?>" disabled>
                                 </div>
                                 <div class="input-field">
                                     <label>District </label>
@@ -85,22 +85,11 @@
                                 <!--                                </div>-->
                             </div>
                         </div>
-                        <span class="title"><u>Id Verification</u></span>
-                        <div class="ggg">
-                            <div class="photo-container">
-                                <input type="file" id="file" accept="image/*" hidden>
-                                <div class="img-area" data-img="">
-                                </div>
-                            </div>
-                            <div class="photo-container">
-                                <input type="file" id="file2" accept="image/*" hidden>
-                                <div class="img-area" id="area-two" data-img="">
-                                </div>
-                            </div>
-                        </div>
-                        <span class="title"><u>Address Conformation (Utility Bill, Bank Statement)</u></span>
+                        <span class="title"><u>Verification Letter</u></span>
                         <div class="photo-container" id="grame">
                             <input type="file" id="file3" accept="image/*" hidden>
+                            <img alt="id-img"
+                                 src="<?php echo URLROOT; ?>/public/uploads/<?php echo $userData->address_proof; ?>">
                             <div class="img-area" id="area-three" data-img="">
                             </div>
                         </div>
@@ -150,62 +139,7 @@
             welcome.style.display = "block";
         }
     };
-
-    const selectImage = document.querySelector('.select-image');
-    const inputFile = document.querySelector('#file');
-    const imgArea = document.querySelector('.img-area');
-
-    selectImage.addEventListener('click', function () {
-        inputFile.click();
-    })
-
-    inputFile.addEventListener('change', function () {
-        const image = this.files[0]
-        if (image.size < 2000000) {
-            const reader = new FileReader();
-            reader.onload = () => {
-                const allImg = imgArea.querySelectorAll('img');
-                allImg.forEach(item => item.remove());
-                const imgUrl = reader.result;
-                const img = document.createElement('img');
-                img.src = imgUrl;
-                imgArea.appendChild(img);
-                imgArea.classList.add('active');
-                imgArea.dataset.img = image.name;
-            }
-            reader.readAsDataURL(image);
-        } else {
-            alert("Image size more than 2MB");
-        }
-    })
-
-    const selectImage2 = document.querySelector('#select_two');
-    const inputFile2 = document.querySelector('#file2');
-    const imgArea2 = document.querySelector('#area-two');
-
-    selectImage2.addEventListener('click', function () {
-        inputFile2.click();
-    })
-
-    inputFile2.addEventListener('change', function () {
-        const image2 = this.files[0]
-        if (image2.size < 2000000) {
-            const reader2 = new FileReader();
-            reader2.onload = () => {
-                const allImg2 = imgArea2.querySelectorAll('img');
-                allImg2.forEach(item => item.remove());
-                const imgUrl2 = reader2.result;
-                const img2 = document.createElement('img');
-                img2.src = imgUrl2;
-                imgArea2.appendChild(img2);
-                imgArea2.classList.add('active');
-                imgArea2.dataset.img2 = image2.name;
-            }
-            reader2.readAsDataURL(image2);
-        } else {
-            alert("Image size more than 2MB");
-        }
-    })
+    
     const selectImage3 = document.querySelector('#select_three');
     const inputFile3 = document.querySelector('#file3');
     const imgArea3 = document.querySelector('#area-three');

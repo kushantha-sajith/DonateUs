@@ -36,26 +36,39 @@
     </nav>
     <div class="main-container">
         <script src="<?php echo URLROOT ?>/js/genPDF.js"></script>
-        <button onclick="genPDF()">Download Statistics</button>
+        <button class="down_btn" onclick="genPDF()">Download Statistics</button>
         <div id="section">
+            <h1>Statistics - <?php echo date('Y'); ?></h1>
             <div class="chart">
                 <div class="chart1">
-                    <h2>No. of Request Donations</h2>
+                    <h2>No. of Donation Requests</h2>
                     <canvas id="myChart"></canvas>
                 </div>
                 <div class="chart2">
-                    <canvas id="myPie"></canvas>
-                    <canvas id="myDon"></canvas>
+                    <div>
+                        <h2>Request Status</h2>
+                        <canvas id="myPie"></canvas>
+                    </div>
+                    <div>
+                        <h2>Financial VS Non-financial</h2>
+                        <canvas id="myDon"></canvas>
+                    </div>
                 </div>
             </div>
             <div class="chart">
                 <div class="chart1">
-                    <h2>No. of Event Donations</h2>
+                    <h2>No. of Event Requests</h2>
                     <canvas id="myChart1"></canvas>
                 </div>
                 <div class="chart3">
-                    <canvas id="myPie2"></canvas>
-                    <canvas id="myDon"></canvas>
+                    <div>
+                        <h2>Event Status</h2>
+                        <canvas id="myPie2"></canvas>
+                    </div>
+                    <div>
+                        <h2></h2>
+                        <canvas id="myPie2"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
@@ -76,13 +89,13 @@
             method: 'GET',
             dataType: 'JSON',
             success: function (response) {
-                console.log(response);
+                // console.log(response);
                 // setup block
                 const data = {
 
                     labels: [response.jan, response.feb, response.mar, response.apr, response.may, response.jun, response.jul, response.aug, response.sep, response.oct, response.nov, response.dec],
                     datasets: [{
-                        label: 'Donations',
+                        label: 'Donation Requests',
                         data: [response.janCount.num_rows, response.febCount.num_rows, response.marCount.num_rows, response.aprCount.num_rows, response.mayCount.num_rows, response.junCount.num_rows, response.julCount.num_rows, response.augCount.num_rows, response.sepCount.num_rows, response.octCount.num_rows, response.novCount.num_rows, response.decCount.num_rows],
                         borderWidth: 2
                     }]
@@ -116,13 +129,13 @@
             method: 'GET',
             dataType: 'JSON',
             success: function (response) {
-                console.log(response);
+                // console.log(response);
                 // setup block
                 const data = {
 
                     labels: [response.jan, response.feb, response.mar, response.apr, response.may, response.jun, response.jul, response.aug, response.sep, response.oct, response.nov, response.dec],
                     datasets: [{
-                        label: 'Donations',
+                        label: 'Event Requests',
                         data: [response.janCount.num_rows, response.febCount.num_rows, response.marCount.num_rows, response.aprCount.num_rows, response.mayCount.num_rows, response.junCount.num_rows, response.julCount.num_rows, response.augCount.num_rows, response.sepCount.num_rows, response.octCount.num_rows, response.novCount.num_rows, response.decCount.num_rows],
                         borderWidth: 2
                     }]
@@ -158,7 +171,7 @@
             success: function (response1) {
                 // count = response1.pending;
                 // req = response1.pendingCount;
-                console.log(response1);
+                // console.log(response1);
                 //setup pie chart
                 const data = {
                     labels: [response1.pending, response1.ongoing, response1.completed, response1.rejected],
@@ -200,12 +213,12 @@
             success: function (response1) {
                 // count = response1.pending;
                 // req = response1.pendingCount;
-                console.log(response1);
+                // console.log(response1);
                 //setup pie chart
                 const data = {
                     labels: [response1.pending, response1.ongoing, response1.completed, response1.rejected],
                     datasets: [{
-                        label: 'No. of Donations',
+                        label: 'No. of Events',
                         data: [response1.pendingCount.num_rows, response1.ongoingCount.num_rows, response1.completedCount.num_rows, response1.rejectedCount.num_rows],
                         borderWidth: 1
                     }]
@@ -234,6 +247,48 @@
 
     pieChart2();
 
+    function pieChart3() {
+        $.ajax({
+            url: "http://localhost/DonateUs/Stats/categoryCount",
+            method: 'GET',
+            dataType: 'JSON',
+            success: function (response1) {
+                const counts = response1.count;
+                const categories = response1.categories;
+                console.log(response1);
+                //setup pie chart
+                const data = {
+                    labels: categories,
+                    datasets: [{
+                        label: 'No. of Donations',
+                        data: counts,
+                        borderWidth: 1
+                    }]
+                };
+                //config pie chart
+                const configPie = {
+                    type: 'pie',
+                    data: data,
+
+                    options: {
+                        scales: {
+                            // y: {
+                            //     beginAtZero: true
+                            // }
+                        }
+                    }
+                };
+                //render pie chart
+                const myPie = new Chart(
+                    document.getElementById('myPie3'),
+                    configPie
+                );
+            }
+        })
+    }
+
+    pieChart3();
+
     function donutChart() {
         $.ajax({
             url: "http://localhost/DonateUs/Stats/donationQuantity",
@@ -242,7 +297,7 @@
             success: function (response2) {
                 // count = response2.high;
                 // req = response2.highCount;
-                console.log(response2);
+                // console.log(response2);
                 //setup pie chart
                 const data = {
                     labels: [response2.financial, response2.nonFinancial],
@@ -270,14 +325,11 @@
                     document.getElementById('myDon'),
                     configDonut
                 );
-                console.log(response2);
             }
         })
     }
 
     donutChart();
 </script>
-
 </body>
-
 </html>

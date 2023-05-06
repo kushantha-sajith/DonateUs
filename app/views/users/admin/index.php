@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/admin_dashboard.css"/>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css"/>
     <link
-            href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
-            rel="stylesheet"
+        href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+        rel="stylesheet"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
@@ -100,15 +100,7 @@
                     </table>
                 </div>
                 <div class="todo">
-                    <!--<div class="head">-->
-                    <!--<h3>Top Donors</h3>-->
-                    <!--</div>-->
-                    <!--<ul class="todo-list">-->
-                    <!--<li class="not-completed">-->
-                    <!--<p>#</p>-->
-                    <!--<i class='bx bx-dots-vertical-rounded'></i>-->
-                    <!--</li>-->
-                    <!--</ul>-->
+                    <h3>No. of Users in the System</h3>
                     <div class="chart1">
                         <canvas id="myChart"></canvas>
                     </div>
@@ -123,17 +115,17 @@
     <script>
         function pieChart() {
             $.ajax({
-                url: "http://localhost/DonateUs/Stats/requestStatus",
+                url: "http://localhost/DonateUs/Stats/userCount",
                 method: 'GET',
                 dataType: 'JSON',
                 success: function (response1) {
                     console.log(response1);
                     //setup pie chart
                     const data = {
-                        labels: [response1.pending, response1.ongoing, response1.completed, response1.rejected],
+                        labels: [response1.donors, response1.beneficiaries, response1.organizers],
                         datasets: [{
-                            label: 'No. of Donations',
-                            data: [response1.pendingCount.num_rows, response1.ongoingCount.num_rows, response1.completedCount.num_rows, response1.rejectedCount.num_rows],
+                            label: 'No. of Users',
+                            data: [response1.donorCount.num_rows, response1.beneficiaryCount.num_rows, response1.organizerCount.num_rows],
                             borderWidth: 1
                         }]
                     };

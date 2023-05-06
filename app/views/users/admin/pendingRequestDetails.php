@@ -81,8 +81,8 @@
                                 <input type="text" disabled placeholder="<?php echo $reqData->category_name; ?>">
                             </div>
                             <div class="input-field">
-                                <label>Location / City </label>
-                                <input type="text" disabled placeholder="<?php echo $reqData->city; ?>">
+                                <label>Zip Code </label>
+                                <input type="text" disabled placeholder="<?php echo $reqData->zipcode; ?>">
                             </div>
                             <div class="input-field">
                                 <label>Due Date</label>
@@ -90,23 +90,19 @@
                             </div>
                         </div>
                     </div>
-                    <span class="title"><u>Id Verification</u></span>
+                    <span class="title"><u>Thumbnail</u></span>
                     <div class="ggg">
                         <div class="photo-container">
-                            <input type="file" id="file" accept="image/*" hidden>
-                            <div class="img-area" data-img="">
-                            </div>
-                        </div>
-                        <div class="photo-container">
-                            <input type="file" id="file2" accept="image/*" hidden>
                             <div class="img-area" id="area-two" data-img="">
+                                <img src="<?php echo URLROOT; ?>/public/uploads/<?php echo $reqData->thumbnail; ?>">
                             </div>
                         </div>
                     </div>
-                    <span class="title"><u>Recomondation Letter By Grama Niladari</u></span>
+                    <span class="title"><u>Proof Letter(#)</u></span>
                     <div class="photo-container" id="grame">
                         <input type="file" id="file3" accept="image/*" hidden>
                         <div class="img-area" id="area-three" data-img="">
+                            <img src="<?php echo URLROOT; ?>/public/uploads/<?php echo $reqData->proof_document; ?>">
                         </div>
                     </div>
                     <?php endforeach; ?>

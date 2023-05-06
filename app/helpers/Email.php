@@ -100,4 +100,148 @@ class Email
             echo "Message could not be sent. Mailer Error: {$this->mail->ErrorInfo}";
         }
     }
+
+    /**
+     * @return void
+     */
+    public function sendUserAcceptanceEmail()
+    {
+        try {
+            $this->mail->setFrom($this->sender, 'DonateUs');
+            $this->mail->addAddress($this->receiver);
+            $this->mail->addReplyTo($this->sender);
+
+            $this->mail->isHTML(true);
+            $this->mail->Subject = "DonateUs Account Accepted";
+            $receiverName = "User";
+
+            $this->mail->Body = "<h1 style='text-align: center; margin-top: 40px;'>Hello " . $receiverName . ",</h1>
+                    <h2 style='color: #0A2558;'>Welcome To DonateUs</h2>
+                    <h4>Your account has been accepted. You can login from <a href='http://localhost/DonateUs/users/login'>here</a>.</h4>
+                    <h3 style='color: #0A2558;'>Thank You!</h3>";
+            $this->mail->send();
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$this->mail->ErrorInfo}";
+        }
+    }
+
+    /**
+     * @return void
+     */
+    public function sendUserRejectionEmail()
+    {
+        try {
+            $this->mail->setFrom($this->sender, 'DonateUs');
+            $this->mail->addAddress($this->receiver);
+            $this->mail->addReplyTo($this->sender);
+
+            $this->mail->isHTML(true);
+            $this->mail->Subject = "DonateUs Account Accepted";
+            $receiverName = "User";
+
+            $this->mail->Body = "<h1 style='text-align: center; margin-top: 40px;'>Hello " . $receiverName . ",</h1>
+                    <h2 style='color: #0A2558;'>Welcome To DonateUs</h2>
+                    <h4>Your account has been accepted. You can login from <a href='http://localhost/DonateUs/users/login'>here</a>.</h4>
+                    <h3 style='color: #0A2558;'>Thank You!</h3>";
+            $this->mail->send();
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$this->mail->ErrorInfo}";
+        }
+    }
+
+    /**
+     * @return void
+     */
+    public function sendReqAcceptanceEmail()
+    {
+        try {
+            $this->mail->setFrom($this->sender, 'DonateUs');
+            $this->mail->addAddress($this->receiver);
+            $this->mail->addReplyTo($this->sender);
+
+            $this->mail->isHTML(true);
+            $this->mail->Subject = "Donation Request Accepted";
+            $receiverName = "User";
+
+            $this->mail->Body = "<h1 style='text-align: center; margin-top: 40px;'>Hello " . $receiverName . ",</h1>
+                    <h2 style='color: #0A2558;'>Welcome To DonateUs</h2>
+                    <h4>Your donation request has been accepted. You can view more details at ongoing request tab.</h4>
+                    <h3 style='color: #0A2558;'>Thank You!</h3>";
+            $this->mail->send();
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$this->mail->ErrorInfo}";
+        }
+    }
+
+    /**
+     * @return void
+     */
+    public function sendEventAcceptanceEmail()
+    {
+        try {
+            $this->mail->setFrom($this->sender, 'DonateUs');
+            $this->mail->addAddress($this->receiver);
+            $this->mail->addReplyTo($this->sender);
+
+            $this->mail->isHTML(true);
+            $this->mail->Subject = "Event Request Accepted";
+            $receiverName = "User";
+
+            $this->mail->Body = "<h1 style='text-align: center; margin-top: 40px;'>Hello " . $receiverName . ",</h1>
+                    <h2 style='color: #0A2558;'>Welcome To DonateUs</h2>
+                    <h4>Your event request has been accepted. You can view more details at ongoing events tab.</h4>
+                    <h3 style='color: #0A2558;'>Thank You!</h3>";
+            $this->mail->send();
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$this->mail->ErrorInfo}";
+        }
+    }
+
+    /**
+     * @return void
+     */
+    public function sendReqRejectionEmail()
+    {
+        try {
+            $this->mail->setFrom($this->sender, 'DonateUs');
+            $this->mail->addAddress($this->receiver);
+            $this->mail->addReplyTo($this->sender);
+
+            $this->mail->isHTML(true);
+            $this->mail->Subject = "Donation Request Accepted";
+            $receiverName = "User";
+
+            $this->mail->Body = "<h1 style='text-align: center; margin-top: 40px;'>Hello " . $receiverName . ",</h1>
+                    <h2 style='color: #0A2558;'>Welcome To DonateUs</h2>
+                    <h4>Your donation request has been accepted. You can view more details at ongoing request tab.</h4>
+                    <h3 style='color: #0A2558;'>Thank You!</h3>";
+            $this->mail->send();
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$this->mail->ErrorInfo}";
+        }
+    }
+
+    /**
+     * @return void
+     */
+    public function sendEventRejectionEmail()
+    {
+        try {
+            $this->mail->setFrom($this->sender, 'DonateUs');
+            $this->mail->addAddress($this->receiver);
+            $this->mail->addReplyTo($this->sender);
+
+            $this->mail->isHTML(true);
+            $this->mail->Subject = "Event Request Accepted";
+            $receiverName = "User";
+
+            $this->mail->Body = "<h1 style='text-align: center; margin-top: 40px;'>Hello " . $receiverName . ",</h1>
+                    <h2 style='color: #0A2558;'>Welcome To DonateUs</h2>
+                    <h4>Your event request has been accepted. You can view more details at ongoing events tab.</h4>
+                    <h3 style='color: #0A2558;'>Thank You!</h3>";
+            $this->mail->send();
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$this->mail->ErrorInfo}";
+        }
+    }
 }

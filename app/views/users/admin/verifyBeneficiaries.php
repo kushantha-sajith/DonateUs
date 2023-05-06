@@ -41,8 +41,8 @@
         <div class="select-menu">
             <div class="select-btn">
             <span
-                    class="material-icons"
-                    style="color: #111e88; margin-right: 1rem"
+                class="material-icons"
+                style="color: #111e88; margin-right: 1rem"
             >
               perm_identity
             </span>
@@ -76,7 +76,7 @@
             <div>Email Address</div>
             <div>Telephone Number</div>
             <div>Beneficiary Type</div>
-            <div>City</div>
+            <div>Zip Code</div>
             <div></div>
         </div>
         <?php foreach ($data['indBeneficiaries'] as $indBeneficiaries) : ?>
@@ -86,7 +86,7 @@
                 <div><?php echo $indBeneficiaries->email; ?></div>
                 <div><?php echo $indBeneficiaries->tp_number; ?></div>
                 <div>Individual</div>
-                <div><?php echo $indBeneficiaries->city; ?></div>
+                <div><?php echo $indBeneficiaries->zipcode; ?></div>
                 <div>
                     <div style="text-align: center;">
                         <a href="<?php echo URLROOT; ?>/pages/approve/<?php echo $indBeneficiaries->id; ?>">
@@ -102,7 +102,7 @@
                 <div><?php echo $corpBeneficiaries->email; ?></div>
                 <div><?php echo $corpBeneficiaries->tp_number; ?></div>
                 <div>Organizational</div>
-                <div><?php echo $corpBeneficiaries->city; ?></div>
+                <div><?php echo $corpBeneficiaries->zipcode; ?></div>
                 <div>
                     <div style="text-align: center;">
                         <a href="<?php echo URLROOT; ?>/pages/approve/<?php echo $corpBeneficiaries->id; ?>">

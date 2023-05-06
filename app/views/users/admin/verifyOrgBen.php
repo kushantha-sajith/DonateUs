@@ -70,8 +70,8 @@
                                     <input type="number" value="<?php echo $userData->tp_number; ?>" disabled>
                                 </div>
                                 <div class="input-field">
-                                    <label>City</label>
-                                    <input type="text" value="<?php echo $userData->city; ?>" disabled>
+                                    <label>Zip Code</label>
+                                    <input type="text" value="<?php echo $userData->zipcode; ?>" disabled>
                                 </div>
                                 <div class="input-field">
                                     <label>District</label>
