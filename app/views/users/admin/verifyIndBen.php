@@ -66,8 +66,8 @@
                                     <input type="number" value="<?php echo $userData->tp_number; ?>" disabled>
                                 </div>
                                 <div class="input-field">
-                                    <label>City </label>
-                                    <input type="text" value="<?php echo $userData->city; ?>" disabled>
+                                    <label>Zip Code </label>
+                                    <input type="text" value="<?php echo $userData->zipcode; ?>" disabled>
                                 </div>
                                 <div class="input-field">
                                     <label>District</label>
@@ -82,13 +82,10 @@
                         <span class="title"><u>Id Verification</u></span>
                         <div class="ggg">
                             <div class="photo-container">
-                                <input type="file" id="file" accept="image/*" hidden>
-                                <div class="img-area" data-img="">
-                                </div>
-                            </div>
-                            <div class="photo-container">
                                 <input type="file" id="file2" accept="image/*" hidden>
                                 <div class="img-area" id="area-two" data-img="">
+                                    <img alt="id-img"
+                                         src="<?php echo URLROOT; ?>/public/uploads/<?php echo $userData->address_proof; ?>">
                                 </div>
                             </div>
                         </div>
@@ -96,6 +93,8 @@
                         <div class="photo-container" id="grame">
                             <input type="file" id="file3" accept="image/*" hidden>
                             <div class="img-area" id="area-three" data-img="">
+                                <img alt="address-img"
+                                     src="<?php echo URLROOT; ?>/public/uploads/<?php echo $userData->address_proof; ?>">
                             </div>
                         </div>
                         <div class="flex">

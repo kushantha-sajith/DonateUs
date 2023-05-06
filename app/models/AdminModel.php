@@ -170,7 +170,7 @@ class AdminModel
      */
     public function getOngoingReqCount()
     {
-        $this->db->query('SELECT COUNT(*) AS total_donation_requests FROM donation_req WHERE status = 0');
+        $this->db->query('SELECT COUNT(*) AS total_donation_requests FROM donation_req WHERE status = 1');
         $row = $this->db->single();
         return $row->total_donation_requests;
     }

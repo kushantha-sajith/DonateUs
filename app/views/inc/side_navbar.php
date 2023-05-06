@@ -1,18 +1,19 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.1/dist/sweetalert2.min.css">
 <div class="sidebar">
     <div class="logo-details">
-        <!--        <i class="bx bx-grid-alt"></i>-->
-        <!-- <h1><?php echo $data['title']; ?></h1> -->
-        <!--        <span class="logo_name">Dashboard</span>-->
         <img src="<?php echo URLROOT; ?>/img/logo_.png" alt="logo" class="logo"/>
     </div>
-    <!--    <div class="welcome">-->
-    <!--        <span>Welcome</span>-->
-    <!--    </div>-->
     <ul class="nav-links">
         <li>
             <a href="<?php echo URLROOT; ?>/pages/admin">
                 <i class="bx bx-grid-alt"></i>
                 <span class="links_name">Dashboard</span>
+            </a>
+        </li>
+        <li>
+            <a href="<?php echo URLROOT; ?>/#">
+                <i class="bx bx-notification"></i>
+                <span class="links_name">Notifications</span>
             </a>
         </li>
         <li>
@@ -39,12 +40,12 @@
                 <span class="links_name">Donation History</span>
             </a>
         </li>
-        <!--        <li>-->
-        <!--            <a href="#">-->
-        <!--                <i class="bx bx-message-alt-detail"></i>-->
-        <!--                <span class="links_name">Feedbacks</span>-->
-        <!--            </a>-->
-        <!--        </li>-->
+        <li>
+            <a href="#">
+                <i class="bx bx-message-alt-detail"></i>
+                <span class="links_name">Feedbacks</span>
+            </a>
+        </li>
         <li>
             <a href="<?php echo URLROOT; ?>/admin/categories">
                 <i class="bx bx-list-ul"></i>
@@ -81,11 +82,35 @@
                 <span class="links_name">Reports</span>
             </a>
         </li>
-        <li class="log_out">
-            <a href="<?php echo URLROOT; ?>/users/logout">
+        <li class="log_out" id="logout">
+            <a href="">
                 <i class="bx bx-log-out"></i>
                 <span class="links_name">Log out</span>
             </a>
         </li>
     </ul>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.1/dist/sweetalert2.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#logout').click(function (e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You will be logged out of your account.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, log me out!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // If the user confirms the action, redirect to the logout controller function
+                    window.location.href = '<?php echo URLROOT; ?>/users/logout';
+                }
+            });
+        });
+    });
+</script>

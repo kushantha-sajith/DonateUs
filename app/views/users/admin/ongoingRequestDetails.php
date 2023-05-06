@@ -2,20 +2,22 @@
 <html lang="en" dir="ltr">
 
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>Dashboard</title>
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donation_details.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css"/>
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donation_details.css"/>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0"/>
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 
 <body>
 <!--navigation bar left-->
-<?php require APPROOT.'/views/inc/side_navbar.php';?>
+<?php require APPROOT . '/views/inc/side_navbar.php'; ?>
 <!--navigation bar left end-->
 
 <!--home section start-->
@@ -29,7 +31,7 @@
             <div class="notification">
                 <i class="bx bx-bell bx-tada notification"></i>
             </div>
-            <img src="<?php echo URLROOT; ?>/img/profile_pic.svg" alt="" />
+            <img src="<?php echo URLROOT; ?>/img/profile_pic.svg" alt=""/>
             <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
             <!-- <i class='bx bx-chevron-down'></i> -->
         </div>
@@ -87,8 +89,8 @@
                                 <input type="text" disabled placeholder="<?php echo $reqData->category_name; ?>">
                             </div>
                             <div class="input-field">
-                                <label>Location / City </label>
-                                <input type="text" disabled placeholder="<?php echo $reqData->city; ?>">
+                                <label>Zip Code </label>
+                                <input type="text" disabled placeholder="<?php echo $reqData->zipcode; ?>">
                             </div>
                             <div class="input-field">
                                 <label>District</label>
@@ -96,23 +98,19 @@
                             </div>
                         </div>
                     </div>
-                    <span class="title"><u>Id Verification</u></span>
+                    <span class="title"><u>Thumbnail</u></span>
                     <div class="ggg">
                         <div class="photo-container">
-                            <input type="file" id="file" accept="image/*" hidden>
-                            <div class="img-area" data-img="">
-                            </div>
-                        </div>
-                        <div class="photo-container">
-                            <input type="file" id="file2" accept="image/*" hidden>
                             <div class="img-area" id="area-two" data-img="">
+                                <img src="<?php echo URLROOT; ?>/public/uploads/<?php echo $reqData->thumbnail; ?>">
                             </div>
                         </div>
                     </div>
-                    <span class="title"><u>Recomondation Letter By Grama Niladari</u></span>
+                    <span class="title"><u>Proof Letter(#)</u></span>
                     <div class="photo-container" id="grame">
                         <input type="file" id="file3" accept="image/*" hidden>
                         <div class="img-area" id="area-three" data-img="">
+                            <img src="<?php echo URLROOT; ?>/public/uploads/<?php echo $reqData->proof_document; ?>">
                         </div>
                     </div>
                     <?php endforeach; ?>

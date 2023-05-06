@@ -94,6 +94,16 @@
                     <div class="photo-container" id="grame">
                         <input type="file" id="file3" accept="image/*" hidden>
                         <div class="img-area" id="area-three" data-img="">
+                            <img alt="Proof Letter"
+                                 src="<?php echo URLROOT; ?>/public/uploads/<?php echo $eventData->proof_letter; ?>">
+                        </div>
+                    </div>
+                    <span class="title"><u>Thumbnail</u></span>
+                    <div class="photo-container" id="grame">
+                        <input type="file" id="file3" accept="image/*" hidden>
+                        <div class="img-area" id="area-three" data-img="">
+                            <img alt="Proof Letter"
+                                 src="<?php echo URLROOT; ?>/public/uploads/<?php echo $eventData->thumbnail; ?>">
                         </div>
                     </div>
                     <?php endforeach; ?>

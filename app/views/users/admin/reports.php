@@ -34,7 +34,7 @@
         <button type="button" onclick="window.location.href='<?php echo URLROOT; ?>/admin/monthlyDonationsReport'">
             Report
         </button>
-        <button type="button" onclick="window.location.href='<?php echo URLROOT; ?>/admin/monthlyDonationsReport'">
+        <button type="button" onclick="window.location.href='<?php echo URLROOT; ?>/admin/donationReqReport'">
             Report 1
         </button>
     </div>

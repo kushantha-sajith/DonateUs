@@ -1,5 +1,7 @@
 <?php
 
+use helpers\Email;
+
 class AdminPages extends Controller
 {
     public function __construct()
@@ -208,7 +210,9 @@ class AdminPages extends Controller
     public function acceptBeneficiary($id)
     {
         if ($this->adminPageModel->acceptUser($id)) {
-            //TODO : Send Email
+            $receiver = $this->adminPageModel->getUserEmail($id);
+            $email = new Email($receiver->email);
+            $email->sendUserAcceptanceEmail();
             redirect('adminPages/verifyBeneficiaries');
         } else {
             die('Something went wrong');
@@ -222,7 +226,9 @@ class AdminPages extends Controller
     public function acceptOrganizers($id)
     {
         if ($this->adminPageModel->acceptUser($id)) {
-            //TODO : Send Email
+            $receiver = $this->adminPageModel->getUserEmail($id);
+            $email = new Email($receiver->email);
+            $email->sendUserAcceptanceEmail();
             redirect('adminPages/verifyOrganizers');
         } else {
             die('Something went wrong');
@@ -236,7 +242,9 @@ class AdminPages extends Controller
     public function acceptRequest($id)
     {
         if ($this->adminPageModel->acceptRequest($id)) {
-            //TODO : Send Email
+            $receiver = $this->adminPageModel->getReqEmail($id);
+            $email = new Email($receiver->email);
+            $email->sendReqAcceptanceEmail();
             redirect('adminPages/pendingRequests');
         } else {
             die('Something went wrong');
@@ -250,7 +258,9 @@ class AdminPages extends Controller
     public function acceptEvent($id)
     {
         if ($this->adminPageModel->acceptEvent($id)) {
-            //TODO : Send Email
+            $receiver = $this->adminPageModel->getEventEmail($id);
+            $email = new Email($receiver->email);
+            $email->sendEventAcceptanceEmail();
             redirect('adminPages/pendingEvents');
         } else {
             die('Something went wrong');
@@ -283,7 +293,9 @@ class AdminPages extends Controller
             if (empty($data['note_err'])) {
                 // Validated
                 if ($this->adminPageModel->rejectUser($data)) {
-                    //TODO : Send Email
+                    $receiver = $this->adminPageModel->getUserEmail($id);
+                    $email = new Email($receiver->email);
+                    $email->sendUserRejectionEmail();
                     redirect('adminPages/verifyBeneficiaries');
                 } else {
                     die('Something went wrong');
@@ -331,7 +343,9 @@ class AdminPages extends Controller
             if (empty($data['note_err'])) {
                 // Validated
                 if ($this->adminPageModel->rejectUser($data)) {
-                    //TODO : Send Email
+                    $receiver = $this->adminPageModel->getUserEmail($id);
+                    $email = new Email($receiver->email);
+                    $email->sendUserRejectionEmail();
                     redirect('adminPages/verifyOrganizers');
                 } else {
                     die('Something went wrong');
@@ -379,7 +393,9 @@ class AdminPages extends Controller
             if (empty($data['note_err'])) {
                 // Validated
                 if ($this->adminPageModel->rejectRequest($data)) {
-                    //TODO : Send Email
+                    $receiver = $this->adminPageModel->getReqEmail($id);
+                    $email = new Email($receiver->email);
+                    $email->sendReqRejectionEmail();
                     redirect('adminPages/pendingRequests');
                 } else {
                     die('Something went wrong');
@@ -427,7 +443,9 @@ class AdminPages extends Controller
             if (empty($data['note_err'])) {
                 // Validated
                 if ($this->adminPageModel->rejectEvent($data)) {
-                    //TODO : Send Email
+                    $receiver = $this->adminPageModel->getReqEmail($id);
+                    $email = new Email($receiver->email);
+                    $email->sendEventRejectionEmail();
                     redirect('adminPages/pendingEvents');
                 } else {
                     die('Something went wrong');
@@ -533,5 +551,32 @@ class AdminPages extends Controller
             'donationDetails' => $donationDetails
         ];
         $this->view('users/admin/eventDonDetails', $data);
+    }
+
+    public function liveSearch()
+    {
+        if (count($_POST) > 0) {
+
+            $text = $_POST['text'];
+            $text = addslashes($text);
+
+            // $str="mysql:host=localhost;dbname=bloodlink";
+
+            // try{
+            //     $con= new PDO($str,"root","");
+
+            // }catch(PDOException $e){
+            //     die($e->getmessage());
+            // }
+            // $don=new BLDonor();
+//            $usrs1 = new Admin_PublicUsers();
+//
+//            $stm = "SELECT * FROM donor where name like '$text%'";
+
+
+            $results = $this->adminPageModel->getRequestDetails($text);
+
+            echo json_encode($results);
+        }
     }
 }

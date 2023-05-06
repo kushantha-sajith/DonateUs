@@ -9,6 +9,7 @@ class Admin extends Controller
      * @var mixed
      */
     private $adminModel;
+    private $statModel;
 
     public function __construct()
     {
@@ -17,6 +18,7 @@ class Admin extends Controller
         }
 
         $this->adminModel = $this->model('AdminModel');
+        $this->statModel = $this->model('StatModel');
     }
 
     //load admin dashboard
@@ -226,34 +228,6 @@ class Admin extends Controller
     /**
      * @return void
      */
-    public function financialDonationHistory()
-    {
-        $financialDonationHistory = $this->adminModel->financialDonationHistory();
-        $data = [
-            'title' => 'Donation History',
-            'financialDonationHistory' => $financialDonationHistory
-        ];
-
-        $this->view('users/admin/donationHistory', $data);
-    }
-
-    /**
-     * @return void
-     */
-    public function nonFinancialDonationHistory()
-    {
-        $nonFinancialDonationHistory = $this->adminModel->nonFinancialDonationHistory();
-        $data = [
-            'title' => 'Donation History',
-            'nonFinancialDonationHistory' => $nonFinancialDonationHistory
-        ];
-
-        $this->view('users/admin/nonFinancialDonations', $data);
-    }
-
-    /**
-     * @return void
-     */
     public function profile()
     {
         $data = [
@@ -454,5 +428,60 @@ class Admin extends Controller
         $dompdf->setPaper('A4');
         $dompdf->render();
         $dompdf->stream('Donation_History.pdf', array('Attachment' => 0));
+    }
+
+    /**
+     * @return void
+     */
+    public function donationReqReport()
+    {
+        $donations = $this->adminModel->financialDonationHistory();
+        $nDonations = $this->adminModel->nonFinancialDonationHistory();
+        $ongoingCount = $this->statModel->ongoingRequests();
+        $completedCount = $this->statModel->completedRequests();
+        $rejectedCount = $this->statModel->rejectedRequests();
+        $financialCount = $this->adminModel->getTotalFinDonations();
+        $category = $this->statModel->categoryCount();
+
+        $data = [
+            'title' => 'Donation Request Report',
+            'donation' => $donations,
+            'nDonation' => $nDonations,
+            'ongoingCount' => $ongoingCount,
+            'completedCount' => $completedCount,
+            'rejectedCount' => $rejectedCount,
+            'financialCount' => $financialCount,
+            'category' => $category
+        ];
+
+        $this->view('users/admin/donationReport', $data);
+    }
+
+    /**
+     * @return void
+     */
+    public function financialDonationHistory()
+    {
+        $financialDonationHistory = $this->adminModel->financialDonationHistory();
+        $data = [
+            'title' => 'Donation History',
+            'financialDonationHistory' => $financialDonationHistory
+        ];
+
+        $this->view('users/admin/donationHistory', $data);
+    }
+
+    /**
+     * @return void
+     */
+    public function nonFinancialDonationHistory()
+    {
+        $nonFinancialDonationHistory = $this->adminModel->nonFinancialDonationHistory();
+        $data = [
+            'title' => 'Donation History',
+            'nonFinancialDonationHistory' => $nonFinancialDonationHistory
+        ];
+
+        $this->view('users/admin/nonFinancialDonations', $data);
     }
 }

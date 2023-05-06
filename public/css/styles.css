@@ -1,17 +1,17 @@
-*{
+* {
     margin: 0;
     font-family: 'Readex Pro', sans-serif;
 }
 
-.loginSec1{
+.loginSec1 {
     top: 0;
     left: 0;
-    width : 100%;
+    width: 100%;
     height: 100vh;
     background-color: #F6F6F6;
 }
 
-.top{
+.top {
     position: absolute;
     top: 0;
     left: 0;
@@ -20,7 +20,7 @@
     background-color: #F6F6F6;
 }
 
-.logo{
+.logo {
     margin: 8px 14px;
     height: 70px;
     width: 70px;
@@ -28,99 +28,102 @@
     cursor: pointer;
 }
 
-.top h1{
+.top h1 {
     color: #163172;
     font-size: 50px;
     margin: 8px;
     width: 400px;
 }
 
-.left{
-    position :absolute;
-    top : 10%;
-    left : 0;
-    width :55%;
-    height : 90%;
+.left {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    width: 55%;
+    height: 90%;
     background-color: #D6E4F0;
     border-radius: 150px 0px 0px 0px;
 }
 
-.log_left{
-    position :absolute;
-    top : 10%;
-    left : 40%;
-    width : 60%;
-    height : 90%;
+.log_left {
+    position: absolute;
+    top: 10%;
+    left: 40%;
+    width: 60%;
+    height: 90%;
     background-color: #D6E4F0;
     border-radius: 0px 150px 0px 0px;
 }
 
-.img_reg, .img_login{
+.img_reg, .img_login {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); 
+    transform: translate(-50%, -50%);
     height: 650px;
     width: 650px;
 }
 
-.right{
-    position :absolute;
-    top : 10%;
-    left : 55%;
-    width : 45%;
-    height : 90%;
+.right {
+    position: absolute;
+    top: 10%;
+    left: 55%;
+    width: 45%;
+    height: 90%;
     background-color: #D6E4F0;
-    
+
 }
 
-.log_right{
-    position :absolute;
-    top : 10%;
-    left : 0;
-    width : 40%;
-    height : 90%;
+.log_right {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    width: 40%;
+    height: 90%;
     background-color: #D6E4F0;
 }
 
-.centered{
+.centered {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); 
+    transform: translate(-50%, -50%);
 }
 
-ul.menu{
-	margin: 10px 10px 0px 0px;
-	list-style-type: none;
+ul.menu {
+    margin: 10px 10px 0px 0px;
+    list-style-type: none;
     display: block;
     text-align: center;
-	padding: 15px;
-	overflow: hidden;
-	float: right;
-}
-li.menu{
-	float: right;
-}
-li a{
-    background-color: #163172;
-	color: white;
-    border-radius: 4px;
-	text-align: center;
-	padding: 14px 20px;
-    margin-right: 10px;
-	text-decoration: none;
-}
-li a:hover{
-	background-color: #0d1f4a;;
+    padding: 15px;
+    overflow: hidden;
+    float: right;
 }
 
-.right h1{
+li.menu {
+    float: right;
+}
+
+li a {
+    background-color: #163172;
+    color: white;
+    border-radius: 4px;
+    text-align: center;
+    padding: 14px 20px;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #0d1f4a;;
+}
+
+.right h1 {
     padding: 0px 20px 20px 20px;
     text-align: center;
 }
 
-.log_right h1{
+.log_right h1 {
     padding: 0px 20px 20px 20px;
     text-align: center;
 }
@@ -129,11 +132,11 @@ li a:hover{
     margin: 14px 0px;
 }
 
-p{
+p {
     text-align: right;
 }
 
-input[type=text],input[type=password]{
+input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -143,7 +146,7 @@ input[type=text],input[type=password]{
     box-sizing: border-box;
 }
 
-input[type=text],input[type=password]:focus{
+input[type=text], input[type=password]:focus {
     outline: none;
 }
 
@@ -157,20 +160,22 @@ input[type=submit], input[type=button] {
     border-radius: 4px;
     cursor: pointer;
 }
-  
+
 input[type=submit]:hover, input[type=button]:hover {
     background-color: #0d1f4a;
 }
 
 /*Registration*/
 
-.error{
+.error {
     color: red;
     font-size: x-small;
 }
 
-table{
+table {
     width: 100%;
+    border-collapse: collapse;
+
 }
 
 
@@ -181,10 +186,10 @@ table{
     border-radius: 4px;
     background-color: #D6E4F0;
     color: white;
-  }
-  
-  /* Style the buttons that are used to open the tab content */
-  .tab button {
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
     background-color: #163172;
     color: white;
     float: left;
@@ -194,42 +199,43 @@ table{
     cursor: pointer;
     padding: 14px 20px;
     margin-right: 5px;
-  }
-  
-  /* Change background color of buttons on hover */
-  .tab button:hover {
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
     background-color: #0d1f4a;
-  }
-  
-  /* Create an active/current tablink class */
-  .tab button.active {
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
     background-color: #0d1f4a;
-  }
-  
-  /* Style the tab content */
-  .tabcontent {
+}
+
+/* Style the tab content */
+.tabcontent {
     display: none;
     width: 100%;
     padding: 6px 0px;
     border: none;
-  }
-  .form{
-    width: 100%;
-  }
+}
 
-  /*#Individual{*/
-  /*  display: block;*/
-  /*}*/
- 
-  .welcomebanner{
+.form {
+    width: 100%;
+}
+
+/*#Individual{*/
+/*  display: block;*/
+/*}*/
+
+.welcomebanner {
     color: #163172;
     font-size: 100px;
     font-weight: bold;
-  }
+}
 
 
-  ul.frombtn{
-	width: 100%;
+ul.frombtn {
+    width: 100%;
     background-color: #163172;
     color: white;
     font-size: inherit;
@@ -242,25 +248,26 @@ table{
     display: block;
 }
 
-li.formbtn{
+li.formbtn {
     list-style-type: none;
 }
 
-li a{
+li a {
     background-color: #163172;
-	color: white;
+    color: white;
     border-radius: 4px;
-	text-align: center;
-	padding: 14px 20px;
+    text-align: center;
+    padding: 14px 20px;
     margin-right: 10px;
-	text-decoration: none;
+    text-decoration: none;
     overflow: hidden;
 }
-li a:hover{
-	background-color: #0d1f4a;;
+
+li a:hover {
+    background-color: #0d1f4a;;
 }
 
-.verification_buttons{
+.verification_buttons {
     width: 290px;
     height: 75px;
     display: inline-block;

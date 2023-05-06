@@ -93,11 +93,9 @@ main {
     max-width: 500px;
     width: 100%;
     background: #fff;
-    padding-left: 5px;
-    padding-top: 5px;
-    padding-bottom: 2PX;
-    padding-right: 5px;
+    padding: 5px 5px 2PX;
     border-radius: 30px;
+    margin: 0 auto;
 }
 
 .flex {

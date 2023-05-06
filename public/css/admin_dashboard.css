@@ -247,6 +247,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 #content main .table-data .todo .todo-list {
