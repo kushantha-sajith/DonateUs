@@ -468,6 +468,10 @@ nav .profile-details i {
     width: 100%;
     background: #fff;
     padding: 10px 0 0 0;
+<<<<<<< Updated upstream
+=======
+    margin: 15px 0 0 0;
+>>>>>>> Stashed changes
     border-radius: 7px;
     
 }
@@ -527,8 +531,15 @@ nav .profile-details i {
     box-shadow: var(--box-shadow);
   }
   .mid{
+<<<<<<< Updated upstream
     display: flex;
     flex-direction: column;
+=======
+    width: 100%;
+    display: grid;
+    grid-template-columns: 55% 44%;
+    grid-column-gap: 1%;
+>>>>>>> Stashed changes
     /* center the items vertically within the column */
     /* align-items: center;  */
     /* center the items horizontally within the column */
@@ -542,7 +553,11 @@ nav .profile-details i {
       margin-left: 2rem;
   }
   .easy .due-date{
+<<<<<<< Updated upstream
     color: green;
+=======
+    color: black;
+>>>>>>> Stashed changes
   }
   .box .quote i{
   margin-top: 10px;
@@ -590,12 +605,20 @@ nav .profile-details i {
     justify-content: right;
     width: 100%;
   }
+<<<<<<< Updated upstream
   .btns2 a{
+=======
+  .btns2{
+>>>>>>> Stashed changes
     margin-top: 20px;
     margin-bottom: 5px;
     display: flex;
     justify-content: right;
+<<<<<<< Updated upstream
     width: 980px;
+=======
+    width: 100%;
+>>>>>>> Stashed changes
   }
   a button{
     background: #0A2558;
@@ -612,8 +635,13 @@ nav .profile-details i {
   }
   a .btn-back{
     background: #0A2558;
+<<<<<<< Updated upstream
     width: 15%;
     padding: 9px;
+=======
+    width: fit-content;
+    padding: 9px 60px;
+>>>>>>> Stashed changes
     outline: none;
     border: none;
     border-radius: 5px;
@@ -628,7 +656,100 @@ nav .profile-details i {
     background: #0A2558;
     color: #fff;
   }
+<<<<<<< Updated upstream
   
+=======
+/* recent donations */
+.donation_list  .contact-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-list .contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.username {
+    font-size: 16px;    
+    margin-right: 20px;
+}
+
+.amount {
+    font-size: 16px;
+}
+  
+/* how it works */
+
+.how_it_works .progress-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 30px;
+    max-width: 100%;
+    width: 1000px;
+  }
+  
+.how_it_works  .progress-container::before {
+    content: ""; /* Mandatory with ::before */
+    background-color: var(--color-primary-varient);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 10px;
+    width: 100%;
+    z-index: -1;
+  }
+  
+.how_it_works  .progress {
+    background-color: var(--color-primary-varient);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 10px;
+    width: 100%;
+    z-index: -1;
+  }
+  
+.how_it_works  .circle {
+    background-color: var(--color-primary-varient);
+    color: #fff;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--color-primary-varient);
+  }
+  
+.how_it_works  .instructions {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: x-small;
+  }
+  
+.how_it_works  .instructions li:before {
+    content: "\2713"; /* checkmark symbol */
+    color: #52b788; /* color of checkmark */
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+>>>>>>> Stashed changes
   @media (max-width:1045px){
     .container .box{
       width: calc(50% - 10px);

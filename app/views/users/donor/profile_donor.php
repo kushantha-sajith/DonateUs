@@ -31,7 +31,11 @@
             <i class="bx bx-bell bx-tada notification"></i>
           </div>
           
+<<<<<<< Updated upstream
             <a href="<?php echo URLROOT; ?>/pages/profile_donor"><img src="<?php echo URLROOT; ?>/img/<?php echo $data['prof_img'];  ?>" alt="" /></a>
+=======
+            <a href="<?php echo URLROOT; ?>/pages/profileDonor"><img src="<?php echo URLROOT; ?>/img/<?php echo $data['prof_img'];  ?>" alt="" /></a>
+>>>>>>> Stashed changes
           <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
           <!-- <i class='bx bx-chevron-down'></i> -->
         </div>
@@ -138,7 +142,11 @@
                     </div>
                 </form>
                 <div class="updatebtn">
+<<<<<<< Updated upstream
                     <a href="<?php echo URLROOT; ?>/pages/edit_profile_donor">
+=======
+                    <a href="<?php echo URLROOT; ?>/pages/editProfileDonor">
+>>>>>>> Stashed changes
                         <button class="edit" style="text-decoration: none;">Edit Profile Details
                         </button>
                     </a>

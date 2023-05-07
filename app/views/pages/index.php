@@ -33,8 +33,16 @@
                         <a href="#eventHostersSection">Event Hosters</a>
                     </li>
                     <li>
+<<<<<<< Updated upstream
                         <a href="<?php echo URLROOT; ?>/users/register">Register</a>
                     </li>
+=======
+                        <a href="#aboutSection">About Us</a>
+                    </li>
+<!--                    <li>-->
+<!--                        <a href="--><?php //echo URLROOT; ?><!--/users/register">Register</a>-->
+<!--                    </li>-->
+>>>>>>> Stashed changes
                     <li>
                         <a href="<?php echo URLROOT; ?>/users/login">Login</a>
                     </li>
@@ -75,7 +83,11 @@
                 </p>
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 <button><a href="http://localhost/DonateUs/users/register_donor/gen">Register Now</a></button>
+=======
+                <button><a href="http://localhost/DonateUs/users/registerDonor/gen">Register Now</a></button>
+>>>>>>> Stashed changes
 =======
                 <button><a href="http://localhost/DonateUs/users/registerDonor/gen">Register Now</a></button>
 >>>>>>> Stashed changes
@@ -95,7 +107,11 @@
                 </p>
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 <button><a href="http://localhost/DonateUs/users/register_beneficiary/gen">Register Now</a></button>
+=======
+                <button><a href="http://localhost/DonateUs/users/registerBeneficiary/gen">Register Now</a></button>
+>>>>>>> Stashed changes
 =======
                 <button><a href="http://localhost/DonateUs/users/registerBeneficiary/gen">Register Now</a></button>
 >>>>>>> Stashed changes
@@ -115,7 +131,11 @@
                 </p>
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 <button><a href="http://localhost/DonateUs/users/register_eorganizer">Register Now</a></button>
+=======
+                <button><a href="http://localhost/DonateUS/users/registerEorganizer">Register Now</a></button>
+>>>>>>> Stashed changes
 =======
                 <button><a href="http://localhost/DonateUS/users/registerEorganizer">Register Now</a></button>
 >>>>>>> Stashed changes

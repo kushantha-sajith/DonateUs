@@ -30,7 +30,11 @@
                     </div>
                     <div id="Individual" class="tabcontent">
                     <table>
+<<<<<<< Updated upstream
                     <form action="<?php echo URLROOT; ?>/users/register_donor/ind" method="POST">
+=======
+                    <form action="<?php echo URLROOT; ?>/users/registerDonor/ind" method="POST">
+>>>>>>> Stashed changes
                         <tr><td>
                             <label>User email</label>
                             <input type="text" id="email_ind" name="email_ind" placeholder="ex: abc@gmail.com" value="<?php echo $data['email_ind']; ?>"></td>
@@ -92,8 +96,13 @@
                             <td  colspan="2"><input class="btnsubmit" type="submit" value="Register"></td>
                         </tr>
                         <tr>
+<<<<<<< Updated upstream
                             <td ><a href="<?php echo URLROOT; ?>/users/login_donor"><input type="button" value="Register as a Beneficiary" ></a></td>
                             <td ><a href="<?php echo URLROOT; ?>/users/register_eorganizer"><input type="button" value="Register as an Event Organizer" ></a></td>
+=======
+                            <td ><a href="<?php echo URLROOT; ?>/users/registerBeneficiary"><input type="button" value="Register as a Beneficiary" ></a></td>
+                            <td ><a href="<?php echo URLROOT; ?>/users/registerOrganizer"><input type="button" value="Register as an Event Organizer" ></a></td>
+>>>>>>> Stashed changes
                         </tr>
                         </form>
                         
@@ -103,7 +112,11 @@
 
                     <div id="Corporate" class="tabcontent">
                     <table>
+<<<<<<< Updated upstream
                     <form action="<?php echo URLROOT; ?>/users/register_donor/corp" method="POST">
+=======
+                    <form action="<?php echo URLROOT; ?>/users/registerDonor/corp" method="POST">
+>>>>>>> Stashed changes
                         <tr><td colspan="2"><label><b>- Company Details -</b></label></td></tr>
                         <tr><td>
                             <label>Email Address</label>
@@ -163,8 +176,13 @@
                             <td colspan="2"><input type="submit" value="Register"></td>
                         </tr>
                         <tr>
+<<<<<<< Updated upstream
                             <td ><a href="<?php echo URLROOT; ?>/users/login_donor"><input type="button" value="Register as a Beneficiary" ></a></td>
                             <td ><a href="<?php echo URLROOT; ?>/users/register_eorganizer"><input type="button" value="Register as an Event Organizer" ></a></td>
+=======
+                            <td ><a href="<?php echo URLROOT; ?>/users/registerBeneficiary"><input type="button" value="Register as a Beneficiary" ></a></td>
+                            <td ><a href="<?php echo URLROOT; ?>/users/registerOrganizer"><input type="button" value="Register as an Event Organizer" ></a></td>
+>>>>>>> Stashed changes
                         </tr>
                         </form>
                        

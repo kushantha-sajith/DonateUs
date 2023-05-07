@@ -26,7 +26,11 @@
                     
                     <div class="content">
                     <table>
+<<<<<<< Updated upstream
                     <form action="<?php echo URLROOT; ?>/users/register_eorganizer" method="POST">
+=======
+                    <form action="<?php echo URLROOT; ?>/users/registerOrganizer" method="POST">
+>>>>>>> Stashed changes
                         <tr><td>
                             <label>User email</label>
                             <input type="text" id="email" name="email" placeholder="ex: abc@gmail.com" value="<?php echo $data['email']; ?>"></td>

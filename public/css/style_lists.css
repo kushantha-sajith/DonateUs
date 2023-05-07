@@ -26,11 +26,15 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+<<<<<<< Updated upstream
 <<<<<<<< Updated upstream:public/css/style_lists.css
+=======
+>>>>>>> Stashed changes
 main{
     padding-top: 120px; 
     padding-left: 50px; 
     padding-right: 50px;
+<<<<<<< Updated upstream
 ========
 .container{
     
@@ -43,6 +47,8 @@ main{
     background-color: #fff;
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 >>>>>>>> Stashed changes:public/css/donation_details.css
+=======
+>>>>>>> Stashed changes
 }
 
 /* .main-container{
@@ -100,7 +106,16 @@ main{
     font-size: 1rem;
     
 }
+<<<<<<< Updated upstream
 
+=======
+.filters{
+    display: grid;
+    grid-template-columns: 40% 40% 20%;
+    max-width: 100%;
+    justify-content: left;
+}
+>>>>>>> Stashed changes
 .btnview{
     display: flex;
     align-items: center;
@@ -529,17 +544,29 @@ nav .profile-details i {
     cursor: pointer;
 }
 
+<<<<<<< Updated upstream
 .btns2 a{
+=======
+.btns2 {
+>>>>>>> Stashed changes
     margin-top: 20px;
     margin-bottom: 5px;
     display: flex;
     justify-content: right;
+<<<<<<< Updated upstream
     width: 100%;
 }
 a .btn-back{
     background: #0A2558;
     width: 15%;
     padding: 9px;
+=======
+}
+.btn-back{
+    background: #0A2558;
+    width: fit-content;
+    padding: 9px 60px;
+>>>>>>> Stashed changes
     outline: none;
     border: none;
     border-radius: 5px;

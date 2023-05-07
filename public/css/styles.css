@@ -165,7 +165,11 @@ input[type=text],input[type=password],select:focus{
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 input[type=submit],input[type=button] {
+=======
+input[type=submit], input[type=button] {
+>>>>>>> Stashed changes
 =======
 input[type=submit], input[type=button] {
 >>>>>>> Stashed changes
@@ -185,9 +189,12 @@ input[type=submit], input[type=button] {
   
 input[type=submit]:hover, input[type=button]:hover {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     background-color: #0d1f4a;
 }
 input[type=button]:hover {
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     background-color: #0d1f4a;
@@ -248,6 +255,7 @@ table{
   .form{
     width: 100%;
   }
+<<<<<<< Updated upstream
   .content {
     display: block;
     width: 100%;
@@ -294,6 +302,12 @@ table{
   } 
 
   
+=======
+
+  /*#Individual{*/
+  /*  display: block;*/
+  /*}*/
+>>>>>>> Stashed changes
  
   .welcomebanner{
     color: #163172;

@@ -83,17 +83,26 @@
                 <div>City</div>
                 <div></div>
             </div>
+<<<<<<< Updated upstream
             <?php foreach($data['donors'] as $donors) : ?>
                 <div class="cards_heading cards_color">
                     <div><?php echo $donors->id; ?></div>
                     <div></div>
                     <div></div>
+=======
+            <?php foreach($data['indDonors'] as $indDonors) : ?>
+                <div class="cards_heading cards_color">
+                    <div><?php echo $indDonors->id; ?></div>
+                    <div><?php echo $indDonors->f_name; ?></div>
+                    <div><?php echo $indDonors->email; ?></div>
+>>>>>>> Stashed changes
                     <div>
                         <select name="status" id="status">
                             <option value="Active">Active</option>
                             <option value="Deactive">Deactive</option>
                         </select>
                     </div>
+<<<<<<< Updated upstream
                     <div></div>
                     <div></div>
                     <div>
@@ -102,6 +111,11 @@
                         <div style="text-align: center;"> <a href="#"> <button class="btnview">View More</button> </a></div>
 =======
 =======
+>>>>>>> Stashed changes
+=======
+                    <div>Individual</div>
+                    <div><?php echo $indDonors->city; ?></div>
+                    <div>
 >>>>>>> Stashed changes
                         <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
                     </div>
@@ -123,6 +137,9 @@
                     <div>
                         <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes

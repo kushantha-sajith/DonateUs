@@ -52,7 +52,10 @@ main{
 }
 .ggg{
     display: flex;
+<<<<<<< Updated upstream
     display: flex;
+=======
+>>>>>>> Stashed changes
 	justify-content: center;
 }
 .select-image {
@@ -100,7 +103,10 @@ main{
 
 
 .img-area {
+<<<<<<< Updated upstream
     
+=======
+>>>>>>> Stashed changes
 	position: relative;
 	width: 100%;
 	height: 240px;
@@ -295,7 +301,10 @@ form .fields .input-field{
     display: flex;
     align-items: center;
     justify-content: center;
+<<<<<<< Updated upstream
     margin-right: px;
+=======
+>>>>>>> Stashed changes
     height: 45px;
     max-width: 200px;
     width: 100%;
@@ -306,12 +315,18 @@ form .fields .input-field{
     background-color: #4070f4;
     transition: all 0.3s linear;
     cursor: pointer;
+<<<<<<< Updated upstream
     
 } 
 
 
 
 
+=======
+     margin-right: 10px;
+} 
+
+>>>>>>> Stashed changes
 @media (max-width: 750px) {
     .container form{
         overflow-y: scroll;

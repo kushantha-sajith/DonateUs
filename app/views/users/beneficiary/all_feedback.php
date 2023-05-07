@@ -13,6 +13,7 @@
   </head>
   
   <body>
+<<<<<<< Updated upstream
     <!--navigation bar left-->
     <div class="sidebar">
       <div class="logo-details">
@@ -75,6 +76,10 @@
       </ul>
     </div>
     <!--navigation bar left end-->
+=======
+  <?php require APPROOT.'/views/inc/side_navbar_beneficiary.php';?>
+   
+>>>>>>> Stashed changes
 
     <!--home section start-->
     <section class="home-section">
@@ -88,7 +93,11 @@
           <div class="notification">
             <i class="bx bx-bell bx-tada notification"></i>
           </div>
+<<<<<<< Updated upstream
             <a href="<?php echo URLROOT; ?>/donor/profile_donor"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
+=======
+            <a href="<?php echo URLROOT; ?>/beneficiary/profile_beneficiary"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
+>>>>>>> Stashed changes
           <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
           <!-- <i class='bx bx-chevron-down'></i> -->
         </div>

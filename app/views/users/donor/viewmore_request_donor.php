@@ -42,6 +42,44 @@
         </div>
       </nav>
       <div class="main-container">
+<<<<<<< Updated upstream
+=======
+
+      <?php if($data['cat_id'] != 1){ ?>
+        <div class="how_it_works">
+      <h3>How It Works</h3>
+      <div class="progress-container">
+        <div class="progress" id="progress"></div>
+        <div class="circle"><b>1</b></div>
+        <ul class="instructions">
+          <li>Read the description</li>
+          <li>Identify the requirement</li>
+          <li>Donate Now!</li>
+        </ul>
+        <div class="circle"><b>2</b></div>
+        <ul class="instructions">
+          <li>Check your personal details</li>
+          <li>Fill donation details</li>
+          <li>Proceed</li>
+        </ul>
+        <div class="circle"><b>3</b></div>
+        <ul class="instructions">
+          <li>Get beneficiary contact details</li>
+          <li>Contact them</li>
+          <li>Deliver your donations</li>
+        </ul>
+        <div class="circle"><b>4</b></div>
+        <ul class="instructions">
+          <li>Go to your donation history</li>
+          <li>Mark the donation as delivered </li>
+          <li>Send us your feedback</li>
+        </ul>
+        <div class="circle"><b>End</b></div>
+     </div>
+     
+      <?php } ?>
+     
+>>>>>>> Stashed changes
       <?php foreach($data['details'] as $details ): ?>
         <div class="gigcontainer">
        
@@ -50,12 +88,24 @@
                     <div class="easy">
                         <p><b><?php if($details->cat_id >1){ echo "Non-Financial";}else{echo "Financial";} echo "  |  ".$details->category_name;  ?></b></p>
                         <div class="name_job"><?php echo $details->request_title;  ?></div> <!-- eo name_job -->
+<<<<<<< Updated upstream
                         <p><b>By : </b><?php echo $details->f_name." ".$details->l_name;  ?>       <b>On : </b><?php echo $details->published_date;  ?></p>
                         <p class="due-date"><b>Due on : <?php echo $details->due_date;  ?> </b> </p>
                     </div> <!-- eo easy -->
                     <div class="mid">
                         <div class="image"> 
                         <img src="<?php echo URLROOT; ?>/img/<?php echo $details->proof_document;  ?>">
+=======
+                        <p><b>By : </b><?php echo $details->name;  ?>       <b>On : </b><?php echo $details->published_date;  ?></p>
+                        <p class="due-date">
+                          <span  <?php if(($details->days_left) > 0 && ($details->days_left) < 7){ ?> style="color:red;"<?php }else { ?> style="color:green;"<?php }?>><b>Due on : <?php echo $details->due_date;  ?> </b></span>
+                        </p>
+                        
+                    </div> <!-- eo easy -->
+                    <div class="mid">
+                        <div class="image"> 
+                        <img src="<?php echo URLROOT; ?>/img/<?php echo $details->thumbnail;  ?>">
+>>>>>>> Stashed changes
                         </div> <!-- eo image -->
                         
 
@@ -67,9 +117,36 @@
                             <div class="skill-bar">
                             <?php $percentage = (($details->received_quantity * 100) / $details->quantity);  ?>
                                 <span class="skill-per" style ="width:<?php echo $percentage ;  ?>%;"></span>
+<<<<<<< Updated upstream
                             </div> <!-- eo skill-box -->
                         
                        
+=======
+                            </div> <!-- eo skill-bar -->
+                            <div class="btns">
+                          <a href="<?php echo URLROOT;?>/donor/donate/<?php echo $data['id'] ; ?>/<?php echo $data['cat_id'] ; ?>"><button>Donate Now</button></a>
+                        </div> <!-- eo btns -->
+
+                        <div class="donation_list">
+                            <p>Recent Donations (out of <?php echo $data['donations_count']; ?> donations)</p>
+                            <?php foreach($data['recent_donations'] as $donation ): ?>
+                              
+                              <ul class="contact-list">
+                                <li class="contact-item">
+                                <?php if($donation->anonymous == 1){ ?>
+                                  <img class="profile-image" src="<?php echo URLROOT; ?>/img/anonymous.png" alt="">
+                                  <span class="username">Anonymous Donor</span>
+                                <?php }else{ ?>
+                                  <img class="profile-image" src="<?php echo URLROOT; ?>/img/<?php echo $donation->prof_img;  ?>" alt="">
+                                  <span class="username"><?php echo $donation->donor_name;  ?></span>
+                                <?php } ?>
+                                  <span class="amount"><?php echo $donation->quantity_donated ;  ?></span>
+                                </li>
+                              </ul>
+                            <?php endforeach; ?>
+                          </div> <!-- donation_list -->
+                            </div> <!-- eo skill-box -->
+>>>>>>> Stashed changes
                         <?php } else{ ?>
                                                          
                         <div class="skill-box">
@@ -78,6 +155,7 @@
                             <div class="skill-bar">
                             <?php $percentage = (($details->received_amount * 100) / $details->total_amount);  ?>
                                 <span class="skill-per" style ="width:<?php echo $percentage ;  ?>%;"></span>
+<<<<<<< Updated upstream
                             </div><!-- eo skill-box -->
                         
                         
@@ -98,6 +176,61 @@
             </div> 
         </div>
 
+=======
+                            </div><!-- eo skill-bar -->
+                            <div class="btns">
+                          <a href="<?php echo URLROOT;?>/donor/donate/<?php echo $data['id'] ; ?>/<?php echo $data['cat_id'] ; ?>"><button>Donate Now</button></a>
+                          </div> <!-- eo btns -->
+
+                          <div class="donation_list">
+                          <p>Recent Donations (out of <?php echo $data['donations_count']; ?> donations)</p>
+                            <?php foreach($data['recent_donations'] as $donation ): ?>
+                              
+                              <ul class="contact-list">
+                                <li class="contact-item">
+                                <?php if($donation->anonymous == 1){ ?>
+                                  <img class="profile-image" src="<?php echo URLROOT; ?>/img/anonymous.png" alt="">
+                                  <span class="username">Anonymous Donor</span>
+                                <?php }else{ ?>
+                                  <img class="profile-image" src="<?php echo URLROOT; ?>/img/<?php echo $donation->prof_img;  ?>" alt="">
+                                  <span class="username"><?php echo $donation->donor_name;  ?></span>
+                                <?php } ?>
+                                  <span class="amount">Rs.<?php echo $donation->amount_donated ;  ?></span>
+                                </li>
+                              </ul>
+                            <?php endforeach; ?>
+                          </div> <!-- donation_list -->
+                          </div> <!-- eo skill-box -->
+                         <?php } ?>
+                                                   
+                        
+
+                        </div> <!-- eo mid -->
+                        <p><?php echo $details->description;  ?></p>
+                        <?php if($details->req_type == 0) { ?>
+                          <div class="location">
+                            
+                        <p><b>Item Requested : </b><?php echo $details->item;  ?></p>
+                        <?php foreach($data['beneficiary'] as $user ): ?>
+                          <p><b>Address : </b><?php echo $user->address;  ?></p>
+                          <p><b>Zipcode : </b><?php echo $user->zipcode;  ?></p>
+                          <p><b>District : </b><?php echo $user->dist_name;  ?></p>
+                          <?php endforeach; ?>
+                        </div>
+                        <?php } ?>
+                        
+                    </div><!-- eo box -->
+                    <div class="btns2">
+              <a href="<?php echo URLROOT;?>/pages/donationRequestsDonor"><button class="btn-back">Back</button></a>
+        </div> 
+                </div> <!-- eo gigcontainer -->
+          
+            <?php endforeach; ?>
+            </div> <!-- eo main-container --> 
+            
+        
+        
+>>>>>>> Stashed changes
     </section>
     <!--home section end-->
 
@@ -119,6 +252,10 @@
                 optionMenu.classList.remove("active");
             });
         });
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     </script>
   </body>
 </html>

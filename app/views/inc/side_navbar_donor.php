@@ -12,7 +12,11 @@
           </a>
         </li>
         <li>
+<<<<<<< Updated upstream
           <a href="<?php echo URLROOT; ?>/pages/donation_requests_donor">
+=======
+          <a href="<?php echo URLROOT; ?>/pages/donationRequestsDonor">
+>>>>>>> Stashed changes
             <i class="bx bx-list-check"></i>
             <span class="links_name">Donation Requests</span>
           </a>
@@ -26,8 +30,11 @@
         <li>
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           <a href="<?php echo URLROOT; ?>/pages/donationHistory_donor">
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
           <a href="<?php echo URLROOT; ?>/donor/reservationsDonor">
@@ -35,12 +42,18 @@
             <span class="links_name">Reservations</span>
           </a>
         </li>
+<<<<<<< Updated upstream
         <li id="item1">
           <a href="<?php echo URLROOT; ?>/donor/sponsorshipsDonor">
             <i class="bx bxs-dollar-circle"></i>
             <span class="links_name">Sponsor</span>
           </a>
         </li>
+        <li>
+          <a href="<?php echo URLROOT; ?>/pages/donationHistoryDonor">
+>>>>>>> Stashed changes
+=======
+        
         <li>
           <a href="<?php echo URLROOT; ?>/pages/donationHistoryDonor">
 >>>>>>> Stashed changes
@@ -60,8 +73,18 @@
             <span class="links_name">Stats</span>
           </a>
         </li>
+<<<<<<< Updated upstream
         
         <li id="item2">
+=======
+        <li id="item1">
+          <a href="<?php echo URLROOT; ?>/donor/sponsorshipsDonor">
+            <i class="bx bxs-dollar-circle"></i>
+            <span class="links_name">Sponsor</span>
+          </a>
+        </li>
+        <li>
+>>>>>>> Stashed changes
           <a href="#">
             <i class="bx bxs-report"></i>
             <span class="links_name">Reports</span>

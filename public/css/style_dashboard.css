@@ -162,9 +162,14 @@ nav .search-box input {
 nav .search-box .bx-search {
     position: absolute;
     height: 40px;
+<<<<<<< Updated upstream
     width: 40px;
     background: #0A2558;
     /* background: #2697FF; */
+=======
+    width: 40px;    
+    background: #2697FF;
+>>>>>>> Stashed changes
     right: 5px;
     top: 50%;
     transform: translateY(-50%);

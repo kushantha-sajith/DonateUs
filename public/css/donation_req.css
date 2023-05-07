@@ -188,6 +188,14 @@ main{
     color: #333;
 }
 
+<<<<<<< Updated upstream
+=======
+.btnadd{
+    max-width: 200px;
+    width: 100%;
+    float: right;
+}
+>>>>>>> Stashed changes
 
 .sidebar {
     position: fixed;

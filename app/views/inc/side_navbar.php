@@ -22,7 +22,11 @@
             </a>
         </li>
         <li>
+<<<<<<< Updated upstream
             <a href="<?php echo URLROOT; ?>/admin/users">
+=======
+            <a href="<?php echo URLROOT;?>/adminPages/verifyBeneficiaries">
+>>>>>>> Stashed changes
                 <i class="bx bx-user"></i>
                 <span class="links_name">Verify New Users</span>
             </a>
@@ -34,17 +38,30 @@
             </a>
         </li>
         <li>
+<<<<<<< Updated upstream
             <a href="<?php echo URLROOT; ?>/admin/donationHistory">
+=======
+            <a href="<?php echo URLROOT; ?>/admin/financialDonationHistory">
+>>>>>>> Stashed changes
                 <i class="bx bx-history"></i>
                 <span class="links_name">Donation History</span>
             </a>
         </li>
+<<<<<<< Updated upstream
         <li>
             <a href="#">
                 <i class="bx bx-message-alt-detail"></i>
                 <span class="links_name">Feedbacks</span>
             </a>
         </li>
+=======
+<!--        <li>-->
+<!--            <a href="#">-->
+<!--                <i class="bx bx-message-alt-detail"></i>-->
+<!--                <span class="links_name">Feedbacks</span>-->
+<!--            </a>-->
+<!--        </li>-->
+>>>>>>> Stashed changes
         <li>
             <a href="<?php echo URLROOT; ?>/admin/categories">
                 <i class="bx bx-list-ul"></i>
@@ -58,7 +75,11 @@
 <!--            </a>-->
 <!--        </li>-->
         <li>
+<<<<<<< Updated upstream
             <a href="<?php echo URLROOT; ?>/admin/events">
+=======
+            <a href="<?php echo URLROOT; ?>/adminPages/pendingEvents">
+>>>>>>> Stashed changes
                 <i class="bx bx-calendar-check"></i>
                 <span class="links_name">Events</span>
             </a>

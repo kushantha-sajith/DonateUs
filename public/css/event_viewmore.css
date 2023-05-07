@@ -472,6 +472,10 @@ nav .profile-details i {
     
 }
 .skill-box .title{
+<<<<<<< Updated upstream
+=======
+    margin-top: 15px;
+>>>>>>> Stashed changes
     display: block;
     font-size: 14px;
     font-weight: 600;
@@ -489,12 +493,48 @@ nav .profile-details i {
     position:relative;
     display: block;
     height: 100%;
+<<<<<<< Updated upstream
+=======
+    max-width: 100%;
+>>>>>>> Stashed changes
     border-radius: 6px;
     background: var(--color-primary-varient);
     animation: progress 0.4s ease-in-out forwards;
     opacity: 0;
 }
 
+<<<<<<< Updated upstream
+=======
+/* recent donations */
+.donation_list  .contact-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-list .contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.username {
+    font-size: 16px;    
+    margin-right: 20px;
+}
+
+.amount {
+    font-size: 16px;
+}
+>>>>>>> Stashed changes
 
 @keyframes progress {
     0%{
@@ -520,15 +560,26 @@ nav .profile-details i {
     background: #fff;
     display: flex;
     flex-direction: column;
+<<<<<<< Updated upstream
     align-items: center;
+=======
+    /* align-items: center; */
+>>>>>>> Stashed changes
     padding: 20px 30px;
     border-radius: 5px;
     margin-top: 2rem;
     box-shadow: var(--box-shadow);
   }
   .mid{
+<<<<<<< Updated upstream
     display: flex;
     flex-direction: column;
+=======
+    width: 100%;
+    display: grid;
+    grid-template-columns: 55% 44%;
+    grid-column-gap: 1%;
+>>>>>>> Stashed changes
     /* center the items vertically within the column */
     /* align-items: center;  */
     /* center the items horizontally within the column */
@@ -541,7 +592,11 @@ nav .profile-details i {
       max-width: 500px;
   }
   .due-date{
+<<<<<<< Updated upstream
     color: green;
+=======
+    color: black;
+>>>>>>> Stashed changes
   }
   .box .quote i{
   margin-top: 10px;
@@ -589,12 +644,20 @@ nav .profile-details i {
     justify-content: right;
     width: 100%;
   }
+<<<<<<< Updated upstream
   .btns2 a{
+=======
+  .btns2{
+>>>>>>> Stashed changes
     margin-top: 20px;
     margin-bottom: 5px;
     display: flex;
     justify-content: right;
+<<<<<<< Updated upstream
     width: 980px;
+=======
+    width: 100%;
+>>>>>>> Stashed changes
   }
   a button{
     background: #0A2558;
@@ -611,8 +674,13 @@ nav .profile-details i {
   }
   a .btn-back{
     background: #0A2558;
+<<<<<<< Updated upstream
     width: 15%;
     padding: 9px;
+=======
+    width: fit-content;
+    padding: 9px 60px;
+>>>>>>> Stashed changes
     outline: none;
     border: none;
     border-radius: 5px;

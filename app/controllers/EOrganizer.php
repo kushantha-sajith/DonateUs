@@ -2,10 +2,16 @@
 
     class EOrganizer extends Controller{
         public function __construct(){
+<<<<<<< Updated upstream
             /*if(!isLoggedIn()){
                 redirect('users/login');
             }
 */
+=======
+            if(!isLoggedIn()){
+                redirect('users/login');
+            }
+>>>>>>> Stashed changes
             $this->EOrganizerModel = $this->model('EOrganizerModel');
             $this->userModel = $this->model('User');
             

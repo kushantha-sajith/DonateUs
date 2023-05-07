@@ -13,6 +13,8 @@
   </head>
   
   <body>
+<<<<<<< Updated upstream
+<<<<<<<< Updated upstream:app/views/users/beneficiary/donation_history_beneficiary.php
     <!--navigation bar left-->
     <div class="sidebar">
       <div class="logo-details">
@@ -75,6 +77,12 @@
       </ul>
     </div>
     <!--navigation bar left end-->
+========
+  <?php require APPROOT.'/views/inc/side_navbar_beneficiary.php';?>
+>>>>>>>> Stashed changes:app/views/users/beneficiary/donation_history.php
+=======
+  <?php require APPROOT.'/views/inc/side_navbar_beneficiary.php';?>
+>>>>>>> Stashed changes
 
     <!--home section start-->
     <section class="home-section">
@@ -88,7 +96,15 @@
           <div class="notification">
             <i class="bx bx-bell bx-tada notification"></i>
           </div>
+<<<<<<< Updated upstream
+<<<<<<<< Updated upstream:app/views/users/beneficiary/donation_history_beneficiary.php
             <a href="<?php echo URLROOT; ?>/donor/profile_donor"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
+========
+            <a href="<?php echo URLROOT; ?>/beneficiary/profile_beneficiary"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
+>>>>>>>> Stashed changes:app/views/users/beneficiary/donation_history.php
+=======
+            <a href="<?php echo URLROOT; ?>/beneficiary/profile_beneficiary"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
+>>>>>>> Stashed changes
           <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
           <!-- <i class='bx bx-chevron-down'></i> -->
         </div>
@@ -126,7 +142,7 @@
               <td colspan="2" style="text-align:left;">45</td>
               <td colspan="2" style="text-align:left;">14/12/2022</td>
               <td colspan="2" style="text-align:left;">Medicine</td>
-              <td colspan="2" style="text-align:left;"><a href="<?php echo URLROOT; ?>/donor/feedback"><button class="btnfeedback">Feedback</button></a></td>
+              <td colspan="2" style="text-align:left;"><a href="<?php echo URLROOT; ?>/beneficiary/feedback"><button class="btnfeedback">Feedback</button></a></td>
               <td colspan="2" style="text-align:left;">Completed</td>
             </tr>
           

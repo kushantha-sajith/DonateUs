@@ -2,10 +2,16 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
+<<<<<<< Updated upstream
     <title>Dashboard</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/request_viewmore.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/payment.css" />
+=======
+    <title>Donation</title>
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donate_financial_donor.css" />
+>>>>>>> Stashed changes
     <link
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
       rel="stylesheet"
@@ -45,6 +51,7 @@
       <div class="main-container">
       
         <div class="gigcontainer">
+<<<<<<< Updated upstream
         <form id="payment-form">
       <div class="form-group">
         <label for="name">Name on Card</label>
@@ -161,5 +168,99 @@ form.appendChild(error);
 }
 
     </script>
+=======
+       
+          <div class="box">
+
+          <?php if($data['isRequest'] == 1){ ?>
+            <form action="<?php echo URLROOT; ?>/donor/donate/<?php echo $data['req_id'];  ?>/<?php echo $data['cat_id'];  ?>" method="POST">
+          <?php }else{?>
+            <form action="<?php echo URLROOT; ?>/donor/donateToEvents/<?php echo $data['req_id'];  ?>/1" method="POST">
+          <?php } ?>
+          <h3 class="title_a">Donation Details</h3>
+<div class="row">
+
+    <div class="col">
+            
+
+        <div class="inputBox">
+            <span>Full name :</span>
+            <input type="text" name="donor_name" placeholder="Your Name" value="<?php echo $data['donor_name']; ?>">
+        </div>
+        <div class="inputBox">
+            <span>Email :</span>
+            <input type="email" name="donor_email" placeholder="Your Email Address" value="<?php echo $data['donor_email']; ?>">
+        </div>
+               
+        <div class="circle-wrap">
+        <div class="circle">
+        <?php 
+          $requested = $data['amount'];
+          $received = $data['received'];
+          //typecast to get integer value
+          $percentage = (int) (($received/$requested)*100);
+          $degree = (360/200)*$percentage; // (360/100)*percentage, then devide by 2 bcz circle is formed by 2 parts
+        ?>
+        
+          <div class="mask full" style="transform: rotate(<?php echo $degree; ?>deg);">
+            <div class="fill" style="transform: rotate(<?php echo $degree; ?>deg);"></div>
+           </div> <!-- eo mask full -->
+          <div class="mask half">
+            <div class="fill" style="transform: rotate(<?php echo $degree; ?>deg);"></div>
+          </div><!-- eo mask half -->
+          <div class="inside-circle"> <?php echo $percentage; ?>% </div>
+        </div><!-- eo circle -->
+      </div> <!-- eo circle-wrap -->
+      <div class="inputBox">
+            <span>Rs.<?php echo $received; ?> raised out of Rs.<?php echo $requested; ?></span>            
+        </div>
+        
+
+    </div>
+
+    <div class="col">
+        <div class="inputBox">
+            <span>Contact Number :</span>
+            <input type="text" name="donor_contact" placeholder="Your Contact Number" value="<?php echo $data['donor_contact']; ?>">
+        </div>
+        <div class="inputBox">
+            <span>Amount Rs :</span>
+            <input type="text" name="donated_amount" placeholder="500" value="<?php echo $data['donated_amount']; ?>">
+            <p class="error"><?php echo $data['amount_err']; ?></p>
+        </div>
+        <div class="inputBox">
+            <span>Anonymous Donation</span>
+            <input type="checkbox" id="demoCheckbox" name="anonymous" value="1">
+            <p>Your donation will be displayed as <b>Anonymous Donation</b> under the resent Donations of this donation request</p>
+            <p>Your donation will be <b>Anonymous</b> to the beneficiary as well</p>
+        </div>
+        
+
+    </div>
+    <input type="submit" value="Proceed to Payment" class="submit-btn">
+</div>
+
+
+
+</form>
+          </div><!-- eo box -->
+          <div class="btns2">
+          <?php if($data['isRequest'] == 1){ ?>
+            <a href="<?php echo URLROOT;?>/donor/viewmoreRequestDonor/<?php echo $data['req_id'];?>/1"><button class="btn-back">Back</button></a>
+          <?php }else{?>
+            <a href="<?php echo URLROOT;?>/donor/viewmoreEventDonor/<?php echo $data['req_id'];?>"><button class="btn-back">Back</button></a>
+          <?php } ?>
+          </div> 
+        </div> <!-- eo gigcontainer -->
+          
+           
+      </div> <!-- eo main-container --> 
+            
+        
+        
+    </section>
+    <!--home section end-->
+
+>>>>>>> Stashed changes
   </body>
 </html>

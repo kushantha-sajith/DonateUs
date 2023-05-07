@@ -6,6 +6,7 @@
     <title>Donation Requests</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donation_req.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
+<<<<<<< Updated upstream
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet"
@@ -170,23 +171,75 @@
             <!-- <div>
       <table class="cards_heading head">
           <thead class="cards_heading cards_color">
+=======
+    
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  
+  <body>
+  <?php require APPROOT.'/views/inc/side_navbar_beneficiary.php';?>
+
+    <!--home section start-->
+    <section class="home-section">
+      <nav>
+        <div class="sidebar-button">
+          <i class="bx bx-menu sidebarBtn"></i>
+          <span class="dashboard">Dashboard</span>
+        </div>
+        
+        <div class="profile-details">
+          <div class="notification">
+            <i class="bx bx-bell bx-tada notification"></i>
+          </div>
+          <a href="<?php echo URLROOT; ?>/beneficiary/profile"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
+          <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
+          <!-- <i class='bx bx-chevron-down'></i> -->
+        </div>
+      </nav>
+      <div class="main-container">
+      <div>
+        <h1>Requests</h1>
+      </div>
+      <div>
+      <table class="main-table">
+          <thead>
+>>>>>>> Stashed changes
             <th style="text-align:left;"><span>Id</span></th>
             <th style="text-align:left;"><span>Description</span></th>
-            <th style="text-align:left;"><span>Type</span></th>
+            <th style="text-align:left;"><span>Name</span></th>
             <th style="text-align:left;"><span>Quantity</span></th>
             <th style="text-align:left;"><span>DueDate</span></th>
+<<<<<<< Updated upstream
             <th style="text-align:left;"><span>Categories</span></th>
              <th style="text-align:left;"><span>City</span></th>
             <th style="text-align:left;"><span>Contact</span></th> -->
 <!-- 
             <div>
+=======
+            <th style="text-align:left;"><span>Title</span></th>
+            <th style="text-align:left;"><span>City</span></th>
+            <th style="text-align:left;"><span>Contact</span></th>
+            <!-- <th style="text-align:left;"><span>user_id</span></th>
+            <th style="text-align:left;"><span>cat_id</span></th> -->
+
+
+            <th></th>
+            <th></th>            
+          </thead>
+          <tbody>
+>>>>>>> Stashed changes
             <?php foreach($data['requests'] as $requests) : ?>
             <tr class="t-row">
               <td style="text-align:left;"><?php echo $requests->id; ?></td>
               <td style="text-align:left;"><?php echo $requests->description; ?></td>
-              <td style="text-align:left;"><?php echo $requests->type; ?></td>
+              <td style="text-align:left;"><?php echo $requests->name; ?></td>
               <td style="text-align:left;"><?php echo $requests->quantity; ?></td>
               <td style="text-align:left;"><?php echo $requests->duedate; ?></td>
+<<<<<<< Updated upstream
               <td style="text-align:left;"><?php echo $requests->categories; ?></td>
               <!-- <td style="text-align:left;"><?php echo $requests->city; ?></td>
               <td style="text-align:left;"><?php echo $requests->contact; ?></td> -->
@@ -196,6 +249,18 @@
               <!-- <td><a href="<?php echo URLROOT; ?>/beneficiary/editRequest/<?php echo $requests->id; ?>" class="btn-edit">Edit</a></td>
               <td><a href="<?php echo URLROOT; ?>/beneficiary/deleteRequest/<?php echo $requests->id; ?>" class="btn-delete">Delete</a></td> -->
             <!-- </tr>
+=======
+              <td style="text-align:left;"><?php echo $requests->title; ?></td>
+              <td style="text-align:left;"><?php echo $requests->city; ?></td>
+              <td style="text-align:left;"><?php echo $requests->contact; ?></td>
+              <!-- <td style="text-align:left;"><?php echo $requests->user_id; ?></td>
+              <td style="text-align:left;"><?php echo $requests->cat_id; ?></td> -->
+
+
+              <td><a href="<?php echo URLROOT; ?>/beneficiary/editRequest/$requests->id<?php echo $requests->id; ?>" class="btn-edit">Edit</a></td>
+              <td><a href="<?php echo URLROOT; ?>/beneficiary/deleteRequest/<?php echo $requests->id; ?>" class="btn-delete">Delete</a></td>
+            </tr>
+>>>>>>> Stashed changes
             <?php endforeach; ?>
           </tbody>
         </table>
@@ -204,8 +269,17 @@
     <br>
     <br>
 
+<<<<<<< Updated upstream
        <!-- <div>
         <a href="<?php echo URLROOT; ?>/beneficiary/req_form">
+=======
+      </div>
+      <br>
+      <br>
+      <br>
+      <div>
+        <a href="<?php echo URLROOT; ?>/beneficiary/reqForm">
+>>>>>>> Stashed changes
         <input type="submit" value="Add a new request" class="btn add">
         </a>
       </div>  -->
@@ -236,6 +310,7 @@
 
     </section>
     <!--home section end-->
+
 
 
     <script>
@@ -272,4 +347,8 @@
     </script>
 </body>
 
+<<<<<<< Updated upstream
 </html>
+=======
+</html> -->
+>>>>>>> Stashed changes

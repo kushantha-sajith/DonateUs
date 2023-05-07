@@ -160,6 +160,7 @@
 
 window.onload = function () {
         let type = "<?php echo $_SESSION['user_type']; ?>";
+<<<<<<< Updated upstream
         let menuitem1 = document.getElementById("item1");
         let menuitem2 = document.getElementById("item2");
         let profitem1 = document.getElementById("ind1");
@@ -182,6 +183,52 @@ window.onload = function () {
           profitem4.style.display = "none";
         }
         
+=======
+        // let individual ="ind", corporate ="corp";
+
+        // let ind = document.getElementsById(individual);
+        // let corp = document.getElementsById(corporate);
+
+        // let i,j; 
+        // if(type === "3" ){
+          
+        // for (i = 0; i < ind.length; i++) {
+        //     ind[i].style.display = "none";
+        // }
+        
+        // for (j = 0; j < corp.length; j++) {
+        //     corp[j].style.display = "block";
+        // }
+         
+        // }else{
+
+        //   for (i = 0; i < ind.length; i++) {
+        //     ind[i].style.display = "block";
+        // }
+        
+        // for (j = 0; j < corp.length; j++) {
+        //     corp[j].style.display = "none";
+        // }
+        // }
+        if(type === "5" ){
+          document.getElementById("ind1").style.display = "none";
+          document.getElementById("ind2").style.display = "none";
+          document.getElementById("ind3").style.display = "none";
+          document.getElementById("ind4").style.display = "none";
+          document.getElementById("ind5").style.display = "none";
+        }
+        else{
+          document.getElementById("corp1").style.display = "none";
+          document.getElementById("corp2").style.display = "none";
+          document.getElementById("corp3").style.display = "none";
+          document.getElementById("corp4").style.display = "none";
+          document.getElementById("corp5").style.display = "none";
+          document.getElementById("corp6").style.display = "none";
+          document.getElementById("corp7").style.display = "none";
+          document.getElementById("corp8").style.display = "none";
+          document.getElementById("corp9").style.display = "none";
+        }
+>>>>>>> Stashed changes
       };
 
       let sidebar = document.querySelector(".sidebar");

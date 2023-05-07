@@ -14,9 +14,17 @@ class AdminPages extends Controller {
      * @return void
      */
     public function donors(){
+<<<<<<< Updated upstream
         $donors = $this->adminPageModel->getDonors();
         $data = [
             'donors' => $donors
+=======
+        $indDonors = $this->adminPageModel->getIndDonors();
+        $corpDonors = $this->adminPageModel->getCorpDonors();
+        $data = [
+            'indDonors' => $indDonors,
+            'corpDonors' => $corpDonors
+>>>>>>> Stashed changes
         ];
         $this->view('users/admin/donors', $data);
     }
@@ -25,16 +33,27 @@ class AdminPages extends Controller {
      * @return void
      */
     public function beneficiaries(){
+<<<<<<< Updated upstream
         $beneficiaries = $this->adminPageModel->getBeneficiaries();
         $data = [
             'beneficiaries' => $beneficiaries
+=======
+        $indBeneficiaries = $this->adminPageModel->getIndBeneficiaries();
+        $corpBeneficiaries = $this->adminPageModel->getOrgBeneficiaries();
+        $data = [
+            'indBeneficiaries' => $indBeneficiaries,
+            'corpBeneficiaries' => $corpBeneficiaries
+>>>>>>> Stashed changes
         ];
         $this->view('users/admin/beneficiaries', $data);
     }
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     public function verifyBeneficiaries(){
@@ -47,6 +66,9 @@ class AdminPages extends Controller {
         $this->view('users/admin/verifyBeneficiaries', $data);
     }
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     /**
      * @return void
@@ -61,7 +83,10 @@ class AdminPages extends Controller {
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     public function verifyOrganizers(){
@@ -72,6 +97,9 @@ class AdminPages extends Controller {
         $this->view('users/admin/verifyOrganizers', $data);
     }
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     /**
      * @return void

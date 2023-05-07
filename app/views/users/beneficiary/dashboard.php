@@ -3,7 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <title>Beneficiary Dashboard</title>
+<<<<<<< Updated upstream
     <link rel="stylesheet" href="style_dashboard.css" />
+=======
+    
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
+>>>>>>> Stashed changes
     <link
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
       rel="stylesheet"

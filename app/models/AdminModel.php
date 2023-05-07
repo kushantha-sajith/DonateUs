@@ -116,7 +116,10 @@
             return $results;
         }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 
         public function financialDonationHistory(){
             $this->db->query('SELECT * FROM donation_history');
@@ -129,5 +132,8 @@
             $results = $this->db->resultSet();
             return $results;
         }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     }

@@ -32,7 +32,11 @@
             <i class="bx bx-bell bx-tada notification"></i>
           </div>
           
+<<<<<<< Updated upstream
             <a href="<?php echo URLROOT; ?>/pages/profile_donor"><img src="<?php echo URLROOT; ?>/img/<?php echo $data['prof_img'];  ?>" alt="" /></a>
+=======
+            <a href="<?php echo URLROOT; ?>/pages/profileDonor"><img src="<?php echo URLROOT; ?>/img/<?php echo $data['prof_img'];  ?>" alt="" /></a>
+>>>>>>> Stashed changes
           <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
           <!-- <i class='bx bx-chevron-down'></i> -->
         </div>
@@ -42,8 +46,14 @@
                 <header>Profile Update</header>
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
                 <form action="<?php echo URLROOT; ?>/donor/update_profile_donor" method="POST">
+=======
+                <?php foreach($data['userdata'] as $user) : ?>
+                <?php foreach($data['personaldata'] as $personaldata) : ?>
+                <form action="<?php echo URLROOT; ?>/donor/updateProfileDonor/<?php echo $user->tp_number; ?>" method="POST">
+>>>>>>> Stashed changes
 =======
                 <?php foreach($data['userdata'] as $user) : ?>
                 <?php foreach($data['personaldata'] as $personaldata) : ?>
@@ -262,4 +272,11 @@ clearButton.addEventListener("click", () => {
 
     </script>
   </body>
+<<<<<<< Updated upstream
 </html>
+=======
+</html>
+
+
+
+>>>>>>> Stashed changes

@@ -5,7 +5,11 @@
   <meta charset="UTF-8" />
   <title>Events</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
+<<<<<<< Updated upstream
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_user.css" />
+=======
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donation_req.css" />
+>>>>>>> Stashed changes
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
@@ -35,6 +39,7 @@
         <!-- <i class='bx bx-chevron-down'></i> -->
       </div>
     </nav>
+<<<<<<< Updated upstream
     <div class="main-container">
       <div class="tabset">
           <!-- Tab 1 -->
@@ -113,6 +118,18 @@
                           <div style="text-align: center;"> <a href="#"> <button class="btnview">View More</button> </a></div>
                       </div>
 =======
+=======
+      <main>
+          <div class="select-menu">
+
+              <div class="select-btn">
+                    <span class="material-icons">
+                        pending_actions
+                    </span>
+                  <span class="option-text">Pending Events</a></span>
+                  <i class="bx bx-chevron-down"></i>
+              </div>
+>>>>>>> Stashed changes
               <ul class="options">
                   <a href="<?php echo URLROOT; ?>/adminPages/pendingEvents" style="text-decoration:none">
                       <li class="option">
@@ -162,6 +179,7 @@
                   <div></div>
                   <div>
                       <div style="text-align: center;"> <a href="#"> <button class="btnview">View More</button> </a></div>
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 >>>>>>> Stashed changes
 =======
@@ -334,6 +352,10 @@
       </div>
     </div>
 =======
+=======
+                  </div>
+              </div>
+>>>>>>> Stashed changes
           <?php endforeach; ?>
           <div class="cards_heading cards_color">
               <div>10</div>
@@ -359,6 +381,9 @@
           </div>
       </main>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes

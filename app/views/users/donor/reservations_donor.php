@@ -72,6 +72,7 @@
             
                 <div class="box">
                     <div class="image">
+<<<<<<< Updated upstream
                         <img src="<?php echo URLROOT; ?>/img/<?php echo $requests->proof_document;  ?>">
                     </div>
                     <div class="easy">
@@ -86,6 +87,15 @@
                             <i class="far fa-star"></i>
                         </div>
                         <p><?php echo $requests->description;  ?>
+=======
+                        <img src="<?php echo URLROOT; ?>/img/<?php echo $requests->thumbnail;  ?>">
+                    </div>
+                    <div class="easy">
+                        <div class="name_job"><?php echo $requests->org_name;  ?>    |    <?php echo $requests->org_type;  ?></div>
+                        <p><b> <?php echo $requests->dist_name;  ?></b></p>
+
+                        <p><?php echo $requests->reservation_description;  ?>
+>>>>>>> Stashed changes
                         </p>
                         
                         <div class="btns">
