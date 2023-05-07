@@ -48,7 +48,7 @@
                                 <label>Rejection Note</label>
                                 <textarea disabled placeholder="<?php echo $reqData->rejection_note; ?>"></textarea>
                             </div>
-                            <div class="input-field">
+                            <div class="input-field" id="description">
                                 <label>Request Title </label>
                                 <input type="text" disabled placeholder="<?php echo $reqData->request_title; ?>">
                             </div>
@@ -59,6 +59,10 @@
                             <div class="input-field">
                                 <label><?php echo $data['ID']; ?></label>
                                 <input type="text" disabled placeholder="<?php echo $reqData->nic; ?>">
+                            </div>
+                            <div class="input-field">
+                                <label>Item</label>
+                                <input type="text" disabled placeholder="<?php echo $reqData->item; ?>">
                             </div>
                             <div class="input-field">
                                 <label><?php echo $data['amount']; ?></label>

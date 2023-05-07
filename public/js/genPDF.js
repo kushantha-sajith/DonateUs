@@ -10,6 +10,20 @@ function genPDF() {
     // doc.text("Blood Link Report!", 90, 5);
 }
 
+function genPDF2(id) {
+    var img;
+    html2canvas(document.getElementById(id)).then(
+        function (canvas) {
+            img = canvas.toDataURL("image/png");
+            var doc = new jsPDF('landscape', 'mm', 'a4');
+            var pageWidth = doc.internal.pageSize.getWidth();
+            var imageWidth = 300;
+            doc.addImage(img, 'PNG', 10, 0, 300, 0);
+            doc.save('Report.pdf');
+        });
+}
+
+
 function generatePDF() {
 // Create a new jsPDF object
     var doc = new jsPDF();

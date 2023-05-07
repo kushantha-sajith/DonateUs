@@ -378,21 +378,6 @@ class Admin extends Controller
     /**
      * @return void
      */
-    public function eventHistory()
-    {
-        $eventHistory = $this->adminModel->eventHistory();
-
-        $data = [
-            'title' => 'Event Donation History',
-            'donationHistory' => $eventHistory
-        ];
-
-        $this->view('users/admin/eventDonationHistory', $data);
-    }
-
-    /**
-     * @return void
-     */
     public function reports()
     {
         $data = [
@@ -402,33 +387,33 @@ class Admin extends Controller
         $this->view('users/admin/reports', $data);
     }
 
-    /**
-     * @return void
-     */
-    public function monthlyDonationsReport()
-    {
-        $result = $this->adminModel->monthlyDonations();
-        $dompdf = new Dompdf();
-
-        $html = '<h1>Donation History</h1>';
-        $html .= '<table>';
-        $html .= '<thead><tr><th>Donation ID</th><th>Amount</th><th>Completed Date</th></tr></thead>';
-        $html .= '<tbody>';
-        foreach ($result as $row) {
-            $html .= '<tr>';
-            $html .= '<td>' . $row['don_id'] . '</td>';
-            $html .= '<td>' . $row['amount'] . '</td>';
-            $html .= '<td>' . $row['date_of_completion'] . '</td>';
-            $html .= '</tr>';
-        }
-        $html .= '</tbody>';
-        $html .= '</table>';
-
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4');
-        $dompdf->render();
-        $dompdf->stream('Donation_History.pdf', array('Attachment' => 0));
-    }
+//    /**
+//     * @return void
+//     */
+//    public function monthlyDonationsReport()
+//    {
+//        $result = $this->adminModel->monthlyDonations();
+//        $dompdf = new Dompdf();
+//
+//        $html = '<h1>Donation History</h1>';
+//        $html .= '<table>';
+//        $html .= '<thead><tr><th>Donation ID</th><th>Amount</th><th>Completed Date</th></tr></thead>';
+//        $html .= '<tbody>';
+//        foreach ($result as $row) {
+//            $html .= '<tr>';
+//            $html .= '<td>' . $row['don_id'] . '</td>';
+//            $html .= '<td>' . $row['amount'] . '</td>';
+//            $html .= '<td>' . $row['date_of_completion'] . '</td>';
+//            $html .= '</tr>';
+//        }
+//        $html .= '</tbody>';
+//        $html .= '</table>';
+//
+//        $dompdf->loadHtml($html);
+//        $dompdf->setPaper('A4');
+//        $dompdf->render();
+//        $dompdf->stream('Donation_History.pdf', array('Attachment' => 0));
+//    }
 
     /**
      * @return void
@@ -483,5 +468,67 @@ class Admin extends Controller
         ];
 
         $this->view('users/admin/nonFinancialDonations', $data);
+    }
+
+    /**
+     * @return void
+     */
+    public function eventReqReport()
+    {
+        $events = $this->adminModel->eventHistory();
+        $ongoing = $this->statModel->ongoingEvents();
+        $completed = $this->statModel->completedEvents();
+        $rejected = $this->statModel->rejectedEvents();
+        $data = [
+            'title' => 'Event Report',
+            'events' => $events,
+            'ongoing' => $ongoing,
+            'completed' => $completed,
+            'rejected' => $rejected
+        ];
+
+        $this->view('users/admin/eventReport', $data);
+    }
+
+    /**
+     * @return void
+     */
+    public function eventHistory()
+    {
+        $eventHistory = $this->adminModel->eventHistory();
+
+        $data = [
+            'title' => 'Event Donation History',
+            'donationHistory' => $eventHistory
+        ];
+
+        $this->view('users/admin/eventDonationHistory', $data);
+    }
+
+    /**
+     * @return void
+     */
+    public function monthlyDonationReqReport()
+    {
+        $donations = $this->adminModel->mFinancialDonationHistory();
+        $nDonations = $this->adminModel->mNonFinancialDonationHistory();
+        $ongoingCount = $this->statModel->mOngoingRequests();
+        $completedCount = $this->statModel->mCompletedRequests();
+        $rejectedCount = $this->statModel->mRejectedRequests();
+        $financialCount = $this->adminModel->mGetTotalFinDonations();
+        $category = $this->statModel->mCategoryCount();
+
+        $data = [
+            'title' => 'Donation Request Report',
+            'donation' => $donations,
+            'nDonation' => $nDonations,
+            'ongoingCount' => $ongoingCount,
+            'completedCount' => $completedCount,
+            'rejectedCount' => $rejectedCount,
+            'financialCount' => $financialCount,
+            'category' => $category
+        ];
+
+        $this->view('users/admin/monthlyDonationReport', $data);
     }
 }

@@ -36,7 +36,7 @@
     </nav>
     <div class="main-container">
         <script src="<?php echo URLROOT ?>/js/genPDF.js"></script>
-        <button class="down_btn" onclick="genPDF()">Download Statistics</button>
+        <button class="down_btn" onclick="genPDF2('section')">Download Statistics</button>
         <div id="section">
             <h1>Statistics - <?php echo date('Y'); ?></h1>
             <div class="chart">

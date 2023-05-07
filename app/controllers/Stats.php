@@ -201,8 +201,45 @@ class Stats extends Controller
     public function categoryCount()
     {
         $response1 = $this->statModel->categoryCount();
-        print_r($response1);
         header('Content-Type: application/json');
         echo json_encode($response1);
+    }
+
+    /**
+     * @return void
+     */
+    public function mRequestStatus()
+    {
+        $ongoing = $this->statModel->mOngoingRequests();
+        $completed = $this->statModel->mCompletedRequests();
+        $rejected = $this->statModel->mRejectedRequests();
+        $data = [
+            'ongoing' => 'Ongoing Requests',
+            'completed' => 'Completed Requests',
+            'rejected' => 'Rejected Requests',
+            'ongoingCount' => $ongoing,
+            'completedCount' => $completed,
+            'rejectedCount' => $rejected
+        ];
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
+
+    /**
+     * @return void
+     */
+    public function mDonationQuantity()
+    {
+        $financial = $this->statModel->mFinancialCount();
+        $nonFinancial = $this->statModel->mNonFinancialCount();
+
+        $data = [
+            'financial' => 'Financial Donations',
+            'nonFinancial' => 'Non Financial Donations',
+            'financialCount' => $financial,
+            'nonFinancialCount' => $nonFinancial,
+        ];
+        header('Content-Type: application/json');
+        echo json_encode($data);
     }
 }

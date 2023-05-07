@@ -30,7 +30,7 @@
 }
 
 #section {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     margin-bottom: 1rem;
     margin-top: 1rem;
 }
@@ -50,6 +50,14 @@
     display: flex;
     margin: 0 auto;
     justify-content: center;
+}
+
+.sec-chart2 {
+    width: 50%;
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .main-container {
