@@ -91,6 +91,10 @@ class Users extends Controller{
                         $error = true;
                     }
                 }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
                 //Validate NIC
                 if (empty($data['nic'])) {
                     $data['nic_err'] = 'Please enter NIC';
@@ -156,6 +160,10 @@ class Users extends Controller{
                     $data['district_err_ind'] = 'Required';
                     $error = true;
                 }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
                 // Make sure errors are empty
                 if (!$error) {
                     // Validated
@@ -533,6 +541,12 @@ class Users extends Controller{
                     $data['address_err_ind'] = 'Required';
                     $error = true;
                 }
+<<<<<<< Updated upstream
+=======
+
+
+
+>>>>>>> Stashed changes
                 // Make sure errors are empty
                 if (!$error) {
                     // Validated
@@ -553,6 +567,11 @@ class Users extends Controller{
                     $this->view('users/register_beneficiary', $data);
                 }
             } else {
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
                 //organization--------------------------------------------------------------------------------------
                 $data = [
                     'email' => trim($_POST['email']),
@@ -694,6 +713,11 @@ class Users extends Controller{
                     $data['orgtype_err'] = 'Required';
                     $error = true;
                 }
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
                 // Make sure errors are empty
                 if (!$error) {
                     // Validated
@@ -776,9 +800,12 @@ class Users extends Controller{
         }
     }
 
+<<<<<<< Updated upstream
     /**
      * @return void
      */
+=======
+>>>>>>> Stashed changes
     public function registerOrganizer(){
         $districts = $this->userModel->getDistricts();
 
@@ -998,7 +1025,11 @@ class Users extends Controller{
       if (empty($data['email_err']) && empty($data['password_err'])) {
         // Validated
         // Check and set logged-in user
+<<<<<<< Updated upstream
         $loggedInUser = $this->userModel->login($data['email'], $data['password'], $user_type);
+=======
+        $loggedInUser = $this->userModel->login($data['email'], $data['password']);
+>>>>>>> Stashed changes
 
         if ($loggedInUser) {
           // Create Session
@@ -1065,26 +1096,42 @@ class Users extends Controller{
     $this->view('users/signupVerification', $data);
   }
 
+<<<<<<< Updated upstream
     /**
      * @return void
      */
     public function otp_verify(){
+=======
+    public function otpVerify($field){
+>>>>>>> Stashed changes
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = [
                 'otp' => trim($_POST['otp']),
                 'error' => '',
+<<<<<<< Updated upstream
                 'status' => ''
+=======
+                'field' => $field
+>>>>>>> Stashed changes
             ];
 
             $verified = $this->verificationModel->verifyOTP($data['otp']);
 
             if (is_numeric($data['otp']) && $verified) {
+<<<<<<< Updated upstream
                 if ($this->verificationModel->verify($verified->id)) {
                     redirect('pages/profile_donor');
                 } else {
 
                     redirect('donor/change_password_donor');
+=======
+                if ($this->verificationModel->verifyUpdate($verified->id)) {
+                    redirect('pages/profileDonor');
+                } else {
+
+                    redirect('donor/changePasswordDonor');
+>>>>>>> Stashed changes
                 }
             } else {
                 $data['error'] = "Invalid OTP";
@@ -1094,7 +1141,11 @@ class Users extends Controller{
             $data = [
                 'otp' => '',
                 'error' => '',
+<<<<<<< Updated upstream
                 'status' => ''
+=======
+                'field' => $field
+>>>>>>> Stashed changes
             ];
 
             $this->view('users/otp_verification', $data);
@@ -1102,6 +1153,7 @@ class Users extends Controller{
 
     }
 
+<<<<<<< Updated upstream
     /**
      * @return void
      */
@@ -1114,12 +1166,25 @@ class Users extends Controller{
         }
     }
 
+=======
+    public function quitVerify($value){
+        $id = $_SESSION['user_id'];
+        
+        $field = $value;
+        if($this->donorModel->setToDefault($id,$field)){
+            redirect('pages/profileDonor');
+        }
+
+    }
+
+>>>>>>> Stashed changes
   //create sessions for all users
   /**
    * @param $user
    * @return void
    */
   public function createUserSession($user){
+<<<<<<< Updated upstream
       if ($user->verification_status == 1) {
           if ($user->otp_verify == 1) {
               $_SESSION['user_id'] = $user->id;
@@ -1154,6 +1219,38 @@ class Users extends Controller{
           }
       } else {
           redirect('pages/processing');
+=======
+      if ($user->otp_verify == 1) {
+          $_SESSION['user_id'] = $user->id;
+          $_SESSION['user_email'] = $user->email;
+          $_SESSION['user_type'] = $user->user_type;
+
+          switch ($user->user_type) {
+              case 1:
+                  redirect('pages/admin');
+                  break;
+              case 2:
+                  redirect('pages/donor');
+                  break;
+              case 3:
+                  redirect('pages/donor');
+                  break;
+              case 4:
+                  redirect('pages/beneficiary');
+                  break;
+              case 5:
+                  redirect('pages/beneficiary');
+                  break;
+              case 6:
+                  redirect('pages/organizer');
+                  break;
+              default:
+                  redirect('users/login');
+                  break;
+          }
+      } else {
+          redirect('users/verify');
+>>>>>>> Stashed changes
       }
   }
 

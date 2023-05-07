@@ -37,14 +37,20 @@
     </nav>
     <main>
             <div class="container">
+<<<<<<< Updated upstream
                 <header>User Details</header>
                 <?php foreach ($data['userData'] as $userData): ?>
+=======
+                <header>Verify User (Beneficiary)</header>
+
+>>>>>>> Stashed changes
                 <form action="#">
                     <div class="formfirst">
                         <div class="details personal">
                             <div class="fields">
                                 <div class="input-field">
                                     <label>First Name </label>
+<<<<<<< Updated upstream
                                     <input type="text" value="<?php echo $userData->f_name;?>" disabled>
                                 </div>
                                 <div class="input-field">
@@ -54,32 +60,70 @@
                                 <div class="input-field">
                                     <label>Email</label>
                                     <input type="email" value="<?php echo $userData->email;?>" disabled>
+=======
+                                    <input type="text">
+                                </div>
+                                <div class="input-field">
+                                    <label>Last Name</label>
+                                    <input type="text" >
+                                </div>
+                                <div class="input-field">
+                                    <label>Email</label>
+                                    <input type="email" >
+>>>>>>> Stashed changes
                                 </div>
 
                                 <div class="input-field">
                                     <label>National ID Number</label>
+<<<<<<< Updated upstream
                                     <input type="text" value="<?php echo $userData->NIC;?>" disabled>
+=======
+                                    <input type="text" placeholder="Beneficiary ID">
+>>>>>>> Stashed changes
                                 </div>
 
 
                                 <div class="input-field">
                                     <label>Contact Number</label>
+<<<<<<< Updated upstream
                                     <input type="number" value="<?php echo $userData->tp_number;?>" disabled>
+=======
+                                    <input type="number" >
+>>>>>>> Stashed changes
                                 </div>
 
 
                                 <div class="input-field">
                                     <label>Location / City </label>
+<<<<<<< Updated upstream
                                     <input type="text" value="<?php echo $userData->city;?>" disabled>
+=======
+                                    <input type="text">
+>>>>>>> Stashed changes
                                 </div>
 
                                 <div class="input-field" id="address">
                                     <label>Address </label>
+<<<<<<< Updated upstream
                                     <input type="text" value="<?php echo $userData->f_name;?>" disabled>
                                 </div>
                             </div>
                         </div>
                         <span class="title"><u>Id Verification</u></span>
+=======
+                                    <input type="text">
+                                </div>
+
+                                
+
+
+                            </div>
+                        </div>
+
+
+                        <span class="title"><u>Id Verification</u></span>
+
+>>>>>>> Stashed changes
                         <div class="ggg">
                             <div class="photo-container">
                                 <input type="file" id="file" accept="image/*" hidden>
@@ -110,9 +154,17 @@
                             </div>
                             <!-- <button class="select-image" id="select_three">Select Image</button> -->
                         </div>
+<<<<<<< Updated upstream
                     </div>
                 </form>
                 <?php endforeach;?>
+=======
+
+                    </div>
+
+
+                </form>
+>>>>>>> Stashed changes
             </div>
 
 

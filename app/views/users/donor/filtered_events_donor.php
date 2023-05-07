@@ -2,11 +2,19 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
+<<<<<<< Updated upstream
     <title>Dashboard</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/stylesdash.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donation_list.css" />
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_user.css" />
+=======
+    <title>Events</title>
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
+    <!-- <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/stylesdash.css" /> -->
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/events_donor.css" />
+  <!-- <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_user.css" /> -->
+>>>>>>> Stashed changes
     <link
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
       rel="stylesheet"
@@ -30,7 +38,11 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bx-menu sidebarBtn"></i>
+<<<<<<< Updated upstream
           <span class="dashboard">Events</span>
+=======
+          <span class="dashboard"><?php echo $data['title'];  ?></span>
+>>>>>>> Stashed changes
         </div>
         
         <div class="profile-details">
@@ -73,11 +85,19 @@
             
                 <div class="box">
                     <div class="image">
+<<<<<<< Updated upstream
                         <img src="<?php echo URLROOT; ?>/img/<?php echo $events->proof_letter;  ?>">
                     </div>
                     <div class="easy">
                         <div class="name_job"><?php echo $events->event_title;  ?></div>
                         <p><b>Published Date : </b><?php echo $events->published_date;  ?>   <br>    <b>Due Date : </b><?php echo $events->due_date;  ?></p>
+=======
+                        <img src="<?php echo URLROOT; ?>/img/<?php echo $events->thumbnail;  ?>">
+                    </div>
+                    <div class="easy">
+                        <div class="name_job"><?php echo $events->event_title;  ?></div>
+                        <p><b>Published Date : </b><?php echo $events->published_date;  ?>  <span  <?php if(($events->days_left) > 0 && ($events->days_left) < 7){ ?> style="color:red;"<?php } ?>> <b>Due Date : </b><?php echo $events->due_date;  ?></span></p>
+>>>>>>> Stashed changes
                         
                         <div class="rating">
                             <i class="fas fa-star"></i>

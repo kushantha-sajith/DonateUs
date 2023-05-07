@@ -73,13 +73,19 @@
             <div class="cards_heading head">
                 <div>ID</div>
                 <div>Donor Name</div>
+<<<<<<< Updated upstream
                 <div>Request Title</div>
                 <div>Category</div>
+=======
+                <div>Donor Type</div>
+                <div>Req ID</div>
+>>>>>>> Stashed changes
                 <div>Contact Number</div>
                 <div>Amount</div>
                 <div>Status</div>
                 <div></div>
             </div>
+<<<<<<< Updated upstream
             <?php foreach($data['financialDonationHistory'] as $donation) : ?>
             <div class="cards_heading cards_color">
                 <div><?php echo $donation->id; ?></div>
@@ -89,11 +95,46 @@
                 <div><?php echo $donation->tp_number; ?></div>
                 <div><?php echo $donation->amount; ?></div>
                 <div><?php echo $donation->status; ?></div>
+=======
+            <div class="cards_heading cards_color">
+                <div>001</div>
+                <div>Kushantha Lakshan</div>
+                <div>Individual</div>
+                <div>003</div>
+                <div>0767128051</div>
+                <div>100,000</div>
+                <div>
+                    <select name="status" id="status" style="margin-top: 0.5rem;">
+                        <option value="Active">Ongoing</option>
+                        <option value="Deactive">Completed</option>
+                    </select>
+                </div>
                 <div>
                     <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
                  </div>
              </div>
+             <div class="cards_heading cards_color">
+                <div>001</div>
+                <div>Kushantha Lakshan</div>
+                <div>Individual</div>
+                <div>003</div>
+                <div>0767128051</div>
+                <div>100,000</div>
+                <div>
+                    <select name="status" id="status" style="margin-top: 0.5rem;">
+                        <option value="Active">Ongoing</option>
+                        <option value="Deactive">Completed</option>
+                    </select>
+                </div>
+>>>>>>> Stashed changes
+                <div>
+                    <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
+                 </div>
+             </div>
+<<<<<<< Updated upstream
             <?php endforeach; ?>
+=======
+>>>>>>> Stashed changes
         </main>
 
     </section>

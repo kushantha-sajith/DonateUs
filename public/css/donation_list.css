@@ -106,6 +106,7 @@ main{
     }
 }
 
+<<<<<<< Updated upstream
 .select-menu{
     
     width: 800px;
@@ -113,6 +114,8 @@ main{
     margin-bottom: 20px; 
     align-items: center;
 }
+=======
+>>>>>>> Stashed changes
 h4{
     
     padding-right: 1rem;
@@ -140,6 +143,7 @@ h4{
     cursor: pointer;
 }
 
+<<<<<<< Updated upstream
 .select-menu .select-btn{
     display: flex;
     
@@ -147,6 +151,21 @@ h4{
     background: #fff;
     padding: 10px;
     font-size: 15px;
+=======
+.select-menu{
+    width: 380px;
+    margin-top: 5px;
+    margin: auto;
+    margin-bottom: 20px;
+    position: relative;
+}
+.select-menu .select-btn{
+    display: flex;
+    height: 55px;
+    background: #fff;
+    padding: 20px;
+    font-size: 18px;
+>>>>>>> Stashed changes
     font-weight: 400;
     border-radius: 8px;
     align-items: center;
@@ -155,6 +174,7 @@ h4{
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
     
 }
+<<<<<<< Updated upstream
 .select-btn i{
     font-size: 15px;
     transition: 0.3s;
@@ -167,11 +187,27 @@ h4{
     position: relative;
     width: 300px;
     padding: 10px;
+=======
+
+.select-btn i{
+    font-size: 25px;
+    transition: 0.3s;
+}
+
+.select-menu.active .select-btn i{
+    transform: rotate(-180deg);
+}
+
+.select-menu .options{
+    position: absolute;
+    padding: 20px;
+>>>>>>> Stashed changes
     margin-top: 10px;
     border-radius: 8px;
     background: #fff;
     box-shadow: 0 0 3px rgba(0,0,0,0.1);
     display: none;
+<<<<<<< Updated upstream
 }
 .select-menu.active .options{
     display: block;
@@ -182,15 +218,34 @@ h4{
     height: 35px;
     cursor: pointer;
     padding: 0 10px;
+=======
+    z-index: 1;
+    overflow: auto;
+}
+
+.select-menu.active .options{
+    display: block;
+}
+.options .option{
+    display: flex;
+    height: 55px;
+    cursor: pointer;
+    padding: 0 16px;
+>>>>>>> Stashed changes
     border-radius: 8px;
     align-items: center;
     background: #fff;
 }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 .options .option:hover{
     background: #F2F2F2;
 
 }
 .option i{
+<<<<<<< Updated upstream
     font-size: 15px;
     margin-right: 12px;
 }
@@ -200,6 +255,15 @@ h4{
 }
 
 
+=======
+    font-size: 25px;
+    margin-right: 12px;
+}
+.option .option-text{
+    font-size: 18px;
+    color: #333;
+}
+>>>>>>> Stashed changes
 .sidebar {
     position: fixed;
     height: 100%;
@@ -489,6 +553,10 @@ nav .profile-details i {
     position:relative;
     display: block;
     height: 100%;
+<<<<<<< Updated upstream
+=======
+    max-width: 100%;
+>>>>>>> Stashed changes
     border-radius: 6px;
     background: var(--color-primary-varient);
     animation: progress 0.4s ease-in-out forwards;
@@ -528,6 +596,19 @@ nav .profile-details i {
     margin-top: 2rem;
     box-shadow: var(--box-shadow);
   }
+<<<<<<< Updated upstream
+=======
+  .gigcontainer .nothing_to_display{
+    width: 100%;
+    background: #fff;
+    display: none;
+    justify-content: center;
+    padding: 20px 30px;
+    border-radius: 5px;
+    margin-top: 2rem;
+    box-shadow: var(--box-shadow);
+  }
+>>>>>>> Stashed changes
   .easy{
       display: flex;
       flex-direction: column;
@@ -598,6 +679,23 @@ nav .profile-details i {
     color: #fff;;
     transition: all 0.3s linear;
   }
+<<<<<<< Updated upstream
+=======
+  #refresh{
+    background: #0A2558;
+    width: 50%;
+    padding: 9px;
+    margin: 5px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;;
+    transition: all 0.3s linear;
+  }
+>>>>>>> Stashed changes
   a .btn-back{
     background: #0A2558;
     width: 20%;

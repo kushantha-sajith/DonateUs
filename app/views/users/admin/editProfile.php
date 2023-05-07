@@ -69,10 +69,22 @@
                                     <label>District</label>
                                     <input type="number" placeholder="Enter mobile number">
                                 </div>
+<<<<<<< Updated upstream
                             </div>
                         </div>
 
                         <span class="title"><u>Change Profile Picture</u></span>
+=======
+
+
+
+                            </div>
+                        </div>
+
+
+                        <span class="title"><u>Change Profile Picture</u></span>
+
+>>>>>>> Stashed changes
                         <div class="photo-container">
                             <input type="file" id="file" accept="image/*" hidden>
                             <div class="img-area" data-img="">

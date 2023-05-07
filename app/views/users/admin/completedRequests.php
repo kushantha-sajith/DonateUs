@@ -90,6 +90,7 @@
         <?php foreach($data['completedRequests'] as $completedRequests) : ?>
             <div class="cards_heading cards_color">
                 <div><?php echo $completedRequests->id; ?></div>
+<<<<<<< Updated upstream
                 <div><?php echo $completedRequests->request_title; ?></div>
                 <div><?php echo $completedRequests->ben_id; ?></div>
                 <div><?php echo $completedRequests->category_name; ?></div>
@@ -100,6 +101,29 @@
                 </div>
             </div>
         <?php endforeach; ?>
+=======
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div>
+                    <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+        <div class="cards_heading cards_color">
+            <div>10</div>
+            <div>Need Medicine</div>
+            <div>Kushantha</div>
+            <div>Medicine</div>
+            <div>Non-Financial</div>
+            <div>25 tablets</div>
+            <div>
+                <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/pendingRequestDetails"> <button class="btnview" >View More</button> </a></div>
+            </div>
+        </div>
+>>>>>>> Stashed changes
         </main>
 
     </section>

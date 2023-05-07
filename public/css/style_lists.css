@@ -87,7 +87,16 @@ main{
     font-size: 1rem;
     
 }
+<<<<<<< Updated upstream
 
+=======
+.filters{
+    display: grid;
+    grid-template-columns: 40% 40% 20%;
+    max-width: 100%;
+    justify-content: left;
+}
+>>>>>>> Stashed changes
 .btnview{
     display: flex;
     align-items: center;

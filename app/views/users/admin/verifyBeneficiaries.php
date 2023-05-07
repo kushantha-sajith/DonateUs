@@ -82,11 +82,24 @@
                 <div><?php echo $indBeneficiaries->id; ?></div>
                 <div><?php echo $indBeneficiaries->f_name; ?></div>
                 <div><?php echo $indBeneficiaries->email; ?></div>
+<<<<<<< Updated upstream
                 <div></div>
                 <div>Individual</div>
                 <div><?php echo $indBeneficiaries->city; ?></div>
                 <div>
                     <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/approve/<?php echo $indBeneficiaries->id; ?>"> <button class="btnview">View More</button> </a></div>
+=======
+                <div>
+                    <select name="status" id="status">
+                        <option value="Active">Active</option>
+                        <option value="Deactive">Deactive</option>
+                    </select>
+                </div>
+                <div>Individual</div>
+                <div><?php echo $indBeneficiaries->city; ?></div>
+                <div>
+                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/approve"> <button class="btnview">View More</button> </a></div>
+>>>>>>> Stashed changes
                 </div>
             </div>
         <?php endforeach; ?>
@@ -95,6 +108,7 @@
                 <div><?php echo $corpBeneficiaries->id; ?></div>
                 <div><?php echo $corpBeneficiaries->f_name; ?></div>
                 <div><?php echo $corpBeneficiaries->email; ?></div>
+<<<<<<< Updated upstream
                 <div></div>
                 <div>Organizational</div>
                 <div><?php echo $corpBeneficiaries->city; ?></div>
@@ -103,6 +117,53 @@
                 </div>
             </div>
         <?php endforeach; ?>
+=======
+                <div>
+                    <select name="status" id="status">
+                        <option value="Active">Active</option>
+                        <option value="Deactive">Deactive</option>
+                    </select>
+                </div>
+                <div>Organizational</div>
+                <div><?php echo $corpBeneficiaries->city; ?></div>
+                <div>
+                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/approve"> <button class="btnview">View More</button> </a></div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+        <div class="cards_heading cards_color">
+            <div>6</div>
+            <div>Kushantha</div>
+            <div>kushantha021@gmail.com</div>
+            <div>
+                <select name="status" id="status">
+                    <option value="Active">Active</option>
+                    <option value="Deactive">Deactive</option>
+                </select>
+            </div>
+            <div>Individual</div>
+            <div>Galle</div>
+            <div>
+                <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
+            </div>
+        </div>
+        <div class="cards_heading cards_color">
+            <div>6</div>
+            <div>Kushantha</div>
+            <div>kushantha021@gmail.com</div>
+            <div>
+                <select name="status" id="status">
+                    <option value="Active">Active</option>
+                    <option value="Deactive">Deactive</option>
+                </select>
+            </div>
+            <div>Individual</div>
+            <div>Galle</div>
+            <div>
+                <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
+            </div>
+        </div>
+>>>>>>> Stashed changes
       </main>
     </section>
     <!--home section end-->

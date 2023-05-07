@@ -11,7 +11,10 @@
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<<<<<<< Updated upstream
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+=======
+>>>>>>> Stashed changes
 </head>
 
 <body>
@@ -90,15 +93,25 @@
                     <div><?php echo $indDonors->f_name; ?></div>
                     <div><?php echo $indDonors->email; ?></div>
                     <div>
+<<<<<<< Updated upstream
                         <select name="status" class="status" data-id="<?php echo $indDonors->id; ?>">
                             <option value=1 <?php if($indDonors->acc_status == 1) echo "selected"?>>Active</option>
                             <option value=0 <?php if($indDonors->acc_status == 0) echo "selected"?>>Deactive</option>
+=======
+                        <select name="status" id="status">
+                            <option value="Active">Active</option>
+                            <option value="Deactive">Deactive</option>
+>>>>>>> Stashed changes
                         </select>
                     </div>
                     <div>Individual</div>
                     <div><?php echo $indDonors->city; ?></div>
                     <div>
+<<<<<<< Updated upstream
                         <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails/<?php echo $indDonors->id; ?>"> <button class="btnview">View More</button> </a></div>
+=======
+                        <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
+>>>>>>> Stashed changes
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -108,19 +121,33 @@
                     <div><?php echo $corpDonors->comp_name; ?></div>
                     <div><?php echo $corpDonors->email; ?></div>
                     <div>
+<<<<<<< Updated upstream
                         <select name="status" class="status" data-id="<?php echo $corpDonors->id; ?>">
                             <option value="1" <?php if($corpDonors->acc_status == 1) echo "selected"?>>Active</option>
                             <option value="0" <?php if($corpDonors->acc_status == 0) echo "selected"?>>Deactive</option>
+=======
+                        <select name="status" id="status">
+                            <option value="Active">Active</option>
+                            <option value="Deactive">Deactive</option>
+>>>>>>> Stashed changes
                         </select>
                     </div>
                     <div>Corporate</div>
                     <div><?php echo $corpDonors->city; ?></div>
                     <div>
+<<<<<<< Updated upstream
                         <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails/<?php echo $corpDonors->id; ?>"> <button class="btnview">View More</button> </a></div>
+=======
+                        <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
+>>>>>>> Stashed changes
                     </div>
                 </div>
             <?php endforeach; ?>
         </main>
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     </section>
     <!--home section end-->
 
@@ -151,10 +178,15 @@
             option.addEventListener("click", () => {
                 let selectedOption = option.querySelector(".option-text").innerText;
                 sBtn_text.innerText = selectedOption;
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
                 optionMenu.classList.remove("active");
             });
         });
 
+<<<<<<< Updated upstream
         const statuses = document.querySelectorAll('.status');
 
         statuses.forEach(function (status) {
@@ -186,6 +218,8 @@
             });
 
         }
+=======
+>>>>>>> Stashed changes
     </script>
 </body>
 

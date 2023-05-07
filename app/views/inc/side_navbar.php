@@ -16,7 +16,11 @@
             </a>
         </li>
         <li>
+<<<<<<< Updated upstream
             <a href="<?php echo URLROOT; ?>/adminPages/donors">
+=======
+            <a href="<?php echo URLROOT; ?>/admin/users">
+>>>>>>> Stashed changes
                 <i class="bx bx-user"></i>
                 <span class="links_name">Users</span>
             </a>

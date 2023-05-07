@@ -24,15 +24,23 @@
 
    
 main{
+<<<<<<< Updated upstream
     padding-top: 120px;
 }
 
+=======
+    padding-top: 120px; 
+    padding-left: 120px; 
+    padding-right: 50px;
+}
+>>>>>>> Stashed changes
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+<<<<<<< Updated upstream
 
 .container{
     position: relative;
@@ -42,11 +50,23 @@ main{
     padding: 30px;
     margin: 0 auto;
     background-color: #fff;
+=======
+.container{
+    
+    position: relative;
+    max-width: 900px;
+    width: 100%;
+    border-radius: 6px;
+    padding: 30px;
+    margin: 0 15px;
+    background-color: #D6E4F0;
+>>>>>>> Stashed changes
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
 .container .form_first{
     overflow:auto;
 }
+<<<<<<< Updated upstream
 .photo-container{
     max-width: 400px;
 	width: 100%;
@@ -117,6 +137,9 @@ main{
 .img-area.active:hover::before {
 	opacity: 1;
 }
+=======
+
+>>>>>>> Stashed changes
 .select-image {
 	display: flex;
     justify-content: center;
@@ -151,6 +174,7 @@ main{
     height: 3px;
     width: 27px;
     border-radius: 8px;
+<<<<<<< Updated upstream
     background-color: #4070f4;
 }
 .container form{
@@ -158,6 +182,15 @@ main{
     margin-top: 16px;
     /*min-height: 400px;*/
     background-color: #fff;
+=======
+    background-color: #0A2558;
+}
+.container form{
+    position: relative;
+    margin: 16px 0px;
+    min-height: 400px;
+    background-color: #D6E4F0;
+>>>>>>> Stashed changes
     overflow: hidden;
 }
 .container form .form{
@@ -182,9 +215,15 @@ form.secActive .form.first{
 }
 .container form .title{
     display: block;
+<<<<<<< Updated upstream
     font-size: 16px;
     font-weight: 500;
     margin: 6px 0;
+=======
+    font-size: 18px;
+    font-weight: 500;
+    margin: 6px 0px 8px 0px;
+>>>>>>> Stashed changes
     color: #333;
 }
 .container form .fields{
@@ -193,6 +232,10 @@ form.secActive .form.first{
     justify-content: space-between;
     flex-wrap: wrap;
 }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 form .fields .input-field{
     display: flex;
     width: calc(100% / 2 - 15px);
@@ -200,7 +243,11 @@ form .fields .input-field{
     margin: 4px 0;
 }
 .input-field label{
+<<<<<<< Updated upstream
     font-size: 12px;
+=======
+    font-size: 16px;
+>>>>>>> Stashed changes
     font-weight: 500;
     color: #2e2e2e;
 }
@@ -226,6 +273,7 @@ form .fields .input-field{
 .input-field input[type="date"]:valid{
     color: #333;
 }
+<<<<<<< Updated upstream
 .container form button, .backBtn{
     display: flex;
     align-items: center;
@@ -233,12 +281,25 @@ form .fields .input-field{
     height: 45px;
     max-width: 200px;
     width: 100%;
+=======
+.image-upload-button, .image-clear-button, .backBtn{
+    text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    height: 45px;    
+    width: 45%;
+>>>>>>> Stashed changes
     border: none;
     outline: none;
     color: #fff;
     border-radius: 5px;
     margin: 0 0;
+<<<<<<< Updated upstream
     background-color: #4070f4;
+=======
+    background-color: #163172;
+>>>>>>> Stashed changes
     transition: all 0.3s linear;
     cursor: pointer;
 }
@@ -246,6 +307,7 @@ form .fields .input-field{
     font-size: 14px;
     font-weight: 400;
 }
+<<<<<<< Updated upstream
 form button:hover{
     background-color: #265df2;
 }
@@ -264,6 +326,15 @@ form .buttons button , .backBtn{
     margin-right: 14px;
 }
 
+=======
+.image-upload-button:hover, .image-clear-button:hover{
+    background-color: #0A2558;
+}
+
+form .backBtn i{
+    transform: rotate(180deg);
+}
+>>>>>>> Stashed changes
 
 .edit, .changepassword, .delete{
     
@@ -277,11 +348,110 @@ form .buttons button , .backBtn{
     color: #fff;
     border-radius: 5px;
     margin-right: 10px;
+<<<<<<< Updated upstream
     background-color: #4070f4;
+=======
+    background-color: #163172;
+>>>>>>> Stashed changes
     transition: all 0.3s linear;
     cursor: pointer;
 }
 
+<<<<<<< Updated upstream
+=======
+.edit:hover, .changepassword:hover, .delete:hover{
+    background-color: #0A2558;
+}
+.image-upload-container{
+    
+	width: 400px;
+    height: 340px;
+    display: block;
+	background: #fff;
+	padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 2PX;
+    padding-right: 5px;
+	border-radius: 30px;
+    margin: 20px 0px;
+}
+
+.selected-image-container {
+	position: relative;
+	width: 100%;
+	height: 240px;
+	margin-bottom: 20px;
+	border-radius: 15px;
+	overflow: hidden;
+	display: block;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+    border-radius: 30px;
+}
+
+.selected-image-container img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	z-index: 100;
+}
+
+.selected-image-container .icon{
+    font-size: 250px;
+    align-self: center;
+}
+
+.selected-image-container::before {
+	content: attr(data-img);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, .5);
+	color: #fff;
+	font-weight: 500;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	pointer-events: none;
+	opacity: 0;
+	transition: all .3s ease;
+	z-index: 200;
+}
+.selected-image-container.active:hover::before {
+	opacity: 1;
+}
+
+.buttons{
+    margin: 15px;
+    display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.btn-submit {
+    width: 25%;
+    background-color: #163172;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-submit:hover{
+    background-color: #0d1f4a;
+}
+
+>>>>>>> Stashed changes
 @media (max-width: 750px) {
     .container form{
         overflow-y: scroll;
@@ -510,9 +680,12 @@ nav .profile-details i {
 
 
 
+<<<<<<< Updated upstream
 
 
 
+=======
+>>>>>>> Stashed changes
 .welcome{
     font-size: 20px;
     font-weight: 500;

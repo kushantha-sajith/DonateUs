@@ -11,7 +11,10 @@
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<<<<<<< Updated upstream
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+=======
+>>>>>>> Stashed changes
 </head>
 
 <body>
@@ -92,37 +95,128 @@
                 <div><?php echo $indBeneficiaries->f_name; ?></div>
                 <div><?php echo $indBeneficiaries->email; ?></div>
                 <div>
+<<<<<<< Updated upstream
                     <select name="status" class="status" data-id="<?php echo $indBeneficiaries->id; ?>">
                         <option value=1 <?php if($indBeneficiaries->acc_status == 1) echo "selected"?>>Active</option>
                         <option value=0 <?php if($indBeneficiaries->acc_status == 0) echo "selected"?>>Deactive</option>
+=======
+                    <select name="status" id="status">
+                        <option value="Active">Active</option>
+                        <option value="Deactive">Deactive</option>
+>>>>>>> Stashed changes
                     </select>
                 </div>
                 <div>Individual</div>
                 <div><?php echo $indBeneficiaries->city; ?></div>
                 <div>
+<<<<<<< Updated upstream
                     <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails/<?php echo $indBeneficiaries->id;?>"> <button class="btnview">View More</button> </a></div>
+=======
+                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
+>>>>>>> Stashed changes
                 </div>
             </div>
         <?php endforeach; ?>
         <?php foreach($data['corpBeneficiaries'] as $corpBeneficiaries) : ?>
             <div class="cards_heading cards_color">
                 <div><?php echo $corpBeneficiaries->id; ?></div>
+<<<<<<< Updated upstream
                 <div><?php echo $corpBeneficiaries->org_name; ?></div>
                 <div><?php echo $corpBeneficiaries->email; ?></div>
                 <div>
                     <select name="status" class="status" data-id="<?php echo $corpBeneficiaries->id; ?>">
                         <option value=1 <?php if($corpBeneficiaries->acc_status == 1) echo "selected"?>>Active</option>
                         <option value=0 <?php if($corpBeneficiaries->acc_status == 0) echo "selected"?>>Deactive</option>
+=======
+                <div><?php echo $corpBeneficiaries->f_name; ?></div>
+                <div><?php echo $corpBeneficiaries->email; ?></div>
+                <div>
+                    <select name="status" id="status">
+                        <option value="Active">Active</option>
+                        <option value="Deactive">Deactive</option>
+>>>>>>> Stashed changes
                     </select>
                 </div>
                 <div>Organizational</div>
                 <div><?php echo $corpBeneficiaries->city; ?></div>
                 <div>
+<<<<<<< Updated upstream
                     <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails/<?php echo $corpBeneficiaries->id;?>"> <button class="btnview">View More</button> </a></div>
                 </div>
             </div>
         <?php endforeach; ?>
     </main>
+=======
+                    <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+        <div class="cards_heading cards_color">
+            <div>6</div>
+            <div>Kushantha</div>
+            <div>kushantha021@gmail.com</div>
+            <div>
+                <select name="status" id="status">
+                    <option value="Active">Active</option>
+                    <option value="Deactive">Deactive</option>
+                </select>
+            </div>
+            <div>Individual</div>
+            <div>Galle</div>
+            <div>
+                <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
+            </div>
+        </div>
+        <div class="cards_heading cards_color">
+            <div>6</div>
+            <div>Kushantha</div>
+            <div>kushantha021@gmail.com</div>
+            <div>
+                <select name="status" id="status">
+                    <option value="Active">Active</option>
+                    <option value="Deactive">Deactive</option>
+                </select>
+            </div>
+            <div>Individual</div>
+            <div>Galle</div>
+            <div>
+                <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
+            </div>
+        </div>
+        <div class="cards_heading cards_color">
+            <div>6</div>
+            <div>Kushantha</div>
+            <div>kushantha021@gmail.com</div>
+            <div>
+                <select name="status" id="status">
+                    <option value="Active">Active</option>
+                    <option value="Deactive">Deactive</option>
+                </select>
+            </div>
+            <div>Individual</div>
+            <div>Galle</div>
+            <div>
+                <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
+            </div>
+        </div>
+        <div class="cards_heading cards_color">
+            <div>6</div>
+            <div>Kushantha</div>
+            <div>kushantha021@gmail.com</div>
+            <div>
+                <select name="status" id="status">
+                    <option value="Active">Active</option>
+                    <option value="Deactive">Deactive</option>
+                </select>
+            </div>
+            <div>Individual</div>
+            <div>Galle</div>
+            <div>
+                <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/userDetails"> <button class="btnview">View More</button> </a></div>
+            </div>
+        </div>
+      </main>
+>>>>>>> Stashed changes
     </section>
     <!--home section end-->
 
@@ -158,6 +252,7 @@
           optionMenu.classList.remove("active");
         });
       });
+<<<<<<< Updated upstream
 
       const statuses = document.querySelectorAll('.status');
 
@@ -190,6 +285,8 @@
           });
 
       }
+=======
+>>>>>>> Stashed changes
     </script>
   </body>
 </html>

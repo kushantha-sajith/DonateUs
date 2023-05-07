@@ -5,8 +5,12 @@
             if(!isLoggedIn()){
                 redirect('users/login');
             }
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
             $this->beneficiaryModel = $this->model('BeneficiaryModel');
+            
         }
 
         //load profile page
@@ -125,11 +129,17 @@
             }
         }
 
+<<<<<<< Updated upstream
         //load request page
 
         /**
          * @return void
          */
+=======
+
+
+//load request page
+>>>>>>> Stashed changes
         public function requests(){
           $requests = $this->beneficiaryModel->getRequests();
           $data = [
@@ -141,11 +151,16 @@
         }
 
         //add a new request
+<<<<<<< Updated upstream
 
         /**
          * @return void
          */
         public function reqForm(){
+=======
+        public function reqForm(){
+
+>>>>>>> Stashed changes
           $categories = $this->beneficiaryModel->getCategories();
 
           if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -158,7 +173,11 @@
                   'title' => trim($_POST['title']),
                   'name' => trim($_POST['name']),
                  // 'user_id' => trim($_POST['user_id']),
+<<<<<<< Updated upstream
                   'id' => $id,
+=======
+                 'id' => $id,
+>>>>>>> Stashed changes
                   'cat_id' => trim($_POST['cat_id']),
                   //'NIC' => trim($_POST['NIC']),
                  // 'quantity' => trim($_POST['quantity']),
@@ -221,6 +240,11 @@
               $data['cat_idErr'] = 'Please enter cat_id';
           }
 
+<<<<<<< Updated upstream
+=======
+             
+
+>>>>>>> Stashed changes
               // Make sure no errors
               if(empty($data['descriptionErr']) && empty($data['titleErr']) && empty($data['quantityErr']) && empty($data['duedateErr']) && empty($data['nameErr']) && empty($data['cityErr']) && empty($data['contactErr']) && empty($data['user_idErr']) && empty($data['cat_idErr'])){
                   // Validated
@@ -268,6 +292,7 @@
           
                 $this -> view('users/beneficiary/reqForm', $data);
           }
+<<<<<<< Updated upstream
         }
 
         //edit the request
@@ -279,12 +304,31 @@
         public function editRequest($req_id){
           $categories = $this->beneficiaryModel->getCategories();
 
+=======
+         
+
+        }
+
+
+
+
+
+        //edit the request
+        public function editRequest($req_id){
+
+          $categories = $this->beneficiaryModel->getCategories();
+>>>>>>> Stashed changes
           $id = $_SESSION['user_id'];
 
           if($_SERVER['REQUEST_METHOD'] == 'POST'){
               // Sanitize POST data
               $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
+<<<<<<< Updated upstream
+=======
+             
+
+>>>>>>> Stashed changes
               $data = [
                   'title' => trim($_POST['title']),
                   'name' => trim($_POST['name']),
@@ -317,6 +361,11 @@
                   'req_id' => $req_id                   
                 ];
 
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
                 if(empty($data['description'])){
                   $data['descriptionErr'] = 'Please enter description';
               }
@@ -353,6 +402,11 @@
               $data['cat_idErr'] = 'Please enter cat_id';
           }
 
+<<<<<<< Updated upstream
+=======
+             
+
+>>>>>>> Stashed changes
               // Make sure no errors
               if(empty($data['descriptionErr']) && empty($data['titleErr']) && empty($data['quantityErr']) && empty($data['duedateErr']) && empty($data['nameErr']) && empty($data['cityErr']) && empty($data['contactErr']) && empty($data['cat_idErr'])){
                   // Validated
@@ -366,7 +420,13 @@
                   // Load view with errors
                   $this->view('users/beneficiary/editRequest', $data);
               }
+<<<<<<< Updated upstream
           }else{
+=======
+
+          }else{
+
+>>>>>>> Stashed changes
               $requests = $this->beneficiaryModel->getRequestById($req_id);               
               // if($requests->user_id != $_SESSION['user_id']){
               //     redirect('requests');
@@ -397,6 +457,7 @@
                 ];
           
                 $this -> view('users/beneficiary/editRequest', $data);
+<<<<<<< Updated upstream
           }
       }
 
@@ -409,6 +470,16 @@
         public function deleteRequest($id){
               $requests = $this->beneficiaryModel->getRequestById($id);
               //check for owner
+=======
+         
+
+        }
+      }
+
+//delete a request
+        public function deleteRequest($id){              
+              $requests = $this->beneficiaryModel->getRequestById($id);                //check for owner
+>>>>>>> Stashed changes
               // if($requests->user_id != $_SESSION['user_id']){
               //     redirect('requests');
               // }                
@@ -420,6 +491,12 @@
               }
         }
 
+<<<<<<< Updated upstream
+=======
+
+        
+
+>>>>>>> Stashed changes
         //load categories page
         /**
          * @return void
@@ -539,11 +616,15 @@
                 }
         }
 //------------------------------------------------------------------------------------------edit this
+<<<<<<< Updated upstream
 
     /**
      * @return void
      */
     public function updateProfile(){
+=======
+        public function updateProfile(){
+>>>>>>> Stashed changes
 
             $type1 = "ind";
       
@@ -622,16 +703,28 @@
       
                 // Register User
                 if($this->userModel->register($data)){
+<<<<<<< Updated upstream
+=======
+                    
+>>>>>>> Stashed changes
                     $email = new Email($data['email']);
                     $email->sendVerificationEmail($data['email'], $otp_code);
                     redirect('users/verify');
                 } else {
                   die('Something went wrong');
                 }
+<<<<<<< Updated upstream
+=======
+      
+>>>>>>> Stashed changes
               } else {
                 // Load view with errors
                 $this->view('users/register', $data);
               }
+<<<<<<< Updated upstream
+=======
+      
+>>>>>>> Stashed changes
               }else{
                 $data =[
                   'email' => trim($_POST['email']),
@@ -652,6 +745,10 @@
                   'confirm_password_err' => '',
                   'other_err' => ''
                 ];
+<<<<<<< Updated upstream
+=======
+      
+>>>>>>> Stashed changes
                 
               // Validate Email
               if(empty($data['email'])){
@@ -702,17 +799,31 @@
       
                 // Register User
                 if($this->userModel->register($data)){
+<<<<<<< Updated upstream
+=======
+                    
+>>>>>>> Stashed changes
                     $email = new Email($data['email']);
                     $email->sendVerificationEmail($data['email'], $otp_code);
                     redirect('users/verify');
                 } else {
                   die('Something went wrong');
                 }
+<<<<<<< Updated upstream
+=======
+      
+>>>>>>> Stashed changes
               } else {
                 // Load view with errors
                 $this->view('users/register', $data);
               }
               }
+<<<<<<< Updated upstream
+=======
+              
+      
+      
+>>>>>>> Stashed changes
             } else {
               // Init data
               $data =[
@@ -735,6 +846,10 @@
               // Load view
               $this->view('users/register', $data);
             }
+<<<<<<< Updated upstream
+=======
+          
+>>>>>>> Stashed changes
           }
 
           //load beneficiary dashboard
@@ -760,6 +875,33 @@
           $this->view('users/beneficiary/stats', $data);
       }
 
+<<<<<<< Updated upstream
+=======
+          //load beneficiary dashboard
+        /**
+         * @return void
+         */
+        public function index(){
+          $data = [
+            'title' => 'DonateUs'
+          ];
+         
+          $this->view('users/beneficiary/index', $data);
+        }
+
+
+        /**
+         * @return void
+         */
+        public function stats(){
+          $data = [
+              'title' => 'Statistics'
+          ];
+
+          $this->view('users/beneficiary/stats', $data);
+      }
+
+>>>>>>> Stashed changes
     }
 
     

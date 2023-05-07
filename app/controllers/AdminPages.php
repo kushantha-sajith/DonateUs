@@ -36,9 +36,12 @@ class AdminPages extends Controller {
         $this->view('users/admin/beneficiaries', $data);
     }
 
+<<<<<<< Updated upstream
     /**
      * @return void
      */
+=======
+>>>>>>> Stashed changes
     public function verifyBeneficiaries(){
         $indBeneficiaries = $this->adminPageModel->verifyIndBeneficiaries();
         $corpBeneficiaries = $this->adminPageModel->verifyOrgBeneficiaries();
@@ -60,9 +63,12 @@ class AdminPages extends Controller {
         $this->view('users/admin/organizers', $data);
     }
 
+<<<<<<< Updated upstream
     /**
      * @return void
      */
+=======
+>>>>>>> Stashed changes
     public function verifyOrganizers(){
         $organizers = $this->adminPageModel->verifyOrganizers();
         $data = [
@@ -158,6 +164,7 @@ class AdminPages extends Controller {
         ];
         $this->view('users/admin/completedEvents', $data);
     }
+<<<<<<< Updated upstream
 
     /**
      * @return void
@@ -186,4 +193,6 @@ class AdminPages extends Controller {
             echo json_encode(['statusCode' => 500, 'message' => 'error']);
         }
     }
+=======
+>>>>>>> Stashed changes
 }

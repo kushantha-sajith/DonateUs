@@ -69,6 +69,7 @@
 
                 </ul>
             </div>
+<<<<<<< Updated upstream
             <div class="cards_heading head">
                 <div>ID</div>
                 <div>Donor Name</div>
@@ -93,6 +94,54 @@
                 </div>
             </div>
             <?php endforeach; ?>
+=======
+
+
+            <div class="cards_heading head">
+                <div>ID</div>
+                <div>Doner Name</div>
+                <div>Doner Type</div>
+                <div>Req ID</div>
+                <div>Donation Type</div>
+                <div>Amount</div>
+                <div>Status</div>
+                <div></div>
+            </div>
+            <div class="cards_heading cards_color">
+                <div>001</div>
+                <div>Kushantha Lakshan</div>
+                <div>Individual</div>
+                <div>003</div>
+                <div>Food</div>
+                <div>Rice 100Kg</div>
+                <div>
+                    <select name="status" id="status" style="margin-top: 0.5rem;">
+                        <option value="Ongoing">Ongoing</option>
+                        <option value="Compleated">Completed</option>
+                    </select>
+                </div>
+                <div>
+                    <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
+                 </div>
+             </div>
+             <div class="cards_heading cards_color">
+                <div>001</div>
+                <div>Kushantha Lakshan</div>
+                <div>Individual</div>
+                <div>003</div>
+                <div>Stationaries</div>
+                <div>500 Books</div>
+                <div>
+                    <select name="status" id="status" style="margin-top: 0.5rem;">
+                        <option value="Ongoing">Ongoing</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                </div>
+                <div>
+                    <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
+                 </div>
+             </div>
+>>>>>>> Stashed changes
         </main>
     </section>
     <!--home section end-->

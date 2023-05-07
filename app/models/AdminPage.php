@@ -2,6 +2,13 @@
 
 class AdminPage{
     private $db;
+<<<<<<< Updated upstream
+=======
+
+    /**
+     *
+     */
+>>>>>>> Stashed changes
     public function __construct()
     {
         $this->db = new Database;
@@ -83,7 +90,11 @@ class AdminPage{
      * @return mixed
      */
     public function pendingRequests(){
+<<<<<<< Updated upstream
         $this->db->query('SELECT dr.id, dr.request_title AS request_title, CASE WHEN rb.user_type = 4 THEN ind_ben.f_name WHEN rb.user_type = 5 THEN org_ben.org_name END AS ben_id, CASE WHEN rb.user_type = 4 THEN ind_ben.NIC WHEN rb.user_type = 5 THEN org_ben.emp_id END AS nic, CASE WHEN dr.req_type = 0 THEN fr.total_amount WHEN dr.req_type = 1 THEN nf.quantity END AS amount, dr.description AS description, CASE WHEN dr.req_type = 0 THEN "Financial" WHEN dr.req_type = 1 THEN "Non-financial" END AS req_type, c.category_name, CASE WHEN rb.user_type = 4 THEN ind_ben.city WHEN rb.user_type = 5 THEN org_ben.city END AS city, d.dist_name AS district FROM donation_req dr    JOIN reg_user rb ON dr.user_id = rb.id LEFT JOIN financial_req fr ON dr.id = fr.req_id LEFT JOIN nfinancial_req nf ON dr.id = nf.req_id JOIN district d ON dr.id = d.id JOIN categories c ON dr.cat_id = c.id LEFT JOIN ind_ben ON rb.id = ind_ben.user_id LEFT JOIN org_ben ON rb.id = org_ben.user_id where dr.status = 0');
+=======
+        $this->db->query('SELECT * FROM donation_req');
+>>>>>>> Stashed changes
         $results = $this->db->resultSet();
         return $results;
     }
@@ -92,7 +103,11 @@ class AdminPage{
      * @return mixed
      */
     public function ongoingRequests(){
+<<<<<<< Updated upstream
         $this->db->query('SELECT dr.id, dr.request_title AS request_title, CASE WHEN rb.user_type = 4 THEN ind_ben.f_name WHEN rb.user_type = 5 THEN org_ben.org_name END AS ben_id, CASE WHEN rb.user_type = 4 THEN ind_ben.NIC WHEN rb.user_type = 5 THEN org_ben.emp_id END AS nic, CASE WHEN dr.req_type = 0 THEN fr.total_amount WHEN dr.req_type = 1 THEN nf.quantity END AS amount, CASE WHEN dr.req_type = 0 THEN fr.received_amount WHEN dr.req_type = 1 THEN nf.received_quantity END AS rec_amount, dr.description AS description, CASE WHEN dr.req_type = 0 THEN "Financial" WHEN dr.req_type = 1 THEN "Non-financial" END AS req_type, c.category_name, CASE WHEN rb.user_type = 4 THEN ind_ben.city WHEN rb.user_type = 5 THEN org_ben.city END AS city, d.dist_name AS district FROM donation_req dr    JOIN reg_user rb ON dr.user_id = rb.id LEFT JOIN financial_req fr ON dr.id = fr.req_id LEFT JOIN nfinancial_req nf ON dr.id = nf.req_id JOIN district d ON dr.id = d.id JOIN categories c ON dr.cat_id = c.id LEFT JOIN ind_ben ON rb.id = ind_ben.user_id LEFT JOIN org_ben ON rb.id = org_ben.user_id where dr.status = 1');
+=======
+        $this->db->query('SELECT * FROM donation_req');
+>>>>>>> Stashed changes
         $results = $this->db->resultSet();
         return $results;
     }
@@ -101,7 +116,11 @@ class AdminPage{
      * @return mixed
      */
     public function rejectedRequests(){
+<<<<<<< Updated upstream
         $this->db->query('SELECT dr.id, dr.request_title AS request_title, CASE WHEN rb.user_type = 4 THEN ind_ben.f_name WHEN rb.user_type = 5 THEN org_ben.org_name END AS ben_id, CASE WHEN rb.user_type = 4 THEN ind_ben.NIC WHEN rb.user_type = 5 THEN org_ben.emp_id END AS nic, CASE WHEN dr.req_type = 0 THEN fr.total_amount WHEN dr.req_type = 1 THEN nf.quantity END AS amount, dr.description AS description, CASE WHEN dr.req_type = 0 THEN "Financial" WHEN dr.req_type = 1 THEN "Non-financial" END AS req_type, c.category_name, CASE WHEN rb.user_type = 4 THEN ind_ben.city WHEN rb.user_type = 5 THEN org_ben.city END AS city, d.dist_name AS district FROM donation_req dr    JOIN reg_user rb ON dr.user_id = rb.id LEFT JOIN financial_req fr ON dr.id = fr.req_id LEFT JOIN nfinancial_req nf ON dr.id = nf.req_id JOIN district d ON dr.id = d.id JOIN categories c ON dr.cat_id = c.id LEFT JOIN ind_ben ON rb.id = ind_ben.user_id LEFT JOIN org_ben ON rb.id = org_ben.user_id where dr.status = 2');
+=======
+        $this->db->query('SELECT * FROM donation_req');
+>>>>>>> Stashed changes
         $results = $this->db->resultSet();
         return $results;
     }
@@ -110,7 +129,11 @@ class AdminPage{
      * @return mixed
      */
     public function completedRequests(){
+<<<<<<< Updated upstream
         $this->db->query('SELECT dr.id, dr.request_title AS request_title, CASE WHEN rb.user_type = 4 THEN ind_ben.f_name WHEN rb.user_type = 5 THEN org_ben.org_name END AS ben_id, CASE WHEN rb.user_type = 4 THEN ind_ben.NIC WHEN rb.user_type = 5 THEN org_ben.emp_id END AS nic, CASE WHEN dr.req_type = 0 THEN fr.total_amount WHEN dr.req_type = 1 THEN nf.quantity END AS amount, CASE WHEN dr.req_type = 0 THEN fr.received_amount WHEN dr.req_type = 1 THEN nf.received_quantity END AS rec_amount, dr.description AS description, CASE WHEN dr.req_type = 0 THEN "Financial" WHEN dr.req_type = 1 THEN "Non-financial" END AS req_type, c.category_name, CASE WHEN rb.user_type = 4 THEN ind_ben.city WHEN rb.user_type = 5 THEN org_ben.city END AS city, d.dist_name AS district FROM donation_req dr    JOIN reg_user rb ON dr.user_id = rb.id LEFT JOIN financial_req fr ON dr.id = fr.req_id LEFT JOIN nfinancial_req nf ON dr.id = nf.req_id JOIN district d ON dr.id = d.id JOIN categories c ON dr.cat_id = c.id LEFT JOIN ind_ben ON rb.id = ind_ben.user_id LEFT JOIN org_ben ON rb.id = org_ben.user_id where dr.status = 3');
+=======
+        $this->db->query('SELECT * FROM donation_req');
+>>>>>>> Stashed changes
         $results = $this->db->resultSet();
         return $results;
     }
@@ -119,7 +142,11 @@ class AdminPage{
      * @return mixed
      */
     public function pendingEvents(){
+<<<<<<< Updated upstream
         $this->db->query('SELECT e.id, e.event_title, e.description, e.due_date, e.budget, e.location, r.email, o.full_name FROM events e JOIN reg_user r ON e.event_org_id = r.id JOIN event_org o ON e.event_org_id = o.user_id WHERE e.status = 0');
+=======
+        $this->db->query('SELECT * FROM events');
+>>>>>>> Stashed changes
         $results = $this->db->resultSet();
         return $results;
     }
@@ -128,7 +155,11 @@ class AdminPage{
      * @return mixed
      */
     public function ongoingEvents(){
+<<<<<<< Updated upstream
         $this->db->query('SELECT e.id, e.event_title, e.description, e.due_date, e.budget, e.received, e.location, r.email, o.full_name FROM events e JOIN reg_user r ON e.event_org_id = r.id JOIN event_org o ON e.event_org_id = o.user_id WHERE e.status = 1');
+=======
+        $this->db->query('SELECT * FROM events');
+>>>>>>> Stashed changes
         $results = $this->db->resultSet();
         return $results;
     }
@@ -137,7 +168,11 @@ class AdminPage{
      * @return mixed
      */
     public function rejectedEvents(){
+<<<<<<< Updated upstream
         $this->db->query('SELECT e.id, e.event_title, e.description, e.rejected_date, e.budget, e.rejection_note, e.location, r.email, o.full_name FROM events e JOIN reg_user r ON e.event_org_id = r.id JOIN event_org o ON e.event_org_id = o.user_id WHERE e.status = 2');
+=======
+        $this->db->query('SELECT * FROM events');
+>>>>>>> Stashed changes
         $results = $this->db->resultSet();
         return $results;
     }
@@ -146,6 +181,7 @@ class AdminPage{
      * @return mixed
      */
     public function completedEvents(){
+<<<<<<< Updated upstream
         $this->db->query('SELECT e.id, e.event_title, e.description, e.completed_date, e.budget, e.received, e.location, r.email, o.full_name FROM events e JOIN reg_user r ON e.event_org_id = r.id JOIN event_org o ON e.event_org_id = o.user_id WHERE e.status = 3');
         $results = $this->db->resultSet();
         return $results;
@@ -329,6 +365,9 @@ class AdminPage{
     public function getCompletedEventDetails($id){
         $this->db->query('SELECT e.id, e.event_title, e.description, e.received, o.community_name, o.designation, o.NIC, r.tp_number, e.completed_date, e.budget, e.location, r.email, o.full_name FROM events e JOIN reg_user r ON e.event_org_id = r.id JOIN event_org o ON e.event_org_id = o.user_id WHERE e.status = 3 AND e.id = :id');
         $this->db->bind(':id', $id);
+=======
+        $this->db->query('SELECT * FROM events');
+>>>>>>> Stashed changes
         $results = $this->db->resultSet();
         return $results;
     }

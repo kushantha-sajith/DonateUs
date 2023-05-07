@@ -1,7 +1,11 @@
 
 		.calendar {
             
+<<<<<<< Updated upstream
 			width: 1000px;
+=======
+			width: 800px;
+>>>>>>> Stashed changes
 			left: 50px;
 			background-color: #fff;
 			box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
@@ -22,25 +26,42 @@
 		}
 
 		.calendar .header h2 {
+<<<<<<< Updated upstream
 			font-size: 36px;
+=======
+			font-size: 22px;
+>>>>>>> Stashed changes
 			font-weight: bold;
 			margin: 0;
 		}
 
 		.calendar .header h1 {
+<<<<<<< Updated upstream
 			font-size: 22px;
+=======
+			font-size: 14px;
+>>>>>>> Stashed changes
 			font-weight: bold;
 			margin: 0;
 		}
 		
 		.calendar .header button {
+<<<<<<< Updated upstream
 			height:50px;
 			width:50px;
+=======
+			height:40px;
+			width:40px;
+>>>>>>> Stashed changes
 			border: 1px solid #163172;
 			border-radius: 50%;
 			background-color: #163172;
 			cursor: pointer;
+<<<<<<< Updated upstream
 			font-size: 26px;
+=======
+			font-size: 14px;
+>>>>>>> Stashed changes
 			color: #ffff;
 		}
 		
@@ -65,7 +86,11 @@
 			grid-template-columns: repeat(7, 1fr);
 			grid-gap: 10px;
 			text-align: center;
+<<<<<<< Updated upstream
 			font-size: 18px;
+=======
+			font-size: 14px;
+>>>>>>> Stashed changes
 		}
 		
 		.calendar .days .day {
@@ -73,9 +98,15 @@
 			border-radius: 5px;
 			padding: 10px ;
 			cursor: pointer;
+<<<<<<< Updated upstream
 			font-size: 28px;
 			height: 178px;
 			width: 132px;
+=======
+			font-size: 14px;
+			height: 140px;
+			width: 100px;
+>>>>>>> Stashed changes
 			display: block;
 		}
 
@@ -85,9 +116,15 @@
 			border-radius: 5px;
 			padding: 10px ;
 			cursor: pointer;
+<<<<<<< Updated upstream
 			font-size: 28px;
 			height: 178px;
 			width: 132px;
+=======
+			font-size: 14px;
+			height: 140px;
+			width: 100px;
+>>>>>>> Stashed changes
 			display: block;
 		}
 
@@ -106,6 +143,7 @@
 
 		.current-day .today-text{
 			float: right;
+<<<<<<< Updated upstream
 			font-size: 18px;
 		}
 
@@ -115,6 +153,20 @@
 			text-align: center;
 			cursor: pointer;
 			font-size: 0.9rem;
+=======
+			font-size: 14px;
+		}
+
+		.day-number{
+			font-size: 18px;
+		}
+		.day .meals, .current-day .meals{
+			width: 95px;
+			height: 104.8px;
+			text-align: center;
+			cursor: pointer;
+			font-size: 14px;
+>>>>>>> Stashed changes
 			/* display: block; */
 			display: flex;
 			flex-direction: column;
@@ -134,6 +186,10 @@
 			margin-left: 20px;
 			margin-top: 5px;
 			display: none;
+<<<<<<< Updated upstream
+=======
+			font-size: 12px;
+>>>>>>> Stashed changes
 		}
 		.day .meals .meal1, .current-day .meals .meal1{
 			background: green;
@@ -144,6 +200,10 @@
 			margin-left: 20px;
 			margin-top: 5px;
 			display: block;
+<<<<<<< Updated upstream
+=======
+			font-size: 12px;
+>>>>>>> Stashed changes
 		}
 		.day .meals .meal2, .current-day .meals .meal2{
 			background: green;
@@ -154,6 +214,10 @@
 			margin-left: 20px;
 			margin-top: 5px;
 			display: block;
+<<<<<<< Updated upstream
+=======
+			font-size: 12px;
+>>>>>>> Stashed changes
 		}
 		.day .meals .meal3, .current-day .meals .meal3{
 			background: green;
@@ -164,6 +228,10 @@
 			margin-left: 20px;
 			margin-top: 5px;
 			display: block;
+<<<<<<< Updated upstream
+=======
+			font-size: 12px;
+>>>>>>> Stashed changes
 		}
 		
 		.calendar .popup {
@@ -276,7 +344,11 @@
 }
 
 .org_name{
+<<<<<<< Updated upstream
 	margin-bottom: 10px;
+=======
+	margin-bottom: 30px;
+>>>>>>> Stashed changes
 }
 
 .btns2 a{

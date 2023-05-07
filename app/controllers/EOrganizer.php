@@ -7,6 +7,10 @@
             }
             $this->EOrganizerModel = $this->model('EOrganizerModel');
             $this->userModel = $this->model('User');
+<<<<<<< Updated upstream
+=======
+            
+>>>>>>> Stashed changes
         }
 
         //load donor dashboard
@@ -14,6 +18,10 @@
          * @return void
          */
         public function index(){
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
             if(isset($_SESSION['user_id'])){
 
               $id = $_SESSION['user_id'];
@@ -33,6 +41,10 @@
           }
         }
 
+<<<<<<< Updated upstream
+=======
+        
+>>>>>>> Stashed changes
         /**
          * @return void
          */
@@ -57,25 +69,44 @@
             'type' => $type,
             'id' => $id
             ];
+<<<<<<< Updated upstream
+=======
+    
+>>>>>>> Stashed changes
           
             if($this->EOrganizerModel->update_profile_eorganizer($data)){
               redirect('pages/profile_eorganizer');
             }else{
               redirect('pages/edit_profile_eorganizer');
             }
+<<<<<<< Updated upstream
+=======
+            
+            
+  
+>>>>>>> Stashed changes
         }
         
         /**
          * @return void
          */
         public function stats(){
+<<<<<<< Updated upstream
           $image_name = $this->profileImage();
+=======
+          $$image_name = $this->profileImage();
+>>>>>>> Stashed changes
           $data = [
               'title' => 'Statistics',
               'prof_img' => $image_name
           ];
           $this->view('users/donor/stats', $data);
       }
+<<<<<<< Updated upstream
+=======
+ 
+        
+>>>>>>> Stashed changes
     }
 
     

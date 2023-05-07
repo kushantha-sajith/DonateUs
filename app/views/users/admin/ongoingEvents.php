@@ -86,6 +86,7 @@
         <?php foreach($data['ongoingEvents'] as $ongoingEvents) : ?>
             <div class="cards_heading cards_color">
                 <div><?php echo $ongoingEvents->id; ?></div>
+<<<<<<< Updated upstream
                 <div><?php echo $ongoingEvents->event_title; ?></div>
                 <div><?php echo $ongoingEvents->full_name; ?></div>
                 <div><?php echo $ongoingEvents->received; ?></div>
@@ -97,6 +98,42 @@
             </div>
         <?php endforeach; ?>
         </main>
+=======
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div>
+                    <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+        <div class="cards_heading cards_color">
+            <div>10</div>
+            <div>Hitha Mithuru</div>
+            <div>Kushantha</div>
+            <div>10,000</div>
+            <div>2023-02-10</div>
+            <div>50,000</div>
+            <div>
+                <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
+            </div>
+        </div>
+        <div class="cards_heading cards_color">
+            <div>10</div>
+            <div>Hitha Mithuru</div>
+            <div>Kushantha</div>
+            <div>10,000</div>
+            <div>2023-02-10</div>
+            <div>50,000</div>
+            <div>
+                <div style="text-align: center;"> <a href="#"> <button class="btnview" >View More</button> </a></div>
+            </div>
+        </div>
+        </main>
+
+>>>>>>> Stashed changes
     </section>
     <!--home section end-->
 

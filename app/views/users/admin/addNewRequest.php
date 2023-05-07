@@ -111,7 +111,11 @@
                                     <h3>Upload Image</h3>
                                     <p>Image size must be less than <span>2MB</span></p>
                                 </div>
+<<<<<<< Updated upstream
                                  <button class="select-image">Select Image</button>
+=======
+                                <!-- <button class="select-image">Select Image</button> -->
+>>>>>>> Stashed changes
                             </div>
                             <div class="photo-container">
                                 <input type="file" id="file2" accept="image/*" hidden>
@@ -120,7 +124,11 @@
                                     <h3>Upload Image</h3>
                                     <p>Image size must be less than <span>2MB</span></p>
                                 </div>
+<<<<<<< Updated upstream
                                  <button class="select-image" id="select_two">Select Image</button>
+=======
+                                <!-- <button class="select-image" id="select_two">Select Image</button> -->
+>>>>>>> Stashed changes
                             </div>
                         </div>
                         <span class="title"><u>Recomondation Letter By Grama Niladari</u></span>
@@ -131,7 +139,11 @@
                                 <h3>Upload Image</h3>
                                 <p>Image size must be less than <span>2MB</span></p>
                             </div>
+<<<<<<< Updated upstream
                              <button class="select-image" id="select_three">Select Image</button>
+=======
+                            <!-- <button class="select-image" id="select_three">Select Image</button> -->
+>>>>>>> Stashed changes
                         </div>
                         <div class="flex">
                             <button class="abc">Add</button>
@@ -140,6 +152,12 @@
                     </div>
                 </form>
             </div>
+<<<<<<< Updated upstream
+=======
+
+
+
+>>>>>>> Stashed changes
         </main>
 
     </section>

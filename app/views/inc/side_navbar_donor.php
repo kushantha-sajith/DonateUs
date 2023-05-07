@@ -29,12 +29,16 @@
             <span class="links_name">Reservations</span>
           </a>
         </li>
+<<<<<<< Updated upstream
         <li id="item1">
           <a href="<?php echo URLROOT; ?>/donor/sponsorshipsDonor">
             <i class="bx bxs-dollar-circle"></i>
             <span class="links_name">Sponsor</span>
           </a>
         </li>
+=======
+        
+>>>>>>> Stashed changes
         <li>
           <a href="<?php echo URLROOT; ?>/pages/donationHistoryDonor">
             <i class="bx bx-history"></i>
@@ -53,8 +57,18 @@
             <span class="links_name">Stats</span>
           </a>
         </li>
+<<<<<<< Updated upstream
         
         <li id="item2">
+=======
+        <li id="item1">
+          <a href="<?php echo URLROOT; ?>/donor/sponsorshipsDonor">
+            <i class="bx bxs-dollar-circle"></i>
+            <span class="links_name">Sponsor</span>
+          </a>
+        </li>
+        <li>
+>>>>>>> Stashed changes
           <a href="#">
             <i class="bx bxs-report"></i>
             <span class="links_name">Reports</span>

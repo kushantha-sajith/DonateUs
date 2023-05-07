@@ -199,9 +199,12 @@
             $this->view('users/admin/stats', $data);
         }
 
+<<<<<<< Updated upstream
         /**
          * @return void
          */
+=======
+>>>>>>> Stashed changes
         public function financialDonationHistory(){
             $financialDonationHistory = $this->adminModel->financialDonationHistory();
             $data = [
@@ -212,9 +215,12 @@
             $this->view('users/admin/donationHistory', $data);
         }
 
+<<<<<<< Updated upstream
         /**
          * @return void
          */
+=======
+>>>>>>> Stashed changes
         public function nonFinancialDonationHistory(){
             $nonFinancialDonationHistory = $this->adminModel->nonFinancialDonationHistory();
             $data = [

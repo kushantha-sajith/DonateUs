@@ -162,8 +162,7 @@ nav .search-box input {
 nav .search-box .bx-search {
     position: absolute;
     height: 40px;
-    width: 40px;
-    //background: #0A2558;
+    width: 40px;    
     background: #2697FF;
     right: 5px;
     top: 50%;
@@ -657,18 +656,35 @@ a {
 
 .chart {
     display: flex;
+<<<<<<< Updated upstream
     align-items: center;
     flex-direction: column;
+=======
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+>>>>>>> Stashed changes
 }
 
 .chart1{
     width: 50%;
+<<<<<<< Updated upstream
 }
 
 .chart2{
     width: 25%;
     display: flex;
     justify-content: center;
+=======
+    display: flex;
+    flex-direction: column;
+}
+
+.chart2{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+>>>>>>> Stashed changes
 }
 
 canvas{

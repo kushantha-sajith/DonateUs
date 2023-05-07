@@ -43,6 +43,7 @@
                 <form action="#">
                     <div class="formfirst">
                         <div class="details personal">
+<<<<<<< Updated upstream
 <!--                            <span class="title"><u>Personal Details</u></span>-->
                             <div class="fields">
 <!--                                <div class="input-field">-->
@@ -79,18 +80,68 @@
 <!--                                    <label>District</label>-->
 <!--                                    <input type="number" placeholder="Enter mobile number">-->
 <!--                                </div>-->
+=======
+                            <span class="title"><u>Personal Details</u></span>
+                            <div class="fields">
+                                <div class="input-field">
+                                    <label>First Name</label>
+                                    <input type="text" placeholder="Enter your first name">
+                                </div>
+                                <div class="input-field">
+                                    <label>Last Name</label>
+                                    <input type="text" placeholder="Enter your first name">
+                                </div>
+
+                                <div class="input-field">
+                                    <label>Date of Birth</label>
+                                    <input type="date" placeholder="Enter birth date">
+                                </div>
+
+                                <div class="input-field">
+                                    <label>Email</label>
+                                    <input type="text" placeholder="Enter your email">
+                                </div>
+                                <div class="input-field">
+                                    <label>Mobile Number</label>
+                                    <input type="number" placeholder="Enter mobile number">
+                                </div>
+                                <div class="input-field">
+                                    <label>ID Number</label>
+                                    <input type="text" placeholder="Enter mobile number">
+                                </div>
+                                <div class="input-field">
+                                    <label>City</label>
+                                    <input type="text" placeholder="Enter mobile number">
+                                </div>
+                                <div class="input-field">
+                                    <label>District</label>
+                                    <input type="number" placeholder="Enter mobile number">
+                                </div>
+>>>>>>> Stashed changes
                             </div>
                         </div>
                     </div>
                 </form>
                 <div class="updatebtn">
                     <a href="<?php echo URLROOT; ?>/pages/editProfile">
+<<<<<<< Updated upstream
                         <button class="edit" style="text-decoration: none;">Edit Email</button>
+=======
+                        <button class="edit" style="text-decoration: none;">Edit Profile Details
+                        </button>
+>>>>>>> Stashed changes
                     </a>
 
                     <a href="<?php echo URLROOT; ?>/pages/changePassword">
                         <button class="changepassword" style="text-decoration: none;">Change Password</button>
                     </a>
+<<<<<<< Updated upstream
+=======
+
+                    <a href="#">
+                        <button class="delete" style="text-decoration: none;">Delete Profile Details</button>
+                    </a>
+>>>>>>> Stashed changes
                 </div>
             </div>
         </main>

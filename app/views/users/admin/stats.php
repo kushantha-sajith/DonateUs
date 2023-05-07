@@ -34,11 +34,19 @@
     <div class="main-container">
         <div class="chart">
             <div class="chart1">
+<<<<<<< Updated upstream
                 <canvas id="myChart"></canvas>
             </div>
             <div class="chart2">
                 <canvas id="myPie"></canvas>
                 <canvas id="myDon"></canvas>
+=======
+            <canvas id="myChart"></canvas>
+            <canvas id="myLine"></canvas>
+            </div>
+            <div class="chart2">
+            <canvas id="myPie"></canvas>
+>>>>>>> Stashed changes
             </div>
         </div>
     </div>
@@ -47,6 +55,7 @@
 
 <script src="<?php echo URLROOT; ?>/js/sidebar.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<<<<<<< Updated upstream
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script>
     var count;
@@ -174,6 +183,70 @@
         })
     }
     donutChart();
+=======
+<script>
+    const ctx = document.getElementById('myChart');
+    const ctp = document.getElementById('myPie');
+    const ctr = document.getElementById('myLine');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            datasets: [{
+                label: 'No. of Donations',
+                data: [12, 19, 3, 5, 2, 3, 5, 8, 10, 13, 2, 6],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    new Chart(ctp, {
+        type: 'pie',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            datasets: [{
+                label: 'No. of Donations',
+                data: [12, 19, 3, 5, 2, 3, 5, 8, 10, 13, 2, 6],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    new Chart(ctr, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            datasets: [{
+                label: 'No. of Donations',
+                data: [12, 19, 3, 5, 2, 3, 5, 8, 10, 13, 2, 6],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+>>>>>>> Stashed changes
 </script>
 
 </body>
