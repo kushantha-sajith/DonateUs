@@ -1,6 +1,15 @@
 {
-    "require": {
-        "phpmailer/phpmailer": "^6.6",
-        "dompdf/dompdf": "^2.0"
+  "require": {
+    "phpmailer/phpmailer": "^6.6",
+    "dompdf/dompdf": "^2.0",
+    "notifylk/notify-php": "*@dev"
+  },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/notifylk/notify-php.git"
     }
+  ]
 }
+
+

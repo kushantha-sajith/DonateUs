@@ -37,6 +37,17 @@
             'reference' => '3c5d5a56d56f48a1ca08a0670f0f80c1dad368f3',
             'dev_requirement' => false,
         ),
+        'notifylk/notify-php' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../notifylk/notify-php',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'reference' => '7fbd8cff4a089a6a21c3802638241ded1ff18c89',
+            'dev_requirement' => false,
+        ),
         'phenx/php-font-lib' => array(
             'pretty_version' => '0.5.4',
             'version' => '0.5.4.0',
@@ -56,12 +67,12 @@
             'dev_requirement' => false,
         ),
         'phpmailer/phpmailer' => array(
-            'pretty_version' => 'v6.6.5',
-            'version' => '6.6.5.0',
+            'pretty_version' => 'v6.8.0',
+            'version' => '6.8.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpmailer/phpmailer',
             'aliases' => array(),
-            'reference' => '8b6386d7417526d1ea4da9edb70b8352f7543627',
+            'reference' => 'df16b615e371d81fb79e506277faea67a1be18f1',
             'dev_requirement' => false,
         ),
         'sabberworm/php-css-parser' => array(

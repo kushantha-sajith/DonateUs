@@ -237,4 +237,79 @@ class StatModel
         $result = $this->db->resultSet();
         return $result;
     }
+
+    /**
+     * @return false|mixed
+     */
+    public function mOngoingRequests()
+    {
+        $this->db->query('SELECT COUNT(*) AS num_rows FROM donation_req WHERE status=1 AND MONTH(published_date)=MONTH(CURDATE()) AND YEAR(published_date)=YEAR(CURDATE())');
+        $row = $this->db->single();
+        //check row
+        if ($this->db->rowCount() > 0) {
+            return $row;
+        } else return false;
+    }
+
+    /**
+     * @return false|mixed
+     */
+    public function mCompletedRequests()
+    {
+        $this->db->query('SELECT COUNT(*) AS num_rows FROM donation_req WHERE status=3 AND MONTH(completed_date)=MONTH(CURDATE()) AND YEAR(completed_date)=YEAR(CURDATE())');
+        $row = $this->db->single();
+        //check row
+        if ($this->db->rowCount() > 0) {
+            return $row;
+        } else return false;
+    }
+
+    /**
+     * @return false|mixed
+     */
+    public function mRejectedRequests()
+    {
+        $this->db->query('SELECT COUNT(*) AS num_rows FROM donation_req WHERE status=2 AND MONTH(rejected_date)=MONTH(CURDATE()) AND YEAR(rejected_date)=YEAR(CURDATE())');
+        $row = $this->db->single();
+        //check row
+        if ($this->db->rowCount() > 0) {
+            return $row;
+        } else return false;
+    }
+
+    /**
+     * @return array
+     */
+    public function mCategoryCount()
+    {
+        $this->db->query('SELECT categories.category_name AS category, COUNT(donation_req.cat_id) AS count FROM donation_req INNER JOIN categories ON donation_req.cat_id = categories.id WHERE MONTH(donation_req.published_date) = MONTH(CURDATE()) AND YEAR(donation_req.published_date)=YEAR(CURDATE()) GROUP BY categories.id;');
+        $result = $this->db->resultSet();
+        return $result;
+    }
+
+    /**
+     * @return false|mixed
+     */
+    public function mFinancialCount()
+    {
+        $this->db->query('SELECT COUNT(*) AS num_rows FROM donation_history WHERE type=0');
+        $row = $this->db->single();
+        //check row
+        if ($this->db->rowCount() > 0) {
+            return $row;
+        } else return false;
+    }
+
+    /**
+     * @return false|mixed
+     */
+    public function mNonFinancialCount()
+    {
+        $this->db->query('SELECT COUNT(*) AS num_rows FROM donation_history WHERE type=1');
+        $row = $this->db->single();
+        //check row
+        if ($this->db->rowCount() > 0) {
+            return $row;
+        } else return false;
+    }
 }

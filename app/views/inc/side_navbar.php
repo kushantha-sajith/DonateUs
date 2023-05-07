@@ -10,12 +10,12 @@
                 <span class="links_name">Dashboard</span>
             </a>
         </li>
-        <li>
-            <a href="<?php echo URLROOT; ?>/#">
-                <i class="bx bx-notification"></i>
-                <span class="links_name">Notifications</span>
-            </a>
-        </li>
+        <!--        <li>-->
+        <!--            <a href="--><?php //echo URLROOT; ?><!--/#">-->
+        <!--                <i class="bx bx-notification"></i>-->
+        <!--                <span class="links_name">Notifications</span>-->
+        <!--            </a>-->
+        <!--        </li>-->
         <li>
             <a href="<?php echo URLROOT; ?>/adminPages/donors">
                 <i class="bx bx-user"></i>
@@ -40,12 +40,12 @@
                 <span class="links_name">Donation History</span>
             </a>
         </li>
-        <li>
-            <a href="#">
-                <i class="bx bx-message-alt-detail"></i>
-                <span class="links_name">Feedbacks</span>
-            </a>
-        </li>
+        <!--        <li>-->
+        <!--            <a href="#">-->
+        <!--                <i class="bx bx-message-alt-detail"></i>-->
+        <!--                <span class="links_name">Feedbacks</span>-->
+        <!--            </a>-->
+        <!--        </li>-->
         <li>
             <a href="<?php echo URLROOT; ?>/admin/categories">
                 <i class="bx bx-list-ul"></i>

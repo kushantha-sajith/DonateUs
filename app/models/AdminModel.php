@@ -263,4 +263,34 @@ class AdminModel
         $results = $this->db->fetchResult();
         return $results;
     }
+
+    /**
+     * @return mixed
+     */
+    public function mFinancialDonationHistory()
+    {
+        $this->db->query('SELECT dh.id, dr.request_title, r.tp_number, dh.date_of_completion, c.category_name AS category, dh.quantity, dh.amount, IF(r.user_type = 2, id.f_name, cd.comp_name) AS donor_name, dr.id as req_id, CASE WHEN dr.req_type = 0 THEN "Financial" WHEN dr.req_type = 1 THEN "Non-financial" END AS req_type, CASE WHEN dh.status = 0 THEN "Pending" WHEN dh.status = 1 THEN "Completed" WHEN dh.status = 2 THEN "Delivered" END AS status FROM donation_history AS dh JOIN reg_user AS r ON dh.don_id = r.id JOIN categories AS c ON dh.category = c.id JOIN donation_req AS dr ON dh.req_id = dr.id LEFT JOIN ind_don AS id ON r.id = id.user_id AND r.user_type = 2 LEFT JOIN corp_don AS cd ON r.id = cd.user_id AND r.user_type = 3 WHERE dh.type = 0 AND MONTH(dh.date_of_completion) = MONTH(CURRENT_DATE()) AND YEAR(dh.date_of_completion) = YEAR(CURRENT_DATE());');
+        $results = $this->db->resultSet();
+        return $results;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function mNonFinancialDonationHistory()
+    {
+        $this->db->query('SELECT dh.id, dr.request_title, r.tp_number, dh.date_of_completion, c.category_name AS category, dh.quantity, dh.quantity, IF(r.user_type = 2, id.f_name, cd.comp_name) AS donor_name, dr.id as req_id, CASE WHEN dr.req_type = 0 THEN "Financial" WHEN dr.req_type = 1 THEN "Non-financial" END AS req_type, CASE WHEN dh.status = 0 THEN "Pending" WHEN dh.status = 1 THEN "Completed" WHEN dh.status = 2 THEN "Delivered" END AS status FROM donation_history AS dh JOIN reg_user AS r ON dh.don_id = r.id JOIN categories AS c ON dh.category = c.id JOIN donation_req AS dr ON dh.req_id = dr.id LEFT JOIN ind_don AS id ON r.id = id.user_id AND r.user_type = 2 LEFT JOIN corp_don AS cd ON r.id = cd.user_id AND r.user_type = 3 WHERE dh.type = 1 AND MONTH(dh.date_of_completion) = MONTH(CURRENT_DATE()) AND YEAR(dh.date_of_completion) = YEAR(CURRENT_DATE());');
+        $results = $this->db->resultSet();
+        return $results;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function mGetTotalFinDonations()
+    {
+        $this->db->query('SELECT SUM(amount) AS total_fin_donations FROM donation_history WHERE type = 0 AND MONTH(date_of_completion) = MONTH(CURRENT_DATE()) AND YEAR(date_of_completion) = YEAR(CURRENT_DATE())');
+        $row = $this->db->single();
+        return $row->total_fin_donations;
+    }
 }

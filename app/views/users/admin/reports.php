@@ -31,12 +31,67 @@
         </div>
     </nav>
     <div class="main-container">
-        <button type="button" onclick="window.location.href='<?php echo URLROOT; ?>/admin/monthlyDonationsReport'">
-            Report
-        </button>
-        <button type="button" onclick="window.location.href='<?php echo URLROOT; ?>/admin/donationReqReport'">
-            Report 1
-        </button>
+        <div class="rep-container">
+            <h1>Reports</h1>
+            <br>
+            <div class="report">
+                <h3>Donation Request Report</h3>
+                <div class="rep">
+                    <div>Annual Report</div>
+                    <button class="down_btn" type="button"
+                            onclick="window.location.href='<?php echo URLROOT; ?>/admin/donationReqReport'">
+                        View
+                    </button>
+                </div>
+                <div class="rep">
+                    <div>Monthly Report</div>
+                    <button class="down_btn" type="button"
+                            onclick="window.location.href='<?php echo URLROOT; ?>/admin/monthlyDonationReqReport'">
+                        View
+                    </button>
+                </div>
+                <div class="rep">
+                    <div>Custom Report</div>
+                    <div class="rep1">
+                        <form class="rep1" method="POST">
+                            <div>From <input type="date" name="from"> to <input type="date" name="to" max=""></div>
+                            <button class="down_btn">
+                                View
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="report">
+                <h3>Event Request Report</h3>
+                <div class="rep">
+                    <div>Annual Report</div>
+                    <button class="down_btn" type="button"
+                            onclick="window.location.href='<?php echo URLROOT; ?>/admin/eventReqReport'">
+                        View
+                    </button>
+                </div>
+                <div class="rep">
+                    <div>Monthly Report</div>
+                    <button class="down_btn" type="button"
+                            onclick="window.location.href='<?php echo URLROOT; ?>/admin/donationReqReport'">
+                        View
+                    </button>
+                </div>
+                <div class="rep">
+                    <div>Custom Report</div>
+                    <div class="rep1">
+                        <form class="rep1" method="POST">
+                            <div>From <input type="date" name="from"> to <input type="date" name="to" max=""></div>
+                            <button class="down_btn">
+                                View
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 <!--home section end-->

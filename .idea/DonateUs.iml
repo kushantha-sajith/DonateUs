@@ -5,6 +5,14 @@
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/app" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/app/tests" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/dompdf/dompdf" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/masterminds/html5" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/notifylk/notify-php" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/phenx/php-font-lib" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/phenx/php-svg-lib" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/phpmailer/phpmailer" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/sabberworm/php-css-parser" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

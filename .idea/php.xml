@@ -11,13 +11,14 @@
   </component>
   <component name="PhpIncludePathManager">
     <include_path>
-      <path value="$PROJECT_DIR$/app/vendor/phpmailer/phpmailer" />
       <path value="$PROJECT_DIR$/app/vendor/composer" />
+      <path value="$PROJECT_DIR$/app/vendor/notifylk/notify-php" />
+      <path value="$PROJECT_DIR$/app/vendor/masterminds/html5" />
+      <path value="$PROJECT_DIR$/app/vendor/phpmailer/phpmailer" />
+      <path value="$PROJECT_DIR$/app/vendor/sabberworm/php-css-parser" />
       <path value="$PROJECT_DIR$/app/vendor/phenx/php-font-lib" />
       <path value="$PROJECT_DIR$/app/vendor/phenx/php-svg-lib" />
       <path value="$PROJECT_DIR$/app/vendor/dompdf/dompdf" />
-      <path value="$PROJECT_DIR$/app/vendor/masterminds/html5" />
-      <path value="$PROJECT_DIR$/app/vendor/sabberworm/php-css-parser" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.0">

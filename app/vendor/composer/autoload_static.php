@@ -16,6 +16,10 @@ class ComposerStaticInit053d28e3ee640631733493036e1f8fc2
         array (
             'PHPMailer\\PHPMailer\\' => 20,
         ),
+        'N' => 
+        array (
+            'NotifyLk\\' => 9,
+        ),
         'M' => 
         array (
             'Masterminds\\' => 12,
@@ -42,6 +46,10 @@ class ComposerStaticInit053d28e3ee640631733493036e1f8fc2
         'PHPMailer\\PHPMailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
+        'NotifyLk\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/notifylk/notify-php/src',
         ),
         'Masterminds\\' => 
         array (
