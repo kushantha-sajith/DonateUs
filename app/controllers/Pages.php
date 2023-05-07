@@ -95,19 +95,34 @@ class Pages extends Controller
         }
     }
 
-    /**
-     * @return void
-     */
-    public function beneficiary()
-    {
-        if (!isLoggedIn()) {
+    public function beneficiary(){
+        if(!isLoggedIn()){
             redirect('users/login');
         }
-        $data = [
-            'title' => 'Beneficiary'
-        ];
-
-        $this->view('users/beneficiary/index', $data);
+        if(isset($_SESSION['user_id'])){
+  
+          $id = $_SESSION['user_id'];
+          $image_name = $this->profileImage();
+          $total_donations =  $this->beneficiaryModel->getTotalDonations($id);
+          $total_reject = $this->beneficiaryModel->getTotalReject($id);
+          $total_ongoing = $this->beneficiaryModel->getTotalOngoing($id);
+          $total_complete = $this->beneficiaryModel->getTotalComplete($id);
+  
+      $data = [
+        'title' => 'Beneficiary',
+        'prof_img' => $image_name,
+        'total' =>  $total_donations,
+        'reject' =>  $total_reject,
+        'ongoing' =>  $total_ongoing,
+        'complete' =>  $total_complete
+  
+      ];
+      $this->view('users/beneficiary/index', $data);
+      
+    }else{
+        $this->view('users/login', $data);
+      }
+  
     }
 
     /**
@@ -170,17 +185,17 @@ class Pages extends Controller
         if (isset($_SESSION['user_id'])) {
             $id = $_SESSION['user_id'];
             $user_type = $_SESSION['user_type'];
-            $userdata = $this->donorModel->getUserData($id);
-            $personaldata = $this->donorModel->getPersonalData($id, $user_type);
+            $userdata = $this->beneficiaryModel->getUserData($id);
+            $personaldata = $this->beneficiaryModel->getPersonalData($id, $user_type);
             $image_name = $this->profileImage();
-            $dist_name = $this->donorModel->getDistrictName($id, $user_type);
+            // $dist_name = $this->beneficiaryModel->getDistrictName($id, $user_type);
 
             $data = [
                 'title' => 'Profile',
                 'userdata' => $userdata,
                 'personaldata' => $personaldata,
                 'prof_img' => $image_name,
-                'dist' => $dist_name
+                // 'dist' => $dist_name
             ];
 
             $this->view('users/beneficiary/profile_beneficiary', $data);
@@ -327,6 +342,7 @@ class Pages extends Controller
         }
     }
 
+
     //load donation history page
 
     /**
@@ -348,6 +364,48 @@ class Pages extends Controller
 
         $this->view('users/donor/donation_history_donor', $data);
     }
+
+
+    // public function donationHistoryBeneficiary()
+    // {
+    //     if (!isLoggedIn()) {
+    //         redirect('users/login');
+    //     }
+    //     $id = $_SESSION['user_id'];
+    //     $records = $this->beneficiaryModel->getDonationHistory($id);
+    //     $image_name = $this->profileImage();
+    //     $data = [
+    //         'title' => 'Donation History',
+    //         'prof_img' => $image_name,
+    //         'records' => $records
+    //     ];
+
+    //     $this->view('users/beneficiary/donation_history_beneficiary', $data);
+    // }
+
+    public function donationHistoryBeneficiary(){
+
+        $id = $_SESSION['user_id'];
+        $donations = $this->beneficiaryModel->getDonationHistory($id);
+        $financials = $this->beneficiaryModel->getFinancialHistory($id);
+        $non_financials = $this->beneficiaryModel->getNonFinancialHistory($id);
+        $categories = $this->beneficiaryModel->getNonfinancialCategories();
+    
+          if(!isLoggedIn()){
+              redirect('users/login');
+          }
+        $image_name = $this->profileImage();
+        $data = [
+          'title' => 'Donation History',
+          'prof_img' => $image_name,
+          'donations' => $donations,
+          'financials' => $financials,
+          'nfinancials' => $non_financials,
+          'categories' => $categories
+        ];
+    
+        $this->view('users/beneficiary/donation_history_beneficiary', $data);
+      }
 
     //load donation requests page
 

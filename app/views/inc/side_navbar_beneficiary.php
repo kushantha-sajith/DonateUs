@@ -17,23 +17,17 @@
         </li>
         
         <li>
-            <a href="<?php echo URLROOT; ?>/beneficiary/donationRequest">
+            <a href="<?php echo URLROOT; ?>/beneficiary/allDonations">
                 <i class="bx bx-list-check"></i>
                 <span class="links_name">Donation Requests</span>
             </a>
         </li>
         <li>
-            <a href="<?php echo URLROOT; ?>/beneficiary/donationHistoryBeneficiary">
+            <a href="<?php echo URLROOT; ?>/pages/donationHistoryBeneficiary">
                 <i class="bx bx-history"></i>
                 <span class="links_name">Donation History</span>
             </a>
         </li>
-        <!-- <li>
-            <a href="#">
-                <i class="bx bx-message-alt-detail"></i>
-                <span class="links_name">Forum</span>
-            </a>
-        </li> -->
         
         <li>
             <a href="<?php echo URLROOT; ?>/beneficiary/stats">
@@ -44,7 +38,7 @@
         </li>
 
         <li id="item1">
-          <a href="<?php echo URLROOT; ?>/beneficiary/viewAcceptedReservation">
+          <a href="<?php echo URLROOT; ?>/beneficiary/viewCalendar">
             <i class="bx bxs-calendar-check"></i>
             <span class="links_name">Calendar</span>
           </a>
@@ -96,6 +90,9 @@
           document.getElementById("org7").style.display = "none";
           document.getElementById("org8").style.display = "none";
           document.getElementById("org9").style.display = "none";
+          document.getElementById("org10").style.display = "none";
+          document.getElementById("org11").style.display = "none";
+
         break;
       case '5':
         menuitem1.style.display = "block";
@@ -127,6 +124,26 @@
           welcome.style.display = "block";
         }
       };
+  
+       
 
+      //  // js for drop down list 
+      // const optionMenu = document.querySelector(".select-menu"),
+      //      selectBtn = optionMenu.querySelector(".select-btn"),
+      //      options = optionMenu.querySelectorAll(".option"),
+      //      sBtn_text = optionMenu.querySelector(".sBtn-text");
+
+      //  selectBtn.addEventListener("click", () => optionMenu.classList.toggle("active"));
+
+      //  options.forEach(option => {
+      //      option.addEventListener("click", () => {
+      //          let selectedOption = option.querySelector(".option-text").innerText;
+      //          sBtn_text.innerText = selectedOption;
+
+      //          optionMenu.classList.remove("active");
+      //      });
+      //  });
+
+   </script>
       
-    </script>
+ 

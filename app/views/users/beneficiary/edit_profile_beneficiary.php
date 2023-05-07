@@ -72,7 +72,7 @@
                                 
                                 <div id="org2" class="input-field">
                                     <label>Company Name</label>
-                                    <input type="text" name="comp_name" placeholder="ex: ABC.co" value="<?php echo $personaldata->comp_name; ?>">
+                                    <input type="text" name="comp_name" placeholder="ex: ABC.co" value="<?php echo $personaldata->org_name; ?>">
                                     <p class="error"></p>
                                 </div>
 
@@ -82,15 +82,14 @@
                                     
                                 </div>
 
-
                                 <div id="ind5" class="input-field">
                                     <label>Contact Number</label>
                                     <input type="text" name="contact_ind" placeholder="ex: +94XXXXXXXXX" value="<?php echo $user->tp_number; ?>">
                                     <p class="error"></p>
                                 </div>
                                 <div class="input-field">
-                                    <label>City</label>
-                                    <input type="text" name="city" placeholder="ex: Colombo" value="<?php echo $personaldata->city; ?>">
+                                    <label>zipcode</label>
+                                    <input type="text" name="zipcode" placeholder="ex: Colombo" value="<?php echo $personaldata->zipcode; ?>">
                                     <p class="error"></p>
                                 </div>
                                 <div class="input-field">
@@ -101,6 +100,20 @@
                             <?php endforeach; ?> </select>
                             <p class="error"></p>
                                 </div>
+
+                                <?php if($personaldata->reservation==1){ ?>
+
+                                <div id="org10" class="input-field">
+                                    <label>Members Quantity</label>
+                                    <input type="text" placeholder="" value="<?php echo $user-> members; ?>" >
+                                </div>
+
+                                <div id="org11">
+                                    <label>Meal Plan</label>
+                                    <input type="file" placeholder="" value="<?php echo $user-> meal_plan; ?>" >
+                                </div>
+                                <?php } ?>
+
                               </div>
                               <span id ="org4" class="span_title"><u>Contact Person Details</u></span>
                               <div id="org9" class="fields">
@@ -207,6 +220,9 @@ window.onload = function () {
           document.getElementById("org7").style.display = "none";
           document.getElementById("org8").style.display = "none";
           document.getElementById("org9").style.display = "none";
+          document.getElementById("org10").style.display = "none";
+          document.getElementById("org11").style.display = "none";
+
         }
       };
 

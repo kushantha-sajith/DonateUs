@@ -34,13 +34,13 @@
         </li>
         
         <li>
-            <a href="<?php echo URLROOT; ?>/beneficiary/donationRequest">
+            <a href="<?php echo URLROOT; ?>/beneficiary/allDonations">
                 <i class="bx bx-list-check"></i>
                 <span class="links_name">Donation Requests</span>
             </a>
         </li>
         <li>
-            <a href="<?php echo URLROOT; ?>/beneficiary/donationHistoryBeneficiary">
+            <a href="<?php echo URLROOT; ?>/pages/donationHistoryBeneficiary">
                 <i class="bx bx-history"></i>
                 <span class="links_name">Donation History</span>
             </a>
@@ -60,7 +60,7 @@
         </li>
 
         <li id="item1">
-          <a href="<?php echo URLROOT; ?>/beneficiary/viewAcceptedReservation">
+          <a href="<?php echo URLROOT; ?>/beneficiary/viewCalendar">
             <i class="bx bxs-calendar-check"></i>
             <span class="links_name">Calendar</span>
           </a>
@@ -112,7 +112,8 @@
               <div class="card">
                   <div>
                       <div class="numbers"><?php echo $data['total']; ?></div>
-                      <div class="cardName">Total Donation Requests</div>
+                      <div class="cardName"><a href="<?php echo URLROOT; ?>/beneficiary/allDonations" style="text-decoration:none">Total Donation Requests </a></div>
+                      <!-- Total Donation Requests -->
                   </div>
 
                   <div class="iconBx">
@@ -123,7 +124,9 @@
               <div class="card">
                   <div>
                       <div class="numbers"><?php echo $data['ongoing']; ?></div>
-                      <div class="cardName">Ongoing Requests</div>
+                      <div class="cardName"><a href="<?php echo URLROOT; ?>/beneficiary/donationOngoing" style="text-decoration:none">Ongoing Requests </a></div>
+                      
+                      <!-- <div class="cardName">Ongoing Requests</div> -->
                   </div>
 
                   <div class="iconBx">
@@ -134,7 +137,9 @@
               <div class="card">
                   <div>
                       <div class="numbers"><?php echo $data['complete']; ?></div>
-                      <div class="cardName">Completed Requests</div>
+                      <div class="cardName"><a href="<?php echo URLROOT; ?>/beneficiary/donationCompleted" style="text-decoration:none">Completed Requests </a></div>
+
+                      <!-- <div class="cardName">Completed Requests</div> -->
                   </div>
 
                   <div class="iconBx">
@@ -145,7 +150,9 @@
               <div class="card">
                   <div>
                       <div class="numbers"><?php echo $data['reject']; ?></div>
-                      <div class="cardName">Rejected Requests</div>
+                      <div class="cardName"><a href="<?php echo URLROOT; ?>/beneficiary/donationReject" style="text-decoration:none">Rejected Requests </a></div>
+
+                      <!-- <div class="cardName">Rejected Requests</div> -->
                   </div>
 
                   <div class="iconBx">
