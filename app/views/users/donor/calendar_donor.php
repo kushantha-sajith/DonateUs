@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <title>Dashboard</title>
+    <title>Reservations</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
 	  <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/calendar_donor.css" />
     <link
@@ -43,10 +43,38 @@
         </div>
       </nav>
       <div class="main-container">
+
+	  <div class="how_it_works">
+      <h3>How It Works</h3>
+      <div class="progress-container">
+        <div class="progress" id="progress"></div>
+        <div class="circle_a"><b>1</b></div>
+        <ul class="instructions">
+		<li>Choose a day</li>
+          <li>Click on a meal</li>
+          <li>Reserve & view your reservations</li>
+          
+        </ul>
+        <div class="circle_a"><b>2</b></div>
+        <ul class="instructions">
+          <li>Get beneficiary contact details</li>
+          <li>Contact them</li>
+          <li>Deliver your donations</li>
+        </ul>
+        <div class="circle_a"><b>3</b></div>
+        <ul class="instructions">
+          <li>Go to your resrvations</li>
+          <li>Mark the donation as delivered </li>
+          <li>Send us your feedback</li>
+        </ul>
+        <div class="circle_a"><b>End</b></div>
+     </div>
+
 	  <?php foreach($data['user_data'] as $user ): ?>
+		<?php $ben_id = $user->user_id;  ?>
 	  <h1 class="org-name"><?php echo $user->org_name;  ?></h1>
 	  <?php endforeach; ?>
-	  <div class="months">
+	  <!-- <div class="months">
 		<div >
 			<ul class="month-line">
 				<li><span class="month-circle">Jan</span></li>
@@ -64,7 +92,7 @@
 			</ul>
 		
 		</div>
-</div>
+ </div> eo months -->
       <div class="calendar">
 		<div class="header">
 			<button class="prev-month">&lt;</button>
@@ -124,13 +152,13 @@
 
                                 <div class="input-field">
                                     <label>Number of plates (Available)</label>
-                                    <input type="text" name="num_of_plates" value="1000" readonly>
+                                    <input id="plates" type="text" name="num_of_plates" value="" readonly>
                                    
                                 </div>
 
                                 <div class="input-field">
-                                    <label>Amount you prefer to reserve</label>
-                                    <input class="required-input" type="number" name="amount_reserved" value="" required>
+                                    <label>Count you prefer to reserve</label>
+                                    <input class="required-input" type="number" name="amount_reserved" value="" min="1" required>
                                     <!-- required field to check before the submission of the form -->
                                 </div>
 	  						</div>
@@ -167,9 +195,12 @@
 	</div> <!-- eo popup -->
 	
 	  </div> <!-- eo calendar -->
-		<div class="btns2">
+	  
+	  <div class="btns2">
+	  <a href="<?php echo URLROOT;?>/donor/viewMealPlan/<?php echo $data['id'];?>/<?php echo $data['meal_plan'];?>"><button class="btn-back">View Meal Plan</button></a>
         <a href="<?php echo URLROOT;?>/donor/reservationsDonor"><button class="btn-back">Back</button></a>
     	</div> <!-- eo btns2 -->
+		</div>
     </section>
     <!--home section end-->
 
@@ -210,47 +241,86 @@
 					if((i < (currentDate+2)) && (month == today.getMonth()) && (year == today.getFullYear())){
 						//if today
 						if((i == currentDate) && (month == today.getMonth()) && (year == today.getFullYear())){
-							$('.days').append('<div class="current-day"> <span>' + i + '</span><span class="today-text"><b>Today</b></span> <div class="meals" id="' + i + '"> </div></div>');
+							$('.days').append('<div class="current-day"> <span class="day-number">' + i + '</span><span class="today-text"><b>Today</b></span> <div class="meals" id="' + i + '"> </div></div>');
 						}else{ //if other days until today+two days except today
-							$('.days').append('<div class="day"> <span>' + i + '</span><span class="today-text"><b></b></span> <div class="meals" id="' + i + '"> </div></div>');
+							$('.days').append('<div class="day"> <span class="day-number">' + i + '</span><span class="today-text"><b></b></span> <div class="meals" id="' + i + '"> </div></div>');
 						}
 					}else{// days after today+two days
-						$('.days').append('<div class="day"> <span>' + i + '</span> <div class="meals" id="' + i + '"> <div class="meal1">Breakfast</div> <div class="meal2">Lunch</div> <div class="meal3">Dinner</div> <div class="meal0">Reserved</div> </div></div>');
+						$('.days').append('<div class="day"> <span class="day-number">' + i + '</span> <div class="meals" id="' + i + '"> <div class="meal1">Breakfast</div> <div class="meal2">Lunch</div> <div class="meal3">Dinner</div> <div class="meal0">Reserved</div> </div></div>');
 					}
 				}
 
-				// mark reserved dates
-				<?php foreach($data['reservations'] as $reservation ): ?>
-					//mark only it it's on or after today+two days
-					if(<?php echo $reservation->date;  ?> >= (currentDate+2)){
-						//check month and year
-						if((month == <?php echo $reservation->month;  ?>) && (year == <?php echo $reservation->year;  ?>)){
-							//check status for color-coding 
-						if(<?php echo $reservation->status;  ?> == 1){
-							//reserved and approved
-							document.getElementById("<?php echo $reservation->date;  ?>").querySelector(".meal<?php echo $reservation->meal;  ?>").style.display = "none";
-						}else{
-							//reserved and pending
-							document.getElementById("<?php echo $reservation->date;  ?>").querySelector(".meal<?php echo $reservation->meal;  ?>").style.background = "orange";
-						}
+				// // mark reserved dates
+				// <?php foreach($data['reservations'] as $reservation ): ?>
+				// 	//check month and year
+				// 	if((month == <?php echo $reservation->month;  ?>) && (year == <?php echo $reservation->year;  ?>)){
+				// 		//if it is current month
+				// 		if((month == today.getMonth()) && (year == today.getFullYear())){
+				// 			//mark only it it's on or after today+two days
+				// 			if(<?php echo $reservation->date;  ?> >= (currentDate+2)){
+				// 			//check status for color-coding 
+				// 			if(<?php echo $reservation->status;  ?> == 1){
+				// 				//reserved and approved
+				// 				document.getElementById("<?php echo $reservation->date;  ?>").querySelector(".meal<?php echo $reservation->meal;  ?>").style.display = "none";
+				// 			}else{
+				// 				//reserved and pending
+				// 				document.getElementById("<?php echo $reservation->date;  ?>").querySelector(".meal<?php echo $reservation->meal;  ?>").style.background = "orange";
+				// 			}
+				// 			}
+				// 		}else{
+				// 			if(<?php echo $reservation->status;  ?> == 1){
+				// 				//reserved and approved
+				// 				document.getElementById("<?php echo $reservation->date;  ?>").querySelector(".meal<?php echo $reservation->meal;  ?>").style.display = "none";
+				// 			}else{
+				// 				//reserved and pending
+				// 				document.getElementById("<?php echo $reservation->date;  ?>").querySelector(".meal<?php echo $reservation->meal;  ?>").style.background = "orange";
+				// 			}
+				// 		}
 						
-					}
-					}
+				// 	}
 	  				
-	  			<?php endforeach; ?>
+	  			// <?php endforeach; ?>
 					
 				// Add click event to meals
 				
 				$('.meal1').click(function() {
 					//get the id value of parent element
 					var date = $(this).parent().attr('id');
+					
 					//display the popup
 					$('.popup').fadeIn();
+					var plates_reserved;
+					var dataArray = [date, month, year, "1", "<?php echo $ben_id;?>" ];
+					$.ajax({
+           			url: '<?php echo URLROOT;?>/donor/getReservedPlatesCount/'+dataArray,
+            		type: 'GET',
+					data: { data_arr: JSON.stringify(dataArray) },
+            		dataType: 'json',
+            		success: function(response) {
+						
+						// if(response == NULL){
+						// 	plates_reserved = 0;
+						// }else{
+						// 	
+						// }
+                		
+						plates_reserved = parseInt(response);
+						// return plates_reserved;
+						window.alert(plates_reserved);
+            		}
+        			});
+					
+					var members = parseInt(<?php echo $data['members'];  ?>);
+					var plates = members - plates_reserved;
+
 					//set valuse of the input fields
 					$('#meal_type').val("Breakfast");
 					$('#date').val(date);
 					$('#month').val(month+1);
 					$('#year').val(year);
+					$('#plates').val(plates);
+					
+					
 					//add EventListener to catch the changes in the required fields
 					$('.required-input').addEventListener('input', () => {
 						//if the required fields are empty submit button is not active 
@@ -270,13 +340,33 @@
 				});
 					
 				});
+
 				$('.meal2').click(function() {
 					var date = $(this).parent().attr('id');
 					$('.popup').fadeIn();
+
+					var plates_reserved;
+					var dataArray = [date, month, year, "2", "<?php echo $ben_id;?>" ];
+					$.ajax({
+           			url: '<?php echo URLROOT;?>/donor/getReservedPlatesCount/'+dataArray,
+            		type: 'GET',
+					data: { data_arr: JSON.stringify(dataArray) },
+            		dataType: 'json',
+            		success: function(response) {
+                		plates_reserved = response;
+						// return plates_reserved;
+						window.alert(plates_reserved);
+            		}
+        			});
+					
+					var members = parseInt(<?php echo $data['members'];  ?>);
+					var plates = members - plates_reserved;
+
 					$('#meal_type').val("Lunch");
 					$('#date').val(date);
 					$('#month').val(month+1);
 					$('#year').val(year);
+					$('#plates').val(plates);
 					$('.required-input').addEventListener('input', () => {
 						if ($('.required-input').value === "") {
 							$('.btn-submit-popup').disabled = true;
@@ -366,7 +456,7 @@
 
 			// Populate calendar on page load
 			populateCalendar(currentMonth, currentYear);
-			highlightMonthCircle(currentMonth);
+			// highlightMonthCircle(currentMonth);
 
 			// Add click event to previous button
 			$('.prev-month').click(function() {
@@ -379,7 +469,7 @@
 					currentMonth--;
 				}
 				populateCalendar(currentMonth, currentYear);
-				highlightMonthCircle(currentMonth);
+				// highlightMonthCircle(currentMonth);
 				}
 				//in other years
 				if((currentYear > today.getFullYear())){
@@ -390,13 +480,15 @@
 					currentMonth--;
 				}
 				populateCalendar(currentMonth, currentYear);
-				highlightMonthCircle(currentMonth);
+				// highlightMonthCircle(currentMonth);
 				}
 				
 			});
 
 			// Add click event to next button
 			$('.next-month').click(function() {
+				//can access only next month to reserve dates
+				if((currentYear == today.getFullYear()) && (currentMonth == today.getMonth())){
 				if (currentMonth == 11) {
 					currentMonth = 0;
 					currentYear++;
@@ -404,7 +496,9 @@
 					currentMonth++;
 				}
 				populateCalendar(currentMonth, currentYear);
-				highlightMonthCircle(currentMonth);
+				// highlightMonthCircle(currentMonth);
+
+			}
 			});
 
 			// Add click event to close button
@@ -416,7 +510,7 @@
 				$(monthsArray[i]).click(function() {
 					currentMonth = i;
 					populateCalendar(currentMonth, currentYear);
-					highlightMonthCircle(currentMonth);
+					// highlightMonthCircle(currentMonth);
 			});
 			}
 

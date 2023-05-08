@@ -5,8 +5,8 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/stylesdash.css" />
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_user.css" />
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_lists.css" />
+    <!-- <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_user.css" /> -->
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/my_reservations.css" />
     <link
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
       rel="stylesheet"
@@ -48,49 +48,10 @@
       </nav>
       <div class="main-container">
       
-      <!-- <div>
-      <div class="tab" >
-                        
-                        <button class="tablinks" onload="btnActivate()" onclick="openTab(event, 'Individual')">Completed</button>
-                        <button class="tablinks" onclick="openTab(event, 'Corporate')">Pending</button>
-                    </div>
-                    <div class="tabcontent">
-                    <table class="main-table">
-          <thead>
-            <th colspan="2" style="text-align:left;"><span>Id</span></th>
-            <th colspan="2" style="text-align:left;"><span>Request</span></th>
-            <th colspan="2" style="text-align:left;"><span>Request Id</span></th>
-            <th colspan="2" style="text-align:left;"><span>Type</span></th>
-            <th colspan="2" style="text-align:left;"><span>Amount<br>/Quantity</span></th>
-            <th colspan="2" style="text-align:left;"><span>Date</span></th>
-            <th colspan="2" style="text-align:left;"><span>Category</span></th>
-            <th colspan="2" style="text-align:left;"><span></span></th>
-            <th colspan="2" style="text-align:left;"><span>Status</span></th>
-          </thead>
-          <tbody>
-            
-            <tr class="t-row">
-              <td colspan="2" style="text-align:left;">1</td>
-              <td colspan="2" style="text-align:left;">aaaaaaaaaaaaaaaaaaaaaaa<br>aaaaaaaaaaaaaaaaaaaaaa</td>
-              <td colspan="2" style="text-align:left;">1</td>
-              <td colspan="2" style="text-align:left;">Non-Financial</td>
-              <td colspan="2" style="text-align:left;">45</td>
-              <td colspan="2" style="text-align:left;">14/12/2022</td>
-              <td colspan="2" style="text-align:left;">Medicine</td>
-              <td colspan="2" style="text-align:left;"><a href="<?php echo URLROOT; ?>/donor/feedback"><button class="btnfeedback">Feedback</button></a></td>
-              <td colspan="2" style="text-align:left;">Completed</td>
-            </tr>
-          
-          </tbody>
-        </table>
-
-      </div>
-                    
-                </div>
-      </div> -->
-
-   
-      <div class="select-menu">
+  <div class="filters">
+      
+    <!-- organization -->
+        <div class="select-menu">
             <h4>Filter By : Organization</h4>
             <div class="select-btn">
                 <span class="sBtn-text">Select Organization</span>
@@ -99,7 +60,7 @@
 
             <ul class="options">
             <?php foreach($data['organizations'] as $organization ): ?>
-                <a href="<?php echo URLROOT;?>/donor/filteredMyReservationsDonor/<?php echo $organization->ben_id; ?>" style="text-decoration:none">
+                <a href="<?php echo URLROOT;?>/donor/filteredMyReservationsDonor/<?php echo $organization->ben_id; ?>/0" style="text-decoration:none">
                     <li class="option" id="<?php echo $organization->ben_id; ?>">
                         <span class="option-text"><?php echo $organization->org_name; ?></span>
                     </li>
@@ -110,13 +71,54 @@
 
         </div>
 
+        <!-- status -->
+  <div class="status-menu select-menu">
+            <h4>Filter By : Status</h4>
+            <div class="select-btn status-btn">
+                <span class="sBtn-text status_Btn-text">Select Status</span>
+                <i class="bx bx-chevron-down"></i>
+            </div>
+
+            <ul class="options status_options">
+            <a href="<?php echo URLROOT;?>/donor/filteredMyReservationsDonor/0/1" style="text-decoration:none">
+                    <li class="option status_option">
+                      <span class="option-text status-option-text">Pending for Approval</span>
+                    </li>
+                </a>
+                <a href="<?php echo URLROOT;?>/donor/filteredMyReservationsDonor/1/1" style="text-decoration:none">
+                    <li class="option status_option">
+                      <span class="option-text status-option-text">Approved & Reserved</span>
+                    </li>
+                </a>
+                <a href="<?php echo URLROOT;?>/donor/filteredMyReservationsDonor/2/1" style="text-decoration:none">
+                    <li class="option status_option">
+                      <span class="option-text status-option-text">Delivered</span>
+                    </li>
+                </a>
+                <a href="<?php echo URLROOT;?>/donor/filteredMyReservationsDonor/3/1" style="text-decoration:none">
+                    <li class="option status_option">
+                      <span class="option-text status-option-text">Completed</span>
+                    </li>
+                </a>
+                <a href="<?php echo URLROOT;?>/donor/filteredMyReservationsDonor/4/1" style="text-decoration:none">
+                    <li class="option status_option">
+                      <span class="option-text status-option-text">Canceled</span>
+                    </li>
+                </a>
+                
+            </ul>
+        </div>
+
+  </div>  <!-- eo filters -->
+         
+
 
             <div class="cards_heading head">
                 <div>Reservation ID</div>
                 <div>Organization Name</div>
                 <div>Reserved Date</div>
                 <div>Meal Type</div>
-                <div>Quantity</div>
+                <div>Quantity (plates)</div>
                 <div>Status</div>
                 <div><span></span></div>
             </div>
@@ -124,7 +126,7 @@
                 <div class="cards_heading cards_color">
                     <div><?php echo $record->id; ?></div>
                     <div><?php echo $record->org_name; ?></div>
-                    <div><?php echo $record->date; ?>/<?php echo $record->month; ?>/<?php echo $record->year; ?></div>
+                    <div><?php echo $record->date; ?>/<?php echo ($record->month)+1; ?>/<?php echo $record->year; ?></div>
                     <div><?php 
                     switch($record->meal){
                       case 1:
@@ -156,7 +158,7 @@
                         echo "Completed";
                         break;
                       case 4:
-                          echo "Cancelled";
+                          echo "Canceled";
                           break;    
                       default:
                         echo "Error";
@@ -165,20 +167,32 @@
                     <div>
                     <?php if($record->status == 1){?>
                         <div class ="btns3"> 
-                        <a href="<?php echo URLROOT; ?>/donor/markAsDelivered/1/<?php echo $record->id; ?>"> <button class="btn-mark-delivered">Mark as Delivered</button> </a>
-                        <a href="<?php echo URLROOT; ?>/donor/contactOrg/1/<?php echo $record->id; ?>"> <button class="btn-contact-org">Contact Organization</button> </a>
+                        <a href="<?php echo URLROOT; ?>/donor/getMyReservationDetails/<?php echo $record->id; ?>"> <button class="btn-mark-delivered">View more</button> </a>
+                        <a href="<?php echo URLROOT; ?>/donor/markAsDelivered/1/<?php echo $record->id; ?>"> <button class="btn-contact-org">Mark as Delivered</button> </a>
+                        
                       </div>
                     <?php }
                      if($record->status == 0){?>
                       <div class ="btns3"> 
+                      <a href="<?php echo URLROOT; ?>/donor/getMyReservationDetails/<?php echo $record->id; ?>"> <button class="btn-mark-delivered">View more</button> </a>
                         <a href="<?php echo URLROOT; ?>/donor/markAsCancelled/1/<?php echo $record->id; ?>"> <button class="btn-mark-cancelled">Cancel</button> </a>
                       </div>
                       <?php }
                       if($record->status == 2){?> 
                       <div class ="btns3"> 
-                        <a href="<?php echo URLROOT; ?>/donor/contactOrg/1/<?php echo $record->id; ?>"> <button class="btn-contact-org">Contact Organization</button> </a>
+                      <a href="<?php echo URLROOT; ?>/donor/getMyReservationDetails/<?php echo $record->id; ?>"> <button class="btn-mark-delivered">View more</button> </a>
                       </div>
-                      <?php } ?> 
+                      <?php }
+                       if($record->status == 3){?> 
+                        <div class ="btns3"> 
+                        <a href="<?php echo URLROOT; ?>/donor/getMyReservationDetails/<?php echo $record->id; ?>"> <button class="btn-mark-delivered">View more</button> </a>
+                        </div>
+                        <?php }
+                         if($record->status == 4){?> 
+                          <div class ="btns3"> 
+                          <a href="<?php echo URLROOT; ?>/donor/getMyReservationDetails/<?php echo $record->id; ?>"> <button class="btn-mark-delivered">View more</button> </a>
+                          </div>
+                          <?php } ?> 
                       </div>
                 </div>
             <?php endforeach; ?>
@@ -192,6 +206,8 @@
     <script>
 
 // js for drop down list 
+
+
  const optionMenu = document.querySelector(".select-menu"),
       selectBtn = optionMenu.querySelector(".select-btn"),
       options = optionMenu.querySelectorAll(".option"),
@@ -208,6 +224,21 @@
       });
   });
 
+  const statusMenu = document.querySelector(".status-menu"),
+  statusBtn = statusMenu.querySelector(".status-btn"),
+      statusOptions = statusMenu.querySelectorAll(".status_option"),
+      status_Btn_text = statusMenu.querySelector(".status_Btn-text");
+
+  statusBtn.addEventListener("click", () => statusMenu.classList.toggle("active"));
+
+  statusOptions.forEach(option => {
+      option.addEventListener("click", () => {
+          let selectedOption = option.querySelector(".status-option-text").innerText;
+          status_Btn_text.innerText = selectedOption;
+
+          statusMenu.classList.remove("active");
+      });
+  });
   
 </script>
   </body>

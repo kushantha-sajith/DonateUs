@@ -2,10 +2,9 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <title>Dashboard</title>
+    <title>Donation</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/request_viewmore.css" />
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/payment.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donate_nonfinancial_donor.css" />
     <link
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
       rel="stylesheet"
@@ -43,69 +42,129 @@
         </div>
       </nav>
       <div class="main-container">
-      <h2>Donate  -   Non-Financial</h2>
       
-      <br>
-      <div class="form">
-       <div class="container">
-       <form method="post" action="<?php echo URLROOT; ?>/beneficiary/editRequest"> 
-       Name
-       <input type="text" name="name" value="<?php echo $data['name']; ?>" class="form-style-input">
-       <span class="error"><?php echo $data['nameErr']; ?></span>
-       
-       Description
-       <textarea name="description" rows="4" cols="40" class="form-style-input"><?php echo $data['description']; ?></textarea>
-       <span class="error"> <?php echo $data['descriptionErr']; ?></span>
-       
-       Amount/Quantity 
-       <input type="text" name="quantity" value="<?php echo $data['quantity']; ?>" class="form-style-input">
-       <span class="error"><?php echo $data['quantityErr']; ?></span>
- 
-       Due Date
-       <input type="date" name="duedate" value="<?php echo $data['duedate']; ?>" class="form-style-input">
-      <span class="error"><?php echo $data['duedateErr']; ?></span>
- 
-       Donation Title  
-       <input type="text" name="title" value="<?php echo $data['title']; ?>" class="form-style-input">
-      <span class="error"><?php echo $data['titleErr']; ?></span>
- 
-      Category
-      <div>
-         <select class="form-style-input" name="cat_id" id="cat_id">
-             <?php foreach($data['categories'] as $categories) : ?>
-                 <option <?php if($categories->id==$data['cat_id']) {echo "selected";} ?> value="<?php echo $categories->id; ?>"><?php echo $categories->category_name; ?></option>
-             <?php endforeach; ?>
-         </select>
-         </div>
- 
-       Contact Number 
-       <input type="text" name="contact" value="<?php echo $data['contact']; ?>" class="form-style-input">
-       <span class="error"><?php echo $data['contactErr']; ?></span>
- 
-       Location/City 
-       <input type="text" name="city" value="<?php echo $data['city']; ?>" class="form-style-input">
-      <span class="error"><?php echo $data['cityErr']; ?></span>
       
-      <!-- User_ID
-       <input type="text" name="user_id" value="<?php echo $data['user_id']; ?>" class="form-style-input">
-      <span class="error"><?php echo $data['user_idErr']; ?></span>
- 
-      Category ID
-       <input type="text" name="cat_id" value="<?php echo $data['cat_id']; ?>" class="form-style-input">
-      <span class="error"><?php echo $data['cat_idErr']; ?></span> -->
+      <div class="how_it_works">
+      <h3>How It Works</h3>
+      <div class="progress-container">
+        <div class="progress" id="progress"></div>
+        <div class="circle_a"><b>2</b></div>
+        <ul class="instructions">
+          <li>Check your personal details</li>
+          <li>Fill donation details</li>
+          <li>Proceed</li>
+        </ul>
+        <div class="circle_a"><b>3</b></div>
+        <ul class="instructions">
+          <li>Get beneficiary contact details</li>
+          <li>Contact them</li>
+          <li>Deliver your donations</li>
+        </ul>
+        <div class="circle_a"><b>4</b></div>
+        <ul class="instructions">
+          <li>Go to your donation history</li>
+          <li>Mark the donation as delivered </li>
+          <li>Send us your feedback</li>
+        </ul>
+        <div class="circle_a"><b>End</b></div>
+     </div>
+
+        <div class="gigcontainer">
        
-       <br><br>
-       <input type="submit" name="submit" value="Submit" class="btn1 add"> 
-       <br> 
-     </form>
-     </div>
-     </div>
-          
-            <div class="btns2">
-            <!-- <?php echo URLROOT;?>/donor/viewmoreRequestDonor/<?php echo $requests->id;  ?>/<?php echo $requests->cat_id;  ?> -->
-              <a href="<?php echo URLROOT;?>/pages/donationRequestsDonor"><button class="btn-back">Back</button></a>
-            </div> 
+          <div class="box">
+          <form action="<?php echo URLROOT; ?>/donor/donate/<?php echo $data['req_id'];  ?>/<?php echo $data['cat_id'];  ?>" method="POST">
+
+<div class="row">
+
+    <div class="col">
+
+        <h3 class="title">Donation Details</h3>
+
+        <div class="inputBox">
+            <span>Full name(Donor) :</span>
+            <input type="text" name="donor_name" placeholder="your Name" value="<?php echo $data['donor_name']; ?>">
+            
         </div>
+        <div class="inputBox">
+            <span>Contact Number :</span>
+            <input type="text" name="donor_contact" placeholder="Your Contact Number" value="<?php echo $data['donor_contact']; ?>">
+            
+        </div>        
+        <div class="inputBox">
+            <span>Quantity :</span>
+            <input type="text" name="donated_quantity" placeholder="ex : 100" value="">
+            <p class="error"><?php echo $data['donated_quantity_err']; ?></p>
+        </div>
+        <div class="inputBox">
+            <span>Note to Beneficiary :</span>
+            <textarea id="txtid" name="note_to_beneficiary" rows="4" cols="50" maxlength="200" placeholder="Start typing here... "></textarea>
+        </div>
+        <div class="inputBox">
+            <span>Anonymous Record</span>
+            <input type="checkbox" id="demoCheckbox" name="anonymous" value="1">
+            <p>Your donation will be displayed as <b>Anonymous Donation</b> under the resent Donations of this donation request</p>
+        </div>
+
+    </div>
+
+    <div class="col">
+
+        <h3 class="title">Request Details</h3>
+
+        <div class="inputBox">
+            <span>Beneficiary Name : </span>
+            <input type="text" value="<?php echo $data['beneficiary']; ?>" disabled>
+        </div>
+        <div class="inputBox">
+            <span>Item Requested :</span>
+            <input type="text" value="<?php echo $data['item']; ?>" disabled>
+        </div>
+        <div class="inputBox">
+            <span>Quantity Requested :</span>
+            <input type="number" value="<?php echo $data['quantity']; ?>" disabled>
+        </div>
+        <div class="circle-wrap">
+        <div class="circle">
+        <?php 
+          $requested = $data['quantity'];
+          $received = $data['received'];
+          //typecast to get integer value
+          $percentage = (int) (($received/$requested)*100);
+          $degree = (360/200)*$percentage; // (360/100)*percentage, then devide by 2 bcz circle is formed by 2 parts
+        ?>
+        
+          <div class="mask full" style="transform: rotate(<?php echo $degree; ?>deg);">
+            <div class="fill" style="transform: rotate(<?php echo $degree; ?>deg);"></div>
+          </div>
+          <div class="mask half">
+            <div class="fill" style="transform: rotate(<?php echo $degree; ?>deg);"></div>
+          </div>
+          <div class="inside-circle"> <?php echo $percentage; ?>% </div>
+        </div>
+       </div> <!-- eo circle-wrap -->
+       <div class="inputBox">
+            <span><?php echo $received; ?> raised out of <?php echo $requested; ?></span>            
+        </div>
+    </div><!-- eo col -->
+
+</div><!-- eo row -->
+<?php if($data['pending_count'] <= 5 || $data['pending_count_reservations'] <= 3){ ?>
+  <input type="submit" value="Proceed Donation" class="submit-btn">
+<?php }else{ ?>
+  <p>You are not eligible to donate at the moment. Please complte the <b>Pending Donations </b>and try again!</p>
+  
+<?php } ?>
+
+
+</form>
+          </div><!-- eo box -->
+          <div class="btns2">
+              <a href="<?php echo URLROOT;?>/donor/viewmoreRequestDonor/<?php echo $data['req_id'];?>/<?php echo $data['cat_id'];?>"><button class="btn-back">Back</button></a>
+          </div> 
+        </div> <!-- eo gigcontainer -->
+          
+           
+      </div> <!-- eo main-container --> 
 
     </section>
     <!--home section end-->

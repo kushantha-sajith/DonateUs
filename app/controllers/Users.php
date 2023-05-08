@@ -1526,13 +1526,12 @@ class Users extends Controller
     /**
      * @return void
      */
-    public function otpVerifyAdmin($field)
+    public function otpVerifyAdmin()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = [
                 'otp' => trim($_POST['otp']),
-                'error' => '',
-                'field' => $field
+                'error' => ''
             ];
 
             $verified = $this->verificationModel->verifyOTP($data['otp']);
@@ -1545,15 +1544,14 @@ class Users extends Controller
                 }
             } else {
                 $data['error'] = "Invalid OTP";
-                $this->view('users/otp_verification', $data);
+                $this->view('users/admin/otp', $data);
             }
         } else {
             $data = [
                 'otp' => '',
-                'error' => '',
-                'field' => $field
+                'error' => ''
             ];
-            $this->view('users/otp_verification', $data);
+            $this->view('users/admin/otp', $data);
         }
     }
 }
