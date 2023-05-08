@@ -13,3 +13,8 @@
   define('SITENAME', 'DonateUs');
   // App Version
   define('APPVERSION', '1.0.0');
+  
+
+  //Pub Root
+  define('PUBROOT',dirname(dirname(dirname(__FILE__))));
+

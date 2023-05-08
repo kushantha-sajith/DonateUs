@@ -141,9 +141,17 @@ class StatModel
         } else return false;
     }
 
-    /**
-     * @return false|mixed
-     */
+    public function pendingEventsByUser($user_ID)
+    {
+        $this->db->query('SELECT COUNT(*) AS num_rows FROM events WHERE status=0 and event_org_id=:user_ID');
+        $this->db->bind(':user_ID', $user_ID);
+        $row = $this->db->single();
+        //check row
+        if ($this->db->rowCount() > 0) {
+            return $row;
+        } else return false;
+    }
+
     public function ongoingEvents()
     {
         $this->db->query('SELECT COUNT(*) AS num_rows FROM events WHERE status=1');
@@ -154,9 +162,17 @@ class StatModel
         } else return false;
     }
 
-    /**
-     * @return false|mixed
-     */
+    public function ongoingEventsByUser($user_ID)
+    {
+        $this->db->query('SELECT COUNT(*) AS num_rows FROM events WHERE status=1 and event_org_id=:user_ID');
+        $this->db->bind(':user_ID', $user_ID);
+        $row = $this->db->single();
+        //check row
+        if ($this->db->rowCount() > 0) {
+            return $row;
+        } else return false;
+    }
+
     public function completedEvents()
     {
         $this->db->query('SELECT COUNT(*) AS num_rows FROM events WHERE status=3');
@@ -167,9 +183,17 @@ class StatModel
         } else return false;
     }
 
-    /**
-     * @return false|mixed
-     */
+    public function completedEventsByUser($user_ID)
+    {
+        $this->db->query('SELECT COUNT(*) AS num_rows FROM events WHERE status=3 and event_org_id=:user_ID');
+        $this->db->bind(':user_ID', $user_ID);
+        $row = $this->db->single();
+        //check row
+        if ($this->db->rowCount() > 0) {
+            return $row;
+        } else return false;
+    }
+
     public function rejectedEvents()
     {
         $this->db->query('SELECT COUNT(*) AS num_rows FROM events WHERE status=2');
@@ -306,6 +330,19 @@ class StatModel
     public function mNonFinancialCount()
     {
         $this->db->query('SELECT COUNT(*) AS num_rows FROM donation_history WHERE type=1');
+
+        $row = $this->db->single();
+        //check row
+        if ($this->db->rowCount() > 0) {
+            return $row;
+        } else return false;
+    }
+
+    public function rejectedEventsByUser($user_ID)
+    {
+        $this->db->query('SELECT COUNT(*) AS num_rows FROM events WHERE status=2 and event_org_id=:user_ID');
+        $this->db->bind(':user_ID', $user_ID);
+
         $row = $this->db->single();
         //check row
         if ($this->db->rowCount() > 0) {
