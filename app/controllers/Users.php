@@ -394,7 +394,7 @@ class Users extends Controller
 
             $otp_verify = 0;
             $otp_code = rand(100000, 999999);
-            $verification_status = 1;
+            $verification_status = 0;
 
             // Init data
             if (strcmp($type, $type1) == 0) {

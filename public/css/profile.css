@@ -574,6 +574,13 @@ nav .profile-details i {
     margin: 0 auto;
 }
 
+<<<<<<< Updated upstream
+=======
+.updatebtn {
+    display: flex;
+}
+
+>>>>>>> Stashed changes
 
 /* Responsive Media Query */
 

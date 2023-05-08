@@ -93,13 +93,27 @@
                                    
                                 </div>
 
+<<<<<<< Updated upstream
 
                                 <div class="input-field">
+=======
+                                <!-- <div class="input-field">
+                                    <label>Category Name</label>
+                                    <input type="text" placeholder="" value="<?php echo $data['category_name']; ?>" disabled>
+                                </div> -->
+
+
+                                <!-- <div class="input-field">
+>>>>>>> Stashed changes
                                     <label>Category</label>
                                     
                                     <input type="text" name="cat_id" value="<?php echo $nfinancials->cat_id; ?>" disabled>
                                     
+<<<<<<< Updated upstream
                                 </div>
+=======
+                                </div> -->
+>>>>>>> Stashed changes
 
                          <!-- <div class="input-field">
                                 <label>Category</label>
@@ -109,6 +123,20 @@
                                     <?php endforeach; ?>
                                 </select>
                             </div> -->
+<<<<<<< Updated upstream
+=======
+                            <!-- <div class="input-field">
+                                <label>Category</label>
+                                 <?php foreach($data['categories'] as $categories) : ?>
+                                <input type="text" value="<?php echo $categories->category_name; ?>" disabled>
+                                <?php endforeach; ?> 
+                            </div> -->
+                            <!-- <div class="input-field">
+                            <label>Category</label>
+                            <input type="text" value="<?php echo $data['category_name']; ?>" disabled>
+                            </div> -->
+
+>>>>>>> Stashed changes
 
                                 <div class="input-field">
                                     <label>Item</label>
@@ -143,12 +171,24 @@
                         </div>
                         <span class="title"><u>Identity Proof</u></span>
                         <div class="photo-container" id="grame">
+<<<<<<< Updated upstream
                             <input type="file" id="file3" accept="image/*" hidden name="proof" value="<?php echo $nfinancials->proof_document; ?>" disabled>
                             <div class="img-area" id="area-three" data-img="">
                                 <i class='bx bxs-cloud-upload icon'></i>
                                 <h3>Upload Image</h3>
                                 <p>Image size must be less than <span>2MB</span></p>
                             </div>
+=======
+                        <img style="width:500px; height:300px;" src="<?php echo URLROOT; ?>/uploads/<?php echo $nfinancials->bank_pass_book;  ?>">
+                            
+                         </div> 
+                        <div>
+                         <span class="title"><u>Thumbnail</u></span>
+                        <div class="photo-container" id="grame">
+                        <img style="width:500px; height:300px;" src="<?php echo URLROOT; ?>/uploads/<?php echo $nfinancials->thumbnail;  ?>">
+                            
+                         </div>
+>>>>>>> Stashed changes
                          </div>
 
 

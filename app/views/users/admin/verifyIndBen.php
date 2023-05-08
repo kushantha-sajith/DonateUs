@@ -36,9 +36,15 @@
         </div>
     </nav>
     <main>
+<<<<<<< Updated upstream
             <div class="container">
                 <header>User Details</header>
                 <?php foreach ($data['userData'] as $userData): ?>
+=======
+        <div class="container">
+            <header>User Details</header>
+            <?php foreach ($data['userData'] as $userData): ?>
+>>>>>>> Stashed changes
                 <form action="#">
                     <div class="formfirst">
                         <div class="details personal">
@@ -65,7 +71,11 @@
                                 </div>
                                 <div class="input-field">
                                     <label>City </label>
+<<<<<<< Updated upstream
                                     <input type="text" value="<?php echo $userData->city;?>" disabled>
+=======
+                                    <input type="text" value="<?php echo $userData->city; ?>" disabled>
+>>>>>>> Stashed changes
                                 </div>
                                 <div class="input-field">
                                     <label>District</label>
@@ -97,8 +107,13 @@
                             </div>
                         </div>
                         <div class="flex">
+<<<<<<< Updated upstream
                             <button class="abc">Accept</button>
                             <button class="abc">Reject</button>
+=======
+                            <button type="submit" class="abc">Accept</button>
+                            <button type="button" class="abc">Reject</button>
+>>>>>>> Stashed changes
                         </div>
                     </div>
                 </form>
@@ -176,6 +191,7 @@
             } else {
                 alert("Image size more than 2MB");
             }
+<<<<<<< Updated upstream
         })
         const selectImage3 = document.querySelector('#select_three');
         const inputFile3 = document.querySelector('#file3');
@@ -206,6 +222,15 @@
         })
         
     </script>
+=======
+            reader3.readAsDataURL(image3);
+        } else {
+            alert("Image size more than 2MB");
+        }
+    })
+
+</script>
+>>>>>>> Stashed changes
 
 </body>
 

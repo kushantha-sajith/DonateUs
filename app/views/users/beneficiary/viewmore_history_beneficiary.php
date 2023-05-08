@@ -45,6 +45,7 @@
      
         <div class="gigcontainer">
        
+<<<<<<< Updated upstream
                 <div class="box">
 
                 <div class="easy">
@@ -56,10 +57,42 @@
                         </p>
                         
                     </div> <!-- eo easy -->
+=======
+        <div class="box">
+        <?php foreach($data['details'] as $details) : ?>
+
+                <div class="easy">
+                        
+                        <div class="name_job"><?php echo $details->request_title;  ?></div> <!-- eo name_job -->
+                        <p><?php echo $details->timestamp;  ?></p>
+                        <p class="due-date">
+                          <span><b><?php 
+                          switch($details->status){
+                            case 1: 
+                              echo  "Pending";
+                              break;
+                            case 2:
+                              echo  "Delivered";
+                              break; 
+                            case 3:
+                              echo  "Completed";
+                              break;
+                            case 4:
+                              echo  "Canceled";
+                              break;
+                            default:
+                              echo  "Error";
+                            
+                              }  ?></b></span>
+                        </p>
+                        
+                    </div>
+>>>>>>> Stashed changes
                
 
 <form action="#">
     <div class="formfirst">
+<<<<<<< Updated upstream
         <div class="details personal">
         <!-- <header>Beneficiary Details</header>
             <div class="fields">
@@ -90,26 +123,53 @@
                 </div>
             </div> -->
             <?php foreach($data['view'] as $view) : ?>
+=======
+       
+>>>>>>> Stashed changes
 
             <header>Donation Details</header>
             <div class="fields">
                 <div class="input-field">
                     <label>Qunatity Donated</label>
+<<<<<<< Updated upstream
                     <input type="text" placeholder="" value="<?php echo $view->quantity_donated; ?>" disabled>
+=======
+                    <input type="text" placeholder="" value="<?php echo $details->quantity_donated; ?>" disabled>
+>>>>>>> Stashed changes
                 </div>
 
                 <div class="input-field">
                     <label>Anonymous</label>
+<<<<<<< Updated upstream
                     <input type="text" placeholder="" value="<?php echo $view->anonymous; ?>" disabled>
+=======
+                    <input type="text" placeholder="" value="<?php if($details->anonymous ==1 ){
+                      echo "Anonymous";
+                    } else{
+                      echo "Not Anonymous";
+                    }  ?>" disabled>
+>>>>>>> Stashed changes
                 </div>
 
                 <div class="input-field">
                     <label>Note to Beneficiary</label>
+<<<<<<< Updated upstream
                     <input type="text" placeholder="" value="<?php echo $view->note_to_beneficiary; ?>" disabled>
                 </div>
                 <div class="input-field">
                     <label>Date of Completion</label>
                     <input type="text" placeholder="" value="<?php echo $view->date_of_completion; ?>" disabled>
+=======
+                    <input type="text" placeholder="" value="<?php echo $details->note_to_beneficiary; ?>" disabled>
+                </div>
+                <div class="input-field">
+                    <label>Date of Completion</label>
+                    <input type="text" placeholder="" value="<?php echo $details->date_of_completion; ?>" disabled>
+                </div>
+                <div class="input-field">
+                    <label>Reason to cancel</label>
+                    <textarea id="txtid" name="canceled_note" rows="4" cols="50" maxlength="200" placeholder="Start typing here... "><?php echo $details->note_to_beneficiary; ?></textarea>
+>>>>>>> Stashed changes
                 </div>
               </div>
               <?php endforeach; ?>
@@ -120,12 +180,16 @@
        
     </div>
 </form>
+<<<<<<< Updated upstream
         <!-- <div class ="btns3"> 
                     <a href="<?php echo URLROOT;?>/donor/viewmoreHistoryDonor"> <button class="btn-contact-org">Mark As Delivered</button> </a>
                     <a href="<?php echo URLROOT; ?>/donor/feedback"> <button class="btn-mark-delivered">Feedback</button> </a>
                     <a href="<?php echo URLROOT; ?>/donor/feedback"> <button class="btn-mark-cancelled">Cancel</button> </a>
                       </div> -->
                     </div><!-- eo box -->
+=======
+
+>>>>>>> Stashed changes
                     <div class="btns2">
               <a href="<?php echo URLROOT;?>/pages/donationHistoryBeneficiary"><button class="btn-back">Back</button></a>
             </div> 

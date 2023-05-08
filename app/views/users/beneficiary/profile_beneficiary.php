@@ -80,7 +80,12 @@
                                     <label>zipcode</label>
                                     <input type="text" placeholder="" value="<?php echo $personaldata->zipcode; ?>" disabled>
                                 </div>
+<<<<<<< Updated upstream
                                 <!-- <div class="input-field">
+=======
+
+                                <div class="input-field">
+>>>>>>> Stashed changes
                                     <label>District</label>
                                     <input type="text" placeholder="" value="<?php echo $data['dist']; ?>" disabled>
                                 </div>
@@ -110,6 +115,25 @@
                                 <?php } ?>
 
                               </div>
+                              
+                              
+                                <!-- <?php if($personaldata->reservation==1 && $personaldata->$user_type==5){ ?>
+                                  <div>
+                                <div id="org10" class="input-field">
+                                    <label>Members Quantity</label>
+                                    <input type="text" placeholder="" value="<?php echo $personaldata-> members; ?>" disabled>
+                                </div>
+
+
+                                <div id="org11" class="input-field">
+                                <label>Meal Plan</label>
+                                    <img style="width:150px; height:150px;" src="<?php echo URLROOT; ?>/uploads/<?php echo $personaldata->meal_plan;  ?>">
+                                </div>
+
+                                </div>
+                                <?php } ?> -->
+
+                              </div>
                               <span id ="org4" class="title"><u>Contact Person Details</u></span>
                               <div id="org9" class="fields">
                                 
@@ -133,29 +157,29 @@
                                 <?php endforeach; ?>
                             </div>
                         </div>
-                       
-                       
-                    </div>
-                </form>
-                <div class="updatebtn">
+                        <div class="updatebtn">
                     <a href="<?php echo URLROOT; ?>/beneficiary/editProfileBeneficiary">
-                        <button class="edit" style="text-decoration: none;">Edit Profile Details
+                        <button class="edit" style="text-decoration: none; ">Edit Profile Details
                         </button>
                     </a>
 
                     <a href="<?php echo URLROOT; ?>/beneficiary/changePasswordBeneficiary">
-                        <button class="changepassword" style="text-decoration: none;">Change Password</button>
+                        <button class="changepassword" style="text-decoration: none; padding-left:20px;">Change Password</button>
                     </a>
 
                     <a href="<?php echo URLROOT; ?>/beneficiary/deleteProfileBeneficiary">
-                        <button class="delete" style="text-decoration: none;">Delete Profile Details</button>
+                        <button class="delete" style="text-decoration: none; padding-left:20px;">Delete Profile Details</button>
                     </a>
                 </div>
                 
+                       
+                    </div>
+                </form>
+                
             </div>
 
-
-
+                                </div>
+                                </div>
         </main>
     </section>
     <!--home section end-->

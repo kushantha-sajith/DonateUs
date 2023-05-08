@@ -25,13 +25,20 @@ use helpers\NIC_Validator;
           $total_reject = $this->beneficiaryModel->getTotalReject($id);
           $total_ongoing = $this->beneficiaryModel->getTotalOngoing($id);
           $total_complete = $this->beneficiaryModel->getTotalComplete($id);
+          $requests = $this->beneficiaryModel->getRequests($id);
+          $financials = $this->beneficiaryModel->getFinancialRequest();
+          $nfinancials = $this->beneficiaryModel->getNonFinancialRequest();
+
 
           $data = [
           'title' => 'Dashboard',
           'total' =>  $total_donations,
           'reject' =>  $total_reject,
           'ongoing' =>  $total_ongoing,
-          'complete' =>  $total_complete
+          'complete' =>  $total_complete,
+          'requests' => $requests,
+          'financials' => $financials,
+          'nfinancials' => $nfinancials
 
           ];
        
@@ -40,6 +47,7 @@ use helpers\NIC_Validator;
             $this->view('users/login', $data);
           }
          }
+
 
 
          
@@ -121,6 +129,7 @@ use helpers\NIC_Validator;
               'cat_title' => $cat,
               'status_title' => $status,
               'filter' => $filterId
+<<<<<<< Updated upstream
             ];
       
           $this->view('users/beneficiary/filtered_history_beneficiary', $data);
@@ -204,10 +213,28 @@ use helpers\NIC_Validator;
               'title' => 'Feedback',
               'desc' => '',
               'feedback_err' => ''
+=======
+>>>>>>> Stashed changes
             ];
       
-            $this->view('users/beneficiary/feedback', $data);
-          }
+          $this->view('users/beneficiary/filtered_history_beneficiary', $data);
+        }  
+
+
+        public function markReceived($id)
+        {
+           
+            if ($this->beneficiaryModel->markReceivedDonation($id)) {
+                // flash('request_message', 'Request Accepted');
+                redirect('pages/donationHistoryBeneficiary');
+    // $this -> view('users/beneficiary/donation_req_ongoing', $data);
+
+    
+            } else {
+                die('Something went wrong');
+            }
+        }
+    
 
             //load all feedback page
         /**
@@ -303,10 +330,134 @@ use helpers\NIC_Validator;
         // }
 
 
+        public function feedback($donationId){
+
+          $id = $_SESSION['user_id'];
+          $user_type = $_SESSION['user_type'];
+          $image_name = $this->profileImage();
+          $userdata = $this->beneficiaryModel->getBeneficiaryDetails($id,$user_type);
+          if($user_type){
+            foreach ($userdata as $donor) :
+              $name = $donor->f_name." ".$donor->l_name;
+              $contact = $donor->tp_number;
+              $email = $donor->email;
+            endforeach;
+          }else{
+            foreach ($userdata as $donor) :
+              $name = $donor->org_name;
+              $email = $donor->email;
+            endforeach;
+          }
+    
 
 
+          if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
+            $data = [
+              'prof_img' => $image_name,
+              'name' => trim($_POST['name']),
+              'email' => trim($_POST['email']),
+              'subject' => trim($_POST['subject']),
+              'desc' => trim($_POST['desc']),
+              'subject_err' => '',
+              'feedback_err' => '',
+              'sender_id' => $id,
+              'donation_id' => $donationId
+              
+            ];
+
+            $error = false;
+            // Validate data
+            if(empty($data['name'])){
+              $data['name'] = $name;
+          }
+          if(empty($data['email'])){
+            $data['email'] = $email;
+        }
+            if(empty($data['subject'])){
+                $data['subject_err'] = 'Please enter the subject';
+                $error = true;
+            }            
+        if(empty($data['desc'])){
+          $data['feedback_err'] = 'Please type your message here';
+          $error = true;
+      }
+
+            // Make sure no errors
+            if(!$error){
+                // Validated
+                if($this->beneficiaryModel->addFeedback($data)){
+                    // flash('category_message', 'Category Added');
+                    redirect('beneficiary/viewAllFeedbackDonor');
+                } else {
+                    die('Something went wrong');
+                }
+            } else {
+                // Load view with errors
+                $this->view('users/beneficiary/feedback', $data);
+            }
+        } else {
+          $data = [
+            'title' => 'Feedback',
+            'name' => $name,
+            'email' => $email,
+            'subject' => '',
+            'desc' => '',
+            'subject_err' => '',
+            'feedback_err' => '',
+            'prof_img' => $image_name,
+            'donation_id' => $donationId
+          ];
+    
+          $this->view('users/beneficiary/feedback', $data);
+        }
+            
+          }
+
+
+        public function viewmoreHistoryBeneficiary($donationId, $donation_type){
+          //donation types -> financial(1) and non financial(0)
+            $image_name = $this->profileImage();
+            $details = $this->beneficiaryModel->getDonationDetails($donationId, $donation_type);
+
+      
+            if($donation_type == 1){
+              foreach ($details as $data) :
+                $amount = $data->amount_donated;
         
+              endforeach;
+              $data = [
+                'title' => 'Donation History',
+                'prof_img' => $image_name,
+                'donation_id' => $donationId,
+                'details' => $details,
+                 'amount' => $amount
+              ];
+          
+            }else{
+      
+              foreach ($details as $data) :
+                 $amount = $data->quantity_donated;
+                
+              endforeach;
+              $data = [
+                'title' => 'Donation History',
+                'prof_img' => $image_name,
+                'donation_id' => $donationId,
+                'details' => $details,
+                 'amount' => $amount
+              ];
+          
+            }
+            
+            
+            $this->view('users/beneficiary/viewmore_history_beneficiary', $data);
+          
+        
+        }
+
 
         //load categories page
         
@@ -465,6 +616,10 @@ use helpers\NIC_Validator;
             'userdata' => $userdata,
             'personaldata' => $personaldata,
             'prof_img' => $image_name,
+<<<<<<< Updated upstream
+=======
+            'user_type' =>$user_type,
+>>>>>>> Stashed changes
             // 'dist' => $dist_name,
             'districts' => $districts
           ];
@@ -658,9 +813,13 @@ use helpers\NIC_Validator;
 
         //view more page
         public function viewFinancialRequest($id){
+<<<<<<< Updated upstream
           // if(isset($_SESSION['user_id'])){
 
           //   $d = $_SESSION['user_id'];
+=======
+          
+>>>>>>> Stashed changes
           $requests = $this->beneficiaryModel->getRequests($id);
             
           $financials = $this->beneficiaryModel->viewFinancialRequest($id);
@@ -677,20 +836,28 @@ use helpers\NIC_Validator;
           ];
     
           $this -> view('users/beneficiary/view_fin_req', $data);
+<<<<<<< Updated upstream
         // }else{
         //   $this->view('users/login', $data);
         // }
+=======
+       
+>>>>>>> Stashed changes
         }
 
 
 
         public function viewNonFinancialRequest($id){
 
+<<<<<<< Updated upstream
           // if(isset($_SESSION['user_id'])){
 
           //   $id = $_SESSION['user_id'];
+=======
+
            $requests = $this->beneficiaryModel->getRequests($id);
           $nfinancials = $this->beneficiaryModel->viewNonFinancialRequest($id);
+
             
             $data = [
               'title' => 'Donation Requests',
@@ -701,14 +868,67 @@ use helpers\NIC_Validator;
             ];
          
             $this->view('users/beneficiary/view_nfin_req', $data);
+           
+        }
+
+
+          //view update page
+          public function viewUpFinancialRequest($id){
+            
+            $requests = $this->beneficiaryModel->getRequests($id);
+              
+            $financials = $this->beneficiaryModel->viewFinancialRequest($id);
+  
+            if(!isLoggedIn()){
+              redirect('users/login');
+          }
+          
+            $data = [
+              'title' => 'Donation Requests',
+              'financials' => $financials,
+               'requests' => $requests,
+              'id' => $id
+            ];
+      
+            $this -> view('users/beneficiary/fin_request', $data);
+          
+          }
+
+
+
+                           //view update page
+        public function viewUpNonFinancialRequest($id){
+
+>>>>>>> Stashed changes
+           $requests = $this->beneficiaryModel->getRequests($id);
+          $nfinancials = $this->beneficiaryModel->viewNonFinancialRequest($id);
+            
+            $data = [
+              'title' => 'Donation Requests',
+              'nfinancials' => $nfinancials,
+             'requests' => $requests,
+<<<<<<< Updated upstream
+               'id' => $id   
+  
+            ];
+         
+            $this->view('users/beneficiary/view_nfin_req', $data);
             // }else{
             //   $this->view('users/login', $data);
             // }
+=======
+  
+            ];
+         
+            $this->view('users/beneficiary/nfin_request', $data);
+            
+>>>>>>> Stashed changes
           
           
         }
 
 
+<<<<<<< Updated upstream
           //view update page
           public function viewUpFinancialRequest($id){
             // if(isset($_SESSION['user_id'])){
@@ -739,6 +959,8 @@ use helpers\NIC_Validator;
    
 
 
+=======
+>>>>>>> Stashed changes
             //delete method of categories
       
             public function deleteFinancialRequest($id){
@@ -748,6 +970,23 @@ use helpers\NIC_Validator;
                   die('Something went wrong');
               }
       }
+<<<<<<< Updated upstream
+
+
+          //delete method of categories
+      
+          public function deleteNonFinancialRequest($id){
+            if($this->beneficiaryModel->deleteNonFinancialRequest($id)){
+                redirect('beneficiary/allDonations');
+            } else {
+                die('Something went wrong');
+            }
+    }
+
+
+
+=======
+>>>>>>> Stashed changes
 
 
           //delete method of categories
@@ -763,7 +1002,7 @@ use helpers\NIC_Validator;
 
 
 
-
+      //get rejected donation
         public function donationReject(){
           if(isset($_SESSION['user_id'])){
 
@@ -787,7 +1026,7 @@ use helpers\NIC_Validator;
 
         }
 
-
+        //get ongoing donations
         public function donationOngoing(){
           if(isset($_SESSION['user_id'])){
 
@@ -812,7 +1051,7 @@ use helpers\NIC_Validator;
         }
 
 
-
+        //get completed donations
         public function donationCompleted(){
           if(isset($_SESSION['user_id'])){
 
@@ -838,8 +1077,6 @@ use helpers\NIC_Validator;
 
         //add a new request
         public function addFinancialRequest(){
-
-         // $categories = $this->beneficiaryModel->getCategories();
 
           if($_SERVER['REQUEST_METHOD'] == 'POST'){
               // Sanitize POST data
@@ -1109,6 +1346,10 @@ use helpers\NIC_Validator;
                 public function addNonFinancialRequest(){
 
                    $categories = $this->beneficiaryModel->getNonFinancialCategories();
+<<<<<<< Updated upstream
+=======
+                   
+>>>>>>> Stashed changes
                  
          
                    if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -1326,6 +1567,7 @@ use helpers\NIC_Validator;
                    }
                   }
 
+<<<<<<< Updated upstream
                          //view update page
         public function viewUpNonFinancialRequest($id){
 
@@ -1350,6 +1592,9 @@ use helpers\NIC_Validator;
           
           
         }
+=======
+        
+>>>>>>> Stashed changes
 
 
          public function resubmitNFinancialRequest($id){
@@ -1388,6 +1633,7 @@ use helpers\NIC_Validator;
               // Sanitize POST data
               $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
+<<<<<<< Updated upstream
               $data = [
                   'id' => $id,
                   'due_date' => trim($_POST['due_date']),
@@ -1397,12 +1643,27 @@ use helpers\NIC_Validator;
             
                   // Validated
                   if($this->beneficiaryModel->editDueDate($data)){
+=======
+               $id = $_SESSION['user_id'];
+          $nfinancials = $this->beneficiaryModel->viewNonFinancialRequest($id);
+
+              $data = [
+                  // 'id' => $id,
+                  'due_date' => trim($_POST['due_date']),
+                  'nfinancials' => $nfinancials,
+                  // 'id' => $id                 
+              ];
+           
+                  // Validated
+                  if($this->beneficiaryModel->editDueDate($id,$data)){
+>>>>>>> Stashed changes
                       // flash('category_message', 'Category Added');
                       redirect('beneficiary/allDonations');
                   } else {
                       die('Something went wrong');
                   }
               
+<<<<<<< Updated upstream
           } 
       }
 
@@ -1466,6 +1727,61 @@ use helpers\NIC_Validator;
                   //       }
                   //     }
 
+=======
+          } else{
+            $data = [
+               
+                'due_date' => '',
+                //  'id' => '$id',
+                'nfinancials'=> $nfinancials
+                              
+              ];
+        
+              $this -> view('users/beneficiary/non_financial_request', $data);
+        }
+      }
+
+
+      public function updateFinancialDueDate($id){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+             $id = $_SESSION['user_id'];
+            $financials = $this->beneficiaryModel->viewFinancialRequest($id);
+
+
+            $data = [
+                // 'id' => $id,
+                'due_date' => trim($_POST['due_date']),
+                'financials' =>$financials
+                
+            ];
+
+          
+                // Validated
+                if($this->beneficiaryModel->editDueDate($id,$data)){
+                    // flash('category_message', 'Category Added');
+                    redirect('beneficiary/allDonations');
+                } else {
+                    die('Something went wrong');
+                }
+            
+        } else{
+          $data = [
+             
+              'due_date' => '',
+              // 'id' => $id,
+              
+             
+            ];
+      
+            $this -> view('users/beneficiary/financial_request', $data);
+      }
+    }
+
+
+>>>>>>> Stashed changes
                    
                
 
@@ -1474,7 +1790,10 @@ use helpers\NIC_Validator;
                   $categories = $this->beneficiaryModel->getNonFinancialCategories();
               
                  $nfinancials = $this->beneficiaryModel->viewNonFinancialRequest($id);
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
                   
           
                     if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -1492,6 +1811,7 @@ use helpers\NIC_Validator;
                             'description' => trim($_POST['description']),
                             'contact' => trim($_POST['contact']),
                             'zipcode' => trim($_POST['zipcode']),
+<<<<<<< Updated upstream
                             // 'proof_document' => trim($_POST['proof_document']),
                             'duedate' => trim($_POST['duedate']),
                             'nfinancials' => $nfinancials,
@@ -1565,10 +1885,86 @@ use helpers\NIC_Validator;
               //            $data['contactErr'] = 'Please enter a valid 10-digit phone number';
               //            $error = true;
               //        }
+=======
+                            'duedate' => trim($_POST['duedate']),
+                           'item' => trim($_POST['item']),
+                           'proof_document' => $_FILES['proof_document'],
+                            'nfinancials' => $nfinancials,
+                            // 'cat_id' => trim($_POST['cat_id']),
+                            'thumbnail' => $_FILES['thumbnail'],
+                           'categories' => $categories,
+                            //  'requests' => $requests,
+                            // 'requests' => $requests,
+                           'titleErr' => '',
+                           'nameErr' => '',
+                           'NICErr' => '',
+                           'quantityErr' => '',
+                           'descriptionErr' => '',
+                           'contactErr' => '',
+                           'zipcodeErr' => '',
+                           'itemErr' => '',
+                           'duedateErr' => '',
+                          //  // 'user_idErr' => '',
+                          //   'cat_idErr' => '',
+                            // 'thumbnailErr' => '',
+                               'user_id' => $user_id,
+                               'id' => $nfinancials[0]->id
+                          ];
+
+
+                          if(empty($data['description'])){
+                            $data['descriptionErr'] = 'Please enter description';
+                        }
+          
+                        if(empty($data['title'])){
+                            $data['titleErr'] = 'Please enter title';
+                        }
+          
+                        if(empty($data['quantity'])  || $data['quantity'] <= 0){
+                            $data['quantityErr'] = 'Please enter valid quantity';
+                        }
+          
+                        if(empty($data['duedate'])){
+                            $data['duedateErr'] = 'Please enter duedate';
+                        }
+          
+                        if(empty($data['name'])){
+                            $data['nameErr'] = 'Please enter name';
+                        }
+          
+                                     //Validate NIC
+                         if (empty($data['NIC'])) {
+                           $data['NICErr'] = 'Please enter NIC';
+                           $error = true;
+                       } else {
+                           // Check NIC
+                           $nic = new NIC_Validator($data['NIC']);
+                           $validity = $nic->checkNIC($data['NIC']);
+                           if (!$validity) {
+                               $data['NICErr'] = 'Enter a valid NIC';
+                               $error = true;
+                           }
+                           
+                       }
+                     
+                        if(empty($data['zipcode'])){
+                            $data['zipcodeErr'] = 'Please enter zipcode';
+                        }
+          
+ 
+                       if (empty($data['contact'])) {
+                         $data['contactErr'] = 'Required';
+                         $error = true;
+                     } else if (strlen($data['contact']) != 10) {
+                         $data['contactErr'] = 'Please enter a valid 10-digit phone number';
+                         $error = true;
+                     }
+>>>>>>> Stashed changes
           
               //          if(empty($data['cat_id'])){
               //           $data['cat_idErr'] = 'Please enter cat_id';
               //          }
+<<<<<<< Updated upstream
               //          if(empty($data['item'])){
               //            $data['itemErr'] = 'Please enter item';
               //           }
@@ -1653,6 +2049,90 @@ use helpers\NIC_Validator;
                         //     // Load view with errors
                         //     $this->view('users/beneficiary/nfin_request', $data);
                         // }
+=======
+                       if(empty($data['item'])){
+                         $data['itemErr'] = 'Please enter item';
+                        }
+ 
+                        //validate proof
+                   if (!empty($_FILES['proof']['name'])) {
+                     $img_name = $_FILES['proof']['name'];
+                     $img_size = $_FILES['proof']['size'];
+                     $tmp_name = $_FILES['proof']['tmp_name'];
+                     $error = $_FILES['proof']['error'];
+ 
+                     if ($error === 0) {
+                         if ($img_size > 200000) {
+                             $data['proofErr'] = "Sorry, your first image is too large.";
+                         } else {
+                             $img_ex = pathinfo($img_name, PATHINFO_EXTENSION); //Extension type of image(jpg,png)
+                             $img_ex_lc = strtolower($img_ex);
+ 
+                             $allowed_exs = array("jpg", "jpeg", "png", "pdf");
+ 
+                             if (in_array($img_ex_lc, $allowed_exs)) {
+                                 $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
+                                 $img_upload_path = dirname(APPROOT) . '/public/uploads/' . $new_img_name;
+                                 move_uploaded_file($tmp_name, $img_upload_path);
+                                 $data['proof'] = $new_img_name;
+                             } else {
+                                 $data['proofErr'] = "You can't upload files of this type";
+                             }
+                         }
+                     } else {
+                         $data['proofErr'] = "Unknown error occurred!";
+                     }
+                 } else {
+                     $data['proofErr'] = 'Please upload at least one image';
+                 }
+ 
+ 
+ 
+                 //validate thumbnail
+                 if (!empty($_FILES['thumbnail']['name'])) {
+                   $img_name = $_FILES['thumbnail']['name'];
+                   $img_size = $_FILES['thumbnail']['size'];
+                   $tmp_name = $_FILES['thumbnail']['tmp_name'];
+                   $error = $_FILES['thumbnail']['error'];
+ 
+                   if ($error === 0) {
+                       if ($img_size > 200000) {
+                           $data['thumbnailErr'] = "Sorry, your first image is too large.";
+                       } else {
+                           $img_ex = pathinfo($img_name, PATHINFO_EXTENSION); //Extension type of image(jpg,png)
+                           $img_ex_lc = strtolower($img_ex);
+ 
+                           $allowed_exs = array("jpg", "jpeg", "png", "pdf");
+ 
+                           if (in_array($img_ex_lc, $allowed_exs)) {
+                               $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
+                               $img_upload_path = dirname(APPROOT) . '/public/uploads/' . $new_img_name;
+                               move_uploaded_file($tmp_name, $img_upload_path);
+                               $data['thumbnail'] = $new_img_name;
+                           } else {
+                               $data['thumbnailErr'] = "You can't upload files of this type";
+                           }
+                       }
+                   } else {
+                       $data['thumbnailErr'] = "Unknown error occurred!";
+                   }
+               } else {
+                   $data['thumbnailErr'] = 'Please upload at least one image';
+               }
+     
+                       // Make sure no errors
+                        if(empty($data['descriptionErr']) && empty($data['titleErr']) && empty($data['quantityErr']) && empty($data['duedateErr']) && empty($data['nameErr'])  && empty($data['NICErr']) && empty($data['zipcodeErr']) && empty($data['contactErr']) && empty($data['itemErr']) && empty($data['proofErr']) && empty($data['thumbnailErr'])){
+                             // Validated
+                            if($this->beneficiaryModel->updateNonFinancialRequest($data)){
+                            redirect('beneficiary/allDonations');
+                            } else {
+                                die('Something went wrong');
+                            }
+                        } else {
+                            // Load view with errors
+                            $this->view('users/beneficiary/index', $data);
+                        }
+>>>>>>> Stashed changes
           
                    
                    
@@ -1673,6 +2153,7 @@ use helpers\NIC_Validator;
                         'contact' => '',
                         'thumbnail' => '',
                         'proof' => '',
+<<<<<<< Updated upstream
                       //   'titleErr' => '',
                       //   'nameErr' => '',
                       //   'NICErr' => '',
@@ -1688,6 +2169,23 @@ use helpers\NIC_Validator;
                       //   'itemErr' => '',
                         // 'thumbnailErr' => '',
                         // 'proofErr' => '',
+=======
+                        'titleErr' => '',
+                        'nameErr' => '',
+                        'NICErr' => '',
+                      //   //'categoryErr' => '',
+                        'descriptionErr' => '',
+                        'quantityErr' => '',
+                      //  // 'typeErr' => '',
+                        'contactErr' => '',
+                        'zipcodeErr' => '',
+                        'duedateErr' => '',
+                      //   'user_idErr' => '',
+                      //   'cat_idErr' => '',
+                        'itemErr' => '',
+                        'thumbnailErr' => '',
+                        'proofErr' => '',
+>>>>>>> Stashed changes
                        
                       ];
                 
@@ -1702,8 +2200,11 @@ use helpers\NIC_Validator;
                    
         //add a new request
         public function updateFinancialRequest($id){
+<<<<<<< Updated upstream
 
           // $this->beneficiaryModel->viewFinancialRequest($id);
+=======
+>>>>>>> Stashed changes
  
            if($_SERVER['REQUEST_METHOD'] == 'POST'){
                // Sanitize POST data
@@ -1721,13 +2222,22 @@ use helpers\NIC_Validator;
                    'contact' => trim($_POST['contact']),
                    'zipcode' => trim($_POST['zipcode']),
                    'duedate' => trim($_POST['duedate']),
+<<<<<<< Updated upstream
                    'proof' => $_FILES['proof'],
                    'passbook' => $_FILES['passbook'],
+=======
+                   'proof_document' => $_FILES['proof_document'],
+                   'bank_pass_book' => $_FILES['bank_pass_book'],
+>>>>>>> Stashed changes
                    'thumbnail' => $_FILES['thumbnail'],
                    'accnumber' => trim($_POST['accnumber']),
                    'bankname' => trim($_POST['bankname']),
                    'cat_id' => '1',
                    'financials'=>$financials,
+<<<<<<< Updated upstream
+=======
+                   'id' => $financials[0]->id,
+>>>>>>> Stashed changes
                    'user_id' => $user_id
                  ];
  
@@ -1773,14 +2283,16 @@ use helpers\NIC_Validator;
 
               public function approveReservation($id)
               {
-                  /*$c= $_SESSION['user_id'];
-                  $d =$this->schedulereqbenModel-> getDonId($c);*/
+                 
                   $this->beneficiaryModel->getRequestDetails($id);
                   if ($this->beneficiaryModel->acceptRequest($id)) {
                       flash('request_message', 'Request Accepted');
                       redirect('beneficiary/viewReservation');
+<<<<<<< Updated upstream
           // $this -> view('users/beneficiary/donation_req_ongoing', $data);
 
+=======
+>>>>>>> Stashed changes
           
                   } else {
                       die('Something went wrong');
@@ -1795,6 +2307,7 @@ use helpers\NIC_Validator;
                 }
         }
           
+<<<<<<< Updated upstream
 
 
               public function makeReservation($id){
@@ -1919,10 +2432,31 @@ use helpers\NIC_Validator;
       //         }
       //       }
                   
+=======
+>>>>>>> Stashed changes
 
 
+              public function makeReservation($id){
+      
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING); 
+                $id = $_SESSION['user_id'];
+            $userData = $this->beneficiaryModel->getPersonalData($id,5);
+
+        
+                // Init data
+                $data =[
+
+                  'meal_type' =>trim($_POST['meal_type']),
+                  // 'status' => '',
+                  // 'don_id' => $id,
+                  'ben_id' => $id,
+                  'date' => trim($_POST['date']),
+                  'month' => trim($_POST['month']),
+                  'year' => trim($_POST['year']),
+                  'quantity' => trim($_POST['quantity']),
 
 
+<<<<<<< Updated upstream
 
 // public function get_meals(){
 //     $requests = $this->beneficiaryModel->getAllRequests();
@@ -1931,6 +2465,78 @@ use helpers\NIC_Validator;
 //     ];
 //     echo json_encode($data);
 //     }  
+=======
+                  ];
+        
+                  switch($data['meal_type']){
+                    case'Breakfast':
+                      $data['meal_type'] = 1;
+                      break;
+                    case'Lunch':
+                      $data['meal_type'] = 2;
+                      break;
+                    case'Dinner':
+                      $data['meal_type'] = 3;
+                      break;
+                    default:
+                    $data['meal_type'] = 0;
+                  }
+                  $data['month'] -= 1;
+        
+                if($this->beneficiaryModel->makeReservation($data)){
+                redirect('beneficiary/viewCalendar');
+              }else{
+                die('Something went wrong');
+                }
+            
+          }
+
+          public function viewCalendar(){
+            if(isset($_SESSION['user_id'])){
+
+              $id = $_SESSION['user_id'];
+  
+            $userData = $this->beneficiaryModel->getPersonalData($id,5);
+            $reservations = $this->beneficiaryModel->getCalendar($id);
+            // $acceptedreservations = $this->beneficiaryModel->getAcceptedReservations();
+            
+
+  
+        if(!isLoggedIn()){
+            redirect('users/login');
+        }
+      $image_name = $this->profileImage();
+      $data = [
+        'title' => 'Donation Requests',
+        'prof_img' => $image_name, 
+        'user_data' => $userData,
+        'reservations' => $reservations,
+        'id'=>$id,
+        
+      ];
+  
+      $this->view('users/beneficiary/calendar', $data);
+      
+    } else {
+      $this->view('users/login', $data);
+    }
+        }
+
+        public function reservationsOfADay($day, $month, $year){
+          $breakfast = $this->beneficiaryModel->getBreakfast($day, $month, $year);
+            $lunch = $this->beneficiaryModel->getLunch($day, $month, $year);
+            $dinner = $this->beneficiaryModel->getDinner($day, $month, $year);
+
+            $data = [
+              'breakfast' => $breakfast,
+              'lunch' => $lunch,
+              'dinner' => $dinner
+            ];
+
+            $this->view('users/beneficiary/viewCalendarDetails', $data);
+        }
+
+>>>>>>> Stashed changes
                  
     }
 

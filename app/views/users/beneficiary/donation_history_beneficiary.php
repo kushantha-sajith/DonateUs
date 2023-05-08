@@ -41,8 +41,7 @@
             <i class="bx bx-bell bx-tada notification"></i>
           </div>
             <a href="<?php echo URLROOT; ?>/pages/profileBeneficiary"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
-          <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
-          <!-- <i class='bx bx-chevron-down'></i> -->
+          
         </div>
       </nav>
       <div class="main-container">
@@ -181,7 +180,11 @@
                     
                     <?php if($status == 1){?>
                       <div class ="btns3"> 
+<<<<<<< Updated upstream
                         <a href="<?php echo URLROOT;?>/beneficiary/viewmoreHistoryBeneficiary/<?php echo $record->id;?>"> <button class="btn-view-more">View more</button> </a>
+=======
+                        <a href="#"> <button class="btn-view-more">View more</button> </a>
+>>>>>>> Stashed changes
                         <?php if($record->type == 0){ ?>
                         <a href="#"> <button class="btn-contact-org">Contact Beneficiary</button> </a>
                         <?php } ?>
@@ -189,20 +192,33 @@
                       <?php }
                       if($status == 2){?> 
                       <div class ="btns3">
+<<<<<<< Updated upstream
                       <a href="<?php echo URLROOT;?>/beneficiary/viewmoreHistoryBeneficiary/<?php echo $record->id;?>"> <button class="btn-view-more">View more</button> </a>
+=======
+                      <a href="<?php echo URLROOT;?>/beneficiary/viewmoreHistoryBeneficiary/<?php echo $record->id;?>/<?php echo $record->type?>"> <button class="btn-view-more">View more</button> </a>
+>>>>>>> Stashed changes
                       <a href="<?php echo URLROOT; ?>/beneficiary/markReceived/<?php echo $record->id;  ?>"> <button class="btn-mark-delivered">Mark As Received</button> </a>
 
                       </div>
                       <?php } 
                       if($status == 3){ ?> 
                       <div class ="btns3"> 
+<<<<<<< Updated upstream
                       <a href="<?php echo URLROOT;?>/beneficiary/viewmoreHistoryBeneficiary/<?php echo $record->id;?>"> <button class="btn-view-more">View more</button> </a>
                         <a href="<?php echo URLROOT; ?>/beneficiary/feedback"> <button class="btn-mark-delivered">Feedback</button> </a>
+=======
+                      <a href="<?php echo URLROOT;?>/beneficiary/viewmoreHistoryBeneficiary/<?php echo $record->id;?>/<?php echo $record->type?>"> <button class="btn-view-more">View more</button> </a>
+                        <a href="<?php echo URLROOT; ?>/beneficiary/feedback/<?php echo $record->id;?>"> <button class="btn-mark-delivered">Feedback</button> </a>
+>>>>>>> Stashed changes
                       </div>
                       <?php } 
                       if($status == 4){ ?> 
                         <div class ="btns3"> 
+<<<<<<< Updated upstream
                         <a href="<?php echo URLROOT;?>/beneficiary/viewmoreHistoryBeneficiary/<?php echo $record->id;?>"> <button class="btn-view-more">View more</button> </a>
+=======
+                        <a href="<?php echo URLROOT;?>/beneficiary/viewmoreHistoryBeneficiary/<?php echo $record->id;?>/<?php echo $record->type?>"> <button class="btn-view-more">View more</button> </a>
+>>>>>>> Stashed changes
                         </div>
                         <?php }
                         if($status == 5){ ?> 

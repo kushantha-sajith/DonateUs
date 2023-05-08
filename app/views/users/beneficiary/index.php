@@ -5,6 +5,8 @@
     <title>Beneficiary Dashboard</title>
     
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/admin_dashboard.css"/>
+
     
     <link
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
@@ -101,18 +103,21 @@
             <i class="bx bx-bell bx-tada notification"></i>
           </div>
           <a href="<?php echo URLROOT; ?>/pages/profileBeneficiary"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
-          <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
-          <!-- <i class='bx bx-chevron-down'></i> -->
+          
         </div>
       </nav>
       <div class="main-container">
         <h1>Welcome Beneficiary</h1>
 
           <div class="cardBox">
-              <div class="card">
+              <div class="card" >
                   <div>
                       <div class="numbers"><?php echo $data['total']; ?></div>
+<<<<<<< Updated upstream
                       <div class="cardName"><a href="<?php echo URLROOT; ?>/beneficiary/allDonations" style="text-decoration:none">Total Donation Requests </a></div>
+=======
+                      <div class="cardName"><a href="<?php echo URLROOT; ?>/beneficiary/allDonations" style="text-decoration:none;">Total Donation Requests </a></div>
+>>>>>>> Stashed changes
                       <!-- Total Donation Requests -->
                   </div>
 
@@ -125,8 +130,11 @@
                   <div>
                       <div class="numbers"><?php echo $data['ongoing']; ?></div>
                       <div class="cardName"><a href="<?php echo URLROOT; ?>/beneficiary/donationOngoing" style="text-decoration:none">Ongoing Requests </a></div>
+<<<<<<< Updated upstream
                       
                       <!-- <div class="cardName">Ongoing Requests</div> -->
+=======
+>>>>>>> Stashed changes
                   </div>
 
                   <div class="iconBx">
@@ -138,8 +146,11 @@
                   <div>
                       <div class="numbers"><?php echo $data['complete']; ?></div>
                       <div class="cardName"><a href="<?php echo URLROOT; ?>/beneficiary/donationCompleted" style="text-decoration:none">Completed Requests </a></div>
+<<<<<<< Updated upstream
 
                       <!-- <div class="cardName">Completed Requests</div> -->
+=======
+>>>>>>> Stashed changes
                   </div>
 
                   <div class="iconBx">
@@ -152,7 +163,10 @@
                       <div class="numbers"><?php echo $data['reject']; ?></div>
                       <div class="cardName"><a href="<?php echo URLROOT; ?>/beneficiary/donationReject" style="text-decoration:none">Rejected Requests </a></div>
 
+<<<<<<< Updated upstream
                       <!-- <div class="cardName">Rejected Requests</div> -->
+=======
+>>>>>>> Stashed changes
                   </div>
 
                   <div class="iconBx">
@@ -160,19 +174,43 @@
                   </div>
               </div>
 
+              
+               
+            </div>
+            <div >
+                <div>
+                    <div ><br><br>
+                        <h3>Recent Donation Requests</h3>
+                    </div>
+                    
+                    
+                    </style>
+                    <br>
+                    <table class="recent-table">
+                        <thead>
+                        <tr class="recent-table-tr">
+                            <td><b>Request Title</b> </td>
+                            <td><b>Beneficiary Name</b> </td>
+                            <td><b>Due Date</b></td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($data['requests'] as $requests) : ?>
+                            <tr  class="recent-table-tr">
+                                <td>
+                                    <p><?php echo $requests->request_title; ?></p>
+                                </td>
+                                <td><?php echo $requests->name; ?></td>
+                                <td><?php echo $requests->due_date; ?></td>
+                                
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
              
           </div>
-       
-          <br><br>
-          <table class="table-img">
-            <tr>
-              <td class="table-data"><img src="<?php echo URLROOT; ?>/img/image1.png" width="650" height="450"/></td>
-            
-              <td class="table-data"><img src="<?php echo URLROOT; ?>/img/image2.png" width="700" height="450"/></td>
-          </tr>
-          </table>
 
-         
         </div>
       </div>
     </section>

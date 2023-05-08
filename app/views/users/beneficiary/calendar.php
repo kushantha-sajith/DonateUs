@@ -10,8 +10,6 @@
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/calendar.css" /> 
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_user.css" />
 
-    <!-- <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donation_list.css" /> -->
-
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet"
@@ -38,17 +36,19 @@
                     <i class="bx bx-bell bx-tada notification"></i>
                 </div>
                 <a href="<?php echo URLROOT; ?>/pages/profileBeneficiary"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
-                <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
-                <!-- <i class='bx bx-chevron-down'></i> -->
+                
             </div>
         </nav>
 
         <div class="main-container">
 
+<<<<<<< Updated upstream
 
         <!-- <?php foreach($data['user_data'] as $user ): ?>
 	  <h1 class="org-name"><?php echo $user->org_name;  ?></h1>
 	  <?php endforeach; ?> -->
+=======
+>>>>>>> Stashed changes
 	  <div class="months">
 		<div >
 			<ul class="month-line">
@@ -136,8 +136,11 @@
 	  <?php endforeach; ?>
 
 
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
 				<button class="popup-close"></button>
 
 		</div> <!-- eo content -->
@@ -146,11 +149,14 @@
 			</div>
 	
 	   <!-- eo calendar -->
+<<<<<<< Updated upstream
 		
 
 
 		 
 
+=======
+>>>>>>> Stashed changes
 		</div> 
 
     </section>

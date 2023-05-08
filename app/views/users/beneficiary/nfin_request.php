@@ -6,7 +6,10 @@
     <title>Non Financial Donation Request</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donation_req.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/add_donation_req.css" />
+<<<<<<< Updated upstream
     <!-- <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/styles.css" /> -->
+=======
+>>>>>>> Stashed changes
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet"
@@ -33,8 +36,7 @@
                     <i class="bx bx-bell bx-tada notification"></i>
                 </div>
                 <a href="<?php echo URLROOT; ?>/pages/profileBeneficiary"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
-                <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
-                <!-- <i class='bx bx-chevron-down'></i> -->
+               
             </div>
         </nav>
 
@@ -52,14 +54,20 @@
                                     <label>Request Title </label>
                                     
                                     <input type="text" placeholder="Enter Request Title" name="title" value="<?php echo $nfinancials->request_title; ?>">
+<<<<<<< Updated upstream
                                     <!-- <span class="error"><?php echo $data['titleErr']; ?></span> -->
+=======
+>>>>>>> Stashed changes
 
                                 </div>
                                 <div class="input-field">
                                     <label>Beneficiary Name</label>
                                     
                                     <input type="text" placeholder="Enter Beneficiary Name" name="name" value="<?php echo $nfinancials->name; ?>">
+<<<<<<< Updated upstream
                                     <!-- <span class="error"><?php echo $data['nameErr']; ?></span> -->
+=======
+>>>>>>> Stashed changes
 
                                 </div>
 
@@ -67,7 +75,10 @@
                                     <label>National ID Number</label>
                             
                                     <input type="text" placeholder="Enter NIC" name="NIC" value="<?php echo $nfinancials->NIC; ?>">
+<<<<<<< Updated upstream
                                     <!-- <span class="error"><?php echo $data['NICErr']; ?></span> -->
+=======
+>>>>>>> Stashed changes
 
                                 </div>
 
@@ -76,7 +87,10 @@
                                     <label>Quantity </label>
                                     
                                     <input type="text" placeholder="Enter Quantity" name="quantity" value="<?php echo $nfinancials->quantity; ?>">
+<<<<<<< Updated upstream
                                     <!-- <span class="error"><?php echo $data['quantityErr']; ?></span> -->
+=======
+>>>>>>> Stashed changes
 
                                 </div>
 
@@ -85,7 +99,10 @@
                                 <div class="input-field" id="description">
                                     <label>Description</label>
                                     <textarea placeholder="Enter Description" name="description" rows="4" cols="40"><?php echo $nfinancials->description; ?></textarea>
+<<<<<<< Updated upstream
                                     <!-- <span class="error"> <?php echo $data['descriptionErr']; ?></span> -->
+=======
+>>>>>>> Stashed changes
 
                                 </div>
 
@@ -93,7 +110,10 @@
                                     <label>Contact Number</label>
                                     
                                     <input type="text" placeholder="Enter Contact Number" name="contact" value="<?php echo $nfinancials->contact; ?>">
+<<<<<<< Updated upstream
                                     <!-- <span class="error"><?php echo $data['contactErr']; ?></span> -->
+=======
+>>>>>>> Stashed changes
 
                                 </div>
 
@@ -104,12 +124,23 @@
                                     
                                 </div>
 
+<<<<<<< Updated upstream
                                 <div class="input-field"> 
+=======
+                                <!-- <div class="input-field">
+                                    <label>Category Name</label>
+                                    <input type="text" placeholder="" value="<?php echo $data['category_name']; ?>" disabled>
+                                </div>
+                              </div> -->
+
+                                <!-- <div class="input-field"> 
+>>>>>>> Stashed changes
                              <label>Donation Category</label>
                                 <select class="dropdown" name="cat_id" id="cat_id">
                             <?php foreach($data['categories'] as $categories) : ?>
                                 <option value="<?php echo $categories->id; ?>"><?php echo $categories->category_name	; ?></option>
                             <?php endforeach; ?>
+<<<<<<< Updated upstream
                             </select>
                             <!-- <span class="error"><?php echo $data['cat_idErr']; ?></span> -->
 
@@ -118,21 +149,48 @@
                                     <!-- <input type="text" placeholder="Location"> -->
                                     <input type="text" placeholder="Enter zipcode" name="zipcode" value="<?php echo $nfinancials->zipcode; ?>">
                                     <!-- <span class="error"><?php echo $data['zipcodeErr']; ?></span> -->
+=======
+                            </select> -->
+
+                                <div class="input-field">
+                                    <label>Zipcode </label>
+                                    <input type="text" placeholder="Enter zipcode" name="zipcode" value="<?php echo $nfinancials->zipcode; ?>">
+>>>>>>> Stashed changes
 
                                 </div>
 
                                 <div class="input-field">
                                     <label>Due Date</label>
+<<<<<<< Updated upstream
                                     <!-- <input type="date" placeholder="Due Date"> -->
                                     <input type="date" placeholder="Enter Due Date" name="duedate" value="<?php echo $nfinancials->due_date; ?>">
                                     <!-- <span class="error"><?php echo $data['duedateErr']; ?></span> -->
+=======
+                                    <input type="date" placeholder="Enter Due Date" name="duedate" value="<?php echo $nfinancials->due_date; ?>">
+>>>>>>> Stashed changes
 
                                 </div>
+                                <div>
+                                <span class="title"><u>Thumbnail</u></span>
+                            <div class="photo-container" id="grame">
+                            <input type="file" id="thumbnail" name="thumbnail" value="<?php echo $nfinancials->thumbnail; ?>">
+                           
+                             </div>
+                             </div>
+                             <div>
+
+                             <span class="title"><u>Proof Document</u></span>
+                             <div class="photo-container" id="grame">
+                            <input type="file" id="passbook" name="proof" value="<?php echo $nfinancials->proof_document; ?>">
+                           
+                        </div>
+                        </div>
 
 
                             </div>
                         </div>
 
+<<<<<<< Updated upstream
                         <!-- <span class="title"><u>Recomondation Letter By Grama Niladari</u></span>
                         <div class="photo-container" id="grame">
                             <input type="file" id="proof_document" name="proof_document" value="<?php echo $nfinancials->proof_document; ?>"> -->
@@ -156,12 +214,13 @@
                             <!-- <span class="error"><?php echo $data['thumbnailErr']; ?></span> -->
 
                         <!-- </div>  -->
+=======
+>>>>>>> Stashed changes
 
                         </div>
                        <?php endforeach; ?>
 
                         <div>
-                          <!-- <a href="<?php echo URLROOT; ?>/beneficiary/addRequest">  -->
                           <input type="submit" value="submit" class="btn add">
                           </a>
                         </div>
@@ -178,6 +237,7 @@
 
     </section>
     <!--home section end-->
+<<<<<<< Updated upstream
     <!-- <script>
         let sidebar = document.querySelector(".sidebar");
         let sidebarBtn = document.querySelector(".sidebarBtn");
@@ -278,6 +338,9 @@
         
     </script> -->
 
+=======
+ 
+>>>>>>> Stashed changes
 </body>
 
 </html>

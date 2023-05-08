@@ -39,8 +39,13 @@
         <div class="select-menu">
           <div class="select-btn">
             <span
+<<<<<<< Updated upstream
               class="material-icons"
               style="color: #111e88; margin-right: 1rem"
+=======
+                    class="material-icons"
+                    style="color: #111e88; margin-right: 1rem"
+>>>>>>> Stashed changes
             >
               perm_identity
             </span>

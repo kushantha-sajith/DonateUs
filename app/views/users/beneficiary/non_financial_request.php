@@ -125,7 +125,11 @@
                         </div>
 
 
+<<<<<<< Updated upstream
                         <span class="title"><u>Identity Proof</u></span>
+=======
+                        <span class="title"><u>Proof Document</u></span>
+>>>>>>> Stashed changes
                         <div class="photo-container" id="grame">
                             <input type="file" id="file3" name="proof" value="<?php echo $data['proof']; ?>">
                             <!-- <div class="img-area" id="area-three" data-img="">
@@ -136,6 +140,17 @@
                             <span class="error"><?php echo $data['proofErr']; ?></span>
                             
                         </div>
+                        <!-- <span class="title"><u>Second Proof Document</u></span>
+                        <div class="photo-container" id="grame">
+                            <input type="file" id="file3" name="proof" value="<?php echo $data['proof']; ?>">
+                             <div class="img-area" id="area-three" data-img="">
+                                <i class='bx bxs-cloud-upload icon'></i>
+                                <h3>Upload Image</h3>
+                                <p>Image size must be less than <span>2MB</span></p>
+                            </div> 
+                            <span class="error"><?php echo $data['proofErr']; ?></span>
+                            
+                        </div> -->
 
                         <span class="title"><u>Thumbnail</u></span>
                         <div class="photo-container" id="grame">
@@ -148,6 +163,15 @@
                             <span class="error"><?php echo $data['thumbnailErr']; ?></span>
                             
                         </div>
+<<<<<<< Updated upstream
+=======
+                        <br><br>
+                        <div>
+                            Guidelines : 
+                            If you are willing to make donation request from medicine category you have to upload second proof by taking from a doctor.
+    
+                        </div>
+>>>>>>> Stashed changes
 
                         </div>
                         <div>

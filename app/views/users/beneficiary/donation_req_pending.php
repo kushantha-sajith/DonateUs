@@ -37,8 +37,7 @@
                     <i class="bx bx-bell bx-tada notification"></i>
                 </div>
                 <a href="<?php echo URLROOT; ?>/pages/profileBeneficiary"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
-                <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
-                <!-- <i class='bx bx-chevron-down'></i> -->
+               
             </div>
         </nav>
 
@@ -136,7 +135,11 @@
                     <?php } else{ ?>
                         <?php foreach($data['financials'] as $financials ): ?>
                             <?php if($requests->id == $financials->req_id){ ?>
+<<<<<<< Updated upstream
                             <td style="text-align:left;"><?php  echo $financials->total_amount;  ?></td>
+=======
+                            <td style="text-align:left;">Rs.<?php  echo $financials->total_amount;  ?></td>
+>>>>>>> Stashed changes
                             <td style="text-align:left;">Financial</td>
                             <td>  <a href="<?php echo URLROOT; ?>/beneficiary/viewFinancialRequest/<?php echo $requests->id;  ?> " class="btn-edit">View More</a></td> 
                     

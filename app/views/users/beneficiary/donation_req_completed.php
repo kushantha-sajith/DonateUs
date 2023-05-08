@@ -139,7 +139,11 @@
                     <?php } else{ ?>
                         <?php foreach($data['financials'] as $financials ): ?>
                             <?php if($requests->id == $financials->req_id){ ?>
+<<<<<<< Updated upstream
                             <td style="text-align:left;"><?php  echo $financials->total_amount;  ?></td>
+=======
+                            <td style="text-align:left;">Rs.<?php  echo $financials->total_amount;  ?></td>
+>>>>>>> Stashed changes
                             <td style="text-align:left;">Financial</td>
                             <td>  <a href="<?php echo URLROOT; ?>/beneficiary/viewFinancialRequest/<?php echo $requests->id;  ?> " class="btn-edit">View More</a></td> 
                     

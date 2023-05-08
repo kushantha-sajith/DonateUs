@@ -82,7 +82,11 @@
                                 <div class="input-field">
                                     <label>Amount </label>
                                     
+<<<<<<< Updated upstream
                                     <input type="text" name="amount" value="<?php echo $financials->total_amount; ?>" disabled>
+=======
+                                 <input type="text" name="amount" value="Rs. <?php echo $financials->total_amount; ?>" disabled>
+>>>>>>> Stashed changes
                                    
                                 </div>
 
@@ -116,6 +120,7 @@
                                     
                                 </div>
 
+<<<<<<< Updated upstream
 
                             </div>
                         </div>
@@ -144,6 +149,9 @@
                         </div>
 
                         <div class="input-field">
+=======
+                                <div class="input-field">
+>>>>>>> Stashed changes
                                 <label>Bank Account Number </label>
                                
                                 <input type="text" name="accnumber" value="<?php echo $financials->bank_acc_number; ?>" disabled>
@@ -155,6 +163,71 @@
                                
                                 <input type="text" name="bankname" value="<?php echo $financials->bank_name; ?>" disabled>
                                 
+                        </div>
+                                <!-- <div class="input-field">
+                                    <label>District</label>
+                                    
+                                    <input type="text" name="district" value="<?php echo $financials->district; ?>" disabled>
+                                    
+                                </div> -->
+                                    
+
+<<<<<<< Updated upstream
+
+                        <div>
+                         <?php if($financials->status==0){ ?>
+                         
+                         <a href="<?php echo URLROOT; ?>/beneficiary/viewUpFinancialRequest/<?php echo $financials->id;  ?>" class="btn-edit">Update</a>
+                         <a href="<?php echo URLROOT; ?>/beneficiary/deleteFinancialRequest/<?php echo $financials->id;  ?>" class="btn-delete">Delete</a>
+
+                         <?php } ?> 
+                         
+                       </div>
+
+                       <div>
+                         <?php if($financials->status==3){ ?>
+                         
+                         <a href="<?php echo URLROOT; ?>/beneficiary/resubmitFinancialRequest/<?php echo $financials->id;  ?>" class="btn-edit">RESUBMIT</a>
+
+                         <?php } ?> 
+                         
+                       </div>
+                       <?php endforeach; ?>
+                        </div>
+=======
+                                    <div>
+                                    <div>
+                         <span class="title"><u>Proof Document </u></span>
+                         <div class="photo-container" id="grame">
+                            <!-- <div class="photo-container" id="grame"> -->
+                                
+                                    <img style="width:500px; height:300px;" src="<?php echo URLROOT; ?>/uploads/<?php echo $financials->proof_document;  ?>">
+                                </div>
+                            
+                            </div>
+                            
+
+                         <span class="title"><u>Bank Pass Book</u></span>
+                        <div class="photo-container" id="grame">
+
+                            <img style="width:500px; height:300px;" src="<?php echo URLROOT; ?>/uploads/<?php echo $financials->bank_pass_book;  ?>">
+                               
+                            </div>
+                            
+                        </div> 
+                        <br>
+                                    <div>
+                        <span class="title"><u>Thumbnail</u></span>
+                        <div class="photo-container" id="grame">
+                                
+                            <img style="width:500px; height:300px;" src="<?php echo URLROOT; ?>/uploads/<?php echo $financials->thumbnail;  ?>">
+
+                            </div>
+                            </div>
+                            
+                        </div>
+                  
+                        </div>
                         </div>
 
 
@@ -178,6 +251,7 @@
                        </div>
                        <?php endforeach; ?>
                         </div>
+>>>>>>> Stashed changes
             </div>
 
           

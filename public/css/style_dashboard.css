@@ -1,6 +1,6 @@
 /* Googlefont Poppins CDN Link */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -163,7 +163,11 @@ nav .search-box .bx-search {
     position: absolute;
     height: 40px;
     width: 40px;
+<<<<<<< Updated upstream
     //background: #0A2558;
+=======
+    /* //background: #0A2558; */
+>>>>>>> Stashed changes
     background: #2697FF;
     right: 5px;
     top: 50%;
@@ -317,7 +321,7 @@ nav .profile-details i {
     padding: 10px 10px;
 }
 
-.tabset > input[type="radio"] {
+.tabset>input[type="radio"] {
     position: absolute;
     left: -200vw;
 }
@@ -326,16 +330,16 @@ nav .profile-details i {
     display: none;
 }
 
-.tabset > input:first-child:checked ~ .tabpanels > .tab:first-child,
-.tabset > input:nth-child(3):checked ~ .tabpanels > .tab:nth-child(2),
-.tabset > input:nth-child(5):checked ~ .tabpanels > .tab:nth-child(3),
-.tabset > input:nth-child(7):checked ~ .tabpanels > .tab:nth-child(4),
-.tabset > input:nth-child(9):checked ~ .tabpanels > .tab:nth-child(5),
-.tabset > input:nth-child(11):checked ~ .tabpanels > .tab:nth-child(6) {
+.tabset>input:first-child:checked~.tabpanels>.tab:first-child,
+.tabset>input:nth-child(3):checked~.tabpanels>.tab:nth-child(2),
+.tabset>input:nth-child(5):checked~.tabpanels>.tab:nth-child(3),
+.tabset>input:nth-child(7):checked~.tabpanels>.tab:nth-child(4),
+.tabset>input:nth-child(9):checked~.tabpanels>.tab:nth-child(5),
+.tabset>input:nth-child(11):checked~.tabpanels>.tab:nth-child(6) {
     display: block;
 }
 
-.tabset > label {
+.tabset>label {
     position: relative;
     display: inline-block;
     padding: 15px 15px 25px;
@@ -346,12 +350,12 @@ nav .profile-details i {
     display: inline-flex;
 }
 
-.tabset > label:hover,
-.tabset > input:focus + label {
+.tabset>label:hover,
+.tabset>input:focus+label {
     color: #06c;
 }
 
-.tabset > input:checked + label {
+.tabset>input:checked+label {
     border-color: #ccc;
     border-bottom: 1px solid #fff;
     margin-bottom: -1px;
@@ -366,7 +370,13 @@ nav .profile-details i {
     max-width: 100em;
 }
 
+<<<<<<< Updated upstream
 table, tr, td{
+=======
+table,
+tr,
+td {
+>>>>>>> Stashed changes
     border-collapse: collapse;
     padding: 10px;
 }
@@ -412,8 +422,13 @@ a {
     width: 100%;
     height: 100%;
     overflow: auto;
+<<<<<<< Updated upstream
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
+=======
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+>>>>>>> Stashed changes
 }
 
 .modal-content {
@@ -595,7 +610,9 @@ a {
     object-fit: cover;
 }
 
+
 /*card list*/
+
 .cardBox {
     position: relative;
     width: 100%;
@@ -624,6 +641,10 @@ a {
 .cardBox .card .cardName {
     font-size: 1.1rem;
     margin-top: 5px;
+}
+
+.cardBox .card .cardName a:visited {
+    color: blue;
 }
 
 .cardBox .card .iconBx {
@@ -671,37 +692,60 @@ a {
     justify-content: center;
 }
 
+<<<<<<< Updated upstream
 canvas{
     padding: 10px;
 }
 
+=======
+canvas {
+    padding: 10px;
+}
+
+.recent-table {
+    width: 1000px;
+}
+
+.recent-table-tr {
+    height: 60px;
+}
+
+
+>>>>>>> Stashed changes
 /* Responsive Media Query */
 
 @media (max-width: 1240px) {
     .sidebar {
         width: 60px;
     }
-
     .sidebar.active {
         width: 220px;
     }
-
     .home-section {
         width: calc(100% - 60px);
         left: 60px;
     }
+<<<<<<< Updated upstream
     
+=======
+>>>>>>> Stashed changes
     .sidebar.active~.home-section {
         /* width: calc(100% - 220px); */
         overflow: hidden;
         left: 220px;
     }
+<<<<<<< Updated upstream
     
+=======
+>>>>>>> Stashed changes
     .home-section nav {
         width: calc(100% - 60px);
         left: 60px;
     }
+<<<<<<< Updated upstream
     
+=======
+>>>>>>> Stashed changes
     .sidebar.active~.home-section nav {
         width: calc(100% - 220px);
         left: 220px;
@@ -721,12 +765,18 @@ canvas{
     nav .profile-details i {
         display: none;
     }
+<<<<<<< Updated upstream
     
+=======
+>>>>>>> Stashed changes
     .home-section nav .profile-details {
         height: 50px;
         min-width: 40px;
     }
+<<<<<<< Updated upstream
     
+=======
+>>>>>>> Stashed changes
     .home-content .sales-boxes .sales-details {
         width: 560px;
     }
@@ -737,7 +787,10 @@ canvas{
         width: 100%;
         margin-bottom: 15px;
     }
+<<<<<<< Updated upstream
     
+=======
+>>>>>>> Stashed changes
     .sidebar.active~.home-section nav .profile-details {
         display: none;
     }

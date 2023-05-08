@@ -107,6 +107,12 @@ class Pages extends Controller
           $total_reject = $this->beneficiaryModel->getTotalReject($id);
           $total_ongoing = $this->beneficiaryModel->getTotalOngoing($id);
           $total_complete = $this->beneficiaryModel->getTotalComplete($id);
+<<<<<<< Updated upstream
+=======
+          $requests = $this->beneficiaryModel->getRequests($id);
+          $financials = $this->beneficiaryModel->getFinancialRequest();
+          $nfinancials = $this->beneficiaryModel->getNonFinancialRequest();
+>>>>>>> Stashed changes
   
       $data = [
         'title' => 'Beneficiary',
@@ -114,7 +120,14 @@ class Pages extends Controller
         'total' =>  $total_donations,
         'reject' =>  $total_reject,
         'ongoing' =>  $total_ongoing,
+<<<<<<< Updated upstream
         'complete' =>  $total_complete
+=======
+        'complete' =>  $total_complete,
+        'requests' => $requests,
+        'financials' => $financials,
+        'nfinancials' => $nfinancials
+>>>>>>> Stashed changes
   
       ];
       $this->view('users/beneficiary/index', $data);
@@ -188,7 +201,11 @@ class Pages extends Controller
             $userdata = $this->beneficiaryModel->getUserData($id);
             $personaldata = $this->beneficiaryModel->getPersonalData($id, $user_type);
             $image_name = $this->profileImage();
+<<<<<<< Updated upstream
             // $dist_name = $this->beneficiaryModel->getDistrictName($id, $user_type);
+=======
+            $dist_name = $this->beneficiaryModel->getDistrictName($id, $user_type);
+>>>>>>> Stashed changes
 
             $data = [
                 'title' => 'Profile',
@@ -366,6 +383,7 @@ class Pages extends Controller
     }
 
 
+<<<<<<< Updated upstream
     // public function donationHistoryBeneficiary()
     // {
     //     if (!isLoggedIn()) {
@@ -382,6 +400,9 @@ class Pages extends Controller
 
     //     $this->view('users/beneficiary/donation_history_beneficiary', $data);
     // }
+=======
+   
+>>>>>>> Stashed changes
 
     public function donationHistoryBeneficiary(){
 

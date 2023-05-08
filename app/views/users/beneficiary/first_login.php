@@ -6,7 +6,10 @@
     <title>First Login</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donation_req.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/add_donation_req.css" />
+<<<<<<< Updated upstream
     <!-- <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" /> -->
+=======
+>>>>>>> Stashed changes
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet"
@@ -33,8 +36,12 @@
                     <i class="bx bx-bell bx-tada notification"></i>
                 </div>
                 <a href="<?php echo URLROOT; ?>/pages/profileBeneficiary"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
+<<<<<<< Updated upstream
                 <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
                 <!-- <i class='bx bx-chevron-down'></i> -->
+=======
+               
+>>>>>>> Stashed changes
             </div>
         </nav>
         <main>

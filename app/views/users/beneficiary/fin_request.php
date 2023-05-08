@@ -104,6 +104,7 @@
                         </div>
 
 
+<<<<<<< Updated upstream
                         <span class="title"><u>Identity Proof</u></span>
                         <div class="photo-container" id="grame">
                             <input type="file" id="passbook" name="proof" value="<?php echo $financials->proof_document; ?>">
@@ -113,27 +114,39 @@
                                 <p>Image size must be less than <span>2MB</span></p>
                             </div> -->
                             
+=======
+                        <span class="title"><u>Proof Document</u></span>
+                        <div class="photo-container" id="grame">
+                            <input type="file" id="passbook" name="proof" value="<?php echo $financials->proof_document; ?>">
+                           
+>>>>>>> Stashed changes
                         </div>
 
                         <span class="title"><u>Bank Pass Book</u></span>
                         <div class="photo-container" id="grame">
                             <input type="file" id="passbook" name="passbook" value="<?php echo $financials->bank_pass_book; ?>">
+<<<<<<< Updated upstream
                             <!-- <div class="img-area" id="area-three" data-img="">
                                 <i class='bx bxs-cloud-upload icon'></i>
                                 <h3>Upload Image</h3>
                                 <p>Image size must be less than <span>2MB</span></p>
                             </div> -->
+=======
+>>>>>>> Stashed changes
                            
                         </div>
 
                         <span class="title"><u>Thumbnail</u></span>
                         <div class="photo-container" id="grame">
                             <input type="file" id="thumbnail" name="thumbnail" value="<?php echo $financials->thumbnail; ?>">
+<<<<<<< Updated upstream
                             <!-- <div class="img-area" id="area-three" data-img="">
                                 <i class='bx bxs-cloud-upload icon'></i>
                                 <h3>Upload Image</h3>
                                 <p>Image size must be less than <span>2MB</span></p>
                             </div> -->
+=======
+>>>>>>> Stashed changes
                            
                         </div>
 
@@ -172,6 +185,7 @@
 
     </section>
     <!--home section end-->
+<<<<<<< Updated upstream
     <!-- <script>
         let sidebar = document.querySelector(".sidebar");
         let sidebarBtn = document.querySelector(".sidebarBtn");
@@ -271,6 +285,8 @@
         })
         
     </script> -->
+=======
+>>>>>>> Stashed changes
 
 </body>
 
