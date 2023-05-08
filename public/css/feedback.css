@@ -1,0 +1,332 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+:root{
+    --color-white: #fff;
+    --color-info-dark:#7d8da1;
+    --color-info-light:#dce1eb;
+    --color-dark:#363949;
+    --color-light:rgba(132, 139, 200, 0.18);
+    --color-primary-varient:#111e88;
+    --color-background:#f6f6f9;
+
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 0.8rem;
+    --border-radius-3: 1.2rem;
+
+    --card-padding:1.8rem;
+    --padding-1:1.2rem;
+    --box-shadow: 0 2rem 3rem var(--color-light)
+
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+main{
+    padding-top: 120px; 
+    padding-left: 50px; 
+    padding-right: 50px;
+}
+
+.btnview{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    margin-right: 0px;
+    max-width: 100px;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 5px;
+    background-color: #111e88;
+    transition: all 0.3s linear;
+    cursor: pointer;
+}
+
+@media(max-width:768px) {
+    .cards_heading{
+        max-width: 90%;
+    }
+    .cards_heading2{
+        max-width: 90%;
+    }
+    .main_heading{
+        font-size: 28px;
+    }
+    .head{
+        font-size: 18px;
+    }
+    .blue_color_cards_data{
+        font-size: 18px;
+    }
+    .white_color_cards_data{
+        font-size: 18px;
+    }
+}
+
+@media(max-width:425px) {
+    .cards_heading{
+        max-width: 95%;
+    }
+    .cards_heading2{
+        max-width: 95%;
+    }
+    .main_heading {
+        font-size: 24px;
+    }
+    .head{
+        font-size: 16px;
+    }
+    .blue_color_cards_data {
+        font-size: 14px;
+    }
+    .white_color_cards_data {
+        font-size: 14px;
+    }
+}
+
+.box .form_first{
+    overflow:auto;
+}
+
+.box header{
+    position: relative;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+.box header::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 3px;
+    width: 27px;
+    border-radius: 8px;
+    background-color: #0A2558;
+}
+.box form{
+    position: relative;
+    margin: 16px 0px;
+    min-height: 400px;
+    background-color: #fff;
+    overflow: hidden;
+}
+.box form .form{
+    position: absolute;
+    background-color: #fff;
+    transition: 0.3s ease;
+}
+.box form .form.second{
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(100%);
+}
+form.secActive .form.second{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+}
+form.secActive .form.first{
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+}
+.box form .title{
+    display: block;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 6px 0px 8px 0px;
+    color: #333;
+}
+.box form .fields{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+form .fields .input-field{
+    display: flex;
+    width: calc(100% / 2 - 15px);
+    flex-direction: column;
+    margin: 4px 0;
+}
+.input-field label{
+    font-size: 16px;
+    font-weight: 500;
+    color: #2e2e2e;
+}
+.input-field input, select{
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    padding: 0 15px;
+    height: 42px;
+    margin: 8px 0;
+}
+.input-field input :focus,
+.input-field select:focus{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.13);
+}
+.input-field select,
+.input-field input[type="date"]{
+    color: #707070;
+}
+.input-field input[type="date"]:valid{
+    color: #333;
+}
+/* .backBtn{
+    text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    height: 45px;    
+    width: 45%;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 5px;
+    margin: 0 0;
+    background-color: #163172;
+    transition: all 0.3s linear;
+    cursor: pointer;
+} */
+.box form .btnText{
+    font-size: 14px;
+    font-weight: 400;
+}
+
+form .backBtn i{
+    transform: rotate(180deg);
+}
+
+.edit, .changepassword, .delete{
+    
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    max-width: 200px;
+    width:100%;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: #163172;
+    transition: all 0.3s linear;
+    cursor: pointer;
+}
+
+.edit:hover, .changepassword:hover, .delete:hover{
+    background-color: #0A2558;
+}
+
+/*gig card*/
+.gigcontainer{
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: auto;
+  
+  }
+  .gigcontainer .box{
+    width: 100%;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    padding: 20px 30px;
+    border-radius: 5px;
+    margin-top: 2rem;
+    box-shadow: var(--box-shadow);
+    margin: auto;
+  }
+  .easy{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 500px;
+    margin: auto;
+}
+.easy .due-date{
+  color: black;
+}
+.box .name_job{
+    margin: 10px 0 3px 0;
+    color: #0A2558;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .btns a{
+    margin-top: 20px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: right;
+    width: 100%;
+  }
+  .btns2{
+    margin-top: 20px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: right;
+    width: 100%;
+  }
+  a button{
+    background: #0A2558;
+    width: 100%;
+    padding: 9px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+    color: #fff;;
+    transition: all 0.3s linear;
+  }
+  a .btn-back{
+    background: #0A2558;
+    width: fit-content;
+    padding: 9px 60px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;;
+    transition: all 0.3s linear;
+  }
+  
+  .btns a button:hover{
+    background: #0A2558;
+    color: #fff;
+  }
+  .btns3{
+    display: grid;
+    grid-template-columns: 16% 15% 15% 54%;
+    grid-column-gap: 1%;
+    max-width: 100%;
+    text-align: center;
+    justify-content: left;
+    margin: 0;
+}
+
+.btns3 a{
+    width: 100%;
+}
+.error{
+    color:red;
+}
