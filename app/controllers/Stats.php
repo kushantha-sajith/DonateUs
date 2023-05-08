@@ -43,6 +43,30 @@ class Stats extends Controller
     /**
      * @return void
      */
+    public function eventStatusMain()
+    {
+        $user_ID = $_SESSION['user_id'];
+        $pending = $this->statModel->pendingEvents();
+        $ongoing = $this->statModel->ongoingEvents();
+        $completed = $this->statModel->completedEvents();
+        $rejected = $this->statModel->rejectedEvents();
+        $data = [
+            'pending' => 'Pending Events',
+            'ongoing' => 'Ongoing Events',
+            'completed' => 'Completed Events',
+            'rejected' => 'Rejected Events',
+            'pendingCount' => $pending,
+            'ongoingCount' => $ongoing,
+            'completedCount' => $completed,
+            'rejectedCount' => $rejected
+        ];
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
+
+    /**
+     * @return void
+     */
     public function eventStatus()
     {
         $user_ID = $_SESSION['user_id'];
