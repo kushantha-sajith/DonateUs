@@ -207,7 +207,7 @@
 
     function pieChart2() {
         $.ajax({
-            url: "http://localhost/DonateUs/Stats/eventStatus",
+            url: "http://localhost/DonateUs/Stats/eventStatusMain",
             method: 'GET',
             dataType: 'JSON',
             success: function (response1) {
