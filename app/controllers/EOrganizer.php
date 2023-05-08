@@ -11,6 +11,7 @@ class EOrganizer extends Controller
         $this->userModel = $this->model('User');
     }
 
+<<<<<<< Updated upstream
     //load donor dashboard
 
     /**
@@ -35,18 +36,61 @@ class EOrganizer extends Controller
         } else {
             $this->view('users/login', $data);
         }
+=======
+    /** Event Organizers Pages  */
+    public function CreateEvent()
+    {
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $data = [
+            'title' => '',
+            'ammount' => '',
+            'description' => '',
+            'city' => '',
+            'duedate' => '',
+            'proof' => '',
+            'passbook' => '',
+            'thumb' => '',
+            'accountno' => '',
+            'bankname' => '',
+            'titleErr' => '',
+            'amountErr' => '',
+            'descriptionErr' => '',
+            'cityErr' => '',
+            'duedateErr' => '',
+            'proofErr' => '',
+            'passbookErr' => '',
+            'thumbErr' => '',
+            'user_idErr' => '',
+            'accnumberErr' => '',
+            'banknameErr' => '',
+            //  'categories' => $categories,
+            'user_id' => ''
+        ];
+        $this->view('users/eorganizer/create_events', $data);
+>>>>>>> Stashed changes
     }
 
     /**
      * @return void
      */
+<<<<<<< Updated upstream
     public function updateProfileEorganizer()
+=======
+    public function updateprofileeorganizer()
+>>>>>>> Stashed changes
     {
 
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
         $otp_code = rand(100000, 999999);
         $verification_status = 1;
+<<<<<<< Updated upstream
+=======
+        $otp_verify = 1;
+        $otp_code = 0;
+>>>>>>> Stashed changes
         $type = $_SESSION['user_type'];
         $id = $_SESSION['user_id'];
         $districts = $this->userModel->getDistricts();
@@ -54,6 +98,7 @@ class EOrganizer extends Controller
         // Init data
         $data = [
             'full_name' => trim($_POST['full_name']),
+<<<<<<< Updated upstream
             'contact' => trim($_POST['contact']),
             'comm_name' => trim($_POST['comm_name']),
             'desg' => trim($_POST['desg']),
@@ -101,15 +146,38 @@ class EOrganizer extends Controller
     {
         if (!isLoggedIn()) {
             redirect('users/login');
+=======
+            'comm_name' => trim($_POST['comm_name']),
+            'desg' => trim($_POST['desg']),
+            'contact' => trim($_POST['contact']),
+            'city' => trim($_POST['city']),
+            'district' => trim($_POST['district']),
+            'type' => $type,
+            'id' => $id,
+            'otp_code' => $otp_code,
+            'otp_verify' => $otp_verify
+        ];
+
+        if ($this->EOrganizerModel->updateprofileeorganizer($data)) {
+            redirect('pages/profileOrganizer');
+        } else {
+            redirect('pages/editProfileOrganizer');
+>>>>>>> Stashed changes
         }
         $this->view('users/eorganizer/event_req_completed');
     }
 
+<<<<<<< Updated upstream
     public function ongoing()
+=======
+
+    public function DonationHistory()
+>>>>>>> Stashed changes
     {
         if (!isLoggedIn()) {
             redirect('users/login');
         }
+<<<<<<< Updated upstream
         $this->view('users/eorganizer/event_req_ongoing');
     }
 
@@ -164,6 +232,158 @@ class EOrganizer extends Controller
                 'proof_size' => $_FILES['proof']['size'],
                 'proof_temp_name' => $_FILES['proof']['tmp_name'],
 
+=======
+        $user_ID = $_SESSION['user_id'];
+        $data = $this->EOrganizerModel->getDonationHistory($user_ID);
+        $this->view('users/eorganizer/donation_history', $data);
+    }
+
+    public function DonationReq()
+    {
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $this->view('users/eorganizer/donation_requests');
+    }
+
+    public function EventDetails($status)
+    {
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $id = $_SESSION['user_id'];
+        $data['donation_req'] = $this->EOrganizerModel->getEvents($id, $status);
+        switch ($status) {
+            case '0':
+                $data['status'] = 'Pending Events';
+                break;
+            case '1':
+                $data['status'] = 'Ongoing Events';
+                break;
+            case '2':
+                $data['status'] = 'Rejected Events';
+                break;
+            case '3':
+                $data['status'] = 'Completed Events';
+                break;
+        }
+        $this->view('users/eorganizer/event_details', $data);
+    }
+
+    public function EventDetailsFull($id)
+    {
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $data = array();
+        $data = $this->EOrganizerModel->getEvent($id);
+        //make the data array
+
+        $this->view('users/eorganizer/event_details_more', $data);
+    }
+
+    public function Reports()
+    {
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $this->view('users/eorganizer/reports');
+    }
+
+    public function stats()
+    {
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $this->view('users/eorganizer/stats');
+    }
+
+    public function Sponserships()
+    {
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $this->view('users/eorganizer/sponserships');
+    }
+
+    public function rejected()
+    {
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $this->view('users/eorganizer/event_req_rejected');
+    }
+
+    public function completed()
+    {
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $this->view('users/eorganizer/event_req_completed');
+    }
+
+    public function ongoing()
+    {
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $this->view('users/eorganizer/event_req_ongoing');
+    }
+
+
+    //add a new Event
+    public function Addevent()
+    {
+
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $id = $_SESSION['user_id'];
+
+            $data = [
+                // 'id' => $id,
+                'title' => trim($_POST['title']),
+                'ammount' => trim($_POST['ammount']),
+                'description' => trim($_POST['description']),
+                'city' => trim($_POST['city']),
+                'duedate' => trim($_POST['duedate']),
+                'accountno' => trim($_POST['accountno']),
+                'bankname' => trim($_POST['bankname']),
+                'event_org_id' => $_SESSION['user_id'],
+                'titleErr' => '',
+                'amountErr' => '',
+                'descriptionErr' => '',
+                'cityErr' => '',
+                'duedateErr' => '',
+                'proofErr' => '',
+                'passbookErr' => '',
+                'thumbErr' => '',
+                'user_idErr' => '',
+                'accnumberErr' => '',
+                'banknameErr' => '',
+                //  'categories' => $categories,
+                'user_id' => $id
+            ];
+
+            $file = [
+                'thumb_name' => $_FILES['thumb']['name'],
+                'thumb_type' => $_FILES['thumb']['type'],
+                'thumb_size' => $_FILES['thumb']['size'],
+                'thumb_temp_name' => $_FILES['thumb']['tmp_name'],
+
+                'passbook_name' => $_FILES['passbook']['name'],
+                'passbook_type' => $_FILES['passbook']['type'],
+                'passbook_size' => $_FILES['passbook']['size'],
+                'passbook_temp_name' => $_FILES['passbook']['tmp_name'],
+
+                'proof_name' => $_FILES['proof']['name'],
+                'proof_type' => $_FILES['proof']['type'],
+                'proof_size' => $_FILES['proof']['size'],
+                'proof_temp_name' => $_FILES['proof']['tmp_name'],
+
+>>>>>>> Stashed changes
                 'thumb_upload_to' => PUBROOT . '\public\img\uploads\thumb\\',
                 'passbookb_upload_to' => PUBROOT . '\public\img\uploads\passbook\\',
                 'proof_upload_to' => PUBROOT . '\public\img\uploads\proof\\'
@@ -219,8 +439,12 @@ class EOrganizer extends Controller
                 // Validated
 
                 if ($this->EOrganizerModel->addevent($data, $file)) {
+<<<<<<< Updated upstream
                     //  redirect('EOrganizer/');
                     $this->view('users/eorganizer/create_events', $data);
+=======
+                    redirect('EOrganizer/EventDetails/0');
+>>>>>>> Stashed changes
                 } else {
                     die('Something went wrong');
                 }
@@ -269,8 +493,13 @@ class EOrganizer extends Controller
 
             $this->view('users/eorganizer/create_events', $data);
         }
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes
     }
 }
 
     
+=======
+    }
+}
+>>>>>>> Stashed changes
