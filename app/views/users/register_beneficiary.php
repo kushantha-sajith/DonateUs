@@ -33,7 +33,7 @@
                     <!-- Individual Details -------------------------------------------------------------------------------------------------------------------------->
                     <div id="Individual" class="tabcontent">
                     <table>
-                    <form action="<?php echo URLROOT; ?>/users/registerBeneficiary/ind" method="POST" autocomplete="off">
+                    <form action="<?php echo URLROOT; ?>/users/registerBeneficiary/ind" method="POST" autocomplete="off" enctype="multipart/form-data">
                         <tr><td>
                             <label>User email</label>
                             <input type="text" id="email_ind" name="email_ind" placeholder="ex: abc@gmail.com" value="<?php echo $data['email_ind']; ?>"></td>
@@ -68,31 +68,33 @@
                             <label>Contact Number</label>
                             <input type="text" id="contact_ind" name="contact_ind" placeholder="ex: +94712345678" value="<?php echo $data['contact_ind']; ?>"></td>
                             <td>
-                            <label>City</label>
-                            <input type="text" id="city_ind" name="city_ind" placeholder="ex: Colombo" value="<?php echo $data['city_ind']; ?>"></td>
+                            <label>Zip code</label>
+                            <input type="text" id="zipcode_ind" name="zipcode_ind" placeholder="ex: Colombo" value="<?php echo $data['zipcode_ind']; ?>"></td>
                         </tr>
                         <tr>
                             <td><p class="error"><?php echo $data['contact_err_ind']; ?></p></td>
-                            <td><p class="error"><?php echo $data['city_err_ind']; ?></p></td>
+                            <td><p class="error"><?php echo $data['zipcode_err_ind']; ?></p></td>
                         </tr>
                         
                         <tr><td>
                             <label>District</label>
                             <select class="dropdown" name="district_ind" id="district_ind">
                             <?php foreach($data['districts'] as $districts) : ?>
-                                <option <?php if($districts->id==$data['district_ind']) {echo "selected";} ?> value="<?php echo $districts->id; ?>"><?php echo $districts->dist_name; ?></option>
+                                <option value="<?php if($districts->id==$data['district_ind']) {echo "selected";}; ?>"><?php echo $districts->dist_name	; ?></option>
                             <?php endforeach; ?>
 
                             </select></td>
-                            <td></td>
+                            <td>
+                            <label>Address</label>
+                            <input type="text" id="add_ind" name="add_ind" placeholder="ex:21 Street, Colombo 5" value="<?php echo $data['add_ind']; ?>"></td>
                             </tr>
                             <tr>
                             <td><p class="error"><?php echo $data['district_err_ind']; ?></p></td>
-                            <td></td>
+                            <td><p class="error"><?php echo $data['add_err_ind']; ?></p></td>
                         </tr>
 
                         <tr><td>
-                            <!-- <form action="/beneficiary/upload" method="post" enctype="multipart/form-data"> -->
+                            
                             <label>Proof of Identity</label>
                            
                             <div class="tooltip">
@@ -113,7 +115,7 @@
 
                             <tr><td><p class="error"><?php echo $data['address_err_ind']; ?></p></td>
                         <td><p class="error"><?php echo $data['identity_err_ind']; ?></p></td></tr>
-                        <!-- </form>   -->
+                       
                         </tr>
                        
                        
@@ -121,8 +123,8 @@
                             <td  colspan="2"><input class="btnsubmit" type="submit" value="Register"></td>
                         </tr>
                         <tr >
-                            <td class="btnsubmit" ><input type="submit" value="Register as a Beneficiary"></td>
-                            <td class="btnsubmit" ><input type="submit" value="Register as an Event Organizer"></td>
+                        <td ><a href="<?php echo URLROOT; ?>/users/registerDonor/gen"><input type="button" value="Register as a Donor" ></a></td>
+                        <td ><a href="<?php echo URLROOT; ?>/users/registerOrganizer"><input type="button" value="Register as an Event Organizer" ></a></td> 
                         </tr>
                         </form>
                         
@@ -136,7 +138,7 @@
 
                     <div id="Organization" class="tabcontent">
                     <table>
-                    <form action="<?php echo URLROOT; ?>/users/registerBeneficiary/org" method="POST" autocomplete="off">
+                    <form action="<?php echo URLROOT; ?>/users/registerBeneficiary/org" method="POST" autocomplete="off" enctype="multipart/form-data">
                         <tr><td colspan="2"><label><b>- Organization Details -</b></label></td></tr>
                         <tr><td>
                             <label>Email Address</label>
@@ -155,27 +157,41 @@
                         </tr>
                         <tr><td><p class="error"><?php echo $data['password_err']; ?></p></td>
                         <td><p class="error"><?php echo $data['confirm_password_err']; ?></p></td></tr>
-                        <tr><td>
-                            <label>City</label>
-                            <input type="text" id="city" name="city" placeholder="ex: Colombo"  value="<?php echo $data['city']; ?>"></td>
+                        <tr>
+                            <td>
+                            <label>Organization Type</label>
+                            <select class="dropdown" name="orgtype" id="orgtype">
+                            <?php foreach($data['orgtype'] as $orgtype) : ?>
+                                <option value="<?php if($orgtype->id==$data['orgtype']) {echo "selected";}; ?>"><?php echo $orgtype->org_type	; ?></option>
+                            <?php endforeach; ?>
+                            </select></td>
+
                             <td>
                             <label>District</label>
                             <select class="dropdown" name="district" id="district">
                             <?php foreach($data['districts'] as $districts) : ?>
-                                <option value="<?php echo $districts->id; ?>"><?php echo $districts->dist_name	; ?></option>
+                                <option value="<?php if($districts->id==$data['district']) {echo "selected";}; ?>"><?php echo $districts->dist_name	; ?></option>
                             <?php endforeach; ?>
-                            </select>
-                        </tr>
+                          </select></td>
+                        </tr>                  
 
-                        <tr><td><p class="error"><?php echo $data['city_err']; ?></p></td>
+                        <tr><td><p class="error"><?php echo $data['orgtype_err']; ?></p></td>
                         <td><p class="error"><?php echo $data['district_err']; ?></p></td></tr>
 
-                        <tr><td>
-                            <label>Organization Type</label>
-                            <input type="text" id="orgtype" name="orgtype" placeholder="elders home" value="<?php echo $data['orgtype']; ?>"></td>
+
+
+                        <tr>
+                            <td>
+                            <label>Zip code</label>
+                            <input type="text" id="zipcode" name="zipcode" placeholder="ex: Colombo"  value="<?php echo $data['zipcode']; ?>"></td>
+                            
+                           <td><label>Address</label>
+                            <input type="text" id="add" name="add" placeholder="ex:21 Street, Colombo 5" value="<?php echo $data['add']; ?>"></td>
                             
                         </tr>
-                        <tr><td><p class="error"><?php echo $data['orgtype_err']; ?></p></td>
+                        <tr><td><p class="error"><?php echo $data['zipcode_err']; ?></p></td>
+                        <td><p class="error"><?php echo $data['add_err']; ?></p></td>
+
                         </tr>
 
                        
@@ -195,14 +211,15 @@
                                 <span class="tooltiptext">Any accepptable document of pdf format. <br> ex: Utility bill, Posted Mail with name of applicant  </span>
                             </div>
                             <tr>
-                                <td><input type="file" id="address" name="address"  accept=".pdf"<?php echo $data['address']; ?>></td></td>
-                                <td><input type="file" id="identity" name="identity"  accept=".pdf" <?php echo $data['identity']; ?>></td></td>
+                                <td><input type="file" id="address" name="address"  value="<?php echo $data['address']; ?>"></td>
+                                <td><input type="file" id="identity" name="identity"  value="<?php echo $data['identity']; ?>"></td>
                             </tr>
 
                             <tr><td><p class="error"><?php echo $data['address_err']; ?></p></td>
                         <td><p class="error"><?php echo $data['identity_err']; ?></p></td></tr>
                             
                         </tr>
+
                         <tr><td colspan="2"><label><b>- Contact Person Details -</b></label></td></tr>
                         <tr><td>
                             <label>Full Name</label>
@@ -228,8 +245,8 @@
                             <td colspan="2"><input type="submit" value="Register"></td>
                         </tr>
                         <tr>
-                            <td ><input type="submit" value="Register as a Beneficiary"></td>
-                            <td ><input type="submit" value="Register as an Event Organizer"></td>
+                        <td ><a href="<?php echo URLROOT; ?>/users/registerDonor/gen"><input type="button" value="Register as a Donor" ></a></td>
+                            <td ><a href="<?php echo URLROOT; ?>/users/registerOrganizer"><input type="button" value="Register as an Event Organizer" ></a></td>
                         </tr>
                         </form>
                        

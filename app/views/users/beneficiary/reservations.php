@@ -48,12 +48,11 @@
 
 <table class="main-table">
 <thead>
-            <!-- <th style="text-align:left;"><span>ID</span></th> -->
-            <th style="text-align:left;"><span>Donor Name</span></th>
+            
             <th style="text-align:left;"><span>Meal Count</span></th>
-            <th style="text-align:left;"><span>Reservation Date</span></th>
             <th style="text-align:left;"><span>Reserved Date</span></th>
-            <!-- <th style="text-align:left;"><span>Meal Time</span></th>  -->
+            <th style="text-align:left;"><span>Reserved Month</span></th>
+            <th style="text-align:left;"><span>Meal Time</span></th>
             <th style="text-align:left;"></th>
             <th style="text-align:left;"></th>
 </thead>
@@ -64,13 +63,18 @@
                               
     <?php foreach($data['reservations'] as $reservations): ?>
 
-        <td style="text-align:left;"><?php echo $reservations->name; ?></td> 
-        <td style="text-align:left;"><?php echo $reservations->meal; ?></td>
-        <td style="text-align:left;"><?php echo $reservations->time_stamp; ?></td>
+        <td style="text-align:left;"><?php echo $reservations->amount; ?></td>
         <td style="text-align:left;"><?php echo $reservations->date; ?></td>
-        <!-- <td style="text-align:left;"><?php echo $reservations->meal; ?></td> -->
-        <td style="text-align:left;"><a href="<?php echo URLROOT; ?>/beneficiary/approveReservation/" class="btn-edit">Accept</a></td>
-        <td style="text-align:left;"><a href="<?php echo URLROOT; ?>/beneficiary/rejectReservation/" class="btn-edit">Reject</a></td>
+        <td style="text-align:left;"><?php echo $reservations->month; ?></td>
+        <?php if($reservations->meal == 1){ ?>
+        <td style="text-align:left;">Breakfast</td> 
+        <?php   } elseif($reservations->meal == 2){?>
+        <td style="text-align:left;">Lunch</td>
+        <?php } else{ ?>
+        <td style="text-align:left;">Dinner</td> 
+        <?php } ?>     
+        <td style="text-align:left;"><a href="<?php echo URLROOT; ?>/beneficiary/approveReservation/<?php echo $reservations->id;  ?>" class="btn-edit">Accept</a></td>
+        <td style="text-align:left;"><a href="<?php echo URLROOT; ?>/beneficiary/rejectReservation/<?php echo $reservations->id;  ?>" class="btn-edit">Reject</a></td>
 
     </tr>
     

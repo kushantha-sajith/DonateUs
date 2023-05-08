@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Donation Requests></title>
+    <title>Financial Donation Request</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donation_req.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/add_donation_req.css" />
     <!-- <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" /> -->
@@ -42,7 +42,7 @@
             <div class="container">
                 <header>Donation Request</header>
 
-                <form method="post" action="<?php echo URLROOT; ?>/beneficiary/addFinancialRequest">
+                <form method="post" action="<?php echo URLROOT; ?>/beneficiary/addFinancialRequest" enctype="multipart/form-data">
                     <div class="formfirst">
                         <div class="details personal">
                             <div class="fields">
@@ -89,21 +89,12 @@
                                     <span class="error"><?php echo $data['contactErr']; ?></span>
                                 </div>
 
-                                <!-- <div class="input-field">
-                                    <label>Donation Type </label>
-                                    <select>
-                                        <option disabled selected>Select Donation Type</option>
-                                        <option>Financial</option>
-                                        <option>Foods</option>
-                                        <option>Stationaries</option>
-                                    </select>
-                                </div> -->
 
                                 <div class="input-field">
-                                    <label>Location / City </label>
+                                    <label>Zip Code</label>
                                     <!-- <input type="text" placeholder="Location"> -->
-                                    <input type="text" placeholder="Enter city" name="city" value="<?php echo $data['city']; ?>">
-                                    <span class="error"><?php echo $data['cityErr']; ?></span>
+                                    <input type="text" placeholder="Enter code" name="zipcode" value="<?php echo $data['zipcode']; ?>">
+                                    <span class="error"><?php echo $data['zipcodeErr']; ?></span>
                                 </div>
 
                                 <div class="input-field">
@@ -113,83 +104,72 @@
                                     <span class="error"><?php echo $data['duedateErr']; ?></span>
                                 </div>
 
-
-                            </div>
-                        </div>
-
-<!-- 
-                        <span class="title"><u>Id Verification</u></span>
-
-                        <div class="ggg">
-                            <div class="photo-container">
-                                <input type="file" id="file" accept="image/*" hidden name="img1" value="<?php echo $data['img1']; ?>">
-                                <div class="img-area" data-img="">
-                                    <i class='bx bxs-cloud-upload icon'></i>
-                                    <h3>Upload Image</h3>
-                                    <p>Image size must be less than <span>2MB</span></p>
-                                </div>
-                                <button class="select-image">Select Image</button>
-                            </div>
-                            <div class="photo-container">
-                                <input type="file" id="file2" accept="image/*" hidden name="img2" value="<?php echo $data['img2']; ?>">
-                                <div class="img-area" id="area-two" data-img="">
-                                    <i class='bx bxs-cloud-upload icon'></i>
-                                    <h3>Upload Image</h3>
-                                    <p>Image size must be less than <span>2MB</span></p>
-                                </div>
-                                <button class="select-image" id="select_two">Select Image</button>
-                            </div>
-                        </div> -->
-                        <span class="title"><u>Recomondation Letter By Grama Niladari</u></span>
-                        <div class="photo-container" id="grame">
-                            <input type="file" id="file3" accept="image/*" hidden name="proof" value="<?php echo $data['proof']; ?>">
-                            <div class="img-area" id="area-three" data-img="">
-                                <i class='bx bxs-cloud-upload icon'></i>
-                                <h3>Upload Image</h3>
-                                <p>Image size must be less than <span>2MB</span></p>
-                            </div>
-                            <!-- <button class="select-image" id="select_three">Select Image</button> -->
-                        </div>
-
-                        <span class="title"><u>Bank Pass Book</u></span>
-                        <div class="photo-container" id="grame">
-                            <input type="file" id="file3" accept="image/*" hidden name="passbook" value="<?php echo $data['passbook']; ?>">
-                            <div class="img-area" id="area-three" data-img="">
-                                <i class='bx bxs-cloud-upload icon'></i>
-                                <h3>Upload Image</h3>
-                                <p>Image size must be less than <span>2MB</span></p>
-                            </div>
-                            <!-- <button class="select-image" id="select_three">Select Image</button> -->
-                        </div>
-
-                        <div class="input-field">
+                                <div class="input-field">
                                 <label>Bank Account Number </label>
                                 <!-- <input type="text" placeholder="Location"> -->
                                 <input type="text" placeholder="Enter bank account number" name="accnumber" value="<?php echo $data['accnumber']; ?>">
                                 <span class="error"><?php echo $data['accnumberErr']; ?></span>
-                        </div>
+                                 </div>
 
-                        <div class="input-field">
+                                 <div class="input-field">
                                 <label>Bank Name </label>
                                 <!-- <input type="text" placeholder="Location"> -->
                                 <input type="text" placeholder="Enter Bank Name" name="bankname" value="<?php echo $data['bankname']; ?>">
                                 <span class="error"><?php echo $data['banknameErr']; ?></span>
+                                </div>
+
+                               
+                            </div>
                         </div>
 
-                        <!-- <div class="flex">
-                            <button class="abc">Accept</button>
-                        <button class="abc">Reject</button> -->
+                        <span class="title"><u>Identity Proof</u></span>
+                                <div class="photo-container" id="grame">
+                            <input type="file" id="proof" name="proof" value="<?php echo $data['proof']; ?>">
+                            <!-- <div class="img-area" id="area-three" data-img="">
+                                <i class='bx bxs-cloud-upload icon'></i>
+                                <h3>Upload Image</h3>
+                                <p>Image size must be less than <span>2MB</span></p>
+                            </div> -->
+                            <!-- <button class="select-image" id="select_three">Select Image</button> -->
+                            <span class="error"><?php echo $data['proofErr']; ?></span>
+
+                        </div>
+
+                        <span class="title"><u>Bank Pass Book</u></span>
+                        <div class="photo-container" id="grame">
+                            <input type="file" id="passbook" name="passbook" value="<?php echo $data['passbook']; ?>">
+                            <!-- <div class="img-area" id="area-three" data-img="">
+                                <i class='bx bxs-cloud-upload icon'></i>
+                                <h3>Upload Image</h3>
+                                <p>Image size must be less than <span>2MB</span></p>
+                            </div> -->
+                            <!-- <button class="select-image" id="select_three">Select Image</button> -->
+                            <span class="error"><?php echo $data['passbookErr']; ?></span>
+
+                        </div>
+
+                        <span class="title"><u>Thumbnail</u></span>
+                        <div class="photo-container" id="grame">
+                            <input type="file" id="file4" name="thumbnail" value="<?php echo $data['thumbnail']; ?>">
+                            <!-- <div class="img-area" id="area-three" data-img="">
+                                <i class='bx bxs-cloud-upload icon'></i>
+                                <h3>Upload Image</h3>
+                                <p>Image size must be less than <span>2MB</span></p>
+                            </div> -->
+                            <span class="error"><?php echo $data['thumbnailErr']; ?></span>
+                            
+                        </div>
+
 
                         </div>
                         <div>
-                          <!-- <a href="<?php echo URLROOT; ?>/beneficiary/addRequest">  -->
+
                           <input type="submit" value="submit" class="btn add">
                           </a>
                         </div>
 
                     </div>
-                     <!-- <input type="submit" name="submit" value="Submit" class="btn1 add">  -->
-                     
+              
 
                 </form>
             </div>

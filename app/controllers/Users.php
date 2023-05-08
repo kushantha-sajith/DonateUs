@@ -3,6 +3,7 @@
 use helpers\Email;
 use helpers\NIC_Validator;
 
+
 class Users extends Controller
 {
     /**
@@ -386,8 +387,10 @@ class Users extends Controller
      */
     public function registerBeneficiary($type)
     {
+    
         $type1 = "ind";
         $districts = $this->userModel->getDistricts();
+        $orgtype = $this->userModel->getOrgType();
 
         // Check for POST
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -410,16 +413,22 @@ class Users extends Controller
                     'fname' => trim($_POST['fname']),
                     'lname' => trim($_POST['lname']),
                     'contact_ind' => trim($_POST['contact_ind']),
-                    'city_ind' => trim($_POST['city_ind']),
+                    'zipcode_ind' => trim($_POST['zipcode_ind']),
                     'district_ind' => trim($_POST['district_ind']),
-                    'identity_ind' => trim($_POST['identity_ind']),
-                    'address_ind' => trim($_POST['address_ind']),
+                    // 'identity_ind' => trim($_POST['identity_ind']),
+                    // 'address_ind' => trim($_POST['address_ind']),
+                    'identity_ind' => $_FILES['identity_ind'],
+                    'address_ind' => $_FILES['address_ind'],
+                    'add_ind' => trim($_POST['add_ind']),
                     'otp_verify' => $otp_verify,
                     'otp_code' => $otp_code,
                     'verification_status' => $verification_status,
                     'districts' => $districts,
+                    'orgtype' => $orgtype,
                     'prof_img' => 'img_profile.png',
                     'acc_status' => '1',
+                    // 'address_ind' => '',
+                    // 'identity_ind' => '',
                     'email_err_ind' => '',
                     'nic_err' => '',
                     'password_err_ind' => '',
@@ -427,11 +436,12 @@ class Users extends Controller
                     'fname_err_ind' => '',
                     'lname_err_ind' => '',
                     'contact_err_ind' => '',
-                    'city_err_ind' => '',
+                    'zipcode_err_ind' => '',
                     'district_err_ind' => '',
                     'identity_err_ind' => '',
                     'address_err_ind' => '',
-                    'city' => '',
+                    'add_err_ind' => '',
+                    'zipcode' => '',
                     'district' => '',
                     'email' => '',
                     'compname' => '',
@@ -443,6 +453,7 @@ class Users extends Controller
                     'desg' => '',
                     'contact' => '',
                     'address' => '',
+                    'add' => '',
                     'identity' => '',
                     'email_err' => '',
                     'password_err' => '',
@@ -452,9 +463,10 @@ class Users extends Controller
                     'fullname_err' => '',
                     'desg_err' => '',
                     'empid_err' => '',
-                    'city_err' => '',
+                    'zipcode_err' => '',
                     'orgtype_err' => '',
                     'address_err' => '',
+                    'add_err' => '',
                     'identity_err' => '',
                     'district_err' => '',
                     'tab' => 'Individual'
@@ -530,22 +542,87 @@ class Users extends Controller
                         $error = true;
                     }
                 }
-                if (empty($data['city_ind'])) {
-                    $data['city_err_ind'] = 'Required';
+                if (empty($data['zipcode_ind'])) {
+                    $data['zipcode_err_ind'] = 'Required';
                     $error = true;
                 }
                 if (($data['district_ind']) == 1) {
                     $data['district_err_ind'] = 'Required';
                     $error = true;
-                }
-                if (empty($data['identity_ind'])) {
-                    $data['identity_err_ind'] = 'Required';
+                }  
+
+                if (empty($data['add_ind'])) {
+                    $data['add_err_ind'] = 'Required';
                     $error = true;
                 }
-                if (empty($data['address_ind'])) {
-                    $data['address_err_ind'] = 'Required';
-                    $error = true;
+
+                //validate address
+                if (!empty($_FILES['address_ind']['name'])) {
+                    $img_name = $_FILES['address_ind']['name'];
+                    $img_size = $_FILES['address_ind']['size'];
+                    $tmp_name = $_FILES['address_ind']['tmp_name'];
+                    $error = $_FILES['address_ind']['error'];
+
+                    if ($error === 0) {
+                        if ($img_size > 200000) {
+                            $data['address_ind_err'] = "Sorry, your first image is too large.";
+                        } else {
+                            $img_ex = pathinfo($img_name, PATHINFO_EXTENSION); //Extension type of image(jpg,png)
+                            $img_ex_lc = strtolower($img_ex);
+
+                            $allowed_exs = array("jpg", "jpeg", "png", "pdf");
+
+                            if (in_array($img_ex_lc, $allowed_exs)) {
+                                $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
+                                $img_upload_path = dirname(APPROOT) . '/public/uploads/' . $new_img_name;
+                                move_uploaded_file($tmp_name, $img_upload_path);
+                                $data['address_ind'] = $new_img_name;
+                            } else {
+                                $data['address_ind_err'] = "You can't upload files of this type";
+                            }
+                        }
+                    } else {
+                        $data['address_ind_err'] = "Unknown error occurred!";
+                    }
+                } else {
+                    $data['address_ind_err'] = 'Please upload at least one image';
                 }
+
+
+                //validate identity
+                if (!empty($_FILES['identity_ind']['name'])) {
+                    $img_name = $_FILES['identity_ind']['name'];
+                    $img_size = $_FILES['identity_ind']['size'];
+                    $tmp_name = $_FILES['identity_ind']['tmp_name'];
+                    $error = $_FILES['identity_ind']['error'];
+
+                    if ($error === 0) {
+                        if ($img_size > 200000) {
+                            $data['identity_ind_err'] = "Sorry, your first image is too large.";
+                        } else {
+                            $img_ex = pathinfo($img_name, PATHINFO_EXTENSION); //Extension type of image(jpg,png)
+                            $img_ex_lc = strtolower($img_ex);
+
+                            $allowed_exs = array("jpg", "jpeg", "png", "pdf");
+
+                            if (in_array($img_ex_lc, $allowed_exs)) {
+                                $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
+                                $img_upload_path = dirname(APPROOT) . '/public/uploads/' . $new_img_name;
+                                move_uploaded_file($tmp_name, $img_upload_path);
+                                $data['identity_ind'] = $new_img_name;
+                            } else {
+                                $data['identity_ind_err'] = "You can't upload files of this type";
+                            }
+                        }
+                    } else {
+                        $data['identity_ind_err'] = "Unknown error occurred!";
+                    }
+                } else {
+                    $data['identity_ind_err'] = 'Please upload at least one image';
+                }
+
+
+
                 // Make sure errors are empty
                 if (!$error) {
                     // Validated
@@ -572,15 +649,18 @@ class Users extends Controller
                     'compname' => trim($_POST['compname']),
                     'password' => trim($_POST['password']),
                     'confirm_password' => trim($_POST['confirm_password']),
-                    'city' => trim($_POST['city']),
+                    'zipcode' => trim($_POST['zipcode']),
                     'district' => trim($_POST['district']),
                     'orgtype' => trim($_POST['orgtype']),
                     'fullname' => trim($_POST['fullname']),
                     'empid' => trim($_POST['empid']),
                     'desg' => trim($_POST['desg']),
                     'contact' => trim($_POST['contact']),
-                    'identity' => trim($_POST['identity']),
+                    'add' => trim($_POST['add']),
                     'address' => trim($_POST['address']),
+                    'identity' => trim($_POST['identity']),
+                    // 'orgtype' => $_FILES['orgtype'],
+                    // 'identity' => $_FILES['identity'],
                     'user_type' => 'corporate_donor',
                     'email_err' => '',
                     'password_err' => '',
@@ -590,11 +670,12 @@ class Users extends Controller
                     'fullname_err' => '',
                     'desg_err' => '',
                     'empid_err' => '',
-                    'city_err' => '',
+                    'zipcode_err' => '',
                     'district_err' => '',
                     'address_err' => '',
                     'identity_err' => '',
                     'orgtype_err' => '',
+                    'add_err' => '',
                     'email_ind' => '',
                     'nic' => '',
                     'password_ind' => '',
@@ -602,14 +683,16 @@ class Users extends Controller
                     'fname' => '',
                     'lname' => '',
                     'contact_ind' => '',
-                    'city_ind' => '',
+                    'zipcode_ind' => '',
                     'district_ind' => '',
                     'identity_ind' => '',
                     'address_ind' => '',
+                    'add_ind' => '',
                     'otp_verify' => $otp_verify,
                     'otp_code' => $otp_code,
                     'verification_status' => $verification_status,
                     'districts' => $districts,
+                    'orgtype' => $orgtype,
                     'prof_img' => 'img_profile.png',
                     'acc_status' => '1',
                     'email_err_ind' => '',
@@ -620,9 +703,10 @@ class Users extends Controller
                     'fname_err_ind' => '',
                     'lname_err_ind' => '',
                     'contact_err_ind' => '',
-                    'city_err_ind' => '',
+                    'zipcode_err_ind' => '',
                     'identity_err_ind' => '',
                     'address_err_ind' => '',
+                    'add_err_ind' => '',
                     'tab' => 'Organization'
                 ];
 
@@ -687,22 +771,22 @@ class Users extends Controller
                     $data['empid_err'] = 'Required';
                     $error = true;
                 }
-                if (empty($data['city'])) {
-                    $data['city_err'] = 'Required';
+                if (empty($data['zipcode'])) {
+                    $data['zipcode_err'] = 'Required';
+                    $error = true;
+                }
+
+                if (empty($data['add'])) {
+                    $data['add_err'] = 'Required';
                     $error = true;
                 }
                 if (($data['district']) == 1) {
                     $data['district_err'] = 'Required';
                     $error = true;
                 }
-                if (empty($data['identity'])) {
-                    $data['identity_err'] = 'Required';
-                    $error = true;
-                }
-                if (empty($data['address'])) {
-                    $data['address_err'] = 'Required';
-                    $error = true;
-                }
+                     
+
+                            
                 if (empty($data['orgtype'])) {
                     $data['orgtype_err'] = 'Required';
                     $error = true;
@@ -737,10 +821,11 @@ class Users extends Controller
                 'fname' => '',
                 'lname' => '',
                 'contact_ind' => '',
-                'city_ind' => '',
+                'zipcode_ind' => '',
                 'district_ind' => '0',
                 'identity_ind' => '',
                 'address_ind' => '',
+                'add_ind' => '',
                 'email_err_ind' => '',
                 'nic_err' => '',
                 'password_err_ind' => '',
@@ -754,10 +839,11 @@ class Users extends Controller
                 'empid' => '',
                 'desg' => '',
                 'contact' => '',
-                'city' => '',
+                'zipcode' => '',
                 'district' => '0',
                 'orgtype' => '',
                 'address' => '',
+                'add' => '',
                 'identity' => '',
                 'email_err' => '',
                 'nic_err' => '',
@@ -766,21 +852,24 @@ class Users extends Controller
                 'fname_err_ind' => '',
                 'lname_err_ind' => '',
                 'contact_err_ind' => '',
-                'city_err_ind' => '',
+                'zipcode_err_ind' => '',
                 'district_err_ind' => '',
                 'identity_err_ind' => '',
                 'address_err_ind' => '',
-                'city_err' => '',
+                'add_err_ind' => '',
+                'zipcode_err' => '',
                 'district_err' => '',
                 'orgtype_err' => '',
                 'identity_err' => '',
                 'address_err' => '',
+                'add_err' => '',
                 'contact_err' => '',
                 'cname_err' => '',
                 'fullname_err' => '',
                 'desg_err' => '',
                 'empid_err' => '',
                 'districts' => $districts,
+                'orgtype' => $orgtype,
                 'tab' => 'Individual'
             ];
 
@@ -788,6 +877,7 @@ class Users extends Controller
             $this->view('users/register_beneficiary', $data);
         }
     }
+
 
     /**
      * @return void
@@ -1015,11 +1105,12 @@ class Users extends Controller
                 // Validated
                 // Check and set logged-in user
                 $loggedInUser = $this->userModel->login($data['email'], $data['password']);
-
+                                       
                 if ($loggedInUser) {
                     // Create Session
                     $this->createUserSession($loggedInUser);
-                } else {
+                }               
+                else{
                     $data['password_err'] = 'Password incorrect';
 
                     $this->view('users/login', $data);
@@ -1040,6 +1131,20 @@ class Users extends Controller
             $this->view('users/login', $data);
         }
     }
+
+
+    // public function createFirstLogin()
+    // {
+    //     if (!isLoggedIn()) {
+    //         redirect('users/login');
+    //     }
+    //     $this->view('users/beneficiary/first_login');
+    // }
+
+
+  
+
+
 
     //otp verification
 
@@ -1069,7 +1174,15 @@ class Users extends Controller
                         redirect('pages/beneficiary');
                         break;
                     case 5:
-                        redirect('pages/beneficiary');
+                         // Check if the user has logged in before
+                            $org_ben = $this->userModel->getFirstLogin($_SESSION['user_id']);
+
+                            if ($org_ben == 0) {
+                                redirect('users/createFirstLogin');
+                            } else {
+                                // If not zero you can login
+                                redirect('pages/beneficiary');
+                            }
                         break;
                     case 6:
                         redirect('pages/organizer');
@@ -1085,6 +1198,108 @@ class Users extends Controller
             redirect('pages/processing');
         }
     }
+
+    public function createFirstLogin()
+    {
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $this->view('users/beneficiary/first_login');
+    }
+
+
+    public function addReservationDetails()
+    {
+
+        // Check for POST
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            
+            // $user_id = $this->userModel->getRequests($id);
+            // $user = $this->userModel->findUserByUserId($_SESSION['user_id']);
+            $id =  $_SESSION['user_id'];
+
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $data = [
+                // 'user' => $user,
+                'members' => trim($_POST['members']),
+                'reservation_description' => trim($_POST['reservation_description']),
+                'meal_plan' => $_FILES['meal_plan'],
+                'meal_planErr' => '',
+                'id'=>$id
+               
+                
+            ];
+
+            //validate thumbnail
+            if (!empty($_FILES['meal_plan']['name'])) {
+                $img_name = $_FILES['meal_plan']['name'];
+                $img_size = $_FILES['meal_plan']['size'];
+                $tmp_name = $_FILES['meal_plan']['tmp_name'];
+                $error = $_FILES['meal_plan']['error'];
+
+                if ($error === 0) {
+                    if ($img_size > 200000) {
+                        $data['meal_planErr'] = "Sorry, your first image is too large.";
+                    } else {
+                        $img_ex = pathinfo($img_name, PATHINFO_EXTENSION); //Extension type of image(jpg,png)
+                        $img_ex_lc = strtolower($img_ex);
+
+                        $allowed_exs = array("jpg", "jpeg", "png", "pdf");
+
+                        if (in_array($img_ex_lc, $allowed_exs)) {
+                            $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
+                            $img_upload_path = dirname(APPROOT) . '/public/uploads/' . $new_img_name;
+                            move_uploaded_file($tmp_name, $img_upload_path);
+                            $data['meal_plan'] = $new_img_name;
+                        } else {
+                            $data['meal_planErr'] = "You can't upload files of this type";
+                        }
+                    }
+                } else {
+                    $data['meal_planErr'] = "Unknown error occurred!";
+                }
+            } else {
+                $data['meal_planErr'] = 'Please upload at least one image';
+            }
+            if(empty($data['meal_planErr'])){
+
+            if($this->userModel->addReservationDetails($data,$id)){
+                // flash('category_message', 'Category Added');
+                redirect('pages/beneficiary');
+            } else {
+                die('Something went wrong');
+            }    
+        }    
+            
+        } else {
+            $data = [
+                'members' => '',
+                'reservation_description' => '',
+                'meal_plan' => '',
+                'meal_planErr' =>''
+                // 'id'=>$id
+
+                // 'field' => $field
+            ];
+
+            $this->view('users/beneficiary/reservation_details', $data);
+
+        }
+    }
+
+
+
+//         public function noneedReservation(){
+//         if($this->userModel->noneedReservation()){
+//             $loggedInUser = $this->userModel->login($data['email'], $data['password']);
+//             $this->createUserSession($loggedInUser);
+
+//             // redirect('admin/categories');
+//         } else {
+//             die('Something went wrong');
+//         }
+// }
 
     /**
      * @return void

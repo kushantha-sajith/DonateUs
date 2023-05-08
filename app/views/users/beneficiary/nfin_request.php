@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Donation Requests></title>
+    <title>Non Financial Donation Request</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donation_req.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/add_donation_req.css" />
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/styles.css" />
+    <!-- <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/styles.css" /> -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet"
@@ -41,126 +41,125 @@
         <main>
             <div class="container">
                 <header>Donation Request</header>
+            <?php  foreach($data['nfinancials'] as $nfinancials ):  ?>
 
-                <form method="post" action="<?php echo URLROOT; ?>/beneficiary/addNonFinancialRequest">
+                <form method="post" action="<?php echo URLROOT; ?>/beneficiary/updateNonFinancialRequest/<?php echo $nfinancials->id;  ?>" enctype="multipart/form-data">
                     <div class="formfirst">
                         <div class="details personal">
                             <div class="fields">
+
                                 <div class="input-field">
                                     <label>Request Title </label>
                                     
-                                    <input type="text" placeholder="Enter Request Title" name="title" value="<?php echo $data['title']; ?>">
-                                    <span class="error"><?php echo $data['titleErr']; ?></span>
+                                    <input type="text" placeholder="Enter Request Title" name="title" value="<?php echo $nfinancials->request_title; ?>">
+                                    <!-- <span class="error"><?php echo $data['titleErr']; ?></span> -->
+
                                 </div>
                                 <div class="input-field">
                                     <label>Beneficiary Name</label>
                                     
-                                    <input type="text" placeholder="Enter Beneficiary Name" name="name" value="<?php echo $data['name']; ?>">
-                                    <span class="error"><?php echo $data['nameErr']; ?></span>
+                                    <input type="text" placeholder="Enter Beneficiary Name" name="name" value="<?php echo $nfinancials->name; ?>">
+                                    <!-- <span class="error"><?php echo $data['nameErr']; ?></span> -->
+
                                 </div>
 
                                 <div class="input-field">
                                     <label>National ID Number</label>
                             
-                                    <input type="text" placeholder="Enter NIC" name="NIC" value="<?php echo $data['NIC']; ?>">
-                                    <span class="error"><?php echo $data['NICErr']; ?></span>
+                                    <input type="text" placeholder="Enter NIC" name="NIC" value="<?php echo $nfinancials->NIC; ?>">
+                                    <!-- <span class="error"><?php echo $data['NICErr']; ?></span> -->
+
                                 </div>
 
 
                                 <div class="input-field">
                                     <label>Quantity </label>
                                     
-                                    <input type="text" placeholder="Enter Quantity" name="quantity" value="<?php echo $data['quantity']; ?>">
-                                    <span class="error"><?php echo $data['quantityErr']; ?></span>
+                                    <input type="text" placeholder="Enter Quantity" name="quantity" value="<?php echo $nfinancials->quantity; ?>">
+                                    <!-- <span class="error"><?php echo $data['quantityErr']; ?></span> -->
+
                                 </div>
 
 
 
                                 <div class="input-field" id="description">
                                     <label>Description</label>
-                                    <textarea placeholder="Enter Description" name="description" rows="4" cols="40"><?php echo $data['description']; ?></textarea>
-                                    <span class="error"> <?php echo $data['descriptionErr']; ?></span>
+                                    <textarea placeholder="Enter Description" name="description" rows="4" cols="40"><?php echo $nfinancials->description; ?></textarea>
+                                    <!-- <span class="error"> <?php echo $data['descriptionErr']; ?></span> -->
+
                                 </div>
 
                                 <div class="input-field">
                                     <label>Contact Number</label>
                                     
-                                    <input type="text" placeholder="Enter Contact Number" name="contact" value="<?php echo $data['contact']; ?>">
-                                    <span class="error"><?php echo $data['contactErr']; ?></span>
-                                </div>
+                                    <input type="text" placeholder="Enter Contact Number" name="contact" value="<?php echo $nfinancials->contact; ?>">
+                                    <!-- <span class="error"><?php echo $data['contactErr']; ?></span> -->
 
-                                 <div>  
-                                    <table>
-                                <tr>
-                                    <td>
-                                   <label>Donation Type</label>
-                                <select class="dropdown" name="don_type" id="don_type">
-                                     <?php foreach($data['categories'] as $categories) : ?>
-                                     <option <?php if($categories->id==$data['categories']) {echo "selected";} ?> value="<?php echo $categories->id; ?>"><?php echo $categories->category_name; ?></option>
-                                     <?php endforeach; ?>
-                                </select></td>
-                                <td></td>
-                                </tr>
-                                </table>
                                 </div>
 
                                 <div class="input-field">
-                                    <label>Location / City </label>
+                                    <label>Item</label>
+                                    
+                                    <input type="text" name="item" value="<?php echo $nfinancials->item; ?>" >
+                                    
+                                </div>
+
+                                <div class="input-field"> 
+                             <label>Donation Category</label>
+                                <select class="dropdown" name="cat_id" id="cat_id">
+                            <?php foreach($data['categories'] as $categories) : ?>
+                                <option value="<?php echo $categories->id; ?>"><?php echo $categories->category_name	; ?></option>
+                            <?php endforeach; ?>
+                            </select>
+                            <!-- <span class="error"><?php echo $data['cat_idErr']; ?></span> -->
+
+                                <div class="input-field">
+                                    <label>Zipcode </label>
                                     <!-- <input type="text" placeholder="Location"> -->
-                                    <input type="text" placeholder="Enter city" name="city" value="<?php echo $data['city']; ?>">
-                                    <span class="error"><?php echo $data['cityErr']; ?></span>
+                                    <input type="text" placeholder="Enter zipcode" name="zipcode" value="<?php echo $nfinancials->zipcode; ?>">
+                                    <!-- <span class="error"><?php echo $data['zipcodeErr']; ?></span> -->
+
                                 </div>
 
                                 <div class="input-field">
                                     <label>Due Date</label>
                                     <!-- <input type="date" placeholder="Due Date"> -->
-                                    <input type="date" placeholder="Enter Due Date" name="duedate" value="<?php echo $data['duedate']; ?>">
-                                    <span class="error"><?php echo $data['titleErr']; ?></span>
+                                    <input type="date" placeholder="Enter Due Date" name="duedate" value="<?php echo $nfinancials->due_date; ?>">
+                                    <!-- <span class="error"><?php echo $data['duedateErr']; ?></span> -->
+
                                 </div>
 
 
                             </div>
                         </div>
 
-<!-- 
-                        <span class="title"><u>Id Verification</u></span>
-
-                        <div class="ggg">
-                            <div class="photo-container">
-                                <input type="file" id="file" accept="image/*" hidden name="img1" value="<?php echo $data['img1']; ?>">
-                                <div class="img-area" data-img="">
-                                    <i class='bx bxs-cloud-upload icon'></i>
-                                    <h3>Upload Image</h3>
-                                    <p>Image size must be less than <span>2MB</span></p>
-                                </div>
-                                <button class="select-image">Select Image</button>
-                            </div>
-                            <div class="photo-container">
-                                <input type="file" id="file2" accept="image/*" hidden name="img2" value="<?php echo $data['img2']; ?>">
-                                <div class="img-area" id="area-two" data-img="">
-                                    <i class='bx bxs-cloud-upload icon'></i>
-                                    <h3>Upload Image</h3>
-                                    <p>Image size must be less than <span>2MB</span></p>
-                                </div>
-                                <button class="select-image" id="select_two">Select Image</button>
-                            </div>
-                        </div> -->
-                        <span class="title"><u>Recomondation Letter By Grama Niladari</u></span>
+                        <!-- <span class="title"><u>Recomondation Letter By Grama Niladari</u></span>
                         <div class="photo-container" id="grame">
-                            <input type="file" id="file3" accept="image/*" hidden name="proof" value="<?php echo $data['proof']; ?>">
-                            <div class="img-area" id="area-three" data-img="">
+                            <input type="file" id="proof_document" name="proof_document" value="<?php echo $nfinancials->proof_document; ?>"> -->
+                             <!-- <div class="img-area" id="area-three" data-img="">
                                 <i class='bx bxs-cloud-upload icon'></i>
                                 <h3>Upload Image</h3>
                                 <p>Image size must be less than <span>2MB</span></p>
-                            </div>
-                            <!-- <button class="select-image" id="select_three">Select Image</button> -->
-                        </div>
+                            </div> -->
+                            <!-- <span class="error"><?php echo $data['proofErr']; ?></span> -->
 
-                        <!-- <div class="flex">
-                            <button class="abc">Accept</button>
-                        <button class="abc">Reject</button> -->
+                         <!-- </div> -->
+
+                        <!-- <span class="title"><u>Thumbnail</u></span>
+                        <div class="photo-container" id="grame">
+                            <input type="file" id="thumbnail" name="thumbnail" value="<?php echo $nfinancials->thumbnail; ?>">  -->
+                             <!-- <div class="img-area" id="area-three" data-img="">
+                                <i class='bx bxs-cloud-upload icon'></i>
+                                <h3>Upload Image</h3>
+                                <p>Image size must be less than <span>2MB</span></p>
+                            </div>  -->
+                            <!-- <span class="error"><?php echo $data['thumbnailErr']; ?></span> -->
+
+                        <!-- </div>  -->
 
                         </div>
+                       <?php endforeach; ?>
+
                         <div>
                           <!-- <a href="<?php echo URLROOT; ?>/beneficiary/addRequest">  -->
                           <input type="submit" value="submit" class="btn add">
@@ -168,7 +167,6 @@
                         </div>
 
                     </div>
-                     <!-- <input type="submit" name="submit" value="Submit" class="btn1 add">  -->
                      
 
                 </form>
@@ -180,7 +178,7 @@
 
     </section>
     <!--home section end-->
-    <script>
+    <!-- <script>
         let sidebar = document.querySelector(".sidebar");
         let sidebarBtn = document.querySelector(".sidebarBtn");
         let welcome = document.querySelector(".welcome");
@@ -278,7 +276,7 @@
             }
         })
         
-    </script>
+    </script> -->
 
 </body>
 

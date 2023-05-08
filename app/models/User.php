@@ -19,6 +19,13 @@ class User
         return $results;
     }
 
+    public function getOrgType()
+    {
+        $this->db->query('SELECT * FROM org_type');
+        $results = $this->db->resultSet();
+        return $results;
+    }
+
     // 1 - Admin
     // 2 - Individual Donor
     // 3 - Corporate Donor
@@ -150,14 +157,15 @@ class User
                 $row = $this->db->single();
                 $user_id = $row->id;
 
-                $this->db->query('INSERT INTO ind_ben (f_name, l_name, NIC, address, city, district, acc_status, user_id, id_img) VALUES(:f_name, :l_name, :NIC, :address, :city, :district, :acc_status, :user_id, :identity)');
+                $this->db->query('INSERT INTO ind_ben (f_name, l_name, NIC, address_proof, address, zipcode, district, acc_status, user_id, identity) VALUES(:f_name, :l_name, :NIC, :address_proof, :address, :zipcode, :district, :acc_status, :user_id, :identity)');
 
                 $this->db->bind(':f_name', $data['fname']);
                 $this->db->bind(':l_name', $data['lname']);
                 $this->db->bind(':NIC', $data['nic']);
-                $this->db->bind(':address', $data['address_ind']);
+                $this->db->bind(':address_proof', $data['address_ind']);
+                $this->db->bind(':address', $data['add_ind']);
                 $this->db->bind(':identity', $data['identity_ind']);
-                $this->db->bind(':city', $data['city_ind']);
+                $this->db->bind(':zipcode', $data['zipcode_ind']);
                 $this->db->bind(':district', $data['district_ind']);
                 $this->db->bind(':acc_status', $data['acc_status']);
                 $this->db->bind(':user_id', $user_id);
@@ -192,7 +200,7 @@ class User
                 $row = $this->db->single();
                 $user_id = $row->id;
 
-                $this->db->query('INSERT INTO org_ben (org_name, org_type, emp_name, emp_id, designation, address, id_img, city, district, acc_status, user_id) VALUES(:org_name, :org_type, :emp_name, :emp_id, :designation, :address, :identity, :city, :district, :acc_status, :user_id)');
+                $this->db->query('INSERT INTO org_ben (org_name, org_type, emp_name, emp_id, designation, address_proof, address, identity, zipcode, district, acc_status, user_id) VALUES(:org_name, :org_type, :emp_name, :emp_id, :designation, :address_proof, :address, :identity, :zipcode, :district, :acc_status, :user_id)');
 
                 $this->db->bind(':org_name', $data['compname']);
                 $this->db->bind(':org_type', $data['orgtype']);
@@ -200,11 +208,14 @@ class User
                 $this->db->bind(':emp_id', $data['empid']);
                 $this->db->bind(':designation', $data['desg']);
                 $this->db->bind(':district', $data['district']);
-                $this->db->bind(':address', $data['address']);
+                $this->db->bind(':address_proof', $data['address']);
+                $this->db->bind(':address', $data['add']);
                 $this->db->bind(':identity', $data['identity']);
-                $this->db->bind(':city', $data['city']);
+                $this->db->bind(':zipcode', $data['zipcode']);
                 $this->db->bind(':acc_status', $data['acc_status']);
                 $this->db->bind(':user_id', $user_id);
+
+                     
 
                 if ($this->db->execute()) {
                     return true;
@@ -370,6 +381,55 @@ class User
         }
     }
 
+
+    public function getFirstLogin($user_id)
+    {
+        $this->db->query('SELECT first_login FROM org_ben WHERE user_id = :user_id');
+        // Bind value
+        $this->db->bind(':user_id', $user_id);
+     
+        $row = $this->db->single();
+
+        $results =$row->first_login;
+        return $results;
+
+    }
+
+    // public function findUserByUserId($user_id)
+    // {
+    //     $this->db->query('SELECT * FROM reg_user JOIN org_ben ON reg_user.id = org_ben.user_id WHERE reg_user.email = :email ');
+    //     // Bind value
+    //     $this->db->bind(':email', $email);
+
+    //     $row = $this->db->single();
+
+    //     // Check row
+    //     if ($this->db->rowCount() > 0) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
+
+
+    public function addReservationDetails($data,$id){
+        $this->db->query('UPDATE org_ben SET first_login =:first_login, reservation=:reservation, members=:members, reservation_description=:reservation_description, meal_plan=:meal_plan WHERE user_id=:user_id ');
+        // Bind values
+        $this->db->bind(':first_login', 1);
+        $this->db->bind(':reservation', 1);
+        $this->db->bind(':reservation_description', $data['reservation_description']);
+        $this->db->bind(':members', $data['members']);
+        $this->db->bind(':meal_plan', $data['meal_plan']);
+        $this->db->bind(':user_id', $id);
+
+        // Execute
+        if($this->db->execute()){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function insertPasswordResetToken($email, $token, $expiry)
     {
         $this->db->query('UPDATE reg_user SET password_reset_hash=:token, password_reset_expiry=:expiry WHERE email = :email');
@@ -443,4 +503,20 @@ class User
             return false;
         }
     }
+
+
+    // public function needReservation($id)
+    // {
+    //     $this->db->query('UPDATE org_ben SET reservation = :reservation WHERE user_id = :user_id');
+    //     // Bind values
+    //     $this->db->bind(':user_id', $id);
+    //     $this->db->bind(':reservation', 1);
+
+    //     // Execute
+    //     if ($this->db->execute()) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
 }

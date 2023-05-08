@@ -1,6 +1,6 @@
 /* Googlefont Poppins CDN Link */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 :root {
     --color-white: #fff;
     --color-info-dark: #7d8da1;
@@ -9,17 +9,14 @@
     --color-light: rgba(132, 139, 200, 0.18);
     --color-primary-varient: #111e88;
     --color-background: #f6f6f9;
-
     --card-border-radius: 2rem;
     --border-radius-1: 0.4rem;
     --border-radius-2: 0.8rem;
     --border-radius-3: 1.2rem;
-
     --card-padding: 1.8rem;
     --padding-1: 1.2rem;
     --box-shadow: 0 2rem 3rem var(--color-light);
     --dark-blue: #111e88;
-
 }
 
 main {
@@ -36,7 +33,7 @@ main {
 .container {
     position: relative;
     max-width: 900px;
-    /*width: 100%;*/
+    width: 100%;
     border-radius: 6px;
     padding: 30px;
     margin: 0 auto;
@@ -141,7 +138,6 @@ main {
     cursor: pointer;
     transition: all .3s ease;
     margin-left: 10px;
-
 }
 
 .select-image:hover {
@@ -337,7 +333,6 @@ form .fields .input-field {
         width: 100%;
     }
 }
-
 
 .sidebar {
     position: fixed;
@@ -544,7 +539,6 @@ nav .profile-details i {
     margin-bottom: 26px;
 }
 
-
 .welcome {
     font-size: 20px;
     font-weight: 500;
@@ -560,7 +554,6 @@ nav .profile-details i {
 .bx-bell {
     padding: 10px 10px;
 }
-
 
 .btn {
     display: block;
@@ -579,22 +572,21 @@ nav .profile-details i {
     transition: 0.5s;
 }
 
-
 .logo {
     width: 175px;
     margin: 0 auto;
 }
 
+
 /* Responsive Media Query */
+
 @media (max-width: 1240px) {
     .sidebar {
         width: 60px;
     }
-
     .sidebar.active {
         width: 220px;
     }
-
     .home-section {
         width: calc(100% - 60px);
         left: 60px;
@@ -605,7 +597,6 @@ nav .profile-details i {
         overflow: hidden;
         left: 220px;
     }
-
     .home-section nav {
         width: calc(100% - 60px);
         left: 60px;
@@ -625,18 +616,15 @@ nav .profile-details i {
 }
 
 @media (max-width: 700px) {
-
     nav .sidebar-button .dashboard,
     nav .profile-details .admin_name,
     nav .profile-details i {
         display: none;
     }
-
     .home-section nav .profile-details {
         height: 50px;
         min-width: 40px;
     }
-
     .home-content .sales-boxes .sales-details {
         width: 560px;
     }
@@ -652,5 +640,6 @@ nav .profile-details i {
         display: none;
     }
 }
+
 
 /*========Main======*/

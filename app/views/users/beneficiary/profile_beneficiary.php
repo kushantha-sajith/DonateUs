@@ -58,13 +58,14 @@
                                 </div>
                                 <div id="org2" class="input-field">
                                     <label>Company Name</label>
-                                    <input type="text" placeholder="" value="<?php echo $personaldata->comp_name; ?>" disabled>
+                                    <input type="text" placeholder="" value="<?php echo $personaldata->org_name; ?>" disabled>
                                 </div>
 
                                 <div id="org3" class="input-field">
                                     <label>Email Address</label>
                                     <input type="text" placeholder="" value="<?php echo $user-> email; ?>" disabled>
                                 </div>
+                         
 
                                 <div id="ind4" class="input-field">
                                     <label>User Email</label>
@@ -76,13 +77,38 @@
                                     <input type="text" placeholder="" value="<?php echo $user->tp_number; ?>" disabled>
                                 </div>
                                 <div class="input-field">
-                                    <label>City</label>
-                                    <input type="text" placeholder="" value="<?php echo $personaldata->city; ?>" disabled>
+                                    <label>zipcode</label>
+                                    <input type="text" placeholder="" value="<?php echo $personaldata->zipcode; ?>" disabled>
                                 </div>
-                                <div class="input-field">
+                                <!-- <div class="input-field">
                                     <label>District</label>
                                     <input type="text" placeholder="" value="<?php echo $data['dist']; ?>" disabled>
                                 </div>
+                              </div> -->
+
+
+                                <?php if($personaldata->reservation==1){ ?>
+
+                                <div id="org10" class="input-field">
+                                    <label>Members Quantity</label>
+                                    <input type="text" placeholder="" value="<?php echo $personaldata-> members; ?>" disabled>
+                                </div>
+
+
+                                <!-- <div id="org11">
+                                    <label>Meal Plan</label>
+                                    <input type="file" placeholder="" value="<?php echo $personaldata-> meal_plan; ?>" disabled>
+
+                                </div> -->
+
+                            
+                                <div id="org11">
+                                    <label>Meal Plan</label>
+                                    <img src="<?php echo URLROOT; ?>/uploads/ <?php echo $personaldata->meal_plan; ?>" alt="Meal Plan">
+                                </div>
+
+                                <?php } ?>
+
                               </div>
                               <span id ="org4" class="title"><u>Contact Person Details</u></span>
                               <div id="org9" class="fields">

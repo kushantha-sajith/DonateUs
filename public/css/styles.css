@@ -150,7 +150,8 @@ input[type=text], input[type=password]:focus {
     outline: none;
 }
 
-input[type=submit], input[type=button] {
+input[type=submit],
+input[type=button] {
     width: 100%;
     background-color: #163172;
     color: white;
@@ -165,6 +166,7 @@ input[type=submit]:hover, input[type=button]:hover {
     background-color: #0d1f4a;
 }
 
+
 /*Registration*/
 
 .error {
@@ -177,7 +179,6 @@ table {
     border-collapse: collapse;
 
 }
-
 
 .tab {
     overflow: hidden;
@@ -233,7 +234,6 @@ table {
     font-weight: bold;
 }
 
-
 ul.frombtn {
     width: 100%;
     background-color: #163172;
@@ -271,4 +271,27 @@ li a:hover {
     width: 290px;
     height: 75px;
     display: inline-block;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    /* border-bottom: 1px dotted black; */
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 250px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
 }

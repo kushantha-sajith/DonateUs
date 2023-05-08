@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Financial Requests</title>
+    <title>Financial Donation Request</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donation_req.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/add_donation_req.css" />
     <!-- <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" /> -->
@@ -47,24 +47,33 @@
                         <div class="details personal">
                             <div class="fields">
             <?php  foreach($data['nfinancials'] as $nfinancials ):  ?>
+                    <?php if($nfinancials-> status==2){ ?>
+
+                                 <div class="input-field">
+                                    <label>Rejection Note</label>
+                                    
+                                    <input type="text" name="rejection" value="<?php echo $nfinancials->rejection_note; ?>" disabled>
+                                   
+                                </div>
+                                <?php }  ?>
 
                                 <div class="input-field">
                                     <label>Request Title </label>
                                     
-                                    <input type="text" name="title" value="<?php echo $nfinancials->request_title; ?>">
+                                    <input type="text" name="title" value="<?php echo $nfinancials->request_title; ?>" disabled>
                                   
                                 </div>
                                 <div class="input-field">
                                     <label>Beneficiary Name</label>
                                     
-                                    <input type="text" name="name" value="<?php echo $nfinancials->name; ?>">
+                                    <input type="text" name="name" value="<?php echo $nfinancials->name; ?>" disabled>
                                   
                                 </div>
 
                                 <div class="input-field">
                                     <label>National ID Number</label>
                             
-                                    <input type="text" name="NIC" value="<?php echo $nfinancials->NIC; ?>">
+                                    <input type="text" name="NIC" value="<?php echo $nfinancials->NIC; ?>" disabled>
                                     
                                 </div>
 
@@ -72,7 +81,7 @@
                                 <div class="input-field">
                                     <label>Quantity </label>
                                     
-                                    <input type="text" name="quantity" value="<?php echo $nfinancials->quantity; ?>">
+                                    <input type="text" name="quantity" value="<?php echo $nfinancials->quantity; ?>" disabled>
                                     
                                 </div>
 
@@ -80,63 +89,94 @@
 
                                 <div class="input-field" id="description">
                                     <label>Description</label>
-                                    <textarea name="description" rows="4" cols="40"><?php echo $nfinancials->description; ?></textarea>
+                                    <textarea name="description" rows="4" cols="40" disabled><?php echo $nfinancials->description; ?></textarea>
                                    
+                                </div>
+
+
+                                <div class="input-field">
+                                    <label>Category</label>
+                                    
+                                    <input type="text" name="cat_id" value="<?php echo $nfinancials->cat_id; ?>" disabled>
+                                    
+                                </div>
+
+                         <!-- <div class="input-field">
+                                <label>Category</label>
+                                <select name="cat_id" disabled>
+                                    <?php foreach($data['categories'] as $category) : ?>
+                                        <option value="<?php echo $category->id; ?>" <?php if($category->id == $nfinancials->cat_id) {echo 'selected';} ?>><?php echo $category->category_name; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div> -->
+
+                                <div class="input-field">
+                                    <label>Item</label>
+                                    
+                                    <input type="text" name="item" value="<?php echo $nfinancials->item; ?>" disabled>
+                                    
                                 </div>
 
                                 <div class="input-field">
                                     <label>Contact Number</label>
                                     
-                                    <input type="text" name="contact" value="<?php echo $nfinancials->contact; ?>">
-                                    
-                                </div>
-
-                                <!-- <div class="input-field">  
-                                   
-                                   <label>Donation Type</label>
-                                <select class="dropdown" name="cat_id" id="cat_id">
-                                     <?php foreach($data['cat_id'] as $cat_id) : ?>
-                                     <option <?php if($cat_id->id==$data['cat_id']) {echo "selected";} ?> value="<?php echo $cat_id->id; ?>"><?php echo $cat_id->category_name; ?></option>
-                                     <?php endforeach; ?>
-                                </select>
-
-                               
-                                </div> -->
-
-                                <div class="input-field">
-                                    <label>Category</label>
-                                    
-                                    <input type="text" name="cat_id" value="<?php echo $nfinancials->cat_id; ?>">
+                                    <input type="text" name="contact" value="<?php echo $nfinancials->contact; ?>" disabled>
                                     
                                 </div>
 
                                 <div class="input-field">
-                                    <label>Location / City </label>
+                                    <label>Zipcode </label>
                                     
-                                    <input type="text" name="city" value="<?php echo $nfinancials->city; ?>">
+                                    <input type="text" name="zipcode" value="<?php echo $nfinancials->zipcode; ?>" disabled>
                                    
                                 </div>
 
                                 <div class="input-field">
                                     <label>Due Date</label>
                                    
-                                    <input type="date" name="duedate" value="<?php echo $nfinancials->due_date; ?>">
+                                    <input type="date" name="duedate" value="<?php echo $nfinancials->due_date; ?>" disabled>
                                     
                                 </div>
-                                <span class="title"><u>Recomondation Letter By Grama Niladari</u></span>
+                                
+                     
+                       </div>  
+                        </div>
+                        <span class="title"><u>Identity Proof</u></span>
                         <div class="photo-container" id="grame">
-                            <input type="file" id="file3" accept="image/*" hidden name="proof" value="<?php echo $nfinancials->proof_document; ?>">
+                            <input type="file" id="file3" accept="image/*" hidden name="proof" value="<?php echo $nfinancials->proof_document; ?>" disabled>
                             <div class="img-area" id="area-three" data-img="">
                                 <i class='bx bxs-cloud-upload icon'></i>
                                 <h3>Upload Image</h3>
                                 <p>Image size must be less than <span>2MB</span></p>
                             </div>
                          </div>
-                        
-            <?php endforeach; ?>
 
-            </div>  
-                        </div>
+
+                        <div>
+                         <?php if($nfinancials->status==0){ ?>
+                         
+                         <a href="<?php echo URLROOT; ?>/beneficiary/viewUpNonFinancialRequest/<?php echo $nfinancials->id;  ?>" class="btn-edit">Update</a>
+                         <a href="<?php echo URLROOT; ?>/beneficiary/deleteNonFinancialRequest/<?php echo $nfinancials->id;  ?>" class="btn-delete">Delete</a>
+
+                         <?php } ?> 
+                         
+                       </div>
+                      
+                        
+                    
+
+                     <div>
+                         <?php if($nfinancials->status==3){ ?>
+                         
+                         <a href="<?php echo URLROOT; ?>/beneficiary/resubmitNFinancialRequest/<?php echo $nfinancials->id;  ?>" class="btn-edit">RESUBMIT</a>
+
+                         <?php } ?> 
+                         
+                       </div>
+                        
+                 
+
+                    <?php endforeach; ?>   
                     </div>
                 </form>
             </div>
