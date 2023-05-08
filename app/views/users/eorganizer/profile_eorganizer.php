@@ -78,7 +78,7 @@
                                 </div>
                                 <div class="input-field">
                                     <label>City</label>
-                                    <input type="text" placeholder="" value="<?php echo $personaldata->city; ?>" disabled>
+                                    <input type="text" placeholder="" value="<?php echo $personaldata->zipcode; ?>" disabled>
                                 </div>
                                 <div class="input-field">
                                     <label>District</label>
@@ -93,21 +93,22 @@
                     </div>
                 </form>
                 <div class="updatebtn">
-                    <a href="<?php echo URLROOT; ?>/pages/edit_profile_eorganizer">
+                    <a href="<?php echo URLROOT; ?>/pages/editProfileOrganizer">
                         <button class="edit" style="text-decoration: none;">Edit Profile Details
                         </button>
                     </a>
 
-                    <a href="<?php echo URLROOT; ?>/pages/change_password_eorganizer">
-                        <button class="changepassword" style="text-decoration: none;">Change Password</button>
+                    <a href="<?php echo URLROOT; ?>/pages/changePasswordOrganizer">
+                        <button class="changepassword" style="text-decoration: none;margin-left: 10px;">Change Password</button>
                     </a>
 
                     <a href="#">
-                        <button class="delete" style="text-decoration: none;">Delete Profile Details</button>
+                        <button class="delete" style="text-decoration: none;margin-left: 20px;">Delete Profile Details</button>
                     </a>
                 </div>
                 
             </div>
+            
 
 
 

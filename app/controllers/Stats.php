@@ -39,10 +39,11 @@ class Stats extends Controller
 
     public function eventStatus()
     {
-        $pending = $this->statModel->pendingEvents();
-        $ongoing = $this->statModel->ongoingEvents();
-        $completed = $this->statModel->completedEvents();
-        $rejected = $this->statModel->rejectedEvents();
+        $user_ID = $_SESSION['user_id'];
+        $pending = $this->statModel->pendingEventsByUser($user_ID);
+        $ongoing = $this->statModel->ongoingEventsByUser($user_ID);
+        $completed = $this->statModel->completedEventsByUser($user_ID);
+        $rejected = $this->statModel->rejectedEventsByUser($user_ID);
         $data = [
             'pending' => 'Pending Events',
             'ongoing' => 'Ongoing Events',

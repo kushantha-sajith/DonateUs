@@ -9,6 +9,7 @@ class Pages extends Controller
         $this->userModel = $this->model('User');
         $this->adminPageModel = $this->model('AdminPage');
         $this->adminModel = $this->model('AdminModel');
+        $this->EOrganizerModel = $this->model('EOrganizerModel');
     }
 
     /**
@@ -118,12 +119,19 @@ class Pages extends Controller
         if (!isLoggedIn()) {
             redirect('users/login');
         }
-        $image_name = $this->profileImage();
-        // $row2 = mysqli_fetch_assoc($userdata);
-        // $image_name = $row2['prof_img'];
+
+        $user_ID = $_SESSION['user_id'];
+
+        $ongoingReqCount = $this->EOrganizerModel->getOngoingReqCount($user_ID);
+        $pendingRequests = $this->EOrganizerModel->getPendingReqCount($user_ID);
+        $totalDonations = $this->EOrganizerModel->getTotalDonations($user_ID);
+        $recentDonations = $this->EOrganizerModel->getDonationHistory($user_ID);
         $data = [
-            'title' => 'Dashboard',
-            'prof_img' => $image_name
+            'title' => 'Admin',
+            'ongoingReqCount' => $ongoingReqCount,
+            'pendingRequests' => $pendingRequests,
+            'totalDonations' => $totalDonations,
+            'recentDonations' => $recentDonations
         ];
 
         $this->view('users/eorganizer/index', $data);
@@ -281,17 +289,17 @@ class Pages extends Controller
         if (isset($_SESSION['user_id'])) {
             $id = $_SESSION['user_id'];
             $user_type = $_SESSION['user_type'];
-            $userdata = $this->donorModel->getUserData($id);
+            $userdata = $this->EOrganizerModel->getUserData($id);
             $personaldata = $this->donorModel->getPersonalData($id, $user_type);
             $image_name = $this->profileImage();
             $dist_name = $this->donorModel->getDistrictName($id, $user_type);
-
             $data = [
                 'title' => 'Profile',
                 'userdata' => $userdata,
                 'personaldata' => $personaldata,
                 'prof_img' => $image_name,
-                'dist' => $dist_name
+                'dist' => $dist_name,
+                'districts' => $districts
             ];
 
             $this->view('users/eorganizer/edit_profile_eorganizer', $data);
@@ -372,6 +380,29 @@ class Pages extends Controller
         ];
 
         $this->view('users/donor/donation_requests_donor', $data);
+    }
+
+    /**
+     * @return void
+     */
+    public function donationRequestsOrganizer()
+    {
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $requests = $this->donorModel->getDonationRequests();
+        $financials = $this->donorModel->getFinancialRequests();
+        $non_financials = $this->donorModel->getNonFinancialRequests();
+        $image_name = $this->profileImage();
+        $data = [
+            'title' => 'Donation Requests',
+            'prof_img' => $image_name,
+            'requests' => $requests,
+            'financials' => $financials,
+            'non_financials' => $non_financials
+        ];
+
+        $this->view('users/eorganizer/donation_requests', $data);
     }
 
     /**
