@@ -63,20 +63,12 @@ class Pages extends Controller
     /**
      * @return void
      */
-    public function donor()
-    {
-        if (!isLoggedIn()) {
+    public function donor(){
+        if(!isLoggedIn()){
             redirect('users/login');
+        }else{
+            redirect('donor/index');
         }
-        $image_name = $this->profileImage();
-        // $row2 = mysqli_fetch_assoc($userdata);
-        // $image_name = $row2['prof_img'];
-        $data = [
-            'title' => 'Dashboard',
-            'prof_img' => $image_name
-        ];
-
-        $this->view('users/donor/index', $data);
     }
 
     /**
@@ -356,40 +348,73 @@ class Pages extends Controller
     /**
      * @return void
      */
-    public function donationHistoryDonor()
-    {
-        if (!isLoggedIn()) {
+    public function donationHistoryDonor(){
+
+        $id = $_SESSION['user_id'];
+        $donations = $this->donorModel->getDonationHistory($id);
+        $financials = $this->donorModel->getFinancialHistory($id);
+        $non_financials = $this->donorModel->getNonFinancialHistory($id);
+        $categories = $this->donorModel->getNonfinancialCategories();
+
+        if(!isLoggedIn()){
             redirect('users/login');
         }
-        $id = $_SESSION['user_id'];
-        $records = $this->donorModel->getDonationHistory($id);
         $image_name = $this->profileImage();
         $data = [
             'title' => 'Donation History',
             'prof_img' => $image_name,
-            'records' => $records
+            'donations' => $donations,
+            'financials' => $financials,
+            'nfinancials' => $non_financials,
+            'categories' => $categories
         ];
 
         $this->view('users/donor/donation_history_donor', $data);
     }
 
+    public function donationRequestsDonor(){
 
-    // public function donationHistoryBeneficiary()
-    // {
-    //     if (!isLoggedIn()) {
-    //         redirect('users/login');
-    //     }
-    //     $id = $_SESSION['user_id'];
-    //     $records = $this->beneficiaryModel->getDonationHistory($id);
-    //     $image_name = $this->profileImage();
-    //     $data = [
-    //         'title' => 'Donation History',
-    //         'prof_img' => $image_name,
-    //         'records' => $records
-    //     ];
+        if (isset($_SESSION['user_id'])) {
+            $id = $_SESSION['user_id'];
+            $user_type = $_SESSION['user_type'];
+            $requests = $this->donorModel->getDonationRequests();
+            $financials = $this->donorModel->getFinancialRequests();
+            $non_financials = $this->donorModel->getNonFinancialRequests();
+            $categories = $this->donorModel->getNonfinancialCategories();
+            $userdata = $this->donorModel->getPersonalData($id,$user_type);
+            $req_count = count($requests);
+            foreach ($userdata as $user) :
+                $user_zip = $user->zipcode;
+            endforeach;
 
-    //     $this->view('users/beneficiary/donation_history_beneficiary', $data);
-    // }
+            $image_name = $this->profileImage();
+
+            if($req_count == 0 ){
+                $data = [
+                    'title' => 'Donation Requests',
+                    'prof_img' => $image_name
+                ];
+
+                $this->view('users/donor/empty_page', $data);
+            }else{
+                $data = [
+                    'title' => 'Donation Requests',
+                    'prof_img' => $image_name,
+                    'requests' => $requests,
+                    'financials' => $financials,
+                    'non_financials' => $non_financials,
+                    'categories' => $categories,
+                    'user' => $user_zip
+                ];
+
+                $this->view('users/donor/donation_requests_donor', $data);
+            }
+
+        } else {
+            $this->view('users/login');
+        }
+
+    }
 
     public function donationHistoryBeneficiary(){
 
@@ -414,31 +439,6 @@ class Pages extends Controller
     
         $this->view('users/beneficiary/donation_history_beneficiary', $data);
       }
-
-    //load donation requests page
-
-    /**
-     * @return void
-     */
-    public function donationRequestsDonor()
-    {
-        if (!isLoggedIn()) {
-            redirect('users/login');
-        }
-        $requests = $this->donorModel->getDonationRequests();
-        $financials = $this->donorModel->getFinancialRequests();
-        $non_financials = $this->donorModel->getNonFinancialRequests();
-        $image_name = $this->profileImage();
-        $data = [
-            'title' => 'Donation Requests',
-            'prof_img' => $image_name,
-            'requests' => $requests,
-            'financials' => $financials,
-            'non_financials' => $non_financials
-        ];
-
-        $this->view('users/donor/donation_requests_donor', $data);
-    }
 
     /**
      * @return void
