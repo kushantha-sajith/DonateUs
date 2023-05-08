@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-    <title>Verify Email</title>
+    <title>Verify OTP</title>
 </head>
     <body>
         <section class="loginSec1">
@@ -21,27 +21,20 @@
                 
                 
             </div>
-            <div class="left">
-                <img class="img_reg" src="<?php echo URLROOT; ?>/img/img_signupverification.png" alt="img_reg">
-            </div>
+<!--            <div class="left">-->
+<!--                <img class="img_reg" src="--><?php //echo URLROOT; ?><!--/img/img_signupverification.png" alt="img_reg">-->
+<!--            </div>-->
             <div class="right">
               <div class="centered">
               <div class="text">
                 <h4>OTP code has been sent to the email you've provided. <br>To complete this action, please check your inbox or spam folder and enter the OTP code you received below.</h4>
                 <br>
                 <br>
-                
-                <form action="<?php echo URLROOT; ?>/users/otpVerify/<?php echo $data['field']; ?>" method="POST">
+                <form action="<?php echo URLROOT; ?>/users/otpVerifyAdmin/<?php echo $data['otp']; ?>" method="POST">
                 <h1>Enter OTP here</h1>
-
                         <label>OTP</label>
                         <input type="text" name="otp" id="otp-input" class="otp" value="<?php echo $data['otp']; ?>">
                         <p class="error" id="otp-err"><?php echo $data['error']; ?></p>
-                        <div class="verification_buttons">
-                        <input type="submit" value="Verify">
-                        <a href="<?php echo URLROOT; ?>/users/quitVerify/<?php echo $data['field']; ?>"><input type="button" value="Quit"></a>
-                        </div>    
-                        
                 </form>
             </div>
               <div>

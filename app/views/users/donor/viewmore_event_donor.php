@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <title>Dashboard</title>
+    <title>Events</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/event_viewmore.css" />
     <link
@@ -49,27 +49,47 @@
                                     
                     <div class="mid">
                         <div class="image"> 
-                        <img src="<?php echo URLROOT; ?>/img/<?php echo $details->proof_letter;  ?>">
+                        <img src="<?php echo URLROOT; ?>/img/<?php echo $details->thumbnail;  ?>">
                         </div> <!-- eo image -->
                        
                                                            
                         <div class="skill-box">
-                        <p class="due-date"><b>Due on : <?php echo $details->due_date;  ?> </b> </p>
+                        <p class="due-date"<?php if(($details->days_left) > 0 && ($details->days_left) < 7){ ?> style="color:red;"<?php } ?>><b>Due on : <?php echo $details->due_date;  ?> </b> </p>
                             <span class="title">Rs.<?php echo $details->received ;  ?> raised out of Rs.<?php echo $details->budget;  ?></span>
                             <div class="skill-bar">
                             <?php $percentage = (($details->received * 100) / $details->budget);  ?>
                                 <span class="skill-per" style ="width:<?php echo $percentage ;  ?>%;"></span>
                             </div><!-- eo skill-bar -->
                             <div class="btns">
-                          <a href="#"><button>Donate Now</button></a>
+                          <a href="<?php echo URLROOT;?>/donor/donateToEvents/<?php echo $details->id;  ?>/1"><button>Donate Now</button></a>
                         </div> <!-- eo btns -->
+
+                        <div class="donation_list">
+                          <p>Recent Donations (out of <?php echo $data['donations_count']; ?> donations)</p>
+                            <?php foreach($data['recent_donations'] as $donation ): ?>
+                              
+                              <ul class="contact-list">
+                                <li class="contact-item">
+                                <?php if($donation->anonymous == 1){ ?>
+                                  <img class="profile-image" src="<?php echo URLROOT; ?>/img/anonymous.png" alt="">
+                                  <span class="username">Anonymous Donor</span>
+                                <?php }else{ ?>
+                                  <img class="profile-image" src="<?php echo URLROOT; ?>/img/<?php echo $donation->prof_img;  ?>" alt="">
+                                  <span class="username"><?php echo $donation->donor_name;  ?></span>
+                                <?php } ?>
+                                  <span class="amount">Rs.<?php echo $donation->amount ;  ?></span>
+                                </li>
+                              </ul>
+                            <?php endforeach; ?>
+                          </div> <!-- donation_list -->
+                          
                             </div><!-- eo skill-box -->                                                   
                             </div><!-- eo mid --> 
 
                         <div class="easy">
                         
                         <div class="name_job"><?php echo $details->event_title;  ?></div> <!-- eo name_job -->
-                        <p><b>By : </b><?php echo $details->community_name."    |   ".$details->city;  ?></p>  
+                        <p><b>By : </b><?php echo $details->community_name."    |   ".$details->zipcode;  ?></p>  
                         <p><b>On : </b><?php echo $details->published_date;  ?></p>
                         
                     </div> <!-- eo easy -->

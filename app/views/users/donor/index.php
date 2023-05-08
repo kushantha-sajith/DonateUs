@@ -35,50 +35,57 @@
       </nav>
       <div class="main-container">
         <h1>Welcome Donor</h1>
+        <br>
+        <h3>This month,</h3>
         <div class="cardBox">
               <div class="card">
+                <a href="<?php echo URLROOT; ?>/pages/donationHistoryDonor">
                   <div>
                       <div class="numbers"><?php echo $data['total']; ?></div>
                       <div class="cardName">Total Donations</div>
                   </div>
-
+                </a>
                   <div class="iconBx">
                       <ion-icon name="eye-outline"></ion-icon>
                   </div>
               </div>
 
               <div class="card">
+                <a href="<?php echo URLROOT;?>/donor/filteredHistoryDonor/0/0">
                   <div>
-                      <div class="numbers">Rs.5000/=</div>
-                      <div class="cardName">Financial Donations</div>
+                      <div class="numbers"><?php echo $data['nfinancial_total']; ?></div>
+                      <div class="cardName">Non Financial Donations</div>
                   </div>
-
+                </a>
                   <div class="iconBx">
                       <ion-icon name="chatbubbles-outline"></ion-icon>
                   </div>
               </div>
 
               <div class="card">
+                <a href="<?php echo URLROOT;?>/donor/filteredHistoryDonor/1/0">
                   <div>
-                      <div class="numbers">23</div>
-                      <div class="cardName">Non Financial Donations</div>
+                      <!-- if there are no any financial donations display 0, used the SUM function to get total in the model, mandatory to mention 0  -->
+                      <div class="numbers">Rs.<?php if($data['financial_total'] > 0){ echo $data['financial_total']; } else{ echo "0";} ?></div> 
+                      <div class="cardName">Financial Donations</div>
                   </div>
-
+                </a>
                   <div class="iconBx">
                       <ion-icon name="chatbubbles-outline"></ion-icon>
                   </div>
               </div>
 
-              <!-- <div class="card">
+              <div class="card">
+                <a href="<?php echo URLROOT;?>/donor/viewMyReservationsDonor">
                   <div>
-                      <div class="numbers">Rs.20000</div>
-                      <div class="cardName">Total Sponsorships</div>
+                      <div class="numbers"><?php echo $data['reservattions_upcoming']; ?></div>
+                      <div class="cardName">Upcoming Reservations</div>
                   </div>
-
+                </a>
                   <div class="iconBx">
                       <ion-icon name="cart-outline"></ion-icon>
                   </div>
-              </div> -->
+              </div>
 
              
           </div>

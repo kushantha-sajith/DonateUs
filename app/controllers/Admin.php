@@ -354,13 +354,13 @@ class Admin extends Controller
                 if ($this->adminModel->changePassword($data, $id)) {
                     $email = new Email($user_email);
                     $email->sendVerificationEmail($user_email, $otp_code);
-                    redirect('users/otpVerifyAdmin/0');
+                    redirect('users/otpVerifyAdmin');
                 } else {
                     die('Something went wrong');
                 }
             } else {
                 // Load view with errors
-                $this->view('users/donor/change_password_donor', $data);
+                $this->view('users/admin/changePassword', $data);
             }
         } else {
             $data = [
@@ -371,7 +371,7 @@ class Admin extends Controller
                 'new_password_error' => '',
                 'confirm_password_error' => ''
             ];
-            $this->view('users/donor/change_password_donor', $data);
+            $this->view('users/admin/changePassword', $data);
         }
     }
 

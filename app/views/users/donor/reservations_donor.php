@@ -72,25 +72,27 @@
             
                 <div class="box">
                     <div class="image">
-                        <img src="<?php echo URLROOT; ?>/img/<?php echo $requests->proof_document;  ?>">
+                        <img src="<?php echo URLROOT; ?>/img/<?php echo $requests->thumbnail;  ?>">
                     </div>
                     <div class="easy">
-                        <div class="name_job"><?php echo $requests->org_name;  ?>    |    <?php echo $requests->city;  ?></div>
-                        <p><b> <?php echo $requests->request_title;  ?></b></p>
+                        <div class="name_job"><?php echo $requests->org_name;  ?>    |    <?php echo $requests->org_type;  ?></div>
+                        <p><b> <?php echo $requests->dist_name;  ?></b></p>
 
-                        <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
-                        <p><?php echo $requests->description;  ?>
+                        <p><?php echo $requests->reservation_description;  ?>
                         </p>
                         
-                        <div class="btns">
+                        <?php if($data['pending_count'] <= 5 || $data['pending_count_reservations'] <= 3){ ?>
+                          <div class="btns">
                             <a href="<?php echo URLROOT;?>/donor/viewCalendarDonor/<?php echo $requests->user_id;  ?>" ><button>Make a Reservation</button></a>
                         </div>
+                        <?php }else{ ?>
+                          <div class="btns">
+                            <a href="<?php echo URLROOT;?>/donor/viewCalendarDonor/<?php echo $requests->user_id;  ?>" ><button disabled>Make a Reservation</button></a>
+                        </div>
+                          <p>You are not eligible to make reservations at the moment. Please complte the <b>Pending Donations </b>and try again!</p>
+  
+                        <?php } ?>
+                        
                     </div>
                 </div>
                 <?php endforeach; ?>
