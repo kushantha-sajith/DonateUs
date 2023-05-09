@@ -90,6 +90,7 @@
                 <div>ID</div>
                 <div>Title</div>
                 <div>Description</div>
+                 <div>Descriptipn two</div>
                 <div>Due Date</div>
                 <div>Amount(Rs.)</div>
                 <div>Received Amount(Rs.)</div>
@@ -107,16 +108,17 @@
                 </div>
             </div> -->
 
-            <?php foreach ($data['donation_req'] as $donation_req) : ?>
+            <?php foreach ($data['event_req'] as $event_req) : ?>
                 <div class="cards_heading cards_color">
-                    <div><?php echo $donation_req->id; ?></div>
-                    <div><?php echo $donation_req->event_title; ?></div>
-                    <div><?php echo $donation_req->description; ?></div>
-                    <div><?php echo $donation_req->due_date; ?></div>
-                    <div><?php echo $donation_req->budget; ?></div>
-                    <div><?php echo $donation_req->received; ?></div>
+                    <div><?php echo $event_req->id; ?></div>
+                    <div><?php echo $event_req->event_title; ?></div>
+                    <div><?php echo $event_req->description; ?></div>
+                    
+                    <div><?php echo $event_req->due_date; ?></div>
+                    <div><?php echo $event_req->budget; ?></div>
+                    <div><?php echo $event_req->received; ?></div>
                     <div class="event-details-btn-container">
-                        <center> <a href="<?php echo URLROOT; ?>/EOrganizer/EventDetailsFull/<?php echo $donation_req->id; ?>"> <button class="btnview">View More</button> </a></center>
+                        <center> <a href="<?php echo URLROOT; ?>/EOrganizer/EventDetailsFull/<?php echo $event_req->id; ?>"> <button class="btnview">View More</button> </a></center>
                     </div>
                 </div>
             <?php endforeach; ?>

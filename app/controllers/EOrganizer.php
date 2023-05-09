@@ -9,6 +9,8 @@ class EOrganizer extends Controller
         }
         $this->EOrganizerModel = $this->model('EOrganizerModel');
         $this->userModel = $this->model('User');
+        $this->adminModel = $this->model('adminModel');
+        $this->statModel = $this->model('statModel');
     }
 
 
@@ -33,6 +35,7 @@ class EOrganizer extends Controller
             'title' => '',
             'ammount' => '',
             'description' => '',
+           
             'city' => '',
             'duedate' => '',
             'proof' => '',
@@ -43,6 +46,7 @@ class EOrganizer extends Controller
             'titleErr' => '',
             'amountErr' => '',
             'descriptionErr' => '',
+            
             'cityErr' => '',
             'duedateErr' => '',
             'proofErr' => '',
@@ -119,7 +123,7 @@ class EOrganizer extends Controller
             redirect('users/login');
         }
         $id = $_SESSION['user_id'];
-        $data['donation_req'] = $this->EOrganizerModel->getEvents($id, $status);
+        $data['event_req'] = $this->EOrganizerModel->getEvents($id, $status);
         switch ($status) {
             case '0':
                 $data['status'] = 'Pending Events';
@@ -314,7 +318,7 @@ class EOrganizer extends Controller
         if (!isLoggedIn()) {
             redirect('users/login');
         }
-        $this->view('users/eorganizer/reports');
+      
     }
 
     public function stats()
@@ -368,10 +372,10 @@ class EOrganizer extends Controller
             $id = $_SESSION['user_id'];
 
             $data = [
-                // 'id' => $id,
                 'title' => trim($_POST['title']),
                 'ammount' => trim($_POST['ammount']),
                 'description' => trim($_POST['description']),
+               
                 'city' => trim($_POST['city']),
                 'duedate' => trim($_POST['duedate']),
                 'accountno' => trim($_POST['accountno']),
@@ -380,6 +384,7 @@ class EOrganizer extends Controller
                 'titleErr' => '',
                 'amountErr' => '',
                 'descriptionErr' => '',
+                
                 'cityErr' => '',
                 'duedateErr' => '',
                 'proofErr' => '',
@@ -428,6 +433,8 @@ class EOrganizer extends Controller
             if (empty($data['description'])) {
                 $data['descriptionErr'] = 'Please enter description';
             }
+
+         
 
 
 
@@ -480,6 +487,7 @@ class EOrganizer extends Controller
 
                 'amount' => '',
                 'description' => '',
+               
                 'contact' => '',
                 'city' => '',
                 'duedate' => '',
@@ -512,5 +520,22 @@ class EOrganizer extends Controller
 
             $this->view('users/eorganizer/create_events', $data);
         }
+    }
+
+    public function eventReqReport()
+    {
+        $events = $this->adminModel->eventHistory();
+        $ongoing = $this->statModel->ongoingEvents();
+        $completed = $this->statModel->completedEvents();
+        $rejected = $this->statModel->rejectedEvents();
+        $data = [
+            'title' => 'Event Report',
+            'events' => $events,
+            'ongoing' => $ongoing,
+            'completed' => $completed,
+            'rejected' => $rejected
+        ];
+
+        $this->view('users/eorganizer/reports', $data);
     }
 }

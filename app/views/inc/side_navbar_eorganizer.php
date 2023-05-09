@@ -28,14 +28,9 @@
         <span class="links_name">Event Donation History</span>
       </a>
     </li>
+    
     <li>
-      <a href="<?php echo URLROOT; ?>/EOrganizer/Sponserships">
-        <i class="bx bxs-dollar-circle"></i>
-        <span class="links_name">Sponsorships</span>
-      </a>
-    </li>
-    <li>
-      <a href="<?php echo URLROOT; ?>/EOrganizer/Reports">
+      <a href="<?php echo URLROOT; ?>/EOrganizer/eventReqReport">
         <i class="bx bxs-report"></i>
         <span class="links_name">Reports</span>
       </a>

@@ -109,6 +109,7 @@ class EOrganizerModel
         // Bind values
         $this->db->bind(':event_title', $data['title']);
         $this->db->bind(':description', $data['description']);
+       
         $this->db->bind(':city', $data['city']);
         $this->db->bind(':ammount', $data['ammount']);
         $this->db->bind(':due_date', $data['duedate']);
@@ -219,4 +220,6 @@ class EOrganizerModel
         $results = $this->db->resultSet();
         return $results;
     }
+
+    //donation date, title 
 }
