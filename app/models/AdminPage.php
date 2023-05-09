@@ -483,7 +483,7 @@ class AdminPage
      */
     public function getFinancialDonationDetails($id)
     {
-        $this->db->query('SELECT IF(ru.user_type = 2, ind_don.f_name, corp_don.comp_name) AS donor_name, IF(rq.user_type = 4, ind_ben.f_name, org_ben.org_name) AS beneficiary_name, dr.request_title, dh.amount, ru.email AS donor_email, ru.tp_number AS donor_tp_number, rq.email AS beneficiary_email, rq.tp_number AS beneficiary_tp_number FROM donation_history dh INNER JOIN donation_req dr ON dh.req_id = dr.id INNER JOIN reg_user ru ON dh.don_id = ru.id INNER JOIN reg_user rq ON dr.user_id = rq.id LEFT JOIN ind_don ON ru.id = ind_don.user_id AND ru.user_type = 2 LEFT JOIN corp_don ON ru.id = corp_don.user_id AND ru.user_type = 3 LEFT JOIN ind_ben ON dr.user_id = ind_ben.user_id AND rq.user_type = 4 LEFT JOIN org_ben ON dr.user_id = org_ben.user_id AND rq.user_type = 5 WHERE dh.type = 0 AND dh.id = :id');
+        $this->db->query('SELECT dh.id, dr.request_title, r.tp_number AS donor_tp, r.email AS donor_email, dh.date_of_completion,rq.email AS ben_email, rq.tp_number AS ben_tp, fn.amount_donated, IF(r.user_type = 2, id.f_name, cd.comp_name) AS donor_name, IF(rq.user_type = 4, ib.f_name, ob.org_name) AS ben_name, dr.id as req_id FROM donation AS dh JOIN financial_donation AS fn ON dh.id = fn.donation_id JOIN reg_user AS r ON dh.donor_id = r.id JOIN donation_req AS dr ON dh.request_id = dr.id LEFT JOIN ind_don AS id ON r.id = id.user_id AND r.user_type = 2 LEFT JOIN corp_don AS cd ON r.id = cd.user_id AND r.user_type = 3 JOIN reg_user AS rq ON dr.user_id = rq.id LEFT JOIN ind_ben AS ib ON rq.id = ib.user_id AND rq.user_type = 4 LEFT JOIN org_ben AS ob ON rq.id = ob.user_id AND rq.user_type = 5 WHERE dh.id = :id');
         $this->db->bind(':id', $id);
         $results = $this->db->resultSet();
         return $results;
@@ -495,7 +495,7 @@ class AdminPage
      */
     public function getNonFinancialDonationDetails($id)
     {
-        $this->db->query('SELECT IF(ru.user_type = 2, ind_don.f_name, corp_don.comp_name) AS donor_name, IF(rq.user_type = 4, ind_ben.f_name, org_ben.org_name) AS beneficiary_name, dr.request_title, dh.quantity, ru.email AS donor_email, ru.tp_number AS donor_tp_number, rq.email AS beneficiary_email, rq.tp_number AS beneficiary_tp_number, CASE WHEN dh.status = 0 THEN "Pending" WHEN dh.status = 1 THEN "Completed" WHEN dh.status = 2 THEN "Delivered" END AS status FROM donation_history dh INNER JOIN donation_req dr ON dh.req_id = dr.id INNER JOIN reg_user ru ON dh.don_id = ru.id INNER JOIN reg_user rq ON dr.user_id = rq.id LEFT JOIN ind_don ON ru.id = ind_don.user_id AND ru.user_type = 2 LEFT JOIN corp_don ON ru.id = corp_don.user_id AND ru.user_type = 3 LEFT JOIN ind_ben ON dr.user_id = ind_ben.user_id AND rq.user_type = 4 LEFT JOIN org_ben ON dr.user_id = org_ben.user_id AND rq.user_type = 5 WHERE dh.type = 1 AND dh.id = :id');
+        $this->db->query('SELECT dh.id, dr.request_title, r.tp_number AS donor_tp, r.email AS donor_email, dh.date_of_completion, c.category_name AS category, nr.item AS item, rq.email AS ben_email, rq.tp_number AS ben_tp, fn.quantity_donated, IF(r.user_type = 2, id.f_name, cd.comp_name) AS donor_name, IF(rq.user_type = 4, ib.f_name, ob.org_name) AS ben_name, dr.id as req_id, CASE WHEN dh.status = 0 THEN "Pending" WHEN dh.status = 1 THEN "Completed" WHEN dh.status = 2 THEN "Delivered" WHEN dh.status = 3 THEN "Cancelled" END AS status FROM donation AS dh JOIN nfinancial_donation AS fn ON dh.id = fn.donation_id JOIN reg_user AS r ON dh.donor_id = r.id JOIN categories AS c ON dh.cat_id = c.id JOIN nfinancial_req AS nr ON nr.req_id = dh.request_id JOIN donation_req AS dr ON dh.request_id = dr.id LEFT JOIN ind_don AS id ON r.id = id.user_id AND r.user_type = 2 LEFT JOIN corp_don AS cd ON r.id = cd.user_id AND r.user_type = 3 JOIN reg_user AS rq ON dr.user_id = rq.id LEFT JOIN ind_ben AS ib ON rq.id = ib.user_id AND rq.user_type = 4 LEFT JOIN org_ben AS ob ON rq.id = ob.user_id AND rq.user_type = 5 WHERE dh.id = :id');
         $this->db->bind(':id', $id);
         $results = $this->db->resultSet();
         return $results;
@@ -521,7 +521,7 @@ class AdminPage
     {
         $this->db->query('SELECT email FROM reg_user WHERE id = :id');
         $this->db->bind(':id', $id);
-        $results = $this->db->resultSet();
+        $results = $this->db->single();
         return $results;
     }
 
@@ -549,6 +549,10 @@ class AdminPage
         return $row;
     }
 
+    /**
+     * @param $text
+     * @return mixed
+     */
     public function getRequestDetails($text)
     {
         $this->db->query('SELECT * FROM donation_req WHERE request_title LIKE :text');

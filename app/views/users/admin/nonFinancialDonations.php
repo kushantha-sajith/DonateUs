@@ -87,8 +87,8 @@
                 <div><?php echo $donation->donor_name; ?></div>
                 <div><?php echo $donation->request_title; ?></div>
                 <div><?php echo $donation->category; ?></div>
-                <div><?php echo $donation->tp_number; ?></div>
-                <div><?php echo $donation->quantity; ?></div>
+                <div><?php echo $donation->donor_tp; ?></div>
+                <div><?php echo $donation->quantity_donated; ?></div>
                 <div><?php echo $donation->status; ?></div>
                 <div>
                     <div style="text-align: center;">

@@ -140,7 +140,7 @@ class AdminModel
      */
     public function financialDonationHistory()
     {
-        $this->db->query('SELECT dh.id, dr.request_title, r.tp_number, dh.date_of_completion, c.category_name AS category, dh.quantity, dh.amount, IF(r.user_type = 2, id.f_name, cd.comp_name) AS donor_name, dr.id as req_id, CASE WHEN dr.req_type = 0 THEN "Financial" WHEN dr.req_type = 1 THEN "Non-financial" END AS req_type, CASE WHEN dh.status = 0 THEN "Pending" WHEN dh.status = 1 THEN "Completed" WHEN dh.status = 2 THEN "Delivered" END AS status FROM donation_history AS dh JOIN reg_user AS r ON dh.don_id = r.id JOIN categories AS c ON dh.category = c.id JOIN donation_req AS dr ON dh.req_id = dr.id LEFT JOIN ind_don AS id ON r.id = id.user_id AND r.user_type = 2 LEFT JOIN corp_don AS cd ON r.id = cd.user_id AND r.user_type = 3 WHERE dh.type = 0');
+        $this->db->query('SELECT dh.id, dr.request_title, r.tp_number AS donor_tp, r.email AS donor_email, fn.amount_donated AS amount, dh.date_of_completion,rq.email AS ben_email, rq.tp_number AS ben_tp, fn.amount_donated, IF(r.user_type = 2, id.f_name, cd.comp_name) AS donor_name, IF(rq.user_type = 4, ib.f_name, ob.org_name) AS ben_name, dr.id as req_id FROM donation AS dh JOIN financial_donation AS fn ON dh.id = fn.donation_id JOIN reg_user AS r ON dh.donor_id = r.id JOIN donation_req AS dr ON dh.request_id = dr.id LEFT JOIN ind_don AS id ON r.id = id.user_id AND r.user_type = 2 LEFT JOIN corp_don AS cd ON r.id = cd.user_id AND r.user_type = 3 JOIN reg_user AS rq ON dr.user_id = rq.id LEFT JOIN ind_ben AS ib ON rq.id = ib.user_id AND rq.user_type = 4 LEFT JOIN org_ben AS ob ON rq.id = ob.user_id AND rq.user_type = 5 ORDER BY dh.date_of_completion DESC;');
         $results = $this->db->resultSet();
         return $results;
     }
@@ -150,7 +150,7 @@ class AdminModel
      */
     public function nonFinancialDonationHistory()
     {
-        $this->db->query('SELECT dh.id, dr.request_title, r.tp_number, dh.date_of_completion, c.category_name AS category, dh.quantity, dh.quantity, IF(r.user_type = 2, id.f_name, cd.comp_name) AS donor_name, dr.id as req_id, CASE WHEN dr.req_type = 0 THEN "Financial" WHEN dr.req_type = 1 THEN "Non-financial" END AS req_type, CASE WHEN dh.status = 0 THEN "Pending" WHEN dh.status = 1 THEN "Completed" WHEN dh.status = 2 THEN "Delivered" END AS status FROM donation_history AS dh JOIN reg_user AS r ON dh.don_id = r.id JOIN categories AS c ON dh.category = c.id JOIN donation_req AS dr ON dh.req_id = dr.id LEFT JOIN ind_don AS id ON r.id = id.user_id AND r.user_type = 2 LEFT JOIN corp_don AS cd ON r.id = cd.user_id AND r.user_type = 3 WHERE dh.type = 1;');
+        $this->db->query('SELECT dh.id, dr.request_title, r.tp_number AS donor_tp, r.email AS donor_email, dh.date_of_completion, fn.quantity_donated AS quantity, c.category_name AS category, nr.item AS item, rq.email AS ben_email, rq.tp_number AS ben_tp, fn.quantity_donated, IF(r.user_type = 2, id.f_name, cd.comp_name) AS donor_name, IF(rq.user_type = 4, ib.f_name, ob.org_name) AS ben_name, dr.id as req_id, CASE WHEN dh.status = 0 THEN "Pending" WHEN dh.status = 1 THEN "Completed" WHEN dh.status = 2 THEN "Delivered" WHEN dh.status = 3 THEN "Cancelled" END AS status FROM donation AS dh JOIN nfinancial_donation AS fn ON dh.id = fn.donation_id JOIN reg_user AS r ON dh.donor_id = r.id JOIN categories AS c ON dh.cat_id = c.id JOIN nfinancial_req AS nr ON nr.req_id = dh.request_id JOIN donation_req AS dr ON dh.request_id = dr.id LEFT JOIN ind_don AS id ON r.id = id.user_id AND r.user_type = 2 LEFT JOIN corp_don AS cd ON r.id = cd.user_id AND r.user_type = 3 JOIN reg_user AS rq ON dr.user_id = rq.id LEFT JOIN ind_ben AS ib ON rq.id = ib.user_id AND rq.user_type = 4 LEFT JOIN org_ben AS ob ON rq.id = ob.user_id AND rq.user_type = 5 ORDER BY dh.date_of_completion;');
         $results = $this->db->resultSet();
         return $results;
     }
@@ -264,6 +264,7 @@ class AdminModel
         return $results;
     }
 
+    //m = monthly
     /**
      * @return mixed
      */
