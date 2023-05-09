@@ -44,15 +44,14 @@
             <i class='bx bxs-group'></i>
             <span class="text">
               <h3><?php echo $data['pendingRequests']; ?></h3>
-              <p>Total Users</p>
+              <p>Pending Requests</p>
             </span>
           </li>
           <li>
             <i class='bx bxs-dollar-circle'></i>
             <span class="text">
               <h3>Rs.<?php echo $data['totalDonations']; ?></h3>
-              <p>Total Financial
-                Donations</p>
+              <p>Total Donations</p>
             </span>
           </li>
         </ul>
