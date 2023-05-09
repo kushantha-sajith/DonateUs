@@ -28,7 +28,7 @@
         <nav>
             <div class="sidebar-button">
                 <i class="bx bx-menu sidebarBtn"></i>
-                <span class="dashboard">Create Event</span>
+                <span class="dashboard">Event Details</span>
             </div>
 
             <div class="profile-details">
@@ -42,6 +42,8 @@
         </nav>
 
         <main>
+        <div class="container">
+                <header>Event Details</header>
             <form method="post" action="<?php echo URLROOT; ?>/EOrganizer/Addevent" enctype="multipart/form-data">
                 <div class="formfirst">
                     <div class="details personal">
@@ -117,6 +119,7 @@
                 </div>
                 <!-- <input disabled type="submit" name="submit" value="Submit" class="btn1 add">  -->
             </form>
+    </div>
         </main>
 
     </section>

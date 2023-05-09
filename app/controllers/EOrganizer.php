@@ -295,8 +295,7 @@ class EOrganizer extends Controller
                 // Validated
 
                 if ($this->EOrganizerModel->addevent($data, $file)) {
-                    //  redirect('EOrganizer/');
-                    $this->view('users/eorganizer/create_events', $data);
+                     redirect('EOrganizer/EventDetails/0');
                 } else {
                     die('Something went wrong');
                 }
