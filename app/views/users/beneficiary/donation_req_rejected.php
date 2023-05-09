@@ -37,8 +37,7 @@
                     <i class="bx bx-bell bx-tada notification"></i>
                 </div>
                 <a href="<?php echo URLROOT; ?>/pages/profileBeneficiary"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
-                <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
-                <!-- <i class='bx bx-chevron-down'></i> -->
+                
             </div>
         </nav>
 
@@ -46,15 +45,25 @@
              <div class="select-menu">
             
                 <div class="select-btn">
-                    <span class="material-icons">
+                <span class="material-icons">
                         pending_actions
                         </span>
-                    <span class="option-text">Pending Requests</a></span>
+                    <span class="option-text">Rejected Requests</a></span>
                     <i class="bx bx-chevron-down"></i>
                 </div>
 
                 <ul class="options">
-                    <a href="<?php echo URLROOT; ?>/beneficiary/donationRequest" style="text-decoration:none">
+                    <a href="<?php echo URLROOT; ?>/beneficiary/allDonations" style="text-decoration:none">
+                        <li class="option">
+                            <span class="material-icons" style="color: black; margin-right: 1rem;" >
+                                pending_actions
+                                </span>
+                             
+                            <span class="option-text">All Requests</span>
+                        </li>
+                    </a>
+
+                    <a href="<?php echo URLROOT; ?>/beneficiary/donationPending" style="text-decoration:none">
                         <li class="option">
                             <span class="material-icons" style="color: black; margin-right: 1rem;" >
                                 pending_actions
@@ -96,21 +105,13 @@
              <div>
       <table class="main-table">
           <thead>
-            <!-- <th style="text-align:left;"><span>Id</span></th> -->
             <th style="text-align:left;"><span>Request Title</span></th>
-            <!-- <th style="text-align:left;"><span>Description</span></th> -->
             <th style="text-align:left;"><span>Beneficiary Name</span></th>
             <th style="text-align:left;"><span>Due Date</span></th>
-            <!-- <th style="text-align:left;"><span>Contact</span></th> -->
             <th style="text-align:left;"><span>Total Quantity/Amount</span></th>
-            <th style="text-align:left;"><span>Received Quantity/Amount</span></th>
             <th style="text-align:left;"><span>Donation Type</span></th>
             <th style="text-align:left;"></th>
-
-            <!-- <th style="text-align:left;"><span>Amount/Quantity</span></th> -->
-            <!-- <th style="text-align:left;"><span>Contact</span></th> -->
-            <!-- <th style="text-align:left;"><span>user_id</span></th>
-            <th style="text-align:left;"><span>cat_id</span></th> -->                   
+                 
           </thead>
           <tbody>
 
@@ -128,19 +129,17 @@
                         <?php foreach($data['nfinancials'] as $nfinancials ): ?>
                             <?php if($requests->id == $nfinancials->req_id){ ?>
                             <td style="text-align:left;"><?php  echo $nfinancials->quantity;  ?></td>
-                            <td style="text-align:left;"><?php echo $nfinancials->received_quantity ; ?></td>
                             <td style="text-align:left;">Non-Financial</td>
-                            <td>  <a href="<?php echo URLROOT; ?>/beneficiary/viewNonFinancialRequest " class="btn-edit">View More</a></td> 
+                            <td>  <a href="<?php echo URLROOT; ?>/beneficiary/viewNonFinancialRequest/<?php echo $requests->id;  ?> " class="btn-edit">View More</a></td> 
                       
                         <?php   } ?>
                     <?php endforeach; ?>
                     <?php } else{ ?>
                         <?php foreach($data['financials'] as $financials ): ?>
                             <?php if($requests->id == $financials->req_id){ ?>
-                            <td style="text-align:left;"><?php  echo $financials->total_amount;  ?></td>
-                            <td style="text-align:left;"><?php echo $financials->received_amount ; ?></td>
+                            <td style="text-align:left;">Rs.<?php  echo $financials->total_amount;  ?></td>
                             <td style="text-align:left;">Financial</td>
-                            <td>  <a href="<?php echo URLROOT; ?>/beneficiary/viewFinancialRequest " class="btn-edit">View More</a></td> 
+                            <td>  <a href="<?php echo URLROOT; ?>/beneficiary/viewFinancialRequest/<?php echo $requests->id;  ?> " class="btn-edit">View More</a></td> 
                     
                     <?php   } ?>
                     <?php endforeach; ?>

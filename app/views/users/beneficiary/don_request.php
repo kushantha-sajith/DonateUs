@@ -37,8 +37,7 @@
                     <i class="bx bx-bell bx-tada notification"></i>
                 </div>
                 <a href="<?php echo URLROOT; ?>/pages/profileBeneficiary"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
-                <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
-                <!-- <i class='bx bx-chevron-down'></i> -->
+               
             </div>
         </nav>
 
@@ -112,6 +111,7 @@
           <tbody>
             <?php  foreach($data['non_financials'] as $nfinancials ):  ?>
                 <tr class="t-row">
+<<<<<<< Updated upstream:app/views/users/beneficiary/don_request.php
               <!-- <td style="text-align:left;"><?php echo $nfinancials->id; ?></td> -->
               <td style="text-align:left;"><?php echo $nfinancials->request_title; ?></td>
               <td style="text-align:left;"><?php echo $nfinancials->description; ?></td>
@@ -120,6 +120,34 @@
               <td style="text-align:left;"><?php echo $nfinancials->contact; ?></td>
               <td style="text-align:left;">Non-Financial</td>
               <td>  <a href="<?php echo URLROOT; ?>/beneficiary/viewNonFinancialRequest " class="btn-edit">View More</a></td> 
+=======
+                    <td style="text-align:left;"><?php echo $requests->request_title; ?></td>
+                    <td style="text-align:left;"><?php echo $requests->name; ?></td>
+                    <td style="text-align:left;"><?php echo $requests->due_date; ?></td>
+
+                    <?php if($requests->cat_id >1){ ?>
+                   
+                        <?php foreach($data['nfinancials'] as $nfinancials ): ?>
+                            <?php if($requests->id == $nfinancials->req_id){ ?>
+                            <td style="text-align:left;"><?php  echo $nfinancials->quantity;  ?></td>
+                            <td style="text-align:left;">Non-Financial</td>
+                            <td>  <a href="<?php echo URLROOT; ?>/beneficiary/viewNonFinancialRequest/<?php echo $requests->id;  ?> " class="btn-edit">View More</a></td> 
+                      
+                        <?php   } ?>
+                    <?php endforeach; ?>
+                    <?php } else{ ?>
+                        <?php foreach($data['financials'] as $financials ): ?>
+                            <?php if($requests->id == $financials->req_id){ ?>
+                            <td style="text-align:left;">Rs.<?php  echo $financials->total_amount;  ?></td>
+                            <td style="text-align:left;">Financial</td>
+                            <td>  <a href="<?php echo URLROOT; ?>/beneficiary/viewFinancialRequest/<?php echo $requests->id;  ?> " class="btn-edit">View More</a></td> 
+                    
+                    <?php   } ?>
+                    <?php endforeach; ?>
+                     <?php } ?>
+                            </tr>  
+                            <?php } ?>         
+>>>>>>> Stashed changes:app/views/users/beneficiary/donation_req_pending.php
             <?php endforeach; ?>
 
             <?php  foreach($data['financials'] as $financials ): ?>

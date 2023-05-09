@@ -5,7 +5,7 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/stylesdash.css" />
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_lists.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donation_history_donor.css" />
     <link
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
       rel="stylesheet"
@@ -41,12 +41,11 @@
             <i class="bx bx-bell bx-tada notification"></i>
           </div>
             <a href="<?php echo URLROOT; ?>/pages/profileBeneficiary"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
-          <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
-          <!-- <i class='bx bx-chevron-down'></i> -->
+          
         </div>
       </nav>
       <div class="main-container">
- 
+      <div class="filters">
       <div class="select-menu">
             <h4>Filter By : Donation Catagory</h4>
             <div class="select-btn">
@@ -55,70 +54,148 @@
             </div>
 
             <ul class="options">
-                <a href="<?php echo URLROOT;?>/beneficiary/filteredHistoryBeneficiary/1" style="text-decoration:none">
+                <a href="<?php echo URLROOT;?>/beneficiary/filteredHistoryBeneficiary/1/0" style="text-decoration:none">
                     <li class="option">
-                            <span class="material-icons" style="color:#111e88; margin-right: 1rem;">
-                            attach_money
-                            </span>
-                        <span class="option-text">Financial Donations</span>
+                      <span class="option-text">Financial Donations</span>
                     </li>
                 </a>
-                <a href="<?php echo URLROOT;?>/beneficiary/filteredHistoryBeneficiary/0" style="text-decoration:none">
+                <a href="<?php echo URLROOT;?>/beneficiary/filteredHistoryBeneficiary/0/0" style="text-decoration:none">
                     <li class="option">
-                            <span class="material-icons" style="color:#111e88; margin-right: 1rem;">
-                            card_giftcard
-                            </span>
-                        <span class="option-text">Non-Financial Donations</span>
+                      <span class="option-text">Non-Financial Donations</span>
                     </li>
                 </a>
-                <a href="<?php echo URLROOT;?>/beneficiary/filteredHistoryBeneficiary/2" style="text-decoration:none">
+                <?php foreach($data['categories'] as $category ): ?>
+                <a href="<?php echo URLROOT;?>/beneficiary/filteredHistoryBeneficiary/<?php echo $category -> id;?>/0" style="text-decoration:none">
                     <li class="option">
-                            <span class="material-icons" style="color:#111e88; margin-right: 1rem;">
-                            fastfood
-                            </span>
-                        <span class="option-text">Food</span>
+                        <span class="option-text"><?php echo $category -> category_name;?></span>
                     </li>
                 </a>
-                <a href="<?php echo URLROOT;?>/beneficiary/filteredHistoryBeneficiary/3" style="text-decoration:none">
-                    <li class="option">
-                            <span class="material-icons" style="color: #111e88; margin-right: 1rem;">
-                            menu_book
-                            </span>
-                        <span class="option-text">Stationary</span>
-                    </li>
-                </a>
-                <a href="<?php echo URLROOT;?>/beneficiary/filteredHistoryBeneficiary/4" style="text-decoration:none">
-                        <li class="option">
-                            <span class="material-icons" style="color: #111e88; margin-right: 1rem;">
-                                medical_services
-                            </span>
-                            <span class="option-text">Medicine</span>
-                        </li>
-                    </a>
+                <?php endforeach; ?>
             </ul>
         </div>
 
+        <div class="select-menu status-menu">
+            <h4>Filter By : Status</h4>
+            <div class="select-btn status-btn">
+                <span class="sBtn-text status_Btn-text">Select Status</span>
+                <i class="bx bx-chevron-down"></i>
+            </div>
+
+            <ul class="options status_options">
+                <a href="<?php echo URLROOT;?>/beneficiary/filteredHistoryBeneficiary/1/1" style="text-decoration:none">
+                    <li class="option status_option">
+                      <span class="option-text status-option-text">Pending</span>
+                    </li>
+                </a>
+                <a href="<?php echo URLROOT;?>/beneficiary/filteredHistoryBeneficiary/2/1" style="text-decoration:none">
+                    <li class="option status_option">
+                      <span class="option-text status-option-text">Delivered</span>
+                    </li>
+                </a>
+                <a href="<?php echo URLROOT;?>/beneficiary/filteredHistoryBeneficiary/3/1" style="text-decoration:none">
+                    <li class="option status_option">
+                      <span class="option-text status-option-text">Completed</span>
+                    </li>
+                </a>
+                <a href="<?php echo URLROOT;?>/beneficiary/filteredHistoryBeneficiary/4/1" style="text-decoration:none">
+                    <li class="option status_option">
+                      <span class="option-text status-option-text">Canceled</span>
+                    </li>
+                </a>
+                
+            </ul>
+        </div>
+        </div> <!-- eo filters -->
 
             <div class="cards_heading2 head">
-                <div>Request ID</div>
-                <div>Request</div>
-                <div>Category</div>
-                <div>Amount/<br>Quantity</div>
-                <div>Date</div>
+            <div>Date</div>
+                <div>Request Title</div>                
+                <!-- <div>Amount/<br>Quantity</div> -->
+                <div>Type</div>
+                <div>Anonymous</div>
+                
                 <div>Status</div>
                 <div><span></span></div>
+                <div><span></span></div>
             </div>
-            <?php foreach($data['records'] as $record) : ?>
+            
+
+            <?php foreach($data['donations'] as $record) : ?>
+              <?php   $don_id = $record->id;
+                      $status = $record->status; ?>
                 <div class="cards_heading2 cards_color">
-                    <div><?php echo $record->id; ?></div>
-                    <div><?php echo $record->request_title; ?></div>
-                    <div><?php echo $record->category_name; ?></div>
-                    <div>1</div>
-                    <div><?php echo $record->time_stamp; ?></div>
-                    <div>####</div>
+                <div><?php echo $record->timestamp; ?></div>
+                <div><?php echo $record->request_title; ?></div>
+                    
+                      
                     <div>
-                        <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/beneficiary/feedback"> <button class="btnview">Feedback</button> </a></div>
+                    <?php if($record->type == 1){ 
+                    echo "Financial"; }
+                    else{
+                      echo "Non-Financial";}
+                      ?></div>
+                    <div>
+                    <?php if($record->anonymous == 1){ 
+                    echo "Anonymous"; }
+                    else{
+                      echo "-";}
+                      ?></div>
+                    
+                    <div>
+                      <?php 
+                        switch($status){ 
+                          case 1:
+                            echo "Pending";
+                            break;
+                          case 2:
+                            echo"Delivered";
+                            break;
+                          case 3:
+                            echo"Completed";
+                            break;
+                          case 4:
+                            echo"Canceled";
+                            break;
+                          Default:
+                            echo "Error";
+                        }
+                      ?>
+                      </div>
+                    <div>
+                    
+                    <?php if($status == 1){?>
+                      <div class ="btns3"> 
+                        <a href="#"> <button class="btn-view-more">View more</button> </a>
+                        <?php if($record->type == 0){ ?>
+                        <a href="#"> <button class="btn-contact-org">Contact Beneficiary</button> </a>
+                        <?php } ?>
+                      </div>
+                      <?php }
+                      if($status == 2){?> 
+                      <div class ="btns3">
+                      <a href="<?php echo URLROOT;?>/beneficiary/viewmoreHistoryBeneficiary/<?php echo $record->id;?>/<?php echo $record->type?>"> <button class="btn-view-more">View more</button> </a>
+                      <a href="<?php echo URLROOT; ?>/beneficiary/markReceived/<?php echo $record->id;  ?>"> <button class="btn-mark-delivered">Mark As Received</button> </a>
+
+                      </div>
+                      <?php } 
+                      if($status == 3){ ?> 
+                      <div class ="btns3"> 
+                      <a href="<?php echo URLROOT;?>/beneficiary/viewmoreHistoryBeneficiary/<?php echo $record->id;?>/<?php echo $record->type?>"> <button class="btn-view-more">View more</button> </a>
+                        <a href="<?php echo URLROOT; ?>/beneficiary/feedback/<?php echo $record->id;?>"> <button class="btn-mark-delivered">Feedback</button> </a>
+                      </div>
+                      <?php } 
+                      if($status == 4){ ?> 
+                        <div class ="btns3"> 
+                        <a href="<?php echo URLROOT;?>/beneficiary/viewmoreHistoryBeneficiary/<?php echo $record->id;?>/<?php echo $record->type?>"> <button class="btn-view-more">View more</button> </a>
+                        </div>
+                        <?php }
+                        if($status == 5){ ?> 
+                          <div class ="btns3"> 
+                            
+                          </div>
+                          <?php } ?>
                     </div>
+                    
                 </div>
             <?php endforeach; ?>
             
@@ -142,6 +219,21 @@
           sBtn_text.innerText = selectedOption;
 
           optionMenu.classList.remove("active");
+      });
+  });
+  const statusMenu = document.querySelector(".status-menu"),
+  statusBtn = statusMenu.querySelector(".status-btn"),
+      statusOptions = statusMenu.querySelectorAll(".status_option"),
+      status_Btn_text = statusMenu.querySelector(".status_Btn-text");
+
+  statusBtn.addEventListener("click", () => statusMenu.classList.toggle("active"));
+
+  statusOptions.forEach(option => {
+      option.addEventListener("click", () => {
+          let selectedOption = option.querySelector(".status-option-text").innerText;
+          status_Btn_text.innerText = selectedOption;
+
+          statusMenu.classList.remove("active");
       });
   });
 </script>

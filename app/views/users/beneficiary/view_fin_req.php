@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Donation Requests</title>
+    <title>Financial Donation Request</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donation_req.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/add_donation_req.css" />
     <!-- <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" /> -->
@@ -42,29 +42,39 @@
             <div class="container">
                 <header>Donation Request</header>
 
-                <form method="post" action="<?php echo URLROOT; ?>/beneficiary/addFinancialRequest">
+                <form method="post" action="">
                     <div class="formfirst">
                         <div class="details personal">
                             <div class="fields">
             <?php  foreach($data['financials'] as $financials ): ?>
 
+                                <?php if($financials-> status==2){ ?>
+
+                <div class="input-field">
+                <label>Rejection Note</label>
+                
+                <input type="text" name="rejection" value="<?php echo $financials->rejection_note; ?>" disabled>
+                
+                </div>
+                <?php }  ?>
+
                                 <div class="input-field">
                                     <label>Request Title </label>
                                     
-                                    <input type="text" name="title" value="<?php echo $financials->request_title; ?>">
+                                    <input type="text" name="title" value="<?php echo $financials->request_title; ?>" disabled>
                                    
                                 </div>
                                 <div class="input-field">
                                     <label>Beneficiary Name</label>
                                     
-                                    <input type="text" name="name" value="<?php echo $financials->name; ?>">
+                                    <input type="text" name="name" value="<?php echo $financials->name; ?>" disabled>
                                   
                                 </div>
 
                                 <div class="input-field">
                                     <label>National ID Number</label>
                             
-                                    <input type="text" name="NIC" value="<?php echo $financials->NIC; ?>">
+                                    <input type="text" name="NIC" value="<?php echo $financials->NIC; ?>" disabled>
                                   
                                 </div>
 
@@ -72,7 +82,7 @@
                                 <div class="input-field">
                                     <label>Amount </label>
                                     
-                                    <input type="text" name="amount" value="<?php echo $financials->total_amount; ?>">
+                                 <input type="text" name="amount" value="Rs. <?php echo $financials->total_amount; ?>" disabled>
                                    
                                 </div>
 
@@ -80,115 +90,117 @@
 
                                 <div class="input-field" id="description">
                                     <label>Description</label>
-                                    <textarea name="description" rows="4" cols="40"><?php echo $financials->description; ?></textarea>
+                                    <textarea name="description" rows="4" cols="40" disabled><?php echo $financials->description; ?></textarea>
                                     
                                 </div>
 
                                 <div class="input-field">
                                     <label>Contact Number</label>
                                     
-                                    <input type="text" name="contact" value="<?php echo $financials->contact; ?>">
+                                    <input type="text" name="contact" value="<?php echo $financials->contact; ?>" disabled>
                                    
                                 </div>
 
-                                <!-- <div class="input-field">
-                                    <label>Donation Type </label>
-                                    <select>
-                                        <option disabled selected>Select Donation Type</option>
-                                        <option>Financial</option>
-                                        <option>Foods</option>
-                                        <option>Stationaries</option>
-                                    </select>
-                                </div> -->
 
                                 <div class="input-field">
-                                    <label>Location / City </label>
+                                    <label>Zipcode </label>
                                    
-                                    <input type="text" name="city" value="<?php echo $financials->city; ?>">
+                                    <input type="text" name="zipcode" value="<?php echo $financials->zipcode; ?>" disabled>
                                     
                                 </div>
 
                                 <div class="input-field">
                                     <label>Due Date</label>
                                     
-                                    <input type="date" name="duedate" value="<?php echo $financials->due_date; ?>">
+                                    <input type="date" name="duedate" value="<?php echo $financials->due_date; ?>" disabled>
                                     
                                 </div>
 
-
-                            </div>
-                        </div>
-
-<!-- 
-                        <span class="title"><u>Id Verification</u></span>
-
-                        <div class="ggg">
-                            <div class="photo-container">
-                                <input type="file" id="file" accept="image/*" hidden name="img1" value="<?php echo $data['img1']; ?>">
-                                <div class="img-area" data-img="">
-                                    <i class='bx bxs-cloud-upload icon'></i>
-                                    <h3>Upload Image</h3>
-                                    <p>Image size must be less than <span>2MB</span></p>
-                                </div>
-                                <button class="select-image">Select Image</button>
-                            </div>
-                            <div class="photo-container">
-                                <input type="file" id="file2" accept="image/*" hidden name="img2" value="<?php echo $data['img2']; ?>">
-                                <div class="img-area" id="area-two" data-img="">
-                                    <i class='bx bxs-cloud-upload icon'></i>
-                                    <h3>Upload Image</h3>
-                                    <p>Image size must be less than <span>2MB</span></p>
-                                </div>
-                                <button class="select-image" id="select_two">Select Image</button>
-                            </div>
-                        </div> -->
-                        <span class="title"><u>Recomondation Letter By Grama Niladari</u></span>
-                        <div class="photo-container" id="grame">
-                            <input type="file" id="file3" accept="image/*" hidden name="proof" value="<?php echo $financials->proof_document; ?>">
-                            <div class="img-area" id="area-three" data-img="">
-                                <i class='bx bxs-cloud-upload icon'></i>
-                                <h3>Upload Image</h3>
-                                <p>Image size must be less than <span>2MB</span></p>
-                            </div>
-                            
-                        </div>
-
-                        <span class="title"><u>Bank Pass Book</u></span>
-                        <div class="photo-container" id="grame">
-                            <input type="file" id="file3" accept="image/*" hidden name="passbook" value="<?php echo $financials->bank_pass_book; ?>">
-                            <div class="img-area" id="area-three" data-img="">
-                                <i class='bx bxs-cloud-upload icon'></i>
-                                <h3>Upload Image</h3>
-                                <p>Image size must be less than <span>2MB</span></p>
-                            </div>
-                           
-                        </div>
-
-                        <div class="input-field">
+                                <div class="input-field">
                                 <label>Bank Account Number </label>
                                
-                                <input type="text" name="accnumber" value="<?php echo $financials->bank_acc_number; ?>">
+                                <input type="text" name="accnumber" value="<?php echo $financials->bank_acc_number; ?>" disabled>
                                
                         </div>
 
                         <div class="input-field">
                                 <label>Bank Name </label>
                                
-                                <input type="text" name="bankname" value="<?php echo $financials->bank_name; ?>">
+                                <input type="text" name="bankname" value="<?php echo $financials->bank_name; ?>" disabled>
                                 
                         </div>
+                                <!-- <div class="input-field">
+                                    <label>District</label>
+                                    
+                                    <input type="text" name="district" value="<?php echo $financials->district; ?>" disabled>
+                                    
+                                </div> -->
+                                    
 
-                <?php endforeach; ?>
+                                    <div>
+                                    <div>
+                         <span class="title"><u>Proof Document </u></span>
+                         <div class="photo-container" id="grame">
+                            <!-- <div class="photo-container" id="grame"> -->
+                                
+                                    <img style="width:500px; height:300px;" src="<?php echo URLROOT; ?>/uploads/<?php echo $financials->proof_document;  ?>">
+                                </div>
+                            
+                            </div>
+                            
 
+                         <span class="title"><u>Bank Pass Book</u></span>
+                        <div class="photo-container" id="grame">
 
+                            <img style="width:500px; height:300px;" src="<?php echo URLROOT; ?>/uploads/<?php echo $financials->bank_pass_book;  ?>">
+                               
+                            </div>
+                            
+                        </div> 
+                        <br>
+                                    <div>
+                        <span class="title"><u>Thumbnail</u></span>
+                        <div class="photo-container" id="grame">
+                                
+                            <img style="width:500px; height:300px;" src="<?php echo URLROOT; ?>/uploads/<?php echo $financials->thumbnail;  ?>">
 
+                            </div>
+                            </div>
+                            
                         </div>
+                  
+                        </div>
+                        </div>
+
+
+                        <div>
+                         <?php if($financials->status==0){ ?>
+                         
+                         <a href="<?php echo URLROOT; ?>/beneficiary/viewUpFinancialRequest/<?php echo $financials->id;  ?>" class="btn-edit">Update</a>
+                         <a href="<?php echo URLROOT; ?>/beneficiary/deleteFinancialRequest/<?php echo $financials->id;  ?>" class="btn-delete">Delete</a>
+
+                         <?php } ?> 
+                         
+                       </div>
+
+                       <div>
+                         <?php if($financials->status==3){ ?>
+                         
+                         <a href="<?php echo URLROOT; ?>/beneficiary/resubmitFinancialRequest/<?php echo $financials->id;  ?>" class="btn-edit">RESUBMIT</a>
+
+                         <?php } ?> 
+                         
+                       </div>
+                       <?php endforeach; ?>
+                        </div>
+            </div>
+
+          
                         
 
                     </div>
-                    
-                     
 
+                    
                 </form>
             </div>
 
@@ -198,7 +210,7 @@
 
     </section>
     <!--home section end-->
-    <script>
+    <!-- <script>
         let sidebar = document.querySelector(".sidebar");
         let sidebarBtn = document.querySelector(".sidebarBtn");
         let welcome = document.querySelector(".welcome");
@@ -296,7 +308,7 @@
             }
         })
         
-    </script>
+    </script> -->
 
 </body>
 

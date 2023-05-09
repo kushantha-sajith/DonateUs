@@ -45,45 +45,78 @@
 
         <div class="main-container">
 
+        <table class="main-table">
+			<table>
+         <thead> 
 
-<table class="main-table">
-<thead>
-            
-            <th style="text-align:left;"><span>Meal Count</span></th>
-            <th style="text-align:left;"><span>Reserved Date</span></th>
-            <th style="text-align:left;"><span>Reserved Month</span></th>
-            <th style="text-align:left;"><span>Reserved Year</span></th>
-            <th style="text-align:left;"><span>Meal Time</span></th>
-            <th style="text-align:left;"></th>
-</thead>
+            <th style="padding-left:30px"><span>Donor Id</span></th> 
+            <th style="padding-left:30px"><span>Meal Count</span></th>
+          </thead>
+          <tbody>
+		  <h3>Breakfast</h3>
+		  <?php foreach($data['breakfast'] as $breakfast ): ?>
+                <tr class="t-row">
 
-<tbody>
-                            
-    <tr>
-                              
-    <?php foreach($data['reservations'] as $reservations): ?>
+                    <td style="padding-left:30px"><?php echo $breakfast->don_id; ?></td> 
+                    <td style="padding-left:30px"><?php echo $breakfast->amount; ?></td>  
+		 
+			</tr>
+            <?php endforeach; ?> 
+            </tbody> 
 
-        <td style="text-align:left;"><?php echo $reservations->amount; ?></td>
-        <td style="text-align:left;"><?php echo $reservations->date; ?></td>
-        <td style="text-align:left;"><?php echo $reservations->month+1; ?></td>
-        <td style="text-align:left;"><?php echo $reservations->year; ?></td>
-        <?php if($reservations->meal == 1){ ?>
-        <td style="text-align:left;">Breakfast</td> 
-        <?php   } elseif($reservations->meal == 2){?>
-        <td style="text-align:left;">Lunch</td>
-        <?php } else{ ?>
-        <td style="text-align:left;">Dinner</td> 
-        <?php } ?>     
-        <td style="text-align:left;"><a href="<?php echo URLROOT; ?>/beneficiary/approveReservation/<?php echo $reservations->id;  ?>" class="btn-edit">Accept</a></td>
-        <td style="text-align:left;"><a href="<?php echo URLROOT; ?>/beneficiary/rejectReservation/<?php echo $reservations->id;  ?>" class="btn-edit">Reject</a></td>
+			</table>
 
-    </tr>
-    
-    <?php endforeach; ?>
+			<br><br>
+			<table>
+			<thead> 
+		
+            <th style="padding-left:30px"><span>Donor Id</span></th> 
+            <th style="padding-left:30px"><span>Meal Count</span></th>
+          </thead>
+          <tbody>
+		  <h3>Lunch</h3>
+          <?php foreach($data['lunch'] as $lunch ): ?>
+			<tr class="t-row">
+				
+				<td style="padding-left:30px"><?php echo $lunch->don_id; ?></td> 
+				<td style="padding-left:30px"><?php echo $lunch->amount; ?></td>  
+				
 
-                          
-   </tbody>
-</table>
+			</tr> 
+            <?php endforeach; ?> 
+            </tbody> 
+
+			</table>
+
+            <br><br>
+			<table>
+			<thead> 
+
+            <th style="padding-left:30px"><span>Donor Id</span></th> 
+            <th style="padding-left:30px"><span>Meal Count</span></th>
+          </thead>
+          <tbody>
+			<h3>Dinner</h3>
+            <?php foreach($data['dinner'] as $dinner ): ?>
+			<tr class="t-row">
+			
+			<td style="text-align:left;"><?php echo $dinner->don_id; ?></td> 
+			<td style="text-align:left;"><?php echo $dinner->amount; ?></td>  
+			                 
+			</tr>
+            <?php endforeach; ?>  
+				<tr>
+
+				</tr>
+				</tbody> 
+
+				</table>
+		
+		 
+
+            </tbody> 
+			
+        </table> 
 </div>
 </section>
 
