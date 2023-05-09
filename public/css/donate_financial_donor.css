@@ -1,0 +1,443 @@
+/* Googlefont Poppins CDN Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+:root{
+    --color-white: #fff;
+    --color-info-dark:#7d8da1;
+    --color-info-light:#dce1eb;
+    --color-dark:#363949;
+    --color-light:rgba(132, 139, 200, 0.18);
+    --color-primary-varient:#0A2558;
+    --color-background:#f6f6f9;
+
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 0.8rem;
+    --border-radius-3: 1.2rem;
+
+    --card-padding:1.8rem;
+    --padding-1:1.2rem;
+    --box-shadow: 0 2rem 3rem var(--color-light)
+
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+main{
+    padding-top: 120px; 
+    padding-left: 50px; 
+    padding-right: 50px;
+}
+
+/*progress bar*/
+/* ===== Google Font Import - Poppins ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.skill-box{
+    
+    position: relative;
+    max-width: 500px;
+    width: 100%;
+    background: #fff;
+    padding: 10px 0 0 0;
+    margin: 15px 0 0 0;
+    border-radius: 7px;
+    
+}
+/* .title_a{
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+.title_a::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 3px;
+  width: 27px;
+  border-radius: 8px;
+  background-color: #0A2558;
+} */
+.skill-box .skill-bar{
+    height: 8px;
+    width: 100%;
+    border-radius: 6px;
+    margin-top: 6px;
+    background: rgba(0,0,0,0.1);
+    
+}
+.skill-bar .skill-per{
+    position:relative;
+    display: block;
+    height: 100%;
+    border-radius: 6px;
+    background: var(--color-primary-varient);
+    animation: progress 0.4s ease-in-out forwards;
+    opacity: 0;
+}
+
+
+@keyframes progress {
+    0%{
+        width: 0;
+        opacity: 1;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+/*gig card*/
+.gigcontainer{
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  
+  }
+  .gigcontainer .box{
+    width: 100%;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 30px;
+    border-radius: 5px;
+    margin-top: 2rem;
+    box-shadow: var(--box-shadow);
+  }
+  .mid{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 55% 44%;
+    grid-column-gap: 1%;
+    /* center the items vertically within the column */
+    /* align-items: center;  */
+    /* center the items horizontally within the column */
+    justify-content: center;
+  }
+ 
+  .box .quote i{
+  margin-top: 10px;
+  font-size: 45px;
+  color: #17c0eb
+  }
+  .gigcontainer .box .image{
+    margin: 25px 0;
+    height: 350px;
+    width: 500px;
+    background: #D6E4F0;
+    padding: 3px;
+    border: none;
+    border-radius: 4px;
+  
+    
+  }
+  .box .image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    
+  }
+  .box p{
+    text-align: justify;
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .box .name_job{
+    margin: 10px 0 3px 0;
+    color: #0A2558;
+    font-size: 18px;
+    font-weight: 600;
+  }
+/* -------------------------------------------- payment */
+.box form{
+    padding:20px;
+    width:700px;
+    background: #fff;
+  }
+  
+  .box form .row{
+    display: flex;
+    flex-wrap: wrap;
+    gap:15px;
+  }
+  
+  .box form .row .col{
+    flex:1 1 250px;
+  }
+  
+  .box header{
+    font-size: 20px;
+    color:#333;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+    display: block;
+  }
+  .box header::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 3px;
+    width: 27px;
+    border-radius: 8px;
+    background-color: #0A2558;
+  }
+  
+  .box form .row .col .inputBox{
+    margin:15px 0;
+  }
+  
+  .box form .row .col .inputBox span{
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+  .box form .row .col .inputBox input{
+    width: 100%;
+    border:1px solid #ccc;
+    padding:10px 15px;
+    font-size: 15px;
+    text-transform: none;
+  }
+  
+  .box form .row .col .inputBox input:focus{
+    border:1px solid #000;
+  }
+  
+  .box form .row .col .flex{
+    display: flex;
+    margin-top: 0px;
+    gap:15px;
+  }
+  
+  .box form .row .col .flex .inputBox{
+    margin-top: 5px;
+  }
+  
+  .box form .row .col .inputBox img{
+    height: 34px;
+    margin-top: 5px;
+    filter: drop-shadow(0 0 1px #000);
+  }
+  
+  .box form .submit-btn{
+    
+    background: #0A2558;
+    width: 100%;
+    padding: 9px 60px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+  }
+  
+  .box form .submit-btn:hover{
+    background: #0A2558;
+    color: #fff;
+  }
+  /* --------------------------------------------  payment */
+  .btns a{
+    margin-top: 20px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: right;
+    width: 100%;
+  }
+  .btns2{
+    margin-top: 20px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: right;
+    width: 100%;
+  }
+  a button{
+    background: #0A2558;
+    width: 100%;
+    padding: 9px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;;
+    transition: all 0.3s linear;
+  }
+  a .btn-back{
+    background: #0A2558;
+    width: fit-content;
+    padding: 9px 60px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;;
+    transition: all 0.3s linear;
+  }
+  
+  .btns a button:hover{
+    background: #0A2558;
+    color: #fff;
+  }
+  
+   /* progress circle */
+   .circle-wrap {
+    margin: 10px auto;
+    width: 150px;
+    height: 150px;
+    background: #fefcff;
+    border-radius: 50%;
+    border: 1px solid #0A2558;
+  }
+  
+  .circle-wrap .circle .mask,
+  .circle-wrap .circle .fill {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    border-radius: 50%;
+  }
+  
+  .circle-wrap .circle .mask {
+    clip: rect(0px, 150px, 150px, 75px);
+  }
+  
+  .circle-wrap .inside-circle {
+    width: 122px;
+    height: 122px;
+    border-radius: 50%;
+    border: 1px solid #0A2558;
+    background: #fff;
+    line-height: 120px;
+    text-align: center;
+    margin-top: 14px;
+    margin-left: 14px;
+    color: #0A2558;
+    position: absolute;
+    z-index: 100;
+    font-weight: 700;
+    font-size: 2em;
+  }
+  
+  /* color animation */
+  
+  /* 3rd progress bar */
+  .mask .fill {
+    clip: rect(0px, 75px, 150px, 0px);
+    background-color: #0A2558;
+  }
+  
+  .mask.full,
+  .circle .fill {
+    animation: fill ease-in-out 1s;
+    /* transform: rotate(135deg); 135 for 75% -> (360/100) * 75 = 270 , 270/2 = 135*/ 
+  }
+  .error{
+    color:red;
+  }
+  
+  @media (max-width:1045px){
+    .container .box{
+      width: calc(50% - 10px);
+      margin-bottom: 20px;
+    }
+  }
+  @media (max-width:710px){
+    .gigcontainer .box{
+      width: 100%;
+    }
+  }
+
+/* Responsive Media Query */
+@media (max-width: 1240px) {
+    .sidebar {
+        width: 60px;
+    }
+
+    .sidebar.active {
+        width: 220px;
+    }
+
+    .home-section {
+        width: calc(100% - 60px);
+        left: 60px;
+    }
+
+    .sidebar.active~.home-section {
+        /* width: calc(100% - 220px); */
+        overflow: hidden;
+        left: 220px;
+    }
+
+    .home-section nav {
+        width: calc(100% - 60px);
+        left: 60px;
+    }
+
+    .sidebar.active~.home-section nav {
+        width: calc(100% - 220px);
+        left: 220px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .overview-boxes .box {
+        width: calc(100% / 2 - 15px);
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 700px) {
+
+    nav .sidebar-button .dashboard,
+    nav .profile-details .admin_name,
+    nav .profile-details i {
+        display: none;
+    }
+
+    .home-section nav .profile-details {
+        height: 50px;
+        min-width: 40px;
+    }
+
+    .home-content .sales-boxes .sales-details {
+        width: 560px;
+    }
+}
+
+@media (max-width: 550px) {
+    .overview-boxes .box {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .sidebar.active~.home-section nav .profile-details {
+        display: none;
+    }
+}
+
+/*========Main======*/

@@ -548,7 +548,6 @@ nav .profile-details i {
     font-size: 16px;
     font-weight: 400;
     color: #fff;
-    ;
     transition: all 0.3s linear;
 }
 
@@ -603,11 +602,7 @@ nav .profile-details i {
 }
 
 @media (max-width: 700px) {
-    nav .sidebar-button .dashboard,
-    nav .profile-details .admin_name,
-    nav .profile-details i {
-        display: none;
-    }
+    
     .home-section nav .profile-details {
         height: 50px;
         min-width: 40px;

@@ -401,7 +401,7 @@ class DonorModel {
     }
 
     public function getEventRequests(){
-        $this->db->query('SELECT events.id, events.event_title, events.description, DATE(events.published_date) as published_date, events.due_date, DATEDIFF(events.due_date, CURRENT_DATE) AS days_left, events.budget, events.received, events.thumbnail, events.user_id, event_org.community_name FROM events INNER JOIN event_org ON events.user_id = event_org.user_id WHERE events.status = 1 ORDER BY events.id DESC');
+        $this->db->query('SELECT events.id, events.event_title, events.description, DATE(events.published_date) as published_date, events.due_date, DATEDIFF(events.due_date, CURRENT_DATE) AS days_left, events.budget, events.received, events.thumbnail, events.event_org_id, event_org.community_name FROM events INNER JOIN event_org ON events.event_org_id = event_org.user_id WHERE events.status = 1 ORDER BY events.id DESC');
         $results = $this->db->resultSet();
         return $results;
     }
@@ -513,7 +513,7 @@ class DonorModel {
     }
 
     public function getEventDetails($id){
-        $this->db->query('SELECT events.id, events.event_title, events.description, DATE(events.published_date) as published_date, events.due_date, DATEDIFF(events.due_date, CURRENT_DATE) AS days_left, events.budget, events.received, events.thumbnail, events.user_id, event_org.community_name, event_org.zipcode FROM events JOIN event_org ON events.user_id = event_org.user_id WHERE events.id = :id');
+        $this->db->query('SELECT events.id, events.event_title, events.description, DATE(events.published_date) as published_date, events.due_date, DATEDIFF(events.due_date, CURRENT_DATE) AS days_left, events.budget, events.received, events.thumbnail, events.event_org_id, event_org.community_name, event_org.zipcode FROM events JOIN event_org ON events.event_org_id = event_org.user_id WHERE events.id = :id');
         $this->db->bind(':id', $id);
         $results = $this->db->resultSet();
         return $results;
@@ -527,7 +527,7 @@ class DonorModel {
     }
 
     public function getEventRequestDistricts(){
-        $this->db->query('SELECT DISTINCT event_org.district, district.dist_name FROM events JOIN event_org ON events.user_id = event_org.user_id JOIN district ON event_org.district = district.id ORDER BY event_org.district ASC');
+        $this->db->query('SELECT DISTINCT event_org.district, district.dist_name FROM events JOIN event_org ON events.event_org_id = event_org.user_id JOIN district ON event_org.district = district.id ORDER BY event_org.district ASC');
         $results = $this->db->resultSet();
         return $results;
     }
@@ -540,7 +540,7 @@ class DonorModel {
     }
 
     public function getFilteredEvents($id){
-        $this->db->query('SELECT events.id, events.event_title, events.description, DATE(events.published_date) as published_date, events.due_date, DATEDIFF(events.due_date, CURRENT_DATE) AS days_left, events.budget, events.received, events.thumbnail, events.user_id, event_org.community_name, event_org.district FROM events INNER JOIN event_org ON events.user_id = event_org.user_id WHERE event_org.district = :id  AND events.status = 1 ORDER BY events.id DESC');
+        $this->db->query('SELECT events.id, events.event_title, events.description, DATE(events.published_date) as published_date, events.due_date, DATEDIFF(events.due_date, CURRENT_DATE) AS days_left, events.budget, events.received, events.thumbnail, events., event_org.community_name, event_org.district FROM events INNER JOIN event_org ON events.event_org_id = event_org.user_id WHERE event_org.district = :id  AND events.status = 1 ORDER BY events.id DESC');
         $this->db->bind(':id', $id);
         $results = $this->db->resultSet();
         return $results;

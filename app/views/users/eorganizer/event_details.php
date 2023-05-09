@@ -40,7 +40,7 @@
                     <span class="material-icons">
                         pending_actions
                     </span>
-                    <span class="option-text"><?php echo $data['status'] ?></a></span>
+                    <span class="option-text"><?php echo $data['status']?></a></span>
                     <i class="bx bx-chevron-down"></i>
                 </div>
 

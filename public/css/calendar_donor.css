@@ -1,7 +1,7 @@
 
 		.calendar {
             
-			width: 1000px;
+			width: 800px;
 			left: 50px;
 			background-color: #fff;
 			box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
@@ -22,25 +22,25 @@
 		}
 
 		.calendar .header h2 {
-			font-size: 36px;
+			font-size: 22px;
 			font-weight: bold;
 			margin: 0;
 		}
 
 		.calendar .header h1 {
-			font-size: 22px;
+			font-size: 14px;
 			font-weight: bold;
 			margin: 0;
 		}
 		
 		.calendar .header button {
-			height:50px;
-			width:50px;
+			height:40px;
+			width:40px;
 			border: 1px solid #163172;
 			border-radius: 50%;
 			background-color: #163172;
 			cursor: pointer;
-			font-size: 26px;
+			font-size: 14px;
 			color: #ffff;
 		}
 		
@@ -65,7 +65,7 @@
 			grid-template-columns: repeat(7, 1fr);
 			grid-gap: 10px;
 			text-align: center;
-			font-size: 18px;
+			font-size: 14px;
 		}
 		
 		.calendar .days .day {
@@ -73,9 +73,9 @@
 			border-radius: 5px;
 			padding: 10px ;
 			cursor: pointer;
-			font-size: 28px;
-			height: 178px;
-			width: 132px;
+			font-size: 14px;
+			height: 140px;
+			width: 100px;
 			display: block;
 		}
 
@@ -85,9 +85,9 @@
 			border-radius: 5px;
 			padding: 10px ;
 			cursor: pointer;
-			font-size: 28px;
-			height: 178px;
-			width: 132px;
+			font-size: 14px;
+			height: 140px;
+			width: 100px;
 			display: block;
 		}
 
@@ -106,15 +106,18 @@
 
 		.current-day .today-text{
 			float: right;
-			font-size: 18px;
+			font-size: 14px;
 		}
 
+		.day-number{
+			font-size: 18px;
+		}
 		.day .meals, .current-day .meals{
-			width: 112px;
+			width: 85px;
 			height: 104.8px;
 			text-align: center;
 			cursor: pointer;
-			font-size: 0.9rem;
+			font-size: 14px;
 			/* display: block; */
 			display: flex;
 			flex-direction: column;
@@ -134,6 +137,7 @@
 			margin-left: 20px;
 			margin-top: 5px;
 			display: none;
+			font-size: 12px;
 		}
 		.day .meals .meal1, .current-day .meals .meal1{
 			background: green;
@@ -144,6 +148,7 @@
 			margin-left: 20px;
 			margin-top: 5px;
 			display: block;
+			font-size: 12px;
 		}
 		.day .meals .meal2, .current-day .meals .meal2{
 			background: green;
@@ -154,6 +159,7 @@
 			margin-left: 20px;
 			margin-top: 5px;
 			display: block;
+			font-size: 12px;
 		}
 		.day .meals .meal3, .current-day .meals .meal3{
 			background: green;
@@ -164,6 +170,7 @@
 			margin-left: 20px;
 			margin-top: 5px;
 			display: block;
+			font-size: 12px;
 		}
 		
 		.calendar .popup {
@@ -276,7 +283,7 @@
 }
 
 .org_name{
-	margin-bottom: 10px;
+	margin-bottom: 30px;
 }
 
 .btns2 a{
@@ -389,4 +396,64 @@
 .input-field input:valid {
   border: 1px solid #ccc;
 }
+ 
+  /* how it works */
+
+  .how_it_works .progress-container {
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+	margin-bottom: 30px;
+	max-width: 100%;
+	width: 1000px;
+  }
+  
+  .how_it_works  .progress-container::before {
+	content: ""; /* Mandatory with ::before */
+	background-color: #0A2558;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	height: 10px;
+	width: 100%;
+	z-index: -1;
+  }
+  
+  .how_it_works  .progress {
+	background-color: #0A2558;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	height: 10px;
+	width: 100%;
+	z-index: -1;
+  }
+  
+  .how_it_works  .circle_a {
+	background-color: #0A2558;
+	color: #fff;
+	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 3px solid #0A2558;
+  }
+  
+  .how_it_works  .instructions {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	font-size: small;
+  }
+  
+  .how_it_works  .instructions li:before {
+	content: "\2713"; /* checkmark symbol */
+	color: #52b788; /* color of checkmark */
+	font-weight: bold;
+	margin-right: 5px;
+  }
   

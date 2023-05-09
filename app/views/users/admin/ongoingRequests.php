@@ -37,8 +37,8 @@
     </nav>
 
     <main>
-        <div style="text-align: center;"> <a href="<?php echo URLROOT; ?>/pages/addNewRequest"> <button class="btnview btnadd">Add New Request</button> </a></div>
-        <br>
+<!--        <div style="text-align: center;"> <a href="--><?php //echo URLROOT; ?><!--/pages/addNewRequest"> <button class="btnview btnadd">Add New Request</button> </a></div>-->
+<!--        <br>-->
             <div class="select-menu">
                 <div class="select-btn">
                     <span class="material-icons" style="color: black; margin-right: 1rem;">receipt_long</span>

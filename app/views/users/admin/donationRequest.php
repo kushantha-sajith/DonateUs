@@ -40,10 +40,10 @@
 
 
     <main>
-        <div style="text-align: center;"><a href="<?php echo URLROOT; ?>/pages/addNewRequest">
-                <button class="btnview btnadd">Add New Request</button>
-            </a></div>
-        <br>
+<!--        <div style="text-align: center;"><a href="--><?php //echo URLROOT; ?><!--/pages/addNewRequest">-->
+<!--                <button class="btnview btnadd">Add New Request</button>-->
+<!--            </a></div>-->
+<!--        <br>-->
         <!--        <div>-->
         <!--            <form>-->
         <!--                <input type="text" placeholder="&#xf002; Search Donor..." class="jssearch" oninput=get_data()>-->

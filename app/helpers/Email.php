@@ -20,8 +20,8 @@ class Email
     public function __construct($email)
     {
         $this->receiver = $email;
-        $this->sender = 'donate.us.sl@gmail.com';
-        $this->password = 'xxtsnkzzsockiejj';
+        $this->sender = 'donate.us.global@gmail.com';
+        $this->password = 'hjnsumbfaiezqtrm';
 
         $this->mail = new PHPMailer();
         $this->mail->isSMTP();                                     //Send using SMTP
@@ -141,7 +141,7 @@ class Email
 
             $this->mail->Body = "<h1 style='text-align: center; margin-top: 40px;'>Hello " . $receiverName . ",</h1>
                     <h2 style='color: #0A2558;'>Welcome To DonateUs</h2>
-                    <h4>Your account has been accepted. You can login from <a href='http://localhost/DonateUs/users/login'>here</a>.</h4>
+                    <h4>We are sorry to you that your account has been rejected.</h4>
                     <h3 style='color: #0A2558;'>Thank You!</h3>";
             $this->mail->send();
         } catch (Exception $e) {
@@ -213,7 +213,7 @@ class Email
 
             $this->mail->Body = "<h1 style='text-align: center; margin-top: 40px;'>Hello " . $receiverName . ",</h1>
                     <h2 style='color: #0A2558;'>Welcome To DonateUs</h2>
-                    <h4>Your donation request has been accepted. You can view more details at ongoing request tab.</h4>
+                    <h4>We are sorry to you that your donation request has been accepted. You can view more details at rejected request tab.</h4>
                     <h3 style='color: #0A2558;'>Thank You!</h3>";
             $this->mail->send();
         } catch (Exception $e) {
@@ -237,7 +237,7 @@ class Email
 
             $this->mail->Body = "<h1 style='text-align: center; margin-top: 40px;'>Hello " . $receiverName . ",</h1>
                     <h2 style='color: #0A2558;'>Welcome To DonateUs</h2>
-                    <h4>Your event request has been accepted. You can view more details at ongoing events tab.</h4>
+                    <h4>We are sorry to you that your event request has been accepted. You can view more details at rejcted events tab.</h4>
                     <h3 style='color: #0A2558;'>Thank You!</h3>";
             $this->mail->send();
         } catch (Exception $e) {

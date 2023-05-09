@@ -87,10 +87,10 @@
                 <div><?php echo $donation->id; ?></div>
                 <div><?php echo $donation->donor_name; ?></div>
                 <div><?php echo $donation->request_title; ?></div>
-                <div><?php echo $donation->category; ?></div>
-                <div><?php echo $donation->tp_number; ?></div>
-                <div><?php echo $donation->amount; ?></div>
-                <div><?php echo $donation->status; ?></div>
+                <div>Money</div>
+                <div><?php echo $donation->donor_tp; ?></div>
+                <div><?php echo $donation->amount_donated; ?></div>
+                <div>Completed</div>
                 <div>
                     <div style="text-align: center;">
                         <a href="<?php echo URLROOT; ?>/adminPages/financialDonations/<?php echo $donation->id; ?>">
