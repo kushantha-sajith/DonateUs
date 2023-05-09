@@ -5,12 +5,17 @@
       </div>
       <ul class="nav-links">
         <li>
+<<<<<<< Updated upstream
           <a href="<?php echo URLROOT; ?>/pages/eorganizer">
+=======
+          <a href="<?php echo URLROOT; ?>/pages/organizer">
+>>>>>>> Stashed changes
             <i class="bx bx-grid-alt"></i>
             <span class="links_name">Dashboard</span>
           </a>
         </li>
         <li>
+<<<<<<< Updated upstream
           <a href="#">
             <i class="bx bx-list-check"></i>
             <span class="links_name">Events</span>
@@ -44,12 +49,37 @@
         </li>
         <li >
           <a href="#">
+=======
+          <a href="<?php echo URLROOT; ?>/EOrganizer/CreateEvent">
+            <i class="bx bx-list-check"></i>
+            <span class="links_name">Create Events</span>
+          </a>
+        </li>
+        <li>
+        <a href="<?php echo URLROOT; ?>/EOrganizer/EventDetails/0">
+            <i class="bx bx-list-check"></i>
+            <span class="links_name">Event Details</span>
+          </a>
+        </li>
+        <li>
+        <a href="<?php echo URLROOT; ?>/EOrganizer/DonationHistory">
+            <i class="bx bx-conversation"></i>
+            <span class="links_name">Event Donation History</span>
+          </a>
+        </li>
+        <li >
+        <a href="<?php echo URLROOT; ?>/EOrganizer/Sponserships">
+>>>>>>> Stashed changes
             <i class="bx bxs-dollar-circle"></i>
             <span class="links_name">Sponsorships</span>
           </a>
         </li>
         <li >
+<<<<<<< Updated upstream
           <a href="#">
+=======
+        <a href="<?php echo URLROOT; ?>/EOrganizer/Reports">
+>>>>>>> Stashed changes
             <i class="bx bxs-report"></i>
             <span class="links_name">Reports</span>
           </a>

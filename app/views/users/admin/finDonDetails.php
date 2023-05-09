@@ -51,7 +51,7 @@
                             <div class="input-field">
                                 <label>Beneficiary Name</label>
                                 <input type="text" disabled
-                                       placeholder="<?php echo $donationData->beneficiary_name; ?>">
+                                       placeholder="<?php echo $donationData->ben_name; ?>">
                             </div>
                             <div class="input-field">
                                 <label>Request Title</label>
@@ -59,7 +59,7 @@
                             </div>
                             <div class="input-field">
                                 <label>Donated Amount</label>
-                                <input type="text" disabled placeholder="Rs.<?php echo $donationData->amount; ?>">
+                                <input type="text" disabled placeholder="Rs.<?php echo $donationData->amount_donated; ?>">
                             </div>
                             <div class="input-field">
                                 <label>Donor Email</label>
@@ -68,17 +68,17 @@
                             <div class="input-field">
                                 <label>Donor Contact Number</label>
                                 <input type="number" disabled
-                                       placeholder="<?php echo $donationData->donor_tp_number; ?>">
+                                       placeholder="<?php echo $donationData->donor_tp; ?>">
                             </div>
                             <div class="input-field">
                                 <label>Beneficiary Email</label>
                                 <input type="text" disabled
-                                       placeholder="<?php echo $donationData->beneficiary_email; ?>">
+                                       placeholder="<?php echo $donationData->ben_email; ?>">
                             </div>
                             <div class="input-field">
                                 <label>Beneficiary Contact Number</label>
                                 <input type="number" disabled
-                                       placeholder="<?php echo $donationData->beneficiary_tp_number; ?>">
+                                       placeholder="<?php echo $donationData->ben_tp; ?>">
                             </div>
                         </div>
                     </div>

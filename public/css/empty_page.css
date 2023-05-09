@@ -490,7 +490,6 @@ nav .profile-details i {
     position:relative;
     display: block;
     height: 100%;
-    max-width: 100%;
     border-radius: 6px;
     background: var(--color-primary-varient);
     animation: progress 0.4s ease-in-out forwards;
@@ -533,7 +532,7 @@ nav .profile-details i {
   .gigcontainer .nothing_to_display{
     width: 100%;
     background: #fff;
-    display: none;
+    display: flex;
     justify-content: center;
     padding: 20px 30px;
     border-radius: 5px;
@@ -609,20 +608,6 @@ nav .profile-details i {
     font-weight: 400;
     color: #fff;;
     transition: all 0.3s linear;
-  }
-  a button:disabled{
-    background: #0A2558;
-    width: 100%;
-    padding: 9px;
-    outline: none;
-    border: none;
-    border-radius: 5px;
-    cursor: help;
-    font-size: 16px;
-    font-weight: 400;
-    color: #fff;;
-    transition: all 0.3s linear;
-    opacity: 0.8;
   }
   #refresh{
     background: #0A2558;

@@ -610,20 +610,6 @@ nav .profile-details i {
     color: #fff;;
     transition: all 0.3s linear;
   }
-  a button:disabled{
-    background: #0A2558;
-    width: 100%;
-    padding: 9px;
-    outline: none;
-    border: none;
-    border-radius: 5px;
-    cursor: help;
-    font-size: 16px;
-    font-weight: 400;
-    color: #fff;;
-    transition: all 0.3s linear;
-    opacity: 0.8;
-  }
   #refresh{
     background: #0A2558;
     width: 50%;

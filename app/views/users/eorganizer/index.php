@@ -23,10 +23,86 @@
           <i class="bx bx-menu sidebarBtn"></i>
           <span class="dashboard">Dashboard</span>
         </div>
+<<<<<<< Updated upstream
         
         <div class="profile-details">
           <div class="notification">
             <i class="bx bx-bell bx-tada notification"></i>
+=======
+        <a href="<?php echo URLROOT; ?>/pages/profileOrganizer"><img src="<?php echo URLROOT; ?>/img/img_profile.png" alt="" /></a>
+        <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
+        <!-- <i class='bx bx-chevron-down'></i> -->
+      </div>
+    </nav>
+    <section id="content">
+      <main>
+        <ul class="box-info">
+          <li>
+            <i class='bx bxs-calendar-check'></i>
+            <span class="text">
+              <h3><?php echo $data['ongoingReqCount']; ?></h3>
+              <p>Ongoing Requests </p>
+            </span>
+          </li>
+          <li>
+            <i class='bx bxs-group'></i>
+            <span class="text">
+              <h3><?php echo $data['pendingRequests']; ?></h3>
+              <p>Total Users</p>
+            </span>
+          </li>
+          <li>
+            <i class='bx bxs-dollar-circle'></i>
+            <span class="text">
+              <h3>Rs.<?php echo $data['totalDonations']; ?></h3>
+              <p>Total Financial
+                Donations</p>
+            </span>
+          </li>
+        </ul>
+
+
+        <div class="table-data">
+          <div class="order">
+            <div class="head">
+              <h3>Recent Donations</h3>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Donor Name</th>
+                  <th>Date</th>
+                  <th>Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php foreach ($data['recentDonations'] as $recentDonations) : ?>
+                  <tr>
+                    <td>
+                      <!--                                <img src="img/people.png">-->
+                      <p><?php echo $recentDonations->donor_name; ?></p>
+                    </td>
+                    <td><?php echo $recentDonations->date_of_completion; ?></td>
+                    <td><?php echo $recentDonations->amount; ?></td>
+                  </tr>
+                <?php endforeach; ?>
+              </tbody>
+            </table>
+          </div>
+          <div class="todo">
+            <!--<div class="head">-->
+            <!--<h3>Top Donors</h3>-->
+            <!--</div>-->
+            <!--<ul class="todo-list">-->
+            <!--<li class="not-completed">-->
+            <!--<p>#</p>-->
+            <!--<i class='bx bx-dots-vertical-rounded'></i>-->
+            <!--</li>-->
+            <!--</ul>-->
+            <div class="chart1" style="height: 23vh;">
+              <canvas id="myChart"></canvas>
+            </div>
+>>>>>>> Stashed changes
           </div>
             <a href="<?php echo URLROOT; ?>/pages/profile_eorganizer"><img src="<?php echo URLROOT; ?>/img/<?php echo $data['prof_img'];  ?>" alt="" /></a>
           <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->

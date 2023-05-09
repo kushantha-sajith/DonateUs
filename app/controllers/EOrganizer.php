@@ -12,6 +12,7 @@ class EOrganizer extends Controller
     }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     //load donor dashboard
 
     /**
@@ -37,6 +38,8 @@ class EOrganizer extends Controller
             $this->view('users/login', $data);
         }
 =======
+=======
+>>>>>>> Stashed changes
     /** Event Organizers Pages  */
     public function CreateEvent()
     {
@@ -162,6 +165,103 @@ class EOrganizer extends Controller
             redirect('pages/profileOrganizer');
         } else {
             redirect('pages/editProfileOrganizer');
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+        }
+    }
+
+
+    public function DonationHistory()
+    {
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $user_ID = $_SESSION['user_id'];
+        $data = $this->EOrganizerModel->getDonationHistory($user_ID);
+        $this->view('users/eorganizer/donation_history', $data);
+    }
+
+    public function DonationReq()
+    {
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $this->view('users/eorganizer/donation_requests');
+    }
+
+    public function EventDetails($status)
+    {
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $id = $_SESSION['user_id'];
+        $data['donation_req'] = $this->EOrganizerModel->getEvents($id, $status);
+        switch ($status) {
+            case '0':
+                $data['status'] = 'Pending Events';
+                break;
+            case '1':
+                $data['status'] = 'Ongoing Events';
+                break;
+            case '2':
+                $data['status'] = 'Rejected Events';
+                break;
+            case '3':
+                $data['status'] = 'Completed Events';
+                break;
+        }
+        $this->view('users/eorganizer/event_details', $data);
+    }
+
+    public function EventDetailsFull($id)
+    {
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $data = array();
+        $data = $this->EOrganizerModel->getEvent($id);
+        //make the data array
+
+        $this->view('users/eorganizer/event_details_more', $data);
+    }
+
+    public function Reports()
+    {
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $this->view('users/eorganizer/reports');
+    }
+
+    public function stats()
+    {
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $this->view('users/eorganizer/stats');
+    }
+
+    public function Sponserships()
+    {
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $this->view('users/eorganizer/sponserships');
+    }
+
+    public function rejected()
+    {
+        if (!isLoggedIn()) {
+            redirect('users/login');
+        }
+        $this->view('users/eorganizer/event_req_rejected');
+    }
+
+    public function completed()
+    {
+        if (!isLoggedIn()) {
+            redirect('users/login');
 >>>>>>> Stashed changes
         }
         $this->view('users/eorganizer/event_req_completed');
@@ -185,6 +285,8 @@ class EOrganizer extends Controller
     //add a new Event
     public function Addevent()
     {
+
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
