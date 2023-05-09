@@ -91,13 +91,13 @@
           </div>
          
           <br><br>
-          <table class="table-img">
+          <!-- <table class="table-img">
             <tr>
               <td class="table-data"><img src="<?php echo URLROOT; ?>/img/image4.png" alt="" width="450" height="350"></td>
             
               <td class="table-data"><img src="<?php echo URLROOT; ?>/img/image2.png" alt="" width="500" height="350"></td>
           </tr>
-          </table>
+          </table> -->
 
          
               </div>

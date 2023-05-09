@@ -89,7 +89,7 @@
                           <div class="btns">
                             <a href="<?php echo URLROOT;?>/donor/viewCalendarDonor/<?php echo $requests->user_id;  ?>" ><button disabled>Make a Reservation</button></a>
                         </div>
-                          <p>You are not eligible to make reservations at the moment. Please complte the <b>Pending Donations </b>and try again!</p>
+                          <p>You are not eligible to make reservations at the moment. Please complete the <b>Pending Donations </b>and try again!</p>
   
                         <?php } ?>
                         

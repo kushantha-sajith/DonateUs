@@ -304,8 +304,13 @@ use Stripe\StripeClient;
           }
 
         public function viewAllFeedbackDonor(){
+          $id = $_SESSION['user_id'];
+          $details = $this->donorModel->getAllFeedback($id);
+          $image_name = $this->profileImage();
             $data = [
-              'title' => 'All Feedback'
+              'title' => 'All Feedback',
+              'details' => $details,
+              'prof_img' => $image_name
             ];
       
             $this->view('users/donor/all_feedback_donor', $data);
@@ -1193,106 +1198,8 @@ use Stripe\StripeClient;
     $amount = intval($amount_donated) ;
     $currency = 'lkr';
     $encoded_data = urlencode(json_encode($data));
-    // $response = array( 
-    //   'status' => 0, 
-    //   'error' => array( 
-    //   'message' => 'Invalid Request!'    
-    // ) 
-    // ); 
-
-    // if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
-    //   $input = file_get_contents('php://input'); 
-    //   $request = json_decode($input);     
-    // } 
-
-    // if (json_last_error() !== JSON_ERROR_NONE) { 
-    //   http_response_code(400); 
-    //   echo json_encode($response); 
-    // exit; 
-    // } 
-
-    // if(!empty($request->createCheckoutSession)){ 
-    //   // Convert product price to cent 
-      $stripeAmount = round($amount*100, 2); 
-
-    //   // Create new Checkout Session for the order 
-    //   try { 
-    //   $checkout_session = $stripe->checkout->sessions->create([ 
-    //     'line_items' => [[ 
-    //       'price_data' => [ 
-    //           'product_data' => [ 
-    //               'name' => $productName, 
-    //               'metadata' => [ 
-    //                   'pro_id' => $productID 
-    //               ] 
-    //           ], 
-    //           'unit_amount' => $stripeAmount, 
-    //           'currency' => $currency, 
-    //       ], 
-    //       'quantity' => 1 
-    //   ]], 
-    //       'mode' => 'payment', 
-    //       'success_url' => URLROOT.'/donor/index', 
-    //       'cancel_url' => URLROOT.'pages/donationRequestsDonor', 
-    //     ]); 
-    //   } catch(Exception $e) {  
-    //     $api_error = $e->getMessage();  
-    //   } 
    
-    //   if(empty($api_error) && $checkout_session){ 
-    //       $response = array( 
-    //           'status' => 1, 
-    //           'message' => 'Checkout Session created successfully!', 
-    //           'sessionId' => $checkout_session->id 
-    //   ); 
-    //   }else{ 
-    //       $response = array( 
-    //         'status' => 0, 
-    //         'error' => array( 
-    //         'message' => 'Checkout Session creation failed! '.$api_error    
-    //         ) 
-    //       ); 
-    //   } 
-    // } 
-
-    // // Return response 
-    // echo json_encode($response); 
-// -------------------------------------
-
-// \Stripe\Stripe::setApiKey('sk_test_51N4OOUBUpAx8uiW7HKrgvf5e7eL507tpWQexdi6sQC3euKoptTm3lUksLjYqlyQ5icjD25ui1KmfLICjiyfu3oxP00veVX6wxO'); // set Stripe secret key
-
-// if(isset($_POST['createCheckoutSession'])) {
-//   $sessionId = createCheckoutSession();
-//   echo json_encode(['sessionId' => $sessionId]);
-// }
-
-
-
-//     }
-// function createCheckoutSession() {
-//   // create a new Checkout Session using the Stripe API
-//   $session = \Stripe\Checkout\Session::create([
-//     'payment_method_types' => ['card'],
-//     'line_items' => [
-//       [
-//         'price_data' => [
-//           'currency' => 'usd',
-//           'product_data' => [
-//             'name' => 'My Product',
-//           ],
-//           'unit_amount' => 1000,
-//         ],
-//         'quantity' => 1,
-//       ],
-//     ],
-//     'mode' => 'payment',
-//     'success_url' => URLROOT.'/donor/index', 
-//     'cancel_url' => URLROOT.'pages/donationRequestsDonor', 
-//   ]);
-
-//   return $session->id;
-// }
-
+      $stripeAmount = round($amount*100, 2); 
 
 
 \Stripe\Stripe::setApiKey($stripe_api_key);
@@ -1495,10 +1402,15 @@ header("Location: " . $checkout_session->url);
     ];
 
     $count = $this->donorModel->getReservedPlatesCount($data);
+    if($count == NULL){
+      echo 0;
+    }else{
+      echo $count;
+    }
     //$
     // return "hello";
     // return response()->json(['result' => $count]);
-    echo $count;
+    
   }
 
   
@@ -1515,7 +1427,16 @@ header("Location: " . $checkout_session->url);
         $this->view('users/donor/view_meal_plan', $data);
   }
 
-  }
+  public function eventDonationHistoryDonor(){
+    $image_name = $this->profileImage();
+    $user_id = $_SESSION['user_id'];
+    $details = $this->donorModel->getEventDonations($user_id);
+        $data =[
+          'title' => 'Donation History - Events',
+          'prof_img' => $image_name,
+          'details' => $details
+        ];
 
-    
-  
+        $this->view('users/donor/event_donation_history_donor', $data);  
+  }
+  }

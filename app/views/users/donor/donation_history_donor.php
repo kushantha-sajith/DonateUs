@@ -106,11 +106,17 @@
                 
             </ul>
         </div>
+        
+        </div> <!-- eo filters -->
+        <div class="mid_buttons">
+        <div class="btns2">
+              <a href="<?php echo URLROOT;?>/donor/eventDonationHistoryDonor" ><button class="btn-back">Donations to Events</button></a>
+        </div>
         <div class="btns2">
               <a href="<?php echo URLROOT;?>/donor/viewAllFeedbackDonor" ><button class="btn-back">All Feedback</button></a>
-            </div>
-        </div> <!-- eo filters -->
-
+        </div>
+        </div>
+       
             <div class="cards_heading2 head">
             <div>Date</div>
                 <div>Request Title</div>                
