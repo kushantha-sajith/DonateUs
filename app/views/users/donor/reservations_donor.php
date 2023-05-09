@@ -91,6 +91,17 @@
                         <div class="btns">
                             <a href="<?php echo URLROOT;?>/donor/viewCalendarDonor/<?php echo $requests->user_id;  ?>" ><button>Make a Reservation</button></a>
                         </div>
+<<<<<<< Updated upstream
+=======
+                        <?php }else{ ?>
+                          <div class="btns">
+                            <a href="<?php echo URLROOT;?>/donor/viewCalendarDonor/<?php echo $requests->user_id;  ?>" ><button disabled>Make a Reservation</button></a>
+                        </div>
+                          <p>You are not eligible to make reservations at the moment. Please complete the <b>Pending Donations </b>and try again!</p>
+  
+                        <?php } ?>
+                        
+>>>>>>> Stashed changes
                     </div>
                 </div>
                 <?php endforeach; ?>

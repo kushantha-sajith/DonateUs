@@ -87,7 +87,12 @@ main{
     font-size: 1rem;
     
 }
-
+.filters{
+    display: grid;
+    grid-template-columns: 40% 40% 20%;
+    max-width: 100%;
+    justify-content: left;
+}
 .btnview{
     display: flex;
     align-items: center;

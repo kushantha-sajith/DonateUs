@@ -134,26 +134,6 @@
                                     <!-- required field to check before the submission of the form -->
                                 </div>
 	  						</div>
-							<!-- <span class="span_title"><u>My Contact Details</u></span>
-	  						<div class="fields"> 
-								
-                                <div class="input-field">
-                                    <label>Contact number 1</label>
-                                    <input class="required-input" type="text" name="contact1" placeholder="ex: +94XXXXXXXXX" value="" required>
-                                  
-                                </div>
-                                <div class="input-field">
-                                    <label>Contact number 2</label>
-                                    <input class="required-input" type="text" name="contact2" placeholder="ex: +94XXXXXXXXX" value="" required>
-                                  
-                                </div>
-                                <div class="input-field">
-                                    <label>Email Address</label>
-                                    <input class="required-input" type="text" name="email" placeholder="ex: abc@gamil.com" value="" required>
-                                    
-                                </div> -->
-                                
-                            <!-- </div>eo fields -->
 
                         <input class="btn-submit-popup" type="submit" value="Submit" >
                             
@@ -177,7 +157,9 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 	<script>
+		
 		$(document).ready(function() {
+			
 			// Initialize variables
 			var today = new Date();
 			var currentDate = today.getDate();
@@ -218,6 +200,7 @@
 						$('.days').append('<div class="day"> <span>' + i + '</span> <div class="meals" id="' + i + '"> <div class="meal1">Breakfast</div> <div class="meal2">Lunch</div> <div class="meal3">Dinner</div> <div class="meal0">Reserved</div> </div></div>');
 					}
 				}
+<<<<<<< Updated upstream
 
 				// mark reserved dates
 				<?php foreach($data['reservations'] as $reservation ): ?>
@@ -238,6 +221,53 @@
 					}
 	  				
 	  			<?php endforeach; ?>
+=======
+					
+				<?php foreach($data['reservations'] as $reservation ):
+				$reserved_count = 0; 
+					for($month_m = date('n'); $month_m <= (date('n')+1); $month_m++){
+						
+						$days_of_month = cal_days_in_month(CAL_GREGORIAN, $month_m, 2023);
+						
+						if($month_m == date('n')){
+							for($day_d = date('j'); $day_d <= $days_of_month; $day_d++){
+							for($meal = 1; $meal<4; $meal++){
+								
+								if($month_m == $reservation->month   && $day_d ==  $reservation->date   && $meal ==  $reservation->meal  ){
+									$reserved_count = $reserved_count + parseInt($reservation->amount);
+
+									if($reserved_count == parseInt($data['members'])*0.75){ ?>
+										document.getElementById("<?php echo $day_d;  ?>").querySelector(".meal<?php echo $meal;  ?>").style.background = "orange";
+									<?php }
+									if($reserved_count == parseInt($data['members'])){ ?>
+										document.getElementById("<?php echo $day_d;  ?>").querySelector(".meal<?php echo $meal;  ?>").style.background = "none";
+									<?php }
+								}
+							}
+						}
+						}else{
+							for($day_d = 1; $day_d <= $days_of_month; $day_d++ ){
+							for($meal = 1; $meal<4; $meal++){
+								$reserved_count = 0;
+								if($month_m == $reservation->month && $day_d == $reservation->date && $meal == $reservation->meal){
+									$reserved_count = $reserved_count + parseInt($reservation->status);
+
+									if($reserved_count == parseInt($data['members'])*0.75){b?>
+										document.getElementById("<?php echo $day_d;  ?>").querySelector(".meal<?php echo $meal;  ?>").style.background = "orange";
+									<?php }
+									if($reserved_count == parseInt($data['members'])){ ?>
+										document.getElementById("<?php echo $day_d;  ?>").querySelector(".meal<?php echo $meal;  ?>").style.background = "none";
+									<?php }
+								}
+							}
+						}
+						}
+						
+					}
+					  				
+				endforeach; ?>
+			
+>>>>>>> Stashed changes
 					
 				// Add click event to meals
 				
@@ -246,11 +276,38 @@
 					var date = $(this).parent().attr('id');
 					//display the popup
 					$('.popup').fadeIn();
+<<<<<<< Updated upstream
 					//set valuse of the input fields
+=======
+					var plates_reserved;
+					var dataArray = [date, month, year, "1", "<?php echo $ben_id;?>" ];
+					$.ajax({
+           			url: '<?php echo URLROOT;?>/donor/getReservedPlatesCount/'+dataArray,
+            		type: 'GET',
+					data: { data_arr: JSON.stringify(dataArray) },
+            		dataType: 'json',
+            		success: function(response) {
+						
+						plates_reserved = parseInt(response);
+						// window.alert(plates_reserved);
+						// return plates_reserved;
+						var members = parseInt(<?php echo $data['members'];  ?>);
+					var plates = members - plates_reserved;
+					
+>>>>>>> Stashed changes
 					$('#meal_type').val("Breakfast");
 					$('#date').val(date);
 					$('#month').val(month+1);
 					$('#year').val(year);
+<<<<<<< Updated upstream
+=======
+					$('#plates').val(plates);
+
+            		}
+					
+        			});
+					
+>>>>>>> Stashed changes
 					//add EventListener to catch the changes in the required fields
 					$('.required-input').addEventListener('input', () => {
 						//if the required fields are empty submit button is not active 
@@ -262,55 +319,98 @@
 							$('.btn-submit-popup').disabled = false;
 						}
 
-  					// if ($('.formfirst').checkValidity()) {
-    				// 	$('.btn-submit-popup').disabled = false;
-  					// } else {
-    				// 	$('.btn-submit-popup').disabled = true;
-  					// }
 				});
 					
 				});
 				$('.meal2').click(function() {
 					var date = $(this).parent().attr('id');
 					$('.popup').fadeIn();
+<<<<<<< Updated upstream
+=======
+
+					var plates_reserved;
+					var dataArray = [date, month, year, "2", "<?php echo $ben_id;?>" ];
+					$.ajax({
+           			url: '<?php echo URLROOT;?>/donor/getReservedPlatesCount/'+dataArray,
+            		type: 'GET',
+					data: { data_arr: JSON.stringify(dataArray) },
+            		dataType: 'json',
+            		success: function(response) {
+						
+						plates_reserved = parseInt(response);
+						// window.alert(plates_reserved);
+						// return plates_reserved;
+						var members = parseInt(<?php echo $data['members'];  ?>);
+					var plates = members - plates_reserved;
+					
+>>>>>>> Stashed changes
 					$('#meal_type').val("Lunch");
 					$('#date').val(date);
 					$('#month').val(month+1);
 					$('#year').val(year);
+<<<<<<< Updated upstream
+=======
+					$('#plates').val(plates);
+
+            		}
+					
+        			});
+					
+					//add EventListener to catch the changes in the required fields
+>>>>>>> Stashed changes
 					$('.required-input').addEventListener('input', () => {
+						//if the required fields are empty submit button is not active 
 						if ($('.required-input').value === "") {
+							
 							$('.btn-submit-popup').disabled = true;
 						}else{
+							
 							$('.btn-submit-popup').disabled = false;
 						}
 
-  					// if ($('.formfirst').checkValidity()) {
-    				// 	$('.btn-submit-popup').disabled = false;
-  					// } else {
-    				// 	$('.btn-submit-popup').disabled = true;
-  					// }
 				});
 					
 				});
 				$('.meal3').click(function() {
 					var date = $(this).parent().attr('id');
+					
 					$('.popup').fadeIn();
+					var plates_reserved;
+					var dataArray = [date, month, year, "3", "<?php echo $ben_id;?>" ];
+					$.ajax({
+           			url: '<?php echo URLROOT;?>/donor/getReservedPlatesCount/'+dataArray,
+            		type: 'GET',
+					data: { data_arr: JSON.stringify(dataArray) },
+            		dataType: 'json',
+            		success: function(response) {
+						
+						plates_reserved = parseInt(response);
+						// window.alert(plates_reserved);
+						// return plates_reserved;
+						var members = parseInt(<?php echo $data['members'];  ?>);
+					var plates = members - plates_reserved;
+					
 					$('#meal_type').val("Dinner");
 					$('#date').val(date);
 					$('#month').val(month+1);
 					$('#year').val(year);
+					$('#plates').val(plates);
+
+            		}
+					
+        			});
+					
+					//add EventListener to catch the changes in the required fields
 					$('.required-input').addEventListener('input', () => {
+						//if the required fields are empty submit button is not active 
 						if ($('.required-input').value === "") {
+							
 							$('.btn-submit-popup').disabled = true;
 						}else{
+							
 							$('.btn-submit-popup').disabled = false;
 						}
 
-  					// if ($('.formfirst').checkValidity()) {
-    				// 	$('.btn-submit-popup').disabled = false;
-  					// } else {
-    				// 	$('.btn-submit-popup').disabled = true;
-  					// }
 				});
 					
 				});

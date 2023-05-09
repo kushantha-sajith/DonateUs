@@ -170,7 +170,8 @@ class Pages extends Controller
                 'userdata' => $userdata,
                 'personaldata' => $personaldata,
                 'prof_img' => $image_name,
-                'dist' => $dist_name
+                'dist' => $dist_name,
+                'type' => $user_type
             ];
 
             $this->view('users/donor/profile_donor', $data);
@@ -259,7 +260,8 @@ class Pages extends Controller
                 'personaldata' => $personaldata,
                 'prof_img' => $image_name,
                 'dist' => $dist_name,
-                'districts' => $districts
+                'districts' => $districts,
+                'type' => $user_type
             ];
 
             $this->view('users/donor/edit_profile_donor', $data);

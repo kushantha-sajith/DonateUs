@@ -40,13 +40,15 @@
       <main>
             <div class="container">
                 <header>Profile Update</header>
+                <?php if($data['type'] == 2){ ?>
                 <?php foreach($data['userdata'] as $user) : ?>
                 <?php foreach($data['personaldata'] as $personaldata) : ?>
                 <form action="<?php echo URLROOT; ?>/donor/updateProfileDonor/<?php echo $user->tp_number; ?>" method="POST">
+             
                     <div class="formfirst">
                         <div class="details personal">
                             <span id ="ind1"class="span_title"><u>Personal Details</u></span>
-                            <span id ="corp1"class="span_title"><u>Company Details</u></span>
+                           
                             <div class="fields">
                                                             
                                 <div id="ind4" class="input-field">
@@ -69,6 +71,52 @@
                                     <input type="text" name="l_name" placeholder="ex:Doe" value="<?php echo $personaldata->l_name; ?>" >
                                     <p class="error"></p>
                                 </div>
+                            
+
+
+                                <div id="ind5" class="input-field">
+                                    <label>Contact Number</label>
+                                    <input type="text" name="contact_ind" placeholder="ex: +94XXXXXXXXX" value="<?php echo $user->tp_number; ?>">
+                                    <p class="error"></p>
+                                </div>
+                                <div class="input-field">
+                                    <label>Zipcode</label>
+                                    <input type="text" name="city" placeholder="ex: Colombo" value="<?php echo $personaldata->zipcode; ?>">
+                                    <p class="error"></p>
+                                </div>
+                                <div class="input-field">
+                                    <label>District</label>
+                                    <select class="dropdown" name="district" id="district">
+                            <?php foreach($data['districts'] as $districts) : ?>
+                                <option <?php if($districts->id==$personaldata->district) {echo "selected";} ?> value="<?php echo $districts->id; ?>"><?php echo $districts->dist_name; ?></option>
+                            <?php endforeach; ?> </select>
+                            <p class="error"></p>
+                                </div>
+                              </div>
+                             
+                                <?php endforeach; ?>
+                                <?php endforeach; ?>
+                            </div>
+                           
+
+                           
+                      </div>
+
+           <input class="btn-submit" type="submit" value="Update"> 
+                       
+                    </div>
+                </form>
+                <?php }else{ ?>
+
+                  <?php foreach($data['userdata'] as $user) : ?>
+                <?php foreach($data['personaldata'] as $personaldata) : ?>
+                <form action="<?php echo URLROOT; ?>/donor/updateProfileDonor/<?php echo $user->tp_number; ?>" method="POST">
+                  <div class="formfirst">
+                        <div class="details personal">
+                         
+                            <span id ="corp1"class="span_title"><u>Company Details</u></span>
+                            <div class="fields">
+                                
                                 
                                 <div id="corp2" class="input-field">
                                     <label>Company Name</label>
@@ -82,12 +130,6 @@
                                     
                                 </div>
 
-
-                                <div id="ind5" class="input-field">
-                                    <label>Contact Number</label>
-                                    <input type="text" name="contact_ind" placeholder="ex: +94XXXXXXXXX" value="<?php echo $user->tp_number; ?>">
-                                    <p class="error"></p>
-                                </div>
                                 <div class="input-field">
                                     <label>City</label>
                                     <input type="text" name="city" placeholder="ex: Colombo" value="<?php echo $personaldata->city; ?>">
@@ -129,26 +171,13 @@
                                 <?php endforeach; ?>
                                 <?php endforeach; ?>
                             </div>
-                            <span class="span_title"><u>Change Profile Picture</u></span>
-
-                            <div id="image-upload-container" class="image-upload-container">
-                              <div id="selected-image-container" class="selected-image-container"><i class='bx bxs-cloud-upload icon'></i></div>
-                              <div id="upload-buttons-container" class="upload-buttons-container">
-                              <input type="file" id="image-upload-input" class="image-upload-input" accept="image/*" hidden >
-
-                              <div class="buttons">
-                                <div id="image-upload-button" class="image-upload-button">Browse Image</div>
-                                <div id="image-clear-button" class="image-clear-button">Clear</div>
-                              </div>
-    
-                            </div>
-                      </div>
+                        
 
            <input class="btn-submit" type="submit" value="Update"> 
                        
                     </div>
                 </form>
-                
+               <?php } ?>
                 
             </div>
 

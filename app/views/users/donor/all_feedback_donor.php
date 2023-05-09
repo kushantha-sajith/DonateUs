@@ -2,9 +2,11 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <title>Dashboard</title>
+    <title>Feedback</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/stylesdash.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/all_feedback_donor.css" />
+   
     <link
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
       rel="stylesheet"
@@ -22,7 +24,7 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bx-menu sidebarBtn"></i>
-          <span class="dashboard">Dashboard</span>
+          <span class="dashboard">Feedback</span>
         </div>
         
         <div class="profile-details">
@@ -35,13 +37,30 @@
         </div>
       </nav>
       <div class="main-container">
-      <div>
-        <h1>Success</h1>
-      </div>
-      <div>
-      
-                    
+      <div class="cards_heading2 head">
+            <div>Date</div>
+                <div>Name</div>                
+                <div>Email</div>
+                <div>Subject</div>
+                <div>Message</div>
+                
+            </div>
+
+            
+            <?php foreach($data['details'] as $detail) : ?> 
+                <div class="cards_heading2 cards_color">
+                <div><?php echo $detail->timestamp; ?></div>
+                <div><?php echo $detail->name; ?></div>
+                <div><?php echo $detail->email; ?></div>
+                <div><?php echo $detail->subject; ?></div> 
+                <div><?php echo $detail->description; ?></div> 
+                        
                 </div>
+                <?php endforeach; ?>
+
+                <div class="btns2">
+              <a href="<?php echo URLROOT;?>/pages/donationHistoryDonor"><button class="btn-back">Back</button></a>
+            </div> 
       </div>
     </section>
     <!--home section end-->

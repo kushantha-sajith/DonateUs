@@ -229,13 +229,22 @@ use helpers\Email;
             $this->view('users/donor/feedback', $data);
           }
 
+<<<<<<< Updated upstream
            
          /**
          * @return void
          */
         public function all_feedback(){
+=======
+        public function viewAllFeedbackDonor(){
+          $id = $_SESSION['user_id'];
+          $details = $this->donorModel->getAllFeedback($id);
+          $image_name = $this->profileImage();
+>>>>>>> Stashed changes
             $data = [
-              'title' => 'All Feedback'
+              'title' => 'All Feedback',
+              'details' => $details,
+              'prof_img' => $image_name
             ];
       
             $this->view('users/donor/all_feedback', $data);
@@ -800,8 +809,298 @@ use helpers\Email;
         'title' => 'Donate  - Financial',
         'prof_img' => $image_name 
         ];
+<<<<<<< Updated upstream
       $this->view('users/donor/donate_financial_donor', $data);
     }
     
   }
   }
+=======
+    
+      }else{
+
+        foreach ($details as $data) :
+          $amount = $data->quantity_donated;
+          $category = $data->category_name;
+          $note = $data->note_to_beneficiary;
+          $item = $data->item;
+        endforeach;
+        $data = [
+          'title' => 'Donation History',
+          'prof_img' => $image_name,
+          'donation_id' => $donationId,
+          'details' => $details,
+          'beneficiary' => $beneficiaryDetails,
+          'type' => 'Non-Financial',
+          'category' => $category,
+          'note' => $note,
+          'item' => $item,
+          'amount' => $amount
+        ];
+    
+      }
+      
+      $this->view('users/donor/viewmore_history_donor', $data);
+    
+  
+  }
+
+  public function processPayment($data){
+
+    $stripe_api_key = 'sk_test_51N4OOUBUpAx8uiW7HKrgvf5e7eL507tpWQexdi6sQC3euKoptTm3lUksLjYqlyQ5icjD25ui1KmfLICjiyfu3oxP00veVX6wxO';
+    // $stripe_publishable_key = 'pk_test_51N4OOUBUpAx8uiW72yScgJIFw02GMM66j83iDem4IOYHUQJ9PJ29X8viRj4EkZRq20cNZNy1eAeMSTNLn77CbUOb00EQtTqMud';
+
+    // // Set API key 
+    // $stripe = new StripeClient($stripe_api_key);
+    $beneficiaryName = $data['beneficiary_name'];
+    $requestID = $data['req_id'];
+    $amount_donated = $data['donated_amount'];
+    $amount = intval($amount_donated) ;
+    $currency = 'lkr';
+    $encoded_data = urlencode(json_encode($data));
+   
+      $stripeAmount = round($amount*100, 2); 
+
+
+\Stripe\Stripe::setApiKey($stripe_api_key);
+header('Content-Type: application/json');
+
+
+
+$checkout_session = \Stripe\Checkout\Session::create([
+  'line_items' => [[
+    'price_data' => [ 
+                'product_data' => [ 
+                    'name' => $beneficiaryName, 
+                    'metadata' => [ 
+                        'pro_id' => $requestID 
+                    ] 
+                ], 
+                'unit_amount' => $stripeAmount, 
+                'currency' => $currency, 
+            ], 
+    'quantity' => 1,
+  ]],
+  'mode' => 'payment',
+  'success_url' => URLROOT.'/donor/afterPayment/1/'.$encoded_data, 
+  'cancel_url' => URLROOT.'pages/afterPayment/0/'.$encoded_data,
+]);
+
+header("HTTP/1.1 303 See Other");
+header("Location: " . $checkout_session->url);
+
+  }
+
+  public function afterPayment($status, $encoded_data){
+
+    if($status == 1){ // succeeded
+      $data = json_decode(urldecode($encoded_data), true);
+       
+      $payment_data = [
+        'data' => $data,
+        'status' => $status
+        
+      ];
+
+      if($payment_data['data']['isRequest'] == 1 ){ //donation request
+        if($this->donorModel->makeDonation($data)){
+     
+          $this->view('users/donor/final_step_financial_donation', $payment_data);
+        } else {
+            die('Something went wrong');
+        }
+      }
+      if($payment_data['data']['isRequest'] == 0 ){ //event
+        if($this->donorModel->makeDonationEvents($data)){
+     
+          $this->view('users/donor/final_step_financial_donation', $payment_data);
+        } else {
+            die('Something went wrong');
+        }
+      }
+    
+    }else{ //failed
+      $this->view('users/donor/final_step_financial_donation', $payment_data);
+    }
+    
+  }
+
+  public function donateToEvents($id,$isEvent){
+    $user_id = $_SESSION['user_id'];
+    $user_type = $_SESSION['user_type'];
+    $image_name = $this->profileImage();
+    $userdata = $this->donorModel->getDonorDetails($user_id,$user_type);
+    //get donor data 
+    if($user_type ==2){
+      foreach ($userdata as $donor) :
+        $fullname = $donor->f_name." ".$donor->l_name;
+        $contact = $donor->tp_number;
+        $email = $donor->email;
+      endforeach;
+    }else{
+      foreach ($userdata as $donor) :
+        $fullname = $donor->comp_name;
+        $contact = $donor->tp_number;
+        $email = $donor->email;
+      endforeach;
+    }
+
+    
+    //get event data
+    $details = $this->donorModel->getEventDetails($id);
+    foreach ($details as $event) :
+      $beneficiary_name = $event->event_title;
+      $amount = $event->budget;
+      $received = $event->received;
+    endforeach;
+
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+      // Sanitize POST data
+      $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+      if (isset($_POST['anonymous']) && $_POST['anonymous'] == '1') {
+        $anonymous = 1;
+      } else {
+        $anonymous = 0;
+      }
+      
+      $data = [
+        'title' => 'Donation',
+          'prof_img' => $image_name,
+          'req_id' => $id,
+          'cat_id' => 1,
+          'donor_id' => $user_id,
+          'beneficiary_name' =>  $beneficiary_name,
+          'donor_name' => trim($_POST['donor_name']),
+          'donor_contact' => trim($_POST['donor_contact']),
+          'donor_email' => trim($_POST['donor_email']),
+          'donated_amount' => trim($_POST['donated_amount']),
+          'anonymous' => $anonymous,
+          'amount_err' => '',
+          'amount' => $amount,
+          'received' => $received,
+          'isRequest' => 0 //event
+      ];
+
+      $error = false;
+      // Validate data
+      if(empty($data['donated_amount'])){
+          $data['amount_err'] = 'Required';
+          $error = true;
+      }
+      if($data['donated_amount'] < 200 ){
+        $data['amount_err'] = 'Please enter a value greater than Rs.200'; //stripe only accepts values greater than 0.5 USD 
+        $error = true;
+    }
+      if(empty($data['donor_name'])){
+        $data['donor_name'] = $fullname;
+      }
+      if(empty($data['donor_contact'])){
+        $data['donor_contact'] =  $contact;
+      }
+      if(empty($data['donor_email'])){
+        $data['donor_email'] =  $email;
+      }
+      // Make sure no errors
+      if(!$error){
+          // Validated
+          $this->processPayment($data);
+          
+      } else {
+          // Load view with errors
+          $this->view('users/donor/donate_financial_donor', $data);
+      }
+  } else {
+    $data = [
+      'title' => 'Donation',
+      'req_id' => $id,
+      'cat_id' => 1,
+      'prof_img' => $image_name,
+      'donor_name' => $fullname,
+      'donor_contact' => $contact,
+      'donor_email' => $email,
+      'donated_amount' => '',
+      'amount' => $amount,
+      'amount_err' => '',
+      'received' => $received,
+      'isRequest' => 0 //event 
+      ];
+    $this->view('users/donor/donate_financial_donor', $data);
+  }
+
+  }
+
+  public function getMyReservationDetails($id){
+    
+    $image_name = $this->profileImage();
+    $details = $this->donorModel->getMyReservationDetails($id);
+    $data = [
+      'title' => 'Reservation',
+      'res_id' => $id,
+      'prof_img' => $image_name,
+      'details' => $details
+      ];
+    $this->view('users/donor/my_reservation_viewmore', $data);
+  }
+
+  public function getReservedPlatesCount($data_arr){
+
+    $data_arr = json_decode($_GET['data_arr']);
+
+    $date = $data_arr[0];
+    $month = $data_arr[1];
+    $year = $data_arr[2];
+    $meal = $data_arr[3];
+    $ben_id = $data_arr[4];
+
+    $data = [
+      'date' => $date,
+      'month' => $month,
+      'year' => $year,
+      'meal' => $meal,
+      'ben_id' => $ben_id
+    ];
+
+    $count = $this->donorModel->getReservedPlatesCount($data);
+    if($count == NULL){
+      echo 0;
+    }else{
+      echo $count;
+    }
+    //$
+    // return "hello";
+    // return response()->json(['result' => $count]);
+    
+  }
+
+  
+  public function viewMealPlan($id,$img){
+
+    $image_name = $this->profileImage();
+        $data =[
+          'title' => 'Meal Plan',
+          'prof_img' => $image_name,
+          'id' => $id,
+          'img' => $img
+        ];
+
+        $this->view('users/donor/view_meal_plan', $data);
+  }
+
+  public function eventDonationHistoryDonor(){
+    $image_name = $this->profileImage();
+    $user_id = $_SESSION['user_id'];
+    $details = $this->donorModel->getEventDonations($user_id);
+        $data =[
+          'title' => 'Donation History - Events',
+          'prof_img' => $image_name,
+          'details' => $details
+        ];
+
+        $this->view('users/donor/event_donation_history_donor', $data);  
+  }
+  }
+
+    
+  
+>>>>>>> Stashed changes

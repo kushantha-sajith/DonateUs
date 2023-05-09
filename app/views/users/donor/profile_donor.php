@@ -39,12 +39,12 @@
       <main>
             <div class="container">
                 <header>Profile Details</header>
-
+                <?php if($data['type'] == 2){  ?>
                 <form action="#">
                     <div class="formfirst">
                         <div class="details personal">
                             <span id ="ind1"class="title"><u>Personal Details</u></span>
-                            <span id ="corp1"class="title"><u>Company Details</u></span>
+                           
                             <div class="fields">
                             <?php foreach($data['userdata'] as $user) : ?>
                               <?php foreach($data['personaldata'] as $personaldata) : ?>
@@ -56,10 +56,7 @@
                                     <label>NIC</label>
                                     <input type="text" placeholder="" value="<?php echo $personaldata->NIC; ?>" disabled>
                                 </div>
-                                <div id="corp2" class="input-field">
-                                    <label>Company Name</label>
-                                    <input type="text" placeholder="" value="<?php echo $personaldata->comp_name; ?>" disabled>
-                                </div>
+                              
 
                                 <div id="corp3" class="input-field">
                                     <label>Email Address</label>
@@ -75,6 +72,46 @@
                                     <label>Contact Number</label>
                                     <input type="text" placeholder="" value="<?php echo $user->tp_number; ?>" disabled>
                                 </div>
+                                <div class="input-field">
+                                    <label>Zipcode</label>
+                                    <input type="text" placeholder="" value="<?php echo $personaldata->zipcode; ?>" disabled>
+                                </div>
+                                <div class="input-field">
+                                    <label>District</label>
+                                    <input type="text" placeholder="" value="<?php echo $data['dist']; ?>" disabled>
+                                </div>
+                              </div>
+                              
+                                <?php endforeach; ?>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                       
+                        <!-- </div> -->
+                       
+                    </div>
+                </form>
+                <?php }else { ?>
+
+                    <form action="#">
+                    <div class="formfirst">
+                        <div class="details personal">
+                           
+                            <span id ="corp1"class="title"><u>Company Details</u></span>
+                            <div class="fields">
+                            <?php foreach($data['userdata'] as $user) : ?>
+                              <?php foreach($data['personaldata'] as $personaldata) : ?>
+                                
+                                <div id="corp2" class="input-field">
+                                    <label>Company Name</label>
+                                    <input type="text" placeholder="" value="<?php echo $personaldata->comp_name; ?>" disabled>
+                                </div>
+
+                                <div id="corp3" class="input-field">
+                                    <label>Email Address</label>
+                                    <input type="text" placeholder="" value="<?php echo $user-> email; ?>" disabled>
+                                </div>
+
                                 <div class="input-field">
                                     <label>City</label>
                                     <input type="text" placeholder="" value="<?php echo $personaldata->city; ?>" disabled>
@@ -107,36 +144,7 @@
                                 <?php endforeach; ?>
                             </div>
                         </div>
-                        <!-- <span class="title"><u>Change Profile Picture</u></span>
-
-                        <div class="photo-container">
-                            <input type="file" id="file" accept="image/*" hidden>
-                            <div class="img-area" data-img="">
-                                <i class='bx bxs-cloud-upload icon'></i>
-                                <h3>Upload Image</h3>
-                            </div>
-                            <button class="select-image">Select Image</button>
-                        </div>
-
-                        <span class="title"><u> Change Password</u></span>
-                        <div class="fields">
-                            <div class="input-field">
-                                <label>Old Password</label>
-                                <input type="text" placeholder="Enter Your Previous Password">
-                            </div>
-                            <div class="input-field">
-                                <label>New Password</label>
-                                <input type="text" placeholder="Enter Your New Password">
-                            </div>
-                            <div class="input-field">
-                                <label>Conform New Password</label>
-                                <input type="text" placeholder="Conform Your New Password">
-                            </div> -->
-
-                        <!-- </div> -->
-                       
-                    </div>
-                </form>
+                    <?php } ?>
                 <div class="updatebtn">
                     <a href="<?php echo URLROOT; ?>/pages/editProfileDonor">
                         <button class="edit" style="text-decoration: none;">Edit Profile Details

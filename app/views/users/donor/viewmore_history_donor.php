@@ -132,10 +132,7 @@
                     <label>Date of Completion</label>
                     <input type="text" placeholder="" value="<?php echo $details->date_of_completion;  ?>" disabled>
                 </div>
-                <div class="input-field">
-                    <label>Reason to cancel</label>
-                    <textarea id="txtid" name="canceled_note" rows="4" cols="50" maxlength="200" placeholder="Start typing here... "></textarea>
-                </div>
+                
               </div>
               
         </div>

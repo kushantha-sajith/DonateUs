@@ -322,6 +322,20 @@ main{
     font-size: 2em;
   }
 
+<<<<<<< Updated upstream
+=======
+  .mask .fill {
+    clip: rect(0px, 75px, 150px, 0px);
+    background-color: #0A2558;
+  }
+  
+  .mask.full,
+  .circle .fill {
+    animation: fill ease-in-out 1s;
+    /* transform: rotate(135deg); 135 for 75% -> (360/100) * 75 = 270 , 270/2 = 135*/ 
+  }
+
+>>>>>>> Stashed changes
   /* how it works */
 
 .how_it_works .progress-container {
@@ -334,7 +348,11 @@ main{
 }
 
 .how_it_works  .progress-container::before {
+<<<<<<< Updated upstream
   content: ""; /* Mandatory with ::before */
+=======
+  content: 100px; /* Mandatory with ::before */
+>>>>>>> Stashed changes
   background-color: var(--color-primary-varient);
   position: absolute;
   top: 50%;
@@ -386,6 +404,7 @@ main{
   /* color animation */
   
   /* 3rd progress bar */
+<<<<<<< Updated upstream
   .mask .fill {
     clip: rect(0px, 75px, 150px, 0px);
     background-color: #0A2558;
@@ -400,6 +419,30 @@ main{
   .error{
     color:red;
   }
+=======
+    
+  .error{
+    color:red;
+  }
+
+  .details{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 35px;
+  }
+  .detail_row{
+    display: flex;
+    flex-direction: row;
+    
+  }
+  .row_inside{
+    margin-right: 100px;
+    margin-bottom: 35px;
+  }
+  .row_outside{
+    margin-bottom: 35px;
+  }
+>>>>>>> Stashed changes
   @media (max-width:1045px){
     .container .box{
       width: calc(50% - 10px);

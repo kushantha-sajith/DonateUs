@@ -106,13 +106,6 @@ main{
     }
 }
 
-.select-menu{
-    
-    width: 800px;
-    margin-top: 5px; 
-    margin-bottom: 20px; 
-    align-items: center;
-}
 h4{
     
     padding-right: 1rem;
@@ -140,13 +133,19 @@ h4{
     cursor: pointer;
 }
 
+.select-menu{
+    width: 380px;
+    margin-top: 5px;
+    margin: auto;
+    margin-bottom: 20px;
+    position: relative;
+}
 .select-menu .select-btn{
     display: flex;
-    
-    height: 35px;
+    height: 55px;
     background: #fff;
-    padding: 10px;
-    font-size: 15px;
+    padding: 20px;
+    font-size: 18px;
     font-weight: 400;
     border-radius: 8px;
     align-items: center;
@@ -155,51 +154,53 @@ h4{
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
     
 }
+
 .select-btn i{
-    font-size: 15px;
+    font-size: 25px;
     transition: 0.3s;
-    
 }
+
 .select-menu.active .select-btn i{
     transform: rotate(-180deg);
 }
+
 .select-menu .options{
-    position: relative;
-    width: 300px;
-    padding: 10px;
+    position: absolute;
+    padding: 20px;
     margin-top: 10px;
     border-radius: 8px;
     background: #fff;
     box-shadow: 0 0 3px rgba(0,0,0,0.1);
     display: none;
+    z-index: 1;
+    overflow: auto;
 }
+
 .select-menu.active .options{
     display: block;
-    
 }
 .options .option{
     display: flex;
-    height: 35px;
+    height: 55px;
     cursor: pointer;
-    padding: 0 10px;
+    padding: 0 16px;
     border-radius: 8px;
     align-items: center;
     background: #fff;
 }
+
 .options .option:hover{
     background: #F2F2F2;
 
 }
 .option i{
-    font-size: 15px;
+    font-size: 25px;
     margin-right: 12px;
 }
 .option .option-text{
-    font-size: 15px;
+    font-size: 18px;
     color: #333;
 }
-
-
 .sidebar {
     position: fixed;
     height: 100%;
@@ -489,6 +490,7 @@ nav .profile-details i {
     position:relative;
     display: block;
     height: 100%;
+    max-width: 100%;
     border-radius: 6px;
     background: var(--color-primary-varient);
     animation: progress 0.4s ease-in-out forwards;
@@ -523,6 +525,16 @@ nav .profile-details i {
     background: #fff;
     display: flex;
     align-items: center;
+    padding: 20px 30px;
+    border-radius: 5px;
+    margin-top: 2rem;
+    box-shadow: var(--box-shadow);
+  }
+  .gigcontainer .nothing_to_display{
+    width: 100%;
+    background: #fff;
+    display: none;
+    justify-content: center;
     padding: 20px 30px;
     border-radius: 5px;
     margin-top: 2rem;
@@ -589,6 +601,34 @@ nav .profile-details i {
     background: #0A2558;
     width: 100%;
     padding: 9px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;;
+    transition: all 0.3s linear;
+  }
+  a button:disabled{
+    background: #0A2558;
+    width: 100%;
+    padding: 9px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: help;
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;;
+    transition: all 0.3s linear;
+    opacity: 0.8;
+  }
+  #refresh{
+    background: #0A2558;
+    width: 50%;
+    padding: 9px;
+    margin: 5px;
     outline: none;
     border: none;
     border-radius: 5px;

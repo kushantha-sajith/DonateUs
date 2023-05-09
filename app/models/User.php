@@ -63,7 +63,7 @@ class User
                 $row = $this->db->single();
                 $user_id = $row->id;
 
-                $this->db->query('INSERT INTO ind_don (f_name, l_name, NIC, city, district, acc_status, user_id) VALUES(:f_name, :l_name, :NIC, :city, :district, :acc_status, :user_id)');
+                $this->db->query('INSERT INTO ind_don (f_name, l_name, NIC, zipcode, district, acc_status, user_id) VALUES(:f_name, :l_name, :NIC, :city, :district, :acc_status, :user_id)');
 
                 $this->db->bind(':f_name', $data['fname']);
                 $this->db->bind(':l_name', $data['lname']);
@@ -103,7 +103,7 @@ class User
                 $row = $this->db->single();
                 $user_id = $row->id;
 
-                $this->db->query('INSERT INTO corp_don (comp_name, emp_name, emp_id, designation, city, district, acc_status, user_id) VALUES(:comp_name, :emp_name, :emp_id, :designation, :city, :district, :acc_status, :user_id)');
+                $this->db->query('INSERT INTO corp_don (comp_name, emp_name, emp_id, designation, zipcode, district, acc_status, user_id) VALUES(:comp_name, :emp_name, :emp_id, :designation, :city, :district, :acc_status, :user_id)');
 
                 $this->db->bind(':comp_name', $data['compname']);
                 $this->db->bind(':emp_name', $data['fullname']);
@@ -255,7 +255,7 @@ class User
             $row = $this->db->single();
             $user_id = $row->id;
 
-            $this->db->query('INSERT INTO event_org (full_name, NIC, community_name, designation, city, district, acc_status, user_id) VALUES(:full_name, :NIC, :community_name, :designation, :city, :district, :acc_status, :user_id)');
+            $this->db->query('INSERT INTO event_org (full_name, NIC, community_name, designation, zipcode, district, acc_status, user_id) VALUES(:full_name, :NIC, :community_name, :designation, :city, :district, :acc_status, :user_id)');
 
             $this->db->bind(':full_name', $data['fullname']);
             $this->db->bind(':NIC', $data['nic']);

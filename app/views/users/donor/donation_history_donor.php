@@ -98,7 +98,52 @@
             </ul>
         </div>
 
+<<<<<<< Updated upstream
 
+=======
+        <div class="select-menu status-menu">
+            <h4>Filter By : Status</h4>
+            <div class="select-btn status-btn">
+                <span class="sBtn-text status_Btn-text">Select Status</span>
+                <i class="bx bx-chevron-down"></i>
+            </div>
+
+            <ul class="options status_options">
+                <a href="<?php echo URLROOT;?>/donor/filteredHistoryDonor/1/1" style="text-decoration:none">
+                    <li class="option status_option">
+                      <span class="option-text status-option-text">Pending</span>
+                    </li>
+                </a>
+                <a href="<?php echo URLROOT;?>/donor/filteredHistoryDonor/2/1" style="text-decoration:none">
+                    <li class="option status_option">
+                      <span class="option-text status-option-text">Delivered</span>
+                    </li>
+                </a>
+                <a href="<?php echo URLROOT;?>/donor/filteredHistoryDonor/3/1" style="text-decoration:none">
+                    <li class="option status_option">
+                      <span class="option-text status-option-text">Completed</span>
+                    </li>
+                </a>
+                <a href="<?php echo URLROOT;?>/donor/filteredHistoryDonor/4/1" style="text-decoration:none">
+                    <li class="option status_option">
+                      <span class="option-text status-option-text">Canceled</span>
+                    </li>
+                </a>
+                
+            </ul>
+        </div>
+        
+        </div> <!-- eo filters -->
+        <div class="mid_buttons">
+        <div class="btns2">
+              <a href="<?php echo URLROOT;?>/donor/eventDonationHistoryDonor" ><button class="btn-back">Donations to Events</button></a>
+        </div>
+        <div class="btns2">
+              <a href="<?php echo URLROOT;?>/donor/viewAllFeedbackDonor" ><button class="btn-back">All Feedback</button></a>
+        </div>
+        </div>
+       
+>>>>>>> Stashed changes
             <div class="cards_heading2 head">
                 <div>Request ID</div>
                 <div>Request</div>

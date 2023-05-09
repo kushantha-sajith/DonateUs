@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <title>Donation</title>
+    <title>Donate</title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style_dashboard.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/donate_nonfinancial_donor.css" />
     <link
@@ -28,7 +28,7 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bx-menu sidebarBtn"></i>
-          <span class="dashboard"><?php echo $data['data']['title'];  ?></span>
+          <span class="dashboard">Donation</span>
         </div>
         
         <div class="profile-details">
@@ -36,7 +36,7 @@
             <i class="bx bx-bell bx-tada notification"></i>
           </div>
           
-            <a href="<?php echo URLROOT; ?>/pages/profileDonor"><img src="<?php echo URLROOT; ?>/img/<?php echo $data['data']['prof_img'];  ?>" alt="" /></a>
+            <a href="<?php echo URLROOT; ?>/pages/profileDonor"><img src="<?php echo URLROOT; ?>/img/<?php echo $data['prof_img'];  ?>" alt="" /></a>
           <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
           <!-- <i class='bx bx-chevron-down'></i> -->
         </div>
@@ -44,31 +44,50 @@
       <div class="main-container">
       
         <div class="gigcontainer">
-       
-        <?php if ($data['status']== 1) { ?>
+        <?php foreach($data['request_data'] as $details ): ?>
           <div class="box">
-            <h3>Payment was Successful !</h3>
-            <p>You have successfully donated <b>Rs.<?php echo $data['data']['donated_amount'];  ?></b> to <b><?php echo $data['data']['beneficiary_name'];  ?></b> for his request for financial support. </p>
-            <p>Find more details in your <b>Donation History</b></p>  
-
-
+            <div class="details">
+              <div class="detail_row">
+                <div class="row_inside">
+              <h3>Request Details</h3>
+            <p><b>Request title :</b> <?php echo $details->request_title;  ?></p>
+            <p><b>Item requested : </b><?php echo $details->item;  ?> <b>Quantity : </b><?php echo $details->quantity;  ?></p>
+            <p><b>You are donating : </b><?php echo $data['donated_quantity'];  ?></p>
+            <?php foreach($data['beneficiary'] as $user ): ?>
+              </div>
+              <div class="row_inside">
+            <h3>Beneficiary Contact Details</h3>
+            <p><b>Beneficiary name : </b><?php echo $details->name;  ?></p>
+            <p><b>Contact number : </b><?php echo $details->contact;  ?></p>
+            <p><b>Email Address : </b><?php echo $user->email;  ?></p>
+            </div>
+              </div>
+            
+              <div class="row_outside">
+            <h3>Delivery Details</h3>
+            
+              <p><b>Address : </b><?php echo $user->address;  ?></p>
+              <p><b>Zipcode : </b><?php echo $user->zipcode;  ?></p>
+              <p><b>District : </b><?php echo $user->dist_name;  ?></p>
+            <?php endforeach; ?>
+          <?php endforeach; ?>
+            </div>
+            <h3>Other Conditions & Guidlines</h3>
+            <ul>
+              <li> It is recommended that the donor should contact the beneficiary before delivering the donation to confirm their willingness 
+                and to know more about the beneficiary's specific requirements.</li>
+              <li>The donor should be respectful and polite to the beneficiary during the delivery process. 
+                You should not engage in any behavior that might make the beneficiary uncomfortable.</li>
+                <li>The donor should not donate cash directly to the beneficiary. 
+                  Instead, they should donate through the system to ensure that the donation reaches the intended beneficiary.</li>
+                  <li>The donor should take all necessary precautions to ensure their safety when delivering the donation. 
+                    Follow recommended health guidelines to minimize the risk of COVID-19</li>
+            </ul>
+           
           </div><!-- eo box -->
           <div class="btns2">
               <a href="<?php echo URLROOT;?>/pages/donationHistoryDonor"><button class="btn-back">OK</button></a>
           </div> 
-          <?php } else{ ?>
-            <div class="box">
-            <h3>Payment was Failed !!</h3>
-            <p>Your donation of <b>Rs.<?php echo $data['data']['donated_amount'];  ?></b> to <b><?php echo $data['data']['beneficiary_name'];  ?></b> for his request for financial support was <b>failed!</b> </p>
-            <p><b>Please Try again!</b></p>  
-
-
-          </div><!-- eo box -->
-          <div class="btns2">
-              <a href="<?php echo URLROOT;?>/pages/donationRequestsDonor"><button class="btn-back">Back</button></a>
-          </div> 
-         <?php } ?>
-          
         </div> <!-- eo gigcontainer -->
           
            
@@ -79,7 +98,7 @@
 
     <script>
 
-     
+
     </script>
   </body>
 </html>
