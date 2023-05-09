@@ -82,7 +82,7 @@
                                 <div class="input-field">
                                     <label>Amount </label>
                                     
-                                    <input type="text" name="amount" value="<?php echo $financials->total_amount; ?>" disabled>
+                                 <input type="text" name="amount" value="Rs. <?php echo $financials->total_amount; ?>" disabled>
                                    
                                 </div>
 
@@ -116,34 +116,7 @@
                                     
                                 </div>
 
-
-                            </div>
-                        </div>
-
-
-                        <span class="title"><u>Identity Proof </u></span>
-                        <div class="photo-container" id="grame">
-                            <input type="file" id="file3" accept="image/*" hidden name="proof" value="<?php echo $financials->proof_document; ?>" disabled>
-                            <div class="img-area" id="area-three" data-img="">
-                                <i class='bx bxs-cloud-upload icon'></i>
-                                <h3>Upload Image</h3>
-                                <p>Image size must be less than <span>2MB</span></p>
-                            </div>
-                            
-                        </div>
-
-                        <span class="title"><u>Bank Pass Book</u></span>
-                        <div class="photo-container" id="grame">
-                            <input type="file" id="file3" accept="image/*" hidden name="passbook" value="<?php echo $financials->bank_pass_book; ?>" disabled>
-                            <div class="img-area" id="area-three" data-img="">
-                                <i class='bx bxs-cloud-upload icon'></i>
-                                <h3>Upload Image</h3>
-                                <p>Image size must be less than <span>2MB</span></p>
-                            </div>
-                           
-                        </div>
-
-                        <div class="input-field">
+                                <div class="input-field">
                                 <label>Bank Account Number </label>
                                
                                 <input type="text" name="accnumber" value="<?php echo $financials->bank_acc_number; ?>" disabled>
@@ -155,6 +128,48 @@
                                
                                 <input type="text" name="bankname" value="<?php echo $financials->bank_name; ?>" disabled>
                                 
+                        </div>
+                                <!-- <div class="input-field">
+                                    <label>District</label>
+                                    
+                                    <input type="text" name="district" value="<?php echo $financials->district; ?>" disabled>
+                                    
+                                </div> -->
+                                    
+
+                                    <div>
+                                    <div>
+                         <span class="title"><u>Proof Document </u></span>
+                         <div class="photo-container" id="grame">
+                            <!-- <div class="photo-container" id="grame"> -->
+                                
+                                    <img style="width:500px; height:300px;" src="<?php echo URLROOT; ?>/uploads/<?php echo $financials->proof_document;  ?>">
+                                </div>
+                            
+                            </div>
+                            
+
+                         <span class="title"><u>Bank Pass Book</u></span>
+                        <div class="photo-container" id="grame">
+
+                            <img style="width:500px; height:300px;" src="<?php echo URLROOT; ?>/uploads/<?php echo $financials->bank_pass_book;  ?>">
+                               
+                            </div>
+                            
+                        </div> 
+                        <br>
+                                    <div>
+                        <span class="title"><u>Thumbnail</u></span>
+                        <div class="photo-container" id="grame">
+                                
+                            <img style="width:500px; height:300px;" src="<?php echo URLROOT; ?>/uploads/<?php echo $financials->thumbnail;  ?>">
+
+                            </div>
+                            </div>
+                            
+                        </div>
+                  
+                        </div>
                         </div>
 
 

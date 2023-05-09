@@ -52,8 +52,8 @@
             <th style="text-align:left;"><span>Meal Count</span></th>
             <th style="text-align:left;"><span>Reserved Date</span></th>
             <th style="text-align:left;"><span>Reserved Month</span></th>
+            <th style="text-align:left;"><span>Reserved Year</span></th>
             <th style="text-align:left;"><span>Meal Time</span></th>
-            <th style="text-align:left;"></th>
             <th style="text-align:left;"></th>
 </thead>
 
@@ -65,7 +65,8 @@
 
         <td style="text-align:left;"><?php echo $reservations->amount; ?></td>
         <td style="text-align:left;"><?php echo $reservations->date; ?></td>
-        <td style="text-align:left;"><?php echo $reservations->month; ?></td>
+        <td style="text-align:left;"><?php echo $reservations->month+1; ?></td>
+        <td style="text-align:left;"><?php echo $reservations->year; ?></td>
         <?php if($reservations->meal == 1){ ?>
         <td style="text-align:left;">Breakfast</td> 
         <?php   } elseif($reservations->meal == 2){?>

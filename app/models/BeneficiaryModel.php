@@ -43,7 +43,6 @@
         }
 
 
-
         public function getFeedback(){
             $this->db->query('SELECT * FROM feedback');
             $results = $this->db->resultSet();
@@ -65,12 +64,6 @@
             }
         }
 
-        // public function getDonationHistory($id){
-        //     $this->db->query('SELECT donation.id, donation.timestamp, donation.request_id, donation.anonymous, donation.type, donation.status, donation_req.request_title  FROM donation JOIN donation_req ON donation.request_id = donation_req.id WHERE donation.donor_id = :id  ORDER BY donation.id DESC');
-        //     $this->db->bind(':id', $id);
-        //     $results = $this->db->resultSet();
-        //     return $results;
-        // }
 
         public function getDonationHistory($id){
             $this->db->query('SELECT donation.id, donation.timestamp, donation.request_id, donation.anonymous, donation.type, donation.status, donation_req.request_title  FROM donation JOIN donation_req ON donation.request_id = donation_req.id WHERE donation_req.user_id = :id  ORDER BY donation.id DESC');
@@ -107,14 +100,14 @@
 
 
         public function getFinancialHistory($id){
-            $this->db->query('SELECT  donation.donor_id, donation.type, donation.status, financial_donation.amount_donated, financial_donation.donation_id  FROM donation JOIN financial_donation ON donation.id = financial_donation.donation_id WHERE donation.donor_id = :id AND donation.type = 1 ');
+            $this->db->query('SELECT  donation.request_id, donation.type, donation.status, financial_donation.amount_donated, financial_donation.donation_id  FROM donation JOIN financial_donation ON donation.id = financial_donation.donation_id WHERE donation.request_id = :id AND donation.type = 1 ');
             $this->db->bind(':id', $id);
             $results = $this->db->resultSet();
             return $results;
         }
 
         public function getNonFinancialHistory($id){
-            $this->db->query('SELECT donation.donor_id, donation.type, donation.status, nfinancial_donation.quantity_donated, nfinancial_donation.donation_id  FROM donation JOIN nfinancial_donation ON donation.id = nfinancial_donation.donation_id WHERE donation.donor_id = :id AND donation.type = 0 ');
+            $this->db->query('SELECT donation.request_id, donation.type, donation.status, nfinancial_donation.quantity_donated, nfinancial_donation.donation_id  FROM donation JOIN nfinancial_donation ON donation.id = nfinancial_donation.donation_id WHERE donation.request_id = :id AND donation.type = 0 ');
             $this->db->bind(':id', $id);
             $results = $this->db->resultSet();
             return $results;
@@ -128,9 +121,16 @@
             return $results;
         }
 
-        public function getCategoryById($id){
+        public function getCategory($id){
             $this->db->query('SELECT * FROM categories WHERE id = :id');
             $this->db->bind(':id', $id);
+            $row = $this->db->single();
+        }
+
+
+        public function getCategoryById($cat_id){
+            $this->db->query('SELECT * FROM categories WHERE id = :id');
+            $this->db->bind(':id', $cat_id);
             $row = $this->db->single();
             $cat = $row->category_name;
             return $cat;
@@ -207,13 +207,6 @@
             $results = $this->db->resultSet();
             return $results;
           }
-
-        //   public function getNonFinancialCategories(){
-        //     $this->db->query('SELECT * FROM categories WHERE id != 1');
-        //     $results = $this->db->resultSet();
-        //     return $results;
-        //   }
- 
 
 
           public function update_profile_donor($data){
@@ -444,35 +437,43 @@
             
         }
 
-        // public function getDistrictName($id,$user_type){
+        public function getDistrictName($id,$user_type){
 
-        //     $dist_id;
+            $dist_id;
 
-        //     if($user_type==4){
-        //         $this->db->query('SELECT district FROM ind_ben WHERE user_id = :id');
-        //     $this->db->bind(':id', $id);
-        //     $row = $this->db->single();
-        //     $dist_id = $row->district;
+            if($user_type==4){
+                $this->db->query('SELECT district FROM ind_ben WHERE user_id = :id');
+            $this->db->bind(':id', $id);
+            $row = $this->db->single();
+            $dist_id = $row->district;
             
-        //     }elseif($user_type==5){
-        //         $this->db->query('SELECT district FROM org_ben WHERE user_id = :id');
-        //     $this->db->bind(':id', $id);
-        //     $row = $this->db->single();
-        //     $dist_id = $row->district;
+            }elseif($user_type==5){
+                $this->db->query('SELECT district FROM org_ben WHERE user_id = :id');
+            $this->db->bind(':id', $id);
+            $row = $this->db->single();
+            $dist_id = $row->district;
             
-        //     }else{
-        //         $this->db->query('SELECT district FROM event_org WHERE user_id = :id');
-        //         $this->db->bind(':id', $id);
-        //         $row = $this->db->single();
-        //         $dist_id = $row->district;
+            }else{
+                $this->db->query('SELECT district FROM event_org WHERE user_id = :id');
+                $this->db->bind(':id', $id);
+                $row = $this->db->single();
+                $dist_id = $row->district;
                 
-        //     }
+            }
 
-        //     $this->db->query('SELECT dist_name FROM district WHERE id = :dist_id');
-        //     $this->db->bind(':dist_id', $dist_id);
+            $this->db->query('SELECT dist_name FROM district WHERE id = :dist_id');
+            $this->db->bind(':dist_id', $dist_id);
+            $row = $this->db->single();
+            $dist = $row->dist_name;
+            return $dist;
+        }
+
+        // public function getCategoryName($id, $category_name){
+        //     $this->db->query('SELECT category_name FROM categories WHERE id = :id');
+        //     $this->db->bind(':id', $id);
         //     $row = $this->db->single();
-        //     $dist = $row->dist_name;
-        //     return $dist;
+        //     $cat_id = $row->category_name;
+        //     return $cat_id;
         // }
 
 
@@ -490,6 +491,17 @@
         
         }
 
+
+        public function getDonationComplete($id,$status){
+
+            if($status==3){
+            $this->db->query('UPDATE donation_req SET status=3 WHERE id = :id');
+            $this->db->bind(':id', $id);
+            $results = $this->db->resultSet();
+            return $results;
+        
+        }
+    }
 
 
 
@@ -542,6 +554,34 @@
         
     }
 
+    //pending requests status(0)
+    public function getPendingReqCount($user_ID)
+    {
+        $this->db->query('SELECT COUNT(*) AS total_donation_requests FROM donation_req WHERE status = 0 AND  user_id = :user_ID');
+        $this->db->bind(':user_ID', $user_ID);
+        $row = $this->db->single();
+        return $row->total_donation_requests;
+    }
+
+
+    public function getOngoingReqCount($user_ID)
+    {
+        $this->db->query('SELECT COUNT(*) AS total_donation_requests FROM donation_req WHERE status = 1 AND  user_id = :user_ID');
+        $this->db->bind(':user_ID', $user_ID);
+        $row = $this->db->single();
+        return $row->total_donation_requests;
+    }
+
+
+    // //total donations from events_donation_history table whose events are from this user
+    // public function getTotalDonationRequests($user_ID)
+    // {
+    //     $this->db->query('SELECT SUM(amount) AS total_donation FROM event_donation_history WHERE event_id IN (SELECT id FROM events WHERE event_org_id = :user_ID)');
+    //     $this->db->bind(':user_ID', $user_ID);
+    //     $row = $this->db->single();
+    //     return $row->total_donation;
+    // }
+
 
     public function addNonFinancialRequest($data)
     {
@@ -591,11 +631,8 @@
     }
 
 
-    
-
-
         public function getRequests($id){
-            $this->db->query('SELECT * FROM donation_req WHERE user_id = :user_id');
+            $this->db->query('SELECT * FROM donation_req WHERE user_id = :user_id ORDER BY donation_req.id DESC LIMIT 5');
             $this->db->bind(':user_id', $id);
             // $this->db->query('SELECT donation_req.id, donation_req.request_title, donation_req.name, donation_req.NIC, donation_req.description, donation_req.contact, donation_req.zipcode, donation_req.cat_id ,donation_req.status , donation_req.published_date, donation_req.due_date, donation_req.user_id, donation_req.proof_document FROM donation_req INNER JOIN reg_user ON donation_req.user_id=reg_user.id');
             $results = $this->db->resultSet();
@@ -622,16 +659,6 @@
             return $results;
         }
 
-        // public function makeRequestCompleted($id){
-        //     $this->db->query('UPDATE donation_req SET status = 3 WHERE status IN (0, 1) AND due_date < NOW() AND user_id=:user_id');
-        //     $this->db->bind(':user_id', $id);
-        //     // $this->db->bind(':due_date', $id);
-        //     $results = $this->db->resultSet();
-        //     return $results;
-
-        // }
-
-
         public function makeNonFinancialRequestOngoing($id){
             $this->db->query('UPDATE donation_req SET status = 1 WHERE status = 0 AND id IN (SELECT req_id FROM nfinancial_req WHERE received_quantity > 0)');
             $this->db->bind(':user_id', $id);
@@ -650,11 +677,6 @@
 
         }
 
-        
-
-
-
-
 
         public function viewNonFinancialRequest($id){
             // $this->db->query('SELECT * FROM nfinancial_req');
@@ -662,6 +684,13 @@
             $this->db->bind(':id', $id);
             $results = $this->db->resultSet();
             return $results;
+        }
+        public function getDonationDueDate($id){
+            $this->db->query('SELECT * from donation_req Where id=:id');
+            $this->db->bind(':id',$id);
+            $results = $this->db->resultSet();
+            return $results;
+
         }
 
         public function viewFinancialRequest($id){
@@ -679,153 +708,104 @@
             return $results;
         }
 
-    //     public function updateNonFinancialRequest($data)
-    //     {
-            
-    //             $this->db->query('UPDATE donation_req SET request_title = :request_title, name = :name, NIC = :NIC, description = :description, contact = :contact, zipcode = :zipcode, due_date = :due_date WHERE id =:id ');
-    // // $this->db->query('UPDATE reg_user SET password = :password, otp_code = :otp_code, otp_verify = :otp_verify WHERE id = :id');
+        //get donation details
+        public function getDonationDetails($id, $donation_type){
 
-    //                     // Bind values
-    //             $this->db->bind(':request_title', $data['title']);
-    //             $this->db->bind(':name', $data['name']);
-    //             $this->db->bind(':NIC', $data['NIC']);
-    //             $this->db->bind(':description', $data['description']);
-    //             $this->db->bind(':contact', $data['contact']);
-    //             $this->db->bind(':zipcode', $data['zipcode']);
-    //             // $this->db->bind(':proof_document', $data['proof_document']);
-    //             // $this->db->bind(':cat_id',$data['cat_id']);
-    //             // $this->db->bind(':status', $data['status']);
-    //             // $this->db->bind(':published_date', $data['published_date']);
-    //             $this->db->bind(':due_date', $data['duedate']);
-    //             // $this->db->bind(':user_id', $data['user_id']);
-    //             // $this->db->bind(':thumbnail', $data['thumbnail']);
-    //              $this->db->bind(':id', $data['id']);
+            if($donation_type == 1){
+                $this->db->query('SELECT donation.anonymous, donation.timestamp, donation.date_of_completion, donation.status, financial_donation.amount_donated, donation_req.name, donation_req.request_title, donation_req.contact, donation_req.zipcode, donation_req.user_id FROM donation JOIN financial_donation ON donation.id = financial_donation.donation_id JOIN donation_req ON donation.request_id = donation_req.id WHERE donation.id = :id');
+                $this->db->bind(':id', $id);
+                $results = $this->db->resultSet();
+                return $results;
+            }else{
+                $this->db->query('SELECT donation.anonymous, donation.timestamp, donation.date_of_completion, donation.status, nfinancial_donation.quantity_donated, nfinancial_donation.note_to_beneficiary, donation_req.name, donation_req.request_title, donation_req.contact, donation_req.zipcode, donation_req.user_id, donation_req.cat_id, categories.category_name, nfinancial_req.item FROM donation JOIN nfinancial_donation ON donation.id = nfinancial_donation.donation_id JOIN donation_req ON donation.request_id = donation_req.id JOIN categories ON donation_req.cat_id = categories.id JOIN nfinancial_req ON nfinancial_req.req_id = donation_req.id WHERE donation.id = :id');
+                $this->db->bind(':id', $id);
+                $results = $this->db->resultSet();
+                return $results;
+            }
+    
+        }
 
 
-    //             // Execute
-    //                 if ($this->db->execute()) {
-                        
-    //                     $this->db->query('SELECT id FROM donation_req WHERE user_id = :user_id ORDER BY id DESC LIMIT 1;');
-    //                     $this->db->bind(':user_id', $data['id']);
-    //                     $row = $this->db->single();
-    //                     $req_id = $row->id;
-                    
-                        
-    //                     if ($this->db->execute()) {
-    //                     $this->db->query('UPDATE nfinancial_req SET quantity = :quantity WHERE req_id = :req_id');
-                    
-    //                     $this->db->bind(':req_id', $req_id);
-    //                     $this->db->bind(':quantity', $data['quantity']);
-                    
-    //                     if ($this->db->execute()) {
-    //                         return true;
-    //                     } else {
-    //                         return false;
-    //                     }
-    //                 } else {
-    //                     return false;
-    //                 }
-    //             } else {
-    //                 return false;
-    //             }
-           
-    //     }
+        //get user by id
+        public function getUserTypeById($id){
+            $this->db->query('SELECT reg_user.user_type FROM reg_user WHERE reg_user.id = :id');
+            $this->db->bind(':id', $id);
+            $results = $this->db->single();
+            $type = $results->user_type;
+            return $type;
+        }
 
 
-        
+        public function getBeneficiaryDetails($id, $user_type){
+
+            if($user_type == 4){
+                $this->db->query('SELECT reg_user.email, reg_user.tp_number, ind_ben.f_name, ind_ben.l_name, ind_ben.address, ind_ben.zipcode, ind_ben.district, district.dist_name FROM reg_user JOIN ind_ben ON reg_user.id = ind_ben.user_id JOIN district ON ind_ben.district = district.id WHERE reg_user.id = :id');
+                $this->db->bind(':id', $id);
+                $results = $this->db->resultSet();
+                return $results;
+            }else{
+                $this->db->query('SELECT reg_user.email, reg_user.tp_number, org_ben.org_name, org_ben.org_type, org_ben.address, org_ben.zipcode, org_ben.district, district.dist_name FROM reg_user JOIN org_ben ON reg_user.id = org_ben.user_id JOIN district ON org_ben.district = district.id WHERE reg_user.id = :id');
+                $this->db->bind(':id', $id);
+                $results = $this->db->resultSet();
+                return $results;
+            }
+          
+              
+        }
+
+
+            public function editDueDate($id, $data){
+                $this->db->query('UPDATE donation_req SET due_date = :due_date WHERE id = :id');
+                // Bind values
+                $this->db->bind(':id', $id);
+                $this->db->bind(':due_date', $data['due_date']);
+                // Execute
+                if($this->db->execute()){
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
 
         public function updateFinancialRequest($data)
-    {
-       
-        $this->db->query('UPDATE donation_req SET request_title = :request_title, name = :name, NIC = :NIC, description = :description, contact = :contact, zipcode = :zipcode, due_date = :due_date WHERE id =:id ');
-           
-        // $this->db->query('UPDATE donation_req (request_title, name, NIC, description, contact, zipcode, cat_id, due_date , user_id, proof_document, thumbnail) VALUES(:request_title, :name, :NIC, :description, :contact, :zipcode, :cat_id, :due_date, :user_id, :proof_document, :thumbnail)');
+        {
+         $this->db->query('UPDATE donation_req INNER JOIN financial_req ON donation_req.id = financial_req.req_id  SET donation_req.request_title = :request_title, donation_req.name = :name, donation_req.NIC = :NIC, donation_req.description = :description, donation_req.contact = :contact, donation_req.zipcode = :zipcode, donation_req.due_date = :due_date, donation_req.proof_document=:proof_document, donation_req.thumbnail=:thumbnail, financial_req.total_amount = :total_amount, financial_req.bank_acc_number, financial_req.bank_pass_book =:bank_pass_book, financial_req.bank_name=:bank_name  WHERE donation_req.id =:id ');
 
-            // Bind values
+             // Bind values
             $this->db->bind(':request_title', $data['title']);
             $this->db->bind(':name', $data['name']);
             $this->db->bind(':NIC', $data['NIC']);
             $this->db->bind(':description', $data['description']);
             $this->db->bind(':contact', $data['contact']);
             $this->db->bind(':zipcode', $data['zipcode']);
-            // $this->db->bind(':proof_document', $data['proof']);
+            $this->db->bind(':proof_document', $data['proof_document']);
             // $this->db->bind(':cat_id',$data['cat_id']);
             // $this->db->bind(':status', $data['status']);
             // $this->db->bind(':published_date', $data['published_date']);
             $this->db->bind(':due_date', $data['duedate']);
             $this->db->bind(':id', $data['id']);
-            // $this->db->bind(':thumbnail', $data['thumbnail']);
+            $this->db->bind(':thumbnail', $data['thumbnail']);
+            //  $this->db->bind(':req_id', $data['req_id']);
+            // $this->db->bind(':quantity', $data['quantity']);
+            $this->db->bind(':total_amount', $data['amount']);
+            // $this->db->bind(':received_amount', $data['received_amount']);
+             $this->db->bind(':bank_pass_book', $data['bank_pass_book']);
+            $this->db->bind(':bank_acc_number', $data['accnumber']);
+            $this->db->bind(':bank_name', $data['bankname']);
 
-
-            // Execute
-            if ($this->db->execute()) {
-
-                $this->db->query('SELECT id FROM donation_req WHERE user_id = :user_id ORDER BY id DESC LIMIT 1;');
-                $this->db->bind(':user_id', $data['id']);
-                $row = $this->db->single();
-                $req_id = $row->id;
-
-                $this->db->query('UPDATE financial_req SET total_amount=:total_amount, bank_acc_number=:bank_acc_number, bank_name=:bank_name WHERE req_id=:req_id');
-
-                $this->db->bind(':req_id', $req_id);
-                $this->db->bind(':total_amount', $data['amount']);
-                // $this->db->bind(':received_amount', $data['received_amount']);
-                //  $this->db->bind(':bank_pass_book', $data['passbook']);
-                $this->db->bind(':bank_acc_number', $data['accnumber']);
-                $this->db->bind(':bank_name', $data['bankname']);
-                                
-                if ($this->db->execute()) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } else {
-                return false;
-            }
-        
-   
-        
+           // Execute
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
     }
-
-
-    //     public function updateFinancialRequest($data)
-    //     {
-    //      $this->db->query('UPDATE donation_req INNER JOIN financial_req ON donation_req.id = financial_req.req_id  SET donation_req.request_title = :request_title, donation_req.name = :name, donation_req.NIC = :NIC, donation_req.description = :description, donation_req.contact = :contact, donation_req.zipcode = :zipcode, donation_req.due_date = :due_date, financial_req.total_amount = :total_amount, financial_req.bank_acc_number =:bank_acc_number, financial_req.bank_name=:bank_name  WHERE donation_req.id =:id ');
-
-    //          // Bind values
-    //         $this->db->bind(':request_title', $data['title']);
-    //         $this->db->bind(':name', $data['name']);
-    //         $this->db->bind(':NIC', $data['NIC']);
-    //         $this->db->bind(':description', $data['description']);
-    //         $this->db->bind(':contact', $data['contact']);
-    //         $this->db->bind(':zipcode', $data['zipcode']);
-    //         // $this->db->bind(':proof_document', $data['proof']);
-    //         // $this->db->bind(':cat_id',$data['cat_id']);
-    //         // $this->db->bind(':status', $data['status']);
-    //         // $this->db->bind(':published_date', $data['published_date']);
-    //         $this->db->bind(':due_date', $data['duedate']);
-    //         $this->db->bind(':id', $data['id']);
-    //         // $this->db->bind(':thumbnail', $data['thumbnail']);
-    //         //  $this->db->bind(':req_id', $data['req_id']);
-    //         // $this->db->bind(':quantity', $data['quantity']);
-    //         $this->db->bind(':total_amount', $data['amount']);
-    //         // $this->db->bind(':received_amount', $data['received_amount']);
-    //         //  $this->db->bind(':bank_pass_book', $data['passbook']);
-    //         $this->db->bind(':bank_acc_number', $data['accnumber']);
-    //         $this->db->bind(':bank_name', $data['bankname']);
-
-    //        // Execute
-    //     if ($this->db->execute()) {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
 
 
     public function updateNonFinancialRequest($data)
     {
-     $this->db->query('UPDATE donation_req INNER JOIN nfinancial_req ON donation_req.id = nfinancial_req.req_id  SET donation_req.request_title = :request_title, donation_req.name = :name, donation_req.NIC = :NIC, donation_req.description = :description, donation_req.contact = :contact, donation_req.zipcode = :zipcode, donation_req.due_date = :due_date, nfinancial_req.quantity = :quantity  WHERE donation_req.id =:id ');
+     $this->db->query('UPDATE donation_req INNER JOIN nfinancial_req ON donation_req.id = nfinancial_req.req_id  SET donation_req.request_title = :request_title, donation_req.name = :name, donation_req.NIC = :NIC, donation_req.description = :description, donation_req.contact = :contact, donation_req.zipcode = :zipcode, donation_req.due_date = :due_date, donation_req.proof_document=:proof_document, donation_req.thumbnail=:thumbnail, nfinancial_req.quantity = :quantity  WHERE donation_req.id =:id ');
 
          // Bind values
         $this->db->bind(':request_title', $data['title']);
@@ -834,13 +814,13 @@
         $this->db->bind(':description', $data['description']);
         $this->db->bind(':contact', $data['contact']);
         $this->db->bind(':zipcode', $data['zipcode']);
-        // $this->db->bind(':proof_document', $data['proof']);
+        $this->db->bind(':proof_document', $data['proof_document']);
         // $this->db->bind(':cat_id',$data['cat_id']);
         // $this->db->bind(':status', $data['status']);
         // $this->db->bind(':published_date', $data['published_date']);
         $this->db->bind(':due_date', $data['duedate']);
         $this->db->bind(':id', $data['id']);
-        // $this->db->bind(':thumbnail', $data['thumbnail']);
+        $this->db->bind(':thumbnail', $data['thumbnail']);
         //  $this->db->bind(':req_id', $data['req_id']);
         $this->db->bind(':quantity', $data['quantity']);
         

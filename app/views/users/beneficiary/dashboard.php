@@ -16,9 +16,7 @@
     <!--navigation bar left-->
     <div class="sidebar">
       <div class="logo-details">
-<!--        <i class="bx bx-grid-alt"></i>-->
-        <!-- <h1><?php echo $data['title']; ?></h1> -->
-<!--        <span class="logo_name">Dashboard</span>-->
+
         <img src="/img/logo_.png" alt="logo" class="logo"/>
       </div>
       <div class="welcome">
@@ -82,8 +80,7 @@
             <i class="bx bx-bell bx-tada notification"></i>
           </div>
             <img src="/img/profile_pic.svg" alt="" />
-          <!-- <span class="admin_name"><a style="text-decoration: none; color: black" href="change_password.php">Profile</a></span> -->
-          <!-- <i class='bx bx-chevron-down'></i> -->
+          
         </div>
       </nav>
       <div class="main-container">

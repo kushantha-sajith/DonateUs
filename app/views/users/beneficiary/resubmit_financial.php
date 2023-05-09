@@ -43,7 +43,7 @@
                 <header>Donation Request</header>
             <?php  foreach($data['financials'] as $financials ):  ?>
 
-                <form method="post" action="<?php echo URLROOT; ?>/beneficiary/updateFinancialDueDate/<?php echo $financials->id;  ?>" >
+                <form method="post" action="<?php echo URLROOT; ?>/beneficiary/updateFinancialDueDate/<?php echo $financials->id;?>" >
                     <div class="formfirst">
                         <div class="details personal">
                             <div class="fields">
@@ -52,7 +52,7 @@
                                 <div class="input-field">
                                     <label>Due Date</label>
                                     <!-- <input type="date" placeholder="Due Date"> -->
-                                    <input type="date" placeholder="Enter Due Date" name="duedate" value="<?php echo $financials->due_date; ?>">
+                                    <input type="date" placeholder="Enter Due Date" name="due_date" value="<?php echo $financials->due_date; ?>">
                                     <!-- <span class="error"><?php echo $data['duedateErr']; ?></span> -->
 
                             </div>

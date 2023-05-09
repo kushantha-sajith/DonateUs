@@ -45,71 +45,68 @@
      
         <div class="gigcontainer">
        
-                <div class="box">
+        <div class="box">
+        <?php foreach($data['details'] as $details) : ?>
 
                 <div class="easy">
-                        <p><b>Type  |  Category</b></p>
-                        <div class="name_job">Request Title</div> <!-- eo name_job -->
-                        <p>Date</p>
+                        
+                        <div class="name_job"><?php echo $details->request_title;  ?></div> <!-- eo name_job -->
+                        <p><?php echo $details->timestamp;  ?></p>
                         <p class="due-date">
-                          <span><b>Status</b></span>
+                          <span><b><?php 
+                          switch($details->status){
+                            case 1: 
+                              echo  "Pending";
+                              break;
+                            case 2:
+                              echo  "Delivered";
+                              break; 
+                            case 3:
+                              echo  "Completed";
+                              break;
+                            case 4:
+                              echo  "Canceled";
+                              break;
+                            default:
+                              echo  "Error";
+                            
+                              }  ?></b></span>
                         </p>
                         
-                    </div> <!-- eo easy -->
+                    </div>
                
 
 <form action="#">
     <div class="formfirst">
-        <div class="details personal">
-        <!-- <header>Beneficiary Details</header>
-            <div class="fields">
-            
-                <div class="input-field">
-                    <label>Beneficiary Name</label>
-                    <input type="text" placeholder="" value="jjjjjjjjjjjjjjjjjjjjj" disabled>
-                </div>
-                <div class="input-field">
-                    <label>Item Requested</label>
-                    <input type="text" placeholder="" value="kkkkkkkkkkkkkkkkkkkk" disabled>
-                </div>
-                <div class="input-field">
-                    <label>Conatcat Number</label>
-                    <input type="text" placeholder="" value="nnnnnnnnnnnnnnnnnnnnnnnnnnnn" disabled>
-                </div>
-                <div class="input-field">
-                    <label>Address</label>
-                    <input type="text" placeholder="" value="nnnnnnnnnnnnnnnnnnnnnnnnnnnn" disabled>
-                </div>
-                <div class="input-field">
-                    <label>District</label>
-                    <input type="text" placeholder="" value="nnnnnnnnnnnnnnnnnnnnnnnnnnnn" disabled>
-                </div>
-                <div class="input-field">
-                    <label>Zipcode</label>
-                    <input type="text" placeholder="" value="nnnnnnnnnnnnnnnnnnnnnnnnnnnn" disabled>
-                </div>
-            </div> -->
-            <?php foreach($data['view'] as $view) : ?>
+       
 
             <header>Donation Details</header>
             <div class="fields">
                 <div class="input-field">
                     <label>Qunatity Donated</label>
-                    <input type="text" placeholder="" value="<?php echo $view->quantity_donated; ?>" disabled>
+                    <input type="text" placeholder="" value="<?php echo $details->quantity_donated; ?>" disabled>
                 </div>
 
                 <div class="input-field">
                     <label>Anonymous</label>
-                    <input type="text" placeholder="" value="<?php echo $view->anonymous; ?>" disabled>
+                    <input type="text" placeholder="" value="<?php if($details->anonymous ==1 ){
+                      echo "Anonymous";
+                    } else{
+                      echo "Not Anonymous";
+                    }  ?>" disabled>
                 </div>
 
                 <div class="input-field">
                     <label>Note to Beneficiary</label>
-                    <input type="text" placeholder="" value="<?php echo $view->note_to_beneficiary; ?>" disabled>
+                    <input type="text" placeholder="" value="<?php echo $details->note_to_beneficiary; ?>" disabled>
                 </div>
                 <div class="input-field">
                     <label>Date of Completion</label>
-                    <input type="text" placeholder="" value="<?php echo $view->date_of_completion; ?>" disabled>
+                    <input type="text" placeholder="" value="<?php echo $details->date_of_completion; ?>" disabled>
+                </div>
+                <div class="input-field">
+                    <label>Reason to cancel</label>
+                    <textarea id="txtid" name="canceled_note" rows="4" cols="50" maxlength="200" placeholder="Start typing here... "><?php echo $details->note_to_beneficiary; ?></textarea>
                 </div>
               </div>
               <?php endforeach; ?>
@@ -120,12 +117,7 @@
        
     </div>
 </form>
-        <!-- <div class ="btns3"> 
-                    <a href="<?php echo URLROOT;?>/donor/viewmoreHistoryDonor"> <button class="btn-contact-org">Mark As Delivered</button> </a>
-                    <a href="<?php echo URLROOT; ?>/donor/feedback"> <button class="btn-mark-delivered">Feedback</button> </a>
-                    <a href="<?php echo URLROOT; ?>/donor/feedback"> <button class="btn-mark-cancelled">Cancel</button> </a>
-                      </div> -->
-                    </div><!-- eo box -->
+
                     <div class="btns2">
               <a href="<?php echo URLROOT;?>/pages/donationHistoryBeneficiary"><button class="btn-back">Back</button></a>
             </div> 

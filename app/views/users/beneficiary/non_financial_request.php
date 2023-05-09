@@ -94,7 +94,6 @@
                                 </div>
                                 <div class="input-field">
                                     <label>Donation Item</label>
-                                    <!-- <input type="text" placeholder="Location"> -->
                                     <input type="text" placeholder="Enter item" name="item" value="<?php echo $data['item']; ?>">
                                     <span class="error"><?php echo $data['itemErr']; ?></span>
                                 </div>
@@ -108,14 +107,12 @@
 
                                 <div class="input-field">
                                     <label>Zip Code</label>
-                                    <!-- <input type="text" placeholder="Location"> -->
                                     <input type="text" placeholder="Enter code" name="zipcode" value="<?php echo $data['zipcode']; ?>">
                                     <span class="error"><?php echo $data['zipcodeErr']; ?></span>
                                 </div>
 
                                 <div class="input-field">
                                     <label>Due Date</label>
-                                    <!-- <input type="date" placeholder="Due Date"> -->
                                     <input type="date" placeholder="Enter Due Date" name="duedate" value="<?php echo $data['duedate']; ?>">
                                     <span class="error"><?php echo $data['duedateErr']; ?></span>
                                 </div>
@@ -125,28 +122,37 @@
                         </div>
 
 
-                        <span class="title"><u>Identity Proof</u></span>
+                        <span class="title"><u>Proof Document</u></span>
                         <div class="photo-container" id="grame">
                             <input type="file" id="file3" name="proof" value="<?php echo $data['proof']; ?>">
-                            <!-- <div class="img-area" id="area-three" data-img="">
-                                <i class='bx bxs-cloud-upload icon'></i>
-                                <h3>Upload Image</h3>
-                                <p>Image size must be less than <span>2MB</span></p>
-                            </div> -->
+                           
                             <span class="error"><?php echo $data['proofErr']; ?></span>
                             
                         </div>
+                        <!-- <span class="title"><u>Second Proof Document</u></span>
+                        <div class="photo-container" id="grame">
+                            <input type="file" id="file3" name="proof" value="<?php echo $data['proof']; ?>">
+                             <div class="img-area" id="area-three" data-img="">
+                                <i class='bx bxs-cloud-upload icon'></i>
+                                <h3>Upload Image</h3>
+                                <p>Image size must be less than <span>2MB</span></p>
+                            </div> 
+                            <span class="error"><?php echo $data['proofErr']; ?></span>
+                            
+                        </div> -->
 
                         <span class="title"><u>Thumbnail</u></span>
                         <div class="photo-container" id="grame">
                             <input type="file" id="file4" name="thumbnail" value="<?php echo $data['thumbnail']; ?>">
-                            <!-- <div class="img-area" id="area-three" data-img="">
-                                <i class='bx bxs-cloud-upload icon'></i>
-                                <h3>Upload Image</h3>
-                                <p>Image size must be less than <span>2MB</span></p>
-                            </div> -->
+                            
                             <span class="error"><?php echo $data['thumbnailErr']; ?></span>
                             
+                        </div>
+                        <br><br>
+                        <div>
+                            Guidelines : 
+                            If you are willing to make donation request from medicine category you have to upload second proof by taking from a doctor.
+    
                         </div>
 
                         </div>
