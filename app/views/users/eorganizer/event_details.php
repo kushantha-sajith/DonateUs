@@ -40,7 +40,7 @@
                     <span class="material-icons">
                         pending_actions
                     </span>
-                    <span class="option-text"><?php echo $data['status']?></a></span>
+                    <span class="option-text"><?php echo $data['status'] ?></a></span>
                     <i class="bx bx-chevron-down"></i>
                 </div>
 
@@ -115,7 +115,7 @@
                     <div><?php echo $donation_req->due_date; ?></div>
                     <div><?php echo $donation_req->budget; ?></div>
                     <div><?php echo $donation_req->received; ?></div>
-                    <div>
+                    <div class="event-details-btn-container">
                         <center> <a href="<?php echo URLROOT; ?>/EOrganizer/EventDetailsFull/<?php echo $donation_req->id; ?>"> <button class="btnview">View More</button> </a></center>
                     </div>
                 </div>
